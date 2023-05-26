@@ -54,54 +54,12 @@
         <scene sceneID="42X-Xj-WhJ">
             <objects>
                 <viewController storyboardIdentifier="TopView" id="LDj-rO-Ns2" customClass="TopViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yx7-rP-3qU">
+                    <view key="view" contentMode="scaleToFill" id="yx7-rP-3qU" customClass="TopView" customModule="DietApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fr-b0-mrE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <items>
-                                    <navigationItem id="elj-YD-UVF">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.left" catalog="system" id="qF5-El-qBa"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="arrow.right" catalog="system" id="WIc-89-IR7"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="体重を入力" textAlignment="center" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="h2C-bR-iXV">
-                                <rect key="frame" x="132" y="99" width="150" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4j-YW-fgk">
-                                <rect key="frame" x="290" y="112" width="19" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="あああああ" borderStyle="roundedRect" placeholder="メモ" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7BM-OA-fQg">
-                                <rect key="frame" x="20" y="141" width="374" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="i9o-le-VbM"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="6fr-b0-mrE" firstAttribute="centerX" secondItem="yx7-rP-3qU" secondAttribute="centerX" id="6yd-JF-pYI"/>
-                            <constraint firstItem="6fr-b0-mrE" firstAttribute="top" secondItem="i9o-le-VbM" secondAttribute="top" id="H2W-5i-c0k"/>
-                            <constraint firstItem="6fr-b0-mrE" firstAttribute="leading" secondItem="i9o-le-VbM" secondAttribute="leading" id="kfS-wL-T9j"/>
-                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="NavigationItem" destination="elj-YD-UVF" id="teY-BZ-JE5"/>
-                        <outlet property="navigationBar" destination="6fr-b0-mrE" id="wfk-Fp-eZt"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egx-Ll-1b6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,16 +87,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.left" catalog="system" width="128" height="98"/>
-        <image name="arrow.right" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
