@@ -22,6 +22,10 @@
 		FA68AF442A135F7200B69D4A /* DietAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
+		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
+		FAFF6F5A2A21ACE40092A1A3 /* WeightTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F582A21ACE40092A1A3 /* WeightTableViewCell.xib */; };
+		FAFF6F602A21C60F0092A1A3 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F5E2A21C60F0092A1A3 /* MemoTableViewCell.swift */; };
+		FAFF6F612A21C60F0092A1A3 /* MemoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F5F2A21C60F0092A1A3 /* MemoTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
+		FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewCell.swift; sourceTree = "<group>"; };
+		FAFF6F582A21ACE40092A1A3 /* WeightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightTableViewCell.xib; sourceTree = "<group>"; };
+		FAFF6F5E2A21C60F0092A1A3 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
+		FAFF6F5F2A21C60F0092A1A3 /* MemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,8 +205,20 @@
 			children = (
 				FAFF6F522A2055430092A1A3 /* TopView.swift */,
 				FAFF6F542A2055590092A1A3 /* TopView.xib */,
+				FAFF6F5B2A21C5D00092A1A3 /* Cell */,
 			);
 			path = TopPage;
+			sourceTree = "<group>";
+		};
+		FAFF6F5B2A21C5D00092A1A3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */,
+				FAFF6F582A21ACE40092A1A3 /* WeightTableViewCell.xib */,
+				FAFF6F5E2A21C60F0092A1A3 /* MemoTableViewCell.swift */,
+				FAFF6F5F2A21C60F0092A1A3 /* MemoTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,8 +325,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFF6F5A2A21ACE40092A1A3 /* WeightTableViewCell.xib in Resources */,
 				FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */,
 				FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */,
+				FAFF6F612A21C60F0092A1A3 /* MemoTableViewCell.xib in Resources */,
 				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
 				FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */,
 			);
@@ -335,8 +357,10 @@
 			files = (
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
+				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
 				FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
+				FAFF6F602A21C60F0092A1A3 /* MemoTableViewCell.swift in Sources */,
 				FA41A2F22A1C8734008DC83E /* GraphViewController.swift in Sources */,
 				FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,

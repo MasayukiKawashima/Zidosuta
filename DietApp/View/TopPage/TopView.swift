@@ -8,10 +8,15 @@
 import UIKit
 
 class TopView: UIView {
-  
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var navigationItem: UINavigationItem!
   
+  @IBOutlet weak var tableView: UITableView! {
+    didSet{
+      tableView.register(UINib(nibName: "WeightTableViewCell", bundle: nil), forCellReuseIdentifier: "WeightTableViewCell")
+      tableView.register(UINib(nibName: "MemoTableViewCell", bundle: nil), forCellReuseIdentifier: "MemoTableViewCell")
+    }
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -31,7 +36,6 @@ class TopView: UIView {
     view.frame = self.bounds
     //サイズの自動調整
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    
     
     self.addSubview(view)
   }

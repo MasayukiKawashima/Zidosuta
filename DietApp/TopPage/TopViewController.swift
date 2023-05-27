@@ -7,8 +7,7 @@
 
 import UIKit
 
-class TopViewController: UIViewController,UINavigationBarDelegate {
-  
+class TopViewController: UIViewController {
 //topViewの保持
   var topView = TopView()
   
@@ -16,36 +15,30 @@ class TopViewController: UIViewController,UINavigationBarDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     topView.navigationBar.delegate = self
+    topView.tableView.delegate = self
+    topView.tableView.dataSource = self
     
     topView.navigationBar.backgroundColor = UIColor.cyan
     
-    navigatoBarTitleSetting()
-    
+    navigationBarTitleSetting()
     }
   
   override func loadView() {
     super.loadView()
     view = topView
   }
-  //NavigationBarがステータスバーを覆うように表示
-  func position(for bar: UIBarPositioning) -> UIBarPosition {
-    return .topAttached
-  }
+  
   //5.24NavigationBarのタイトルを仮配置した。各タイトルの設定（テキスト表示のアルゴリズム、AutoLayout等）後日検討
   //NavigationBarのタイトル設定
-  func navigatoBarTitleSetting (){
-
+  func navigationBarTitleSetting (){
     let yearText = "2023"
     let dateText = "5.24"
     let dayOfWeekText = "wed"
-
     let dateFontSize: CGFloat = 18.0
     let fontSize: CGFloat = 14.0
-
-
+    
     // カスタムビューをインスタンス化
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
-
 
     // UILabelを作成してテキストを設定
     let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
@@ -66,18 +59,15 @@ class TopViewController: UIViewController,UINavigationBarDelegate {
     dayOfWeekTextLabel.textColor = .black
     dayOfWeekTextLabel.sizeToFit()
 
-
     //AutoLayoutを使用するための設定
     yearTextLabel.translatesAutoresizingMaskIntoConstraints = false
     dateTextLabel.translatesAutoresizingMaskIntoConstraints = false
     dayOfWeekTextLabel.translatesAutoresizingMaskIntoConstraints = false
 
-
     // カスタムビューにUILabelを追加
     customTitleView.addSubview(yearTextLabel)
     customTitleView.addSubview(dateTextLabel)
     customTitleView.addSubview(dayOfWeekTextLabel)
-
 
     //AutoLayoutの設定
     NSLayoutConstraint.activate([
@@ -96,7 +86,6 @@ class TopViewController: UIViewController,UINavigationBarDelegate {
       dayOfWeekTextLabel.trailingAnchor.constraint(equalTo: dayOfWeekTextLabel.trailingAnchor)
 
     ])
-
     //カスタムビューをNavigationBarに追加
     topView.navigationItem.titleView = customTitleView
   }
@@ -111,4 +100,37 @@ class TopViewController: UIViewController,UINavigationBarDelegate {
     }
     */
 
+}
+
+extension TopViewController: UINavigationBarDelegate {
+  //NavigationBarがステータスバーを覆うように表示
+  func position(for bar: UIBarPositioning) -> UIBarPosition {
+    return .topAttached
+  }
+}
+
+extension TopViewController: UITableViewDelegate,UITableViewDataSource {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 2
+  }
+  
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    var cell = UITableViewCell()
+    
+    switch indexPath.row {
+    case 0:
+      cell = tableView.dequeueReusableCell(withIdentifier: "WeightTableViewCell", for: indexPath) as! WeightTableViewCell
+      
+    case 1:
+      cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
+      
+    default:
+      print("セルの取得に失敗しました")
+    }
+    return cell
+//    let cell = tableView.dequeueReusableCell(withIdentifier: "WeightTableViewCell", for: indexPath) as! WeightTableViewCell
+//    return cell
+  }
+  
+  
 }
