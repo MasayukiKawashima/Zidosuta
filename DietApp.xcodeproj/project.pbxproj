@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */; };
+		FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */; };
+		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
+		FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1187A12A22F652004577F8 /* AdTableViewCell.xib */; };
 		FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2EB2A1C84CE008DC83E /* TopViewController.swift */; };
 		FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2ED2A1C8531008DC83E /* TopPageViewController.swift */; };
 		FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2EF2A1C861E008DC83E /* TabBarController.swift */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
+		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
+		FA1187A12A22F652004577F8 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
 		FA41A2EB2A1C84CE008DC83E /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		FA41A2ED2A1C8531008DC83E /* TopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPageViewController.swift; sourceTree = "<group>"; };
 		FA41A2EF2A1C861E008DC83E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -217,6 +225,10 @@
 				FAFF6F582A21ACE40092A1A3 /* WeightTableViewCell.xib */,
 				FAFF6F5E2A21C60F0092A1A3 /* MemoTableViewCell.swift */,
 				FAFF6F5F2A21C60F0092A1A3 /* MemoTableViewCell.xib */,
+				FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */,
+				FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */,
+				FA1187A02A22F652004577F8 /* AdTableViewCell.swift */,
+				FA1187A12A22F652004577F8 /* AdTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -329,8 +341,10 @@
 				FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */,
 				FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */,
 				FAFF6F612A21C60F0092A1A3 /* MemoTableViewCell.xib in Resources */,
+				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
 				FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */,
+				FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
@@ -365,6 +380,7 @@
 				FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
+				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

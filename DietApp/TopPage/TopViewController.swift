@@ -18,6 +18,8 @@ class TopViewController: UIViewController {
     topView.tableView.delegate = self
     topView.tableView.dataSource = self
     
+    topView.tableView.rowHeight = UITableView.automaticDimension
+    
     topView.navigationBar.backgroundColor = UIColor.cyan
     
     navigationBarTitleSetting()
@@ -110,10 +112,11 @@ extension TopViewController: UINavigationBarDelegate {
 }
 
 extension TopViewController: UITableViewDelegate,UITableViewDataSource {
+  //TableViewのセクション内のセルの数（5.28時点で１セクション、４セル）
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return 4
   }
-  
+  //各セルを内容を設定し表示
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var cell = UITableViewCell()
     
@@ -124,6 +127,12 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
     case 1:
       cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
       
+    case 2:
+      cell = tableView.dequeueReusableCell(withIdentifier: "PhotoTableViewCell", for: indexPath) as! PhotoTableViewCell
+    
+    case 3:
+      cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
+      
     default:
       print("セルの取得に失敗しました")
     }
@@ -131,6 +140,20 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
 //    let cell = tableView.dequeueReusableCell(withIdentifier: "WeightTableViewCell", for: indexPath) as! WeightTableViewCell
 //    return cell
   }
-  
+  //各セルの高さの推定値を設定
+  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    switch indexPath.row {
+    case 0:
+      return 44.0
+    case 1:
+      return 44.0
+    case 2:
+      return 440.0
+    case 3:
+      return 50.0
+    default:
+      return 44.0
+    }
+  }
   
 }

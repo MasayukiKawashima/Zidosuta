@@ -13,8 +13,11 @@ class TopView: UIView {
   
   @IBOutlet weak var tableView: UITableView! {
     didSet{
+      //各セルの登録
       tableView.register(UINib(nibName: "WeightTableViewCell", bundle: nil), forCellReuseIdentifier: "WeightTableViewCell")
       tableView.register(UINib(nibName: "MemoTableViewCell", bundle: nil), forCellReuseIdentifier: "MemoTableViewCell")
+      tableView.register(UINib(nibName: "PhotoTableViewCell", bundle: nil), forCellReuseIdentifier: "PhotoTableViewCell")
+      tableView.register(UINib(nibName: "AdTableViewCell", bundle: nil), forCellReuseIdentifier: "AdTableViewCell")
     }
   }
   
