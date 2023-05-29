@@ -30,12 +30,13 @@
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="QbZ-Kp-3Fw" secondAttribute="bottom" constant="5.5" id="47r-tl-62K"/>
-                    <constraint firstItem="RAo-WU-Iqz" firstAttribute="leading" secondItem="QbZ-Kp-3Fw" secondAttribute="trailing" constant="8" symbolic="YES" id="77S-SA-1FN"/>
-                    <constraint firstItem="QbZ-Kp-3Fw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="IFX-5f-PRw"/>
-                    <constraint firstItem="RAo-WU-Iqz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kHo-pZ-scw"/>
-                    <constraint firstAttribute="trailing" secondItem="RAo-WU-Iqz" secondAttribute="trailing" constant="16" id="xoW-Ll-VAr"/>
-                    <constraint firstItem="QbZ-Kp-3Fw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="z4Z-y8-aZz"/>
+                    <constraint firstItem="RAo-WU-Iqz" firstAttribute="leading" secondItem="QbZ-Kp-3Fw" secondAttribute="trailing" constant="8" symbolic="YES" id="0Db-gh-oB9"/>
+                    <constraint firstItem="RAo-WU-Iqz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="B3Q-NE-NAF"/>
+                    <constraint firstAttribute="bottom" secondItem="RAo-WU-Iqz" secondAttribute="bottom" constant="5" id="Hd0-Ai-szo"/>
+                    <constraint firstItem="QbZ-Kp-3Fw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="RR0-pD-nWZ"/>
+                    <constraint firstItem="QbZ-Kp-3Fw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="YEl-WT-8lH"/>
+                    <constraint firstAttribute="bottom" secondItem="QbZ-Kp-3Fw" secondAttribute="bottom" constant="5.5" id="fel-ub-Ben"/>
+                    <constraint firstAttribute="trailing" secondItem="RAo-WU-Iqz" secondAttribute="trailing" constant="16" id="kVi-5u-vtl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

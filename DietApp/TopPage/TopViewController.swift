@@ -11,12 +11,38 @@ class TopViewController: UIViewController {
 //topViewの保持
   var topView = TopView()
   
+  var tabBarHeight: CGFloat {
+    return tabBarController?.tabBar.frame.size.height ?? 49.0
+  }
+  
+  var navigationBarHeight: CGFloat {
+    return topView.navigationBar.frame.size.height
+  }
+  
+  var statusBarHeight: CGFloat {
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let statusBarFrame = windowScene.statusBarManager?.statusBarFrame {
+      return statusBarFrame.height
+    }
+    return 0
+  }
+  var weightTableViewCellHeight:CGFloat = 44.0
+  var memoTableViewCellHeight:CGFloat = 44.0
+  var photoTableViewCellHeight: CGFloat {
+    return view.frame.height - tabBarHeight - navigationBarHeight - statusBarHeight - weightTableViewCellHeight - memoTableViewCellHeight - adTableViewCellHeight
+    
+  }
+  var adTableViewCellHeight:CGFloat = 50.0
+  
   override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     topView.navigationBar.delegate = self
     topView.tableView.delegate = self
     topView.tableView.dataSource = self
+
+    //スクロールできないようにする
+    topView.tableView.isScrollEnabled = false
     
     topView.tableView.rowHeight = UITableView.automaticDimension
     
@@ -91,7 +117,6 @@ class TopViewController: UIViewController {
     //カスタムビューをNavigationBarに追加
     topView.navigationItem.titleView = customTitleView
   }
-
     /*
     // MARK: - Navigation
 
@@ -144,16 +169,30 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     switch indexPath.row {
     case 0:
-      return 44.0
+      return weightTableViewCellHeight
     case 1:
-      return 44.0
+      return memoTableViewCellHeight
     case 2:
-      return 440.0
+      return photoTableViewCellHeight
     case 3:
-      return 50.0
+      return adTableViewCellHeight
     default:
       return 44.0
     }
   }
   
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    switch indexPath.row {
+    case 0:
+      return weightTableViewCellHeight
+    case 1:
+      return memoTableViewCellHeight
+    case 2:
+      return photoTableViewCellHeight
+    case 3:
+      return adTableViewCellHeight
+    default:
+      return 44.0
+    }
+  }
 }

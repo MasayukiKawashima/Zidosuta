@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="体重" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcB-DV-9zB">
-                        <rect key="frame" x="6" y="13" width="30" height="20"/>
+                        <rect key="frame" x="6" y="12" width="30" height="20"/>
                         <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -28,25 +28,27 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="入力してください" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Z2-CE-98M">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="入力してください" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Z2-CE-98M">
                         <rect key="frame" x="95" y="5" width="130" height="34"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="130" id="H7Z-YY-juj"/>
-                            <constraint firstAttribute="height" constant="34" id="N3o-pW-FX7"/>
+                            <constraint firstAttribute="height" constant="34" id="Sds-tP-XU3"/>
+                            <constraint firstAttribute="width" constant="130" id="l4o-50-OQ9"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="ThC-fl-apd" secondAttribute="bottom" constant="12" id="BTW-l3-7u4"/>
-                    <constraint firstItem="ThC-fl-apd" firstAttribute="leading" secondItem="6Z2-CE-98M" secondAttribute="trailing" constant="8" symbolic="YES" id="Epb-Nc-DIz"/>
-                    <constraint firstAttribute="bottom" secondItem="kcB-DV-9zB" secondAttribute="bottom" constant="11" id="UTZ-CH-jbi"/>
-                    <constraint firstItem="6Z2-CE-98M" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dY7-Pb-mja"/>
-                    <constraint firstItem="kcB-DV-9zB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="g6q-C3-Z1n"/>
-                    <constraint firstItem="ThC-fl-apd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="kPu-Xf-fFo"/>
-                    <constraint firstItem="6Z2-CE-98M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lmH-S1-GLl"/>
-                    <constraint firstItem="kcB-DV-9zB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="qj3-RH-VcA"/>
+                    <constraint firstItem="kcB-DV-9zB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="8zA-oC-HGY"/>
+                    <constraint firstItem="6Z2-CE-98M" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="F2z-iM-NxL"/>
+                    <constraint firstItem="6Z2-CE-98M" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="HYi-rT-ZlA"/>
+                    <constraint firstItem="6Z2-CE-98M" firstAttribute="leading" secondItem="kcB-DV-9zB" secondAttribute="trailing" constant="59" id="Kvc-hb-Eyu"/>
+                    <constraint firstAttribute="trailing" secondItem="ThC-fl-apd" secondAttribute="trailing" constant="69" id="NMw-tt-aHm"/>
+                    <constraint firstItem="kcB-DV-9zB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="OgZ-oD-lCv"/>
+                    <constraint firstAttribute="bottom" secondItem="ThC-fl-apd" secondAttribute="bottom" constant="12" id="P2E-FF-5s8"/>
+                    <constraint firstItem="ThC-fl-apd" firstAttribute="leading" secondItem="6Z2-CE-98M" secondAttribute="trailing" constant="8" symbolic="YES" id="Xpj-dm-kNl"/>
+                    <constraint firstItem="ThC-fl-apd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="be4-w2-1z9"/>
+                    <constraint firstAttribute="bottom" secondItem="kcB-DV-9zB" secondAttribute="bottom" constant="12" id="uWp-pO-pe8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

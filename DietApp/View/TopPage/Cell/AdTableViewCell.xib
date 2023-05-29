@@ -20,17 +20,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjB-mt-U66">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="89W-mB-eGO"/>
-                            <constraint firstAttribute="width" constant="320" id="NBA-Of-Y3t"/>
-                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="cjB-mt-U66" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1Vc-N9-jke"/>
-                    <constraint firstItem="cjB-mt-U66" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2VF-Wd-rpY"/>
-                    <constraint firstAttribute="bottom" secondItem="cjB-mt-U66" secondAttribute="bottom" id="sc0-R7-PU0"/>
-                    <constraint firstAttribute="trailing" secondItem="cjB-mt-U66" secondAttribute="trailing" id="viC-Sc-em0"/>
+                    <constraint firstAttribute="trailing" secondItem="cjB-mt-U66" secondAttribute="trailing" id="7Kf-t7-Bpx"/>
+                    <constraint firstItem="cjB-mt-U66" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Fbl-Qn-hFV"/>
+                    <constraint firstAttribute="bottom" secondItem="cjB-mt-U66" secondAttribute="bottom" id="Ny6-Ek-tGs"/>
+                    <constraint firstItem="cjB-mt-U66" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="jTh-WF-x0t"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

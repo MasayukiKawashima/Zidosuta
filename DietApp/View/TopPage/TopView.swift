@@ -11,13 +11,15 @@ class TopView: UIView {
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var navigationItem: UINavigationItem!
   
+  let cellIdentifiers = ["WeightTableViewCell","MemoTableViewCell","PhotoTableViewCell","AdTableViewCell"]
+  
   @IBOutlet weak var tableView: UITableView! {
     didSet{
       //各セルの登録
-      tableView.register(UINib(nibName: "WeightTableViewCell", bundle: nil), forCellReuseIdentifier: "WeightTableViewCell")
-      tableView.register(UINib(nibName: "MemoTableViewCell", bundle: nil), forCellReuseIdentifier: "MemoTableViewCell")
-      tableView.register(UINib(nibName: "PhotoTableViewCell", bundle: nil), forCellReuseIdentifier: "PhotoTableViewCell")
-      tableView.register(UINib(nibName: "AdTableViewCell", bundle: nil), forCellReuseIdentifier: "AdTableViewCell")
+      for identifier in cellIdentifiers {
+        let nib = UINib(nibName: identifier, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: identifier)
+      }
     }
   }
   
@@ -39,6 +41,7 @@ class TopView: UIView {
     view.frame = self.bounds
     //サイズの自動調整
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     
     self.addSubview(view)
   }
