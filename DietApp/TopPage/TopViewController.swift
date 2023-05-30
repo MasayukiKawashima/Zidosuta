@@ -26,13 +26,12 @@ class TopViewController: UIViewController {
     }
     return 0
   }
-  var weightTableViewCellHeight:CGFloat = 44.0
-  var memoTableViewCellHeight:CGFloat = 44.0
+  var weightTableViewCellHeight:CGFloat = 70.0
+  var memoTableViewCellHeight:CGFloat = 47.0
   var photoTableViewCellHeight: CGFloat {
     return view.frame.height - tabBarHeight - navigationBarHeight - statusBarHeight - weightTableViewCellHeight - memoTableViewCellHeight - adTableViewCellHeight
-    
   }
-  var adTableViewCellHeight:CGFloat = 50.0
+  var adTableViewCellHeight:CGFloat = 53.0
   
   override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +46,8 @@ class TopViewController: UIViewController {
     topView.tableView.rowHeight = UITableView.automaticDimension
     
     topView.navigationBar.backgroundColor = UIColor.cyan
+    
+    //topView.tableView.separatorStyle = .none
     
     navigationBarTitleSetting()
     }
@@ -141,6 +142,11 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 4
   }
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  
   //各セルを内容を設定し表示
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     var cell = UITableViewCell()
@@ -180,7 +186,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       return 44.0
     }
   }
-  
+  //セルの高さ
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch indexPath.row {
     case 0:
@@ -195,4 +201,29 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       return 44.0
     }
   }
+  
+//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//    // 最初のセクションの間隔は0とする
+//    if section > 0 {
+//      // セクション間の間隔
+//      return sectionMargin
+//    }
+//    //0ではなく.leastNormalMagnitudeにしないと最初のセクションのヘッダーが完全に消えない
+//    return .leastNormalMagnitude
+//  }
+//  
+//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    let headerView = UIView()
+//    headerView.backgroundColor = .clear
+//    return headerView
+//  }
+//  
+//  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//    //0ではなく.leastNormalMagnitudeにしないとフッターが完全に消えない
+//    return .leastNormalMagnitude
+//  }
+//  
+//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//    return nil
+//  }
 }

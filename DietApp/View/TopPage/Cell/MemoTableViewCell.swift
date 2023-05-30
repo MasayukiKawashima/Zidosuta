@@ -9,11 +9,17 @@ import UIKit
 
 class MemoTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var memoImageView: UIImageView!
   @IBOutlet weak var memoTextField: UITextField!
+  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    
+    let placeholderText = "ひとことメモ"
+    let attributes = [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+    ]
+    memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
