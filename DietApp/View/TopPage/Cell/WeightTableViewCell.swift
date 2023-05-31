@@ -21,6 +21,8 @@ class WeightTableViewCell: UITableViewCell {
           NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
       ]
       weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+      
+      weightTextField.setUnderLine()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,14 +35,15 @@ class WeightTableViewCell: UITableViewCell {
 //拡張の内容、記述場所は後日検討
 extension UITextField {
   func setUnderLine() {
-    borderStyle = .none
     let underline = UIView()
     // heightにはアンダーラインの高さを入れる
-    underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 0.5)
+    underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
     // 枠線の色
-    underline.backgroundColor = .red
+    underline.backgroundColor = .systemGray
     addSubview(underline)
     // 枠線を最前面に
     bringSubviewToFront(underline)
   }
 }
+
+

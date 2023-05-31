@@ -47,7 +47,7 @@ class TopViewController: UIViewController {
     
     topView.navigationBar.backgroundColor = UIColor.cyan
     
-    //topView.tableView.separatorStyle = .none
+    topView.tableView.separatorStyle = .none
     
     navigationBarTitleSetting()
     }

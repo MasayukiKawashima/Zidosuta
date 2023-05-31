@@ -22,7 +22,7 @@
                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytx-di-uC3">
-                        <rect key="frame" x="276" y="354" width="44" height="44"/>
+                        <rect key="frame" x="276" y="346" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="B0W-Fa-Ia8"/>
                             <constraint firstAttribute="height" constant="44" id="Jje-GH-GcB"/>
@@ -44,7 +44,7 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="Ytx-di-uC3" secondAttribute="bottom" constant="2" id="5aJ-Ls-oi6"/>
+                    <constraint firstAttribute="bottom" secondItem="Ytx-di-uC3" secondAttribute="bottom" constant="10" id="5Px-AN-Gut"/>
                     <constraint firstItem="oKB-hh-oFN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="KPi-J9-Cky"/>
                     <constraint firstAttribute="bottom" secondItem="rrK-eD-DU2" secondAttribute="bottom" constant="1.5" id="Kft-iq-6A3"/>
                     <constraint firstAttribute="trailing" secondItem="rrK-eD-DU2" secondAttribute="trailing" id="Qs1-TQ-HVp"/>
