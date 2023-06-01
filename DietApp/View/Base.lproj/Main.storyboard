@@ -8,17 +8,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--トップ-->
         <scene sceneID="act-0i-Z1E">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kRm-x5-GvX" customClass="TopPageViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="noS-pd-IpZ"/>
+                    <tabBarItem key="tabBarItem" title="トップ" image="house" catalog="system" selectedImage="house" id="noS-pd-IpZ"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExT-Fe-Ne3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="547.82608695652175" y="-17.410714285714285"/>
         </scene>
-        <!--Item-->
+        <!--グラフ-->
         <scene sceneID="893-PQ-lQ6">
             <objects>
                 <viewController id="MyK-35-keA" customClass="GraphViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,13 +28,13 @@
                         <viewLayoutGuide key="safeArea" id="VY1-To-St7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="HOV-xy-xbB"/>
+                    <tabBarItem key="tabBarItem" title="グラフ" image="chart.xyaxis.line" catalog="system" selectedImage="chart.xyaxis.line" id="HOV-xy-xbB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkW-co-76L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="573" y="683"/>
         </scene>
-        <!--Item-->
+        <!--設定-->
         <scene sceneID="IRs-ol-4oz">
             <objects>
                 <viewController id="8AN-9h-T1k" customClass="SettingsViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,7 @@
                         <viewLayoutGuide key="safeArea" id="499-cf-yd9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yok-7R-Obr"/>
+                    <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="yok-7R-Obr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSw-Qy-dib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,20 +54,11 @@
         <scene sceneID="42X-Xj-WhJ">
             <objects>
                 <viewController storyboardIdentifier="TopView" id="LDj-rO-Ns2" customClass="TopViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yx7-rP-3qU">
+                    <view key="view" contentMode="scaleToFill" id="yx7-rP-3qU" customClass="TopView" customModule="DietApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEA-do-sWe">
-                                <rect key="frame" x="186" y="438" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="i9o-le-VbM"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egx-Ll-1b6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -79,9 +70,9 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="F92-bx-bHI" customClass="TabBarController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ycD-k0-lis">
+                    <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="ycD-k0-lis">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="kRm-x5-GvX" kind="relationship" relationship="viewControllers" id="pFb-KW-G2h"/>
@@ -95,6 +86,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
