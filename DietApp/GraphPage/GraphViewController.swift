@@ -37,8 +37,6 @@ class GraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      graphView.navigationBar.backgroundColor = UIColor.cyan
-      
       UIDevice.current.setValue(4, forKey: "orientation")
       
       //画面の向きを変更させるために呼び出す。
@@ -54,9 +52,9 @@ class GraphViewController: UIViewController {
   }
     
   func navigationBarTitleSetting (){
+    
     let yearText = "2023"
-    let dateText = "5/1 ~ 5/31"
-    let dayOfWeekText = "wed"
+    let dateText = "5.1 - 5.31"
     let dateFontSize: CGFloat = 18.0
     let fontSize: CGFloat = 14.0
     
@@ -76,21 +74,13 @@ class GraphViewController: UIViewController {
     dateTextLabel.textColor = .black
     dateTextLabel.sizeToFit()
 
-    let dayOfWeekTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
-    dayOfWeekTextLabel.text = dayOfWeekText
-    dayOfWeekTextLabel.font = UIFont(name: "Thonburi", size: fontSize)
-    dayOfWeekTextLabel.textColor = .black
-    dayOfWeekTextLabel.sizeToFit()
-
     //AutoLayoutを使用するための設定
     yearTextLabel.translatesAutoresizingMaskIntoConstraints = false
     dateTextLabel.translatesAutoresizingMaskIntoConstraints = false
-    dayOfWeekTextLabel.translatesAutoresizingMaskIntoConstraints = false
-
+  
     // カスタムビューにUILabelを追加
     customTitleView.addSubview(yearTextLabel)
     customTitleView.addSubview(dateTextLabel)
-    customTitleView.addSubview(dayOfWeekTextLabel)
 
     //AutoLayoutの設定
     NSLayoutConstraint.activate([
@@ -98,15 +88,12 @@ class GraphViewController: UIViewController {
       yearTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
       //この制約については後日確認
       yearTextLabel.leadingAnchor.constraint(equalTo: yearTextLabel.leadingAnchor),
-      //yearTextLabelの右端は隣のラベルであるdateTextLabelの左端より−１０ポイント（１０ポイント左）になるように制約する
+      //yearTextLabelの右端は隣のラベルであるdateTextLabelの左端より−１2ポイント（１2ポイント左）になるように制約する
       yearTextLabel.trailingAnchor.constraint(equalTo: dateTextLabel.leadingAnchor, constant:  -12.0),
 
       dateTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
-      dateTextLabel.trailingAnchor.constraint(equalTo: dayOfWeekTextLabel.leadingAnchor, constant: -12.0),
+      dateTextLabel.trailingAnchor.constraint(equalTo: dateTextLabel.trailingAnchor),
       dateTextLabel.centerXAnchor.constraint(equalTo: customTitleView.centerXAnchor),
-
-      dayOfWeekTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
-      dayOfWeekTextLabel.trailingAnchor.constraint(equalTo: dayOfWeekTextLabel.trailingAnchor)
 
     ])
     //カスタムビューをNavigationBarに追加
