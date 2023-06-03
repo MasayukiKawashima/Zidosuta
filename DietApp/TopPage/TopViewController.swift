@@ -8,7 +8,7 @@
 import UIKit
 
 class TopViewController: UIViewController {
-//topViewの保持
+
   var topView = TopView()
   
   var tabBarHeight: CGFloat {
@@ -26,6 +26,7 @@ class TopViewController: UIViewController {
     }
     return 0
   }
+  //各セルの高さの定義
   var weightTableViewCellHeight:CGFloat = 70.0
   var memoTableViewCellHeight:CGFloat = 47.0
   var photoTableViewCellHeight: CGFloat {
@@ -42,11 +43,9 @@ class TopViewController: UIViewController {
 
     //スクロールできないようにする
     topView.tableView.isScrollEnabled = false
-    
+    //tableViewCellの高さの自動設定
     topView.tableView.rowHeight = UITableView.automaticDimension
-    
-    topView.navigationBar.backgroundColor = UIColor.cyan
-    
+    //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
     
     navigationBarTitleSetting()
@@ -168,8 +167,6 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       print("セルの取得に失敗しました")
     }
     return cell
-//    let cell = tableView.dequeueReusableCell(withIdentifier: "WeightTableViewCell", for: indexPath) as! WeightTableViewCell
-//    return cell
   }
   //各セルの高さの推定値を設定
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -186,7 +183,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       return 44.0
     }
   }
-  //セルの高さ
+  //セルの高さの設定
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     switch indexPath.row {
     case 0:
@@ -201,29 +198,4 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       return 44.0
     }
   }
-  
-//  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//    // 最初のセクションの間隔は0とする
-//    if section > 0 {
-//      // セクション間の間隔
-//      return sectionMargin
-//    }
-//    //0ではなく.leastNormalMagnitudeにしないと最初のセクションのヘッダーが完全に消えない
-//    return .leastNormalMagnitude
-//  }
-//  
-//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//    let headerView = UIView()
-//    headerView.backgroundColor = .clear
-//    return headerView
-//  }
-//  
-//  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//    //0ではなく.leastNormalMagnitudeにしないとフッターが完全に消えない
-//    return .leastNormalMagnitude
-//  }
-//  
-//  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//    return nil
-//  }
 }
