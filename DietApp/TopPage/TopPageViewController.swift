@@ -8,20 +8,17 @@
 import UIKit
 
 class TopPageViewController: UIPageViewController {
-  
   private var controllers: [UIViewController] = []
   
-
     override func viewDidLoad() {
         super.viewDidLoad()
       
       self.initTopPageViewContoller()
-      
+
         // Do any additional setup after loading the view.
     }
   
   private func initTopPageViewContoller() {
-    
     let topVC = storyboard!.instantiateViewController(withIdentifier: "TopView") as! TopViewController
     
     self.controllers = [topVC]
@@ -31,9 +28,8 @@ class TopPageViewController: UIPageViewController {
     self.dataSource = self
   }
 }
-
+//PageViewContollerの内容の設定
 extension TopPageViewController: UIPageViewControllerDataSource {
-  
   func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return self.controllers.count
   }
@@ -47,5 +43,22 @@ extension TopPageViewController: UIPageViewControllerDataSource {
     return nil
   }
   
+}
+//TopViewControllerの回転制御
+extension TopPageViewController {
+  open override var shouldAutorotate: Bool{
+    guard let topVC = self.controllers.first
+    else {
+      return false
+    }
+    return topVC.shouldAutorotate
+  }
   
+  override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    guard let topVC = self.controllers.first
+    else {
+      return .portrait
+    }
+    return topVC.supportedInterfaceOrientations
+  }
 }

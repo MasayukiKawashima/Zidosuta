@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Charts
 
 class GraphView: UIView {
   
   @IBOutlet weak var navigationBar: UINavigationBar!
   
   @IBOutlet weak var navigationItem: UINavigationItem!
+  
+  @IBOutlet weak var graphView: LineChartView!
   
   override init(frame: CGRect) {
     super.init(frame: frame)
