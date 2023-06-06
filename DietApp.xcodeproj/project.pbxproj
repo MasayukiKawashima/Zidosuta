@@ -10,6 +10,7 @@
 		10933B16DE353C6D211FDCB3 /* Pods_DietAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D807061C2EDC6DDA9693451C /* Pods_DietAppTests.framework */; };
 		28FEC79EA2A87BC01F1C679F /* Pods_DietApp_DietAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B35940D0BF33F93F87E369 /* Pods_DietApp_DietAppUITests.framework */; };
 		60A4C6E95A42A5E6FBC4EC82 /* Pods_DietApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B7CEEB90849C4649195C6F /* Pods_DietApp.framework */; };
+		FA0F9ECF2A2F0DEC00C7E888 /* GraphPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */; };
 		FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */; };
 		FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */; };
 		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
@@ -64,6 +65,7 @@
 		D807061C2EDC6DDA9693451C /* Pods_DietAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DietAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB772DAE10CFF85B21588E86 /* Pods-DietAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.release.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		F33E63A5ACE3D0B165D13D9B /* Pods-DietAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPageViewController.swift; sourceTree = "<group>"; };
 		FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +135,6 @@
 				F33E63A5ACE3D0B165D13D9B /* Pods-DietAppTests.debug.xcconfig */,
 				DB772DAE10CFF85B21588E86 /* Pods-DietAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -187,6 +188,7 @@
 		FA41A2FD2A1C8940008DC83E /* GraphPage */ = {
 			isa = PBXGroup;
 			children = (
+				FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */,
 				FA41A2F12A1C8734008DC83E /* GraphViewController.swift */,
 			);
 			path = GraphPage;
@@ -541,6 +543,7 @@
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
 				FAFF6F602A21C60F0092A1A3 /* MemoTableViewCell.swift in Sources */,
+				FA0F9ECF2A2F0DEC00C7E888 /* GraphPageViewController.swift in Sources */,
 				FA41A2F22A1C8734008DC83E /* GraphViewController.swift in Sources */,
 				FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,

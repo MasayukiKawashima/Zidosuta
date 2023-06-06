@@ -19,7 +19,7 @@ class TopPageViewController: UIPageViewController {
     }
   
   private func initTopPageViewContoller() {
-    let topVC = storyboard!.instantiateViewController(withIdentifier: "TopView") as! TopViewController
+    let topVC = storyboard!.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     
     self.controllers = [topVC]
     
@@ -43,22 +43,4 @@ extension TopPageViewController: UIPageViewControllerDataSource {
     return nil
   }
   
-}
-//TopViewControllerの回転制御
-extension TopPageViewController {
-  open override var shouldAutorotate: Bool{
-    guard let topVC = self.controllers.first
-    else {
-      return false
-    }
-    return topVC.shouldAutorotate
-  }
-  
-  override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    guard let topVC = self.controllers.first
-    else {
-      return .portrait
-    }
-    return topVC.supportedInterfaceOrientations
-  }
 }

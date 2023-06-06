@@ -10,16 +10,6 @@ import UIKit
 class TopViewController: UIViewController {
   var topView = TopView()
   
-  override var shouldAutorotate: Bool {
-    //縦画面なので縦に固定
-    UIDevice.current.setValue(1, forKey: "orientation")
-    return false
-  }
-  
-  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    return .portrait
-  }
-  
   var tabBarHeight: CGFloat {
     return tabBarController?.tabBar.frame.size.height ?? 49.0
   }
@@ -56,9 +46,6 @@ class TopViewController: UIViewController {
     topView.tableView.rowHeight = UITableView.automaticDimension
     //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
-    
-    UIDevice.current.setValue(1, forKey: "orientation")
-    print(supportedInterfaceOrientations)
     
     navigationBarTitleSetting()
     }

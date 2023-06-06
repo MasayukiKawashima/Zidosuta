@@ -19,9 +19,19 @@
             <point key="canvasLocation" x="547.82608695652175" y="-17.410714285714285"/>
         </scene>
         <!--グラフ-->
+        <scene sceneID="zin-L8-Wwf">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="rla-Or-1Df" customClass="GraphPageViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="グラフ" image="chart.xyaxis.line" catalog="system" id="qx3-1w-E1q"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWS-NQ-eT8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="548" y="696"/>
+        </scene>
+        <!--グラフ-->
         <scene sceneID="893-PQ-lQ6">
             <objects>
-                <viewController id="MyK-35-keA" customClass="GraphViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GraphVC" id="MyK-35-keA" customClass="GraphViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7w3-dl-bVb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +42,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TkW-co-76L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="573" y="683"/>
+            <point key="canvasLocation" x="1451" y="696"/>
         </scene>
         <!--設定-->
         <scene sceneID="IRs-ol-4oz">
@@ -53,7 +63,7 @@
         <!--Top View Controller-->
         <scene sceneID="42X-Xj-WhJ">
             <objects>
-                <viewController storyboardIdentifier="TopView" id="LDj-rO-Ns2" customClass="TopViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopVC" id="LDj-rO-Ns2" customClass="TopViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yx7-rP-3qU" customClass="TopView" customModule="DietApp" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,7 +86,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="kRm-x5-GvX" kind="relationship" relationship="viewControllers" id="pFb-KW-G2h"/>
-                        <segue destination="MyK-35-keA" kind="relationship" relationship="viewControllers" id="Avm-LZ-Qof"/>
+                        <segue destination="rla-Or-1Df" kind="relationship" relationship="viewControllers" id="6OD-s4-bg9"/>
                         <segue destination="8AN-9h-T1k" kind="relationship" relationship="viewControllers" id="jfU-KF-qc7"/>
                     </connections>
                 </tabBarController>
