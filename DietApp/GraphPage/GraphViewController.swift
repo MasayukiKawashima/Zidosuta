@@ -6,9 +6,9 @@
 //
 
 import UIKit
+import Charts
 
 class GraphViewController: UIViewController {
-  
   var graphView = GraphView()
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -25,7 +25,9 @@ class GraphViewController: UIViewController {
     }
   }
   
+  // 画面を自動で回転させるかを決定する。
   override var shouldAutorotate: Bool {
+    //画面が縦だった場合は回転させない
     if(UIDevice.current.orientation.rawValue == 1){
       return false
     }
@@ -33,24 +35,35 @@ class GraphViewController: UIViewController {
       return true
     }
   }
-
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        // Do any additional setup after loading the view.
       UIDevice.current.setValue(4, forKey: "orientation")
-      
       //画面の向きを変更させるために呼び出す。
       print(supportedInterfaceOrientations)
-
-        // Do any additional setup after loading the view.
+      
       navigationBarTitleSetting()
+      
+      graphSetting()
     }
   
   override func loadView() {
     super.loadView()
     view = graphView
   }
-    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+}
+//navigaitonBarの設定
+extension GraphViewController {
   func navigationBarTitleSetting (){
     
     let yearText = "2023"
@@ -99,15 +112,21 @@ class GraphViewController: UIViewController {
     //カスタムビューをNavigationBarに追加
     graphView.navigationItem.titleView = customTitleView
   }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+}
+//グラフの設定
+extension GraphViewController {
+  func graphSetting() {
+    
+    let  sampleEntries = [
+      ChartDataEntry(x: 1, y: 10),
+      ChartDataEntry(x: 2, y: 20),
+      ChartDataEntry(x: 3, y: 15),
+      ChartDataEntry(x: 4, y: 25),
+      ChartDataEntry(x: 5, y: 18)
+  ]
+    
+    let dataset = LineChartDataSet(entries: sampleEntries, label: "データセット")
+    let data = LineChartData(dataSet: dataset)
+    graphView.graphView.data = data
+  }
 }

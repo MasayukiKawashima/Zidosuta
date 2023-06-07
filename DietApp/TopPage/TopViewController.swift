@@ -8,8 +8,18 @@
 import UIKit
 
 class TopViewController: UIViewController {
-
   var topView = TopView()
+  //回転を許可するかどうかを決める
+  //デバイスの向きが変更されたときに呼び出される
+  override var shouldAutorotate: Bool {
+    UIDevice.current.setValue(1, forKey: "orientation")
+    return false
+  }
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    
+      return .portrait
+  }
   
   var tabBarHeight: CGFloat {
     return tabBarController?.tabBar.frame.size.height ?? 49.0
@@ -55,9 +65,20 @@ class TopViewController: UIViewController {
     super.loadView()
     view = topView
   }
-  
-  //5.24NavigationBarのタイトルを仮配置した。各タイトルの設定（テキスト表示のアルゴリズム、AutoLayout等）後日検討
-  //NavigationBarのタイトル設定
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+}
+
+//navigationBarの設定
+extension TopViewController: UINavigationBarDelegate {
+  //5.24NBのタイトルを仮配置した。各タイトルの設定（テキスト表示のアルゴリズム、AutoLayout等）後日検討
   func navigationBarTitleSetting (){
     let yearText = "2023"
     let dateText = "5.24"
@@ -117,25 +138,14 @@ class TopViewController: UIViewController {
     //カスタムビューをNavigationBarに追加
     topView.navigationItem.titleView = customTitleView
   }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension TopViewController: UINavigationBarDelegate {
+  
   //NavigationBarがステータスバーを覆うように表示
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
   }
 }
 
+//TableViewの設定
 extension TopViewController: UITableViewDelegate,UITableViewDataSource {
   //TableViewのセクション内のセルの数（5.28時点で１セクション、４セル）
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
