@@ -9,6 +9,17 @@ import UIKit
 
 class TopViewController: UIViewController {
   var topView = TopView()
+  //回転を許可するかどうかを決める
+  //デバイスの向きが変更されたときに呼び出される
+  override var shouldAutorotate: Bool {
+    UIDevice.current.setValue(1, forKey: "orientation")
+    return false
+  }
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    
+      return .portrait
+  }
   
   var tabBarHeight: CGFloat {
     return tabBarController?.tabBar.frame.size.height ?? 49.0

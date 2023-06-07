@@ -9,6 +9,22 @@ import UIKit
 
 class GraphPageViewController: UIPageViewController {
   private var controllers: [UIViewController] = []
+  
+  override var shouldAutorotate: Bool {
+    if let VC = controllers.first {
+      return VC.shouldAutorotate
+    }else{
+      return true
+    }
+  }
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    if let VC = controllers.first {
+      return VC.supportedInterfaceOrientations
+    }else{
+      return .landscapeLeft
+    }
+  }
  
     override func viewDidLoad() {
         super.viewDidLoad()
