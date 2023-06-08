@@ -36,6 +36,12 @@ class GraphViewController: UIViewController {
     }
   }
   
+  var safeAreaRight:CGFloat = CGFloat()
+  var safeAreaLeft:CGFloat = CGFloat()
+  var safeAreaBottom:CGFloat = CGFloat()
+  var safeAreATop:CGFloat = CGFloat()
+  var tabBatController: UITabBarController = TabBarController()
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -52,7 +58,25 @@ class GraphViewController: UIViewController {
     super.loadView()
     view = graphView
   }
-    /*
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    
+    if #available(iOS 11.0, *) {
+     
+      safeAreaLeft = self.view.safeAreaInsets.left
+      safeAreaRight = self.view.safeAreaInsets.right
+      safeAreaBottom = self.view.safeAreaInsets.bottom
+      safeAreATop = self.view.safeAreaInsets.top
+      print("あああああ")
+      print(safeAreaLeft)
+      print(safeAreaRight)
+      print(safeAreaBottom)
+      print(safeAreATop)
+      print(tabBatController.tabBar.frame.size.height)
+    }
+    graphViewAutoLayoutSetting()
+  }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -60,7 +84,6 @@ class GraphViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 }
 //navigaitonBarの設定
 extension GraphViewController {
@@ -113,6 +136,22 @@ extension GraphViewController {
     graphView.navigationItem.titleView = customTitleView
   }
 }
+
+//graphViewのオートレイアウト設定
+extension GraphViewController {
+  func graphViewAutoLayoutSetting() {
+    let graphView = graphView.graphAreaView
+    graphView?.translatesAutoresizingMaskIntoConstraints = false
+    
+    NSLayoutConstraint.activate([
+    graphView!.topAnchor.constraint(equalTo: self.view.topAnchor, constant:self.tabBatController.tabBar.frame.size.height),    graphView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: safeAreaLeft),
+    graphView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -safeAreaRight),
+    graphView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -safeAreaBottom),
+    ])
+    
+  }
+}
+
 //グラフの設定
 extension GraphViewController {
   func graphSetting() {

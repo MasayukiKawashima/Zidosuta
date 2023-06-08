@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GraphView" customModule="DietApp" customModuleProvider="target">
             <connections>
-                <outlet property="graphView" destination="iBf-lh-5cY" id="sNE-8V-KjX"/>
+                <outlet property="graphAreaView" destination="iBf-lh-5cY" id="wrN-n5-L9Q"/>
                 <outlet property="navigationBar" destination="W5m-cm-4a6" id="pv7-Jz-gRS"/>
                 <outlet property="navigationItem" destination="Kp2-xc-LxT" id="6FP-Ib-wZh"/>
             </connections>
@@ -32,14 +32,14 @@
                     </items>
                 </navigationBar>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-lh-5cY" customClass="LineChartView" customModule="Charts">
-                    <rect key="frame" x="60" y="44" width="776" height="264"/>
+                    <rect key="frame" x="290" y="115" width="316" height="184"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="131.91964285714286" y="63.768115942028992"/>
+            <point key="canvasLocation" x="139.28571428571428" y="327.536231884058"/>
         </view>
     </objects>
     <resources>

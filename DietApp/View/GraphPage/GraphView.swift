@@ -14,7 +14,8 @@ class GraphView: UIView {
   
   @IBOutlet weak var navigationItem: UINavigationItem!
   
-  @IBOutlet weak var graphView: LineChartView!
+  @IBOutlet weak var graphAreaView: LineChartView!
+  
   
   override init(frame: CGRect) {
     super.init(frame: frame)
