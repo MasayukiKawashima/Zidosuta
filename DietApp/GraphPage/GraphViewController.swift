@@ -44,7 +44,6 @@ class GraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-      graphView.graphAreaView.delegate = self
       
       UIDevice.current.setValue(4, forKey: "orientation")
       //画面の向きを変更させるために呼び出す。
@@ -227,17 +226,9 @@ extension GraphViewController {
     graphView.graphAreaView.xAxis.labelTextColor = .gray
     //X軸のラベルの数を調整
     graphView.graphAreaView.xAxis.labelCount = dataSet.count
-    
+    //Y軸の軸線と最初のエントリーポイントの間の余白を設定
     graphView.graphAreaView.xAxis.spaceMin = 0.5
     graphView.graphAreaView.xAxis.spaceMax = 0.5
   }
 }
 
-extension GraphViewController: ChartViewDelegate {
-  func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-    let dataSetIndex = highlight.dataSetIndex
-    let dataIndex = highlight.dataIndex
-    // エントリーポイントを強調表示する
-    chartView.highlightValue(x: highlight.x, dataSetIndex: dataSetIndex, dataIndex: dataIndex)
-  }
-}
