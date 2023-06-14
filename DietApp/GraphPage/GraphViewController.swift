@@ -141,7 +141,8 @@ extension GraphViewController {
     let rightMargin = safeAreaRight + 5.0
     
     NSLayoutConstraint.activate([
-    graphView!.topAnchor.constraint(equalTo: self.view.topAnchor, constant:self.tabBatController.tabBar.frame.size.height),    graphView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leftMargin),
+    graphView!.topAnchor.constraint(equalTo: self.view.topAnchor, constant:self.tabBatController.tabBar.frame.size.height),
+    graphView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leftMargin),
     graphView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -rightMargin),
     graphView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin),
     ])
