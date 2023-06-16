@@ -11,7 +11,11 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      //TabBarの背景色の設定
+      let appearance = UITabBarAppearance()
+      appearance.backgroundColor =  UIColor.systemGray6
+      UITabBar.appearance().standardAppearance = appearance
+      UITabBar.appearance().scrollEdgeAppearance = appearance
         // Do any additional setup after loading the view.
     }
     /*

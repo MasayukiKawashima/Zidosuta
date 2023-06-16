@@ -9,6 +9,16 @@ import UIKit
 
 class SettingsViewController: UIViewController {
   var settingsView = SettingsView()
+  //回転を許可するかどうかを決める
+  //デバイスの向きが変更されたときに呼び出される
+  override var shouldAutorotate: Bool {
+    UIDevice.current.setValue(1, forKey: "orientation")
+    return false
+  }
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    return .portrait
+  }
   
   var TableViewCellHeight:CGFloat = 60.0
   //cell周り設定用の列挙体
