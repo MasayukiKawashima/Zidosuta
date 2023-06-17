@@ -10,7 +10,6 @@ import Charts
 
 class GraphViewController: UIViewController {
   var graphView = GraphView()
-  var tabBatController: UITabBarController = TabBarController()
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     //左横画面に変更
@@ -63,13 +62,15 @@ class GraphViewController: UIViewController {
     super.viewWillLayoutSubviews()
     //safeAreaの取得
     if #available(iOS 11.0, *) {
-     
+      
       safeAreaLeft = self.view.safeAreaInsets.left
       safeAreaRight = self.view.safeAreaInsets.right
       safeAreaBottom = self.view.safeAreaInsets.bottom
     }
     graphViewAutoLayoutSetting()
   }
+  
+  
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -88,7 +89,7 @@ extension GraphViewController {
     let fontSize: CGFloat = 14.0
     
     // カスタムビューをインスタンス化
-    let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+    let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: graphView.navigationBar.frame.size.height))
 
     // UILabelを作成してテキストを設定
     let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
@@ -130,22 +131,29 @@ extension GraphViewController {
   }
 }
 
+extension GraphViewController {
+  func navigationBarAutoLayoutsetting() {
+    graphView.navigationBar.translatesAutoresizingMaskIntoConstraints = false
+    
+  }
+}
+
 //graphViewのオートレイアウト設定
 extension GraphViewController {
   func graphViewAutoLayoutSetting() {
-    let graphView = graphView.graphAreaView
-    graphView?.translatesAutoresizingMaskIntoConstraints = false
+    graphView.graphAreaView.translatesAutoresizingMaskIntoConstraints = false
     //余白
+    let topMargin = graphView.navigationBar.frame.size.height + 10
     let bottomMargin = safeAreaBottom + 10.0
     let leftMargin = safeAreaLeft + 5.0
     let rightMargin = safeAreaRight + 5.0
     
     NSLayoutConstraint.activate([
-    graphView!.topAnchor.constraint(equalTo: self.view.topAnchor, constant:self.tabBatController.tabBar.frame.size.height),    graphView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leftMargin),
-    graphView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -rightMargin),
-    graphView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin),
+      graphView.graphAreaView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topMargin),
+      graphView.graphAreaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leftMargin),
+      graphView.graphAreaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -rightMargin),
+      graphView.graphAreaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin),
     ])
-    
   }
 }
 

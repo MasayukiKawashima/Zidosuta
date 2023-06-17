@@ -18,7 +18,7 @@ class TopViewController: UIViewController {
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     
-      return .portrait
+    return .portrait
   }
   
   var tabBarHeight: CGFloat {
@@ -44,13 +44,31 @@ class TopViewController: UIViewController {
   }
   var adTableViewCellHeight:CGFloat = 53.0
   
+  //セル周り設定用の列挙体
+  enum TopPageCell: Int {
+    case weightTableViewCell = 0
+    case memoTableViewCell
+    case photoTableViewCell
+    case adTableViewCell
+  }
+  
   override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    super.viewDidLoad()
+    // Do any additional setup after loading the view.
     topView.navigationBar.delegate = self
     topView.tableView.delegate = self
     topView.tableView.dataSource = self
-
+    //セルのインスタンスからのデリゲート設定
+//    if let weightCell = topView.tableView.cellForRow(at: IndexPath(row: TopPageCell.weightTableViewCell.rawValue, section: 0)) as? WeightTableViewCell {
+//      weightCell.weightTextField.delegate = self
+//    }
+    //tableViewでタップ認識させるための設定
+    let tapGesture = UITapGestureRecognizer(
+      target: self,
+      action: #selector(dismissKeyboard))
+    tapGesture.cancelsTouchesInView = false
+    view.addGestureRecognizer(tapGesture)
+    
     //スクロールできないようにする
     topView.tableView.isScrollEnabled = false
     //tableViewCellの高さの自動設定
@@ -59,21 +77,21 @@ class TopViewController: UIViewController {
     topView.tableView.separatorStyle = .none
     
     navigationBarTitleSetting()
-    }
-  
+  }
+
   override func loadView() {
     super.loadView()
     view = topView
   }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  /*
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destination.
+   // Pass the selected object to the new view controller.
+   }
+   */
 }
 
 //navigationBarの設定
@@ -158,54 +176,75 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
   
   //各セルを内容を設定し表示
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    var cell = UITableViewCell()
     
-    switch indexPath.row {
-    case 0:
-      cell = tableView.dequeueReusableCell(withIdentifier: "WeightTableViewCell", for: indexPath) as! WeightTableViewCell
-      
-    case 1:
-      cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
-      
-    case 2:
-      cell = tableView.dequeueReusableCell(withIdentifier: "PhotoTableViewCell", for: indexPath) as! PhotoTableViewCell
+    let cell = TopPageCell(rawValue: indexPath.row)
     
-    case 3:
-      cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
+    switch (cell)! {
+    case .weightTableViewCell:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "WeightTableViewCell", for: indexPath) as! WeightTableViewCell
+      //セルの選択時のハイライトを非表示にする
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      return cell
       
-    default:
-      print("セルの取得に失敗しました")
+    case .memoTableViewCell:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      return cell
+      
+    case .photoTableViewCell:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoTableViewCell", for: indexPath) as! PhotoTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      return cell
+    
+    case .adTableViewCell:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      return cell
     }
-    return cell
   }
   //各セルの高さの推定値を設定
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    switch indexPath.row {
-    case 0:
+    let cell = TopPageCell(rawValue: indexPath.row)
+    
+    switch (cell)! {
+    case .weightTableViewCell:
       return weightTableViewCellHeight
-    case 1:
+      
+    case .memoTableViewCell:
       return memoTableViewCellHeight
-    case 2:
+      
+    case .photoTableViewCell:
       return photoTableViewCellHeight
-    case 3:
+      
+    case .adTableViewCell:
       return adTableViewCellHeight
-    default:
-      return 44.0
     }
   }
   //セルの高さの設定
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    switch indexPath.row {
-    case 0:
+    let cell = TopPageCell(rawValue: indexPath.row)
+    
+    switch (cell)! {
+    case .weightTableViewCell:
       return weightTableViewCellHeight
-    case 1:
+      
+    case .memoTableViewCell:
       return memoTableViewCellHeight
-    case 2:
+      
+    case .photoTableViewCell:
       return photoTableViewCellHeight
-    case 3:
+      
+    case .adTableViewCell:
       return adTableViewCellHeight
-    default:
-      return 44.0
     }
   }
 }
+//UITextField周りの処理
+//エンターを押したらキーボードを閉じる処理
+extension TopViewController {
+  //キーボード以外の領域をタッチしたらキーボードを閉じる処理
+  @objc public func dismissKeyboard() {
+    view.endEditing(true)
+  }
+}
+

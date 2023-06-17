@@ -9,8 +9,23 @@ import UIKit
 
 class SettingsViewController: UIViewController {
   var settingsView = SettingsView()
+  //回転を許可するかどうかを決める
+  //デバイスの向きが変更されたときに呼び出される
+  override var shouldAutorotate: Bool {
+    UIDevice.current.setValue(1, forKey: "orientation")
+    return false
+  }
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    return .portrait
+  }
   
   var TableViewCellHeight:CGFloat = 60.0
+  //cell周り設定用の列挙体
+  enum SettingPageCell:Int {
+    case themeColorTableViewCell = 0
+    case notificationTableViewCell
+  }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,14 +59,14 @@ class SettingsViewController: UIViewController {
     */
 
 }
-
+//navigationBarの設定
 extension SettingsViewController: UINavigationBarDelegate {
   //navigationBarをステータスバーを覆うように表示
   func position(for bar: UIBarPositioning) -> UIBarPosition {
     return .topAttached
   }
 }
-
+//tableViewの設定
 extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   //セル数の設定
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,17 +74,21 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   }
   //各セルの内容の設定
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    var cell = UITableViewCell()
     
-    switch indexPath.row {
-    case 0:
-      cell = tableView.dequeueReusableCell(withIdentifier: "ThemeColorTableViewCell", for: indexPath) as! ThemeColorTableViewCell
-    case 1:
-      cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
-    default:
-      print("セルの取得に失敗しました")
+    let cell = SettingPageCell(rawValue: indexPath.row)
+    
+    switch (cell)! {
+    case .themeColorTableViewCell:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeColorTableViewCell", for: indexPath) as! ThemeColorTableViewCell
+      //セルの選択時のハイライトを非表示にする
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      return cell
+      
+    case .notificationTableViewCell:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      return cell
     }
-    return cell
   }
   //セルの高さの推定値の設定
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
