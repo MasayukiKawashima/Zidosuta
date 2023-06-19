@@ -23,6 +23,9 @@
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1q1-rg-XQX">
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <color key="backgroundColor" systemColor="systemCyanColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="eeW-iL-Gmv"/>
+                    </constraints>
                     <items>
                         <navigationItem title="設定" id="XNq-DC-Uj1"/>
                     </items>
@@ -35,13 +38,13 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="1q1-rg-XQX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="0Iz-RR-Qfz"/>
-                <constraint firstItem="RmB-YX-ePb" firstAttribute="top" secondItem="1q1-rg-XQX" secondAttribute="bottom" id="Cxb-yW-i7D"/>
-                <constraint firstItem="RmB-YX-ePb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IC9-Lb-e9Z"/>
-                <constraint firstItem="1q1-rg-XQX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="gdz-Fv-RuA"/>
-                <constraint firstItem="RmB-YX-ePb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="m1y-gw-86L"/>
-                <constraint firstItem="RmB-YX-ePb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="nij-Do-HMv"/>
-                <constraint firstItem="1q1-rg-XQX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qym-rO-s9H"/>
+                <constraint firstItem="RmB-YX-ePb" firstAttribute="top" secondItem="1q1-rg-XQX" secondAttribute="bottom" id="2XU-Us-FsM"/>
+                <constraint firstItem="1q1-rg-XQX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="5oo-UX-U6y"/>
+                <constraint firstItem="RmB-YX-ePb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="BPL-Gq-gCe"/>
+                <constraint firstItem="1q1-rg-XQX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="QJ7-jW-uHD"/>
+                <constraint firstItem="RmB-YX-ePb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SC0-8T-Q0k"/>
+                <constraint firstItem="1q1-rg-XQX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ljJ-12-mq8"/>
+                <constraint firstItem="RmB-YX-ePb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="m82-KN-aSU"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="48.883928571428569"/>
         </view>

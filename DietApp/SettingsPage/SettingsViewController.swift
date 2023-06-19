@@ -42,6 +42,8 @@ class SettingsViewController: UIViewController {
       settingsView.tableView.isScrollEnabled = false
       //セルの高さの自動設定
       settingsView.tableView.rowHeight = UITableView.automaticDimension
+      
+      navigationBarTittleSettings()
     }
   
   override func loadView() {
@@ -97,5 +99,30 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   //セルの高さを設定
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return TableViewCellHeight
+  }
+}
+
+extension SettingsViewController {
+  func navigationBarTittleSettings() {
+    
+    let titleText = "設定"
+    
+    let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: settingsView.navigationBar.frame.size.height))
+    
+    let titleTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
+    titleTextLabel.text = titleText
+    titleTextLabel.font = UIFont(name: "Thonburi-Bold", size: 18.0)
+    titleTextLabel.textColor = .black
+    titleTextLabel.sizeToFit()
+    
+    titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
+    
+    customTitleView.addSubview(titleTextLabel)
+    
+    NSLayoutConstraint.activate([
+      titleTextLabel.centerXAnchor.constraint(equalTo: customTitleView.centerXAnchor),
+      titleTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor)
+    ])
+    settingsView.navigationItem.titleView = customTitleView
   }
 }

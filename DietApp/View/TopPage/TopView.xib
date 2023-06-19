@@ -24,7 +24,6 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                     <color key="backgroundColor" systemColor="systemCyanColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="414" id="n3R-7R-3bj"/>
                         <constraint firstAttribute="height" constant="44" id="qqz-rd-yte"/>
                     </constraints>
                     <items>

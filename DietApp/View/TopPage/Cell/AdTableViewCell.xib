@@ -20,9 +20,6 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjB-mt-U66">
                         <rect key="frame" x="0.0" y="1.5" width="320" height="52"/>
                         <color key="backgroundColor" systemColor="systemCyanColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="320" id="7dg-8Z-bfN"/>
-                        </constraints>
                     </view>
                 </subviews>
                 <constraints>

@@ -25,6 +25,8 @@ class GraphViewController: UIViewController {
     }
   }
   
+
+  
   // 画面を自動で回転させるかを決定する。
   override var shouldAutorotate: Bool {
     //画面が縦だった場合は回転させない
@@ -58,18 +60,31 @@ class GraphViewController: UIViewController {
     view = graphView
   }
   
-  override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
-    //safeAreaの取得
+//  override func viewWillLayoutSubviews() {
+//    super.viewWillLayoutSubviews()
+//    //safeAreaの取得
+//    if #available(iOS 11.0, *) {
+//
+//      safeAreaLeft = self.view.safeAreaInsets.left
+//      safeAreaRight = self.view.safeAreaInsets.right
+//      safeAreaBottom = self.view.safeAreaInsets.bottom
+//    }
+//    graphAreaViewAutoLayoutSetting()
+//  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    _ = self.initViewLayout
+  }
+  private lazy var initViewLayout : Void = {
+      print(self.view.frame)
     if #available(iOS 11.0, *) {
-      
       safeAreaLeft = self.view.safeAreaInsets.left
       safeAreaRight = self.view.safeAreaInsets.right
       safeAreaBottom = self.view.safeAreaInsets.bottom
     }
-    graphViewAutoLayoutSetting()
-  }
-  
+    graphAreaViewAutoLayoutSetting()
+  }()
   
     // MARK: - Navigation
 
@@ -140,13 +155,15 @@ extension GraphViewController {
 
 //graphViewのオートレイアウト設定
 extension GraphViewController {
-  func graphViewAutoLayoutSetting() {
+  func graphAreaViewAutoLayoutSetting() {
     graphView.graphAreaView.translatesAutoresizingMaskIntoConstraints = false
     //余白
     let topMargin = graphView.navigationBar.frame.size.height + 10
     let bottomMargin = safeAreaBottom + 10.0
     let leftMargin = safeAreaLeft + 5.0
     let rightMargin = safeAreaRight + 5.0
+    
+    NSLayoutConstraint.deactivate(graphView.graphAreaView.constraints)
     
     NSLayoutConstraint.activate([
       graphView.graphAreaView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topMargin),
