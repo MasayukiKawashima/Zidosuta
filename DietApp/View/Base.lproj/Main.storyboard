@@ -8,15 +8,15 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--トップ-->
+        <!--Top Page View Controller-->
         <scene sceneID="act-0i-Z1E">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kRm-x5-GvX" customClass="TopPageViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="トップ" image="house" catalog="system" selectedImage="house" id="noS-pd-IpZ"/>
+                    <navigationItem key="navigationItem" id="FKq-MS-0Y2"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExT-Fe-Ne3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="547.82608695652175" y="-17.410714285714285"/>
+            <point key="canvasLocation" x="1451" y="-17"/>
         </scene>
         <!--グラフ-->
         <scene sceneID="zin-L8-Wwf">
@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egx-Ll-1b6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1450.7246376811595" y="-17.410714285714285"/>
+            <point key="canvasLocation" x="2381" y="-17"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QSF-2k-PN7">
@@ -85,7 +85,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tabBar>
                     <connections>
-                        <segue destination="kRm-x5-GvX" kind="relationship" relationship="viewControllers" id="pFb-KW-G2h"/>
+                        <segue destination="3an-lQ-V07" kind="relationship" relationship="viewControllers" id="BL4-C8-gr4"/>
                         <segue destination="rla-Or-1Df" kind="relationship" relationship="viewControllers" id="6OD-s4-bg9"/>
                         <segue destination="8AN-9h-T1k" kind="relationship" relationship="viewControllers" id="jfU-KF-qc7"/>
                     </connections>
@@ -94,6 +94,29 @@
             </objects>
             <point key="canvasLocation" x="-362.31884057971018" y="-17.410714285714285"/>
         </scene>
+        <!--トップ-->
+        <scene sceneID="icR-DE-8nb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3an-lQ-V07" customClass="TopNavigationController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="トップ" image="house" catalog="system" selectedImage="house" id="noS-pd-IpZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xsN-Db-zYa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kRm-x5-GvX" kind="relationship" relationship="rootViewController" id="Sba-Gc-aM1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JoS-VQ-cpV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="571" y="-17"/>
+        </scene>
     </scenes>
     <resources>
         <image name="chart.xyaxis.line" catalog="system" width="128" height="101"/>
@@ -101,6 +124,9 @@
         <image name="house" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -8,9 +8,7 @@
 import UIKit
 
 class TopView: UIView {
-  @IBOutlet weak var navigationBar: UINavigationBar!
-  @IBOutlet weak var navigationItem: UINavigationItem!
-  
+ 
   let cellIdentifiers = ["WeightTableViewCell","MemoTableViewCell","PhotoTableViewCell","AdTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView! {
