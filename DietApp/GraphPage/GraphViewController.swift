@@ -24,9 +24,6 @@ class GraphViewController: UIViewController {
       return .landscapeRight
     }
   }
-  
-
-  
   // 画面を自動で回転させるかを決定する。
   override var shouldAutorotate: Bool {
     //画面が縦だった場合は回転させない
@@ -50,7 +47,7 @@ class GraphViewController: UIViewController {
       //画面の向きを変更させるために呼び出す。
       print(supportedInterfaceOrientations)
       
-      navigationBarTitleSetting()
+//      navigationBarTitleSetting()
       
       graphSetting()
     }
@@ -83,7 +80,7 @@ class GraphViewController: UIViewController {
       safeAreaRight = self.view.safeAreaInsets.right
       safeAreaBottom = self.view.safeAreaInsets.bottom
     }
-    graphAreaViewAutoLayoutSetting()
+//    graphAreaViewAutoLayoutSetting()
   }()
   
     // MARK: - Navigation
@@ -94,85 +91,33 @@ class GraphViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
 }
-//navigaitonBarの設定
-extension GraphViewController {
-  func navigationBarTitleSetting (){
-    
-    let yearText = "2023"
-    let dateText = "5.1 - 5.31"
-    let dateFontSize: CGFloat = 18.0
-    let fontSize: CGFloat = 14.0
-    
-    // カスタムビューをインスタンス化
-    let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: graphView.navigationBar.frame.size.height))
-
-    // UILabelを作成してテキストを設定
-    let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
-    yearTextLabel.text = yearText
-    yearTextLabel.font = UIFont(name: "Thonburi", size: fontSize)
-    yearTextLabel.textColor = .black
-    yearTextLabel.sizeToFit()
-
-    let dateTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
-    dateTextLabel.text = dateText
-    dateTextLabel.font = UIFont(name: "Thonburi-Bold", size: dateFontSize)
-    dateTextLabel.textColor = .black
-    dateTextLabel.sizeToFit()
-
-    //AutoLayoutを使用するための設定
-    yearTextLabel.translatesAutoresizingMaskIntoConstraints = false
-    dateTextLabel.translatesAutoresizingMaskIntoConstraints = false
-  
-    // カスタムビューにUILabelを追加
-    customTitleView.addSubview(yearTextLabel)
-    customTitleView.addSubview(dateTextLabel)
-
-    //AutoLayoutの設定
-    NSLayoutConstraint.activate([
-      //yearTextLabelのY座標の中心はcustomTitleViewのY座標の中心に等しいという制約→つまりNavigationBarのY座標の中心
-      yearTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
-      //この制約については後日確認
-      yearTextLabel.leadingAnchor.constraint(equalTo: yearTextLabel.leadingAnchor),
-      //yearTextLabelの右端は隣のラベルであるdateTextLabelの左端より−１2ポイント（１2ポイント左）になるように制約する
-      yearTextLabel.trailingAnchor.constraint(equalTo: dateTextLabel.leadingAnchor, constant:  -12.0),
-
-      dateTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
-      dateTextLabel.trailingAnchor.constraint(equalTo: dateTextLabel.trailingAnchor),
-      dateTextLabel.centerXAnchor.constraint(equalTo: customTitleView.centerXAnchor),
-
-    ])
-    //カスタムビューをNavigationBarに追加
-    graphView.navigationItem.titleView = customTitleView
-  }
-}
-
-extension GraphViewController {
-  func navigationBarAutoLayoutsetting() {
-    graphView.navigationBar.translatesAutoresizingMaskIntoConstraints = false
-    
-  }
-}
+//extension GraphViewController {
+//  func navigationBarAutoLayoutsetting() {
+//    graphView.navigationBar.translatesAutoresizingMaskIntoConstraints = false
+//
+//  }
+//}
 
 //graphViewのオートレイアウト設定
-extension GraphViewController {
-  func graphAreaViewAutoLayoutSetting() {
-    graphView.graphAreaView.translatesAutoresizingMaskIntoConstraints = false
-    //余白
-    let topMargin = graphView.navigationBar.frame.size.height + 10
-    let bottomMargin = safeAreaBottom + 10.0
-    let leftMargin = safeAreaLeft + 5.0
-    let rightMargin = safeAreaRight + 5.0
-    
-    NSLayoutConstraint.deactivate(graphView.graphAreaView.constraints)
-    
-    NSLayoutConstraint.activate([
-      graphView.graphAreaView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topMargin),
-      graphView.graphAreaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leftMargin),
-      graphView.graphAreaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -rightMargin),
-      graphView.graphAreaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin),
-    ])
-  }
-}
+//extension GraphViewController {
+//  func graphAreaViewAutoLayoutSetting() {
+//    graphView.graphAreaView.translatesAutoresizingMaskIntoConstraints = false
+//    //余白
+//    let topMargin = graphView.navigationBar.frame.size.height + 10
+//    let bottomMargin = safeAreaBottom + 10.0
+//    let leftMargin = safeAreaLeft + 5.0
+//    let rightMargin = safeAreaRight + 5.0
+//
+//    NSLayoutConstraint.deactivate(graphView.graphAreaView.constraints)
+//
+//    NSLayoutConstraint.activate([
+//      graphView.graphAreaView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topMargin),
+//      graphView.graphAreaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leftMargin),
+//      graphView.graphAreaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -rightMargin),
+//      graphView.graphAreaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin),
+//    ])
+//  }
+//}
 
 //グラフの設定
 extension GraphViewController {

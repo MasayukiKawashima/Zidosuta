@@ -16,6 +16,9 @@
 		FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */; };
 		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
 		FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1187A12A22F652004577F8 /* AdTableViewCell.xib */; };
+		FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31426F2A41671900254D60 /* TopNavigationController.swift */; };
+		FA3142722A418E9B00254D60 /* NavigationController+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3142712A418E9B00254D60 /* NavigationController+Orientation.swift */; };
+		FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3142732A4194F300254D60 /* GraphNavigationController.swift */; };
 		FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA32F4B52A32BCF50058FD32 /* SettingsView.xib */; };
 		FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32F4B72A32BD130058FD32 /* SettingsView.swift */; };
 		FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32F4C22A32BFCF0058FD32 /* NotificationTableViewCell.swift */; };
@@ -78,6 +81,9 @@
 		FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		FA1187A12A22F652004577F8 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
+		FA31426F2A41671900254D60 /* TopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationController.swift; sourceTree = "<group>"; };
+		FA3142712A418E9B00254D60 /* NavigationController+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Orientation.swift"; sourceTree = "<group>"; };
+		FA3142732A4194F300254D60 /* GraphNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNavigationController.swift; sourceTree = "<group>"; };
 		FA32F4B52A32BCF50058FD32 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FA32F4B72A32BD130058FD32 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FA32F4C22A32BFCF0058FD32 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
@@ -216,6 +222,8 @@
 		FA41A2FB2A1C8912008DC83E /* TopPage */ = {
 			isa = PBXGroup;
 			children = (
+				FA31426F2A41671900254D60 /* TopNavigationController.swift */,
+				FA3142712A418E9B00254D60 /* NavigationController+Orientation.swift */,
 				FA41A2ED2A1C8531008DC83E /* TopPageViewController.swift */,
 				FA41A2EB2A1C84CE008DC83E /* TopViewController.swift */,
 			);
@@ -225,6 +233,7 @@
 		FA41A2FD2A1C8940008DC83E /* GraphPage */ = {
 			isa = PBXGroup;
 			children = (
+				FA3142732A4194F300254D60 /* GraphNavigationController.swift */,
 				FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */,
 				FA41A2F12A1C8734008DC83E /* GraphViewController.swift */,
 			);
@@ -579,9 +588,12 @@
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA32F4C82A32C0900058FD32 /* ThemeColorTableViewCell.swift in Sources */,
+				FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */,
+				FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
 				FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */,
+				FA3142722A418E9B00254D60 /* NavigationController+Orientation.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FA0F9ED12A3016D100C7E888 /* UITabBarController+Orientation.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
