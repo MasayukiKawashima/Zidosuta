@@ -120,7 +120,7 @@
         <!--グラフ-->
         <scene sceneID="kiP-6u-ge3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0pI-mw-1KE" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0pI-mw-1KE" customClass="GraphNavigationController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="グラフ" image="chart.xyaxis.line" catalog="system" id="qx3-1w-E1q"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ml3-ha-DEn">

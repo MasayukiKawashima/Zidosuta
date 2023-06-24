@@ -11,15 +11,15 @@ class TopPageViewController: UIPageViewController {
   private var controllers: [UIViewController] = []
   
   override var shouldAutorotate: Bool {
-    if let VC = controllers.first {
-      return VC.shouldAutorotate
+    if let vc = controllers.first {
+      return vc.shouldAutorotate
     }
     return false
   }
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    if let VC = controllers.first {
-      return VC.supportedInterfaceOrientations
+    if let vc = controllers.first {
+      return vc.supportedInterfaceOrientations
     }
     return .portrait
   }

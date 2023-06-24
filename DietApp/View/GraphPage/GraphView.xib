@@ -19,17 +19,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-lh-5cY" customClass="LineChartView" customModule="Charts">
-                    <rect key="frame" x="60" y="0.0" width="776" height="393"/>
+                    <rect key="frame" x="60" y="20" width="776" height="363"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="iBf-lh-5cY" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="GVN-UK-wMK"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iBf-lh-5cY" secondAttribute="trailing" constant="16" id="KpP-z0-BYV"/>
-                <constraint firstItem="iBf-lh-5cY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Qnj-Pc-a5a"/>
-                <constraint firstItem="iBf-lh-5cY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="r3n-jj-bRl"/>
+                <constraint firstItem="iBf-lh-5cY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="3UY-4p-Qdq"/>
+                <constraint firstItem="iBf-lh-5cY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Bfv-jd-VKc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iBf-lh-5cY" secondAttribute="bottom" constant="10" id="c6X-W6-aIu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iBf-lh-5cY" secondAttribute="trailing" constant="16" id="xud-pX-6kQ"/>
             </constraints>
             <point key="canvasLocation" x="139.28571428571428" y="327.536231884058"/>
         </view>

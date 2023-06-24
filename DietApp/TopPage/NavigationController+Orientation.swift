@@ -13,10 +13,10 @@ extension UINavigationController {
     if let vc = viewControllers.last {
       return vc.shouldAutorotate
     } else {
-      return false
+      return true
     }
   }
-  
+
   open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     if let vc = viewControllers.last {
       return vc.supportedInterfaceOrientations

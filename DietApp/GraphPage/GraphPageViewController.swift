@@ -8,7 +8,7 @@
 import UIKit
 
 class GraphPageViewController: UIPageViewController {
-  private var controllers: [UIViewController] = []
+  private var controllers: [UIViewController] = [GraphViewController()]
   
   override var shouldAutorotate: Bool {
     if let VC = controllers.first {
@@ -22,7 +22,8 @@ class GraphPageViewController: UIPageViewController {
     if let VC = controllers.first {
       return VC.supportedInterfaceOrientations
     }else{
-      return .landscapeLeft
+
+      return .landscapeRight
     }
   }
   
