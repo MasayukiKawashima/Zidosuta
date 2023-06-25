@@ -17,9 +17,10 @@ class GraphViewController: UIViewController {
       UIDevice.current.setValue(4, forKey: "orientation")
       return .landscapeLeft
     }
-    //左横画面以外の処理
     else {
+      //左横画面以外の処理
       //最初の画面呼び出しで画面を右横画面に変更させる。
+      
       UIDevice.current.setValue(3, forKey: "orientation")
       return .landscapeRight
     }
@@ -46,6 +47,7 @@ class GraphViewController: UIViewController {
       UIDevice.current.setValue(4, forKey: "orientation")
       //画面の向きを変更させるために呼び出す。
       print(supportedInterfaceOrientations)
+
       
 //      navigationBarTitleSetting()
       
@@ -201,4 +203,3 @@ extension GraphViewController {
     graphView.graphAreaView.xAxis.spaceMax = 0.5
   }
 }
-
