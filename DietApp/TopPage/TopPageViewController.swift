@@ -8,7 +8,8 @@
 import UIKit
 
 class TopPageViewController: UIPageViewController {
-  private var controllers: [UIViewController] = []
+  //現在のページのみを保持する配列
+  var controllers: [TopViewController] = []
   
   override var shouldAutorotate: Bool {
     if let vc = controllers.first {
@@ -53,19 +54,17 @@ extension TopPageViewController: UIPageViewControllerDataSource {
     case previous
     case next
   }
-  //スワイプ時に遷移先のViewControllerのインスタスを生成する関数
-  func instantiate(direction: Direction) -> TopViewController? {
-    let currentVC = self.viewControllers![0] as! TopViewController
+  //スワイプ時に遷移先のViewControllerのインスタンスを生成する関数
+  //pageIndexのインクリメント、デクリメントは関数内では行わない
+  func  instantiate(direction: Direction) -> TopViewController? {
     let VC = storyboard?.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
-    
+    //６．２５　現状条件分岐させてる意味がないがとりあえずこのままにしておく
     switch direction {
     case .previous:
-      let nextIndex = currentVC.pageIndex - 1
-      VC.pageIndex = nextIndex
+      self.controllers[0] = VC
       return VC
-    case .next:
-      let nextIndex = currentVC.pageIndex + 1
-      VC.pageIndex = nextIndex
+    case .next :
+      self.controllers[0] = VC
       return VC
     }
   }
@@ -148,11 +147,26 @@ extension TopPageViewController {
   //BarButtonの設定
   //6.20ボタン押下時の処理は保留
   func navigationBarButtonSetting() {
-    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: nil)
-    let previousBarButtomItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: nil)
+    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    nextBarButtonItem.tag = 1
+    let previousBarButtomItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    previousBarButtomItem.tag = 2
     
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
     self.navigationItem.leftBarButtonItem = previousBarButtomItem
+  }
+  
+  @objc func buttonPaging(_ sender: UIBarButtonItem) {
+    if sender.tag == 1 {
+      if let nextVC = instantiate(direction: .next){
+        setViewControllers([nextVC], direction: .forward, animated: true)
+      }
+    }
+    if sender.tag == 2 {
+      if let previousVC = instantiate(direction: .previous){
+        setViewControllers([previousVC], direction: .reverse, animated: true)
+      }
+    }
   }
 }
 

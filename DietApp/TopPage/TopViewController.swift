@@ -51,8 +51,6 @@ class TopViewController: UIViewController {
     case photoTableViewCell
     case adTableViewCell
   }
-  //pagingに使うプロパティ
-  var pageIndex: Int = 0
   
   override func viewDidLoad() {
     super.viewDidLoad()
