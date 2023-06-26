@@ -161,6 +161,10 @@ extension GraphViewController {
     dataSet.setColor(graphLineColor)
     //エントリーポイントのラベルを非表示
     dataSet.drawValuesEnabled = false
+    //エントリーポイントタップ時の十字のハイライトを非表示
+    dataSet.highlightEnabled = false
+    
+    
     //データのセット
     let data = LineChartData(dataSet: dataSet)
     graphView.graphAreaView.data = data
@@ -201,5 +205,7 @@ extension GraphViewController {
     //Y軸の軸線と最初のエントリーポイントの間の余白を設定
     graphView.graphAreaView.xAxis.spaceMin = 0.5
     graphView.graphAreaView.xAxis.spaceMax = 0.5
+    //グラフ内をダブルタップ及びピンチジェスチャーしたときのズームを出来ないようにする
+    graphView.graphAreaView.doubleTapToZoomEnabled = false
   }
 }

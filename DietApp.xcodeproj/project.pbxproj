@@ -30,6 +30,7 @@
 		FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2EF2A1C861E008DC83E /* TabBarController.swift */; };
 		FA41A2F22A1C8734008DC83E /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2F12A1C8734008DC83E /* GraphViewController.swift */; };
 		FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2F32A1C877E008DC83E /* SettingsViewController.swift */; };
+		FA658AD32A4957B200669852 /* PagingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA658AD22A4957B200669852 /* PagingModel.swift */; };
 		FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF202A135F6F00B69D4A /* AppDelegate.swift */; };
 		FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */; };
 		FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF262A135F6F00B69D4A /* Main.storyboard */; };
@@ -95,6 +96,7 @@
 		FA41A2EF2A1C861E008DC83E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FA41A2F12A1C8734008DC83E /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		FA41A2F32A1C877E008DC83E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FA658AD22A4957B200669852 /* PagingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingModel.swift; sourceTree = "<group>"; };
 		FA68AF1D2A135F6F00B69D4A /* DietApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DietApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF202A135F6F00B69D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		FA41A2F52A1C8834008DC83E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FA658AD22A4957B200669852 /* PagingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
 				FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */,
+				FA658AD32A4957B200669852 /* PagingModel.swift in Sources */,
 				FA3142722A418E9B00254D60 /* NavigationController+Orientation.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FA0F9ED12A3016D100C7E888 /* UITabBarController+Orientation.swift in Sources */,
