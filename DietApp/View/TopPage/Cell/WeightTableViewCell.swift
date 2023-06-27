@@ -19,6 +19,8 @@ class WeightTableViewCell: UITableViewCell {
     //キーボードタイプ設定
     weightTextField.keyboardType = .decimalPad
     
+    weightTextField.autocorrectionType = .no
+    
     let placeholderText = "体重を入力"
     let attributes = [
       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)

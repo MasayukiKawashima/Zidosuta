@@ -16,6 +16,7 @@ class MemoTableViewCell: UITableViewCell {
         // Initialization code
     
     memoTextField.delegate = self
+    memoTextField.autocorrectionType = .no
     
     
     let placeholderText = "ひとことメモ"
