@@ -8,8 +8,9 @@
 import UIKit
 
 class TopPageViewController: UIPageViewController {
-  //現在のページのみを保持する配列
-  var controllers: [TopViewController] = []
+ 
+  var controllers: [UIViewController] = []
+  var pasingModel = PagingModel()
   
   override var shouldAutorotate: Bool {
     if let vc = controllers.first {
@@ -49,36 +50,18 @@ class TopPageViewController: UIPageViewController {
 
 //PageViewContollerの内容の設定
 extension TopPageViewController: UIPageViewControllerDataSource {
-  //スワイプ処理に関する列挙体
-  enum Direction {
-    case previous
-    case next
-  }
-  //スワイプ時に遷移先のViewControllerのインスタンスを生成する関数
-  //pageIndexのインクリメント、デクリメントは関数内では行わない
-  func  instantiate(direction: Direction) -> TopViewController? {
-    let VC = storyboard?.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
-    //６．２５　現状条件分岐させてる意味がないがとりあえずこのままにしておく
-    switch direction {
-    case .previous:
-      self.controllers[0] = VC
-      return VC
-    case .next :
-      self.controllers[0] = VC
-      return VC
-    }
-  }
-  
+
   func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return self.controllers.count
   }
   //各スワイプ時の処理
+  //右スワイプ（左から右にスワイプ）戻る
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    return instantiate(direction: .next)
+    return pasingModel.instantiate(Identifier: .topVC, direction: .previous)
   }
-  
+  //左スワイプ（右から左にスワイプ）進む
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    return instantiate(direction: .previous)
+    return pasingModel.instantiate(Identifier: .topVC, direction: .next)
   }
 }
 //navigationBarの設定
@@ -157,16 +140,12 @@ extension TopPageViewController {
   }
   
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
+    let VC = storyboard?.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     if sender.tag == 1 {
-      if let nextVC = instantiate(direction: .next){
-        setViewControllers([nextVC], direction: .forward, animated: true)
-      }
+      setViewControllers([VC], direction: .forward, animated: true)
     }
     if sender.tag == 2 {
-      if let previousVC = instantiate(direction: .previous){
-        setViewControllers([previousVC], direction: .reverse, animated: true)
-      }
+      setViewControllers([VC], direction: .reverse, animated: true)
     }
   }
 }
-

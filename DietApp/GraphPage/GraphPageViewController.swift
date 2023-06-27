@@ -8,7 +8,8 @@
 import UIKit
 
 class GraphPageViewController: UIPageViewController {
-  private var controllers: [UIViewController] = [GraphViewController()]
+  var controllers: [UIViewController] = [GraphViewController()]
+  let pagingModel = PagingModel()
   
   override var shouldAutorotate: Bool {
     if let VC = controllers.first {
@@ -61,16 +62,18 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
   func presentationCount(for pageViewController: UIPageViewController) -> Int {
     return self.controllers.count
   }
-  //スワイプ時処理は保留
+
+  //右スワイプ（左から右にスワイプ）戻る
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    nil
+    pagingModel.instantiate(Identifier: .graphVC, direction: .previous)
   }
   
+  //左スワイプ（右から左にスワイプ）進む
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    nil
+    pagingModel.instantiate(Identifier: .graphVC, direction: .next)
   }
 }
-
+//NavigationBarの設定
 extension GraphPageViewController {
   //titleの設定
   func navigationBarTitleSetting (){
@@ -121,10 +124,22 @@ extension GraphPageViewController {
   }
   //barButtonの設定
   func navigationBarButtonSetting() {
-    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: nil)
-    let previousBarButtomItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: nil)
+    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    nextBarButtonItem.tag = 1
+    let previousBarButtomItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    previousBarButtomItem.tag = 2
     
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
     self.navigationItem.leftBarButtonItem = previousBarButtomItem
+  }
+  
+  @objc func buttonPaging(_ sender: UIBarButtonItem) {
+    let VC = storyboard?.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
+    if sender.tag == 1 {
+      setViewControllers([VC], direction: .forward, animated: true)
+    }
+    if sender.tag == 2 {
+      setViewControllers([VC], direction: .reverse, animated: true)
+    }
   }
 }
