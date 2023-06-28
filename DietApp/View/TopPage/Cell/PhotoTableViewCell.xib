@@ -29,6 +29,9 @@
                         </constraints>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="gobackward" catalog="system"/>
+                        <connections>
+                            <action selector="redoButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DYG-m8-sI3"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タップして写真を挿入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-uU-7i8">
                         <rect key="frame" x="93.5" y="215" width="133" height="16"/>
@@ -36,28 +39,33 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-hh-oFN">
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-hh-oFN">
                         <rect key="frame" x="147" y="190" width="26.5" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="camera" catalog="system"/>
+                        <connections>
+                            <action selector="insertButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3op-f5-0EV"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Ytx-di-uC3" secondAttribute="bottom" constant="10" id="5Px-AN-Gut"/>
-                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="KPi-J9-Cky"/>
+                    <constraint firstItem="DL6-uU-7i8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Ir6-0J-1cD"/>
+                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Iyb-zC-eO7"/>
                     <constraint firstAttribute="bottom" secondItem="rrK-eD-DU2" secondAttribute="bottom" constant="1.5" id="Kft-iq-6A3"/>
                     <constraint firstAttribute="trailing" secondItem="rrK-eD-DU2" secondAttribute="trailing" id="Qs1-TQ-HVp"/>
-                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="U4y-xD-LZg"/>
-                    <constraint firstItem="DL6-uU-7i8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="WGF-wB-5q7"/>
-                    <constraint firstItem="DL6-uU-7i8" firstAttribute="top" secondItem="oKB-hh-oFN" secondAttribute="bottom" constant="5" id="Zyl-fh-Y1T"/>
                     <constraint firstItem="rrK-eD-DU2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1.5" id="ffh-RN-yVf"/>
                     <constraint firstAttribute="trailing" secondItem="Ytx-di-uC3" secondAttribute="trailing" id="jN2-Oo-aBM"/>
                     <constraint firstItem="rrK-eD-DU2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rto-7n-huu"/>
+                    <constraint firstItem="DL6-uU-7i8" firstAttribute="top" secondItem="oKB-hh-oFN" secondAttribute="bottom" constant="5" id="se1-Iw-BEo"/>
+                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tXL-IB-RQi"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="commentLabel" destination="DL6-uU-7i8" id="V1u-rp-Xsb"/>
+                <outlet property="insertButton" destination="oKB-hh-oFN" id="YXj-eT-eVf"/>
                 <outlet property="photoImageView" destination="rrK-eD-DU2" id="Utg-w1-725"/>
                 <outlet property="redoButton" destination="Ytx-di-uC3" id="GO2-68-B6c"/>
             </connections>
