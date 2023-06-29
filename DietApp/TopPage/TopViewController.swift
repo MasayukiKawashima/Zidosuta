@@ -17,7 +17,6 @@ class TopViewController: UIViewController {
   }
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    
     return .portrait
   }
   
@@ -119,6 +118,8 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
     case .photoTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoTableViewCell", for: indexPath) as! PhotoTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      //写真セルのデリゲート
+      cell.delegate = self
       return cell
     
     case .adTableViewCell:
@@ -172,4 +173,31 @@ extension TopViewController {
     view.endEditing(true)
   }
 }
+//写真セル内のボタン押下時処理
+extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  //写真挿入ボタンとやり直しボタンを押した時の処理
+  func insertButonAction() {
+    let photoInteractionModel = PhotoInteractionModel()
+    photoInteractionModel.showPhotoSelectionActionSheet(from: self)
+  }
+  //カメラ及びフォトライブラリでキャンセルしたときのデリゲートメソッド
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true, completion: nil)
+  }
+  //UIImagePickerController内で画像を選択したときの処理
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    if let pickedImage = info[.originalImage] as? UIImage {
+      //現在表示されているPhotoTAbleViewCellのインスタンス取得
+      let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
+      //ボタンとコメントラベルを非表示にする
+      photoTableViewCell.insertButton.isHidden = true
+      photoTableViewCell.commentLabel.isHidden = true
+      //取得したインスタンスのimageに選択した写真を格納
+      photoTableViewCell.photoImageView.image = pickedImage
+    }
+    //UIImagePickerControllerを閉じる
+    picker.dismiss(animated: true, completion: nil)
+  }
+}
+
 
