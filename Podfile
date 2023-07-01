@@ -7,6 +7,7 @@ target 'DietApp' do
 
   # Pods for DietApp
     pod  'Charts'
+    pod 'RealmSwift'
   target 'DietAppTests' do
     inherit! :search_paths
     # Pods for testing
