@@ -15,7 +15,6 @@ class WeightTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
-    weightTextField.delegate = self
     //キーボードタイプ設定
     weightTextField.keyboardType = .decimalPad
     
@@ -38,12 +37,12 @@ class WeightTableViewCell: UITableViewCell {
 
 }
 //この設定についてはよう確認
-extension WeightTableViewCell: UITextFieldDelegate {
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    weightTextField.resignFirstResponder()
-    return true
-  }
-}
+//extension WeightTableViewCell: UITextFieldDelegate {
+//  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//    weightTextField.resignFirstResponder()
+//    return true
+//  }
+//}
 //キーボード上部の閉じるボタンを作成
 extension WeightTableViewCell {
   func setUpCloseButton() {

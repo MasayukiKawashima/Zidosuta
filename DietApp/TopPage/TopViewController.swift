@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TopViewController: UIViewController {
   var topView = TopView()
@@ -108,11 +109,24 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: "WeightTableViewCell", for: indexPath) as! WeightTableViewCell
       //セルの選択時のハイライトを非表示にする
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.weightTextField.delegate = self
+      
+      let realm = try! Realm()
+      let results = realm.objects(DateData.self)
+      if results.isEmpty {
+        print("データが存在しません")
+      }else{
+        let dateData = results.first
+        cell.weightTextField.text = dateData?.weight
+      }
+      
+      
       return cell
       
     case .memoTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.memoTextField.delegate = self
       return cell
       
     case .photoTableViewCell:
@@ -199,5 +213,32 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     picker.dismiss(animated: true, completion: nil)
   }
 }
-
-
+//各TextFieldのイベント処理
+extension TopViewController: UITextFieldDelegate {
+  //リターンが押されたとき
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
+  }
+  //キーボードが閉じたとき
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    //何も入力されてなかったらリターン
+    if textField.text == "" {
+      print("体重を入力してください")
+      return
+    }
+    let dateData = DateData()
+    let realm = try! Realm()
+    //体重が入力された場合
+    if textField.tag == 3 {
+      dateData.weight = textField.text!
+      
+      try! realm.write {
+        realm.add(dateData)
+      }
+    }
+    //メモが入力されたとき
+    if textField.tag == 4 {
+    }
+  }
+}

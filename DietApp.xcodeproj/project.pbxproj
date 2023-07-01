@@ -42,6 +42,7 @@
 		FA68AF442A135F7200B69D4A /* DietAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */; };
 		FABF36082A283CD0007D91DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF36072A283CD0007D91DB /* GraphView.swift */; };
 		FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF36092A283CFF007D91DB /* GraphView.xib */; };
+		FAF1BB0F2A4D92FA00EFD25F /* DateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
 		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
@@ -113,6 +114,7 @@
 		FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FABF36072A283CD0007D91DB /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FABF36092A283CFF007D91DB /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
+		FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateData.swift; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				FA658AD22A4957B200669852 /* PagingModel.swift */,
 				FA658AD42A4C5FFA00669852 /* PhotoInteractionModel.swift */,
+				FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
 				FAFF6F602A21C60F0092A1A3 /* MemoTableViewCell.swift in Sources */,
 				FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */,
+				FAF1BB0F2A4D92FA00EFD25F /* DateData.swift in Sources */,
 				FA0F9ECF2A2F0DEC00C7E888 /* GraphPageViewController.swift in Sources */,
 				FA41A2F22A1C8734008DC83E /* GraphViewController.swift in Sources */,
 				FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */,
