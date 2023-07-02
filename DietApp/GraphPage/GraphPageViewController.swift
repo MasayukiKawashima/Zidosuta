@@ -65,12 +65,12 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
 
   //右スワイプ（左から右にスワイプ）戻る
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    pagingModel.instantiate(Identifier: .graphVC, direction: .previous)
+    pagingModel.graphVCInstantiate(for: self, direction: .previous)
   }
   
   //左スワイプ（右から左にスワイプ）進む
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    pagingModel.instantiate(Identifier: .graphVC, direction: .next)
+    pagingModel.graphVCInstantiate(for: self, direction: .next)
   }
 }
 //NavigationBarの設定

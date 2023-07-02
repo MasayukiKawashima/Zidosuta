@@ -11,6 +11,11 @@ import Charts
 class GraphViewController: UIViewController {
   var graphView = GraphView()
   
+  //日付の管理のためのindex
+  var index: Int = 0
+  
+  var date = Date()
+  
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     //左横画面に変更
     if(UIDevice.current.orientation.rawValue == 4){
