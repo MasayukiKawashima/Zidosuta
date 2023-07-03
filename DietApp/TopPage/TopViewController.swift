@@ -10,6 +10,10 @@ import RealmSwift
 
 class TopViewController: UIViewController {
   var topView = TopView()
+  //日付の管理のためのindex
+  var index: Int = 0
+  
+  var date = Date()
   //回転を許可するかどうかを決める
   //デバイスの向きが変更されたときに呼び出される
   override var shouldAutorotate: Bool {
@@ -71,6 +75,10 @@ class TopViewController: UIViewController {
     topView.tableView.rowHeight = UITableView.automaticDimension
     //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
+    
+    print("ああああああああああああああああああああああああああ")
+    print(index)
+    print("あああああああああああああああああああああああああああ")
     
   }
 
