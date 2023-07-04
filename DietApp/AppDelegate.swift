@@ -12,13 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    //画面回転時のアニメーションを無効化。内容は後日確認。
-    NotificationCenter.default.addObserver(forName: UIApplication.willChangeStatusBarOrientationNotification, object: nil, queue: nil) { (_) in
-        UIView.setAnimationsEnabled(false)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: {
-            UIView.setAnimationsEnabled(true)
-        })
-    }
     
     return true
   }
