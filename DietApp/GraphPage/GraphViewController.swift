@@ -57,6 +57,8 @@ class GraphViewController: UIViewController {
 //      navigationBarTitleSetting()
       
       graphSetting()
+      
+    
     }
   
   override func loadView() {

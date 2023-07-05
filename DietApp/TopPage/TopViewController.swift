@@ -75,11 +75,6 @@ class TopViewController: UIViewController {
     topView.tableView.rowHeight = UITableView.automaticDimension
     //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
-    
-    print("ああああああああああああああああああああああああああ")
-    print(index)
-    print("あああああああああああああああああああああああああああ")
-    
   }
 
   override func loadView() {
