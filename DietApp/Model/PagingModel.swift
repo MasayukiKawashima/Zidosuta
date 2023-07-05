@@ -38,9 +38,9 @@ class PagingModel {
   //GraphPageのページング先のインスタンス生成処理
   func graphVCInstantiate(for graphPageViewController: GraphPageViewController, direction: Direction)-> GraphViewController {
     //渡されてきたPageViewControllerから現在のViewControllerを取得
-    let currentTopVC = graphPageViewController.controllers.first! as! GraphViewController
+    let currentGraphVC = graphPageViewController.viewControllers?.first! as! GraphViewController
     //現在のViewControllerのindexを取得
-    let currentPageIndex = currentTopVC.index
+    let currentPageIndex = currentGraphVC.index
     
     let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
     let graphVC = stroyBoard.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
@@ -51,8 +51,8 @@ class PagingModel {
       graphVC.index = nextPageIndex
       return graphVC
     case .previous:
-      let previosPageIndex = currentPageIndex - 1
-      graphVC.index = previosPageIndex
+      let nextPageIndex = currentPageIndex - 1
+      graphVC.index = nextPageIndex
       return graphVC
     }
   }
