@@ -140,7 +140,7 @@ extension GraphPageViewController {
       //月末の取得は来月の月初を取得し、そこから１日戻すことで取得
       let add = DateComponents(month: 1, day: -1)
       let NextMonthFirstDay = calendar.date(from: calendar.dateComponents([.year, .month], from: modifiedDate))!
-      
+
       let lastDay = calendar.date(byAdding: add, to: NextMonthFirstDay)!
       
       let dateFormatter = DateFormatter()
