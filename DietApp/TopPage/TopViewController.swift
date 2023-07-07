@@ -12,8 +12,11 @@ class TopViewController: UIViewController {
   var topView = TopView()
   //日付の管理のためのindex
   var index: Int = 0
-  
   var date = Date()
+  //写真の保存につかうプロパティ
+  var fileName = String()
+  var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+  
   //回転を許可するかどうかを決める
   //デバイスの向きが変更されたときに呼び出される
   override var shouldAutorotate: Bool {
@@ -122,14 +125,21 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
         let dateData = results.first
         cell.weightTextField.text = dateData?.weight
       }
-      
-      
       return cell
       
     case .memoTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.memoTextField.delegate = self
+      
+      let realm = try! Realm()
+      let results = realm.objects(DateData.self)
+      if results.isEmpty {
+        print("データが存在しません")
+      }else{
+        let dateData = results.first
+        cell.memoTextField.text = dateData?.memoText
+      }
       return cell
       
     case .photoTableViewCell:
@@ -137,6 +147,26 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       //写真セルのデリゲート
       cell.delegate = self
+      
+      //写真の読み込み
+      let realm = try! Realm()
+      let results = realm.objects(DateData.self)
+      if results.isEmpty {
+        print("データが存在しません")
+      }else{
+        //URL合体させて完全パス作成
+        let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.fileURL)
+        let filePath = documentPath.path
+        //合体パスをもとに写真のロード
+        let photoImage = UIImage(contentsOfFile: filePath)!
+        //写真表示Viewに写真を格納
+        cell.photoImageView.image = photoImage
+        //挿入ボタンとコメントラベルを非表示
+        cell.insertButton.isHidden = true
+        cell.commentLabel.isHidden = true
+        
+      }
+      
       return cell
     
     case .adTableViewCell:
@@ -204,6 +234,17 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   //UIImagePickerController内で画像を選択したときの処理
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let pickedImage = info[.originalImage] as? UIImage {
+      //取得した写真の保存処理
+      saveImageToDocument(pickedImage: pickedImage)
+      let realm = try! Realm()
+      let dateData = DateData()
+      dateData.date = self.date
+      dateData.fileURL = fileName
+      try! realm.write {
+        realm.add(dateData)
+      }
+      
+      //取得した写真の表示処理
       //現在表示されているPhotoTAbleViewCellのインスタンス取得
       let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
       //ボタンとコメントラベルを非表示にする
@@ -214,6 +255,30 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     }
     //UIImagePickerControllerを閉じる
     picker.dismiss(animated: true, completion: nil)
+  }
+  //写真をドキュメントに保存する関数
+  func saveImageToDocument(pickedImage: UIImage) {
+    createImageFilePath()
+    
+    let pngImageData = pickedImage.pngData()
+    do {
+      try pngImageData!.write(to: documentDirectoryFileURL)
+    } catch {
+      print("画像をドキュメントに保存できませんでした")
+    }
+  }
+  //写真のファイルと、ドキュメントへの保存のためフルパスの作成
+  func createImageFilePath () {
+    let fileName = "\(NSUUID().uuidString)"
+    //後にファイル名だけをrealmに保存する
+    self.fileName = fileName
+    
+    if documentDirectoryFileURL != nil {
+      //relamにはファイル名だけを保存するが、ドキュメントへの保存はフォルダURLにファイル名を加えて保存する必要がある
+      //なお、アプリの再起動時等relamから呼び出す時にはその時点でのアプリIDを使う
+      let path = documentDirectoryFileURL.appendingPathComponent(fileName)
+      documentDirectoryFileURL = path
+    }
   }
 }
 //各TextFieldのイベント処理
@@ -227,9 +292,9 @@ extension TopViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     //何も入力されてなかったらリターン
     if textField.text == "" {
-      print("体重を入力してください")
       return
     }
+    
     let dateData = DateData()
     let realm = try! Realm()
     //体重が入力された場合
@@ -242,6 +307,11 @@ extension TopViewController: UITextFieldDelegate {
     }
     //メモが入力されたとき
     if textField.tag == 4 {
+      dateData.memoText = textField.text!
+      
+      try! realm.write {
+        realm.add(dateData)
+      }
     }
   }
 }
