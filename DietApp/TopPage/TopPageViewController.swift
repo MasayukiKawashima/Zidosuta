@@ -10,7 +10,6 @@ import UIKit
 class TopPageViewController: UIPageViewController {
  
   var controllers: [TopViewController] = []
-  var pasingModel = PagingModel()
   
   override var shouldAutorotate: Bool {
     if let vc = controllers.first {
@@ -60,11 +59,31 @@ extension TopPageViewController: UIPageViewControllerDataSource {
   //各スワイプ時の処理
   //右スワイプ（左から右にスワイプ）戻る
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    return pasingModel.topVCInstantiate(for: self, direction: .previous)
+    return instantiate(direction: .previous)
   }
   //左スワイプ（右から左にスワイプ）進む
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    return pasingModel.topVCInstantiate(for: self, direction: .next)
+    return instantiate(direction: .next)
+  }
+  //TopPageのページング先のインスタンス生成処理
+  func instantiate(direction: Direction)-> TopViewController {
+    //現在のViewControllerのindexを取得
+    let currentTopVC = self.viewControllers?.first as! TopViewController
+    let currentPageIndex = currentTopVC.index
+    
+    let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let topVC = stroyBoard.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
+    
+    switch direction {
+    case .next:
+      let nextPageIndex = currentPageIndex + 1
+      topVC.index = nextPageIndex
+      return topVC
+    case .previous:
+      let nextPageIndex = currentPageIndex - 1
+      topVC.index = nextPageIndex
+      return topVC
+    }
   }
 }
 //遷移時の処理

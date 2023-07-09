@@ -9,7 +9,6 @@ import UIKit
 
 class GraphPageViewController: UIPageViewController {
   var controllers: [UIViewController] = [GraphViewController()]
-  let pagingModel = PagingModel()
   
   override var shouldAutorotate: Bool {
     if let VC = controllers.first {
@@ -36,11 +35,15 @@ class GraphPageViewController: UIPageViewController {
     
     // Do any additional setup after loading the view.
     initGraphPageViewContoller()
-    indexSetting()
     
     if let currentVC = self.viewControllers?.first{
       let currentVC = currentVC as! GraphViewController
+      //NavigationBarTittleの設定
       navigationBarTitleSetting(currentVC: currentVC)
+      //月の前半か後半かによるindexの調整
+      let indexSettingModel = IndexSettingModel()
+      let index = indexSettingModel.indexSetting()
+      currentVC.index = index
     }
     
     navigationBarButtonSetting()
@@ -55,15 +58,6 @@ class GraphPageViewController: UIPageViewController {
     
     self.dataSource = self
   }
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
 }
 
 extension GraphPageViewController: UIPageViewControllerDataSource {
@@ -74,15 +68,35 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
 
   //右スワイプ（左から右にスワイプ）戻る
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-    pagingModel.graphVCInstantiate(for: self, direction: .previous)
+    instantiate(direction: .previous)
   }
   
   //左スワイプ（右から左にスワイプ）進む
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    pagingModel.graphVCInstantiate(for: self, direction: .next)
+    instantiate(direction: .next)
+  }
+  //GraphPageのページング先のインスタンス生成処理
+  func instantiate(direction: Direction)-> GraphViewController {
+    //現在のViewControllerのindexを取得
+    let currentGraphVC = self.viewControllers?.first! as! GraphViewController
+    let currentPageIndex = currentGraphVC.index
+    
+    let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let graphVC = stroyBoard.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
+    
+    switch direction {
+    case .next:
+      let nextPageIndex = currentPageIndex + 1
+      graphVC.index = nextPageIndex
+      return graphVC
+    case .previous:
+      let nextPageIndex = currentPageIndex - 1
+      graphVC.index = nextPageIndex
+      return graphVC
+    }
   }
 }
-
+//画面遷移が終わった後に呼び出されるデリゲートメソッド
 extension GraphPageViewController: UIPageViewControllerDelegate {
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     if completed {
@@ -222,38 +236,4 @@ extension GraphPageViewController {
       setViewControllers([graphVC], direction: .reverse, animated: true)
     }
   }
-  //月の上旬と下旬によるindexの調整を行うメソッド
-  //現在の日付が月の下旬ならindexに1をたす
-  func indexSetting() {
-    let currentDate = Date()
-    let calendar = Calendar.current
-    let components = calendar.dateComponents([.day, .month], from: currentDate)
-    if let day = components.day {
-      if day >= 17 {
-        let currentVC = self.viewControllers?.first as! GraphViewController
-        currentVC.index += 1
-      }
-    }
-  }
-  //7.4　下のメソッドは必要ないが今後の参考のためにコメントアウトしておく
-  //指定した月の最後の日付を取得するメソッド
-  //指定した月の次の月の１日を取得し、そこから１日引くことで最後の日付を取得している。
-//  func getLastDayOfMonth(month: Int, year: Int) -> Int {
-//    let calendar = Calendar.current
-//
-//    // 次の月の1日を表すDateオブジェクトを取得
-//    var components = DateComponents()
-//    components.year = year
-//    components.month = month + 1
-//    components.day = 1
-//    let nextMonthFirstDay = calendar.date(from: components)
-//
-//    // 指定した月の最後の日を取得するための計算
-//    //上で取得した次の月の１日から１日引いている
-//    if let lastDay = calendar.date(byAdding: .day, value: -1, to: nextMonthFirstDay!) {
-//      return calendar.component(.day, from: lastDay)
-//    } else {
-//      return 31 // Default to 31 (maximum number of days in a month)
-//    }
-//  }
 }

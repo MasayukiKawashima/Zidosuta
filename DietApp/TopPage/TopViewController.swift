@@ -62,7 +62,7 @@ class TopViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-//    topView.navigationBar.delegate = self
+    //    topView.navigationBar.delegate = self
     topView.tableView.delegate = self
     topView.tableView.dataSource = self
     //tableViewでタップ認識させるための設定
@@ -79,7 +79,7 @@ class TopViewController: UIViewController {
     //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
   }
-
+  
   override func loadView() {
     super.loadView()
     view = topView
@@ -168,7 +168,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       }
       
       return cell
-    
+      
     case .adTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -224,8 +224,7 @@ extension TopViewController {
 extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   //写真挿入ボタンとやり直しボタンを押した時の処理
   func insertButonAction() {
-    let photoInteractionModel = PhotoInteractionModel()
-    photoInteractionModel.showPhotoSelectionActionSheet(from: self)
+   showPhotoSelectionActionSheet()
   }
   //カメラ及びフォトライブラリでキャンセルしたときのデリゲートメソッド
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -243,7 +242,6 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       try! realm.write {
         realm.add(dateData)
       }
-      
       //取得した写真の表示処理
       //現在表示されているPhotoTAbleViewCellのインスタンス取得
       let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
@@ -256,30 +254,57 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     //UIImagePickerControllerを閉じる
     picker.dismiss(animated: true, completion: nil)
   }
-  //写真をドキュメントに保存する関数
-  func saveImageToDocument(pickedImage: UIImage) {
-    createImageFilePath()
+  
+  //アクションシートの表示
+  func showPhotoSelectionActionSheet() {
+    let actionSheet = UIAlertController(title: "写真の選択", message: nil, preferredStyle: .actionSheet)
     
-    let pngImageData = pickedImage.pngData()
-    do {
-      try pngImageData!.write(to: documentDirectoryFileURL)
-    } catch {
-      print("画像をドキュメントに保存できませんでした")
+    let cameraAction = UIAlertAction(title: "カメラ", style: .default) { action in
+      self.showImagePicker(sourceType: .camera)
+    }
+    let photoLibraryAction = UIAlertAction(title: "フォトライブラリ", style: .default) { action in
+      self.showImagePicker(sourceType: .photoLibrary)
+    }
+    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+    
+    actionSheet.addAction(cameraAction)
+    actionSheet.addAction(photoLibraryAction)
+    actionSheet.addAction(cancelAction)
+    
+    self.present(actionSheet, animated: true, completion: nil)
+  }
+  
+  //ImagePickerControllerの表示
+  func showImagePicker(sourceType: UIImagePickerController.SourceType) {
+    if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+      let imagePicker = UIImagePickerController()
+      imagePicker.sourceType = sourceType
+      imagePicker.delegate = self
+      self.present(imagePicker, animated: true, completion: nil)
     }
   }
-  //写真のファイルと、ドキュメントへの保存のためフルパスの作成
-  func createImageFilePath () {
-    let fileName = "\(NSUUID().uuidString)"
-    //後にファイル名だけをrealmに保存する
-    self.fileName = fileName
     
-    if documentDirectoryFileURL != nil {
-      //relamにはファイル名だけを保存するが、ドキュメントへの保存はフォルダURLにファイル名を加えて保存する必要がある
-      //なお、アプリの再起動時等relamから呼び出す時にはその時点でのアプリIDを使う
-      let path = documentDirectoryFileURL.appendingPathComponent(fileName)
-      documentDirectoryFileURL = path
+    //写真をドキュメントに保存するメソッド
+    func saveImageToDocument(pickedImage: UIImage) {
+      createImageFilePath()
+      
+      let pngImageData = pickedImage.pngData()
+      do {
+        try pngImageData!.write(to: documentDirectoryFileURL)
+      } catch {
+        print("画像をドキュメントに保存できませんでした")
+      }
     }
-  }
+    //写真のファイルと、ドキュメントへの保存のためフルパスの作成
+    func createImageFilePath () {
+      let fileName = "\(NSUUID().uuidString)"
+      //後にファイル名だけをrealmに保存する
+      self.fileName = fileName
+        //relamにはファイル名だけを保存するが、ドキュメントへの保存はフォルダURLにファイル名を加えて保存する必要がある
+        //なお、アプリの再起動時等relamから呼び出す時にはその時点でのアプリIDを使う
+        let path = documentDirectoryFileURL.appendingPathComponent(fileName)
+        documentDirectoryFileURL = path
+    }
 }
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {

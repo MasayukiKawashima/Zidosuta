@@ -52,32 +52,15 @@ class GraphViewController: UIViewController {
       UIDevice.current.setValue(4, forKey: "orientation")
       //画面の向きを変更させるために呼び出す。
       print(supportedInterfaceOrientations)
-
-      
-//      navigationBarTitleSetting()
       
       graphSetting()
-      
-    
     }
   
   override func loadView() {
     super.loadView()
     view = graphView
   }
-  
-//  override func viewWillLayoutSubviews() {
-//    super.viewWillLayoutSubviews()
-//    //safeAreaの取得
-//    if #available(iOS 11.0, *) {
-//
-//      safeAreaLeft = self.view.safeAreaInsets.left
-//      safeAreaRight = self.view.safeAreaInsets.right
-//      safeAreaBottom = self.view.safeAreaInsets.bottom
-//    }
-//    graphAreaViewAutoLayoutSetting()
-//  }
-  
+
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     _ = self.initViewLayout
@@ -100,33 +83,6 @@ class GraphViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
 }
-//extension GraphViewController {
-//  func navigationBarAutoLayoutsetting() {
-//    graphView.navigationBar.translatesAutoresizingMaskIntoConstraints = false
-//
-//  }
-//}
-
-//graphViewのオートレイアウト設定
-//extension GraphViewController {
-//  func graphAreaViewAutoLayoutSetting() {
-//    graphView.graphAreaView.translatesAutoresizingMaskIntoConstraints = false
-//    //余白
-//    let topMargin = graphView.navigationBar.frame.size.height + 10
-//    let bottomMargin = safeAreaBottom + 10.0
-//    let leftMargin = safeAreaLeft + 5.0
-//    let rightMargin = safeAreaRight + 5.0
-//
-//    NSLayoutConstraint.deactivate(graphView.graphAreaView.constraints)
-//
-//    NSLayoutConstraint.activate([
-//      graphView.graphAreaView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: topMargin),
-//      graphView.graphAreaView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: leftMargin),
-//      graphView.graphAreaView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -rightMargin),
-//      graphView.graphAreaView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin),
-//    ])
-//  }
-//}
 
 //グラフの設定
 extension GraphViewController {
