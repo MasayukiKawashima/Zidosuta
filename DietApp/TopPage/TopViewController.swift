@@ -14,7 +14,7 @@ class TopViewController: UIViewController {
   var index: Int = 0
   var date = Date()
   //写真の保存につかうプロパティ
-  var fileName = String()
+  var PhotoFileName = String()
   var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
   
   //回転を許可するかどうかを決める
@@ -155,16 +155,20 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
         print("データが存在しません")
       }else{
         //URL合体させて完全パス作成
-        let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.fileURL)
+        let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
         let filePath = documentPath.path
         //合体パスをもとに写真のロード
         let photoImage = UIImage(contentsOfFile: filePath)!
+        //ロードした写真に回転情報の付与するため、一度CGImageに変換する
+        let cgImage = photoImage.cgImage
+        let imageOrientation = UIImage.Orientation(rawValue: results.first!.imageOrientationRawValue)
+        //その後再度UIImageの初期化
+        let orientedPhotoImage = UIImage(cgImage: cgImage!, scale: 1.0, orientation: imageOrientation!)
         //写真表示Viewに写真を格納
-        cell.photoImageView.image = photoImage
+        cell.photoImageView.image = orientedPhotoImage
         //挿入ボタンとコメントラベルを非表示
         cell.insertButton.isHidden = true
         cell.commentLabel.isHidden = true
-        
       }
       
       return cell
@@ -237,8 +241,8 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       saveImageToDocument(pickedImage: pickedImage)
       let realm = try! Realm()
       let dateData = DateData()
-      dateData.date = self.date
-      dateData.fileURL = fileName
+      dateData.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
+      dateData.photoFileURL = PhotoFileName
       try! realm.write {
         realm.add(dateData)
       }
@@ -299,7 +303,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     func createImageFilePath () {
       let fileName = "\(NSUUID().uuidString)"
       //後にファイル名だけをrealmに保存する
-      self.fileName = fileName
+      self.PhotoFileName = fileName
         //relamにはファイル名だけを保存するが、ドキュメントへの保存はフォルダURLにファイル名を加えて保存する必要がある
         //なお、アプリの再起動時等relamから呼び出す時にはその時点でのアプリIDを使う
         let path = documentDirectoryFileURL.appendingPathComponent(fileName)
