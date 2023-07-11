@@ -27,6 +27,7 @@
 		FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA32F4C32A32BFCF0058FD32 /* NotificationTableViewCell.xib */; };
 		FA32F4C82A32C0900058FD32 /* ThemeColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32F4C62A32C0900058FD32 /* ThemeColorTableViewCell.swift */; };
 		FA32F4C92A32C0900058FD32 /* ThemeColorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA32F4C72A32C0900058FD32 /* ThemeColorTableViewCell.xib */; };
+		FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */; };
 		FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2EB2A1C84CE008DC83E /* TopViewController.swift */; };
 		FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2ED2A1C8531008DC83E /* TopPageViewController.swift */; };
 		FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2EF2A1C861E008DC83E /* TabBarController.swift */; };
@@ -95,6 +96,7 @@
 		FA32F4C32A32BFCF0058FD32 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		FA32F4C62A32C0900058FD32 /* ThemeColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColorTableViewCell.swift; sourceTree = "<group>"; };
 		FA32F4C72A32C0900058FD32 /* ThemeColorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeColorTableViewCell.xib; sourceTree = "<group>"; };
+		FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDataRealmSearcher.swift; sourceTree = "<group>"; };
 		FA41A2EB2A1C84CE008DC83E /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		FA41A2ED2A1C8531008DC83E /* TopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPageViewController.swift; sourceTree = "<group>"; };
 		FA41A2EF2A1C861E008DC83E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				FA11122B2A5923F6007353EA /* IndexSettingModel.swift */,
+				FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA11122E2A592745007353EA /* Direction.swift in Sources */,
+				FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

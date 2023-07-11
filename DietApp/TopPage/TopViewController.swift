@@ -78,6 +78,11 @@ class TopViewController: UIViewController {
     topView.tableView.rowHeight = UITableView.automaticDimension
     //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
+    
+    //date更新処理
+    let date = Date()
+    let modifiedDate = Calendar.current.date(byAdding: .day, value: self.index, to: date)
+    self.date = modifiedDate!
   }
   
   override func loadView() {
@@ -117,14 +122,14 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.weightTextField.delegate = self
       
-      let realm = try! Realm()
-      let results = realm.objects(DateData.self)
-      if results.isEmpty {
-        print("データが存在しません")
-      }else{
-        let dateData = results.first
-        cell.weightTextField.text = dateData?.weight
+      let dateDataRealmSearcher = DateDataRealmSearcher()
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let resultsCount = results.count
+      
+      if resultsCount != 0 {
+        cell.weightTextField.text = results.first!.weight
       }
+      
       return cell
       
     case .memoTableViewCell:
@@ -132,14 +137,14 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.memoTextField.delegate = self
       
-      let realm = try! Realm()
-      let results = realm.objects(DateData.self)
-      if results.isEmpty {
-        print("データが存在しません")
-      }else{
-        let dateData = results.first
-        cell.memoTextField.text = dateData?.memoText
+      let dateDataRealmSearcher = DateDataRealmSearcher()
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let resultsCount = results.count
+      
+      if resultsCount != 0 {
+        cell.memoTextField.text = results.first!.memoText
       }
+      
       return cell
       
     case .photoTableViewCell:
@@ -148,29 +153,30 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       //写真セルのデリゲート
       cell.delegate = self
       
-      //写真の読み込み
-      let realm = try! Realm()
-      let results = realm.objects(DateData.self)
-      if results.isEmpty {
-        print("データが存在しません")
-      }else{
-        //URL合体させて完全パス作成
-        let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
-        let filePath = documentPath.path
-        //合体パスをもとに写真のロード
-        let photoImage = UIImage(contentsOfFile: filePath)!
-        //ロードした写真に回転情報の付与するため、一度CGImageに変換する
-        let cgImage = photoImage.cgImage
-        let imageOrientation = UIImage.Orientation(rawValue: results.first!.imageOrientationRawValue)
-        //その後再度UIImageの初期化
-        let orientedPhotoImage = UIImage(cgImage: cgImage!, scale: 1.0, orientation: imageOrientation!)
-        //写真表示Viewに写真を格納
-        cell.photoImageView.image = orientedPhotoImage
-        //挿入ボタンとコメントラベルを非表示
-        cell.insertButton.isHidden = true
-        cell.commentLabel.isHidden = true
-      }
+      let dateDataRealmSearcher = DateDataRealmSearcher()
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let resultsCount = results.count
       
+      if resultsCount != 0 {
+        //fileURLが存在するかどうか確認
+        if results.first!.photoFileURL != "" {
+          //存在したら
+          let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
+          let filePath = documentPath.path
+          //合体パスをもとに写真のロード
+          let photoImage = UIImage(contentsOfFile: filePath)!
+          //ロードした写真に回転情報の付与するため、一度CGImageに変換する
+          let cgImage = photoImage.cgImage
+          let imageOrientation = UIImage.Orientation(rawValue: results.first!.imageOrientationRawValue)
+          //その後再度UIImageの初期化
+          let orientedPhotoImage = UIImage(cgImage: cgImage!, scale: 1.0, orientation: imageOrientation!)
+          //写真表示Viewに写真を格納
+          cell.photoImageView.image = orientedPhotoImage
+          //挿入ボタンとコメントラベルを非表示
+          cell.insertButton.isHidden = true
+          cell.commentLabel.isHidden = true
+        }
+      }
       return cell
       
     case .adTableViewCell:
@@ -228,7 +234,7 @@ extension TopViewController {
 extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   //写真挿入ボタンとやり直しボタンを押した時の処理
   func insertButonAction() {
-   showPhotoSelectionActionSheet()
+    showPhotoSelectionActionSheet()
   }
   //カメラ及びフォトライブラリでキャンセルしたときのデリゲートメソッド
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -287,28 +293,28 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       self.present(imagePicker, animated: true, completion: nil)
     }
   }
+  
+  //写真をドキュメントに保存するメソッド
+  func saveImageToDocument(pickedImage: UIImage) {
+    createImageFilePath()
     
-    //写真をドキュメントに保存するメソッド
-    func saveImageToDocument(pickedImage: UIImage) {
-      createImageFilePath()
-      
-      let pngImageData = pickedImage.pngData()
-      do {
-        try pngImageData!.write(to: documentDirectoryFileURL)
-      } catch {
-        print("画像をドキュメントに保存できませんでした")
-      }
+    let pngImageData = pickedImage.pngData()
+    do {
+      try pngImageData!.write(to: documentDirectoryFileURL)
+    } catch {
+      print("画像をドキュメントに保存できませんでした")
     }
-    //写真のファイルと、ドキュメントへの保存のためフルパスの作成
-    func createImageFilePath () {
-      let fileName = "\(NSUUID().uuidString)"
-      //後にファイル名だけをrealmに保存する
-      self.PhotoFileName = fileName
-        //relamにはファイル名だけを保存するが、ドキュメントへの保存はフォルダURLにファイル名を加えて保存する必要がある
-        //なお、アプリの再起動時等relamから呼び出す時にはその時点でのアプリIDを使う
-        let path = documentDirectoryFileURL.appendingPathComponent(fileName)
-        documentDirectoryFileURL = path
-    }
+  }
+  //写真のファイルと、ドキュメントへの保存のためフルパスの作成
+  func createImageFilePath () {
+    let fileName = "\(NSUUID().uuidString)"
+    //後にファイル名だけをrealmに保存する
+    self.PhotoFileName = fileName
+    //relamにはファイル名だけを保存するが、ドキュメントへの保存はフォルダURLにファイル名を加えて保存する必要がある
+    //なお、アプリの再起動時等relamから呼び出す時にはその時点でのアプリIDを使う
+    let path = documentDirectoryFileURL.appendingPathComponent(fileName)
+    documentDirectoryFileURL = path
+  }
 }
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {
@@ -319,28 +325,57 @@ extension TopViewController: UITextFieldDelegate {
   }
   //キーボードが閉じたとき
   func textFieldDidEndEditing(_ textField: UITextField) {
-    //何も入力されてなかったらリターン
-    if textField.text == "" {
-      return
-    }
     
-    let dateData = DateData()
-    let realm = try! Realm()
     //体重が入力された場合
     if textField.tag == 3 {
-      dateData.weight = textField.text!
-      
-      try! realm.write {
-        realm.add(dateData)
+      let dateDataRealmSearcher = DateDataRealmSearcher()
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let resultsCount = results.count
+      //入力された文字が空の場合
+      if textField.text == "" {
+        //データがなければ
+        if (resultsCount == 0) {
+          print("データなし。体重が未入力です")
+        }else{
+          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
+          //なのでレラムインスタンスを作り、データの上書き＝データを消す
+          let realm = try! Realm()
+          try! realm.write() {
+            results[0].weight = textField.text!
+            print("体重データを消去しました")
+          }
+        }
+        //文字列が空じゃなかったら
+      }else{
+        let realm = try! Realm()
+        //そして今日の日付のデータも存在しなかったら
+        if (resultsCount == 0) {
+          //今日の日付のデータを作る
+          let dateData = DateData()
+          dateData.date = self.date
+          dateData.weight = textField.text!
+          try! realm.write {
+            realm.add(dateData)
+          }
+          //もしデータがあれば更新
+        }else{
+          try! realm.write() {
+            results[0].weight = textField.text!
+            print("体重を更新しました")
+          }
+        }
       }
     }
     //メモが入力されたとき
     if textField.tag == 4 {
+      let dateData = DateData()
+      let realm = try! Realm()
       dateData.memoText = textField.text!
       
       try! realm.write {
         realm.add(dateData)
       }
+      print("あたらしいRealmオブジェクトが生成され、メモが追加されました")
     }
   }
 }
