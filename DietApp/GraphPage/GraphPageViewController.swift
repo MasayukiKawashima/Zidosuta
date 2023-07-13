@@ -41,8 +41,8 @@ class GraphPageViewController: UIPageViewController {
       //NavigationBarTittleの設定
       navigationBarTitleSetting(currentVC: currentVC)
       //月の前半か後半かによるindexの調整
-      let indexSettingModel = IndexSettingModel()
-      let index = indexSettingModel.indexSetting()
+      let indexSetting = IndexSetting()
+      let index = indexSetting.indexSetting()
       currentVC.index = index
     }
     
