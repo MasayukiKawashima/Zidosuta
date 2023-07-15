@@ -245,10 +245,36 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     if let pickedImage = info[.originalImage] as? UIImage {
       //取得した写真の保存処理
       saveImageToDocument(pickedImage: pickedImage)
+      
+      //現在のページの日付のRealmObjectが存在するか検索
+      let dateDataRealmSearcher = DateDataRealmSearcher()
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let resultsCount = results.count
+      
       let realm = try! Realm()
+      //存在した場合
+      if resultsCount != 0 {
+        //そのRealmObjectのphotoFileURLに古い写真のFileURLが登録されていたら
+        if results.first!.photoFileURL != "" {
+          //その古い写真を削除する
+          let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
+          do {
+              try FileManager.default.removeItem(at: documentPath)
+          } catch {
+              print("ファイルの削除に失敗しました: \(error)")
+          }
+        }
+        try! realm.write {
+          results.first!.photoFileURL = PhotoFileName
+          results.first!.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
+        }
+      }
+      //存在しなかった場合
+      //新しいRealObjectを現在のページの日付で登録
       let dateData = DateData()
       dateData.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
       dateData.photoFileURL = PhotoFileName
+      dateData.date = self.date
       try! realm.write {
         realm.add(dateData)
       }
@@ -325,12 +351,11 @@ extension TopViewController: UITextFieldDelegate {
   }
   //キーボードが閉じたとき
   func textFieldDidEndEditing(_ textField: UITextField) {
-    
+    let dateDataRealmSearcher = DateDataRealmSearcher()
+    let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+    let resultsCount = results.count
     //体重が入力された場合
     if textField.tag == 3 {
-      let dateDataRealmSearcher = DateDataRealmSearcher()
-      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
-      let resultsCount = results.count
       //入力された文字が空の場合
       if textField.text == "" {
         //データがなければ
@@ -368,14 +393,40 @@ extension TopViewController: UITextFieldDelegate {
     }
     //メモが入力されたとき
     if textField.tag == 4 {
-      let dateData = DateData()
-      let realm = try! Realm()
-      dateData.memoText = textField.text!
-      
-      try! realm.write {
-        realm.add(dateData)
+      if textField.text == "" {
+        //データがなければ
+        if (resultsCount == 0) {
+          print("データなし。メモが未入力です")
+        }else{
+          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
+          //なのでレラムインスタンスを作り、データの上書き＝データを消す
+          let realm = try! Realm()
+          try! realm.write() {
+            results[0].memoText = textField.text!
+            print("メモを消去しました")
+          }
+        }
+        //文字列が空じゃなかったら
+      }else{
+        let realm = try! Realm()
+        //そして今日の日付のデータも存在しなかったら
+        if (resultsCount == 0) {
+          //今日の日付のデータを作る
+          let dateData = DateData()
+          dateData.date = self.date
+          dateData.memoText = textField.text!
+          try! realm.write {
+            realm.add(dateData)
+          }
+          print("あたらしいRealmオブジェクトが生成され、メモが追加されました")
+          //もしデータがあれば更新
+        }else{
+          try! realm.write() {
+            results[0].memoText = textField.text!
+            print("メモを更新しました")
+          }
+        }
       }
-      print("あたらしいRealmオブジェクトが生成され、メモが追加されました")
     }
   }
 }
