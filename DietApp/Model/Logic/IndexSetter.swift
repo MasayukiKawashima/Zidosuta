@@ -1,5 +1,5 @@
 //
-//  IndexSetting.swift
+//  IndexSetter.swift
 //  DietApp
 //
 //  Created by 川島真之 on 2023/07/08.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class IndexSetting {
+class IndexSetter {
   //月の前半か後半かによるindexの調整を行うメソッド
   //現在の日付が17日以降ならindexに1を返す
   func indexSetting() -> Int {

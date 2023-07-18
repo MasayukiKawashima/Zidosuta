@@ -88,25 +88,31 @@ class GraphViewController: UIViewController {
 extension GraphViewController {
   func graphSetting() {
     
-    let  sampleEntries = [
-      ChartDataEntry(x: 1, y: 15),
-      ChartDataEntry(x: 2, y: 20),
-      ChartDataEntry(x: 3, y: 15),
-      ChartDataEntry(x: 4, y: 25),
-      ChartDataEntry(x: 5, y: 18),
-      ChartDataEntry(x: 6, y: 22),
-      ChartDataEntry(x: 7, y: 27),
-      ChartDataEntry(x: 8, y: 32),
-      ChartDataEntry(x: 9, y: 26),
-      ChartDataEntry(x: 10, y: 28),
-      ChartDataEntry(x: 11, y: 30),
-      ChartDataEntry(x: 12, y: 27),
-      ChartDataEntry(x: 13, y: 24),
-      ChartDataEntry(x: 14, y: 31),
-      ChartDataEntry(x: 15, y: 25),
-  ]
+//    let  sampleEntries = [
+//      ChartDataEntry(x: 1, y: 15),
+//      ChartDataEntry(x: 2, y: 20),
+//      ChartDataEntry(x: 3, y: 15),
+//      ChartDataEntry(x: 4, y: 25),
+//      ChartDataEntry(x: 5, y: 18),
+//      ChartDataEntry(x: 6, y: 22),
+//      ChartDataEntry(x: 7, y: 27),
+//      ChartDataEntry(x: 8, y: 32),
+//      ChartDataEntry(x: 9, y: 26),
+//      ChartDataEntry(x: 10, y: 28),
+//      ChartDataEntry(x: 11, y: 30),
+//      ChartDataEntry(x: 12, y: 27),
+//      ChartDataEntry(x: 13, y: 24),
+//      ChartDataEntry(x: 14, y: 31),
+//      ChartDataEntry(x: 15, y: 25),
+//  ]
+//
+    let graphContetCreator = GraphContentCreator()
+    let dataEntries = graphContetCreator.createDataEntry(index: self.index)
     
-    let dataSet = LineChartDataSet(entries: sampleEntries)
+    let dataSet = LineChartDataSet(entries: dataEntries)
+    //エントリーポイントが作成されていない段階でのメッセージを非表示にする
+    graphView.graphAreaView.noDataText = ""
+   
     //エントリーポイント及びエントリーラインに関する調整
     
     //エントリーポイントとグラフ線の色を作成

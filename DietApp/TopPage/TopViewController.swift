@@ -127,7 +127,8 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       let resultsCount = results.count
       
       if resultsCount != 0 {
-        cell.weightTextField.text = results.first!.weight
+        let weightString = String(results.first!.weight)
+        cell.weightTextField.text = weightString
       }
       
       return cell
@@ -366,7 +367,7 @@ extension TopViewController: UITextFieldDelegate {
           //なのでレラムインスタンスを作り、データの上書き＝データを消す
           let realm = try! Realm()
           try! realm.write() {
-            results[0].weight = textField.text!
+            results[0].weight = 0
             print("体重データを消去しました")
           }
         }
@@ -378,14 +379,16 @@ extension TopViewController: UITextFieldDelegate {
           //今日の日付のデータを作る
           let dateData = DateData()
           dateData.date = self.date
-          dateData.weight = textField.text!
+          let weightDouble = Double(textField.text!)!
+          dateData.weight = weightDouble
           try! realm.write {
             realm.add(dateData)
           }
           //もしデータがあれば更新
         }else{
           try! realm.write() {
-            results[0].weight = textField.text!
+            let weightDouble = Double(textField.text!)!
+            results[0].weight = weightDouble
             print("体重を更新しました")
           }
         }
