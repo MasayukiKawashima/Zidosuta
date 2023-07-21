@@ -38,12 +38,14 @@ class GraphPageViewController: UIPageViewController {
     
     if let currentVC = self.viewControllers?.first{
       let currentVC = currentVC as! GraphViewController
+   
+      //月の前半か後半かによるindexの調整
+      let indexSetter = IndexSetter()
+      currentVC.index = indexSetter.indexSetting()
+ 
+      currentVC.graphSetting()
       //NavigationBarTittleの設定
       navigationBarTitleSetting(currentVC: currentVC)
-      //月の前半か後半かによるindexの調整
-      let indexSetting = IndexSetting()
-      let index = indexSetting.indexSetting()
-      currentVC.index = index
     }
     
     navigationBarButtonSetting()
@@ -126,13 +128,14 @@ extension GraphPageViewController {
     if currentVC.index % 2 == 0 {
       var firstDayString = ""
       var sixteenthDayString = ""
-      
+ 
       let value = currentVC.index/2
       modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
-      
+    
       //月の最初の日と１７日目をDate型で取得
       let firstDay = calendar.date(from: calendar.dateComponents([.year, .month], from: modifiedDate))!
-      let sixteenthDay = calendar.date(bySetting: .day, value: 16, of: modifiedDate)!
+      let sixteenthDay = calendar.date(bySetting: .day, value: 16, of: firstDay)!
+  
       //日付の表示形式の設定
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "M.d"
@@ -146,11 +149,17 @@ extension GraphPageViewController {
       var seventeenthDayString = ""
       var lastDayString = ""
       
+      
+      //
       //月の更新を行う。
       let value = (currentVC.index - 1)/2
       modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
-      
-      let seventeenthDay = calendar.date(bySetting: .day, value: 17, of: modifiedDate)!
+      //modifiedDateから直接その月の17日の日付を取得しようとすると、来月になってしまう。
+      //なので一旦、modifiedDateから月を抽出して、その月の最初の日を設定
+      let firstDayOfMonth = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: modifiedDate))!
+      //その後その月の日付を17日設定する
+      let seventeenthDay = calendar.date(bySetting: .day, value: 17, of: firstDayOfMonth)!
+    
       //月末の取得は来月の月初を取得し、そこから１日戻すことで取得
       let add = DateComponents(month: 1, day: -1)
       let NextMonthFirstDay = calendar.date(from: calendar.dateComponents([.year, .month], from: modifiedDate))!

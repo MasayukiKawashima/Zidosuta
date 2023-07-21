@@ -10,7 +10,7 @@ import RealmSwift
 
 class DateData: Object {
   @objc dynamic var date: Date = Date()
-  @objc dynamic var weight: String = ""
+  @objc dynamic var weight: Double = 0
   @objc dynamic var memoText: String = ""
   @objc dynamic var photoFileURL: String = ""
   @objc dynamic var imageOrientationRawValue: Int = Int()
