@@ -33,6 +33,7 @@
 		FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2EF2A1C861E008DC83E /* TabBarController.swift */; };
 		FA41A2F22A1C8734008DC83E /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2F12A1C8734008DC83E /* GraphViewController.swift */; };
 		FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41A2F32A1C877E008DC83E /* SettingsViewController.swift */; };
+		FA42FA2D2A6A4C1200C60F9E /* IndexSetterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA2C2A6A4C1200C60F9E /* IndexSetterTests.swift */; };
 		FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */; };
 		FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF202A135F6F00B69D4A /* AppDelegate.swift */; };
 		FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */; };
@@ -103,6 +104,7 @@
 		FA41A2EF2A1C861E008DC83E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		FA41A2F12A1C8734008DC83E /* GraphViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		FA41A2F32A1C877E008DC83E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FA42FA2C2A6A4C1200C60F9E /* IndexSetterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSetterTests.swift; sourceTree = "<group>"; };
 		FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreator.swift; sourceTree = "<group>"; };
 		FA68AF1D2A135F6F00B69D4A /* DietApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DietApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF202A135F6F00B69D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				FA68AF372A135F7200B69D4A /* DietAppTests.swift */,
+				FA42FA2C2A6A4C1200C60F9E /* IndexSetterTests.swift */,
 			);
 			path = DietAppTests;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA68AF382A135F7200B69D4A /* DietAppTests.swift in Sources */,
+				FA42FA2D2A6A4C1200C60F9E /* IndexSetterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

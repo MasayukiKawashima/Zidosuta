@@ -10,10 +10,9 @@ import Foundation
 class IndexSetter {
   //月の前半か後半かによるindexの調整を行うメソッド
   //現在の日付が17日以降ならindexに1を返す
-  func indexSetting() -> Int {
-    let currentDate = Date()
+  func indexSetting(date: Date) -> Int {
     let calendar = Calendar.current
-    let components = calendar.dateComponents([.day, .month], from: currentDate)
+    let components = calendar.dateComponents([.day, .month], from: date)
     if let day = components.day {
       if day >= 17 {
         return 1
