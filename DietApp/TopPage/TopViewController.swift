@@ -14,8 +14,9 @@ class TopViewController: UIViewController {
   var index: Int = 0
   var date = Date()
   //写真の保存につかうプロパティ
-  var PhotoFileName = String()
   var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+  
+  let realm = try! Realm()
   
   //回転を許可するかどうかを決める
   //デバイスの向きが変更されたときに呼び出される
@@ -244,8 +245,16 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   //UIImagePickerController内で画像を選択したときの処理
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let pickedImage = info[.originalImage] as? UIImage {
+      //保存した
+      let fileName = "\(NSUUID().uuidString)"
+      //後にファイル名だけをrealmに保存する
+      let photoFileName = fileName
+      
+      //フルパスを作成
+      let path = documentDirectoryFileURL.appendingPathComponent(fileName)
+      
       //取得した写真の保存処理
-      saveImageToDocument(pickedImage: pickedImage)
+      saveImageToDocument(pickedImage: pickedImage, path: path)
       
       //現在のページの日付のRealmObjectが存在するか検索
       let dateDataRealmSearcher = DateDataRealmSearcher()
@@ -266,7 +275,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
           }
         }
         try! realm.write {
-          results.first!.photoFileURL = PhotoFileName
+          results.first!.photoFileURL = photoFileName
           results.first!.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
         }
       }
@@ -274,7 +283,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       //新しいRealObjectを現在のページの日付で登録
       let dateData = DateData()
       dateData.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
-      dateData.photoFileURL = PhotoFileName
+      dateData.photoFileURL = photoFileName
       dateData.date = self.date
       try! realm.write {
         realm.add(dateData)
@@ -322,26 +331,16 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   //写真をドキュメントに保存するメソッド
-  func saveImageToDocument(pickedImage: UIImage) {
-    createImageFilePath()
+  func saveImageToDocument(pickedImage: UIImage, path: URL) {
     
     let pngImageData = pickedImage.pngData()
     do {
-      try pngImageData!.write(to: documentDirectoryFileURL)
+      try pngImageData!.write(to: path)
     } catch {
       print("画像をドキュメントに保存できませんでした")
     }
   }
   //写真のファイルと、ドキュメントへの保存のためフルパスの作成
-  func createImageFilePath () {
-    let fileName = "\(NSUUID().uuidString)"
-    //後にファイル名だけをrealmに保存する
-    self.PhotoFileName = fileName
-    //relamにはファイル名だけを保存するが、ドキュメントへの保存はフォルダURLにファイル名を加えて保存する必要がある
-    //なお、アプリの再起動時等relamから呼び出す時にはその時点でのアプリIDを使う
-    let path = documentDirectoryFileURL.appendingPathComponent(fileName)
-    documentDirectoryFileURL = path
-  }
 }
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {

@@ -12,7 +12,12 @@ class GraphViewController: UIViewController {
   var graphView = GraphView()
   
   //日付の管理のためのindex
-  var index: Int = 0
+  lazy var index: Int = {
+    //月の前半か後半かによるindexの調整
+      let date = Date() 
+      let indexSetter = IndexSetter()
+      return indexSetter.indexSetting(date: date)
+    }()
   
   var date = Date()
   

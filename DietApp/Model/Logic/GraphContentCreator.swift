@@ -10,9 +10,14 @@ import RealmSwift
 import Charts
 
 class GraphContentCreator {
+  
+  private let realm: Realm!
+  
+  init(realm: Realm = try! Realm()){
+    self.realm = realm
+  }
   //エントリーポイントを作成するメソッド
   func createDataEntry(index: Int) -> [ChartDataEntry] {
-    let realm = try! Realm()
   
     let calendar = Calendar.current
     //現在の日付を取得
@@ -47,7 +52,7 @@ class GraphContentCreator {
       //startOfCurrentDayに1日を足した日を作成。時間は開始時刻。
       let startOfNextDay = calendar.date(byAdding: .day, value: 1, to: startOfCurrentDay)!
       // 指定した日付のエントリを検索
-      let results = realm.objects(DateData.self)
+      let results = self.realm.objects(DateData.self)
         .filter("date >= %@ && date < %@ && weight != 0", startOfCurrentDay, startOfNextDay)
 
       // すべての結果をループし、チャートエントリーを作成
