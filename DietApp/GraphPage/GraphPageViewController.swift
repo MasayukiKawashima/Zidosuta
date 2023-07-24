@@ -38,11 +38,6 @@ class GraphPageViewController: UIPageViewController {
     
     if let currentVC = self.viewControllers?.first{
       let currentVC = currentVC as! GraphViewController
-   
-      //月の前半か後半かによるindexの調整
-      let indexSetter = IndexSetter()
-      let date = Date()
-      currentVC.index = indexSetter.indexSetting(date: date)
  
       currentVC.graphSetting()
       //NavigationBarTittleの設定
@@ -149,9 +144,6 @@ extension GraphPageViewController {
       //現在の日付が月の後半だった場合
       var seventeenthDayString = ""
       var lastDayString = ""
-      
-      
-      //
       //月の更新を行う。
       let value = (currentVC.index - 1)/2
       modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
