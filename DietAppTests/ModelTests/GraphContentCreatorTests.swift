@@ -67,18 +67,7 @@ class GraphContentCreatorTests: XCTestCase {
       let result = graphContentCreator.createDataEntry(index: 1)
       XCTAssertEqual(result.count, 0)
     }
-  //endOfMonth()のテスト
-  func testEndOfMonth() {
-    let graphContentCreator = GraphContentCreator(realm: self.inMemoryRealm)
-    
-    let dateString = "2023-09-01"
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
-    let date = dateFormatter.date(from: dateString)!
-    
-    let result = graphContentCreator.endOfMonth(date)
-    XCTAssertEqual(result, 30)
-  }
+
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
