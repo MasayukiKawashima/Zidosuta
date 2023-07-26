@@ -30,23 +30,12 @@ class GraphContentCreator {
     let month = calendar.component(.month, from: modifiedDate)
     let year = calendar.component(.year, from: modifiedDate)
     
-    var startDay: Int
-    var endDay: Int
-    
-    if index % 2 == 0 {
-      //indexが偶数だったら
-      startDay = 1
-      endDay = 16
-    } else {
-      //indexが奇数だったら
-      startDay = 17
-      //現在の月の最終日をendDayに代入
-      endDay = endOfMonth(modifiedDate)
-    }
+    let dateRangeCalculator = DateRangeCalculator()
+    let results = dateRangeCalculator.calculateMonthHalfDayRange(index: index)
 
     var dataEntries: [ChartDataEntry] = []
     
-    for day in startDay...endDay {
+    for day in results.startDay...results.endDay {
       //現在の年、月、日を表すDateを作成。時間はその日の開始時刻(0時0分0秒）を取得。
       let startOfCurrentDay = calendar.date(from: DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month, day: day))!
       //startOfCurrentDayに1日を足した日を作成。時間は開始時刻。
@@ -62,17 +51,5 @@ class GraphContentCreator {
       }
     }
     return dataEntries
-  }
-  //createEntryPointsのヘルパーメソッド
-  //現在の月の最終日を返すメソッド
-  //この処理だけ切り分ける必要があるのか後で確認
-  func endOfMonth(_ date: Date) -> Int {
-    let calendar = Calendar.current
-    //現在の月の日数を範囲として返す
-    //例えば2023年7月17日にこのメソッドを呼び出せば1..<32という値がrangeに代入される
-    let range = calendar.range(of: .day, in: .month, for: date)!
-    //rangeに値された範囲の要素数を返す
-    //つまり上の例でいうと31を返す
-    return range.count
   }
 }
