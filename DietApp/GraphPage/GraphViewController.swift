@@ -59,7 +59,7 @@ class GraphViewController: UIViewController {
       print(supportedInterfaceOrientations)
       
       //graphSetting()
-      configureGraph(index: index)
+      configureDefaultGraph(index: index)
     }
   
   override func loadView() {
@@ -70,7 +70,10 @@ class GraphViewController: UIViewController {
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     _ = self.initViewLayout
+    //グラフの更新処理
+    createLineChartDate()
   }
+  
   private lazy var initViewLayout : Void = {
       print(self.view.frame)
     if #available(iOS 11.0, *) {
@@ -268,5 +271,33 @@ extension GraphViewController {
     graphView.graphAreaView.xAxis.spaceMax = 0.5
     //グラフ内をダブルタップ及びピンチジェスチャーしたときのズームを出来ないようにする
     graphView.graphAreaView.doubleTapToZoomEnabled = false
+  }
+  //現在のページの日付の範囲のRealmオブジェクトが存在していたら、それをもとにエントリーデータを作成し描画するメソッド
+  func createLineChartDate() {
+    let graphContetCreator = GraphContentCreator()
+    let dataEntries = graphContetCreator.createDataEntry(index: self.index)
+    if dataEntries.count != 0 {
+      let dataSet = LineChartDataSet(entries: dataEntries)
+      
+      let entryPointColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
+      let graphLineColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 0.5)
+      //エントリーポイントを二重円ではなく、通常の円にする
+      dataSet.drawCircleHoleEnabled = false
+      //エントリーポイントのサイズの調整
+      dataSet.circleRadius = 5.0
+      //エントリーポイントの色を設定
+      dataSet.circleColors = [entryPointColor]
+      //グラフ線の太さの調整
+      dataSet.lineWidth = 1.5
+      //グラフ線の色を設定
+      dataSet.setColor(graphLineColor)
+      //エントリーポイントのラベルを非表示
+      dataSet.drawValuesEnabled = false
+      //エントリーポイントタップ時の十字のハイライトを非表示
+      dataSet.highlightEnabled = false
+      
+      let data = LineChartData(dataSet: dataSet)
+      self.graphView.graphAreaView.data = data
+    }
   }
 }
