@@ -73,11 +73,6 @@ class TopViewController: UIViewController {
     tapGesture.cancelsTouchesInView = false
     view.addGestureRecognizer(tapGesture)
     
-    let results = realm.objects(DateData.self)
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    print(results)
-    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    
     //スクロールできないようにする
     topView.tableView.isScrollEnabled = false
     //tableViewCellの高さの自動設定

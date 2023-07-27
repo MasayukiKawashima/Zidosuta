@@ -12,9 +12,11 @@ import Charts
 class GraphContentCreator {
   
   private let realm: Realm!
+  private let currentDate: Date!
   
-  init(realm: Realm = try! Realm()){
+  init(realm: Realm = try! Realm(), currentDate: Date = Date()){
     self.realm = realm
+    self.currentDate = currentDate
   }
   //エントリーポイントを作成するメソッド
   func createDataEntry(index: Int) -> [ChartDataEntry] {
@@ -23,9 +25,20 @@ class GraphContentCreator {
     //現在の日付を取得
     let date = Date()
     //月の更新
-    let value = (index - 1)/2
+   // print("\(index): indexの中身")
+    let value:Int!
+    //indexの値が偶数＝月の前半なら
+    if index % 2 == 0 {
+      value = index/2
+    }else{
+      //indexの値が奇数＝月の後半なら
+      value = (index - 1)/2
+    }
+    //print("\(value): valueの中身")
+    
     let modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
-  
+    print("\(modifiedDate): modifiedDateの中身")
+    
     //現在の日付の月と年を取得
     let month = calendar.component(.month, from: modifiedDate)
     let year = calendar.component(.year, from: modifiedDate)

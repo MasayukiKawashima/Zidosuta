@@ -55,18 +55,28 @@ class GraphContentCreatorTests: XCTestCase {
 //createDataEntry()のテスト
 //月の前半の場合のテスト
   func testCreateDataEntryBefore17() {
-      let graphContentCreator = GraphContentCreator(realm: self.inMemoryRealm)
-      let result = graphContentCreator.createDataEntry(index: 2)
-      XCTAssertEqual(result.count, 1)
-      XCTAssertEqual(result[0].y, 80.5)
-    }
+    let dateString = "2023-07-16"
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    let date = dateFormatter.date(from: dateString)!
+    
+    let graphContentCreator = GraphContentCreator(realm: self.inMemoryRealm, currentDate: date)
+    let result = graphContentCreator.createDataEntry(index: 0)
+    XCTAssertEqual(result.count, 1)
+    XCTAssertEqual(result[0].y, 80.5)
+  }
   
   //月の後半の場合のテスト
   func testCreateDataEntryAfter17() {
-      let graphContentCreator = GraphContentCreator(realm: self.inMemoryRealm)
-      let result = graphContentCreator.createDataEntry(index: 1)
-      XCTAssertEqual(result.count, 0)
-    }
+    let dateString = "2023-07-16"
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    let date = dateFormatter.date(from: dateString)!
+    
+    let graphContentCreator = GraphContentCreator(realm: self.inMemoryRealm, currentDate: date)
+    let result = graphContentCreator.createDataEntry(index: 1)
+    XCTAssertEqual(result.count, 0)
+  }
 
     func testExample() throws {
         // This is an example of a functional test case.
