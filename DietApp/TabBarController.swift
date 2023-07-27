@@ -11,6 +11,8 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+      self.delegate = self
       //TabBarの背景色の設定
       let appearance = UITabBarAppearance()
       appearance.backgroundColor =  UIColor.systemGray6
@@ -26,5 +28,16 @@ class TabBarController: UITabBarController {
         // Pass the selected object to the new view controller.
     }
     */
+}
+
+extension TabBarController: UITabBarControllerDelegate {
+  func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    //タブをグラフページに切り替えたときのグラフ描画処理
+    if let graphNavigationController = viewController as? GraphNavigationController,
+       let graphPageViewController = graphNavigationController.viewControllers.first as? GraphPageViewController,
+       let graphViewController = graphPageViewController.viewControllers?.first as? GraphViewController {
+      graphViewController.createLineChartDate()
+    }
+  }
 }
 
