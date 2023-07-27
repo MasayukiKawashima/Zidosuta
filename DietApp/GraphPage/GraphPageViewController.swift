@@ -36,11 +36,10 @@ class GraphPageViewController: UIPageViewController {
     // Do any additional setup after loading the view.
     initGraphPageViewContoller()
     
+    
     if let currentVC = self.viewControllers?.first{
       let currentVC = currentVC as! GraphViewController
  
-//      currentVC.graphSetting()
-      currentVC.configureInitialGraph(index: currentVC.index)
       //NavigationBarTittleの設定
       navigationBarTitleSetting(currentVC: currentVC)
     }
