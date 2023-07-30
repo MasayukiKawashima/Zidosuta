@@ -109,15 +109,21 @@ extension GraphViewController {
     xAxis.labelPosition = .bottom
     xAxis.axisMinimum = Double(results.startDay)// X軸の最小値
     xAxis.axisMaximum = Double(results.endDay)// X軸の最大値
+    
+    xAxis.yOffset = 5.0
    
     let count = results.endDay - results.startDay + 1
     xAxis.setLabelCount(count, force: true)
 
+    
     // Y軸の設定
     let leftAxis = graphView.graphAreaView.leftAxis
     leftAxis.axisMinimum = 40.0 // Y軸の最小値
     leftAxis.axisMaximum = 80.0 // Y軸の最大値
    
+    leftAxis.xOffset = 20.0
+    
+    leftAxis.setLabelCount(6, force: true)
     //エントリーポイント及びエントリーラインに関する調整
     
     //エントリーポイントとグラフ線の色を作成
@@ -180,6 +186,20 @@ extension GraphViewController {
     graphView.graphAreaView.xAxis.spaceMax = 0.5
     //グラフ内をダブルタップ及びピンチジェスチャーしたときのズームを出来ないようにする
     graphView.graphAreaView.doubleTapToZoomEnabled = false
+
+    graphView.graphAreaView.leftAxis.valueFormatter = KGAxisValueFormatter()
+    //Y軸のラベルのフォントの種類とサイズの設定
+    let leftAxisLabelFont =  UIFont(name: "Thonburi", size: 9)
+    graphView.graphAreaView.leftAxis.labelFont = leftAxisLabelFont ?? UIFont.systemFont(ofSize: 9)
+    //X軸のラベルのフォントの種類とサイズの設定
+    let xAxisLabelFont = UIFont(name: "Thonburi-Bold", size: 12)
+    graphView.graphAreaView.xAxis.labelFont = xAxisLabelFont ?? UIFont.systemFont(ofSize: 12)
+    //X軸のラベルのカラーを設定
+    graphView.graphAreaView.xAxis.labelTextColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
+    //X軸の軸線のカラーを設定
+    graphView.graphAreaView.xAxis.axisLineColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
+    //X軸の軸線の太さを設定
+    graphView.graphAreaView.xAxis.axisLineWidth = CGFloat(1.0)
   }
   
   func configureGraph(index: Int){
@@ -279,12 +299,22 @@ extension GraphViewController {
     if dataEntries.count != 0 {
       let dataSet = LineChartDataSet(entries: dataEntries)
       
+      let yValues = dataEntries.map { $0.y }
+      let min = yValues.min() ?? 0
+      let max = yValues.max() ?? 0
+      
+      let leftAxis = graphView.graphAreaView.leftAxis
+      leftAxis.axisMinimum = min - 5  // Y軸の最小値
+      leftAxis.axisMaximum = max + 5// Y軸の最大値
+      
+      leftAxis.setLabelCount(6, force: true)
+      
       let entryPointColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
       let graphLineColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 0.5)
       //エントリーポイントを二重円ではなく、通常の円にする
       dataSet.drawCircleHoleEnabled = false
       //エントリーポイントのサイズの調整
-      dataSet.circleRadius = 5.0
+      dataSet.circleRadius = 3.0
       //エントリーポイントの色を設定
       dataSet.circleColors = [entryPointColor]
       //グラフ線の太さの調整
