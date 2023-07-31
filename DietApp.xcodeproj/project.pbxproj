@@ -39,6 +39,7 @@
 		FA42FA3A2A70B2DC00C60F9E /* DateRangeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA392A70B2DC00C60F9E /* DateRangeCalculator.swift */; };
 		FA42FA3C2A70BD4100C60F9E /* DateRangeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA3B2A70BD4100C60F9E /* DateRangeCalculatorTests.swift */; };
 		FA42FA402A76173D00C60F9E /* KGAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA3F2A76173D00C60F9E /* KGAxisValueFormatter.swift */; };
+		FA42FA462A77527600C60F9E /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA452A77527600C60F9E /* CustomMarkerView.swift */; };
 		FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */; };
 		FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF202A135F6F00B69D4A /* AppDelegate.swift */; };
 		FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */; };
@@ -114,6 +115,7 @@
 		FA42FA392A70B2DC00C60F9E /* DateRangeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeCalculator.swift; sourceTree = "<group>"; };
 		FA42FA3B2A70BD4100C60F9E /* DateRangeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeCalculatorTests.swift; sourceTree = "<group>"; };
 		FA42FA3F2A76173D00C60F9E /* KGAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGAxisValueFormatter.swift; sourceTree = "<group>"; };
+		FA42FA452A77527600C60F9E /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreator.swift; sourceTree = "<group>"; };
 		FA68AF1D2A135F6F00B69D4A /* DietApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DietApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF202A135F6F00B69D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				FA42FA3F2A76173D00C60F9E /* KGAxisValueFormatter.swift */,
+				FA42FA452A77527600C60F9E /* CustomMarkerView.swift */,
 				FA11122F2A592952007353EA /* Enum */,
 				FA1112302A59296B007353EA /* Logic */,
 				FA1112312A5929DA007353EA /* RealmObject */,
@@ -670,6 +673,7 @@
 				FA41A2F22A1C8734008DC83E /* GraphViewController.swift in Sources */,
 				FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
+				FA42FA462A77527600C60F9E /* CustomMarkerView.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA11122E2A592745007353EA /* Direction.swift in Sources */,

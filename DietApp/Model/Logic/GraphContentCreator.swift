@@ -37,7 +37,6 @@ class GraphContentCreator {
     //print("\(value): valueの中身")
     
     let modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
-    print("\(modifiedDate): modifiedDateの中身")
     
     //現在の日付の月と年を取得
     let month = calendar.component(.month, from: modifiedDate)
