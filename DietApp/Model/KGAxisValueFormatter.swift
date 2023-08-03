@@ -10,6 +10,6 @@ import Charts
 
 class KGAxisValueFormatter: AxisValueFormatter {
  func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return "\(Int(value))kg"
+        return "\((value))kg"
     }
 }
