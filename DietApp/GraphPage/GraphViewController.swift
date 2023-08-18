@@ -11,6 +11,7 @@ import Charts
 class GraphViewController: UIViewController {
   var graphView = GraphView()
   
+  
   //日付の管理のためのindex
   lazy var index: Int = {
     //月の前半か後半かによるindexの調整
@@ -53,6 +54,7 @@ class GraphViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+      
       
       UIDevice.current.setValue(4, forKey: "orientation")
       //画面の向きを変更させるために呼び出す。
@@ -107,8 +109,11 @@ extension GraphViewController {
     //グラフ内をダブルタップ及びピンチジェスチャーしたときのズームを出来ないようにする
     graphView.graphAreaView.doubleTapToZoomEnabled = false
     //マーカーの設定
-    let maker = CustomMarkerView(index: index)
-    graphView.graphAreaView.marker = maker
+    let customMarkerViewController = CustomMarkerViewController(index: self.index)
+    let customMarkerView = CustomMarkerView()
+    customMarkerView.dataSource = customMarkerViewController
+//    marker.dataSource = self
+    graphView.graphAreaView.marker = customMarkerView
     //凡例を非表示
     graphView.graphAreaView.legend.enabled = false
     

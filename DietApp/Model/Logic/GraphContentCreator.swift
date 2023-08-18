@@ -20,34 +20,21 @@ class GraphContentCreator {
   }
   //エントリーポイントを作成するメソッド
   func createDataEntry(index: Int) -> [ChartDataEntry] {
-  
     let calendar = Calendar.current
-    //現在の日付を取得
-    let date = Date()
-    //月の更新
-   // print("\(index): indexの中身")
-    let value:Int!
-    //indexの値が偶数＝月の前半なら
-    if index % 2 == 0 {
-      value = index/2
-    }else{
-      //indexの値が奇数＝月の後半なら
-      value = (index - 1)/2
-    }
-    //print("\(value): valueの中身")
-    
-    let modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
+  
+    let monthAdjuster = MonthAdjuster()
+    let modifiedDate = monthAdjuster.adjustMonth(index: index, date: currentDate)
     
     //現在の日付の月と年を取得
     let month = calendar.component(.month, from: modifiedDate)
     let year = calendar.component(.year, from: modifiedDate)
     
     let dateRangeCalculator = DateRangeCalculator()
-    let results = dateRangeCalculator.calculateMonthHalfDayRange(index: index)
+    let range = dateRangeCalculator.calculateMonthHalfDayRange(index: index, date: currentDate)
 
     var dataEntries: [ChartDataEntry] = []
     
-    for day in results.startDay...results.endDay {
+    for day in range.startDay...range.endDay {
       //現在の年、月、日を表すDateを作成。時間はその日の開始時刻(0時0分0秒）を取得。
       let startOfCurrentDay = calendar.date(from: DateComponents(calendar: calendar, timeZone: TimeZone.current, year: year, month: month, day: day))!
       //startOfCurrentDayに1日を足した日を作成。時間は開始時刻。

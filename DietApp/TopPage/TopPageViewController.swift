@@ -10,6 +10,7 @@ import UIKit
 class TopPageViewController: UIPageViewController {
  
   var controllers: [TopViewController] = []
+  var topDateManager = TopDateManager()
   
   override var shouldAutorotate: Bool {
     if let vc = controllers.first {
