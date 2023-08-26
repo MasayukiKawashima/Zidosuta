@@ -11,16 +11,7 @@ import Charts
 class GraphViewController: UIViewController {
   var graphView = GraphView()
   
-  
-  //日付の管理のためのindex
-  lazy var index: Int = {
-    //月の前半か後半かによるindexの調整
-      let date = Date() 
-      let indexSetter = IndexSetter()
-      return indexSetter.indexSetting(date: date)
-    }()
-  
-  var date = Date()
+  var graphDateManager = GraphDateManager()
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     //左横画面に変更
@@ -55,17 +46,15 @@ class GraphViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       
-      
       UIDevice.current.setValue(4, forKey: "orientation")
       //画面の向きを変更させるために呼び出す。
       print(supportedInterfaceOrientations)
       
       //graphSetting()
-      configureDefaultGraph(index: index)
+      configureDefaultGraph(index: self.graphDateManager.index)
     }
   
   override func loadView() {
-    super.loadView()
     view = graphView
   }
 
@@ -109,7 +98,7 @@ extension GraphViewController {
     //グラフ内をダブルタップ及びピンチジェスチャーしたときのズームを出来ないようにする
     graphView.graphAreaView.doubleTapToZoomEnabled = false
     //マーカーの設定
-    let customMarkerViewController = CustomMarkerViewController(index: self.index)
+    let customMarkerViewController = CustomMarkerViewController(index: index)
     let customMarkerView = CustomMarkerView()
     customMarkerView.dataSource = customMarkerViewController
 //    marker.dataSource = self
@@ -202,7 +191,7 @@ extension GraphViewController {
   //現在のページの日付の範囲のRealmオブジェクトが存在していたら、それをもとにエントリーデータを作成し描画するメソッド
   func createLineChartDate() {
     let graphContetCreator = GraphContentCreator()
-    let dataEntries = graphContetCreator.createDataEntry(index: self.index)
+    let dataEntries = graphContetCreator.createDataEntry(index: graphDateManager.index)
     if dataEntries.count != 0 {
       
       //以下の処理はモデルに切り出す

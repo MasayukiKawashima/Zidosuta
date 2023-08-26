@@ -10,10 +10,9 @@ import RealmSwift
 
 class TopViewController: UIViewController {
   var topView = TopView()
-  //日付の管理のためのindex
-  var index: Int = 0
-  var date = Date()
-  //写真の保存につかうプロパティ
+  
+  var topDateManager = TopDateManager()
+  
   var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
   
   let realm = try! Realm()
@@ -79,17 +78,17 @@ class TopViewController: UIViewController {
     topView.tableView.rowHeight = UITableView.automaticDimension
     //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
-    
-    //date更新処理
-    let date = Date()
-    let modifiedDate = Calendar.current.date(byAdding: .day, value: self.index, to: date)
-    self.date = modifiedDate!
   }
   
   override func loadView() {
-    super.loadView()
     view = topView
   }
+  
+//  override func viewWillAppear(_ animated: Bool) {
+//    super.viewWillAppear(animated)
+//    print("viewWillAppearがよばれた")
+//    dateResourceSetting()
+//  }
   /*
    // MARK: - Navigation
    
@@ -124,7 +123,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.weightTextField.delegate = self
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
-      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
       let resultsCount = results.count
       
       if resultsCount != 0 {
@@ -140,7 +139,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.memoTextField.delegate = self
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
-      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
       let resultsCount = results.count
       
       if resultsCount != 0 {
@@ -156,7 +155,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.delegate = self
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
-      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
       let resultsCount = results.count
       
       if resultsCount != 0 {
@@ -258,7 +257,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       
       //現在のページの日付のRealmObjectが存在するか検索
       let dateDataRealmSearcher = DateDataRealmSearcher()
-      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
       let resultsCount = results.count
       
       let realm = try! Realm()
@@ -284,7 +283,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       let dateData = DateData()
       dateData.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
       dateData.photoFileURL = photoFileName
-      dateData.date = self.date
+      dateData.date = topDateManager.date
       try! realm.write {
         realm.add(dateData)
       }
@@ -352,7 +351,7 @@ extension TopViewController: UITextFieldDelegate {
   //キーボードが閉じたとき
   func textFieldDidEndEditing(_ textField: UITextField) {
     let dateDataRealmSearcher = DateDataRealmSearcher()
-    let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.date)
+    let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
     let resultsCount = results.count
     //体重が入力された場合
     if textField.tag == 3 {
@@ -377,7 +376,8 @@ extension TopViewController: UITextFieldDelegate {
         if (resultsCount == 0) {
           //今日の日付のデータを作る
           let dateData = DateData()
-          dateData.date = self.date
+          
+          dateData.date = topDateManager.date
           let weightDouble = Double(textField.text!)!
           dateData.weight = weightDouble
           try! realm.write {
@@ -415,7 +415,7 @@ extension TopViewController: UITextFieldDelegate {
         if (resultsCount == 0) {
           //今日の日付のデータを作る
           let dateData = DateData()
-          dateData.date = self.date
+          dateData.date = topDateManager.date
           dateData.memoText = textField.text!
           try! realm.write {
             realm.add(dateData)

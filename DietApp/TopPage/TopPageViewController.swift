@@ -10,7 +10,6 @@ import UIKit
 class TopPageViewController: UIPageViewController {
  
   var controllers: [TopViewController] = []
-  var topDateManager = TopDateManager()
   
   override var shouldAutorotate: Bool {
     if let vc = controllers.first {
@@ -36,18 +35,22 @@ class TopPageViewController: UIPageViewController {
         // Do any additional setup after loading the view.
       if let currentVC = self.viewControllers?.first{
         let currentVC = currentVC as! TopViewController
-        navigationBarTitleSetting(currentVC: currentVC)
+        navigationBarTitleSetting(currentDate: currentVC.topDateManager.date)
       }
-      
       navigationBarButtonSetting()
     }
   
   private func initTopPageViewContoller() {
     let topVC = storyboard!.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
-    
     self.controllers = [topVC]
-    
     setViewControllers([self.controllers[0]], direction: .forward, animated: true, completion: nil)
+  }
+}
+
+extension TopPageViewController {
+  func getCurrentPageTopDateManager() -> TopDateManager {
+    let currentVC = self.viewControllers?.first as! TopViewController
+    return currentVC.topDateManager
   }
 }
 
@@ -68,21 +71,16 @@ extension TopPageViewController: UIPageViewControllerDataSource {
   }
   //TopPageのページング先のインスタンス生成処理
   func instantiate(direction: Direction)-> TopViewController {
-    //現在のViewControllerのindexを取得
-    let currentTopVC = self.viewControllers?.first as! TopViewController
-    let currentPageIndex = currentTopVC.index
-    
     let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
     let topVC = stroyBoard.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
+    let currentDate = getCurrentPageTopDateManager().date!
     
     switch direction {
     case .next:
-      let nextPageIndex = currentPageIndex + 1
-      topVC.index = nextPageIndex
+      topVC.topDateManager.updateDate(currentDate: currentDate, byDays: 1)
       return topVC
     case .previous:
-      let nextPageIndex = currentPageIndex - 1
-      topVC.index = nextPageIndex
+      topVC.topDateManager.updateDate(currentDate: currentDate, byDays: -1)
       return topVC
     }
   }
@@ -92,25 +90,21 @@ extension TopPageViewController: UIPageViewControllerDelegate {
   //遷移が終わった後に呼び出されるデリゲートメソッド
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     //遷移が完了したら
-    if completed{
+    if completed {
       let currentVC = pageViewController.viewControllers?.first as! TopViewController
-      navigationBarTitleSetting(currentVC: currentVC)
+      navigationBarTitleSetting(currentDate: currentVC.topDateManager.date)
     }
   }
 }
 //navigationBarの設定
 extension TopPageViewController {
   //titileの設定
-  func navigationBarTitleSetting (currentVC: TopViewController){
+  func navigationBarTitleSetting (currentDate: Date){
     var yearText = ""
     var dateText = ""
     var dayOfWeekText = ""
     let dateFontSize: CGFloat = 18.0
     let fontSize: CGFloat = 14.0
-    
-    //現在のページの年、日付、曜日のデータを取得
-    let date = Date()
-    let modifiedDate = Calendar.current.date(byAdding: .day, value: currentVC.index, to: date)
 
     // カスタムビューをインスタンス化
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
@@ -118,7 +112,7 @@ extension TopPageViewController {
     //年の表示形式の設定
     let yearFormatter = DateFormatter()
     yearFormatter.dateFormat = "yyyy"
-    yearText = yearFormatter.string(from: modifiedDate!)
+    yearText = yearFormatter.string(from: currentDate)
 
     let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     yearTextLabel.text = yearText
@@ -129,7 +123,7 @@ extension TopPageViewController {
     //日付の表示形式を設定
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "M.d"
-    dateText = dateFormatter.string(from: modifiedDate!)
+    dateText = dateFormatter.string(from: currentDate)
     
     let dateTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     dateTextLabel.text = dateText
@@ -138,7 +132,7 @@ extension TopPageViewController {
     dateTextLabel.sizeToFit()
     
     //曜日の表示形式の設定
-    let dayOfWeek = Calendar.current.component(.weekday, from: modifiedDate!)
+    let dayOfWeek = Calendar.current.component(.weekday, from: currentDate)
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     dayOfWeekText = weekDays[dayOfWeek - 1]
 
@@ -173,7 +167,6 @@ extension TopPageViewController {
 
       dayOfWeekTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
       dayOfWeekTextLabel.trailingAnchor.constraint(equalTo: dayOfWeekTextLabel.trailingAnchor)
-
     ])
     //カスタムビューをNavigationBarに追加
     self.navigationItem.titleView = customTitleView
@@ -191,21 +184,21 @@ extension TopPageViewController {
   }
   //BarButton押下時の画面遷移
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
-    let currentVC = self.viewControllers?.first as! TopViewController
-    let currentIndex = currentVC.index
+//    let currentVC = self.viewControllers?.first as! TopViewController
+//    let currentPageIndex = currentVC.index
     let topVC = storyboard?.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
+    let currentDate = getCurrentPageTopDateManager().date!
+
     //next
     if sender.tag == 1 {
-      let nextIndex = currentIndex + 1
-      topVC.index = nextIndex
-      navigationBarTitleSetting(currentVC: topVC)
+      topVC.topDateManager.updateDate(currentDate: currentDate, byDays: 1)
+      navigationBarTitleSetting(currentDate: topVC.topDateManager.date)
       setViewControllers([topVC], direction: .forward, animated: true)
     }
     //previous
     if sender.tag == 2 {
-      let nextIndex = currentIndex - 1
-      topVC.index = nextIndex
-      navigationBarTitleSetting(currentVC: topVC)
+      topVC.topDateManager.updateDate(currentDate: currentDate, byDays: -1)
+      navigationBarTitleSetting(currentDate: topVC.topDateManager.date)
       setViewControllers([topVC], direction: .reverse, animated: true)
     }
   }

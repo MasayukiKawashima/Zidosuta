@@ -39,11 +39,8 @@ class GraphPageViewController: UIPageViewController {
     
     if let currentVC = self.viewControllers?.first{
       let currentVC = currentVC as! GraphViewController
- 
-      //NavigationBarTittleの設定
       navigationBarTitleSetting(currentVC: currentVC)
     }
-    
     navigationBarButtonSetting()
   }
   
@@ -77,19 +74,19 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
   func instantiate(direction: Direction)-> GraphViewController {
     //現在のViewControllerのindexを取得
     let currentGraphVC = self.viewControllers?.first! as! GraphViewController
-    let currentPageIndex = currentGraphVC.index
-    
+    //次のVCの作成
     let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
     let graphVC = stroyBoard.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
     
     switch direction {
     case .next:
-      let nextPageIndex = currentPageIndex + 1
-      graphVC.index = nextPageIndex
+      //次のページのindex番号を作成し、それをもとに次のページの日付データの更新
+      let nextPageIndex = currentGraphVC.graphDateManager.index + 1
+      graphVC.graphDateManager.updateDate(index: nextPageIndex)
       return graphVC
     case .previous:
-      let nextPageIndex = currentPageIndex - 1
-      graphVC.index = nextPageIndex
+      let nextPageIndex = currentGraphVC.graphDateManager.index - 1
+      graphVC.graphDateManager.updateDate(index: nextPageIndex)
       return graphVC
     }
   }
@@ -105,69 +102,26 @@ extension GraphPageViewController: UIPageViewControllerDelegate {
 }
 //NavigationBarの設定
 extension GraphPageViewController {
-  //titleの設定
   func navigationBarTitleSetting (currentVC: GraphViewController){
     var yearText = ""
     var dateText = ""
     let dateFontSize: CGFloat = 18.0
     let fontSize: CGFloat = 14.0
     
-    let date = Date()
-    var modifiedDate = Date()
-    let calendar = Calendar.current
-    
     // カスタムビューをインスタンス化
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: self.navigationController!.navigationBar.frame.size.height))
     
     //日付の設定
-    //まず現在の日付が月の前半の場合
-    if currentVC.index % 2 == 0 {
-      var firstDayString = ""
-      var sixteenthDayString = ""
- 
-      let value = currentVC.index/2
-      modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
-    
-      //月の最初の日と１７日目をDate型で取得
-      let firstDay = calendar.date(from: calendar.dateComponents([.year, .month], from: modifiedDate))!
-      let sixteenthDay = calendar.date(bySetting: .day, value: 16, of: firstDay)!
+    //月の最初の日と最後の日をdateで取得
+    let firstDateOfHalfMonth = currentVC.graphDateManager.firstDateOfHalfMonth
+    let lastDateOfHalfMonth = currentVC.graphDateManager.lastDateOfHalfMonth
+    //日付の表示形式の設定しStringに変換
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "M.d"
+    let firstDateOfHalfMonthString = dateFormatter.string(from: firstDateOfHalfMonth!)
+    let lastDateOfHalfMonthString = dateFormatter.string(from: lastDateOfHalfMonth!)
+    dateText = firstDateOfHalfMonthString + " - " + lastDateOfHalfMonthString
   
-      //日付の表示形式の設定
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "M.d"
-      //上の二つのDate型の日付をStringに変換し格納
-      firstDayString = dateFormatter.string(from: firstDay)
-      sixteenthDayString = dateFormatter.string(from: sixteenthDay)
-      //二つのStringの日付を合体させ、dateTextに格納
-      dateText = firstDayString + " - " + sixteenthDayString
-    }else{
-      //現在の日付が月の後半だった場合
-      var seventeenthDayString = ""
-      var lastDayString = ""
-      //月の更新を行う。
-      let value = (currentVC.index - 1)/2
-      modifiedDate = calendar.date(byAdding: .month, value: value, to: date)!
-      //modifiedDateから直接その月の17日の日付を取得しようとすると、来月になってしまう。
-      //なので一旦、modifiedDateから月を抽出して、その月の最初の日を設定
-      let firstDayOfMonth = calendar.date(from: Calendar.current.dateComponents([.year, .month], from: modifiedDate))!
-      //その後その月の日付を17日設定する
-      let seventeenthDay = calendar.date(bySetting: .day, value: 17, of: firstDayOfMonth)!
-    
-      //月末の取得は来月の月初を取得し、そこから１日戻すことで取得
-      let add = DateComponents(month: 1, day: -1)
-      let NextMonthFirstDay = calendar.date(from: calendar.dateComponents([.year, .month], from: modifiedDate))!
-
-      let lastDay = calendar.date(byAdding: add, to: NextMonthFirstDay)!
-      
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "M.d"
-      //上の二つのDate型の日付をStringに変換し格納
-      seventeenthDayString = dateFormatter.string(from: seventeenthDay)
-      lastDayString = dateFormatter.string(from: lastDay)
-      
-      dateText = seventeenthDayString + " - " + lastDayString
-    }
-    
     let dateTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     dateTextLabel.text = dateText
     dateTextLabel.font = UIFont(name: "Thonburi-Bold", size: dateFontSize)
@@ -177,7 +131,7 @@ extension GraphPageViewController {
     //年の表示形式の設定
     let yearFormatter = DateFormatter()
     yearFormatter.dateFormat = "yyyy"
-    yearText = yearFormatter.string(from: modifiedDate)
+    yearText = yearFormatter.string(from: firstDateOfHalfMonth!)
    
     let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     yearTextLabel.text = yearText
@@ -221,19 +175,21 @@ extension GraphPageViewController {
   }
   
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
+    //現在のVCを作成
     let currentVC = self.viewControllers?.first as! GraphViewController
-    let currentIndex = currentVC.index
+    //次のVCを作成
     let graphVC = storyboard?.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
     
     if sender.tag == 1 {
-      let nextIndex = currentIndex + 1
-      graphVC.index = nextIndex
+      //次のページのindex番号を作成し、それをもとに次のページの日付データの更新
+      let nextPageindex = currentVC.graphDateManager.index + 1
+      graphVC.graphDateManager.updateDate(index: nextPageindex)
       navigationBarTitleSetting(currentVC: graphVC)
       setViewControllers([graphVC], direction: .forward, animated: true)
     }
     if sender.tag == 2 {
-      let nextIndex = currentIndex - 1
-      graphVC.index = nextIndex
+      let nextPageindex = currentVC.graphDateManager.index - 1
+      graphVC.graphDateManager.updateDate(index: nextPageindex)
       navigationBarTitleSetting(currentVC: graphVC)
       setViewControllers([graphVC], direction: .reverse, animated: true)
     }
