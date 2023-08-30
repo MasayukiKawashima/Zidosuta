@@ -68,7 +68,7 @@ class GraphContentCreatorTests: XCTestCase {
   
   //月の後半の場合のテスト
   func testCreateDataEntryAfter17() {
-    let dateString = "2023-07-16"
+    let dateString = "2023-07-17"
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
     let date = dateFormatter.date(from: dateString)!
@@ -92,5 +92,4 @@ class GraphContentCreatorTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }
