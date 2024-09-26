@@ -14,50 +14,27 @@ class GraphViewController: UIViewController {
   var graphDateManager = GraphDateManager()
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    //左横画面に変更
-    if(UIDevice.current.orientation.rawValue == 4){
-      UIDevice.current.setValue(4, forKey: "orientation")
-      return .landscapeLeft
-    }
-    else {
-      //左横画面以外の処理
-      //最初の画面呼び出しで画面を右横画面に変更させる。
-      
-      UIDevice.current.setValue(3, forKey: "orientation")
-      return .landscapeRight
-    }
+    return .landscapeLeft
   }
-  // 画面を自動で回転させるかを決定する。
-  override var shouldAutorotate: Bool {
-    //画面が縦だった場合は回転させない
-    if(UIDevice.current.orientation.rawValue == 1){
-      return false
-    }
-    else{
-      return true
-    }
+  
+  override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+    return .landscapeLeft
   }
   
   var safeAreaRight:CGFloat = CGFloat()
   var safeAreaLeft:CGFloat = CGFloat()
   var safeAreaBottom:CGFloat = CGFloat()
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-      
-      UIDevice.current.setValue(4, forKey: "orientation")
-      //画面の向きを変更させるために呼び出す。
-      print(supportedInterfaceOrientations)
-      
-      //graphSetting()
-      configureDefaultGraph(index: self.graphDateManager.index)
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view.
+    configureDefaultGraph(index: self.graphDateManager.index)
+  }
   
   override func loadView() {
     view = graphView
   }
-
+  
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
     _ = self.initViewLayout
@@ -66,22 +43,21 @@ class GraphViewController: UIViewController {
   }
   
   private lazy var initViewLayout : Void = {
-      print(self.view.frame)
     if #available(iOS 11.0, *) {
       safeAreaLeft = self.view.safeAreaInsets.left
       safeAreaRight = self.view.safeAreaInsets.right
       safeAreaBottom = self.view.safeAreaInsets.bottom
     }
-//    graphAreaViewAutoLayoutSetting()
+    //    graphAreaViewAutoLayoutSetting()
   }()
   
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
+  // MARK: - Navigation
+  
+  // In a storyboard-based application, you will often want to do a little preparation before navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+  }
 }
 
 //グラフの設定
@@ -101,7 +77,7 @@ extension GraphViewController {
     let customMarkerViewController = CustomMarkerViewController(index: index)
     let customMarkerView = CustomMarkerView()
     customMarkerView.dataSource = customMarkerViewController
-//    marker.dataSource = self
+    //    marker.dataSource = self
     graphView.graphAreaView.marker = customMarkerView
     //凡例を非表示
     graphView.graphAreaView.legend.enabled = false
@@ -116,7 +92,7 @@ extension GraphViewController {
     xAxis.axisMaximum = Double(results.endDay)
     //ラベルと軸線との余白を設定
     xAxis.yOffset = 5.0
-   //X軸のラベルの数を決定
+    //X軸のラベルの数を決定
     let count = results.endDay - results.startDay + 1
     xAxis.setLabelCount(count, force: true)
     //X軸のメモリの表示を下に設定
@@ -136,7 +112,7 @@ extension GraphViewController {
     xAxis.axisLineColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
     //X軸の軸線の太さを設定
     xAxis.axisLineWidth = CGFloat(1.0)
-
+    
     //Y軸の左のラベルは表示しないが、設定は行う
     //理由は不明だが、左のY軸の設定を行わないとX軸のラベルが表示されないため
     //lineChartは左のY軸を基準としてグラフの他の要素が描画されるため、左のY軸を設定しないと予期しない挙動になる可能性がある
@@ -200,7 +176,7 @@ extension GraphViewController {
       let yValues = dataEntries.map { $0.y }
       let min = yValues.min() ?? 0
       let max = yValues.max() ?? 0
-
+      
       let calculatedAxisMin = min - 5
       let calculatedAxisMax = max + 5
       
@@ -232,7 +208,7 @@ extension GraphViewController {
       //エントリーポイントのラベルを非表示
       dataSet.drawValuesEnabled = false
       //エントリーポイントタップ時の十字のハイライトを非表示
-//     dataSet.highlightEnabled = false
+      //     dataSet.highlightEnabled = false
       dataSet.drawVerticalHighlightIndicatorEnabled = false
       dataSet.drawHorizontalHighlightIndicatorEnabled = false
       //データのセット

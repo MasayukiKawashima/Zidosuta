@@ -9,13 +9,6 @@ import Foundation
 import UIKit
 
 extension UITabBarController {
-  open override var shouldAutorotate: Bool {
-    if let VC = selectedViewController {
-      return VC.shouldAutorotate
-    }else{
-      return true
-    }
-  }
 
   open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     if let VC = selectedViewController {

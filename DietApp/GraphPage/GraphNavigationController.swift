@@ -8,22 +8,44 @@
 import UIKit
 
 class GraphNavigationController: UINavigationController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+  
+  override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    return .landscapeLeft
+  }
+  
+  override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+    return .landscapeLeft
+  }
+  //画面回転
+  private func rotate() {
+    if #available(iOS 16.0, *) {
+      guard let windowScene = view.window?.windowScene else {
+        return
+      }
+      windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeLeft))
+      setNeedsUpdateOfSupportedInterfaceOrientations()
+    } else {
+      UIDevice.current.setValue(3, forKey: "orientation")
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view.
+  }
+  
+  override func viewWillLayoutSubviews() {
+    rotate()
+  }
+  
+  /*
+   // MARK: - Navigation
+   
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+   // Get the new view controller using segue.destination.
+   // Pass the selected object to the new view controller.
+   }
+   */
+  
 }

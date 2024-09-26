@@ -19,7 +19,6 @@
 		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
 		FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1187A12A22F652004577F8 /* AdTableViewCell.xib */; };
 		FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31426F2A41671900254D60 /* TopNavigationController.swift */; };
-		FA3142722A418E9B00254D60 /* NavigationController+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3142712A418E9B00254D60 /* NavigationController+Orientation.swift */; };
 		FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3142732A4194F300254D60 /* GraphNavigationController.swift */; };
 		FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA32F4B52A32BCF50058FD32 /* SettingsView.xib */; };
 		FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32F4B72A32BD130058FD32 /* SettingsView.swift */; };
@@ -100,7 +99,6 @@
 		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		FA1187A12A22F652004577F8 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
 		FA31426F2A41671900254D60 /* TopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationController.swift; sourceTree = "<group>"; };
-		FA3142712A418E9B00254D60 /* NavigationController+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+Orientation.swift"; sourceTree = "<group>"; };
 		FA3142732A4194F300254D60 /* GraphNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNavigationController.swift; sourceTree = "<group>"; };
 		FA32F4B52A32BCF50058FD32 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FA32F4B72A32BD130058FD32 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -289,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				FA31426F2A41671900254D60 /* TopNavigationController.swift */,
-				FA3142712A418E9B00254D60 /* NavigationController+Orientation.swift */,
 				FA41A2ED2A1C8531008DC83E /* TopPageViewController.swift */,
 				FA41A2EB2A1C84CE008DC83E /* TopViewController.swift */,
 			);
@@ -675,7 +672,6 @@
 				FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */,
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
 				FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */,
-				FA3142722A418E9B00254D60 /* NavigationController+Orientation.swift in Sources */,
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FA0F9ED12A3016D100C7E888 /* UITabBarController+Orientation.swift in Sources */,
@@ -881,12 +877,13 @@
 				DEVELOPMENT_TEAM = N373UCP9BA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DietApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -911,12 +908,13 @@
 				DEVELOPMENT_TEAM = N373UCP9BA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DietApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
