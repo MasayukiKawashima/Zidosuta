@@ -10,18 +10,13 @@ import UIKit
 class TopPageViewController: UIPageViewController {
  
   var controllers: [TopViewController] = []
-  
-  override var shouldAutorotate: Bool {
-    if let vc = controllers.first {
-      return vc.shouldAutorotate
-    }
-    return false
-  }
+
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-    if let vc = controllers.first {
-      return vc.supportedInterfaceOrientations
-    }
+    return .portrait
+  }
+  
+  override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .portrait
   }
   
