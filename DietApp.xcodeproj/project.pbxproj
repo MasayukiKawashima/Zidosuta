@@ -18,6 +18,7 @@
 		FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */; };
 		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
 		FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1187A12A22F652004577F8 /* AdTableViewCell.xib */; };
+		FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */; };
 		FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31426F2A41671900254D60 /* TopNavigationController.swift */; };
 		FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3142732A4194F300254D60 /* GraphNavigationController.swift */; };
 		FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA32F4B52A32BCF50058FD32 /* SettingsView.xib */; };
@@ -98,6 +99,7 @@
 		FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		FA1187A12A22F652004577F8 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
+		FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		FA31426F2A41671900254D60 /* TopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationController.swift; sourceTree = "<group>"; };
 		FA3142732A4194F300254D60 /* GraphNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNavigationController.swift; sourceTree = "<group>"; };
 		FA32F4B52A32BCF50058FD32 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		FA41A2FE2A1C8973008DC83E /* SettingsPage */ = {
 			isa = PBXGroup;
 			children = (
+				FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */,
 				FA41A2F32A1C877E008DC83E /* SettingsViewController.swift */,
 			);
 			path = SettingsPage;
@@ -663,6 +666,7 @@
 			files = (
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
+				FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */,
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA32F4C82A32C0900058FD32 /* ThemeColorTableViewCell.swift in Sources */,
 				FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */,

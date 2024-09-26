@@ -11,10 +11,6 @@ class SettingsView: UIView {
   
   let cellIdentifiers = ["ThemeColorTableViewCell","NotificationTableViewCell"]
   
-  @IBOutlet weak var navigationBar: UINavigationBar!
-  
-  @IBOutlet weak var navigationItem: UINavigationItem!
-  
   @IBOutlet weak var tableView: UITableView!{
     didSet{
       //各セルの登録

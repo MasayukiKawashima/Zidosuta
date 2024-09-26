@@ -14,6 +14,10 @@ class SettingsViewController: UIViewController {
     return .portrait
   }
   
+  override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+    .portrait
+  }
+  
   var TableViewCellHeight:CGFloat = 60.0
   //cell周り設定用の列挙体
   enum SettingPageCell:Int {
@@ -27,11 +31,10 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
       settingsView.tableView.delegate = self
       settingsView.tableView.dataSource = self
-      settingsView.navigationBar.delegate = self
       //セルの区切り線を左端まで伸ばす
       settingsView.tableView.separatorInset = UIEdgeInsets.zero
       //navigationBarのタイトルの設定
-      settingsView.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Thonburi-Bold", size: 20)!]
+//      settingsView.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Thonburi-Bold", size: 20)!]
       //スクロールできないようにする
       settingsView.tableView.isScrollEnabled = false
       //セルの高さの自動設定
@@ -54,13 +57,6 @@ class SettingsViewController: UIViewController {
     }
     */
 
-}
-//navigationBarの設定
-extension SettingsViewController: UINavigationBarDelegate {
-  //navigationBarをステータスバーを覆うように表示
-  func position(for bar: UIBarPositioning) -> UIBarPosition {
-    return .topAttached
-  }
 }
 //tableViewの設定
 extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
@@ -101,7 +97,7 @@ extension SettingsViewController {
     
     let titleText = "設定"
     
-    let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: settingsView.navigationBar.frame.size.height))
+    let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
     let titleTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     titleTextLabel.text = titleText
@@ -117,6 +113,6 @@ extension SettingsViewController {
       titleTextLabel.centerXAnchor.constraint(equalTo: customTitleView.centerXAnchor),
       titleTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor)
     ])
-    settingsView.navigationItem.titleView = customTitleView
+    self.navigationItem.titleView = customTitleView
   }
 }
