@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
     }
-    //設定画面はまだNavigationConrtrollerを実装していないので、デフォルトの向きになる
-    //デフォルトをportraitにすることでも期待した動作をしているが、ロジックが汚いので修正予定
     return .portrait // デフォルトの向き
   }
   
