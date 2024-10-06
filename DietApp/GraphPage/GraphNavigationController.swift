@@ -17,7 +17,7 @@ class GraphNavigationController: UINavigationController {
     return .landscapeLeft
   }
   //画面回転
-  private func rotate() {
+  private func graphViewControllersRotate() {
     if #available(iOS 16.0, *) {
       guard let windowScene = view.window?.windowScene else {
         return
@@ -25,7 +25,7 @@ class GraphNavigationController: UINavigationController {
       windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeLeft))
       setNeedsUpdateOfSupportedInterfaceOrientations()
     } else {
-      UIDevice.current.setValue(3, forKey: "orientation")
+      UIDevice.current.setValue(UIInterfaceOrientation.landscapeLeft.rawValue, forKey: "orientation")
     }
   }
   
@@ -35,7 +35,7 @@ class GraphNavigationController: UINavigationController {
   }
   
   override func viewWillLayoutSubviews() {
-    rotate()
+    graphViewControllersRotate()
   }
   
   /*

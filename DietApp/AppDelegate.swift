@@ -11,13 +11,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
-  
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    
-    return true
-  }
-  //ViewControllerの向きの設定
-  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+  //画面の向きを設定するメソッド
+  func supportedInterfaceOrientationsForTopViewController(window: UIWindow?) -> UIInterfaceOrientationMask {
     if let rootViewController = window?.rootViewController {
       // TabBarControllerを取得
       if let tabBarController = rootViewController as? UITabBarController {
@@ -31,7 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
     }
-    return .portrait // デフォルトの向き
+    return .portrait // デフォルトは縦向き
+  }
+  
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
+    return true
+  }
+  //ViewControllerの向きの設定
+  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    supportedInterfaceOrientationsForTopViewController(window: window)
   }
   
   // MARK: UISceneSession Lifecycle
