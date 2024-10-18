@@ -9,10 +9,11 @@ import UIKit
 
 protocol PhotoTableViewCellDelegate {
   func insertButtonAction()
+  func photoDoubleTapAction()
 }
 
 class PhotoTableViewCell: UITableViewCell {
-
+  
   @IBOutlet weak var photoImageView: UIImageView!
   @IBOutlet weak var insertButton: UIButton!
   
@@ -30,6 +31,7 @@ class PhotoTableViewCell: UITableViewCell {
     insertButton.setImage(image, for: .normal)
     
     insertButton.imageView?.contentMode = .scaleAspectFit
+    
     //ボタンのサイズ調整
     if let image = image {
       let buttonSize = CGSize(width: image.size.width + 20, height: image.size.height + 20)
@@ -37,18 +39,39 @@ class PhotoTableViewCell: UITableViewCell {
     }else{
       return
     }
-  }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
     
+    setupPhotoDoubleTapGesture()
+  }
+  //写真がダブルタップを感知できるようにする処理
+  func setupPhotoDoubleTapGesture() {
+    // ダブルタップジェスチャーの作成
+    let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(photoDoubleTapAction))
+    // タップ回数を2回に設定
+    doubleTapGesture.numberOfTapsRequired = 2
+    
+    // ImageViewのユーザーインタラクションを有効化
+    photoImageView.isUserInteractionEnabled = true
+    // ジェスチャーをImageViewに追加
+    photoImageView.addGestureRecognizer(doubleTapGesture)
+  }
+  
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    // Configure the view for the selected state
+  }
+  
   @IBAction func insertButtonAction(_ sender: Any) {
     delegate?.insertButtonAction()
   }
   
   @IBAction func redoButtonAction(_ sender: Any) {
     delegate?.insertButtonAction()
+  }
+  
+  @objc func  photoDoubleTapAction() {
+    if photoImageView.image != nil  {
+      delegate?.photoDoubleTapAction()
+    }
   }
 }

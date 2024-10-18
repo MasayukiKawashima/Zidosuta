@@ -8,6 +8,8 @@
 import UIKit
 
 class PhotoModalViewController: UIViewController {
+  
+  var photoModalView = PhotoModalView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,6 +17,9 @@ class PhotoModalViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+  override func loadView() {
+    view = photoModalView
+  }
 
     /*
     // MARK: - Navigation
