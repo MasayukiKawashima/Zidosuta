@@ -235,12 +235,12 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     showPhotoSelectionActionSheet()
   }
   //写真がダブルタップされた時の処理
-  func photoDoubleTapAction() {
-    showPhotoModal()
+  func photoDoubleTapAction(photoImage: UIImage) {
+    showPhotoModal(photoImage: photoImage)
   }
   //モーダル表示するメソッド
-  func showPhotoModal() {
-    let photoModalVC = PhotoModalViewController()
+  func showPhotoModal(photoImage: UIImage) {
+    let photoModalVC = PhotoModalViewController(image: photoImage)
     photoModalVC.modalPresentationStyle = .fullScreen
     present(photoModalVC, animated: true)
   }

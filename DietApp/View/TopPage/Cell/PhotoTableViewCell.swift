@@ -9,7 +9,7 @@ import UIKit
 
 protocol PhotoTableViewCellDelegate {
   func insertButtonAction()
-  func photoDoubleTapAction()
+  func photoDoubleTapAction(photoImage: UIImage)
 }
 
 class PhotoTableViewCell: UITableViewCell {
@@ -70,8 +70,10 @@ class PhotoTableViewCell: UITableViewCell {
   }
   
   @objc func  photoDoubleTapAction() {
-    if photoImageView.image != nil  {
-      delegate?.photoDoubleTapAction()
+    if let image = photoImageView.image  {
+      delegate?.photoDoubleTapAction(photoImage: image)
+    }else {
+      return
     }
   }
 }

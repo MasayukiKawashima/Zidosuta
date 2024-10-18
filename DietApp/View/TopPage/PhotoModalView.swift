@@ -7,10 +7,17 @@
 
 import UIKit
 
+protocol PhotoModalViewDelegate {
+  func dismiss()
+}
+
 class PhotoModalView: UIView {
   
+  @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var photoImageView: UIImageView!
   @IBOutlet weak var dismissButton: UIButton!
+  
+  var delegate: PhotoModalViewDelegate?
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -39,6 +46,10 @@ class PhotoModalView: UIView {
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     
     self.addSubview(view)
+  }
+  
+  @IBAction func dismissButtonAction(_ sender: Any) {
+    delegate?.dismiss()
   }
   
   
