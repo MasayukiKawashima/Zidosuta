@@ -231,7 +231,7 @@ extension TopViewController {
 //写真セル内のボタン押下時処理
 extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   //写真挿入ボタンとやり直しボタンを押した時の処理
-  func insertButonAction() {
+  func insertButtonAction() {
     showPhotoSelectionActionSheet()
   }
   //カメラ及びフォトライブラリでキャンセルしたときのデリゲートメソッド

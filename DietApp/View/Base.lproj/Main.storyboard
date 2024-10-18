@@ -76,6 +76,21 @@
             </objects>
             <point key="canvasLocation" x="2381" y="-17"/>
         </scene>
+        <!--Photo Modal View Controller-->
+        <scene sceneID="Lp3-ZZ-qHS">
+            <objects>
+                <viewController id="COb-2Z-XrH" customClass="PhotoModalViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BFb-wN-Y63">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="syb-Yk-pmq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yVD-Yh-Gl1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3339" y="-17"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="QSF-2k-PN7">
             <objects>
