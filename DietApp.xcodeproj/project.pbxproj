@@ -56,6 +56,9 @@
 		FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */; };
 		FA68AF422A135F7200B69D4A /* DietAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF412A135F7200B69D4A /* DietAppUITests.swift */; };
 		FA68AF442A135F7200B69D4A /* DietAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */; };
+		FA7F0B332CC2105F000CB10C /* PhotoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */; };
+		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
+		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
 		FABF36082A283CD0007D91DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF36072A283CD0007D91DB /* GraphView.swift */; };
 		FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF36092A283CFF007D91DB /* GraphView.xib */; };
 		FAF1BB0F2A4D92FA00EFD25F /* DateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */; };
@@ -144,6 +147,9 @@
 		FA68AF3D2A135F7200B69D4A /* DietAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DietAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF412A135F7200B69D4A /* DietAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITests.swift; sourceTree = "<group>"; };
 		FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalViewController.swift; sourceTree = "<group>"; };
+		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
+		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
 		FABF36072A283CD0007D91DB /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FABF36092A283CFF007D91DB /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
 		FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateData.swift; sourceTree = "<group>"; };
@@ -314,6 +320,7 @@
 				FA31426F2A41671900254D60 /* TopNavigationController.swift */,
 				FA41A2ED2A1C8531008DC83E /* TopPageViewController.swift */,
 				FA41A2EB2A1C84CE008DC83E /* TopViewController.swift */,
+				FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */,
 			);
 			path = TopPage;
 			sourceTree = "<group>";
@@ -421,6 +428,8 @@
 			children = (
 				FAFF6F522A2055430092A1A3 /* TopView.swift */,
 				FAFF6F542A2055590092A1A3 /* TopView.xib */,
+				FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */,
+				FA7F0B382CC21211000CB10C /* PhotoModalView.xib */,
 				FAFF6F5B2A21C5D00092A1A3 /* Cell */,
 			);
 			path = TopPage;
@@ -561,6 +570,7 @@
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
 				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
 				FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */,
+				FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */,
 				FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -689,6 +699,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7F0B332CC2105F000CB10C /* PhotoModalViewController.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
 				FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */,
@@ -721,6 +732,7 @@
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
+				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
 				FA11122E2A592745007353EA /* Direction.swift in Sources */,
 				FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */,
 			);

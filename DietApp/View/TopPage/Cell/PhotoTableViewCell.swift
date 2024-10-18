@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PhotoTableViewCellDelegate {
-  func insertButonAction()
+  func insertButtonAction()
 }
 
 class PhotoTableViewCell: UITableViewCell {
@@ -28,6 +28,7 @@ class PhotoTableViewCell: UITableViewCell {
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
     let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
     insertButton.setImage(image, for: .normal)
+    
     insertButton.imageView?.contentMode = .scaleAspectFit
     //ボタンのサイズ調整
     if let image = image {
@@ -44,10 +45,10 @@ class PhotoTableViewCell: UITableViewCell {
     }
     
   @IBAction func insertButtonAction(_ sender: Any) {
-    delegate?.insertButonAction()
+    delegate?.insertButtonAction()
   }
   
   @IBAction func redoButtonAction(_ sender: Any) {
-    delegate?.insertButonAction()
+    delegate?.insertButtonAction()
   }
 }
