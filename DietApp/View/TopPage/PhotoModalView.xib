@@ -12,7 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoModalView" customModule="DietApp" customModuleProvider="target">
             <connections>
                 <outlet property="dismissButton" destination="UVP-5S-keN" id="0wt-fj-2cW"/>
-                <outlet property="photoImageView" destination="jr5-BU-REE" id="K3k-kf-fjb"/>
+                <outlet property="photoImageView" destination="8Su-Bx-U2C" id="68L-6j-DXh"/>
+                <outlet property="scrollView" destination="vlA-6u-66v" id="G65-S7-usJ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,30 +21,47 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jr5-BU-REE">
-                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVP-5S-keN">
-                    <rect key="frame" x="317" y="75" width="60" height="60"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlA-6u-66v">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-Bx-U2C">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="771"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="771" id="Qki-42-Aqp"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVP-5S-keN">
+                            <rect key="frame" x="338.66666666666669" y="8" width="46.333333333333314" height="34.333333333333336"/>
+                            <state key="normal" title="Button" backgroundImage="xmark" catalog="system"/>
+                            <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                            <connections>
+                                <action selector="dismissButtonAction:" destination="-1" eventType="touchUpInside" id="fd6-hM-n6b"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" constant="60" id="2zo-RS-lHM"/>
-                        <constraint firstAttribute="height" constant="60" id="w9c-UY-4XW"/>
+                        <constraint firstItem="8Su-Bx-U2C" firstAttribute="width" secondItem="vlA-6u-66v" secondAttribute="width" id="52R-pk-nku"/>
+                        <constraint firstItem="GZY-Ur-kBV" firstAttribute="trailing" secondItem="UVP-5S-keN" secondAttribute="trailing" constant="8" id="A80-rM-fIO"/>
+                        <constraint firstAttribute="bottom" secondItem="8Su-Bx-U2C" secondAttribute="bottom" id="B2U-qm-erP"/>
+                        <constraint firstItem="UVP-5S-keN" firstAttribute="top" secondItem="GZY-Ur-kBV" secondAttribute="top" constant="8" id="CTb-bI-C62"/>
+                        <constraint firstAttribute="trailing" secondItem="8Su-Bx-U2C" secondAttribute="trailing" id="I0F-IQ-0OQ"/>
+                        <constraint firstItem="8Su-Bx-U2C" firstAttribute="top" secondItem="vlA-6u-66v" secondAttribute="top" id="KZg-ss-nMG"/>
+                        <constraint firstItem="8Su-Bx-U2C" firstAttribute="leading" secondItem="vlA-6u-66v" secondAttribute="leading" id="p7g-q3-uZQ"/>
                     </constraints>
-                    <state key="normal" title="Button" backgroundImage="xmark" catalog="system"/>
-                    <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
-                </button>
+                    <viewLayoutGuide key="contentLayoutGuide" id="scy-7Q-hgh"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="GZY-Ur-kBV"/>
+                </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="UVP-5S-keN" secondAttribute="trailing" constant="16" id="7J3-Mc-WuA"/>
-                <constraint firstItem="jr5-BU-REE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9W4-El-UgP"/>
-                <constraint firstItem="UVP-5S-keN" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="E0E-tX-Xr7"/>
-                <constraint firstItem="jr5-BU-REE" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Hyw-LX-oIw"/>
-                <constraint firstItem="jr5-BU-REE" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="MrP-82-A8y"/>
-                <constraint firstItem="jr5-BU-REE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kya-z0-b1f"/>
+                <constraint firstItem="vlA-6u-66v" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HPu-gh-HhL"/>
+                <constraint firstItem="vlA-6u-66v" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XUf-2N-Fl9"/>
+                <constraint firstItem="vlA-6u-66v" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="c4e-1B-oiD"/>
+                <constraint firstAttribute="bottom" secondItem="vlA-6u-66v" secondAttribute="bottom" id="cKm-TY-hCu"/>
             </constraints>
-            <point key="canvasLocation" x="64.885496183206101" y="0.0"/>
+            <point key="canvasLocation" x="168.70229007633588" y="-198.59154929577466"/>
         </view>
     </objects>
     <resources>
