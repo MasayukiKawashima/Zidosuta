@@ -11,6 +11,7 @@ protocol PhotoModalViewDelegate {
   func dismiss()
 }
 
+
 class PhotoModalView: UIView {
   
   @IBOutlet weak var scrollView: UIScrollView!
