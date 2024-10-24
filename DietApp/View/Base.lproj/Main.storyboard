@@ -79,7 +79,7 @@
         <!--Photo Modal View Controller-->
         <scene sceneID="Lp3-ZZ-qHS">
             <objects>
-                <viewController id="COb-2Z-XrH" customClass="PhotoModalViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoModalVC" id="COb-2Z-XrH" customClass="PhotoModalViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BFb-wN-Y63">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

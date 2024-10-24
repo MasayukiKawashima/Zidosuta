@@ -24,7 +24,15 @@ class PhotoTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    
+    //redoButtonのイメージ設定
+    //iOS18以降かどうかでイメージを変える
+    if #available(iOS 18.0, *) {
+      redoButton.setImage(UIImage(systemName: "arrow.trianglehead.counterclockwise"), for: .normal)
+    } else {
+      redoButton.setImage(UIImage(systemName: "gobackward"), for: .normal)
+    }
+    
     //systemImageのサイズ調整
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
     let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
