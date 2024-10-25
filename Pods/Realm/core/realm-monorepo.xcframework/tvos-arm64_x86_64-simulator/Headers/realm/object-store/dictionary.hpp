@@ -51,6 +51,7 @@ struct DictionaryChangeSet {
     std::vector<Mixed> modifications;
 
     bool collection_root_was_deleted = false;
+    bool collection_was_cleared = false;
 
     void add_deletion(const Mixed& key)
     {
@@ -101,7 +102,7 @@ public:
     util::Optional<Mixed> try_get_any(StringData key) const;
     std::pair<StringData, Mixed> get_pair(size_t ndx) const;
     size_t find_any(Mixed value) const final;
-    bool contains(StringData key);
+    bool contains(StringData key) const;
 
     template <typename T, typename Context>
     void insert(Context&, StringData key, T&& value, CreatePolicy = CreatePolicy::SetLink);
@@ -117,13 +118,19 @@ public:
     Results get_keys() const;
     Results get_values() const;
 
-    using CBFunc = util::UniqueFunction<void(DictionaryChangeSet, std::exception_ptr)>;
-    NotificationToken add_key_based_notification_callback(CBFunc cb, KeyPathArray key_path_array = {}) &;
+    using CBFunc = util::UniqueFunction<void(DictionaryChangeSet)>;
+    NotificationToken
+    add_key_based_notification_callback(CBFunc cb, std::optional<KeyPathArray> key_path_array = std::nullopt) &;
 
     Iterator begin() const;
     Iterator end() const;
 
 private:
+    const char* type_name() const noexcept override
+    {
+        return "Dictionary";
+    }
+
     realm::Dictionary& dict() const noexcept
     {
         REALM_ASSERT_DEBUG(dynamic_cast<realm::Dictionary*>(m_coll_base.get()));
@@ -134,7 +141,6 @@ private:
     auto dispatch(Fn&&) const;
     Obj get_object(StringData key) const;
 };
-
 
 template <typename Fn>
 auto Dictionary::dispatch(Fn&& fn) const
@@ -171,62 +177,7 @@ inline Obj Dictionary::get<Obj>(StringData key) const
     return get_object(key);
 }
 
-template <typename T, typename Context>
-void Dictionary::insert(Context& ctx, StringData key, T&& value, CreatePolicy policy)
-{
-    if (ctx.is_null(value)) {
-        this->insert(key, Mixed());
-        return;
-    }
-    if (m_is_embedded) {
-        validate_embedded(ctx, value, policy);
-        auto obj_key = dict().create_and_insert_linked_object(key).get_key();
-        ctx.template unbox<Obj>(value, policy, obj_key);
-        return;
-    }
-    dispatch([&](auto t) {
-        this->insert(key, ctx.template unbox<std::decay_t<decltype(*t)>>(value, policy));
-    });
-}
-
-template <typename Context>
-auto Dictionary::get(Context& ctx, StringData key) const
-{
-    return dispatch([&](auto t) {
-        return ctx.box(this->get<std::decay_t<decltype(*t)>>(key));
-    });
-}
-
-template <typename T, typename Context>
-void Dictionary::assign(Context& ctx, T&& values, CreatePolicy policy)
-{
-    if (ctx.is_same_dictionary(*this, values))
-        return;
-
-    if (ctx.is_null(values)) {
-        remove_all();
-        return;
-    }
-
-    if (!policy.diff)
-        remove_all();
-
-    ctx.enumerate_dictionary(values, [&](StringData key, auto&& value) {
-        if (policy.diff) {
-            util::Optional<Mixed> old_value = dict().try_get(key);
-            auto new_value = ctx.template unbox<Mixed>(value);
-            if (!old_value || *old_value != new_value) {
-                dict().insert(key, new_value);
-            }
-        }
-        else {
-            this->insert(ctx, key, value, policy);
-        }
-    });
-}
-
 } // namespace object_store
 } // namespace realm
-
 
 #endif /* REALM_OS_DICTIONARY_HPP */

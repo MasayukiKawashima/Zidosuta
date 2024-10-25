@@ -22,7 +22,7 @@
 #include <mutex>
 #include <type_traits>
 
-#include "realm/status.hpp"
+#include "realm/exceptions.hpp"
 #include "realm/status_with.hpp"
 #include "realm/util/assert.hpp"
 #include "realm/util/bind_ptr.hpp"
@@ -33,12 +33,12 @@
 
 namespace realm::util {
 
-template <typename T>
-class SharedPromise;
-
 namespace future_details {
 template <typename T>
 class Promise;
+
+template <typename T>
+class CopyablePromiseHolder;
 
 template <typename T>
 class Future;
@@ -53,8 +53,7 @@ constexpr static bool is_future<Future<T>> = true;
 
 // FakeVoid is a helper type for futures for callbacks or values that return/are void but need to be represented
 // as a value. It should not be visible to callers outside of future_details.
-struct FakeVoid {
-};
+struct FakeVoid {};
 
 template <typename T>
 using VoidToFakeVoid = std::conditional_t<std::is_void_v<T>, FakeVoid, T>;
@@ -171,14 +170,14 @@ inline auto throwing_call(Func&& func, Args&&... args)
     else if constexpr (std::is_same_v<Result, Status>) {
         auto res = (call(func, std::forward<Args>(args)...));
         if (!res.is_ok()) {
-            throw ExceptionForStatus(std::move(res));
+            throw Exception(std::move(res));
         }
         return FakeVoid{};
     }
     else if constexpr (is_status_with<Result>) {
         auto res = (call(func, std::forward<Args>(args)...));
         if (!res.is_ok()) {
-            throw ExceptionForStatus(std::move(res.get_status()));
+            throw Exception(std::move(res.get_status()));
         }
         return std::move(res.get_value());
     }
@@ -386,6 +385,7 @@ struct SharedStateImpl final : public SharedStateBase {
     {
         REALM_ASSERT_DEBUG(m_state.load() < SSBState::Finished);
         REALM_ASSERT_DEBUG(other.m_state.load() == SSBState::Finished);
+        REALM_ASSERT_DEBUG(m_owned_by_promise.load());
         if (other.m_status.is_ok()) {
             m_data = std::move(other.m_data);
         }
@@ -399,6 +399,7 @@ struct SharedStateImpl final : public SharedStateBase {
     void emplace_value(Args&&... args) noexcept
     {
         REALM_ASSERT_DEBUG(m_state.load() < SSBState::Finished);
+        REALM_ASSERT_DEBUG(m_owned_by_promise.load());
         try {
             m_data.emplace(std::forward<Args>(args)...);
         }
@@ -408,7 +409,7 @@ struct SharedStateImpl final : public SharedStateBase {
         transition_to_finished();
     }
 
-    void set_from(StatusWith<T> roe)
+    void set_from(StatusOrStatusWith<T> roe)
     {
         if (roe.is_ok()) {
             emplace_value(std::move(roe.get_value()));
@@ -418,6 +419,18 @@ struct SharedStateImpl final : public SharedStateBase {
         }
     }
 
+    void disown() const
+    {
+        REALM_ASSERT(m_owned_by_promise.exchange(false));
+    }
+
+    void claim() const
+    {
+        REALM_ASSERT(!m_owned_by_promise.exchange(true));
+    }
+
+    mutable std::atomic<bool> m_owned_by_promise{true};
+
     util::Optional<T> m_data; // P
 };
 
@@ -425,6 +438,7 @@ struct SharedStateImpl final : public SharedStateBase {
 
 // These are in the future_details namespace to get access to its contents, but they are part of the
 // public API.
+using future_details::CopyablePromiseHolder;
 using future_details::Future;
 using future_details::Promise;
 
@@ -466,7 +480,7 @@ public:
     Promise& operator=(Promise&&) = delete;
 
     // The default move construction is fine.
-    Promise(Promise&&) = default;
+    Promise(Promise&&) noexcept = default;
 
     /**
      * Sets the value into this Promise when the passed-in Future completes, which may have already
@@ -477,24 +491,24 @@ public:
 
     void set_from_status_with(StatusWith<T> sw) noexcept
     {
-        set_impl([&] {
-            m_shared_state->set_from(std::move(sw));
+        set_impl([&](auto& shared_state) {
+            shared_state.set_from(std::move(sw));
         });
     }
 
     template <typename... Args>
     void emplace_value(Args&&... args) noexcept
     {
-        set_impl([&] {
-            m_shared_state->emplace_value(std::forward<Args>(args)...);
+        set_impl([&](auto& shared_state) {
+            shared_state.emplace_value(std::forward<Args>(args)...);
         });
     }
 
     void set_error(Status status) noexcept
     {
         REALM_ASSERT_DEBUG(!status.is_ok());
-        set_impl([&] {
-            m_shared_state->set_status(std::move(status));
+        set_impl([&](auto& shared_state) {
+            shared_state.set_status(std::move(status));
         });
     }
 
@@ -513,16 +527,61 @@ private:
     Future<T> get_future() noexcept;
 
     friend class Future<void>;
+    friend class CopyablePromiseHolder<T>;
+
+    Promise(util::bind_ptr<SharedState<T>> shared_state)
+        : m_shared_state(std::move(shared_state))
+    {
+        m_shared_state->claim();
+    }
+
+    util::bind_ptr<SharedState<T>> release() &&
+    {
+        auto ret = std::move(m_shared_state);
+        ret->disown();
+        return ret;
+    }
 
     template <typename Func>
     void set_impl(Func&& do_set) noexcept
     {
         REALM_ASSERT(m_shared_state);
-        do_set();
-        m_shared_state.reset();
+        // Update m_shared_state before fulfilling the promise so that anything
+        // waiting on the future will see `m_shared_state = nullptr`.
+        auto shared_state = std::move(m_shared_state);
+        do_set(*shared_state);
     }
 
     util::bind_ptr<SharedState<T>> m_shared_state = make_intrusive<SharedState<T>>();
+};
+
+/**
+ * CopyablePromiseHolder<T> is a lightweight copyable holder for Promises so they can be captured inside
+ * of std::function's and other types that require all members to be copyable.
+ *
+ * The only thing you can do with a CopyablePromiseHolder is extract a regular promise from it exactly once,
+ * and copy/move it as you would a util::bind_ptr.
+ *
+ * Do not use this type to try to fill a Promise from multiple places or threads.
+ */
+template <typename T>
+class future_details::CopyablePromiseHolder {
+public:
+    CopyablePromiseHolder(Promise<T>&& input)
+        : m_shared_state(std::move(input).release())
+    {
+    }
+
+    CopyablePromiseHolder(const Promise<T>&) = delete;
+
+    Promise<T> get_promise()
+    {
+        REALM_ASSERT(m_shared_state);
+        return Promise<T>(std::move(m_shared_state));
+    }
+
+private:
+    util::bind_ptr<SharedState<T>> m_shared_state;
 };
 
 /**
@@ -786,7 +845,7 @@ public:
         }
     }
 
-    /*
+    /**
      * Callbacks passed to on_completion() are always called with a StatusWith<T> when the input future completes.
      */
     template <typename Func>
@@ -954,7 +1013,7 @@ private:
 
         m_shared->wait();
         if (!m_shared->m_status.is_ok()) {
-            throw ExceptionForStatus(m_shared->m_status);
+            throw Exception(m_shared->m_status);
         }
         return *m_shared->m_data;
     }
@@ -1166,7 +1225,7 @@ private:
  * Returns a bound Promise and Future in a struct with friendly names (promise and future) that also
  * works well with C++17 structured bindings.
  */
-template <typename T>
+template <typename T = void>
 inline auto make_promise_future()
 {
     return Promise<T>::make_promise_future_impl();
@@ -1212,8 +1271,8 @@ inline Future<T> Promise<T>::get_future() noexcept
 template <typename T>
 inline void Promise<T>::set_from(Future<T>&& future) noexcept
 {
-    set_impl([&] {
-        std::move(future).propagate_result_to(m_shared_state.get());
+    set_impl([&](auto& shared_state) {
+        std::move(future).propagate_result_to(&shared_state);
     });
 }
 

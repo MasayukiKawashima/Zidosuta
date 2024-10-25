@@ -147,15 +147,46 @@ namespace realm {
 // However, these are problems that you should expect, since the activity is spread over multiple
 // transactions.
 
+class KeyValues : public std::vector<ObjKey> {
+public:
+    KeyValues() = default;
+    void create()
+    {
+        m_attached = true;
+    }
+    bool is_attached() const
+    {
+        return m_attached;
+    }
+    void add(ObjKey k)
+    {
+        push_back(k);
+    }
+    ObjKey get(size_t n) const
+    {
+        return operator[](n);
+    }
+    size_t find_first(ObjKey k) const
+    {
+        auto it = std::find(begin(), end(), k);
+        if (it != end()) {
+            return it - begin();
+        }
+        return realm::not_found;
+    }
+
+private:
+    bool m_attached = false;
+};
+
 class TableView : public ObjList {
 public:
     /// Construct null view (no memory allocated).
     TableView() {}
 
-
     /// Construct empty view, ready for addition of row indices.
     explicit TableView(ConstTableRef parent);
-    TableView(Query& query, size_t limit);
+    TableView(const Query& query, size_t limit);
     TableView(ConstTableRef parent, ColKey column, const Obj& obj);
     TableView(LinkCollectionPtr&& collection);
 
@@ -201,20 +232,12 @@ public:
         return m_key_values.get(ndx);
     }
 
-    bool is_obj_valid(size_t ndx) const noexcept final
+    bool is_obj_valid(size_t ndx) const noexcept
     {
         return m_table->is_valid(get_key(ndx));
     }
 
-    Obj get_object(size_t ndx) const final
-    {
-        REALM_ASSERT(ndx < size());
-        ObjKey key(m_key_values.get(ndx));
-        REALM_ASSERT(key);
-        return m_table->get_object(key);
-    }
-
-    Obj try_get_object(size_t ndx) const noexcept override
+    Obj get_object(size_t ndx) const noexcept final
     {
         REALM_ASSERT(ndx < size());
         ObjKey key(m_key_values.get(ndx));
@@ -224,7 +247,7 @@ public:
     // Get the query used to create this TableView
     // The query will have a null source table if this tv was not created from
     // a query
-    const Query& get_query() const noexcept
+    const std::optional<Query>& get_query() const noexcept
     {
         return m_query;
     }
@@ -254,44 +277,33 @@ public:
         std::unique_ptr<TableView> retval(new TableView(*this, tr, mode));
         return retval;
     }
-    template <Action action, typename T, typename R>
-    R aggregate(ColKey column_key, size_t* result_count = nullptr, ObjKey* return_key = nullptr) const;
+    template <Action action, typename T>
+    Mixed aggregate(ColKey column_key, size_t* result_count = nullptr, ObjKey* return_key = nullptr) const;
     template <typename T>
     size_t aggregate_count(ColKey column_key, T count_target) const;
 
-    int64_t sum_int(ColKey column_key) const;
-    int64_t maximum_int(ColKey column_key, ObjKey* return_key = nullptr) const;
-    int64_t minimum_int(ColKey column_key, ObjKey* return_key = nullptr) const;
-    double average_int(ColKey column_key, size_t* value_count = nullptr) const;
     size_t count_int(ColKey column_key, int64_t target) const;
-
-    double sum_float(ColKey column_key) const;
-    float maximum_float(ColKey column_key, ObjKey* return_key = nullptr) const;
-    float minimum_float(ColKey column_key, ObjKey* return_key = nullptr) const;
-    double average_float(ColKey column_key, size_t* value_count = nullptr) const;
     size_t count_float(ColKey column_key, float target) const;
-
-    double sum_double(ColKey column_key) const;
-    double maximum_double(ColKey column_key, ObjKey* return_key = nullptr) const;
-    double minimum_double(ColKey column_key, ObjKey* return_key = nullptr) const;
-    double average_double(ColKey column_key, size_t* value_count = nullptr) const;
     size_t count_double(ColKey column_key, double target) const;
-
-    Timestamp minimum_timestamp(ColKey column_key, ObjKey* return_key = nullptr) const;
-    Timestamp maximum_timestamp(ColKey column_key, ObjKey* return_key = nullptr) const;
     size_t count_timestamp(ColKey column_key, Timestamp target) const;
-
-    Decimal128 sum_decimal(ColKey column_key) const;
-    Decimal128 maximum_decimal(ColKey column_key, ObjKey* return_key = nullptr) const;
-    Decimal128 minimum_decimal(ColKey column_key, ObjKey* return_key = nullptr) const;
-    Decimal128 average_decimal(ColKey column_key, size_t* value_count = nullptr) const;
     size_t count_decimal(ColKey column_key, Decimal128 target) const;
-
-    Decimal128 sum_mixed(ColKey column_key) const;
-    Mixed maximum_mixed(ColKey column_key, ObjKey* return_key = nullptr) const;
-    Mixed minimum_mixed(ColKey column_key, ObjKey* return_key = nullptr) const;
-    Decimal128 average_mixed(ColKey column_key, size_t* value_count = nullptr) const;
     size_t count_mixed(ColKey column_key, Mixed target) const;
+
+    /// Get the min element, according to whatever comparison function is
+    /// meaningful for the collection, or none if min is not supported for this type.
+    util::Optional<Mixed> min(ColKey column_key, ObjKey* return_key = nullptr) const;
+
+    /// Get the max element, according to whatever comparison function is
+    /// meaningful for the collection, or none if max is not supported for this type.
+    util::Optional<Mixed> max(ColKey column_key, ObjKey* return_key = nullptr) const;
+
+    /// For collections of arithmetic types, return the sum of all elements.
+    /// For non arithmetic types, returns none.
+    util::Optional<Mixed> sum(ColKey column_key) const;
+
+    /// For collections of arithmetic types, return the average of all elements.
+    /// For non arithmetic types, returns none.
+    util::Optional<Mixed> avg(ColKey column_key, size_t* value_count = nullptr) const;
 
     /// Search this view for the specified key. If found, the index of that row
     /// within this view is returned, otherwise `realm::not_found` is returned.
@@ -301,8 +313,7 @@ public:
     }
 
     // Conversion
-    void to_json(std::ostream&, size_t link_depth = 0, const std::map<std::string, std::string>& renames = {},
-                 JSONOutputMode mode = output_mode_json) const;
+    void to_json(std::ostream&, JSONOutputMode mode = output_mode_json) const;
 
     // Determine if the view is 'in sync' with the underlying table
     // as well as other views used to generate the view. Note that updates
@@ -339,6 +350,10 @@ public:
         return ret;
     }
 
+    bool has_changed() const
+    {
+        return m_last_seen_versions != get_dependency_versions();
+    }
 
     // Sort m_key_values according to one column
     void sort(ColKey column, bool ascending = true);
@@ -346,21 +361,15 @@ public:
     // Sort m_key_values according to multiple columns
     void sort(SortDescriptor order);
 
-    // Get the number of total results which have been filtered out because a number of "LIMIT" operations have
-    // been applied. This number only applies to the last sync.
-    size_t get_num_results_excluded_by_limit() const noexcept
-    {
-        return m_limit_count;
-    }
-
     // Remove rows that are duplicated with respect to the column set passed as argument.
     // distinct() will preserve the original order of the row pointers, also if the order is a result of sort()
-    // If two rows are indentical (for the given set of distinct-columns), then the last row is removed.
+    // If two rows are identical (for the given set of distinct-columns), then the last row is removed.
     // You can call sync_if_needed() to update the distinct view, just like you can for a sorted view.
     // Each time you call distinct() it will compound on the previous calls
     void distinct(ColKey column);
     void distinct(DistinctDescriptor columns);
     void limit(LimitDescriptor limit);
+    void filter(FilterDescriptor filter);
 
     // Replace the order of sort and distinct operations, bypassing manually
     // calling sort and distinct. This is a convenience method for bindings.
@@ -391,7 +400,7 @@ protected:
     void get_dependencies(TableVersions&) const final;
 
     void do_sync();
-    void do_sort(const DescriptorOrdering&);
+    void apply_descriptors(const DescriptorOrdering&);
 
     mutable ConstTableRef m_table;
     // The source column index that this view contain backlinks for.
@@ -404,40 +413,20 @@ protected:
 
     // Stores the ordering criteria of applied sort and distinct operations.
     DescriptorOrdering m_descriptor_ordering;
-    size_t m_limit_count = 0;
 
     // A valid query holds a reference to its table which must match our m_table.
-    // hence we can use a query with a null table reference to indicate that the view
-    // was NOT generated by a query, but follows a table directly.
-    Query m_query;
+    std::optional<Query> m_query;
     // parameters for findall, needed to rerun the query
     size_t m_limit = size_t(-1);
-
-    // FIXME: This class should eventually be replaced by std::vector<ObjKey>
-    // It implements a vector of ObjKey, where the elements are held in the
-    // heap (default allocator is the only option)
-    class KeyValues : public KeyColumn {
-    public:
-        KeyValues()
-            : KeyColumn(Allocator::get_default())
-        {
-        }
-        KeyValues(const KeyValues&) = delete;
-        ~KeyValues()
-        {
-            destroy();
-        }
-        void move_from(KeyValues&);
-        void copy_from(const KeyValues&);
-    };
 
     mutable TableVersions m_last_seen_versions;
     KeyValues m_key_values;
 
 private:
     ObjKey find_first_integer(ColKey column_key, int64_t value) const;
-    template <class oper>
-    Timestamp minmax_timestamp(ColKey column_key, ObjKey* return_key) const;
+    template <Action action>
+    std::optional<Mixed> aggregate(ColKey column_key, size_t* count, ObjKey* return_key) const;
+
     util::RaceDetector m_race_detector;
 
     friend class Table;
@@ -461,12 +450,13 @@ inline TableView::TableView(ConstTableRef parent)
     }
 }
 
-inline TableView::TableView(Query& query, size_t lim)
+inline TableView::TableView(const Query& query, size_t lim)
     : m_table(query.get_table())
     , m_query(query)
     , m_limit(lim)
 {
     m_key_values.create();
+    REALM_ASSERT(query.m_table);
 }
 
 inline TableView::TableView(ConstTableRef src_table, ColKey src_column_key, const Obj& obj)
@@ -501,9 +491,8 @@ inline TableView::TableView(const TableView& tv)
     , m_query(tv.m_query)
     , m_limit(tv.m_limit)
     , m_last_seen_versions(tv.m_last_seen_versions)
+    , m_key_values(tv.m_key_values)
 {
-    m_key_values.copy_from(tv.m_key_values);
-    m_limit_count = tv.m_limit_count;
 }
 
 inline TableView::TableView(TableView&& tv) noexcept
@@ -517,20 +506,18 @@ inline TableView::TableView(TableView&& tv) noexcept
     // if we are created from a table view which is outdated, take care to use the outdated
     // version number so that we can later trigger a sync if needed.
     , m_last_seen_versions(std::move(tv.m_last_seen_versions))
+    , m_key_values(std::move(tv.m_key_values))
 {
-    m_key_values.move_from(tv.m_key_values);
-    m_limit_count = tv.m_limit_count;
 }
 
 inline TableView& TableView::operator=(TableView&& tv) noexcept
 {
     m_table = std::move(tv.m_table);
 
-    m_key_values.move_from(tv.m_key_values);
+    m_key_values = std::move(tv.m_key_values);
     m_query = std::move(tv.m_query);
     m_last_seen_versions = tv.m_last_seen_versions;
     m_limit = tv.m_limit;
-    m_limit_count = tv.m_limit_count;
     m_source_column_key = tv.m_source_column_key;
     m_linked_obj = tv.m_linked_obj;
     m_collection_source = std::move(tv.m_collection_source);
@@ -544,12 +531,11 @@ inline TableView& TableView::operator=(const TableView& tv)
     if (this == &tv)
         return *this;
 
-    m_key_values.copy_from(tv.m_key_values);
+    m_key_values = tv.m_key_values;
 
     m_query = tv.m_query;
     m_last_seen_versions = tv.m_last_seen_versions;
     m_limit = tv.m_limit;
-    m_limit_count = tv.m_limit_count;
     m_source_column_key = tv.m_source_column_key;
     m_linked_obj = tv.m_linked_obj;
     m_collection_source = tv.m_collection_source ? tv.m_collection_source->clone_obj_list() : LinkCollectionPtr{};

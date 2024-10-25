@@ -27,41 +27,14 @@
 #include <ostream>
 #include <string>
 #include <utility>
+#include <array>
 
 namespace realm::util {
 
-/// All Logger objects store a reference to a LevelThreshold object which it
-/// uses to efficiently query about the current log level threshold
-/// (`level_threshold.get()`). All messages logged with a level that is lower
-/// than the current threshold will be dropped. For the sake of efficiency, this
-/// test happens before the message is formatted.
-///
-/// A logger is not inherently thread-safe, but specific implementations can be
-/// (see ThreadSafeLogger). For a logger to be thread-safe, the implementation
-/// of do_log() must be thread-safe and the referenced LevelThreshold object
-/// must have a thread-safe get() method.
-///
-/// Examples:
-///
-///    logger.error("Overlong message from master coordinator");
-///    logger.info("Listening for peers on %1:%2", listen_address, listen_port);
-class Logger {
-public:
-    template <class... Params>
-    void trace(const char* message, Params&&...);
-    template <class... Params>
-    void debug(const char* message, Params&&...);
-    template <class... Params>
-    void detail(const char* message, Params&&...);
-    template <class... Params>
-    void info(const char* message, Params&&...);
-    template <class... Params>
-    void warn(const char* message, Params&&...);
-    template <class... Params>
-    void error(const char* message, Params&&...);
-    template <class... Params>
-    void fatal(const char* message, Params&&...);
+class Logger;
 
+class LogCategory {
+public:
     /// Specifies criticality when passed to log(). Functions as a criticality
     /// threshold when returned from LevelThreshold::get().
     ///
@@ -75,33 +48,289 @@ public:
     ///             attention to efficiency.
     ///     trace   A version of 'debug' that allows for very high volume
     ///             output.
-    // equivalent to realm_log_level_e in realm.h and must be kept in sync
-    enum class Level { all = 0, trace = 1, debug = 2, detail = 3, info = 4, warn = 5, error = 6, fatal = 7, off = 8 };
+    // equivalent to realm_log_level_e in realm.h and must be kept in sync -
+    // this is enforced in logging.cpp.
+    enum class Level : int {
+        all = 0,
+        trace = 1,
+        debug = 2,
+        detail = 3,
+        info = 4,
+        warn = 5,
+        error = 6,
+        fatal = 7,
+        off = 8
+    };
+
+    static LogCategory realm; // Top level category
+
+    static LogCategory storage;           // Everything about mutating and querying the database
+    static LogCategory /**/ transaction;  // Creating, advancing and committing transactions
+    static LogCategory /**/ query;        // Query operations
+    static LogCategory /**/ object;       // Mutations of the database
+    static LogCategory /**/ notification; // Reporting changes to the database
+
+    static LogCategory sync;               // Everything about device sync
+    static LogCategory /**/ client;        // Catch-all category for client operations
+    static LogCategory /*    */ session;   // Connection level activity
+    static LogCategory /*    */ changeset; // Reception, upload and integration of changesets
+    static LogCategory /*    */ network;   // Low level network activity
+    static LogCategory /*    */ reset;     // Client reset operations
+    static LogCategory /**/ server;        // All server activity (only relevant for test runs)
+
+    static LogCategory app; // Activity at the app level
+
+    static LogCategory sdk; // Tracing of SDK activity
+
+    static constexpr size_t nb_categories = 15;
+
+    LogCategory(std::string_view name, LogCategory* parent);
+
+    // Set the default threshold level for category. All children
+    // will be assigned the same level
+    void set_default_level_threshold(Level);
+    Level get_default_level_threshold() const noexcept;
+
+    const std::string& get_name() const noexcept
+    {
+        return m_name;
+    }
+
+    // Find category from fully qualified name. Will throw if
+    // name does not match a category
+    static LogCategory& get_category(std::string_view name);
+    static std::vector<std::string_view> get_category_names();
+
+private:
+    friend class Logger;
+    static size_t s_next_index;
+    size_t m_index = 0;
+    std::string m_name;
+    std::atomic<Level> m_default_level;
+    std::vector<LogCategory*> m_children;
+
+    size_t get_index() const noexcept
+    {
+        return m_index;
+    }
+    void set_level_threshold(Logger*, Level) const;
+    void set_default_level_threshold(Logger*) const;
+};
+
+class LogCategoryRef {
+public:
+    LogCategoryRef(LogCategory& cat)
+        : m_category(cat)
+    {
+    }
+    LogCategory& operator*()
+    {
+        return m_category;
+    }
+    static LogCategoryRef get_category(std::string_view name)
+    {
+        return LogCategoryRef(LogCategory::get_category(name));
+    }
+
+private:
+    LogCategory& m_category;
+};
+
+/// All messages logged with a level that is lower than the current threshold
+/// will be dropped. For the sake of efficiency, this test happens before the
+/// message is formatted. This class allows for the log level threshold to be
+/// changed over time and any subclasses will share the same reference to a
+/// log level threshold instance. The default log level threshold is
+/// Logger::Level::info and is defined by Logger::default_log_level.
+///
+/// The Logger threshold level is intrinsically thread safe since it uses an
+/// atomic to store the value. However, the do_log() operation is not, so it
+/// is up to the subclass to ensure thread safety of the output operation.
+///
+/// Examples:
+///
+///    logger.error("Overlong message from master coordinator");
+///    logger.info("Listening for peers on %1:%2", listen_address, listen_port);
+class Logger {
+public:
+    template <class... Params>
+    void trace(const LogCategory&, const char* message, Params&&...);
+    template <class... Params>
+    void trace(const char* message, Params&&... params)
+    {
+        trace(m_category, message, std::forward<Params>(params)...);
+    }
 
     template <class... Params>
-    void log(Level, const char* message, Params&&...);
+    void debug(const LogCategory&, const char* message, Params&&...);
+    template <class... Params>
+    void debug(const char* message, Params&&... params)
+    {
+        debug(m_category, message, std::forward<Params>(params)...);
+    }
 
-    /// Shorthand for `int(level) >= int(level_threshold.get())`.
-    bool would_log(Level level) const noexcept;
+    template <class... Params>
+    void detail(const LogCategory&, const char* message, Params&&...);
+    template <class... Params>
+    void detail(const char* message, Params&&... params)
+    {
+        detail(m_category, message, std::forward<Params>(params)...);
+    }
 
-    class LevelThreshold;
+    template <class... Params>
+    void info(const LogCategory&, const char* message, Params&&...);
+    template <class... Params>
+    void info(const char* message, Params&&... params)
+    {
+        info(m_category, message, std::forward<Params>(params)...);
+    }
 
-    const LevelThreshold& level_threshold;
+    template <class... Params>
+    void warn(const LogCategory&, const char* message, Params&&...);
+    template <class... Params>
+    void warn(const char* message, Params&&... params)
+    {
+        warn(m_category, message, std::forward<Params>(params)...);
+    }
 
-    virtual ~Logger() noexcept;
+    template <class... Params>
+    void error(const LogCategory&, const char* message, Params&&...);
+    template <class... Params>
+    void error(const char* message, Params&&... params)
+    {
+        error(m_category, message, std::forward<Params>(params)...);
+    }
+
+    template <class... Params>
+    void fatal(const LogCategory&, const char* message, Params&&...);
+    template <class... Params>
+    void fatal(const char* message, Params&&... params)
+    {
+        fatal(m_category, message, std::forward<Params>(params)...);
+    }
+
+    using Level = LogCategory::Level;
+    using ThresholdLevels = std::array<std::atomic<Level>, LogCategory::nb_categories>;
+
+    static constexpr size_t max_width_of_value = 80;
+
+    template <class... Params>
+    void log(Level level, const char* message, Params&&... params)
+    {
+        log(m_category, level, message, std::forward<Params>(params)...);
+    }
+
+    template <class... Params>
+    void log(const LogCategory&, Level, const char* message, Params&&...);
+
+    // Get threshold level for the category this logger belongs to
+    Level get_level_threshold() const noexcept
+    {
+        return get_level_threshold(m_category);
+    }
+
+    // Get threshold level for the specific category
+    Level get_level_threshold(std::string_view cat_name) const noexcept
+    {
+        return get_level_threshold(LogCategory::get_category(cat_name));
+    }
+    Level get_level_threshold(const LogCategory& cat) const noexcept
+    {
+        return get_level_threshold(cat.get_index());
+    }
+
+    // Set threshold level for the category this logger belongs to
+    void set_level_threshold(Level level) noexcept
+    {
+        set_level_threshold(m_category, level);
+    }
+
+    const LogCategory& get_category() const noexcept
+    {
+        return m_category;
+    }
+
+    // Set threshold level for the specific category
+    void set_level_threshold(std::string_view cat_name, Level level) noexcept
+    {
+        set_level_threshold(LogCategory::get_category(cat_name), level);
+    }
+    void set_level_threshold(const LogCategory& cat, Level level) noexcept
+    {
+        cat.set_level_threshold(this, level);
+    }
+
+    /// Shorthand for `int(level) >= int(get_level_threshold())`.
+    inline bool would_log(Level level) const noexcept
+    {
+        return static_cast<int>(level) >= static_cast<int>(get_level_threshold());
+    }
+    /// Shorthand for `int(level) >= int(get_level_threshold(cat))`.
+    inline bool would_log(const LogCategory& cat, Level level) const noexcept
+    {
+        return static_cast<int>(level) >= static_cast<int>(get_level_threshold(cat.get_index()));
+    }
+
+    virtual inline ~Logger() noexcept = default;
+
+    static void set_default_logger(std::shared_ptr<util::Logger>) noexcept;
+    static std::shared_ptr<util::Logger>& get_default_logger() noexcept;
+    static const std::string_view level_to_string(Level level) noexcept;
+
+private:
+    friend class LogCategory;
+    // Only used by the base Logger class
+    std::unique_ptr<ThresholdLevels> m_threshold_base;
 
 protected:
-    Logger(const LevelThreshold&) noexcept;
+    // Shared level threshold for subclasses that link to a base logger
+    // See PrefixLogger and ThreadSafeLogger
+    ThresholdLevels& m_level_thresholds;
+    // Used when log() is called without a category.
+    const LogCategory& m_category{LogCategory::realm};
 
-    static void do_log(Logger&, Level, const std::string& message);
+    Logger() noexcept
+        : m_threshold_base{new ThresholdLevels}
+        , m_level_thresholds{*m_threshold_base}
+    {
+        m_category.set_default_level_threshold(this);
+    }
 
-    virtual void do_log(Level, const std::string& message) = 0;
+    explicit Logger(const Logger& base_logger) noexcept
+        : m_level_thresholds{base_logger.m_level_thresholds}
+    {
+    }
+
+    Logger(const LogCategory& category, const Logger& base_logger) noexcept
+        : m_level_thresholds{base_logger.m_level_thresholds}
+        , m_category(category)
+    {
+    }
+
+    Level get_level_threshold(size_t index) const noexcept
+    {
+        // Don't need strict ordering, mainly that the gets/sets are atomic
+        return Level(m_level_thresholds[index].load(std::memory_order_relaxed));
+    }
+    static Level get_level_threshold(const Logger& logger, size_t index) noexcept
+    {
+        return logger.get_level_threshold(index);
+    }
+    void set_level_threshold(size_t index, Level level) noexcept
+    {
+        // Don't need strict ordering, mainly that the gets/sets are atomic
+        m_level_thresholds[index].store(level, std::memory_order_relaxed);
+    }
+
+    static void do_log(Logger&, const LogCategory& category, Level, const std::string& message);
+
+    virtual void do_log(const LogCategory& category, Level, const std::string& message) = 0;
 
     static const char* get_level_prefix(Level) noexcept;
 
 private:
     template <class... Params>
-    REALM_NOINLINE void do_log(Level, const char* message, Params&&...);
+    REALM_NOINLINE void do_log(const LogCategory& category, Level, const char* message, Params&&...);
 };
 
 template <class C, class T>
@@ -110,58 +339,44 @@ std::basic_ostream<C, T>& operator<<(std::basic_ostream<C, T>&, Logger::Level);
 template <class C, class T>
 std::basic_istream<C, T>& operator>>(std::basic_istream<C, T>&, Logger::Level&);
 
-class Logger::LevelThreshold {
+/// A logger that writes to STDERR, which is thread safe.
+/// Since this class is a subclass of Logger, it maintains its own modifiable log
+/// level threshold.
+class StderrLogger : public Logger {
 public:
-    virtual Level get() const noexcept = 0;
-};
+    StderrLogger() noexcept = default;
 
-
-/// A root logger that is not thread-safe and allows for the log level threshold
-/// to be changed over time. The initial log level threshold is
-/// Logger::Level::info.
-class RootLogger : private Logger::LevelThreshold, public Logger {
-public:
-    void set_level_threshold(Level) noexcept;
+    StderrLogger(Level level) noexcept
+        : Logger()
+    {
+        set_level_threshold(level);
+    }
 
 protected:
-    RootLogger();
-
-private:
-    Level m_level_threshold = Level::info;
-    Level get() const noexcept override final;
-};
-
-
-/// A logger that writes to STDERR. This logger is not thread-safe.
-///
-/// Since this class is a RootLogger, it contains modifiable a log level
-/// threshold.
-class StderrLogger : public RootLogger {
-protected:
-    void do_log(Level, const std::string&) override final;
+    void do_log(const LogCategory& category, Level, const std::string&) final;
 };
 
 
 /// A logger that writes to a stream. This logger is not thread-safe.
 ///
-/// Since this class is a RootLogger, it contains modifiable a log level
-/// threshold.
-class StreamLogger : public RootLogger {
+/// Since this class is a subclass of Logger, it maintains its own modifiable log
+/// level threshold.
+class StreamLogger : public Logger {
 public:
     explicit StreamLogger(std::ostream&) noexcept;
 
 protected:
-    void do_log(Level, const std::string&) override final;
+    void do_log(const LogCategory& category, Level, const std::string&) final;
 
 private:
     std::ostream& m_out;
 };
 
 
-/// A logger that writes to a file. This logger is not thread-safe.
+/// A logger that writes to a new file. This logger is not thread-safe.
 ///
-/// Since this class is a RootLogger, it contains modifiable a log level
-/// threshold.
+/// Since this class is a subclass of Logger, it maintains its own thread safe log
+/// level threshold.
 class FileLogger : public StreamLogger {
 public:
     explicit FileLogger(std::string path);
@@ -173,6 +388,10 @@ private:
     std::ostream m_out;
 };
 
+/// A logger that appends to a file. This logger is not thread-safe.
+///
+/// Since this class is a subclass of Logger, it maintains its own thread safe log
+/// level threshold.
 class AppendToFileLogger : public StreamLogger {
 public:
     explicit AppendToFileLogger(std::string path);
@@ -185,88 +404,160 @@ private:
 };
 
 
-/// A thread-safe logger. This logger ignores the level threshold of the base
-/// logger. Instead, it introduces new a LevelThreshold object with a fixed
-/// value to achieve thread safety.
-class ThreadSafeLogger : private Logger::LevelThreshold, public Logger {
+/// A thread-safe logger where do_log() is thread safe. The log level is already
+/// thread safe since Logger uses an atomic to store the log level threshold.
+class ThreadSafeLogger : public Logger {
 public:
-    explicit ThreadSafeLogger(Logger& base_logger, Level = Level::info);
+    explicit ThreadSafeLogger(const std::shared_ptr<Logger>& base_logger) noexcept;
 
 protected:
-    void do_log(Level, const std::string&) override final;
+    void do_log(const LogCategory& category, Level, const std::string&) final;
 
 private:
-    const Level m_level_threshold; // Immutable for thread safety
-    Logger& m_base_logger;
     Mutex m_mutex;
-    Level get() const noexcept override final;
+    std::shared_ptr<Logger> m_base_logger_ptr;
 };
 
 
-/// A logger that adds a fixed prefix to each message. This logger inherits the
-/// LevelThreshold object of the specified base logger. This logger is
-/// thread-safe if, and only if the base logger is thread-safe.
+/// A logger that adds a fixed prefix to each message.
 class PrefixLogger : public Logger {
 public:
-    PrefixLogger(std::string prefix, Logger& base_logger) noexcept;
+    // Construct a PrefixLogger from any Logger shared_ptr (PrefixLogger, StdErrLogger, etc.)
+    // The first PrefixLogger must always be created from a Logger shared_ptr, subsequent PrefixLoggers
+    // created, will point back to this logger shared_ptr for referencing the level_threshold when
+    // logging output.
+    PrefixLogger(std::string prefix, const std::shared_ptr<Logger>& base_logger) noexcept
+        : Logger(*base_logger) // Save an alias of the passed in base_logger shared_ptr
+        , m_prefix{std::move(prefix)}
+        , m_owned_logger{base_logger}
+        , m_chained_logger{*m_owned_logger} // do_log() writes to the chained logger
+    {
+    }
+
+    // Same as above, but with a specific category
+    PrefixLogger(const LogCategory& category, std::string prefix, const std::shared_ptr<Logger>& base_logger) noexcept
+        : Logger(category, *base_logger) // Save an alias of the passed in base_logger shared_ptr
+        , m_prefix{std::move(prefix)}
+        , m_owned_logger{base_logger}
+        , m_chained_logger{*m_owned_logger} // do_log() writes to the chained logger
+    {
+    }
+
+    // Construct a PrefixLogger from another PrefixLogger object for chaining the prefixes on log output
+    PrefixLogger(std::string prefix, PrefixLogger& prefix_logger) noexcept
+        // Save an alias of the base_logger shared_ptr from the passed in PrefixLogger
+        : Logger(prefix_logger)
+        , m_prefix{std::move(prefix)}
+        , m_chained_logger{prefix_logger} // do_log() writes to the chained logger
+    {
+    }
 
 protected:
-    void do_log(Level, const std::string&) override final;
+    void do_log(const LogCategory& category, Level, const std::string&) final;
 
 private:
     const std::string m_prefix;
-    Logger& m_base_logger;
+    // The next logger in the chain for chained PrefixLoggers or the base_logger
+    std::shared_ptr<Logger> m_owned_logger;
+    Logger& m_chained_logger;
 };
+
+/// A logger that uses a specific category for all log entries
+class CategoryLogger : public util::Logger {
+public:
+    CategoryLogger(const LogCategory& category, const std::shared_ptr<Logger>& base_logger) noexcept
+        : Logger(category, *base_logger)
+        , m_base_logger_ptr(base_logger)
+    {
+    }
+
+protected:
+    void do_log(const util::LogCategory& category, Level level, const std::string& message) final
+    {
+        Logger::do_log(*m_base_logger_ptr, category, level, message);
+    }
+
+private:
+    std::shared_ptr<Logger> m_base_logger_ptr;
+};
+
+// Logger with a local log level that is independent of the parent log level threshold
+// The LocalThresholdLogger will define its own atomic log level threshold and
+// will be unaffected by changes to the log level threshold of the parent.
+// In addition, any changes to the log level threshold of this class or any
+// subsequent linked loggers will not change the log level threshold of the
+// parent. The parent will only be used for outputting log messages.
+class LocalThresholdLogger : public Logger {
+public:
+    // A shared_ptr parent must be provided for this class for log output
+    // Local log level is initialized with the current value from the provided logger
+    LocalThresholdLogger(const std::shared_ptr<Logger>&);
+
+    // A shared_ptr parent must be provided for this class for log output
+    LocalThresholdLogger(const std::shared_ptr<Logger>&, Level);
+
+    void do_log(const LogCategory& category, Logger::Level level, std::string const& message) override;
+
+protected:
+    std::shared_ptr<Logger> m_chained_logger;
+};
+
+/// A logger that performs a noop when logging functions are called
+class NullLogger : public Logger {
+    // Since we don't want to log anything, do_log() does nothing
+    void do_log(const LogCategory&, Level, const std::string&) override {}
+};
+
 
 // Implementation
 
 template <class... Params>
-inline void Logger::trace(const char* message, Params&&... params)
+inline void Logger::trace(const LogCategory& cat, const char* message, Params&&... params)
 {
-    log(Level::trace, message, std::forward<Params>(params)...); // Throws
+    log(cat, Level::trace, message, std::forward<Params>(params)...); // Throws
 }
 
 template <class... Params>
-inline void Logger::debug(const char* message, Params&&... params)
+inline void Logger::debug(const LogCategory& cat, const char* message, Params&&... params)
 {
-    log(Level::debug, message, std::forward<Params>(params)...); // Throws
+    log(cat, Level::debug, message, std::forward<Params>(params)...); // Throws
 }
 
 template <class... Params>
-inline void Logger::detail(const char* message, Params&&... params)
+inline void Logger::detail(const LogCategory& cat, const char* message, Params&&... params)
 {
-    log(Level::detail, message, std::forward<Params>(params)...); // Throws
+    log(cat, Level::detail, message, std::forward<Params>(params)...); // Throws
 }
 
 template <class... Params>
-inline void Logger::info(const char* message, Params&&... params)
+inline void Logger::info(const LogCategory& cat, const char* message, Params&&... params)
 {
-    log(Level::info, message, std::forward<Params>(params)...); // Throws
+    log(cat, Level::info, message, std::forward<Params>(params)...); // Throws
 }
 
 template <class... Params>
-inline void Logger::warn(const char* message, Params&&... params)
+inline void Logger::warn(const LogCategory& cat, const char* message, Params&&... params)
 {
-    log(Level::warn, message, std::forward<Params>(params)...); // Throws
+    log(cat, Level::warn, message, std::forward<Params>(params)...); // Throws
 }
 
 template <class... Params>
-inline void Logger::error(const char* message, Params&&... params)
+inline void Logger::error(const LogCategory& cat, const char* message, Params&&... params)
 {
-    log(Level::error, message, std::forward<Params>(params)...); // Throws
+    log(cat, Level::error, message, std::forward<Params>(params)...); // Throws
 }
 
 template <class... Params>
-inline void Logger::fatal(const char* message, Params&&... params)
+inline void Logger::fatal(const LogCategory& cat, const char* message, Params&&... params)
 {
-    log(Level::fatal, message, std::forward<Params>(params)...); // Throws
+    log(cat, Level::fatal, message, std::forward<Params>(params)...); // Throws
 }
 
 template <class... Params>
-inline void Logger::log(Level level, const char* message, Params&&... params)
+inline void Logger::log(const LogCategory& cat, Level level, const char* message, Params&&... params)
 {
-    if (would_log(level))
-        do_log(level, message, std::forward<Params>(params)...); // Throws
+    if (would_log(cat, level))
+        do_log(cat, level, message, std::forward<Params>(params)...); // Throws
 #if REALM_DEBUG
     else {
         // Do the string formatting even if it won't be logged to hopefully
@@ -276,62 +567,21 @@ inline void Logger::log(Level level, const char* message, Params&&... params)
 #endif
 }
 
-inline bool Logger::would_log(Level level) const noexcept
+inline void Logger::do_log(Logger& logger, const LogCategory& category, Level level, const std::string& message)
 {
-    return int(level) >= int(level_threshold.get());
-}
-
-inline Logger::~Logger() noexcept {}
-
-inline Logger::Logger(const LevelThreshold& lt) noexcept
-    : level_threshold(lt)
-{
-}
-
-inline void Logger::do_log(Logger& logger, Level level, const std::string& message)
-{
-    logger.do_log(level, std::move(message)); // Throws
+    logger.do_log(category, level, message); // Throws
 }
 
 template <class... Params>
-void Logger::do_log(Level level, const char* message, Params&&... params)
+void Logger::do_log(const LogCategory& category, Level level, const char* message, Params&&... params)
 {
-    do_log(level, format(message, std::forward<Params>(params)...)); // Throws
+    do_log(category, level, format(message, std::forward<Params>(params)...)); // Throws
 }
 
 template <class C, class T>
 std::basic_ostream<C, T>& operator<<(std::basic_ostream<C, T>& out, Logger::Level level)
 {
-    switch (level) {
-        case Logger::Level::all:
-            out << "all";
-            return out;
-        case Logger::Level::trace:
-            out << "trace";
-            return out;
-        case Logger::Level::debug:
-            out << "debug";
-            return out;
-        case Logger::Level::detail:
-            out << "detail";
-            return out;
-        case Logger::Level::info:
-            out << "info";
-            return out;
-        case Logger::Level::warn:
-            out << "warn";
-            return out;
-        case Logger::Level::error:
-            out << "error";
-            return out;
-        case Logger::Level::fatal:
-            out << "fatal";
-            return out;
-        case Logger::Level::off:
-            out << "off";
-            return out;
-    }
-    REALM_ASSERT(false);
+    out << Logger::level_to_string(level);
     return out;
 }
 
@@ -384,22 +634,6 @@ std::basic_istream<C, T>& operator>>(std::basic_istream<C, T>& in, Logger::Level
     return in;
 }
 
-inline void RootLogger::set_level_threshold(Level new_level_threshold) noexcept
-{
-    m_level_threshold = new_level_threshold;
-}
-
-inline RootLogger::RootLogger()
-    : Logger::LevelThreshold()
-    , Logger(static_cast<Logger::LevelThreshold&>(*this))
-{
-}
-
-inline Logger::Level RootLogger::get() const noexcept
-{
-    return m_level_threshold;
-}
-
 inline StreamLogger::StreamLogger(std::ostream& out) noexcept
     : m_out(out)
 {
@@ -437,26 +671,37 @@ inline AppendToFileLogger::AppendToFileLogger(util::File file)
 {
 }
 
-inline ThreadSafeLogger::ThreadSafeLogger(Logger& base_logger, Level threshold)
-    : Logger::LevelThreshold()
-    , Logger(static_cast<Logger::LevelThreshold&>(*this))
-    , m_level_threshold(threshold)
-    , m_base_logger(base_logger)
+inline ThreadSafeLogger::ThreadSafeLogger(const std::shared_ptr<Logger>& base_logger) noexcept
+    : Logger(*base_logger)
+    , m_base_logger_ptr(base_logger)
 {
 }
 
-inline Logger::Level ThreadSafeLogger::get() const noexcept
+// Construct a LocalThresholdLogger using the current log level value from the parent
+inline LocalThresholdLogger::LocalThresholdLogger(const std::shared_ptr<Logger>& base_logger)
+    : Logger()
+    , m_chained_logger{base_logger}
 {
-    return m_level_threshold;
+    for (size_t i = 0; i < LogCategory::nb_categories; i++) {
+        set_level_threshold(i, get_level_threshold(*base_logger, i));
+    }
 }
 
-inline PrefixLogger::PrefixLogger(std::string prefix, Logger& base_logger) noexcept
-    : Logger(base_logger.level_threshold)
-    , m_prefix(std::move(prefix))
-    , m_base_logger(base_logger)
+// Construct a LocalThresholdLogger using the provided log level threshold value
+inline LocalThresholdLogger::LocalThresholdLogger(const std::shared_ptr<Logger>& base_logger, Level threshold)
+    : Logger()
+    , m_chained_logger{base_logger}
 {
+    // Verify the passed in shared ptr is not null
+    REALM_ASSERT(m_chained_logger);
+    set_level_threshold(threshold);
 }
 
+// Intended to be used to get a somewhat smaller number derived from 'this' pointer
+inline unsigned gen_log_id(void* p)
+{
+    return (size_t(p) >> 4) & 0xffff;
+}
 } // namespace realm::util
 
 #endif // REALM_UTIL_LOGGER_HPP

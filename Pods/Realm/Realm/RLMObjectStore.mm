@@ -40,8 +40,6 @@
 
 #import <objc/message.h>
 
-using namespace realm;
-
 static inline void RLMVerifyRealmRead(__unsafe_unretained RLMRealm *const realm) {
     if (!realm) {
         @throw RLMException(@"Realm must not be nil");
@@ -92,6 +90,7 @@ void RLMVerifyHasPrimaryKey(Class cls) {
     }
 }
 
+using realm::CreatePolicy;
 static CreatePolicy updatePolicyToCreatePolicy(RLMUpdatePolicy policy) {
     CreatePolicy createPolicy = {.create = true, .copy = false, .diff = false, .update = false};
     switch (policy) {
@@ -136,6 +135,16 @@ RLMObjectBase *RLMCreateObjectInRealmWithValue(RLMRealm *realm, NSString *classN
     object->_row = std::move(obj);
     RLMInitializeSwiftAccessor(object, false);
     return object;
+}
+
+void RLMCreateAsymmetricObjectInRealm(RLMRealm *realm, NSString *className, id value) {
+    RLMVerifyInWriteTransaction(realm);
+
+    CreatePolicy createPolicy = {.create = true, .copy = true, .diff = false, .update = false};
+
+    auto& info = realm->_info[className];
+    RLMAccessorContext c{info};
+    c.createObject(value, createPolicy);
 }
 
 RLMObjectBase *RLMObjectFromObjLink(RLMRealm *realm, realm::ObjLink&& objLink, bool parentIsSwiftObject) {
@@ -217,7 +226,7 @@ id RLMGetObject(RLMRealm *realm, NSString *objectClassName, id key) {
                                                       key ?: NSNull.null);
         if (!obj.is_valid())
             return nil;
-        return RLMCreateObjectAccessor(info, obj.obj());
+        return RLMCreateObjectAccessor(info, obj.get_obj());
     }
     catch (std::exception const& e) {
         @throw RLMException(e);
@@ -229,9 +238,9 @@ RLMObjectBase *RLMCreateObjectAccessor(RLMClassInfo& info, int64_t key) {
 }
 
 // Create accessor and register with realm
-RLMObjectBase *RLMCreateObjectAccessor(RLMClassInfo& info, realm::Obj&& obj) {
+RLMObjectBase *RLMCreateObjectAccessor(RLMClassInfo& info, const realm::Obj& obj) {
     RLMObjectBase *accessor = RLMCreateManagedAccessor(info.rlmObjectSchema.accessorClass, &info);
-    accessor->_row = std::move(obj);
+    accessor->_row = obj;
     RLMInitializeSwiftAccessor(accessor, false);
     return accessor;
 }

@@ -10,8 +10,7 @@ fi
 
 rm -rf "$source_root/include"
 mkdir -p "$source_root/include"
-cp -R "$source_root/core/realm-monorepo.xcframework/ios-armv7_arm64/Headers" "$source_root/include/core"
+cp -R "$source_root/core/realm-monorepo.xcframework/ios-arm64/Headers" "$source_root/include/core"
 
 mkdir -p "$source_root/include"
-echo '' > "$source_root/Realm/RLMPlatform.h"
 cp "$source_root/Realm/"*.h "$source_root/Realm/"*.hpp "$source_root/include"

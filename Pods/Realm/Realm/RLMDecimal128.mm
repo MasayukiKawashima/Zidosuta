@@ -26,7 +26,7 @@
 // to Decodable, so we need a Swift-defined subclass for that. This means that
 // when Realm Swift is being used, we need to produce objects of that type rather
 // than our obj-c defined type. objc_runtime_visible marks the type as being
-// visbile only to the obj-c runtime and not the linker, which means that it'll
+// visible only to the obj-c runtime and not the linker, which means that it'll
 // be `nil` at runtime rather than being a linker error if it's not defined, and
 // valid if it happens to be defined by some other library (i.e. Realm Swift).
 //
@@ -73,7 +73,7 @@
     return self;
 }
 
-- (instancetype)initWithString:(NSString *)string error:(__unused NSError **)error {
+- (instancetype)initWithString:(NSString *)string {
     if ((self = [self init])) {
         _value = realm::Decimal128(string.UTF8String);
     }
@@ -85,7 +85,7 @@
 }
 
 + (instancetype)decimalWithNSDecimal:(NSDecimalNumber *)number {
-    return [[self alloc] initWithString:number.stringValue error:nil];
+    return [[self alloc] initWithString:number.stringValue];
 }
 
 - (id)copyWithZone:(NSZone *)zone {

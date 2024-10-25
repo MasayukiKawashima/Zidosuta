@@ -58,10 +58,6 @@ The `S` bit is at position 22 (float) or 51 (double).
 
 struct null {
     constexpr null() = default;
-    operator int64_t()
-    {
-        throw(LogicError::type_mismatch);
-    }
     template <class T>
     operator util::Optional<T>()
     {
@@ -120,6 +116,12 @@ struct null {
         }
     }
 };
+
+template <typename T>
+inline bool is_null(const T&)
+{
+    return false;
+}
 
 template <class OS>
 OS& operator<<(OS& os, const null&)

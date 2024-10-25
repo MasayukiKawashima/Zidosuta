@@ -22,6 +22,7 @@
 #include <vector>
 #include <unordered_set>
 #include <realm/cluster.hpp>
+#include <realm/path.hpp>
 #include <realm/mixed.hpp>
 #include <realm/util/bind_ptr.hpp>
 
@@ -31,8 +32,9 @@ namespace realm {
 class SortDescriptor;
 class ConstTableRef;
 class Group;
+class KeyValues;
 
-enum class DescriptorType { Sort, Distinct, Limit };
+enum class DescriptorType { Sort, Distinct, Limit, Filter };
 
 struct LinkPathPart {
     // Constructor for forward links
@@ -74,41 +76,39 @@ public:
     };
     class Sorter {
     public:
-        Sorter(std::vector<std::vector<ColKey>> const& columns, std::vector<bool> const& ascending,
+        Sorter(std::vector<std::vector<ExtendedColumnKey>> const& columns, std::vector<bool> const& ascending,
                Table const& root_table, const IndexPairs& indexes);
-        Sorter()
-        {
-        }
+        Sorter() {}
 
         bool operator()(IndexPair i, IndexPair j, bool total_ordering = true) const;
 
         bool has_links() const
         {
-            return std::any_of(m_columns.begin(), m_columns.end(),
-                               [](auto&& col) { return !col.translated_keys.empty(); });
+            return std::any_of(m_columns.begin(), m_columns.end(), [](auto&& col) {
+                return !col.translated_keys.empty();
+            });
         }
 
         bool any_is_null(IndexPair i) const
         {
             return std::any_of(m_columns.begin(), m_columns.end(), [=](auto&& col) {
-                return col.is_null.empty() ? false : col.is_null[i.index_in_view];
+                return !col.translated_keys.empty() && !col.translated_keys[i.index_in_view];
             });
         }
         void cache_first_column(IndexPairs& v);
 
     private:
         struct SortColumn {
-            SortColumn(const Table* t, ColKey c, bool a)
+            SortColumn(const Table* t, ExtendedColumnKey c, bool a)
                 : table(t)
                 , col_key(c)
                 , ascending(a)
             {
             }
-            std::vector<bool> is_null;
             std::vector<ObjKey> translated_keys;
 
             const Table* table;
-            ColKey col_key;
+            ExtendedColumnKey col_key;
             bool ascending;
         };
         std::vector<SortColumn> m_columns;
@@ -125,13 +125,21 @@ public:
     BaseDescriptor() = default;
     virtual ~BaseDescriptor() = default;
     virtual bool is_valid() const noexcept = 0;
+    virtual bool need_indexpair() const noexcept
+    {
+        return false;
+    }
     virtual std::string get_description(ConstTableRef attached_table) const = 0;
     virtual std::unique_ptr<BaseDescriptor> clone() const = 0;
     virtual DescriptorType get_type() const = 0;
-    virtual void collect_dependencies(const Table* table, std::vector<TableKey>& table_keys) const = 0;
-    virtual Sorter sorter(Table const& table, const IndexPairs& indexes) const = 0;
+    virtual void collect_dependencies(const Table*, std::vector<TableKey>&) const {}
+    virtual Sorter sorter(Table const&, const IndexPairs&) const
+    {
+        return {};
+    }
     // Do what you have to do
-    virtual void execute(IndexPairs& v, const Sorter& predicate, const BaseDescriptor* next) const = 0;
+    virtual void execute(IndexPairs&, const Sorter&, const BaseDescriptor*) const {}
+    virtual void execute(const Table&, KeyValues&, const BaseDescriptor*) const {}
 };
 
 
@@ -147,7 +155,7 @@ public:
     // supported), and the final is any column type that can be sorted on.
     // `column_keys` must be non-empty, and each vector within it must also
     // be non-empty.
-    ColumnsDescriptor(std::vector<std::vector<ColKey>> column_keys);
+    ColumnsDescriptor(std::vector<std::vector<ExtendedColumnKey>> column_keys);
 
     // returns whether this descriptor is valid and can be used for sort or distinct
     bool is_valid() const noexcept override
@@ -157,18 +165,23 @@ public:
     void collect_dependencies(const Table* table, std::vector<TableKey>& table_keys) const override;
 
 protected:
-    std::vector<std::vector<ColKey>> m_column_keys;
+    std::vector<std::vector<ExtendedColumnKey>> m_column_keys;
 };
 
 class DistinctDescriptor : public ColumnsDescriptor {
 public:
     DistinctDescriptor() = default;
-    DistinctDescriptor(std::vector<std::vector<ColKey>> column_keys)
+    DistinctDescriptor(std::vector<std::vector<ExtendedColumnKey>> column_keys)
         : ColumnsDescriptor(std::move(column_keys))
     {
     }
 
     std::unique_ptr<BaseDescriptor> clone() const override;
+
+    bool need_indexpair() const noexcept override
+    {
+        return true;
+    }
 
     DescriptorType get_type() const override
     {
@@ -188,10 +201,15 @@ public:
     // See ColumnsDescriptor for restrictions on `column_keys`.
     // The sort order can be specified by using `ascending` which must either be
     // empty or have one entry for each column index chain.
-    SortDescriptor(std::vector<std::vector<ColKey>> column_indices, std::vector<bool> ascending = {});
+    SortDescriptor(std::vector<std::vector<ExtendedColumnKey>> column_indices, std::vector<bool> ascending = {});
     SortDescriptor() = default;
     ~SortDescriptor() = default;
     std::unique_ptr<BaseDescriptor> clone() const override;
+
+    bool need_indexpair() const noexcept override
+    {
+        return true;
+    }
 
     DescriptorType get_type() const override
     {
@@ -256,18 +274,37 @@ public:
         return DescriptorType::Limit;
     }
 
-    Sorter sorter(Table const&, const IndexPairs&) const override
-    {
-        return Sorter();
-    }
-
-    void collect_dependencies(const Table*, std::vector<TableKey>&) const override
-    {
-    }
-    void execute(IndexPairs& v, const Sorter& predicate, const BaseDescriptor* next) const override;
+    void execute(const Table&, KeyValues&, const BaseDescriptor*) const override;
 
 private:
     size_t m_limit = size_t(-1);
+};
+
+class FilterDescriptor : public BaseDescriptor {
+public:
+    FilterDescriptor(std::function<bool(const Obj&)> fn)
+        : m_predicate(std::move(fn))
+    {
+    }
+    FilterDescriptor() = default;
+    ~FilterDescriptor() = default;
+
+    bool is_valid() const noexcept override
+    {
+        return m_predicate != nullptr;
+    }
+    std::string get_description(ConstTableRef attached_table) const override;
+    std::unique_ptr<BaseDescriptor> clone() const override;
+
+    DescriptorType get_type() const override
+    {
+        return DescriptorType::Filter;
+    }
+
+    void execute(const Table&, KeyValues&, const BaseDescriptor*) const override;
+
+private:
+    std::function<bool(const Obj&)> m_predicate;
 };
 
 class DescriptorOrdering : public util::AtomicRefCountBase {
@@ -281,6 +318,7 @@ public:
     void append_sort(SortDescriptor sort, SortDescriptor::MergeMode mode = SortDescriptor::MergeMode::prepend);
     void append_distinct(DistinctDescriptor distinct);
     void append_limit(LimitDescriptor limit);
+    void append_filter(FilterDescriptor predicate);
     void append(const DescriptorOrdering& other);
     void append(DescriptorOrdering&& other);
     realm::util::Optional<size_t> get_min_limit() const;
@@ -302,13 +340,15 @@ public:
     bool will_apply_sort() const;
     bool will_apply_distinct() const;
     bool will_apply_limit() const;
+    bool will_apply_filter() const;
     std::string get_description(ConstTableRef target_table) const;
     void collect_dependencies(const Table* table);
     void get_versions(const Group* group, TableVersions& versions) const;
+
 private:
     std::vector<std::unique_ptr<BaseDescriptor>> m_descriptors;
     std::vector<TableKey> m_dependencies;
 };
-}
+} // namespace realm
 
 #endif /* REALM_SORT_DESCRIPTOR_HPP */

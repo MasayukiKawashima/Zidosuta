@@ -33,13 +33,11 @@ public:
     using value_type = T;
 
     explicit BasicArray(Allocator&) noexcept;
-    ~BasicArray() noexcept override
-    {
-    }
+    ~BasicArray() noexcept override {}
 
     static T default_value(bool)
     {
-        return T(0.0);
+        return T{};
     }
 
     void init_from_ref(ref_type ref) noexcept override
@@ -129,7 +127,7 @@ public:
 
     static util::Optional<T> default_value(bool nullable)
     {
-        return nullable ? util::Optional<T>() : util::Optional<T>(0.0);
+        return nullable ? util::Optional<T>() : util::Optional<T>(T{});
     }
     void set(size_t ndx, util::Optional<T> value)
     {

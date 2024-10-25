@@ -240,9 +240,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   //モーダル表示するメソッド
   func showPhotoModal(photoImage: UIImage) {
-    let photoModalVC = PhotoModalViewController(image: photoImage)
-    photoModalVC.modalPresentationStyle = .fullScreen
-    present(photoModalVC, animated: true)
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    if let photoModalVC = storyboard.instantiateViewController(withIdentifier: "PhotoModalVC") as? PhotoModalViewController {
+      photoModalVC.photoModalView.photoImageView.image = photoImage
+      self.present(photoModalVC, animated: true, completion: nil)
+    }
   }
   //カメラ及びフォトライブラリでキャンセルしたときのデリゲートメソッド
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

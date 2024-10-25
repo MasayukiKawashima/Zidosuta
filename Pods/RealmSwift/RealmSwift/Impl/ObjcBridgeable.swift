@@ -58,7 +58,7 @@ extension ObjectBase: BuiltInObjcBridgeable {
         if let value = value as? Self {
             return value
         }
-        if Self.self == DynamicObject.self, let object = value as? ObjectBase {
+        if Self.self === DynamicObject.self, let object = value as? ObjectBase {
             // Without `as AnyObject` this will produce a warning which incorrectly
             // claims it could be replaced with `unsafeDowncast()`
             return unsafeBitCast(object as AnyObject, to: Self.self)
@@ -70,7 +70,7 @@ extension ObjectBase: BuiltInObjcBridgeable {
 
 // `NSNumber as? T` coerces values which can't be exact represented for some
 // types and fails for others. We want to always coerce, for backwards
-// compatiblity if nothing else.
+// compatibility if nothing else.
 extension Float: BuiltInObjcBridgeable {
     public static func _rlmFromObjc(_ value: Any) -> Self? {
         return (value as? NSNumber)?.floatValue
@@ -140,7 +140,7 @@ extension Decimal128: BuiltInObjcBridgeable {
             return Decimal128(number: number)
         }
         if let str = value as? String {
-            return .some((try? Decimal128(string: str)) ?? Decimal128("nan"))
+            return Decimal128(string: str)
         }
         return .none
     }
@@ -184,11 +184,34 @@ extension AnyRealmCollection: _ObjcBridgeable {}
 extension List: _ObjcBridgeable {}
 extension MutableSet: _ObjcBridgeable {}
 
-extension RLMSwiftCollectionBase: Equatable {
+extension SectionedResults: BuiltInObjcBridgeable {
+    public static func _rlmFromObjc(_ value: Any, insideOptional: Bool) -> Self? {
+        (value as? RLMSectionedResults<RLMValue, RLMValue>).map(Self.init(rlmSectionedResult:))
+    }
+    public var _rlmObjcValue: Any {
+        self.collection
+    }
+}
+
+extension ResultsSection: BuiltInObjcBridgeable {
+    public static func _rlmFromObjc(_ value: Any, insideOptional: Bool) -> Self? {
+        (value as? RLMSection<RLMValue, RLMValue>).map(Self.init(rlmSectionedResult:))
+    }
+    public var _rlmObjcValue: Any {
+        self.collection
+    }
+}
+
+extension RLMSwiftCollectionBase {
     public static func == (lhs: RLMSwiftCollectionBase, rhs: RLMSwiftCollectionBase) -> Bool {
         return lhs.isEqual(rhs)
     }
 }
+#if compiler(>=6)
+extension RLMSwiftCollectionBase: @retroactive Equatable {}
+#else
+extension RLMSwiftCollectionBase: Equatable {}
+#endif
 
 extension Projection: BuiltInObjcBridgeable {
     public static func _rlmFromObjc(_ value: Any) -> Self? {

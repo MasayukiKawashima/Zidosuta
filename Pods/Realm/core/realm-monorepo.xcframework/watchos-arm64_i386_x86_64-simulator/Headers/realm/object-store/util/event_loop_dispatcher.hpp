@@ -63,10 +63,11 @@ public:
     }
 };
 
+} // namespace util
+
 namespace _impl::ForEventLoopDispatcher {
 template <typename Sig>
-struct ExtractSignatureImpl {
-};
+struct ExtractSignatureImpl {};
 template <typename T, typename... Args>
 struct ExtractSignatureImpl<void (T::*)(Args...)> {
     using signature = void(Args...);
@@ -105,6 +106,8 @@ struct ExtractSignatureImpl<void (T::*)(Args...) const& noexcept> {
 template <typename T>
 using ExtractSignature = typename ExtractSignatureImpl<T>::signature;
 } // namespace _impl::ForEventLoopDispatcher
+
+namespace util {
 
 // Deduction guide for function pointers.
 template <typename... Args>

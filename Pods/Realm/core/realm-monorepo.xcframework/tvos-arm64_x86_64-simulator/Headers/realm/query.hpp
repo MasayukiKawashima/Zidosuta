@@ -35,31 +35,27 @@
 #endif
 
 #include <realm/aggregate_ops.hpp>
+#include <realm/binary_data.hpp>
+#include <realm/column_type_traits.hpp>
+#include <realm/handover_defs.hpp>
 #include <realm/obj_list.hpp>
 #include <realm/table_ref.hpp>
-#include <realm/binary_data.hpp>
-#include <realm/timestamp.hpp>
-#include <realm/handover_defs.hpp>
-#include <realm/util/serializer.hpp>
 #include <realm/util/bind_ptr.hpp>
-#include <realm/column_type_traits.hpp>
+#include <realm/util/serializer.hpp>
 
 namespace realm {
 
 
 // Pre-declarations
-class ParentNode;
-class Table;
-class TableView;
-class TableView;
 class Array;
 class Expression;
 class Group;
+class LinkMap;
+class ParentNode;
+class Table;
+class TableView;
+class Timestamp;
 class Transaction;
-
-namespace metrics {
-class QueryInfo;
-}
 
 struct QueryGroup {
     enum class State {
@@ -104,6 +100,9 @@ public:
     Query& links_to(ColKey column_key, ObjLink target_link);
     // Find links that point to specific target objects
     Query& links_to(ColKey column_key, const std::vector<ObjKey>& target_obj);
+
+    // Find links that does not point to specific target objects
+    Query& not_links_to(ColKey column_key, const std::vector<ObjKey>& target_obj);
 
     // Conditions: null
     Query& equal(ColKey column_key, null);
@@ -152,6 +151,7 @@ public:
     Query& greater_equal(ColKey column_key, Timestamp value);
     Query& less_equal(ColKey column_key, Timestamp value);
     Query& less(ColKey column_key, Timestamp value);
+    Query& between(ColKey column_key, Timestamp from, Timestamp to);
 
     // Conditions: ObjectId
     Query& equal(ColKey column_key, ObjectId value);
@@ -189,6 +189,7 @@ public:
     Query& ends_with(ColKey column_key, Mixed value, bool case_sensitive = true);
     Query& contains(ColKey column_key, Mixed value, bool case_sensitive = true);
     Query& like(ColKey column_key, Mixed value, bool case_sensitive = true);
+    Query& in(ColKey column_key, const Mixed* begin, const Mixed* end);
 
     // Conditions: size
     Query& size_equal(ColKey column_key, int64_t value);
@@ -210,6 +211,13 @@ public:
     Query& ends_with(ColKey column_key, StringData value, bool case_sensitive = true);
     Query& contains(ColKey column_key, StringData value, bool case_sensitive = true);
     Query& like(ColKey column_key, StringData value, bool case_sensitive = true);
+    Query& fulltext(ColKey column_key, StringData value);
+    Query& fulltext(ColKey column_key, StringData value, const LinkMap&);
+    Query& greater(ColKey column_key, StringData value);
+    Query& greater_equal(ColKey column_key, StringData value);
+    Query& less(ColKey column_key, StringData value);
+    Query& less_equal(ColKey column_key, StringData value);
+
 
     // These are shortcuts for equal(StringData(c_str)) and
     // not_equal(StringData(c_str)), and are needed to avoid unwanted
@@ -250,38 +258,24 @@ public:
 
 
     // Searching
-    ObjKey find();
-    TableView find_all(size_t limit = size_t(-1));
+    ObjKey find() const;
+    TableView find_all(size_t limit = size_t(-1)) const;
 
     // Aggregates
     size_t count() const;
-    TableView find_all(const DescriptorOrdering& descriptor);
-    size_t count(const DescriptorOrdering& descriptor);
-    int64_t sum_int(ColKey column_key) const;
-    double average_int(ColKey column_key, size_t* resultcount = nullptr) const;
-    int64_t maximum_int(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    int64_t minimum_int(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    double sum_float(ColKey column_key) const;
-    double average_float(ColKey column_key, size_t* resultcount = nullptr) const;
-    float maximum_float(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    float minimum_float(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    double sum_double(ColKey column_key) const;
-    double average_double(ColKey column_key, size_t* resultcount = nullptr) const;
-    double maximum_double(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    double minimum_double(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    Timestamp maximum_timestamp(ColKey column_key, ObjKey* return_ndx = nullptr);
-    Timestamp minimum_timestamp(ColKey column_key, ObjKey* return_ndx = nullptr);
-    Decimal128 sum_decimal128(ColKey column_key) const;
-    Decimal128 maximum_decimal128(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    Decimal128 minimum_decimal128(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    Decimal128 average_decimal128(ColKey column_key, size_t* resultcount = nullptr) const;
-    Decimal128 sum_mixed(ColKey column_key) const;
-    Mixed maximum_mixed(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    Mixed minimum_mixed(ColKey column_key, ObjKey* return_ndx = nullptr) const;
-    Decimal128 average_mixed(ColKey column_key, size_t* resultcount = nullptr) const;
+    TableView find_all(const DescriptorOrdering& descriptor) const;
+    size_t count(const DescriptorOrdering& descriptor) const;
+
+    // Aggregates return nullopt if the operation is not supported on the given column
+    // Everything but `sum` returns `some(null)` if there are no non-null values
+    // Sum returns `some(0)` if there are no non-null values.
+    std::optional<Mixed> sum(ColKey col_key) const;
+    std::optional<Mixed> min(ColKey col_key, ObjKey* = nullptr) const;
+    std::optional<Mixed> max(ColKey col_key, ObjKey* = nullptr) const;
+    std::optional<Mixed> avg(ColKey col_key, size_t* value_count = nullptr) const;
 
     // Deletion
-    size_t remove();
+    size_t remove() const;
 
 #if REALM_MULTITHREAD_QUERY
     // Multi-threading
@@ -300,6 +294,10 @@ public:
         return m_table;
     }
 
+    bool has_conditions() const
+    {
+        return m_groups.size() > 0 && m_groups[0].m_root_node;
+    }
     void get_outside_versions(TableVersions&) const;
 
     // True if matching rows are guaranteed to be returned in table order.
@@ -320,10 +318,10 @@ public:
     // or empty vector if the query is not associated with a table.
     TableVersions sync_view_if_needed() const;
 
-    std::string validate();
+    std::string validate() const;
 
-    std::string get_description(const std::string& class_prefix = "") const;
-    std::string get_description(util::serializer::SerialisationState& state) const;
+    std::string get_description() const;
+    std::string get_description_safe() const noexcept;
 
     Query& set_ordering(util::bind_ptr<DescriptorOrdering> ordering);
     // This will remove the ordering from the Query object
@@ -338,6 +336,7 @@ private:
     size_t find_internal(size_t start = 0, size_t end = size_t(-1)) const;
     void handle_pending_not();
     void set_table(TableRef tr);
+    std::string get_description(util::serializer::SerialisationState& state) const;
 
 public:
     std::unique_ptr<Query> clone_for_handover(Transaction* tr, PayloadPolicy policy) const
@@ -360,26 +359,17 @@ private:
     template <typename TConditionFunction>
     Query& add_size_condition(ColKey column_key, int64_t value);
 
-    template <typename T,
-              typename R = typename aggregate_operations::Average<typename util::RemoveOptional<T>::type>::ResultType>
-    R average(ColKey column_key, size_t* resultcount = nullptr) const;
-
     template <typename T>
-    void aggregate(QueryStateBase& st, ColKey column_key, size_t* resultcount = nullptr,
-                   ObjKey* return_ndx = nullptr) const;
+    void aggregate(QueryStateBase& st, ColKey column_key) const;
 
     size_t find_best_node(ParentNode* pn) const;
     void aggregate_internal(ParentNode* pn, QueryStateBase* st, size_t start, size_t end,
                             ArrayPayload* source_column) const;
 
-    void do_find_all(TableView& tv, size_t limit) const;
+    void do_find_all(QueryStateBase& st) const;
     size_t do_count(size_t limit = size_t(-1)) const;
     void delete_nodes() noexcept;
 
-    bool has_conditions() const
-    {
-        return m_groups.size() > 0 && m_groups[0].m_root_node;
-    }
     ParentNode* root_node() const
     {
         REALM_ASSERT(m_groups.size());
@@ -392,7 +382,8 @@ private:
     friend class TableView;
     friend class SubQueryCount;
     friend class PrimitiveListCount;
-    friend class metrics::QueryInfo;
+    template <class>
+    friend class AggregateHelper;
 
     std::string error_code;
 
@@ -411,8 +402,8 @@ private:
     // m_source_collection is a pointer to a collection which must also be a ObjList*
     // this includes: LnkLst, LnkSet, and DictionaryLinkValues. It cannot be a list of primitives because
     // it is used to populate a query through a collection of objects and there are asserts for this.
-    LinkCollectionPtr m_source_collection;         // collections are owned by the query.
-    TableView* m_source_table_view = nullptr;      // table views are not refcounted, and not owned by the query.
+    LinkCollectionPtr m_source_collection;    // collections are owned by the query.
+    TableView* m_source_table_view = nullptr; // table views are not refcounted, and not owned by the query.
     std::unique_ptr<TableView> m_owned_source_table_view; // <--- except when indicated here
     util::bind_ptr<DescriptorOrdering> m_ordering;
 };

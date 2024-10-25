@@ -27,7 +27,7 @@
                             <constraint firstAttribute="height" constant="44" id="Jje-GH-GcB"/>
                         </constraints>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="gobackward" catalog="system"/>
+                        <buttonConfiguration key="configuration" style="plain" image="arrow.trianglehead.counterclockwise" catalog="system"/>
                         <connections>
                             <action selector="redoButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DYG-m8-sI3"/>
                         </connections>
@@ -72,7 +72,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="arrow.trianglehead.counterclockwise" catalog="system" width="119" height="128"/>
         <image name="camera" catalog="system" width="128" height="93"/>
-        <image name="gobackward" catalog="system" width="119" height="128"/>
     </resources>
 </document>
