@@ -70,6 +70,7 @@ public:
     {
     }
     bool match(size_t index, Mixed) noexcept final;
+    bool match(size_t index) noexcept final;
 
 private:
     T& m_keys;
@@ -83,6 +84,7 @@ public:
     {
     }
     bool match(size_t index, Mixed) noexcept final;
+    bool match(size_t index) noexcept final;
 };
 
 class Array : public Node, public ArrayParent {
@@ -124,22 +126,11 @@ public:
         init_from_ref(ref);
     }
 
-    /// Called in the context of Group::commit() to ensure that attached
-    /// accessors stay valid across a commit. Please note that this works only
-    /// for non-transactional commits. Accessors obtained during a transaction
-    /// are always detached when the transaction ends.
-    void update_from_parent() noexcept;
-
     /// Change the type of an already attached array node.
     ///
     /// The effect of calling this function on an unattached accessor is
     /// undefined.
     void set_type(Type);
-
-    /// Construct a complete copy of this array (including its subarrays) using
-    /// the specified target allocator and return just the reference to the
-    /// underlying memory.
-    MemRef clone_deep(Allocator& target_alloc) const;
 
     /// Construct an empty integer array of the specified type, and return just
     /// the reference to the underlying memory.
@@ -274,10 +265,6 @@ public:
     /// specified value.
     void ensure_minimum_width(int_fast64_t value);
 
-    /// This one may change the represenation of the array, so be carefull if
-    /// you call it after ensure_minimum_width().
-    void set_all_to_zero();
-
     /// Add \a diff to the element at the specified index.
     void adjust(size_t ndx, int_fast64_t diff);
 
@@ -399,7 +386,11 @@ public:
     template <class cond>
     size_t find_first(int64_t value, size_t start = 0, size_t end = size_t(-1)) const
     {
+        static cond c;
         REALM_ASSERT(start <= m_size && (end <= m_size || end == size_t(-1)) && start <= end);
+        if (end - start == 1) {
+            return c(get(start), value) ? start : realm::not_found;
+        }
         // todo, would be nice to avoid this in order to speed up find_first loops
         QueryStateFindFirst state;
         Finder finder = m_vtable->finder[cond::condition];
@@ -432,6 +423,15 @@ public:
     /// written by a non-recursive invocation of write().
     size_t get_byte_size() const noexcept;
 
+    // Get the number of bytes used by this array and its sub-arrays
+    size_t get_byte_size_deep() const noexcept
+    {
+        size_t mem = 0;
+        _mem_usage(mem);
+        return mem;
+    }
+
+
     /// Get the maximum number of bytes that can be written by a
     /// non-recursive invocation of write() on an array with the
     /// specified number of elements, that is, the maximum value that
@@ -441,6 +441,7 @@ public:
     /// FIXME: Belongs in IntegerArray
     static size_t calc_aligned_byte_size(size_t size, int width);
 
+#ifdef REALM_DEBUG
     class MemUsageHandler {
     public:
         virtual void handle(ref_type ref, size_t allocated, size_t used) = 0;
@@ -449,6 +450,7 @@ public:
     void report_memory_usage(MemUsageHandler&) const;
 
     void stats(MemStats& stats_dest) const noexcept;
+#endif
 
     void verify() const;
 
@@ -464,13 +466,15 @@ protected:
     // for the given bit width. Valid widths are 0, 1, 2, 4, 8, 16, 32, and 64.
     static constexpr int_fast64_t ubound_for_width(size_t width) noexcept;
 
+    // This will have to be eventually used, exposing this here for testing.
+    size_t count(int64_t value) const noexcept;
+
 private:
     void update_width_cache_from_header() noexcept;
 
     void do_ensure_minimum_width(int_fast64_t);
 
     int64_t sum(size_t start, size_t end) const;
-    size_t count(int64_t value) const noexcept;
 
     template <size_t w>
     int64_t sum(size_t start, size_t end) const;
@@ -518,16 +522,14 @@ protected:
     /// log2. Posssible results {0, 1, 2, 4, 8, 16, 32, 64}
     static size_t bit_width(int64_t value);
 
-    void report_memory_usage_2(MemUsageHandler&) const;
-
 protected:
     Getter m_getter = nullptr; // cached to avoid indirection
     const VTable* m_vtable = nullptr;
 
-    uint_least8_t m_width = 0; // Size of an element (meaning depend on type of array).
     int64_t m_lbound;          // min number that can be stored with current m_width
     int64_t m_ubound;          // max number that can be stored with current m_width
 
+    uint8_t m_width = 0;         // Size of an element (meaning depend on type of array).
     bool m_is_inner_bptree_node; // This array is an inner node of B+-tree.
     bool m_has_refs;             // Elements whose first bit is zero are refs to subarrays.
     bool m_context_flag;         // Meaning depends on context.
@@ -535,6 +537,12 @@ protected:
 private:
     ref_type do_write_shallow(_impl::ArrayWriterBase&) const;
     ref_type do_write_deep(_impl::ArrayWriterBase&, bool only_if_modified) const;
+
+    void _mem_usage(size_t& mem) const noexcept;
+
+#ifdef REALM_DEBUG
+    void report_memory_usage_2(MemUsageHandler&) const;
+#endif
 
     friend class Allocator;
     friend class SlabAlloc;
@@ -711,7 +719,7 @@ int64_t Array::get(size_t ndx) const noexcept
 inline int64_t Array::get(size_t ndx) const noexcept
 {
     REALM_ASSERT_DEBUG(is_attached());
-    REALM_ASSERT_DEBUG(ndx < m_size);
+    REALM_ASSERT_DEBUG_EX(ndx < m_size, ndx, m_size);
     return (this->*m_getter)(ndx);
 
     // Two ideas that are not efficient but may be worth looking into again:
@@ -744,7 +752,7 @@ inline int64_t Array::back() const noexcept
 inline ref_type Array::get_as_ref(size_t ndx) const noexcept
 {
     REALM_ASSERT_DEBUG(is_attached());
-    REALM_ASSERT_DEBUG(m_has_refs);
+    REALM_ASSERT_DEBUG_EX(m_has_refs, m_ref, ndx, m_size);
     int64_t v = get(ndx);
     return to_ref(v);
 }
@@ -938,12 +946,6 @@ inline size_t Array::get_byte_size() const noexcept
 
 
 //-------------------------------------------------
-
-inline MemRef Array::clone_deep(Allocator& target_alloc) const
-{
-    char* header = get_header_from_data(m_data);
-    return clone(MemRef(header, m_ref, m_alloc), m_alloc, target_alloc); // Throws
-}
 
 inline MemRef Array::create_empty_array(Type type, bool context_flag, Allocator& alloc)
 {

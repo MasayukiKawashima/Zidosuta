@@ -33,9 +33,11 @@
 #import "RLMSwiftProperty.h"
 #import "RLMUUID_Private.hpp"
 #import "RLMUtil.hpp"
+#import "RLMValue.h"
 
-#import <realm/object-store/results.hpp>
+#import <realm/object-store/object.hpp>
 #import <realm/object-store/property.hpp>
+#import <realm/object-store/results.hpp>
 
 #import <objc/runtime.h>
 #import <objc/message.h>
@@ -108,7 +110,7 @@ id getBoxed(__unsafe_unretained RLMObjectBase *const obj, NSUInteger index) {
 
 template<typename T>
 T getOptional(__unsafe_unretained RLMObjectBase *const obj, uint16_t key, bool *gotValue) {
-    auto ret = get<realm::util::Optional<T>>(obj, key);
+    auto ret = get<std::optional<T>>(obj, key);
     if (ret) {
         *gotValue = true;
     }
@@ -127,13 +129,8 @@ void setValueOrNull(__unsafe_unretained RLMObjectBase *const obj, ColKey col,
 
     RLMTranslateError([&] {
         if (value) {
-            if constexpr (std::is_same_v<T, realm::Mixed>) {
-                obj->_row.set(col, RLMObjcToMixed(value, obj->_realm, realm::CreatePolicy::SetLink));
-            }
-            else {
-                RLMStatelessAccessorContext ctx;
-                obj->_row.set(col, ctx.unbox<T>(value));
-            }
+            RLMStatelessAccessorContext ctx;
+            obj->_row.set(col, ctx.unbox<T>(value));
         }
         else {
             obj->_row.set_null(col);
@@ -272,9 +269,10 @@ void setValue(__unsafe_unretained RLMObjectBase *const obj, ColKey key,
     setValueOrNull<realm::UUID>(obj, key, value);
 }
 
-void setValue(__unsafe_unretained RLMObjectBase *const obj, ColKey key,
-              __unsafe_unretained id<RLMValue> const value) {
-    setValueOrNull<realm::Mixed>(obj, key, value);
+void setValue(__unsafe_unretained RLMObjectBase *const obj, __unsafe_unretained RLMProperty *const property, __unsafe_unretained id<RLMValue> const value) {
+    realm::Object o(obj->_realm->_realm, *obj->_info->objectSchema, obj->_row);
+    RLMAccessorContext ctx(obj);
+    o.set_property_value(ctx, getProperty(obj, property), value ?: NSNull.null);
 }
 
 RLMLinkingObjects *getLinkingObjects(__unsafe_unretained RLMObjectBase *const obj,
@@ -305,7 +303,7 @@ id makeBoxedGetter(NSUInteger index) {
 template<typename Type>
 id makeOptionalGetter(NSUInteger index) {
     return ^(__unsafe_unretained RLMObjectBase *const obj) {
-        return getBoxed<realm::util::Optional<Type>>(obj, index);
+        return getBoxed<std::optional<Type>>(obj, index);
     };
 }
 template<typename Type>
@@ -384,7 +382,6 @@ id managedGetter(RLMProperty *prop, const char *type) {
 
 static realm::ColKey willChange(RLMObservationTracker& tracker,
                                 __unsafe_unretained RLMObjectBase *const obj, NSUInteger index) {
-    RLMVerifyInWriteTransaction(obj);
     auto& prop = getProperty(obj, index);
     if (prop.is_primary) {
         @throw RLMException(@"Primary key can't be changed after an object is inserted.");
@@ -396,12 +393,20 @@ static realm::ColKey willChange(RLMObservationTracker& tracker,
 
 template<typename ArgType, typename StorageType=ArgType>
 void kvoSetValue(__unsafe_unretained RLMObjectBase *const obj, NSUInteger index, ArgType value) {
+    RLMVerifyInWriteTransaction(obj);
     RLMObservationTracker tracker(obj->_realm);
     auto key = willChange(tracker, obj, index);
     if constexpr (std::is_same_v<ArgType, RLMObjectBase *>) {
         tracker.trackDeletions();
     }
     setValue(obj, key, static_cast<StorageType>(value));
+}
+
+template<>
+void kvoSetValue<id<RLMValue>>(__unsafe_unretained RLMObjectBase *const obj, NSUInteger index, id<RLMValue> value) {
+    RLMVerifyInWriteTransaction(obj);
+    auto& prop = getProperty(obj, index);
+    setValue(obj, obj->_info->propertyForTableColumn(prop.column_key), static_cast<id<RLMValue>>(value));
 }
 
 template<typename ArgType, typename StorageType=ArgType>
@@ -680,7 +685,7 @@ void RLMDynamicValidatedSet(RLMObjectBase *obj, NSString *propName, id val) {
 
     // Because embedded objects cannot be created directly, we accept anything
     // that can be converted to an embedded object for dynamic link set operations.
-    bool is_embedded = prop.type == RLMPropertyTypeObject && obj->_info->linkTargetType(prop.index).objectSchema->is_embedded;
+    bool is_embedded = prop.type == RLMPropertyTypeObject && obj->_info->linkTargetType(prop.index).rlmObjectSchema.isEmbedded;
     RLMValidateValueForProperty(val, schema, prop, !is_embedded);
     RLMDynamicSet(obj, prop, RLMCoerceToNil(val));
 }
@@ -760,11 +765,11 @@ NSDate *RLMGetSwiftPropertyDate(__unsafe_unretained RLMObjectBase *const obj, ui
 }
 
 NSUUID *RLMGetSwiftPropertyUUID(__unsafe_unretained RLMObjectBase *const obj, uint16_t key) {
-    return getBoxed<realm::util::Optional<realm::UUID>>(obj, key);
+    return getBoxed<std::optional<realm::UUID>>(obj, key);
 }
 
 RLMObjectId *RLMGetSwiftPropertyObjectId(__unsafe_unretained RLMObjectBase *const obj, uint16_t key) {
-    return getBoxed<realm::util::Optional<realm::ObjectId>>(obj, key);
+    return getBoxed<std::optional<realm::ObjectId>>(obj, key);
 }
 
 RLMDecimal128 *RLMGetSwiftPropertyDecimal128(__unsafe_unretained RLMObjectBase *const obj, uint16_t key) {
@@ -772,13 +777,13 @@ RLMDecimal128 *RLMGetSwiftPropertyDecimal128(__unsafe_unretained RLMObjectBase *
 }
 
 RLMArray *RLMGetSwiftPropertyArray(__unsafe_unretained RLMObjectBase *const obj, uint16_t key) {
-    return getCollection(obj, key);
+    return (RLMArray *)getCollection(obj, key);
 }
 RLMSet *RLMGetSwiftPropertySet(__unsafe_unretained RLMObjectBase *const obj, uint16_t key) {
     return getCollection(obj, key);
 }
 RLMDictionary *RLMGetSwiftPropertyMap(__unsafe_unretained RLMObjectBase *const obj, uint16_t key) {
-    return getCollection(obj, key);
+    return (RLMDictionary *)getCollection(obj, key);
 }
 
 void RLMSetSwiftPropertyNil(__unsafe_unretained RLMObjectBase *const obj, uint16_t key) {
@@ -821,13 +826,8 @@ RLMAccessorContext::RLMAccessorContext(RLMAccessorContext& parent, realm::Obj co
 , _parentObject(obj)
 , _parentObjectInfo(&parent._info)
 , _colKey(property.column_key)
-{
-}
-
-RLMAccessorContext::RLMAccessorContext(RLMClassInfo& info)
-: _realm(info.realm), _info(info)
-{
-}
+ {
+ }
 
 RLMAccessorContext::RLMAccessorContext(__unsafe_unretained RLMObjectBase *const parent,
                                        const realm::Property *prop)
@@ -847,6 +847,20 @@ RLMAccessorContext::RLMAccessorContext(__unsafe_unretained RLMObjectBase *const 
 , _parentObject(parent->_row)
 , _parentObjectInfo(parent->_info)
 , _colKey(col)
+{
+}
+
+RLMAccessorContext::RLMAccessorContext(RLMClassInfo& info)
+: _realm(info.realm), _info(info)
+{
+}
+
+RLMAccessorContext::RLMAccessorContext(RLMClassInfo& parentInfo, RLMClassInfo& info,
+                                       __unsafe_unretained RLMProperty *const property)
+: _realm(info.realm)
+, _info(info)
+, _parentObjectInfo(&parentInfo)
+, currentProperty(property)
 {
 }
 
@@ -890,15 +904,18 @@ realm::Obj RLMAccessorContext::create_embedded_object() {
 }
 
 id RLMAccessorContext::box(realm::Mixed v) {
-    return RLMMixedToObjc(v, _realm, &_info);
+    auto property = currentProperty ?: _info.propertyForTableColumn(_colKey);
+    // Property and ParentObject are only passed for List and Dictionary boxing
+    return RLMMixedToObjc(v, _realm, &_info, property, _parentObject);
 }
 
 id RLMAccessorContext::box(realm::List&& l) {
     REALM_ASSERT(_parentObjectInfo);
-    REALM_ASSERT(currentProperty);
+    auto property = currentProperty ?: _info.propertyForTableColumn(_colKey);
+    REALM_ASSERT(property);
     return [[RLMManagedArray alloc] initWithBackingCollection:std::move(l)
                                                    parentInfo:_parentObjectInfo
-                                                     property:currentProperty];
+                                                     property:property];
 }
 
 id RLMAccessorContext::box(realm::object_store::Set&& s) {
@@ -911,15 +928,16 @@ id RLMAccessorContext::box(realm::object_store::Set&& s) {
 
 id RLMAccessorContext::box(realm::object_store::Dictionary&& d) {
     REALM_ASSERT(_parentObjectInfo);
-    REALM_ASSERT(currentProperty);
+    auto property = currentProperty ? currentProperty : _info.propertyForTableColumn(_colKey);
+    REALM_ASSERT(property);
     return [[RLMManagedDictionary alloc] initWithBackingCollection:std::move(d)
                                                         parentInfo:_parentObjectInfo
-                                                          property:currentProperty];
+                                                          property:property];
 }
 
 id RLMAccessorContext::box(realm::Object&& o) {
     REALM_ASSERT(currentProperty);
-    return RLMCreateObjectAccessor(_info.linkTargetType(currentProperty.index), o.obj());
+    return RLMCreateObjectAccessor(_info.linkTargetType(currentProperty.index), o.get_obj());
 }
 
 id RLMAccessorContext::box(realm::Obj&& r) {
@@ -1004,27 +1022,27 @@ static auto toOptional(__unsafe_unretained id const value) {
 }
 
 template<>
-realm::util::Optional<bool> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
+std::optional<bool> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
     return toOptional<bool>(v);
 }
 template<>
-realm::util::Optional<double> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
+std::optional<double> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
     return toOptional<double>(v);
 }
 template<>
-realm::util::Optional<float> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
+std::optional<float> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
     return toOptional<float>(v);
 }
 template<>
-realm::util::Optional<int64_t> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
+std::optional<int64_t> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
     return toOptional<int64_t>(v);
 }
 template<>
-realm::util::Optional<realm::ObjectId> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
+std::optional<realm::ObjectId> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
     return toOptional<realm::ObjectId>(v);
 }
 template<>
-realm::util::Optional<realm::UUID> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
+std::optional<realm::UUID> RLMStatelessAccessorContext::unbox(__unsafe_unretained id const v) {
     return toOptional<realm::UUID>(v);
 }
 
@@ -1100,7 +1118,7 @@ RLMAccessorContext::createObject(id value, realm::CreatePolicy policy,
 
     try {
         realm::Object::create(*this, _realm->_realm, *_info.objectSchema,
-                              (id)value, policy, existingKey, outObj).obj();
+                              (id)value, policy, existingKey, outObj);
     }
     catch (std::exception const& e) {
         @throw RLMException(e);

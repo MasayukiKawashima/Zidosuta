@@ -138,23 +138,6 @@ public:
     operator std::function<Signature>() const = delete;
 
 private:
-    // These overload helpers are needed to squelch problems in the `T ()` -> `void ()` case.
-    template <typename Functor>
-    static void call_regular_void(const std::true_type is_void, Functor& f, Args&&... args)
-    {
-        // The result of this call is not cast to void, to help preserve detection of
-        // `[[nodiscard]]` violations.
-        static_cast<void>(is_void);
-        f(std::forward<Args>(args)...);
-    }
-
-    template <typename Functor>
-    static RetType call_regular_void(const std::false_type is_not_void, Functor& f, Args&&... args)
-    {
-        static_cast<void>(is_not_void);
-        return f(std::forward<Args>(args)...);
-    }
-
     template <typename Functor>
     struct SpecificImpl : Impl {
         template <typename F>
@@ -165,7 +148,14 @@ private:
 
         RetType call(Args&&... args) override
         {
-            return call_regular_void(std::is_void<RetType>(), f, std::forward<Args>(args)...);
+            if constexpr (std::is_void_v<RetType>) {
+                // The result of this call is not cast to void, to help preserve detection of
+                // `[[nodiscard]]` violations.
+                f(std::forward<Args>(args)...);
+            }
+            else {
+                return f(std::forward<Args>(args)...);
+            }
         }
 
         Functor f;
@@ -179,20 +169,15 @@ private:
  * function pointers. We don't currently support r-value-qualified call operators.
  */
 template <typename>
-struct UFDeductionHelper {
-};
+struct UFDeductionHelper {};
 template <typename Class, typename Ret, typename... Args>
-struct UFDeductionHelper<Ret (Class::*)(Args...)> : TypeIdentity<Ret(Args...)> {
-};
+struct UFDeductionHelper<Ret (Class::*)(Args...)> : TypeIdentity<Ret(Args...)> {};
 template <typename Class, typename Ret, typename... Args>
-struct UFDeductionHelper<Ret (Class::*)(Args...)&> : TypeIdentity<Ret(Args...)> {
-};
+struct UFDeductionHelper<Ret (Class::*)(Args...)&> : TypeIdentity<Ret(Args...)> {};
 template <typename Class, typename Ret, typename... Args>
-struct UFDeductionHelper<Ret (Class::*)(Args...) const> : TypeIdentity<Ret(Args...)> {
-};
+struct UFDeductionHelper<Ret (Class::*)(Args...) const> : TypeIdentity<Ret(Args...)> {};
 template <typename Class, typename Ret, typename... Args>
-struct UFDeductionHelper<Ret (Class::*)(Args...) const&> : TypeIdentity<Ret(Args...)> {
-};
+struct UFDeductionHelper<Ret (Class::*)(Args...) const&> : TypeIdentity<Ret(Args...)> {};
 
 /**
  * Deduction guides for UniqueFunction<Sig> that pluck the signature off of function pointers and

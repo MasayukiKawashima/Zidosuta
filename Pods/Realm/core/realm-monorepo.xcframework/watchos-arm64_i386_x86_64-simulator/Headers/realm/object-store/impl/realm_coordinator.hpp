@@ -41,7 +41,9 @@ class WeakRealmNotifier;
 
 // RealmCoordinator manages the weak cache of Realm instances and communication
 // between per-thread Realm instances for a given file
-class RealmCoordinator : public std::enable_shared_from_this<RealmCoordinator> {
+class RealmCoordinator : public std::enable_shared_from_this<RealmCoordinator>, DB::CommitListener {
+    struct Private {};
+
 public:
     // Get the coordinator for the given path, creating it if neccesary
     static std::shared_ptr<RealmCoordinator> get_coordinator(StringData path);
@@ -58,27 +60,12 @@ public:
     // can be read from any thread.
     std::shared_ptr<Realm> get_realm(Realm::Config config, util::Optional<VersionID> version)
         REQUIRES(!m_realm_mutex, !m_schema_cache_mutex);
-    std::shared_ptr<Realm> get_realm(std::shared_ptr<util::Scheduler> = nullptr)
-        REQUIRES(!m_realm_mutex, !m_schema_cache_mutex);
-#if REALM_ENABLE_SYNC
-    // Get a thread-local shared Realm with the given configuration
-    // If the Realm is not already present, it will be fully downloaded before being returned.
-    // If the Realm is already on disk, it will be fully synchronized before being returned.
-    // Timeouts and interruptions are not handled by this method and must be handled by upper layers.
-    std::shared_ptr<AsyncOpenTask> get_synchronized_realm(Realm::Config config)
+    std::shared_ptr<Realm> get_realm(std::shared_ptr<util::Scheduler> = nullptr, bool first_time_open = false)
         REQUIRES(!m_realm_mutex, !m_schema_cache_mutex);
 
-    // Creates the underlying sync session if it doesn't already exists.
-    // This is also created as part of opening a Realm, so only use this
-    // method if the session needs to exist before the Realm does.
-    void create_session(const Realm::Config& config) REQUIRES(!m_realm_mutex, !m_schema_cache_mutex);
-
-    std::shared_ptr<SyncSession> sync_session() REQUIRES(!m_realm_mutex)
-    {
-        util::CheckedLockGuard lock(m_realm_mutex);
-        return m_sync_session;
-    }
-#endif
+    // Return a frozen copy of the source Realm. May return a cached instance
+    // if the source Realm has caching enabled.
+    std::shared_ptr<Realm> freeze_realm(const Realm& source_realm) REQUIRES(!m_realm_mutex);
 
     // Get the existing cached Realm if it exists for the specified scheduler or config.scheduler
     std::shared_ptr<Realm> get_cached_realm(Realm::Config const& config,
@@ -153,8 +140,9 @@ public:
     // Verify that there are no Realms open for any paths
     static void assert_no_open_realms() noexcept;
 
-    // Explicit constructor/destructor needed for the unique_ptrs to forward-declared types
-    RealmCoordinator();
+    explicit RealmCoordinator(Private);
+    RealmCoordinator(const RealmCoordinator&) = delete;
+    RealmCoordinator& operator=(const RealmCoordinator&) = delete;
     ~RealmCoordinator();
 
     // Called by Realm's destructor to ensure the cache is cleaned up promptly
@@ -162,23 +150,23 @@ public:
     void unregister_realm(Realm* realm) REQUIRES(!m_realm_mutex, !m_notifier_mutex);
 
     // Called by m_notifier when there's a new commit to send notifications for
-    void on_change() REQUIRES(!m_realm_mutex, !m_notifier_mutex);
+    void on_change() REQUIRES(!m_realm_mutex, !m_notifier_mutex, !m_running_notifiers_mutex);
 
     static void register_notifier(std::shared_ptr<CollectionNotifier> notifier);
 
     TransactionRef begin_read(VersionID version = {}, bool frozen_transaction = false);
 
-    // Check if advance_to_ready() would actually advance the Realm's read version
+    // Returns true if there are any versions after the Realm's read version
     bool can_advance(Realm& realm);
 
     // Advance the Realm to the most recent transaction version which all async
     // work is complete for
     void advance_to_ready(Realm& realm) REQUIRES(!m_notifier_mutex);
 
-    // Advance the Realm to the most recent transaction version, blocking if
-    // async notifiers are not yet ready for that version
-    // returns whether it actually changed the version
-    bool advance_to_latest(Realm& realm) REQUIRES(!m_notifier_mutex);
+    // Advance the Realm to the most recent transaction version, running the
+    // async notifiers if they aren't ready for that version
+    // returns true if actually changed the version
+    bool advance_to_latest(Realm& realm) REQUIRES(!m_notifier_mutex, !m_running_notifiers_mutex);
 
     // Deliver any notifications which are ready for the Realm's version
     void process_available_async(Realm& realm) REQUIRES(!m_notifier_mutex);
@@ -197,10 +185,26 @@ public:
 
     void close();
     bool compact();
-    void write_copy(StringData path, const char* key);
+    void write_copy(std::string_view path, const char* key);
 
-    template <typename Pred>
-    util::CheckedUniqueLock wait_for_notifiers(Pred&& wait_predicate) REQUIRES(!m_notifier_mutex);
+    // Close the DB, delete the file, and then reopen it. This operation is *not*
+    // implemented in a safe manner and will only work in fairly specific circumstances
+    void delete_and_reopen() REQUIRES(!m_realm_mutex);
+
+    using NotifierVector = std::vector<std::shared_ptr<_impl::CollectionNotifier>>;
+    // Called by NotifierPackage in the cases where we don't know what version
+    // we need notifiers for until after we begin advancing (e.g. when
+    // starting a write transaction). Will return a Transaction at the packaged
+    // version if any notifiers were packaged, and null otherwise.
+    TransactionRef package_notifiers(NotifierVector& notifiers, VersionID::version_type)
+        REQUIRES(!m_notifier_mutex, !m_running_notifiers_mutex);
+
+    // testing hook only to verify that notifiers are not being run at times
+    // they shouldn't be
+    std::unique_lock<std::mutex> block_notifier_execution() REQUIRES(!m_running_notifiers_mutex)
+    {
+        return std::move(util::CheckedUniqueLock(m_running_notifiers_mutex).native_handle());
+    }
 
     void async_request_write_mutex(Realm& realm);
 
@@ -209,12 +213,17 @@ public:
         return m_audit_context.get();
     }
 
+    bool try_claim_sync_agent()
+    {
+        return m_db->try_claim_sync_agent();
+    }
+
 private:
     friend Realm::Internal;
     Realm::Config m_config;
     std::shared_ptr<DB> m_db;
 
-    mutable util::CheckedMutex m_schema_cache_mutex;
+    util::CheckedMutex m_schema_cache_mutex;
     util::Optional<Schema> m_cached_schema GUARDED_BY(m_schema_cache_mutex);
     uint64_t m_schema_version GUARDED_BY(m_schema_cache_mutex) = -1;
     uint64_t m_schema_transaction_version_min GUARDED_BY(m_schema_cache_mutex) = 0;
@@ -224,59 +233,40 @@ private:
     std::vector<WeakRealmNotifier> m_weak_realm_notifiers GUARDED_BY(m_realm_mutex);
 
     util::CheckedMutex m_notifier_mutex;
-    std::condition_variable m_notifier_cv GUARDED_BY(m_notifier_mutex);
-    std::vector<std::shared_ptr<_impl::CollectionNotifier>> m_new_notifiers GUARDED_BY(m_notifier_mutex);
-    std::vector<std::shared_ptr<_impl::CollectionNotifier>> m_notifiers GUARDED_BY(m_notifier_mutex);
-    VersionID m_notifier_skip_version GUARDED_BY(m_notifier_mutex) = {0, 0};
+    NotifierVector m_new_notifiers GUARDED_BY(m_notifier_mutex);
+    NotifierVector m_notifiers GUARDED_BY(m_notifier_mutex);
+    TransactionRef m_notifier_skip_version GUARDED_BY(m_notifier_mutex);
 
+    util::CheckedMutex m_running_notifiers_mutex;
     // Transaction used for actually running async notifiers
-    // Will have a read transaction iff m_notifiers is non-empty
-    std::shared_ptr<Transaction> m_notifier_sg;
-
-    std::exception_ptr m_async_error;
+    // Will be non-null iff m_notifiers is non-empty
+    std::shared_ptr<Transaction> m_notifier_transaction;
+    // Transaction used to pin the version which notifiers are currently ready
+    // to deliver to
+    std::shared_ptr<Transaction> m_notifier_handover_transaction;
 
     std::unique_ptr<_impl::ExternalCommitHelper> m_notifier;
 
-#if REALM_ENABLE_SYNC
-    std::shared_ptr<SyncSession> m_sync_session;
-#endif
-
     std::shared_ptr<AuditInterface> m_audit_context;
 
-    void open_db();
+    // returns true the first time the database is opened, false otherwise.
+    bool open_db() REQUIRES(m_realm_mutex);
 
     void set_config(const Realm::Config&) REQUIRES(m_realm_mutex, !m_schema_cache_mutex);
-    void create_sync_session();
+    void init_external_helpers() REQUIRES(m_realm_mutex);
+    void on_commit(DB::version_type) override;
     std::shared_ptr<Realm> do_get_cached_realm(Realm::Config const& config,
                                                std::shared_ptr<util::Scheduler> scheduler = nullptr)
         REQUIRES(m_realm_mutex);
-    void do_get_realm(Realm::Config config, std::shared_ptr<Realm>& realm, util::Optional<VersionID> version,
-                      util::CheckedUniqueLock& realm_lock) REQUIRES(m_realm_mutex);
-    void run_async_notifiers() REQUIRES(!m_notifier_mutex);
-    void advance_helper_shared_group_to_latest();
+    void do_get_realm(Realm::Config&& config, std::shared_ptr<Realm>& realm, util::Optional<VersionID> version,
+                      util::CheckedUniqueLock& realm_lock, bool first_time_open = false) REQUIRES(m_realm_mutex);
+    void run_async_notifiers() REQUIRES(!m_notifier_mutex, m_running_notifiers_mutex);
     void clean_up_dead_notifiers() REQUIRES(m_notifier_mutex);
 
-    std::vector<std::shared_ptr<_impl::CollectionNotifier>> notifiers_for_realm(Realm&) REQUIRES(m_notifier_mutex);
+    NotifierVector notifiers_for_realm(Realm&) REQUIRES(m_notifier_mutex);
 };
 
 void translate_file_exception(StringData path, bool immutable = false);
-
-template <typename Pred>
-util::CheckedUniqueLock RealmCoordinator::wait_for_notifiers(Pred&& wait_predicate)
-{
-    util::CheckedUniqueLock lock(m_notifier_mutex);
-    bool first = true;
-    m_notifier_cv.wait(lock.native_handle(), [&] {
-        if (wait_predicate())
-            return true;
-        if (first) {
-            wake_up_notifier_worker();
-            first = false;
-        }
-        return false;
-    });
-    return lock;
-}
 
 } // namespace _impl
 } // namespace realm

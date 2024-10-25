@@ -20,6 +20,7 @@
 #define REALM_UTIL_BIND_PTR_HPP
 
 #include <algorithm>
+#include <memory>
 #include <atomic>
 #include <ostream>
 #include <utility>
@@ -33,8 +34,7 @@ namespace util {
 
 class bind_ptr_base {
 public:
-    struct adopt_tag {
-    };
+    struct adopt_tag {};
 };
 
 
@@ -233,8 +233,7 @@ public:
     }
 
 protected:
-    struct casting_move_tag {
-    };
+    struct casting_move_tag {};
     template <class U>
     bind_ptr(bind_ptr<U>* p, casting_move_tag) noexcept
         : m_ptr(static_cast<T*>(p->release()))
@@ -259,6 +258,12 @@ private:
     template <class>
     friend class bind_ptr;
 };
+
+// Deduction guides
+template <class T>
+bind_ptr(T*) -> bind_ptr<T>;
+template <class T>
+bind_ptr(T*, bind_ptr_base::adopt_tag) -> bind_ptr<T>;
 
 template <class T, typename... Args>
 bind_ptr<T> make_bind(Args&&... __args)

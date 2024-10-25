@@ -33,6 +33,7 @@
 #include <realm/object-store/shared_realm.hpp>
 
 #include <realm/util/assert.hpp>
+#include <realm/util/optional.hpp>
 #include <realm/table_view.hpp>
 
 #include <string>
@@ -82,7 +83,7 @@ struct ValueUpdater {
         policy2.create = false;
         auto link = child_ctx.template unbox<Obj>(value, policy2);
         if (!policy.copy && link && link.get_table()->is_embedded())
-            throw std::logic_error("Cannot set a link to an existing managed embedded object");
+            throw InvalidArgument("Cannot set a link to an existing managed embedded object");
 
         ObjKey curr_link;
         if (policy.diff)
@@ -169,8 +170,38 @@ void Object::set_property_value_impl(ContextType& ctx, const Property& property,
         return;
     }
 
-    ValueUpdater<ValueType, ContextType> updater{ctx, property, value, m_obj, col, policy, is_default};
-    switch_on_type(property.type, updater);
+    if (property.type == PropertyType::Mixed) {
+        Mixed new_val = ctx.template unbox<Mixed>(value, policy);
+        if (new_val.is_type(type_Dictionary)) {
+            ContextType child_ctx(ctx, m_obj, property);
+            m_obj.set_collection(col, CollectionType::Dictionary);
+            object_store::Dictionary dict(m_realm, m_obj, col);
+            dict.assign(child_ctx, value, policy);
+            ctx.did_change();
+            return;
+        }
+        if (new_val.is_type(type_List)) {
+            ContextType child_ctx(ctx, m_obj, property);
+            m_obj.set_collection(col, CollectionType::List);
+            List list(m_realm, m_obj, col);
+            list.assign(child_ctx, value, policy);
+            ctx.did_change();
+            return;
+        }
+        bool attr_changed = !policy.diff;
+
+        if (!attr_changed) {
+            auto old_val = m_obj.get<Mixed>(col);
+            attr_changed = !new_val.is_same_type(old_val) || new_val != old_val;
+        }
+
+        if (attr_changed)
+            m_obj.set(col, new_val, is_default);
+    }
+    else {
+        ValueUpdater<ValueType, ContextType> updater{ctx, property, value, m_obj, col, policy, is_default};
+        switch_on_type(property.type, updater);
+    }
     ctx.did_change();
 }
 
@@ -213,8 +244,16 @@ ValueType Object::get_property_value_impl(ContextType& ctx, const Property& prop
         case PropertyType::UUID:
             return is_nullable(property.type) ? ctx.box(m_obj.get<util::Optional<UUID>>(column))
                                               : ctx.box(m_obj.get<UUID>(column));
-        case PropertyType::Mixed:
-            return ctx.box(m_obj.get<Mixed>(column));
+        case PropertyType::Mixed: {
+            Mixed value = m_obj.get<Mixed>(column);
+            if (value.is_type(type_Dictionary)) {
+                return ctx.box(object_store::Dictionary(m_realm, m_obj, column));
+            }
+            if (value.is_type(type_List)) {
+                return ctx.box(List(m_realm, m_obj, column));
+            }
+            return ctx.box(value);
+        }
         case PropertyType::Object: {
             auto linkObjectSchema = m_realm->schema().find(property.object_type);
             auto linked = const_cast<Obj&>(m_obj).get_linked_object(column);
@@ -223,9 +262,7 @@ ValueType Object::get_property_value_impl(ContextType& ctx, const Property& prop
         case PropertyType::LinkingObjects: {
             auto target_object_schema = m_realm->schema().find(property.object_type);
             auto link_property = target_object_schema->property_for_name(property.link_origin_property_name);
-            auto table = m_realm->read_group().get_table(target_object_schema->table_key);
-            auto tv = const_cast<Obj&>(m_obj).get_backlink_view(table, ColKey(link_property->column_key));
-            return ctx.box(Results(m_realm, std::move(tv)));
+            return ctx.box(Results(m_realm, m_obj, target_object_schema->table_key, link_property->column_key));
         }
         default:
             REALM_UNREACHABLE();
@@ -263,12 +300,19 @@ Object Object::create(ContextType& ctx, std::shared_ptr<Realm> const& realm, Obj
     // considered a primary key by core, and so will need to be set.
     bool skip_primary = true;
     // If the input value is missing values for any of the properties we want to
-    // set the propery to the default value for new objects, but leave it
+    // set the property to the default value for new objects, but leave it
     // untouched for existing objects.
     bool created = false;
 
     Obj obj;
     auto table = realm->read_group().get_table(object_schema.table_key);
+
+    // Asymmetric objects cannot be updated through Object::create.
+    if (object_schema.table_type == ObjectSchema::ObjectType::TopLevelAsymmetric) {
+        REALM_ASSERT(!policy.update);
+        REALM_ASSERT(!current_obj);
+        REALM_ASSERT(object_schema.primary_key_property());
+    }
 
     // If there's a primary key, we need to first check if an object with the
     // same primary key already exists. If it does, we either update that object
@@ -298,9 +342,8 @@ Object Object::create(ContextType& ctx, std::shared_ptr<Realm> const& realm, Obj
             obj = table->create_object_with_primary_key(as_mixed(ctx, primary_value, primary_prop->type), &created);
             if (!created && !policy.update) {
                 if (!realm->is_in_migration()) {
-                    throw std::logic_error(util::format(
-                        "Attempting to create an object of type '%1' with an existing primary key value '%2'.",
-                        object_schema.name, primary_value ? ctx.print(*primary_value) : "null"));
+                    auto pk_val = primary_value ? ctx.print(*primary_value) : "null";
+                    throw ObjectAlreadyExists(object_schema.name, pk_val);
                 }
                 table->set_primary_key_column(ColKey{});
                 skip_primary = false;
@@ -316,7 +359,7 @@ Object Object::create(ContextType& ctx, std::shared_ptr<Realm> const& realm, Obj
     if (!obj) {
         if (current_obj)
             obj = table->get_object(current_obj);
-        else if (object_schema.is_embedded)
+        else if (object_schema.table_type == ObjectSchema::ObjectType::Embedded)
             obj = ctx.create_embedded_object();
         else
             obj = table->create_object();
@@ -327,7 +370,7 @@ Object Object::create(ContextType& ctx, std::shared_ptr<Realm> const& realm, Obj
     // KVO in Cocoa requires that the obj ivar on the wrapper object be set
     // *before* we start setting the properties, so it passes in a pointer to
     // that.
-    if (out_row)
+    if (out_row && object_schema.table_type != ObjectSchema::ObjectType::TopLevelAsymmetric)
         *out_row = obj;
     for (size_t i = 0; i < object_schema.persisted_properties.size(); ++i) {
         auto& prop = object_schema.persisted_properties[i];
@@ -353,6 +396,9 @@ Object Object::create(ContextType& ctx, std::shared_ptr<Realm> const& realm, Obj
         }
         if (v)
             object.set_property_value_impl(ctx, prop, *v, policy, is_default);
+    }
+    if (object_schema.table_type == ObjectSchema::ObjectType::TopLevelAsymmetric) {
+        return Object{};
     }
     return object;
 }
@@ -381,7 +427,8 @@ Object Object::get_for_primary_key(ContextType& ctx, std::shared_ptr<Realm> cons
     if (!table)
         return Object(realm, object_schema, Obj());
     if (ctx.is_null(primary_value) && !is_nullable(primary_prop->type))
-        throw std::logic_error("Invalid null value for non-nullable primary key.");
+        throw NotNullable(util::format("Invalid null value for non-nullable primary key '%1.%2'.", object_schema.name,
+                                       primary_prop->name));
 
     auto primary_key_value = switch_on_type(primary_prop->type, [&](auto* t) {
         return Mixed(ctx.template unbox<NonObjTypeT<decltype(*t)>>(primary_value));
@@ -396,7 +443,8 @@ ObjKey Object::get_for_primary_key_in_migration(ContextType& ctx, Table const& t
 {
     bool is_null = ctx.is_null(primary_value);
     if (is_null && !is_nullable(primary_prop.type))
-        throw std::logic_error("Invalid null value for non-nullable primary key.");
+        throw NotNullable(util::format("Invalid null value for non-nullable primary key '%1.%2'.",
+                                       table.get_class_name(), primary_prop.name));
     if (primary_prop.type == PropertyType::String) {
         return table.find_first(primary_prop.column_key, ctx.template unbox<StringData>(primary_value));
     }
@@ -418,6 +466,272 @@ ObjKey Object::get_for_primary_key_in_migration(ContextType& ctx, Table const& t
     return table.find_first(primary_prop.column_key, ctx.template unbox<int64_t>(primary_value));
 }
 
+namespace _impl {
+
+template <typename Context>
+auto box_mixed(Context& ctx, const object_store::Collection& collection, const PathElement& path, Mixed value)
+{
+    if (value.is_type(type_Dictionary)) {
+        return ctx.box(collection.get_dictionary(path));
+    }
+    if (value.is_type(type_List)) {
+        return ctx.box(collection.get_list(path));
+    }
+    return ctx.box(value);
+}
+
+template <typename T, typename Context>
+void assign_collection(Context& ctx, object_store::Collection& collection, const PathElement& path,
+                       CollectionType type, T&& value, CreatePolicy policy)
+{
+    switch (type) {
+        case CollectionType::List:
+            collection.get_list(path).assign(ctx, value, policy);
+            return;
+        case CollectionType::Dictionary:
+            collection.get_dictionary(path).assign(ctx, value, policy);
+            return;
+        default:
+            REALM_UNREACHABLE();
+    }
+}
+
+template <typename T>
+inline std::optional<CollectionType> collection_type(T)
+{
+    return {};
+}
+
+inline std::optional<CollectionType> collection_type(Mixed m)
+{
+    static_assert(int(CollectionType::Dictionary) == int(type_Dictionary));
+    static_assert(int(CollectionType::List) == int(type_List));
+    if (m.is_type(type_Dictionary, type_List)) {
+        return static_cast<CollectionType>(static_cast<int>(m.get_type()));
+    }
+    return {};
+}
+
+template <typename T>
+bool compare(const T& a, const T& b)
+{
+    return a == b;
+}
+inline bool compare(const Obj& a, const Obj& b)
+{
+    return a.get_key() == b.get_key();
+}
+inline bool compare(Mixed a, Mixed b)
+{
+    return a.is_same_type(b) && a == b;
+}
+
+} // namespace _impl
+
+template <typename Context>
+auto List::get(Context& ctx, size_t row_ndx) const
+{
+    if (m_type == PropertyType::Mixed) {
+        return _impl::box_mixed(ctx, *this, row_ndx, get<Mixed>(row_ndx));
+    }
+
+    return dispatch([&](auto t) {
+        return ctx.box(this->get<std::decay_t<decltype(*t)>>(row_ndx));
+    });
+}
+
+template <typename T, typename Context>
+size_t List::find(Context& ctx, T&& value) const
+{
+    return dispatch([&](auto t) {
+        return this->find(ctx.template unbox<std::decay_t<decltype(*t)>>(value, CreatePolicy::Skip));
+    });
+}
+
+template <typename T, typename Context>
+void List::add(Context& ctx, T&& value, CreatePolicy policy)
+{
+    this->insert(ctx, size(), std::move(value), policy);
+}
+
+template <typename T, typename Context>
+void List::insert(Context& ctx, size_t list_ndx, T&& value, CreatePolicy policy)
+{
+    if (m_is_embedded) {
+        validate_embedded(ctx, value, policy);
+        auto key = as<Obj>().create_and_insert_linked_object(list_ndx).get_key();
+        ctx.template unbox<Obj>(value, policy, key);
+        return;
+    }
+    dispatch([&](auto t) {
+        using U = std::decay_t<decltype(*t)>;
+        auto new_val = ctx.template unbox<U>(value, policy);
+        if (auto type = _impl::collection_type(new_val)) {
+            insert_collection(list_ndx, *type);
+            _impl::assign_collection(ctx, *this, list_ndx, *type, value, policy);
+            return;
+        }
+        this->insert(list_ndx, new_val);
+    });
+}
+
+template <typename T, typename Context>
+void List::set(Context& ctx, size_t list_ndx, T&& value, CreatePolicy policy)
+{
+    if (m_is_embedded) {
+        validate_embedded(ctx, value, policy);
+        auto& list = as<Obj>();
+        auto key = policy.diff ? list.get(list_ndx) : list.create_and_set_linked_object(list_ndx).get_key();
+        ctx.template unbox<Obj>(value, policy, key);
+        return;
+    }
+
+    dispatch([&](auto t) {
+        using U = std::decay_t<decltype(*t)>;
+        U new_val;
+        if constexpr (std::is_same_v<U, Obj>) {
+            auto old_key = this->get<ObjKey>(list_ndx);
+            new_val = ctx.template unbox<Obj>(value, policy, old_key);
+        }
+        else {
+            new_val = ctx.template unbox<U>(value, policy);
+        }
+
+        if constexpr (std::is_same_v<U, realm::Mixed>) {
+            if (auto type = _impl::collection_type(new_val)) {
+                set_collection(list_ndx, *type);
+                _impl::assign_collection(ctx, *this, list_ndx, *type, value, policy);
+                return;
+            }
+        }
+
+        if (policy.diff) {
+            auto old_value = this->get<U>(list_ndx);
+            if (_impl::compare(old_value, new_val))
+                return;
+        }
+
+        this->set(list_ndx, new_val);
+    });
+}
+
+template <typename T, typename Context>
+void List::assign(Context& ctx, T&& values, CreatePolicy policy)
+{
+    if (ctx.is_same_list(*this, values))
+        return;
+
+    if (ctx.is_null(values)) {
+        remove_all();
+        return;
+    }
+
+    if (!policy.diff)
+        remove_all();
+
+    size_t sz = size();
+    size_t index = 0;
+    ctx.enumerate_collection(values, [&](auto&& element) {
+        if (index >= sz) {
+            this->add(ctx, element, policy);
+        }
+        else {
+            // If index is within legal range, policy.diff must be true -
+            // otherwise the list would have been cleared
+            REALM_ASSERT(policy.diff);
+            this->set(ctx, index, element, policy);
+        }
+        index++;
+    });
+    while (index < sz)
+        remove(--sz);
+}
+
+namespace object_store {
+
+template <typename T, typename Context>
+void Dictionary::insert(Context& ctx, StringData key, T&& value, CreatePolicy policy)
+{
+    if (ctx.is_null(value)) {
+        this->insert(key, Mixed());
+        return;
+    }
+    if (m_is_embedded) {
+        validate_embedded(ctx, value, policy);
+        auto old_value = dict().try_get(key);
+        auto obj_key = (policy.diff && old_value && !old_value->is_null())
+                           ? old_value->get<ObjKey>()
+                           : dict().create_and_insert_linked_object(key).get_key();
+        ctx.template unbox<Obj>(value, policy, obj_key);
+        return;
+    };
+
+    dispatch([&](auto t) {
+        using U = std::decay_t<decltype(*t)>;
+        U new_val;
+        if constexpr (std::is_same_v<U, Obj>) {
+            ObjKey old_key;
+            if (auto old_value = dict().try_get(key); old_value && !old_value->is_null()) {
+                // Value is either null or an ObjKey
+                old_key = old_value->get_link().get_obj_key();
+            }
+            new_val = ctx.template unbox<Obj>(value, policy, old_key);
+        }
+        else {
+            new_val = ctx.template unbox<U>(value, policy);
+        }
+
+        if constexpr (std::is_same_v<U, realm::Mixed>) {
+            if (auto type = _impl::collection_type(new_val)) {
+                insert_collection(key, *type);
+                _impl::assign_collection(ctx, *this, key, *type, value, policy);
+                return;
+            }
+        }
+
+        if (policy.diff) {
+            if (auto old_value = dict().try_get(key)) {
+                if (_impl::compare(*old_value, new_val)) {
+                    return;
+                }
+            }
+        }
+
+        dict().insert(key, new_val);
+    });
+}
+
+template <typename Context>
+auto Dictionary::get(Context& ctx, StringData key) const
+{
+    if (m_type == PropertyType::Mixed) {
+        return _impl::box_mixed(ctx, *this, key, get<Mixed>(key));
+    }
+    return dispatch([&](auto t) {
+        return ctx.box(this->get<std::decay_t<decltype(*t)>>(key));
+    });
+}
+
+template <typename T, typename Context>
+void Dictionary::assign(Context& ctx, T&& values, CreatePolicy policy)
+{
+    if (ctx.is_same_dictionary(*this, values))
+        return;
+
+    if (ctx.is_null(values)) {
+        remove_all();
+        return;
+    }
+
+    if (!policy.diff)
+        remove_all();
+
+    ctx.enumerate_dictionary(values, [&](StringData key, auto&& value) {
+        this->insert(ctx, key, value, policy);
+    });
+}
+
+} // namespace object_store
 } // namespace realm
 
 #endif // REALM_OS_OBJECT_ACCESSOR_HPP

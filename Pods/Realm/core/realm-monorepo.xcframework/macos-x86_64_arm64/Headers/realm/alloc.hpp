@@ -52,8 +52,7 @@ int64_t to_int64(size_t value) noexcept;
 
 class MemRef {
 public:
-    MemRef() noexcept;
-    ~MemRef() noexcept;
+    MemRef() noexcept = default;
 
     MemRef(char* addr, ref_type ref, Allocator& alloc) noexcept;
     MemRef(ref_type ref, Allocator& alloc) noexcept;
@@ -64,15 +63,15 @@ public:
     void set_addr(char* addr);
 
 private:
-    char* m_addr;
-    ref_type m_ref;
+    char* m_addr = nullptr;
+    ref_type m_ref = 0;
 #if REALM_ENABLE_MEMDEBUG
     // Allocator that created m_ref. Used to verify that the ref is valid whenever you call
     // get_ref()/get_addr and that it e.g. has not been free'ed
     const Allocator* m_alloc = nullptr;
 #endif
 };
-
+static_assert(std::is_trivially_copyable_v<MemRef>);
 
 /// The common interface for Realm allocators.
 ///
@@ -131,7 +130,7 @@ public:
     /// therefore, is not part of an actual database.
     static Allocator& get_default() noexcept;
 
-    virtual ~Allocator() noexcept;
+    virtual ~Allocator() noexcept = default;
 
     // Disable copying. Copying an allocator can produce double frees.
     Allocator(const Allocator&) = delete;
@@ -155,7 +154,7 @@ public:
 
     static constexpr size_t section_size() noexcept
     {
-        return 1 << section_shift;
+        return 1UL << section_shift;
     }
 
 protected:
@@ -172,7 +171,7 @@ protected:
     // into equal chunks.
     struct RefTranslation {
         char* mapping_addr;
-        uint64_t cookie;
+        uint64_t cookie = 0x1234567890;
         std::atomic<size_t> lowest_possible_xover_offset = 0;
 
         // member 'xover_mapping_addr' is used for memory synchronization of the fields
@@ -184,14 +183,12 @@ protected:
 #if REALM_ENABLE_ENCRYPTION
         util::EncryptedFileMapping* encrypted_mapping = nullptr;
         util::EncryptedFileMapping* xover_encrypted_mapping = nullptr;
+#else
+        static inline util::EncryptedFileMapping* const encrypted_mapping = nullptr;
+        static inline util::EncryptedFileMapping* const xover_encrypted_mapping = nullptr;
 #endif
-        explicit RefTranslation(char* addr)
+        explicit RefTranslation(char* addr = nullptr)
             : mapping_addr(addr)
-            , cookie(0x1234567890)
-        {
-        }
-        RefTranslation()
-            : RefTranslation(nullptr)
         {
         }
         ~RefTranslation()
@@ -223,7 +220,7 @@ protected:
     };
     // This pointer may be changed concurrently with access, so make sure it is
     // atomic!
-    std::atomic<RefTranslation*> m_ref_translation_ptr;
+    std::atomic<RefTranslation*> m_ref_translation_ptr{nullptr};
 
     /// The specified size must be divisible by 8, and must not be
     /// zero.
@@ -253,7 +250,7 @@ protected:
     char* translate_critical(RefTranslation*, ref_type ref) const noexcept;
     char* translate_less_critical(RefTranslation*, ref_type ref) const noexcept;
     virtual void get_or_add_xover_mapping(RefTranslation&, size_t, size_t, size_t) = 0;
-    Allocator() noexcept;
+    Allocator() noexcept = default;
     size_t get_section_index(size_t pos) const noexcept;
     inline size_t get_section_base(size_t index) const noexcept;
 
@@ -272,16 +269,14 @@ protected:
     //   used to detect if the allocator (and owning structure, e.g. Table)
     //   is recycled. Mismatch on this counter will cause accesors
     //   lower in the hierarchy to throw if access is attempted.
-    std::atomic<uint_fast64_t> m_content_versioning_counter;
-
-    std::atomic<uint_fast64_t> m_storage_versioning_counter;
-
-    std::atomic<uint_fast64_t> m_instance_versioning_counter;
+    std::atomic<uint_fast64_t> m_content_versioning_counter{0};
+    std::atomic<uint_fast64_t> m_storage_versioning_counter{0};
+    std::atomic<uint_fast64_t> m_instance_versioning_counter{0};
 
     inline uint_fast64_t get_storage_version(uint64_t instance_version)
     {
         if (instance_version != m_instance_versioning_counter) {
-            throw LogicError(LogicError::detached_accessor);
+            throw StaleAccessor("Stale accessor version");
         }
         return m_storage_versioning_counter.load(std::memory_order_acquire);
     }
@@ -328,7 +323,7 @@ private:
     friend class Group;
     friend class WrappedAllocator;
     friend class Obj;
-    template <class, class>
+    template <class>
     friend class CollectionBaseImpl;
     friend class Dictionary;
 };
@@ -424,7 +419,7 @@ inline int_fast64_t from_ref(ref_type v) noexcept
 inline ref_type to_ref(int_fast64_t v) noexcept
 {
     // Check that v is divisible by 8 (64-bit aligned).
-    REALM_ASSERT_DEBUG(v % 8 == 0);
+    REALM_ASSERT_DEBUG_EX(v % 8 == 0, v);
 
     // C++11 standard, paragraph 4.7.2 [conv.integral]:
     // If the destination type is unsigned, the resulting value is the least unsigned integer congruent to the source
@@ -442,15 +437,6 @@ inline int64_t to_int64(size_t value) noexcept
     REALM_ASSERT_DEBUG(res >= 0);
     return static_cast<int64_t>(value);
 }
-
-
-inline MemRef::MemRef() noexcept
-    : m_addr(nullptr)
-    , m_ref(0)
-{
-}
-
-inline MemRef::~MemRef() noexcept {}
 
 inline MemRef::MemRef(char* addr, ref_type ref, Allocator& alloc) noexcept
     : m_addr(addr)
@@ -507,7 +493,8 @@ inline void MemRef::set_addr(char* addr)
 inline MemRef Allocator::alloc(size_t size)
 {
     if (m_is_read_only)
-        throw realm::LogicError(realm::LogicError::wrong_transact_state);
+        throw realm::LogicError(ErrorCodes::WrongTransactionState,
+                                "Trying to modify database while in read transaction");
     return do_alloc(size);
 }
 
@@ -518,7 +505,8 @@ inline MemRef Allocator::realloc_(ref_type ref, const char* addr, size_t old_siz
         REALM_TERMINATE("Allocator watch: Ref was reallocated");
 #endif
     if (m_is_read_only)
-        throw realm::LogicError(realm::LogicError::wrong_transact_state);
+        throw realm::LogicError(ErrorCodes::WrongTransactionState,
+                                "Trying to modify database while in read transaction");
     return do_realloc(ref, const_cast<char*>(addr), old_size, new_size);
 }
 
@@ -555,16 +543,6 @@ inline bool Allocator::is_read_only(ref_type ref) const noexcept
     return ref < m_baseline.load(std::memory_order_relaxed);
 }
 
-inline Allocator::Allocator() noexcept
-{
-    m_content_versioning_counter = 0;
-    m_storage_versioning_counter = 0;
-    m_instance_versioning_counter = 0;
-    m_ref_translation_ptr = nullptr;
-}
-
-inline Allocator::~Allocator() noexcept {}
-
 // performance critical part of the translation process. Less critical code is in translate_less_critical.
 inline char* Allocator::translate_critical(RefTranslation* ref_translation_ptr, ref_type ref) const noexcept
 {
@@ -576,30 +554,23 @@ inline char* Allocator::translate_critical(RefTranslation* ref_translation_ptr, 
         if (REALM_LIKELY(offset < lowest_possible_xover_offset)) {
             // the lowest possible xover offset may grow concurrently, but that will not affect this code path
             char* addr = txl.mapping_addr + offset;
-#if REALM_ENABLE_ENCRYPTION
-            realm::util::encryption_read_barrier(addr, NodeHeader::header_size, txl.encrypted_mapping,
-                                                 NodeHeader::get_byte_size_from_header);
-#endif
+            util::encryption_read_barrier(addr, NodeHeader::header_size, txl.encrypted_mapping);
+            size_t size = NodeHeader::get_byte_size_from_header(addr);
+            util::encryption_read_barrier(addr, size, txl.encrypted_mapping);
             return addr;
         }
-        else {
-            // the lowest possible xover offset may grow concurrently, but that will be handled inside the call
-            return translate_less_critical(ref_translation_ptr, ref);
-        }
+        // the lowest possible xover offset may grow concurrently, but that will be handled inside the call
+        return translate_less_critical(ref_translation_ptr, ref);
     }
-    realm::util::terminate("Invalid ref translation entry", __FILE__, __LINE__, txl.cookie, 0x1234567890);
-    return nullptr;
+    realm::util::terminate("Invalid ref translation entry", __FILE__, __LINE__, txl.cookie, 0x1234567890, ref, idx);
 }
 
 inline char* Allocator::translate(ref_type ref) const noexcept
 {
-    auto ref_translation_ptr = m_ref_translation_ptr.load(std::memory_order_acquire);
-    if (REALM_LIKELY(ref_translation_ptr)) {
-        return translate_critical(ref_translation_ptr, ref);
+    if (auto ptr = m_ref_translation_ptr.load(std::memory_order_acquire); REALM_LIKELY(ptr)) {
+        return translate_critical(ptr, ref);
     }
-    else {
-        return do_translate(ref);
-    }
+    return do_translate(ref);
 }
 
 

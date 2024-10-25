@@ -19,20 +19,14 @@
 #ifndef REALM_PROPERTY_HPP
 #define REALM_PROPERTY_HPP
 
-#include <realm/object-store/util/tagged_bool.hpp>
-
 #include <realm/util/features.h>
 #include <realm/util/assert.hpp>
-// FIXME: keys.hpp is currently pretty heavyweight
 #include <realm/keys.hpp>
+#include <realm/util/optional.hpp>
+#include <realm/util/tagged_bool.hpp>
 
 #include <string>
-
 namespace realm {
-namespace util {
-template <typename>
-class Optional;
-}
 class BinaryData;
 class Decimal128;
 class Obj;
@@ -63,6 +57,7 @@ enum class PropertyType : unsigned short {
     Required = 0,
     Nullable = 64,
     Array = 128,
+
     Set = 256,
     Dictionary = 512,
 
@@ -73,6 +68,7 @@ enum class PropertyType : unsigned short {
 struct Property {
     using IsPrimary = util::TaggedBool<class IsPrimaryTag>;
     using IsIndexed = util::TaggedBool<class IsIndexedTag>;
+    using IsFulltextIndexed = util::TaggedBool<class IsFulltextIndexedTag>;
 
     // The internal column name used in the Realm file.
     std::string name;
@@ -98,6 +94,7 @@ struct Property {
     std::string link_origin_property_name;
     IsPrimary is_primary = false;
     IsIndexed is_indexed = false;
+    IsFulltextIndexed is_fulltext_indexed = false;
 
     ColKey column_key;
 
@@ -106,6 +103,10 @@ struct Property {
     Property(std::string name, PropertyType type, IsPrimary primary = false, IsIndexed indexed = false,
              std::string public_name = "");
 
+    // Text property with fulltext index
+    Property(std::string name, IsFulltextIndexed indexed, std::string public_name = "");
+
+    // Link to another object
     Property(std::string name, PropertyType type, std::string object_type, std::string link_origin_property_name = "",
              std::string public_name = "");
 
@@ -119,8 +120,14 @@ struct Property {
         return is_indexed || is_primary;
     }
 
+    bool requires_fulltext_index() const
+    {
+        return is_fulltext_indexed;
+    }
+
     bool type_is_indexable() const noexcept;
     bool type_is_nullable() const noexcept;
+    size_t type_nesting_levels() const noexcept;
 
     std::string type_string() const;
 };
@@ -312,6 +319,14 @@ inline Property::Property(std::string name, PropertyType type, IsPrimary primary
 {
 }
 
+inline Property::Property(std::string name, IsFulltextIndexed indexed, std::string public_name)
+    : name(std::move(name))
+    , public_name(std::move(public_name))
+    , type(PropertyType::String)
+    , is_fulltext_indexed(indexed)
+{
+}
+
 inline Property::Property(std::string name, PropertyType type, std::string object_type,
                           std::string link_origin_property_name, std::string public_name)
     : name(std::move(name))
@@ -324,7 +339,7 @@ inline Property::Property(std::string name, PropertyType type, std::string objec
 
 inline bool Property::type_is_indexable() const noexcept
 {
-    return !is_collection(type) &&
+    return (!is_collection(type) || (is_array(type) && type == PropertyType::String)) &&
            (type == PropertyType::Int || type == PropertyType::Bool || type == PropertyType::Date ||
             type == PropertyType::String || type == PropertyType::ObjectId || type == PropertyType::UUID ||
             type == PropertyType::Mixed);
@@ -372,7 +387,8 @@ inline bool operator==(Property const& lft, Property const& rgt)
     // note: not checking column_key
     // ordered roughly by the cost of the check
     return to_underlying(lft.type) == to_underlying(rgt.type) && lft.is_primary == rgt.is_primary &&
-           lft.requires_index() == rgt.requires_index() && lft.name == rgt.name &&
+           lft.requires_index() == rgt.requires_index() &&
+           lft.requires_fulltext_index() == rgt.requires_fulltext_index() && lft.name == rgt.name &&
            lft.object_type == rgt.object_type && lft.link_origin_property_name == rgt.link_origin_property_name;
 }
 } // namespace realm

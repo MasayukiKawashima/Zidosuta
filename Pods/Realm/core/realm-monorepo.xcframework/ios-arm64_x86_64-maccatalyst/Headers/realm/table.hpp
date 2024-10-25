@@ -19,6 +19,7 @@
 #ifndef REALM_TABLE_HPP
 #define REALM_TABLE_HPP
 
+#include "external/mpark/variant.hpp"
 #include <algorithm>
 #include <map>
 #include <utility>
@@ -32,10 +33,8 @@
 #include <realm/table_ref.hpp>
 #include <realm/spec.hpp>
 #include <realm/query.hpp>
-#include <realm/table_cluster_tree.hpp>
+#include <realm/cluster_tree.hpp>
 #include <realm/keys.hpp>
-#include <realm/global_key.hpp>
-#include <realm/index_string.hpp>
 
 // Only set this to one when testing the code paths that exercise object ID
 // hash collisions. It artificially limits the "optimistic" local ID to use
@@ -48,29 +47,29 @@ namespace realm {
 class BacklinkColumn;
 template <class>
 class BacklinkCount;
-class TableView;
-class Group;
-class SortDescriptor;
-class TableView;
+class ColKeys;
 template <class>
 class Columns;
+class DictionaryLinkValues;
+class Group;
+class LinkChain;
+class SearchIndex;
+class SortDescriptor;
+class StringIndex;
+class Subexpr;
 template <class>
 class SubQuery;
-class ColKeys;
-struct GlobalKey;
-class LinkChain;
-class Subexpr;
+class TableView;
 
-struct Link {
-};
+struct Link {};
 typedef Link BackLink;
 
 
 namespace _impl {
 class TableFriend;
 }
-namespace metrics {
-class QueryInfo;
+namespace util {
+class Logger;
 }
 namespace query_parser {
 class Arguments;
@@ -86,6 +85,13 @@ enum class ExpressionComparisonType : unsigned char {
 
 class Table {
 public:
+    /// The type of tables supported by a realm.
+    /// Note: Any change to this enum is a file-format breaking change.
+    /// Note: Enumeration value assignments must be kept in sync with
+    /// <realm/object-store/object_schema.hpp>.
+    enum class Type : uint8_t { TopLevel = 0, Embedded = 0x1, TopLevelAsymmetric = 0x2 };
+    constexpr static uint8_t table_type_mask = 0x3;
+
     /// Construct a new freestanding top-level table with static
     /// lifetime. For debugging only.
     Table(Allocator& = Allocator::get_default());
@@ -103,11 +109,20 @@ public:
     /// string.
     StringData get_name() const noexcept;
 
+    // Get table name with class prefix removed
+    StringData get_class_name() const noexcept;
+
     const char* get_state() const noexcept;
 
     /// If this table is a group-level table, the parent group is returned,
     /// otherwise null is returned.
     Group* get_parent_group() const noexcept;
+
+
+    Replication* get_repl() const noexcept
+    {
+        return *m_repl;
+    }
 
     // Whether or not elements can be null.
     bool is_nullable(ColKey col_key) const;
@@ -118,13 +133,17 @@ public:
     //@{
     /// Conventience functions for inspecting the dynamic table type.
     ///
-    bool is_embedded() const noexcept; // true if table holds embedded objects
+    bool is_embedded() const noexcept;   // true if table holds embedded objects
+    bool is_asymmetric() const noexcept; // true if table is asymmetric
+    Type get_table_type() const noexcept;
     size_t get_column_count() const noexcept;
     DataType get_column_type(ColKey column_key) const;
     StringData get_column_name(ColKey column_key) const;
+    StringData get_column_name(StableIndex) const;
     ColumnAttrMask get_column_attr(ColKey column_key) const noexcept;
     DataType get_dictionary_key_type(ColKey column_key) const noexcept;
     ColKey get_column_key(StringData name) const noexcept;
+    ColKey get_column_key(StableIndex) const noexcept;
     ColKeys get_column_keys() const;
     typedef util::Optional<std::pair<ConstTableRef, ColKey>> BacklinkOrigin;
     BacklinkOrigin find_backlink_origin(StringData origin_table_name, StringData origin_col_name) const noexcept;
@@ -142,31 +161,57 @@ public:
     ///
     static const size_t max_column_name_length = 63;
     static const uint64_t max_num_columns = 0xFFFFUL; // <-- must be power of two -1
-    ColKey add_column(DataType type, StringData name, bool nullable = false);
-    ColKey add_column(Table& target, StringData name);
-    ColKey add_column_list(DataType type, StringData name, bool nullable = false);
-    ColKey add_column_list(Table& target, StringData name);
-    ColKey add_column_set(DataType type, StringData name, bool nullable = false);
-    ColKey add_column_set(Table& target, StringData name);
+
+    // Add column holding primitive values. The optional CollectionType specifies if the
+    // property is a collection. If collection type is not specified, the property is a single value.
+    // If the vector contains a value - eg. CollectionType::Dictionary, the property is a dictionary
+    // of the type specified.
+    ColKey add_column(DataType type, StringData name, bool nullable = false, std::optional<CollectionType> = {},
+                      DataType key_type = type_String);
+    // As above, but the values are links to objects in the target table.
+    ColKey add_column(Table& target, StringData name, std::optional<CollectionType> = {},
+                      DataType key_type = type_String);
+
+    // Map old functions to the more general interface above
+    ColKey add_column_list(DataType type, StringData name, bool nullable = false)
+    {
+        return add_column(type, name, nullable, {CollectionType::List});
+    }
+    ColKey add_column_list(Table& target, StringData name)
+    {
+        return add_column(target, name, {CollectionType::List});
+    }
+    ColKey add_column_set(DataType type, StringData name, bool nullable = false)
+    {
+        return add_column(type, name, nullable, {CollectionType::Set});
+    }
+    ColKey add_column_set(Table& target, StringData name)
+    {
+        return add_column(target, name, {CollectionType::Set});
+    }
     ColKey add_column_dictionary(DataType type, StringData name, bool nullable = false,
-                                 DataType key_type = type_String);
-    ColKey add_column_dictionary(Table& target, StringData name, DataType key_type = type_String);
+                                 DataType key_type = type_String)
+    {
+        return add_column(type, name, nullable, {CollectionType::Dictionary}, key_type);
+    }
+    ColKey add_column_dictionary(Table& target, StringData name, DataType key_type = type_String)
+    {
+        return add_column(target, name, {CollectionType::Dictionary}, key_type);
+    }
 
-    [[deprecated("Use add_column(Table&) or add_column_list(Table&) instead.")]] //
-    ColKey
-    add_column_link(DataType type, StringData name, Table& target);
+    CollectionType get_collection_type(ColKey col_key) const;
 
+    void remove_columns();
     void remove_column(ColKey col_key);
     void rename_column(ColKey col_key, StringData new_name);
     bool valid_column(ColKey col_key) const noexcept;
     void check_column(ColKey col_key) const
     {
         if (REALM_UNLIKELY(!valid_column(col_key)))
-            throw LogicError(LogicError::column_does_not_exist);
+            throw InvalidColumnKey();
     }
-    // Change the embedded property of a table. If switching to being embedded, the table must
-    // not have a primary key and all objects must have exactly 1 backlink.
-    void set_embedded(bool embedded);
+    // Change the type of a table. Only allowed to switch to/from TopLevel from/to Embedded.
+    void set_table_type(Type new_type, bool handle_backlinks = false);
     //@}
 
     /// True for `col_type_Link` and `col_type_LinkList`.
@@ -189,8 +234,16 @@ public:
     ///
     /// \param col_key The key of a column of the table.
 
-    bool has_search_index(ColKey col_key) const noexcept;
-    void add_search_index(ColKey col_key);
+    IndexType search_index_type(ColKey col_key) const noexcept;
+    bool has_search_index(ColKey col_key) const noexcept
+    {
+        return search_index_type(col_key) == IndexType::General;
+    }
+    void add_search_index(ColKey col_key, IndexType type = IndexType::General);
+    void add_fulltext_index(ColKey col_key)
+    {
+        add_search_index(col_key, IndexType::Fulltext);
+    }
     void remove_search_index(ColKey col_key);
 
     void enumerate_string_column(ColKey col_key);
@@ -206,7 +259,7 @@ public:
     size_t get_num_unique_values(ColKey col_key) const;
 
     template <class T>
-    Columns<T> column(ColKey col_key, ExpressionComparisonType = ExpressionComparisonType::Any) const;
+    Columns<T> column(ColKey col_key, util::Optional<ExpressionComparisonType> = util::none) const;
     template <class T>
     Columns<T> column(const Table& origin, ColKey origin_col_key) const;
 
@@ -238,9 +291,6 @@ public:
 
     // Create an object with key. If the key is omitted, a key will be generated by the system
     Obj create_object(ObjKey key = {}, const FieldValues& = {});
-    // Create an object with specific GlobalKey - or return already existing object
-    // Potential tombstone will be resurrected
-    Obj create_object(GlobalKey object_id, const FieldValues& = {});
     // Create an object with primary key. If an object with the given primary key already exists, it
     // will be returned and did_create (if supplied) will be set to false.
     // Potential tombstone will be resurrected
@@ -252,18 +302,10 @@ public:
     }
     // Return key for existing object or return null key.
     ObjKey find_primary_key(Mixed value) const;
-    // Return ObjKey for object identified by id. If objects does not exist, return null key
-    // Important: This function must not be called for tables with primary keys.
-    ObjKey get_objkey(GlobalKey id) const;
     // Return key for existing object or return unresolved key.
     // Important: This is to be used ONLY by the Sync client. SDKs should NEVER
     // observe an unresolved key. Ever.
     ObjKey get_objkey_from_primary_key(const Mixed& primary_key);
-    // Return key for existing object or return unresolved key.
-    // Important: This is to be used ONLY by the Sync client. SDKs should NEVER
-    // observe an unresolved key. Ever.
-    // Important (2): This function must not be called for tables with primary keys.
-    ObjKey get_objkey_from_global_key(GlobalKey key);
     /// Create a number of objects and add corresponding keys to a vector
     void create_objects(size_t number, std::vector<ObjKey>& keys);
     /// Create a number of objects with keys supplied
@@ -271,9 +313,8 @@ public:
     /// Does the key refer to an object within the table?
     bool is_valid(ObjKey key) const noexcept
     {
-        return m_clusters.is_valid(key);
+        return key && m_clusters.is_valid(key);
     }
-    GlobalKey get_object_id(ObjKey key) const;
     Obj get_object(ObjKey key) const
     {
         REALM_ASSERT(!key.is_unresolved());
@@ -315,15 +356,17 @@ public:
     // - turns the object into a tombstone if links exist
     // - otherwise works just as remove_object()
     ObjKey invalidate_object(ObjKey key);
-    Obj get_tombstone(ObjKey key) const
+    // Remove several objects
+    void batch_erase_objects(std::vector<ObjKey>& keys);
+    Obj try_get_tombstone(ObjKey key) const
     {
         REALM_ASSERT(key.is_unresolved());
         REALM_ASSERT(m_tombstones);
-        return m_tombstones->get(key);
+        return m_tombstones->try_get_obj(key);
     }
 
     void clear();
-    using Iterator = TableClusterTree::Iterator;
+    using Iterator = ClusterTree::Iterator;
     Iterator begin() const;
     Iterator end() const;
     void remove_object(const Iterator& it)
@@ -358,9 +401,8 @@ public:
     TableKey get_key() const noexcept;
 
     uint64_t allocate_sequence_number();
-    // Used by upgrade
-    void set_sequence_number(uint64_t seq);
-    void set_collision_map(ref_type ref);
+    // Used for testing purposes.
+    void set_col_key_sequence_number(uint64_t seq);
 
     // Get the key of this table directly, without needing a Table accessor.
     static TableKey get_key_direct(Allocator& alloc, ref_type top_ref);
@@ -372,37 +414,18 @@ public:
     size_t count_double(ColKey col_key, double value) const;
     size_t count_decimal(ColKey col_key, Decimal128 value) const;
 
-    int64_t sum_int(ColKey col_key) const;
-    double sum_float(ColKey col_key) const;
-    double sum_double(ColKey col_key) const;
-    Decimal128 sum_decimal(ColKey col_key) const;
-    Decimal128 sum_mixed(ColKey col_key) const;
-    int64_t maximum_int(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    float maximum_float(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    double maximum_double(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    Decimal128 maximum_decimal(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    Mixed maximum_mixed(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    Timestamp maximum_timestamp(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    int64_t minimum_int(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    float minimum_float(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    double minimum_double(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    Decimal128 minimum_decimal(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    Mixed minimum_mixed(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    Timestamp minimum_timestamp(ColKey col_key, ObjKey* return_ndx = nullptr) const;
-    double average_int(ColKey col_key, size_t* value_count = nullptr) const;
-    double average_float(ColKey col_key, size_t* value_count = nullptr) const;
-    double average_double(ColKey col_key, size_t* value_count = nullptr) const;
-    Decimal128 average_decimal(ColKey col_key, size_t* value_count = nullptr) const;
-    Decimal128 average_mixed(ColKey col_key, size_t* value_count = nullptr) const;
+    // Aggregates return nullopt if the operation is not supported on the given column
+    // Everything but `sum` returns `some(null)` if there are no non-null values
+    // Sum returns `some(0)` if there are no non-null values.
+    std::optional<Mixed> sum(ColKey col_key) const;
+    std::optional<Mixed> min(ColKey col_key, ObjKey* = nullptr) const;
+    std::optional<Mixed> max(ColKey col_key, ObjKey* = nullptr) const;
+    std::optional<Mixed> avg(ColKey col_key, size_t* value_count = nullptr) const;
 
     // Will return pointer to search index accessor. Will return nullptr if no index
-    StringIndex* get_search_index(ColKey col) const noexcept
-    {
-        check_column(col);
-        if (!has_search_index(col))
-            return nullptr;
-        return m_index_accessors[col.get_index().val].get();
-    }
+    SearchIndex* get_search_index(ColKey col) const noexcept;
+    StringIndex* get_string_index(ColKey col) const noexcept;
+
     template <class T>
     ObjKey find_first(ColKey col_key, T value) const;
 
@@ -433,6 +456,8 @@ public:
     TableView find_all_binary(ColKey col_key, BinaryData value) const;
     TableView find_all_null(ColKey col_key);
     TableView find_all_null(ColKey col_key) const;
+
+    TableView find_all_fulltext(ColKey col_key, StringData value) const;
 
     TableView get_sorted_view(ColKey col_key, bool ascending = true);
     TableView get_sorted_view(ColKey col_key, bool ascending = true) const;
@@ -465,14 +490,14 @@ public:
     ColKey set_nullability(ColKey col_key, bool nullable, bool throw_on_null);
 
     // Iterate through (subset of) columns. The supplied function may abort iteration
-    // by returning 'true' (early out).
+    // by returning 'IteratorControl::Stop' (early out).
     template <typename Func>
     bool for_each_and_every_column(Func func) const
     {
         for (auto col_key : m_leaf_ndx2colkey) {
             if (!col_key)
                 continue;
-            if (func(col_key))
+            if (func(col_key) == IteratorControl::Stop)
                 return true;
         }
         return false;
@@ -485,7 +510,7 @@ public:
                 continue;
             if (col_key.get_type() == col_type_BackLink)
                 continue;
-            if (func(col_key))
+            if (func(col_key) == IteratorControl::Stop)
                 return true;
         }
         return false;
@@ -499,7 +524,7 @@ public:
                 continue;
             if (col_key.get_type() != col_type_BackLink)
                 continue;
-            if (func(col_key))
+            if (func(col_key) == IteratorControl::Stop)
                 return true;
         }
         return false;
@@ -515,9 +540,12 @@ private:
     void change_nullability(ColKey from, ColKey to, bool throw_on_null);
     template <class F, class T>
     void change_nullability_list(ColKey from, ColKey to, bool throw_on_null);
-    Obj create_linked_object(GlobalKey = {});
-    /// Changes embeddedness unconditionally. Called only from Group::do_get_or_add_table()
-    void do_set_embedded(bool embedded);
+    Obj create_linked_object();
+    // Change the embedded property of a table. If switching to being embedded, the table must
+    // not have a primary key and all objects must have exactly 1 backlink.
+    void set_embedded(bool embedded, bool handle_backlinks);
+    /// Changes type unconditionally. Called only from Group::do_get_or_add_table()
+    void do_set_table_type(Type table_type);
 
 public:
     // mapping between index used in leaf nodes (leaf_ndx) and index used in spec (spec_ndx)
@@ -546,10 +574,19 @@ public:
     {
         return Query(m_own_ref, list);
     }
-    Query where(const DictionaryLinkValues& dictionary_of_links) const;
+    Query where(const Dictionary& dict) const;
+    Query where(LinkCollectionPtr&& list) const
+    {
+        return Query(m_own_ref, std::move(list));
+    }
 
-    Query query(const std::string& query_string, const std::vector<Mixed>& arguments = {}) const;
+    Query query(const std::string& query_string,
+                const std::vector<mpark::variant<Mixed, std::vector<Mixed>>>& arguments = {}) const;
+    Query query(const std::string& query_string, const std::vector<Mixed>& arguments) const;
     Query query(const std::string& query_string, const std::vector<Mixed>& arguments,
+                const query_parser::KeyPathMapping& mapping) const;
+    Query query(const std::string& query_string,
+                const std::vector<mpark::variant<Mixed, std::vector<Mixed>>>& arguments,
                 const query_parser::KeyPathMapping& mapping) const;
     Query query(const std::string& query_string, query_parser::Arguments& arguments,
                 const query_parser::KeyPathMapping&) const;
@@ -582,9 +619,8 @@ public:
     LinkChain backlink(const Table& origin, ColKey origin_col_key) const;
 
     // Conversion
-    void schema_to_json(std::ostream& out, const std::map<std::string, std::string>& renames) const;
-    void to_json(std::ostream& out, size_t link_depth, const std::map<std::string, std::string>& renames,
-                 JSONOutputMode output_mode = output_mode_json) const;
+    void schema_to_json(std::ostream& out) const;
+    void to_json(std::ostream& out, JSONOutputMode output_mode = output_mode_json) const;
 
     /// \brief Compare two tables for equality.
     ///
@@ -608,14 +644,6 @@ public:
     /// See operator==().
     bool operator!=(const Table& t) const;
 
-    /// Compute the sum of the sizes in number of bytes of all the array nodes
-    /// that currently make up this table. See also
-    /// Group::compute_aggregate_byte_size().
-    ///
-    /// If this table accessor is the detached state, this function returns
-    /// zero.
-    size_t compute_aggregated_byte_size() const noexcept;
-
     // Debug
     void verify() const;
 
@@ -627,6 +655,24 @@ public:
     bool links_to_self(ColKey col_key) const;
     ColKey get_opposite_column(ColKey col_key) const;
     ColKey find_opposite_column(ColKey col_key) const;
+
+    class DisableReplication {
+    public:
+        DisableReplication(Table& table) noexcept
+            : m_table(table)
+            , m_repl(table.m_repl)
+        {
+            m_table.m_repl = &g_dummy_replication;
+        }
+        ~DisableReplication()
+        {
+            m_table.m_repl = m_repl;
+        }
+
+    private:
+        Table& m_table;
+        Replication* const* m_repl;
+    };
 
 private:
     enum LifeCycleCookie {
@@ -664,14 +710,14 @@ private:
     {
         m_alloc.refresh_ref_translation();
     }
-    Spec m_spec;                                    // 1st slot in m_top
-    TableClusterTree m_clusters;                    // 3rd slot in m_top
-    std::unique_ptr<TableClusterTree> m_tombstones; // 13th slot in m_top
-    TableKey m_key;                                 // 4th slot in m_top
-    Array m_index_refs;                             // 5th slot in m_top
-    Array m_opposite_table;                         // 7th slot in m_top
-    Array m_opposite_column;                        // 8th slot in m_top
-    std::vector<std::unique_ptr<StringIndex>> m_index_accessors;
+    Spec m_spec;                               // 1st slot in m_top
+    ClusterTree m_clusters;                    // 3rd slot in m_top
+    std::unique_ptr<ClusterTree> m_tombstones; // 13th slot in m_top
+    TableKey m_key;                            // 4th slot in m_top
+    Array m_index_refs;                        // 5th slot in m_top
+    Array m_opposite_table;                    // 7th slot in m_top
+    Array m_opposite_column;                   // 8th slot in m_top
+    std::vector<std::unique_ptr<SearchIndex>> m_index_accessors;
     ColKey m_primary_key_col;
     Replication* const* m_repl;
     static Replication* g_dummy_replication;
@@ -686,16 +732,13 @@ private:
     void erase_from_search_indexes(ObjKey key);
     void update_indexes(ObjKey key, const FieldValues& values);
     void clear_indexes();
+    template <typename T>
+    void do_populate_index(StringIndex* index, ColKey::Idx col_ndx);
 
     // Migration support
-    void migrate_column_info();
-    bool verify_column_keys();
-    void migrate_indexes(ColKey pk_col_key);
-    void migrate_subspec();
-    void create_columns();
-    bool migrate_objects(); // Returns true if there are no links to migrate
-    void migrate_links();
-    void finalize_migration(ColKey pk_col_key);
+    void migrate_sets_and_dictionaries();
+    void migrate_set_orderings();
+    void migrate_col_keys();
 
     /// Disable copying assignment.
     ///
@@ -724,7 +767,7 @@ private:
     void erase_root_column(ColKey col_key);
     ColKey do_insert_root_column(ColKey col_key, ColumnType, StringData name, DataType key_type = DataType(0));
     void do_erase_root_column(ColKey col_key);
-    void do_add_search_index(ColKey col_key);
+    void do_add_search_index(ColKey col_key, IndexType type);
 
     bool has_any_embedded_objects();
     void set_opposite_column(ColKey col_key, TableKey opposite_table, ColKey opposite_column);
@@ -734,26 +777,10 @@ private:
     void validate_column_is_unique(ColKey col_key) const;
 
     ObjKey get_next_valid_key();
-    /// Some Object IDs are generated as a tuple of the client_file_ident and a
-    /// local sequence number. This function takes the next number in the
-    /// sequence for the given table and returns an appropriate globally unique
-    /// GlobalKey.
-    GlobalKey allocate_object_id_squeezed();
 
-    /// Find the local 64-bit object ID for the provided global 128-bit ID.
-    ObjKey global_to_local_object_id_hashed(GlobalKey global_id) const;
-
-    /// After a local ObjKey collision has been detected, this function may be
-    /// called to obtain a non-colliding local ObjKey in such a way that subsequent
-    /// calls to global_to_local_object_id() will return the correct local ObjKey
-    /// for both \a incoming_id and \a colliding_id.
-    ObjKey allocate_local_id_after_hash_collision(GlobalKey incoming_id, GlobalKey colliding_id,
-                                                  ObjKey colliding_local_id);
     /// Create a placeholder for a not yet existing object and return key to it
     Obj get_or_create_tombstone(ObjKey key, ColKey pk_col, Mixed pk_val);
-    /// Should be called when an object is deleted
-    void free_local_id_after_hash_collision(ObjKey key);
-    /// Should be called when last entry is removed - or when table is cleared
+    /// Should be called from upgrade function
     void free_collision_table();
 
     /// Called in the context of Group::commit() to ensure that
@@ -779,12 +806,7 @@ private:
     void nullify_links(CascadeState&);
     void remove_recursive(CascadeState&);
 
-    /// Used by query. Follows chain of link columns and returns final target table
-    const Table* get_link_chain_target(const std::vector<ColKey>&) const;
-
-    Replication* get_repl() const noexcept;
-
-    void set_ndx_in_parent(size_t ndx_in_parent) noexcept;
+    util::Logger* get_logger() const noexcept;
 
     /// Refresh the part of the accessor tree that is rooted at this
     /// table.
@@ -794,15 +816,14 @@ private:
     void flush_for_commit();
 
     bool is_cross_table_link_target() const noexcept;
+
     template <typename T>
     void aggregate(QueryStateBase& st, ColKey col_key) const;
-    template <typename T>
-    double average(ColKey col_key, size_t* resultcount) const;
 
     std::vector<ColKey> m_leaf_ndx2colkey;
     std::vector<ColKey::Idx> m_spec_ndx2leaf_ndx;
     std::vector<size_t> m_leaf_ndx2spec_ndx;
-    bool m_is_embedded = false;
+    Type m_table_type = Type::TopLevel;
     uint64_t m_in_file_version_at_transaction_boundary = 0;
     AtomicLifeCycleCookie m_cookie;
 
@@ -819,19 +840,16 @@ private:
     static constexpr int top_position_for_collision_map = 10;
     static constexpr int top_position_for_pk_col = 11;
     static constexpr int top_position_for_flags = 12;
-    // flags contents: bit 0 - is table embedded?
+    // flags contents: bit 0-1 - table type
     static constexpr int top_position_for_tombstones = 13;
     static constexpr int top_array_size = 14;
 
     enum { s_collision_map_lo = 0, s_collision_map_hi = 1, s_collision_map_local_id = 2, s_collision_map_num_slots };
 
-    friend class SubtableNode;
     friend class _impl::TableFriend;
     friend class Query;
-    friend class metrics::QueryInfo;
     template <class>
     friend class SimpleQuerySupport;
-    friend class LangBindHelper;
     friend class TableView;
     template <class T>
     friend class Columns;
@@ -844,13 +862,18 @@ private:
     friend class Transaction;
     friend class Cluster;
     friend class ClusterTree;
-    friend class TableClusterTree;
     friend class ColKeyIterator;
     friend class Obj;
+    friend class CollectionParent;
+    friend class CollectionList;
     friend class LnkLst;
     friend class Dictionary;
     friend class IncludeDescriptor;
+    template <class T>
+    friend class AggregateHelper;
 };
+
+std::ostream& operator<<(std::ostream& o, Table::Type table_type);
 
 class ColKeyIterator {
 public:
@@ -880,10 +903,10 @@ public:
 
 private:
     friend class ColKeys;
-    const Table* m_table;
+    ConstTableRef m_table;
     size_t m_pos;
 
-    ColKeyIterator(const Table* t, size_t p)
+    ColKeyIterator(const ConstTableRef& t, size_t p)
         : m_table(t)
         , m_pos(p)
     {
@@ -892,8 +915,8 @@ private:
 
 class ColKeys {
 public:
-    ColKeys(const Table* t)
-        : m_table(t)
+    ColKeys(ConstTableRef&& t)
+        : m_table(std::move(t))
     {
     }
 
@@ -924,14 +947,14 @@ public:
     }
 
 private:
-    const Table* m_table;
+    ConstTableRef m_table;
 };
 
 // Class used to collect a chain of links when building up a Query following links.
 // It has member functions corresponding to the ones defined on Table.
 class LinkChain {
 public:
-    LinkChain(ConstTableRef t = {}, ExpressionComparisonType type = ExpressionComparisonType::Any)
+    LinkChain(ConstTableRef t = {}, util::Optional<ExpressionComparisonType> type = util::none)
         : m_current_table(t)
         , m_base_table(t)
         , m_comparison_type(type)
@@ -958,14 +981,40 @@ public:
         return *this;
     }
 
-    LinkChain& link(std::string col_name)
+    void pop_back()
     {
-        auto ck = m_current_table->get_column_key(col_name);
-        if (!ck) {
-            throw std::runtime_error(util::format("%1 has no property %2", m_current_table->get_name(), col_name));
+        m_link_cols.pop_back();
+        // Recalculate m_current_table
+        m_current_table = m_base_table;
+        for (auto col : m_link_cols) {
+            m_current_table = m_current_table->get_opposite_table(col);
         }
-        add(ck);
-        return *this;
+    }
+
+    bool link(std::string col_name)
+    {
+        if (auto ck = m_current_table->get_column_key(col_name)) {
+            return add(ck);
+        }
+        return false;
+    }
+
+    bool index(PathElement index)
+    {
+        if (!m_link_cols.empty() && !m_link_cols.back().has_index()) {
+            if (index.is_all())
+                return true;
+            ColKey last_col = m_link_cols.back();
+            if (index.is_ndx() && last_col.is_list()) {
+                m_link_cols.back().set_index(index);
+                return true;
+            }
+            if (index.is_key() && last_col.is_dictionary()) {
+                m_link_cols.back().set_index(index);
+                return true;
+            }
+        }
+        return false;
     }
 
     LinkChain& backlink(const Table& origin, ColKey origin_col_key)
@@ -974,7 +1023,7 @@ public:
         return link(backlink_col_key);
     }
 
-    std::unique_ptr<Subexpr> column(const std::string&);
+    std::unique_ptr<Subexpr> column(const std::string&, bool has_path);
     std::unique_ptr<Subexpr> subquery(Query subquery);
 
     template <class T>
@@ -983,16 +1032,15 @@ public:
         m_current_table->check_column(col_key);
 
         // Check if user-given template type equals Realm type.
-        auto ct = col_key.get_type();
-        if (ct == col_type_LinkList)
-            ct = col_type_Link;
         if constexpr (std::is_same_v<T, Dictionary>) {
             if (!col_key.is_dictionary())
-                throw LogicError(LogicError::type_mismatch);
+                throw LogicError(ErrorCodes::TypeMismatch, "Not a dictionary");
         }
         else {
-            if (ct != ColumnTypeTraits<T>::column_id)
-                throw LogicError(LogicError::type_mismatch);
+            if (col_key.get_type() != ColumnTypeTraits<T>::column_id)
+                throw LogicError(ErrorCodes::TypeMismatch,
+                                 util::format("Expected %1 to be a %2", m_current_table->get_column_name(col_key),
+                                              ColumnTypeTraits<T>::column_id));
         }
 
         if (std::is_same<T, Link>::value || std::is_same<T, LnkLst>::value || std::is_same<T, BackLink>::value) {
@@ -1009,7 +1057,7 @@ public:
         auto backlink_col_key = origin.get_opposite_column(origin_col_key);
         m_link_cols.push_back(backlink_col_key);
 
-        return Columns<T>(backlink_col_key, m_base_table, std::move(m_link_cols));
+        return Columns<T>(backlink_col_key, m_base_table, m_link_cols);
     }
     template <class T>
     SubQuery<T> column(ColKey col_key, Query subquery)
@@ -1035,12 +1083,12 @@ private:
     friend class Table;
     friend class query_parser::ParserDriver;
 
-    std::vector<ColKey> m_link_cols;
+    std::vector<ExtendedColumnKey> m_link_cols;
     ConstTableRef m_current_table;
     ConstTableRef m_base_table;
-    ExpressionComparisonType m_comparison_type;
+    util::Optional<ExpressionComparisonType> m_comparison_type;
 
-    void add(ColKey ck);
+    bool add(ColKey ck);
 
     template <class T>
     std::unique_ptr<Subexpr> create_subexpr(ColKey col_key)
@@ -1053,7 +1101,7 @@ private:
 
 inline ColKeys Table::get_column_keys() const
 {
-    return ColKeys(this);
+    return ColKeys(ConstTableRef(this, m_alloc.get_instance_version()));
 }
 
 inline uint_fast64_t Table::get_content_version() const noexcept
@@ -1101,7 +1149,17 @@ inline size_t Table::get_column_count() const noexcept
 
 inline bool Table::is_embedded() const noexcept
 {
-    return m_is_embedded;
+    return m_table_type == Type::Embedded;
+}
+
+inline bool Table::is_asymmetric() const noexcept
+{
+    return m_table_type == Type::TopLevelAsymmetric;
+}
+
+inline Table::Type Table::get_table_type() const noexcept
+{
+    return m_table_type;
 }
 
 inline StringData Table::get_column_name(ColKey column_key) const
@@ -1111,12 +1169,22 @@ inline StringData Table::get_column_name(ColKey column_key) const
     return m_spec.get_column_name(spec_ndx);
 }
 
+inline StringData Table::get_column_name(StableIndex index) const
+{
+    return m_spec.get_column_name(m_leaf_ndx2spec_ndx[index.get_index().val]);
+}
+
 inline ColKey Table::get_column_key(StringData name) const noexcept
 {
     size_t spec_ndx = m_spec.get_column_index(name);
     if (spec_ndx == npos)
         return ColKey();
     return spec_ndx2colkey(spec_ndx);
+}
+
+inline ColKey Table::get_column_key(StableIndex index) const noexcept
+{
+    return m_leaf_ndx2colkey[index.get_index().val];
 }
 
 inline ColumnType Table::get_real_column_type(ColKey col_key) const noexcept
@@ -1136,51 +1204,14 @@ inline ColumnAttrMask Table::get_column_attr(ColKey column_key) const noexcept
 
 inline DataType Table::get_dictionary_key_type(ColKey column_key) const noexcept
 {
-    auto spec_ndx = colkey2spec_ndx(column_key);
-    REALM_ASSERT_3(spec_ndx, <, get_column_count());
-    return m_spec.get_dictionary_key_type(spec_ndx);
+    if (column_key.is_dictionary()) {
+        auto spec_ndx = colkey2spec_ndx(column_key);
+        REALM_ASSERT_3(spec_ndx, <, get_column_count());
+        return m_spec.get_dictionary_key_type(spec_ndx);
+    }
+    return type_String;
 }
 
-
-inline Table::Table(Allocator& alloc)
-    : m_alloc(alloc)
-    , m_top(m_alloc)
-    , m_spec(m_alloc)
-    , m_clusters(this, m_alloc, top_position_for_cluster_tree)
-    , m_index_refs(m_alloc)
-    , m_opposite_table(m_alloc)
-    , m_opposite_column(m_alloc)
-    , m_repl(&g_dummy_replication)
-    , m_own_ref(this, alloc.get_instance_version())
-{
-    m_spec.set_parent(&m_top, top_position_for_spec);
-    m_index_refs.set_parent(&m_top, top_position_for_search_indexes);
-    m_opposite_table.set_parent(&m_top, top_position_for_opposite_table);
-    m_opposite_column.set_parent(&m_top, top_position_for_opposite_column);
-
-    ref_type ref = create_empty_table(m_alloc); // Throws
-    ArrayParent* parent = nullptr;
-    size_t ndx_in_parent = 0;
-    init(ref, parent, ndx_in_parent, true, false);
-}
-
-inline Table::Table(Replication* const* repl, Allocator& alloc)
-    : m_alloc(alloc)
-    , m_top(m_alloc)
-    , m_spec(m_alloc)
-    , m_clusters(this, m_alloc, top_position_for_cluster_tree)
-    , m_index_refs(m_alloc)
-    , m_opposite_table(m_alloc)
-    , m_opposite_column(m_alloc)
-    , m_repl(repl)
-    , m_own_ref(this, alloc.get_instance_version())
-{
-    m_spec.set_parent(&m_top, top_position_for_spec);
-    m_index_refs.set_parent(&m_top, top_position_for_search_indexes);
-    m_opposite_table.set_parent(&m_top, top_position_for_opposite_table);
-    m_opposite_column.set_parent(&m_top, top_position_for_opposite_column);
-    m_cookie = cookie_created;
-}
 
 inline void Table::revive(Replication* const* repl, Allocator& alloc, bool writable)
 {
@@ -1205,7 +1236,7 @@ inline Allocator& Table::get_alloc() const
 
 // For use by queries
 template <class T>
-inline Columns<T> Table::column(ColKey col_key, ExpressionComparisonType cmp_type) const
+inline Columns<T> Table::column(ColKey col_key, util::Optional<ExpressionComparisonType> cmp_type) const
 {
     LinkChain lc(m_own_ref, cmp_type);
     return lc.column<T>(col_key);
@@ -1274,18 +1305,7 @@ inline bool Table::operator!=(const Table& t) const
 
 inline bool Table::is_link_type(ColumnType col_type) noexcept
 {
-    return col_type == col_type_Link || col_type == col_type_LinkList;
-}
-
-inline Replication* Table::get_repl() const noexcept
-{
-    return *m_repl;
-}
-
-inline void Table::set_ndx_in_parent(size_t ndx_in_parent) noexcept
-{
-    REALM_ASSERT(m_top.is_attached());
-    m_top.set_ndx_in_parent(ndx_in_parent);
+    return col_type == col_type_Link;
 }
 
 inline size_t Table::colkey2spec_ndx(ColKey key) const
@@ -1361,18 +1381,13 @@ public:
         table.remove_recursive(rows); // Throws
     }
 
+    static void batch_erase_objects(Table& table, std::vector<ObjKey>& keys)
+    {
+        table.batch_erase_objects(keys); // Throws
+    }
     static void batch_erase_rows(Table& table, const KeyColumn& keys)
     {
         table.batch_erase_rows(keys); // Throws
-    }
-    // Temporary hack
-    static Obj create_linked_object(Table& table, GlobalKey id)
-    {
-        return table.create_linked_object(id);
-    }
-    static ObjKey global_to_local_object_id_hashed(const Table& table, GlobalKey global_id)
-    {
-        return table.global_to_local_object_id_hashed(global_id);
     }
 };
 

@@ -39,7 +39,6 @@ struct ColumnType {
         Double = 10,
         Decimal = 11,
         Link = 12,
-        LinkList = 13,
         BackLink = 14,
         ObjectId = 15,
         TypedLink = 16,
@@ -97,7 +96,6 @@ struct ColumnType {
             case Type::Double:
             case Type::Decimal:
             case Type::Link:
-            case Type::LinkList:
             case Type::BackLink:
             case Type::ObjectId:
             case Type::TypedLink:
@@ -120,7 +118,6 @@ static constexpr ColumnType col_type_Float = ColumnType{ColumnType::Type::Float}
 static constexpr ColumnType col_type_Double = ColumnType{ColumnType::Type::Double};
 static constexpr ColumnType col_type_Decimal = ColumnType{ColumnType::Type::Decimal};
 static constexpr ColumnType col_type_Link = ColumnType{ColumnType::Type::Link};
-static constexpr ColumnType col_type_LinkList = ColumnType{ColumnType::Type::LinkList};
 static constexpr ColumnType col_type_BackLink = ColumnType{ColumnType::Type::BackLink};
 static constexpr ColumnType col_type_ObjectId = ColumnType{ColumnType::Type::ObjectId};
 static constexpr ColumnType col_type_TypedLink = ColumnType{ColumnType::Type::TypedLink};
@@ -136,6 +133,23 @@ static_assert(!col_type_OldStringEnum.is_valid());
 static_assert(!col_type_OldTable.is_valid());
 static_assert(!col_type_OldDateTime.is_valid());
 
+enum class IndexType { None, General, Fulltext };
+
+inline std::ostream& operator<<(std::ostream& ostr, IndexType type)
+{
+    switch (type) {
+        case IndexType::None:
+            ostr << "no index";
+            break;
+        case IndexType::General:
+            ostr << "search index";
+            break;
+        case IndexType::Fulltext:
+            ostr << "fulltext index";
+            break;
+    }
+    return ostr;
+}
 
 // Column attributes can be combined using bitwise or.
 enum ColumnAttr {
@@ -164,6 +178,9 @@ enum ColumnAttr {
 
     /// Each element is a set of values
     col_attr_Set = 128,
+
+    /// Specifies that elements in the column are full-text indexed
+    col_attr_FullText_Indexed = 256,
 
     /// Either list, dictionary, or set
     col_attr_Collection = 128 + 64 + 32
@@ -230,8 +247,6 @@ constexpr inline ColumnType::operator util::Printable() const noexcept
             return "col_type_Decimal";
         case col_type_Link:
             return "col_type_Link";
-        case col_type_LinkList:
-            return "col_type_LinkList";
         case col_type_BackLink:
             return "col_type_BackLink";
         case col_type_ObjectId:

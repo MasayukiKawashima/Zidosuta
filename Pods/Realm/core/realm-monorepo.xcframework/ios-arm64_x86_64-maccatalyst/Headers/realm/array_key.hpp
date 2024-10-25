@@ -116,6 +116,7 @@ public:
         Array::erase(begin);
     }
     void verify() const;
+    using Array::get_as_ref;
 };
 
 class ArrayKey : public ArrayKeyBase<1> {
@@ -127,6 +128,6 @@ class ArrayKeyNonNullable : public ArrayKeyBase<0> {
 public:
     using ArrayKeyBase::ArrayKeyBase;
 };
-}
+} // namespace realm
 
 #endif /* SRC_REALM_ARRAY_KEY_HPP_ */
