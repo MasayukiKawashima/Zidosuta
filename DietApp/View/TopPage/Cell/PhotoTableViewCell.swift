@@ -19,6 +19,7 @@ class PhotoTableViewCell: UITableViewCell {
   
   @IBOutlet weak var commentLabel: UILabel!
   @IBOutlet weak var redoButton: UIButton!
+  var isRedoButtonConfigured = false
   
   var delegate: PhotoTableViewCellDelegate?
   
@@ -39,6 +40,7 @@ class PhotoTableViewCell: UITableViewCell {
     insertButton.setImage(image, for: .normal)
     
     insertButton.imageView?.contentMode = .scaleAspectFit
+    redoButton.isHidden = true
     
     //ボタンのサイズ調整
     if let image = image {
@@ -47,9 +49,42 @@ class PhotoTableViewCell: UITableViewCell {
     }else{
       return
     }
-    
     setupPhotoDoubleTapGesture()
   }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    if !isRedoButtonConfigured {
+      setRedoButtonCornerRadius()
+      applyFrostedGlassEffect()
+      isRedoButtonConfigured = true
+    }
+  }
+  //やり直しボタンを丸くするメソッド
+  func setRedoButtonCornerRadius() {
+    redoButton.layer.cornerRadius = redoButton.frame.size.width / 2
+    redoButton.clipsToBounds = true
+  }
+  
+  private func applyFrostedGlassEffect() {
+    // ぼかし効果を持つビューを作成
+    let frostedEffect = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+    frostedEffect.frame = redoButton.bounds
+    frostedEffect.layer.cornerRadius = redoButton.frame.size.width / 2
+    frostedEffect.clipsToBounds = true
+    
+    // ぼかし効果のユーザーインタラクションを無効にする
+    //これをしないとボタンをタップしても反応しなくなる
+    //すりガラス効果がボタンの上に乗っかるのでタップイベントがボタンに届かなくなため
+    frostedEffect.isUserInteractionEnabled = false
+    // UIButtonの背景をクリアに設定
+    redoButton.backgroundColor = .clear
+    // ぼかし効果の背景色を設定（透明度を調整）
+    frostedEffect.alpha = 0.5
+    // ぼかし効果をボタンの上に追加
+    redoButton.insertSubview(frostedEffect, at: 0)
+  }
+  
   //写真がダブルタップを感知できるようにする処理
   func setupPhotoDoubleTapGesture() {
     // ダブルタップジェスチャーの作成
@@ -62,6 +97,8 @@ class PhotoTableViewCell: UITableViewCell {
     // ジェスチャーをImageViewに追加
     photoImageView.addGestureRecognizer(doubleTapGesture)
   }
+  
+  
   
   
   override func setSelected(_ selected: Bool, animated: Bool) {
