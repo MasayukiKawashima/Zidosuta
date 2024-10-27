@@ -150,7 +150,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       //写真セルのデリゲート
       cell.delegate = self
-      
+            
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
       let resultsCount = results.count
@@ -173,6 +173,8 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
           //挿入ボタンとコメントラベルを非表示
           cell.insertButton.isHidden = true
           cell.commentLabel.isHidden = true
+          //やり直しボタンの非表示を解除
+          cell.redoButton.isHidden = false
         }
       }
       return cell
@@ -242,6 +244,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   func showPhotoModal(photoImage: UIImage) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     if let photoModalVC = storyboard.instantiateViewController(withIdentifier: "PhotoModalVC") as? PhotoModalViewController {
+      photoModalVC.modalPresentationStyle = .fullScreen
       photoModalVC.photoModalView.photoImageView.image = photoImage
       self.present(photoModalVC, animated: true, completion: nil)
     }
@@ -302,6 +305,8 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       //ボタンとコメントラベルを非表示にする
       photoTableViewCell.insertButton.isHidden = true
       photoTableViewCell.commentLabel.isHidden = true
+      //やり直しボタンを解除する
+      photoTableViewCell.redoButton.isHidden = false
       //取得したインスタンスのimageに選択した写真を格納
       photoTableViewCell.photoImageView.image = pickedImage
     }

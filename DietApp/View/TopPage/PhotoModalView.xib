@@ -32,7 +32,11 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVP-5S-keN">
-                            <rect key="frame" x="338.66666666666669" y="8" width="46.333333333333314" height="34.333333333333336"/>
+                            <rect key="frame" x="341" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="5Su-13-nUD"/>
+                                <constraint firstAttribute="width" constant="44" id="ObK-1O-oFz"/>
+                            </constraints>
                             <state key="normal" title="Button" backgroundImage="xmark" catalog="system"/>
                             <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
                             <connections>
@@ -42,11 +46,11 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="8Su-Bx-U2C" firstAttribute="width" secondItem="vlA-6u-66v" secondAttribute="width" id="52R-pk-nku"/>
-                        <constraint firstItem="GZY-Ur-kBV" firstAttribute="trailing" secondItem="UVP-5S-keN" secondAttribute="trailing" constant="8" id="A80-rM-fIO"/>
+                        <constraint firstItem="UVP-5S-keN" firstAttribute="top" secondItem="GZY-Ur-kBV" secondAttribute="top" constant="8" id="6av-2U-rb4"/>
                         <constraint firstAttribute="bottom" secondItem="8Su-Bx-U2C" secondAttribute="bottom" id="B2U-qm-erP"/>
-                        <constraint firstItem="UVP-5S-keN" firstAttribute="top" secondItem="GZY-Ur-kBV" secondAttribute="top" constant="8" id="CTb-bI-C62"/>
                         <constraint firstAttribute="trailing" secondItem="8Su-Bx-U2C" secondAttribute="trailing" id="I0F-IQ-0OQ"/>
                         <constraint firstItem="8Su-Bx-U2C" firstAttribute="top" secondItem="vlA-6u-66v" secondAttribute="top" id="KZg-ss-nMG"/>
+                        <constraint firstItem="GZY-Ur-kBV" firstAttribute="trailing" secondItem="UVP-5S-keN" secondAttribute="trailing" constant="8" id="m9m-NL-wnc"/>
                         <constraint firstItem="8Su-Bx-U2C" firstAttribute="leading" secondItem="vlA-6u-66v" secondAttribute="leading" id="p7g-q3-uZQ"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="scy-7Q-hgh"/>
