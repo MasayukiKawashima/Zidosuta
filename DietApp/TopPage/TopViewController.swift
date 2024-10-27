@@ -242,6 +242,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   func showPhotoModal(photoImage: UIImage) {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     if let photoModalVC = storyboard.instantiateViewController(withIdentifier: "PhotoModalVC") as? PhotoModalViewController {
+      photoModalVC.modalPresentationStyle = .fullScreen
       photoModalVC.photoModalView.photoImageView.image = photoImage
       self.present(photoModalVC, animated: true, completion: nil)
     }
