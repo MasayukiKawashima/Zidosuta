@@ -16,23 +16,14 @@ class PhotoTableViewCell: UITableViewCell {
   
   @IBOutlet weak var photoImageView: UIImageView!
   @IBOutlet weak var insertButton: UIButton!
-  
   @IBOutlet weak var commentLabel: UILabel!
   @IBOutlet weak var redoButton: UIButton!
-  var isRedoButtonConfigured = false
   
+  var isRedoButtonConfigured = false
   var delegate: PhotoTableViewCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
-    //redoButtonのイメージ設定
-    //iOS18以降かどうかでイメージを変える
-    if #available(iOS 18.0, *) {
-      redoButton.setImage(UIImage(systemName: "arrow.trianglehead.counterclockwise"), for: .normal)
-    } else {
-      redoButton.setImage(UIImage(systemName: "gobackward"), for: .normal)
-    }
     
     //systemImageのサイズ調整
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
@@ -97,8 +88,6 @@ class PhotoTableViewCell: UITableViewCell {
     // ジェスチャーをImageViewに追加
     photoImageView.addGestureRecognizer(doubleTapGesture)
   }
-  
-  
   
   
   override func setSelected(_ selected: Bool, animated: Bool) {
