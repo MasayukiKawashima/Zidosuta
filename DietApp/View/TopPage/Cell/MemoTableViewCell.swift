@@ -14,10 +14,10 @@ class MemoTableViewCell: UITableViewCell {
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    
+    memoTextField.keyboardType = .default
+    memoTextField.returnKeyType = .done
     memoTextField.delegate = self
     memoTextField.autocorrectionType = .no
-    
     
     let placeholderText = "ひとことメモ"
     let attributes = [
@@ -26,7 +26,6 @@ class MemoTableViewCell: UITableViewCell {
     memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
     }
   
-    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
