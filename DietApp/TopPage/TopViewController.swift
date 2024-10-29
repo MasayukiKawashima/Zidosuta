@@ -118,6 +118,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       //セルの選択時のハイライトを非表示にする
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.weightTextField.delegate = self
+      cell.delegate = self
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
@@ -224,7 +225,11 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
 }
 //UITextField周りの処理
 //エンターを押したらキーボードを閉じる処理
-extension TopViewController {
+extension TopViewController: WeightTableViewCellDelegate {
+  func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell) {
+    view.endEditing(true)
+  }
+  
   //キーボード以外の領域をタッチしたらキーボードを閉じる処理
   @objc public func dismissKeyboard() {
     view.endEditing(true)

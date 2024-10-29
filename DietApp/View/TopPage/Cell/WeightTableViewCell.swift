@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol WeightTableViewCellDelegate: AnyObject {
+    func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell)
+}
+
 class WeightTableViewCell: UITableViewCell {
   
   @IBOutlet weak var weightTextField: UITextField!
   @IBOutlet weak var kgLabel: UILabel!
+  
+  var delegate: WeightTableViewCellDelegate?
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -46,21 +52,18 @@ class WeightTableViewCell: UITableViewCell {
 //キーボード上部の閉じるボタンを作成
 extension WeightTableViewCell {
   func setUpCloseButton() {
-    let toolBar = UIToolbar()
-    toolBar.sizeToFit()
-    //単に新しいTopViewControllerのインスタンスを作るだけで良いのか、現在の最上位のビュー（TopViewContoller)を取得した方が良いのか後日確認
-    let topVC = TopViewController()
-    // スペーサー構築
-    let spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: nil)
-    // 閉じるボタン構築
-    let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.close, target: topVC, action:#selector(TopViewController.dismissKeyboard))
+    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+    // セル自身をターゲットとして、内部メソッド経由でデリゲートを呼び出す
+    let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleCloseButtonTap))
     
     toolBar.items = [spacer, closeButton]
     weightTextField.inputAccessoryView = toolBar
-    // MARK: - 閉じるボタン
+  }
+  @objc private func handleCloseButtonTap() {
+    delegate?.weightTableViewCellDidRequestKeyboardDismiss(self)
   }
 }
-
 
 //拡張の内容、記述場所は後日検討
 extension UITextField {
