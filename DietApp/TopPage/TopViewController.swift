@@ -367,87 +367,190 @@ extension TopViewController: UITextFieldDelegate {
     textField.resignFirstResponder()
     return true
   }
-  //キーボードが閉じたとき
+  
   func textFieldDidEndEditing(_ textField: UITextField) {
     let dateDataRealmSearcher = DateDataRealmSearcher()
     let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
-    let resultsCount = results.count
-    //体重が入力された場合
-    if textField.tag == 3 {
-      //入力された文字が空の場合
-      if textField.text == "" {
-        //データがなければ
-        if (resultsCount == 0) {
-          print("データなし。体重が未入力です")
-        }else{
-          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
-          //なのでレラムインスタンスを作り、データの上書き＝データを消す
-          let realm = try! Realm()
-          try! realm.write() {
-            results[0].weight = 0
-            print("体重データを消去しました")
-          }
-        }
-        //文字列が空じゃなかったら
-      }else{
-        let realm = try! Realm()
-        //そして今日の日付のデータも存在しなかったら
-        if (resultsCount == 0) {
-          //今日の日付のデータを作る
+    
+    switch textField.tag {
+    case 3: // 体重
+      handleWeightTextFieldEditing(with: results, text: textField.text)
+    case 4: // メモ
+      handleMemoTextFieldEditing(with: results, text: textField.text)
+    default:
+      break
+    }
+  }
+  
+  private func handleWeightTextFieldEditing(with results: Results<DateData>, text: String?) {
+    let realm = try! Realm()
+    //テキストフィールドに入力された値がnilじゃないか確認
+    if let text = text {
+      //空文字（"")でもないかを確認
+      if !text.isEmpty {
+        //nilでも空文字でもなかった場合
+        let weightDouble = Double(text)!
+        //Realmのデータがあるかどうかで分岐
+        if results.isEmpty {
+          //データが無い場合
           let dateData = DateData()
-          
           dateData.date = topDateManager.date
-          let weightDouble = Double(textField.text!)!
           dateData.weight = weightDouble
           try! realm.write {
             realm.add(dateData)
           }
-          //もしデータがあれば更新
-        }else{
-          try! realm.write() {
-            let weightDouble = Double(textField.text!)!
+          print("新しい体重データが作成されました")
+        } else {
+          //データがある場合
+          try! realm.write {
             results[0].weight = weightDouble
-            print("体重を更新しました")
+            print("体重データを更新しました")
+          }
+        }
+      } else {
+        //空文字でRealmのデータもない場合
+        if results.isEmpty {
+          print("体重データなし。体重が未入力です")
+        } else {
+          //Realmのデータはある場合
+          //Realmのデータはあるのに、テキストフィールドを空にした　→ データを消去したいということ
+          try! realm.write {
+            results[0].weight = 0
+            print("体重データを消去しました")
           }
         }
       }
+    } else {
+      print("なんらかの理由で体重テキストフィールドに入力された値がnilになりました")
+      return
     }
-    //メモが入力されたとき
-    if textField.tag == 4 {
-      if textField.text == "" {
-        //データがなければ
-        if (resultsCount == 0) {
-          print("データなし。メモが未入力です")
-        }else{
-          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
-          //なのでレラムインスタンスを作り、データの上書き＝データを消す
-          let realm = try! Realm()
-          try! realm.write() {
-            results[0].memoText = textField.text!
-            print("メモを消去しました")
-          }
-        }
-        //文字列が空じゃなかったら
-      }else{
-        let realm = try! Realm()
-        //そして今日の日付のデータも存在しなかったら
-        if (resultsCount == 0) {
-          //今日の日付のデータを作る
+  }
+  
+  private func handleMemoTextFieldEditing(with results: Results<DateData>, text: String?) {
+    let realm = try! Realm()
+    //テキストがnilじゃないかを確認
+    if let text = text {
+      //テキストが空文字じゃないかを確認
+      if !text.isEmpty {
+        //空文字じゃなければ
+        //Realmのデータがあるかを確認
+        if results.isEmpty {
+          //データがなければ
           let dateData = DateData()
           dateData.date = topDateManager.date
-          dateData.memoText = textField.text!
+          dateData.memoText = text
           try! realm.write {
             realm.add(dateData)
           }
-          print("あたらしいRealmオブジェクトが生成され、メモが追加されました")
-          //もしデータがあれば更新
-        }else{
-          try! realm.write() {
-            results[0].memoText = textField.text!
-            print("メモを更新しました")
+          print("新しいメモデータが作成されました")
+        } else {
+          //データあれば
+          try! realm.write {
+            results[0].memoText = text
+            print("メモデータを更新しました")
+          }
+        }
+      } else {
+        //Realmのデータがない場合
+        if results.isEmpty {
+          print("メモデータなし。メモが未入力です")
+        } else {
+          //Realmのデータはある場合
+          //Realmのデータはあるのに、テキストフィールドを空にした　→ データを消去したいということ
+          try! realm.write {
+            results[0].memoText = ""
+            print("メモデータを消去しました")
           }
         }
       }
+    }else {
+      print("なんらかの理由でメモテキストフィールドに入力された値がnilになりました")
+      return
     }
   }
+  //以下のコメントアウトは少しの間保管する（2024.10.31 〜）
+  //textFieldDidEndEditing内の処理をリファレンスしたので、挙動を少しの間確認したい
+  //キーボードが閉じたとき
+//  func textFieldDidEndEditing(_ textField: UITextField) {
+//    let dateDataRealmSearcher = DateDataRealmSearcher()
+//    let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
+//    let resultsCount = results.count
+//    //体重が入力された場合
+//    if textField.tag == 3 {
+//      //入力された文字が空の場合
+//      if textField.text == "" {
+//        //データがなければ
+//        if (resultsCount == 0) {
+//          print("データなし。体重が未入力です")
+//        }else{
+//          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
+//          //なのでレラムインスタンスを作り、データの上書き＝データを消す
+//          let realm = try! Realm()
+//          try! realm.write() {
+//            results[0].weight = 0
+//            print("体重データを消去しました")
+//          }
+//        }
+//        //文字列が空じゃなかったら
+//      }else{
+//        let realm = try! Realm()
+//        //そして今日の日付のデータも存在しなかったら
+//        if (resultsCount == 0) {
+//          //今日の日付のデータを作る
+//          let dateData = DateData()
+//          
+//          dateData.date = topDateManager.date
+//          let weightDouble = Double(textField.text!)!
+//          dateData.weight = weightDouble
+//          try! realm.write {
+//            realm.add(dateData)
+//          }
+//          //もしデータがあれば更新
+//        }else{
+//          try! realm.write() {
+//            let weightDouble = Double(textField.text!)!
+//            results[0].weight = weightDouble
+//            print("体重を更新しました")
+//          }
+//        }
+//      }
+//    }
+//    //メモが入力されたとき
+//    if textField.tag == 4 {
+//      if textField.text == "" {
+//        //データがなければ
+//        if (resultsCount == 0) {
+//          print("データなし。メモが未入力です")
+//        }else{
+//          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
+//          //なのでレラムインスタンスを作り、データの上書き＝データを消す
+//          let realm = try! Realm()
+//          try! realm.write() {
+//            results[0].memoText = textField.text!
+//            print("メモを消去しました")
+//          }
+//        }
+//        //文字列が空じゃなかったら
+//      }else{
+//        let realm = try! Realm()
+//        //そして今日の日付のデータも存在しなかったら
+//        if (resultsCount == 0) {
+//          //今日の日付のデータを作る
+//          let dateData = DateData()
+//          dateData.date = topDateManager.date
+//          dateData.memoText = textField.text!
+//          try! realm.write {
+//            realm.add(dateData)
+//          }
+//          print("あたらしいRealmオブジェクトが生成され、メモが追加されました")
+//          //もしデータがあれば更新
+//        }else{
+//          try! realm.write() {
+//            results[0].memoText = textField.text!
+//            print("メモを更新しました")
+//          }
+//        }
+//      }
+//    }
+//  }
 }
