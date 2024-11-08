@@ -11,11 +11,11 @@ protocol WeightValidator {
   func validate() -> ValidationResult
 }
 
-protocol CompositeValidator: WeightValidator {
+protocol CompositeWeightValidator: WeightValidator {
   var validators: [WeightValidator] { get }
 }
 
-extension CompositeValidator {
+extension CompositeWeightValidator {
   func validate() -> ValidationResult {
     guard let result = validators.map({ $0.validate() }).first(where: { !$0.isValid }) else {
       return .valid
@@ -61,12 +61,12 @@ struct WeightFormatValidator: WeightValidator {
   }
 }
 //マイナスの値であるかどうか
-struct NegativeNumberValidation: WeightValidator {
+struct NegativeNumberValidator: WeightValidator {
   let weightString: String
   
   func validate() -> ValidationResult {
     
-    guard let weightInt = Int(weightString) else {
+    guard let weightInt = Double(weightString) else {
       return .invalid(WeightValidationError.invalidFormat)
     }
     
@@ -92,7 +92,7 @@ struct DecimalPlacesValidator: WeightValidator {
 struct MaxWeightValidator: WeightValidator {
   let weightString: String
   func validate() -> ValidationResult {
-    guard let weightInt = Int(weightString) else {
+    guard let weightInt = Double(weightString) else {
       return .invalid(WeightValidationError.invalidFormat)
     }
     
@@ -103,12 +103,12 @@ struct MaxWeightValidator: WeightValidator {
   }
 }
 //検証構造体をまとめる
-struct WeightInputValidator: CompositeValidator {
+struct WeightInputValidator: CompositeWeightValidator {
   var validators: [WeightValidator]
   init(text: String) {
     self.validators = [
       WeightFormatValidator(weightString: text),
-      NegativeNumberValidation(weightString: text),
+      NegativeNumberValidator(weightString: text),
       DecimalPlacesValidator(weightString: text),
       MaxWeightValidator(weightString: text)
     ]

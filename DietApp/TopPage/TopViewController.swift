@@ -369,6 +369,17 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
+    
+    if textField.text != "" {
+      let validator = WeightInputValidator(text: textField.text!)
+      switch validator.validate() {
+      case .valid:
+        print("適正な値です")
+      case .invalid(let validationError):
+        print(validationError.localizedDescription)
+      }
+    }
+    
     let dateDataRealmSearcher = DateDataRealmSearcher()
     let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
     
