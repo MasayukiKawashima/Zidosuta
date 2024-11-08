@@ -12,6 +12,10 @@
 		60A4C6E95A42A5E6FBC4EC82 /* Pods_DietApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B7CEEB90849C4649195C6F /* Pods_DietApp.framework */; };
 		FA0F9ECF2A2F0DEC00C7E888 /* GraphPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */; };
 		FA0F9ED12A3016D100C7E888 /* UITabBarController+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F9ED02A3016D100C7E888 /* UITabBarController+Orientation.swift */; };
+		FA10AD112CDD9A4100AF9404 /* TopTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD102CDD9A4100AF9404 /* TopTextFieldValidation.swift */; };
+		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
+		FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */; };
+		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
 		FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11122B2A5923F6007353EA /* IndexSetter.swift */; };
 		FA11122E2A592745007353EA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11122D2A592745007353EA /* Direction.swift */; };
 		FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */; };
@@ -99,6 +103,10 @@
 		F33E63A5ACE3D0B165D13D9B /* Pods-DietAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPageViewController.swift; sourceTree = "<group>"; };
 		FA0F9ED02A3016D100C7E888 /* UITabBarController+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Orientation.swift"; sourceTree = "<group>"; };
+		FA10AD102CDD9A4100AF9404 /* TopTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTextFieldValidation.swift; sourceTree = "<group>"; };
+		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
+		FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError + ValidationResult.swift"; sourceTree = "<group>"; };
+		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
 		FA11122B2A5923F6007353EA /* IndexSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSetter.swift; sourceTree = "<group>"; };
 		FA11122D2A592745007353EA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -221,6 +229,16 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */ = {
+			isa = PBXGroup;
+			children = (
+				FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */,
+				FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */,
+				FA10AD102CDD9A4100AF9404 /* TopTextFieldValidation.swift */,
+			);
+			path = TopPageTextFieldValidation;
+			sourceTree = "<group>";
+		};
 		FA1112302A59296B007353EA /* Logic */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +248,7 @@
 				FA42FA392A70B2DC00C60F9E /* DateRangeCalculator.swift */,
 				FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */,
 				FA24A8722CA66F110082AF19 /* OrientationManager.swift */,
+				FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -353,6 +372,7 @@
 				FA42FA2E2A6B6CB700C60F9E /* DateDataRealmSearcherTests.swift */,
 				FA42FA2C2A6A4C1200C60F9E /* IndexSetterTests.swift */,
 				FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */,
+				FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */,
 			);
 			path = ModelTests;
 			sourceTree = "<group>";
@@ -705,9 +725,11 @@
 				FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */,
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA32F4C82A32C0900058FD32 /* ThemeColorTableViewCell.swift in Sources */,
+				FA10AD112CDD9A4100AF9404 /* TopTextFieldValidation.swift in Sources */,
 				FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */,
 				FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
+				FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */,
 				FA42FA3A2A70B2DC00C60F9E /* DateRangeCalculator.swift in Sources */,
 				FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */,
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
@@ -731,6 +753,7 @@
 				FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
+				FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
 				FA11122E2A592745007353EA /* Direction.swift in Sources */,
@@ -744,6 +767,7 @@
 			files = (
 				FA42FA2F2A6B6CB700C60F9E /* DateDataRealmSearcherTests.swift in Sources */,
 				FA42FA3C2A70BD4100C60F9E /* DateRangeCalculatorTests.swift in Sources */,
+				FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */,
 				FA24A8792CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift in Sources */,
 				FA42FA332A6CB76200C60F9E /* GraphContentCreatorTests.swift in Sources */,
 				FA42FA2D2A6A4C1200C60F9E /* IndexSetterTests.swift in Sources */,
