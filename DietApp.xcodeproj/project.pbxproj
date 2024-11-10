@@ -16,6 +16,7 @@
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
+		FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */; };
 		FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11122B2A5923F6007353EA /* IndexSetter.swift */; };
 		FA11122E2A592745007353EA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11122D2A592745007353EA /* Direction.swift */; };
 		FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */; };
@@ -107,6 +108,7 @@
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError + ValidationResult.swift"; sourceTree = "<group>"; };
 		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
+		FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA11122B2A5923F6007353EA /* IndexSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSetter.swift; sourceTree = "<group>"; };
 		FA11122D2A592745007353EA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */,
 				FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */,
 				FA10AD102CDD9A4100AF9404 /* TopTextFieldValidation.swift */,
+				FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */,
 			);
 			path = TopPageTextFieldValidation;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */,
 				FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
+				FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */,
 				FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */,
 				FA42FA3A2A70B2DC00C60F9E /* DateRangeCalculator.swift in Sources */,
 				FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */,
