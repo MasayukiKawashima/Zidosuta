@@ -1,0 +1,116 @@
+//
+//  MemoTextFieldValidationTest.swift
+//  DietAppTests
+//
+//  Created by 川島真之 on 2024/11/10.
+//
+
+import XCTest
+@testable import DietApp
+
+final class MemoTextFieldValidationTest: XCTestCase {
+  
+  override func setUpWithError() throws {
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+  }
+  
+  override func tearDownWithError() throws {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+  }
+  //CharacterLengthValidator
+  //有効な値
+  func testCharacterLengthValidator_ValidInput_ShouldReturnValid(){
+    let validInputs = ["あ",
+                       "あいうえお",
+                       "aiueo",
+                       //３９文字
+                       "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよら",
+                       //40文字
+                       "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらり",
+                       " ",
+                       "",
+                       "123"
+    ]
+    
+    validInputs.forEach{ input in
+      let validator = CharacterLengthValidator(memoString: input)
+      let result = validator.validate()
+      XCTAssertTrue(result.isValid, "Input \(input) は無効な値です")
+    }
+  }
+  //無効な値
+  func testCharacterLengthValidator_InvalidInput_ShouldReturnInvalid(){
+    //41文字
+    let invalidInputs = ["あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりる",
+                         "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりるれろわをん"
+    ]
+    
+    invalidInputs.forEach { input in
+      let validator = CharacterLengthValidator(memoString: input)
+      let result = validator.validate()
+      XCTAssertFalse(result.isValid)
+    }
+  }
+  //NewLineValidator
+  //有効な値
+  func testNewLineValidator_ValidInput_ShouldReturnValid() {
+    let validInputs = ["あ",
+                      "あいうえお",
+                      "あ　いうえお",
+                      "123",
+                      "aiu",
+                      " ",
+                      ""
+    ]
+    
+    validInputs.forEach{ input in
+      let validator = NewLineValidator(memoString: input)
+      let result = validator.validate()
+      XCTAssertTrue(result.isValid, "Input \(input) は無効な値です")
+    }
+  }
+  //無効な値
+  func testNewLineValidator_InvalidInput_ShouldReturnInvalid() {
+    let invalidInputs = ["\n",
+                         "\nあいうえお",
+                         "あいうえお\nかきくけこ",
+                         "あいうえお\n",
+                         "あいうえお\nかきくけこ\nさしすせそ"
+    ]
+    
+    invalidInputs.forEach { input in
+      let validator = NewLineValidator(memoString: input)
+      let result = validator.validate()
+      XCTAssertFalse(result.isValid)
+    }
+  }
+  
+  func testMemoInputValidator_ValidInput_ShouldReturnValid() {
+    let validInputs = ["あいうえおかきくけこ",
+                       "あいうえお　かきくけこ",
+                       "aiu",
+                       "123",
+                       " ",
+                       ""
+    ]
+    
+    validInputs.forEach { input in
+      let validator = MemoInputValidator(text: input)
+      let result = validator.validate()
+      XCTAssertTrue(result.isValid, "Input \(input) は無効な値です")
+    }
+  }
+  
+  func testMemovalidator_InvalidInput_ShouldReturnInvalid() {
+    let testCases = [
+      ("あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりるれろわをん", MemoValidationError.exceedsMaximumCharacterLength),
+      ("あいうえお\nかきくけこ\nさしすせそ", MemoValidationError.newLine)
+    ]
+    
+    testCases.forEach { input, expectedError in
+      let validator = MemoInputValidator(text: input)
+      let result = validator.validate()
+      XCTAssertFalse(result.isValid)
+    }
+  }
+}

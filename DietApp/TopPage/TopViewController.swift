@@ -371,10 +371,11 @@ extension TopViewController: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     
     if textField.text != "" {
-      let validator = WeightInputValidator(text: textField.text!)
-      switch validator.validate() {
+      let memoInputValidator = MemoInputValidator(text: textField.text!)
+      
+      switch memoInputValidator.validate() {
       case .valid:
-        print("適正な値です")
+        print("メモは問題なし")
       case .invalid(let validationError):
         print(validationError.localizedDescription)
       }
