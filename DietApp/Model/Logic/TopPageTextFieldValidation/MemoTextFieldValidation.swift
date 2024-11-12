@@ -61,7 +61,7 @@ struct NewLineValidator: MemoValidator {
     return .valid
   }
 }
-
+//validatorをまとめる
 struct MemoInputValidator: CompositeMemoValidator {
   var validators: [MemoValidator]
   
