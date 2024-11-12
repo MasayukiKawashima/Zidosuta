@@ -56,6 +56,11 @@ class TopViewController: UIViewController {
     case adTableViewCell
   }
   
+  enum TopPageTextFieldType: Int {
+    case weight = 3
+    case memo = 4
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
@@ -367,8 +372,60 @@ extension TopViewController: UITextFieldDelegate {
     textField.resignFirstResponder()
     return true
   }
+  
+  //テキストフィールドの編集が終了した時
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    
+    guard let text = textField.text, !text.isEmpty else { return }
+    guard let result = textFieldValidate(textField) else{ return }
+    guard let type = TopPageTextFieldType(rawValue: textField.tag) else { return }
+    
+    switch result {
+    case .valid:
+      let dateDataRealmSearcher = DateDataRealmSearcher()
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
+      
+      switch type {
+      case .weight:
+        handleWeightTextFieldEditing(with: results, text: textField.text)
+      case .memo:
+        handleMemoTextFieldEditing(with: results, text: textField.text)
+      }
+    case .invalid(let error):
+      showValidationErrorAlert(errorText: error.localizedDescription, textField: textField)
+      
+    }
+  }
+  
+  //テキストフィールドのバリデート
+  func textFieldValidate(_ textField : UITextField) -> ValidationResult? {
+    
+    guard let type = TopPageTextFieldType(rawValue: textField.tag) else { return nil }
+    
+    switch type {
+    case .weight:
+      let weightInputValidator = WeightInputValidator(text: textField.text!)
+      switch weightInputValidator.validate() {
+      case .valid:
+        print("体重は問題なし")
+        return .valid
+      case .invalid(let error):
+        return .invalid(error)
+      }
+      
+    case .memo:
+      let memoInputValidator = MemoInputValidator(text: textField.text!)
+      switch memoInputValidator.validate() {
+      case .valid:
+        print("メモは問題なし")
+        return .valid
+      case .invalid(let error):
+        return .invalid(error)
+      }
+    }
+  }
   //バリデーションエラーのアラートを表示する
-  func showValidationErrorAlert(errorText: String) {
+  func showValidationErrorAlert(errorText: String, textField: UITextField) {
     let alert = UIAlertController(title: "", message: errorText, preferredStyle: .alert)
     
     let attributedTitle = NSAttributedString(string: "入力エラー", attributes: [
@@ -378,37 +435,16 @@ extension TopViewController: UITextFieldDelegate {
     alert.setValue(attributedTitle, forKey: "attributedTitle")
     
     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+      //キーボードを表示
+      textField.becomeFirstResponder()
+      //テキストを空にする
+      textField.text = ""
+      //アラートを閉じる
       alert.dismiss(animated: true, completion: nil)
     }
     alert.addAction(okAction)
+    
     self.present(alert, animated: true, completion: nil)
-  }
-  
-  func textFieldDidEndEditing(_ textField: UITextField) {
-    
-    if textField.text != "" {
-      let memoInputValidator = MemoInputValidator(text: textField.text!)
-      
-      switch memoInputValidator.validate() {
-      case .valid:
-        print("メモは問題なし")
-      case .invalid(let validationError):
-        print(validationError.localizedDescription)
-        showValidationErrorAlert(errorText: validationError.localizedDescription)
-      }
-    }
-    
-    let dateDataRealmSearcher = DateDataRealmSearcher()
-    let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
-    
-    switch textField.tag {
-    case 3: // 体重
-      handleWeightTextFieldEditing(with: results, text: textField.text)
-    case 4: // メモ
-      handleMemoTextFieldEditing(with: results, text: textField.text)
-    default:
-      break
-    }
   }
   
   private func handleWeightTextFieldEditing(with results: Results<DateData>, text: String?) {
