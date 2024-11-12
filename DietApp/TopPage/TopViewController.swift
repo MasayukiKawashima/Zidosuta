@@ -367,6 +367,22 @@ extension TopViewController: UITextFieldDelegate {
     textField.resignFirstResponder()
     return true
   }
+  //バリデーションエラーのアラートを表示する
+  func showValidationErrorAlert(errorText: String) {
+    let alert = UIAlertController(title: "", message: errorText, preferredStyle: .alert)
+    
+    let attributedTitle = NSAttributedString(string: "入力エラー", attributes: [
+      .foregroundColor: UIColor.red,
+      .font: UIFont.boldSystemFont(ofSize: 18) // ボールドフォント
+    ])
+    alert.setValue(attributedTitle, forKey: "attributedTitle")
+    
+    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+      alert.dismiss(animated: true, completion: nil)
+    }
+    alert.addAction(okAction)
+    self.present(alert, animated: true, completion: nil)
+  }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
     
@@ -378,6 +394,7 @@ extension TopViewController: UITextFieldDelegate {
         print("メモは問題なし")
       case .invalid(let validationError):
         print(validationError.localizedDescription)
+        showValidationErrorAlert(errorText: validationError.localizedDescription)
       }
     }
     
