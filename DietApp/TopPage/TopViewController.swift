@@ -290,9 +290,9 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
           //その古い写真を削除する
           let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
           do {
-              try FileManager.default.removeItem(at: documentPath)
+            try FileManager.default.removeItem(at: documentPath)
           } catch {
-              print("ファイルの削除に失敗しました: \(error)")
+            print("ファイルの削除に失敗しました: \(error)")
           }
         }
         try! realm.write {
@@ -374,10 +374,11 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   //テキストフィールドの編集が終了した時
+  //, !text.isEmpty
   func textFieldDidEndEditing(_ textField: UITextField) {
     
-    guard let text = textField.text, !text.isEmpty else { return }
-    guard let result = textFieldValidate(textField) else{ return }
+    guard let text = textField.text else { return }
+    guard let result = textFieldValidate(textField) else { return }
     guard let type = TopPageTextFieldType(rawValue: textField.tag) else { return }
     
     switch result {
@@ -387,9 +388,9 @@ extension TopViewController: UITextFieldDelegate {
       
       switch type {
       case .weight:
-        handleWeightTextFieldEditing(with: results, text: textField.text)
+        handleWeightTextFieldEditing(with: results, text: text)
       case .memo:
-        handleMemoTextFieldEditing(with: results, text: textField.text)
+        handleMemoTextFieldEditing(with: results, text: text)
       }
     case .invalid(let error):
       showValidationErrorAlert(errorText: error.localizedDescription, textField: textField)
@@ -447,54 +448,46 @@ extension TopViewController: UITextFieldDelegate {
     self.present(alert, animated: true, completion: nil)
   }
   
-  private func handleWeightTextFieldEditing(with results: Results<DateData>, text: String?) {
+  private func handleWeightTextFieldEditing(with results: Results<DateData>, text: String) {
     let realm = try! Realm()
-    //テキストフィールドに入力された値がnilじゃないか確認
-    if let text = text {
-      //空文字（"")でもないかを確認
-      if !text.isEmpty {
-        //nilでも空文字でもなかった場合
-        let weightDouble = Double(text)!
-        //Realmのデータがあるかどうかで分岐
-        if results.isEmpty {
-          //データが無い場合
-          let dateData = DateData()
-          dateData.date = topDateManager.date
-          dateData.weight = weightDouble
-          try! realm.write {
-            realm.add(dateData)
-          }
-          print("新しい体重データが作成されました")
-        } else {
-          //データがある場合
-          try! realm.write {
-            results[0].weight = weightDouble
-            print("体重データを更新しました")
-          }
+    //空文字（"")でないかを確認
+    if !text.isEmpty {
+      //空文字でなかった場合
+      let weightDouble = Double(text)!
+      //Realmのデータがあるかどうかで分岐
+      if results.isEmpty {
+        //データが無い場合
+        let dateData = DateData()
+        dateData.date = topDateManager.date
+        dateData.weight = weightDouble
+        try! realm.write {
+          realm.add(dateData)
         }
+        print("新しい体重データが作成されました")
       } else {
-        //空文字でRealmのデータもない場合
-        if results.isEmpty {
-          print("体重データなし。体重が未入力です")
-        } else {
-          //Realmのデータはある場合
-          //Realmのデータはあるのに、テキストフィールドを空にした　→ データを消去したいということ
-          try! realm.write {
-            results[0].weight = 0
-            print("体重データを消去しました")
-          }
+        //データがある場合
+        try! realm.write {
+          results[0].weight = weightDouble
+          print("体重データを更新しました")
         }
       }
     } else {
-      print("なんらかの理由で体重テキストフィールドに入力された値がnilになりました")
-      return
+      //空文字でRealmのデータもない場合
+      if results.isEmpty {
+        print("体重データなし。体重が未入力です")
+      } else {
+        //Realmのデータはある場合
+        //Realmのデータはあるのに、テキストフィールドを空にした　→ データを消去したいということ
+        try! realm.write {
+          results[0].weight = 0
+          print("体重データを消去しました")
+        }
+      }
     }
   }
   
-  private func handleMemoTextFieldEditing(with results: Results<DateData>, text: String?) {
+  private func handleMemoTextFieldEditing(with results: Results<DateData>, text: String) {
     let realm = try! Realm()
-    //テキストがnilじゃないかを確認
-    if let text = text {
       //テキストが空文字じゃないかを確認
       if !text.isEmpty {
         //空文字じゃなければ
@@ -528,9 +521,6 @@ extension TopViewController: UITextFieldDelegate {
           }
         }
       }
-    }else {
-      print("なんらかの理由でメモテキストフィールドに入力された値がnilになりました")
-      return
     }
   }
   //以下のコメントアウトは少しの間保管する（2024.10.31 〜）
@@ -618,4 +608,4 @@ extension TopViewController: UITextFieldDelegate {
 //      }
 //    }
 //  }
-}
+

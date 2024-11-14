@@ -24,7 +24,7 @@ extension CompositeWeightValidator {
       }
 }
 //体重textField
-//エラケースの定義
+//エ-ラケースの定義
 enum WeightValidationError: ValidationError{
   case invalidFormat
   case negativeNumber
@@ -65,8 +65,13 @@ struct NegativeNumberValidator: WeightValidator {
   let weightString: String
   
   func validate() -> ValidationResult {
+    //空文字はパス
+    if weightString.isEmpty {
+      return .valid
+    }
     
     guard let weightInt = Double(weightString) else {
+      print(" NegativeNumberValidatorで変換エラー発生")
       return .invalid(WeightValidationError.invalidFormat)
     }
     
@@ -81,6 +86,11 @@ struct DecimalPlacesValidator: WeightValidator {
   let weightString: String
   
   func validate() -> ValidationResult {
+    //空文字はパス
+    if weightString.isEmpty {
+      return .valid
+    }
+    
     let pattern = "^\\d+(\\.\\d{1})?$"
     if weightString.range(of: pattern, options: .regularExpression) == nil {
       return .invalid(WeightValidationError.exceedsAllowedDecimalPlaces)
@@ -92,7 +102,12 @@ struct DecimalPlacesValidator: WeightValidator {
 struct MaxWeightValidator: WeightValidator {
   let weightString: String
   func validate() -> ValidationResult {
+    //空文字はパス
+    if weightString.isEmpty {
+      return .valid
+    }
     guard let weightInt = Double(weightString) else {
+      print("MaxWeightValidatorで変換エラー発生")
       return .invalid(WeightValidationError.invalidFormat)
     }
     
