@@ -23,10 +23,10 @@ final class MemoTextFieldValidationTest: XCTestCase {
     let validInputs = ["あ",
                        "あいうえお",
                        "aiueo",
-                       //３９文字
-                       "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよら",
-                       //40文字
-                       "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらり",
+                       //３5文字
+                       "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめも",
+                       //34文字
+                       "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめ",
                        " ",
                        "",
                        "123"
@@ -40,8 +40,9 @@ final class MemoTextFieldValidationTest: XCTestCase {
   }
   //無効な値
   func testCharacterLengthValidator_InvalidInput_ShouldReturnInvalid(){
-    //41文字
-    let invalidInputs = ["あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりる",
+                          //36文字
+    let invalidInputs = ["あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや",
+                         //46文字
                          "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりるれろわをん"
     ]
     
