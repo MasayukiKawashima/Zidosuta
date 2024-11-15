@@ -25,6 +25,13 @@ class WeightTableViewCell: UITableViewCell {
     weightTextField.keyboardType = .decimalPad
     
     weightTextField.autocorrectionType = .no
+    //2024.11.15
+    //文字列の長さによって１文字あたりのサイズを調整するかどうか
+    //falseなので調整をしない
+    //trueにすると、ペーストで値を入力した際にプレスホルダーのフォントサイズが変わってしまう
+    //原因は不明だが、このプロパティをfalseにしたら上記の現象が発生しなくなり、現状は体重テキストフィールドではサイズの調整は必要ないのでこの設定にしておく
+    //メモテキストフィールドでは上記の現象はいまのところ発生していないのでtrueにする
+    weightTextField.adjustsFontSizeToFitWidth = false
     
     let placeholderText = "体重を入力"
     let attributes = [
