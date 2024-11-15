@@ -33,19 +33,19 @@ extension MemoValidationError: LocalizedError {
   public var errorDescription: String? {
     switch self {
     case .exceedsMaximumCharacterLength:
-      return "最大文字数は４０文字です"
+      return "入力できる文字は３５文字までです"
     case .newLine:
       return "改行はできません"
     }
   }
 }
 //検証ロジックの実装
-//文字数が４０文字を超えていないか
+//文字数が35文字を超えていないか
 struct CharacterLengthValidator: MemoValidator {
   let memoString: String
   func validate() -> ValidationResult {
     let characterCount = memoString.count
-    if characterCount > 40 {
+    if characterCount > 35 {
       return .invalid(MemoValidationError.exceedsMaximumCharacterLength)
     }
     return .valid
