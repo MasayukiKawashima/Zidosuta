@@ -18,6 +18,10 @@ class MemoTableViewCell: UITableViewCell {
     memoTextField.returnKeyType = .done
     memoTextField.delegate = self
     memoTextField.autocorrectionType = .no
+    //文字列のながによる１文字あたりのサイズの自動調整
+    memoTextField.adjustsFontSizeToFitWidth = true
+    //最小サイズは10
+    memoTextField.minimumFontSize = 10
     
     let placeholderText = "ひとことメモ"
     let attributes = [

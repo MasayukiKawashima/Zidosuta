@@ -374,7 +374,6 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   //テキストフィールドの編集が終了した時
-  //, !text.isEmpty
   func textFieldDidEndEditing(_ textField: UITextField) {
     
     guard let text = textField.text else { return }
@@ -440,6 +439,7 @@ extension TopViewController: UITextFieldDelegate {
       textField.becomeFirstResponder()
       //テキストを空にする
       textField.text = ""
+      
       //アラートを閉じる
       alert.dismiss(animated: true, completion: nil)
     }

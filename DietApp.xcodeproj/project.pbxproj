@@ -12,7 +12,6 @@
 		60A4C6E95A42A5E6FBC4EC82 /* Pods_DietApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B7CEEB90849C4649195C6F /* Pods_DietApp.framework */; };
 		FA0F9ECF2A2F0DEC00C7E888 /* GraphPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */; };
 		FA0F9ED12A3016D100C7E888 /* UITabBarController+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F9ED02A3016D100C7E888 /* UITabBarController+Orientation.swift */; };
-		FA10AD112CDD9A4100AF9404 /* TopTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD102CDD9A4100AF9404 /* TopTextFieldValidation.swift */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
@@ -105,7 +104,6 @@
 		F33E63A5ACE3D0B165D13D9B /* Pods-DietAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPageViewController.swift; sourceTree = "<group>"; };
 		FA0F9ED02A3016D100C7E888 /* UITabBarController+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Orientation.swift"; sourceTree = "<group>"; };
-		FA10AD102CDD9A4100AF9404 /* TopTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError + ValidationResult.swift"; sourceTree = "<group>"; };
 		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			children = (
 				FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */,
 				FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */,
-				FA10AD102CDD9A4100AF9404 /* TopTextFieldValidation.swift */,
 				FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */,
 			);
 			path = TopPageTextFieldValidation;
@@ -377,10 +374,18 @@
 				FA42FA2E2A6B6CB700C60F9E /* DateDataRealmSearcherTests.swift */,
 				FA42FA2C2A6A4C1200C60F9E /* IndexSetterTests.swift */,
 				FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */,
-				FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */,
-				FA10AD272CE060A600AF9404 /* MemoTextFieldValidationTest.swift */,
+				FA55F5B42CE58D080015291F /* TopPageTextFieldValidationTest */,
 			);
 			path = ModelTests;
+			sourceTree = "<group>";
+		};
+		FA55F5B42CE58D080015291F /* TopPageTextFieldValidationTest */ = {
+			isa = PBXGroup;
+			children = (
+				FA10AD272CE060A600AF9404 /* MemoTextFieldValidationTest.swift */,
+				FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */,
+			);
+			path = TopPageTextFieldValidationTest;
 			sourceTree = "<group>";
 		};
 		FA68AF142A135F6F00B69D4A = {
@@ -731,7 +736,6 @@
 				FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */,
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA32F4C82A32C0900058FD32 /* ThemeColorTableViewCell.swift in Sources */,
-				FA10AD112CDD9A4100AF9404 /* TopTextFieldValidation.swift in Sources */,
 				FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */,
 				FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
