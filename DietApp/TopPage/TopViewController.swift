@@ -435,11 +435,8 @@ extension TopViewController: UITextFieldDelegate {
     alert.setValue(attributedTitle, forKey: "attributedTitle")
     
     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-      //キーボードを表示
-      textField.becomeFirstResponder()
       //テキストを空にする
       textField.text = ""
-      
       //アラートを閉じる
       alert.dismiss(animated: true, completion: nil)
     }
