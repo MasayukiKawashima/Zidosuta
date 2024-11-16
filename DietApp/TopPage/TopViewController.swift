@@ -140,6 +140,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.memoTextField.delegate = self
+      cell.delegate = self
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
@@ -230,8 +231,11 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
 }
 //UITextField周りの処理
 //エンターを押したらキーボードを閉じる処理
-extension TopViewController: WeightTableViewCellDelegate {
+extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDelegate {
   func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell) {
+    view.endEditing(true)
+  }
+  func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell) {
     view.endEditing(true)
   }
   
