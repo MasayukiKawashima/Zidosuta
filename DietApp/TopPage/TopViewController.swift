@@ -10,6 +10,7 @@ import RealmSwift
 
 class TopViewController: UIViewController {
   var topView = TopView()
+  var coverWindow: UIWindow?
   
   var topDateManager = TopDateManager()
   
@@ -55,7 +56,7 @@ class TopViewController: UIViewController {
     case photoTableViewCell
     case adTableViewCell
   }
-  
+  //テキストフィールドのタグの意味を示す列挙体
   enum TopPageTextFieldType: Int {
     case weight = 3
     case memo = 4
@@ -67,13 +68,10 @@ class TopViewController: UIViewController {
     //    topView.navigationBar.delegate = self
     topView.tableView.delegate = self
     topView.tableView.dataSource = self
-    //tableViewでタップ認識させるための設定
-    let tapGesture = UITapGestureRecognizer(
-      target: self,
-      action: #selector(dismissKeyboard))
-    tapGesture.cancelsTouchesInView = false
-    view.addGestureRecognizer(tapGesture)
-    
+    //キーボードの表示と非表示の監視
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
     //スクロールできないようにする
     topView.tableView.isScrollEnabled = false
     //tableViewCellの高さの自動設定
@@ -86,10 +84,6 @@ class TopViewController: UIViewController {
     view = topView
   }
   
-//  override func viewWillAppear(_ animated: Bool) {
-//    super.viewWillAppear(animated)
-//    print("viewWillAppearがよばれた")
-//    dateResourceSetting()
 //  }
   /*
    // MARK: - Navigation
@@ -140,6 +134,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       let cell = tableView.dequeueReusableCell(withIdentifier: "MemoTableViewCell", for: indexPath) as! MemoTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.memoTextField.delegate = self
+      cell.delegate = self
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
@@ -230,13 +225,12 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
 }
 //UITextField周りの処理
 //エンターを押したらキーボードを閉じる処理
-extension TopViewController: WeightTableViewCellDelegate {
+extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDelegate {
+  //notificationCenterのメソッド
   func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell) {
     view.endEditing(true)
   }
-  
-  //キーボード以外の領域をタッチしたらキーボードを閉じる処理
-  @objc public func dismissKeyboard() {
+  func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell) {
     view.endEditing(true)
   }
 }
@@ -367,8 +361,64 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
 }
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {
+  
+  private func createCoverWindow() {
+    // UIWindowの作成と初期化
+    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+    let coverWindow = UIWindow(windowScene: windowScene!)
+    coverWindow.frame = UIScreen.main.bounds
+    coverWindow.backgroundColor = UIColor.black.withAlphaComponent(0.15) // 半透明
+    coverWindow.isHidden = true // 初期状態で非表示
+    coverWindow.windowLevel = .alert // 最前面に表示
+    self.coverWindow = coverWindow
+    //キーボード以外の部分をタップすることでキーボードを閉じれるようにする
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    coverWindow.addGestureRecognizer(tapGesture)
+    
+  }
+  
+  @objc private func dismissKeyboard() {
+    view.endEditing(true)
+  }
+  
+  @objc private func keyboardWillShow(_ notification: Notification) {
+    if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+      // キーボードとアクセサリビュー以外を覆う
+      //スクリーン全体の高さからキーボード＋アクセサリービューの高さを引く
+      //keyboardFrame.heightにはアクセサリビュー（ツールバー）込みの高さが入っている
+      let screenHeight = UIScreen.main.bounds.height - keyboardFrame.height
+      coverWindow?.frame = CGRect(
+        x: 0,
+        y: 0,
+        width: UIScreen.main.bounds.width,
+        height: screenHeight
+      )
+      //coverWindowを表示する
+      //textFieldDidBeginEditingでも同様の処理を行う
+      coverWindow?.isHidden = false
+    }
+  }
+  
+  @objc private func keyboardWillHide(_ notification: Notification) {
+    //coverWindowを非表示にする
+    //textFieldDidEndEditingでも同様の処理を行う
+    coverWindow?.isHidden = true
+    // coverWindowを全画面に戻す
+    coverWindow?.frame = UIScreen.main.bounds
+  }
+  
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    if coverWindow == nil {
+      createCoverWindow()
+    }
+    //coverWindowを表示する
+    coverWindow?.isHidden = false
+  }
+  
   //リターンが押されたとき
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
     textField.resignFirstResponder()
     return true
   }
@@ -393,8 +443,9 @@ extension TopViewController: UITextFieldDelegate {
       }
     case .invalid(let error):
       showValidationErrorAlert(errorText: error.localizedDescription, textField: textField)
-      
     }
+    //coverWindowを非表示にする
+    coverWindow?.isHidden = true
   }
   
   //テキストフィールドのバリデート
@@ -435,6 +486,8 @@ extension TopViewController: UITextFieldDelegate {
     alert.setValue(attributedTitle, forKey: "attributedTitle")
     
     let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+      
+      textField.becomeFirstResponder()
       //テキストを空にする
       textField.text = ""
       //アラートを閉じる

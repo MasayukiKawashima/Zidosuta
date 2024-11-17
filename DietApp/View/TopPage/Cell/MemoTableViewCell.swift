@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol MemoTableViewCellDelegate: AnyObject {
+  func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell)
+}
+
 class MemoTableViewCell: UITableViewCell {
 
   @IBOutlet weak var memoTextField: UITextField!
+  
+  var delegate: MemoTableViewCellDelegate?
   
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,6 +34,8 @@ class MemoTableViewCell: UITableViewCell {
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
     ]
     memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+    
+    setUpCloseButton()
     }
   
 
@@ -45,6 +53,24 @@ extension MemoTableViewCell: UITextFieldDelegate {
     return true
   }
 }
+
+extension MemoTableViewCell {
+  func setUpCloseButton() {
+    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+   
+    
+    let closeButton = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(handleCloseButtonTap))
+    
+    toolBar.items = [spacer, closeButton]
+    memoTextField.inputAccessoryView = toolBar
+  }
+  @objc private func handleCloseButtonTap() {
+    delegate?.memoTableViewCellDidRequestKeyboardDismiss(self)
+  }
+}
+
+
 
 
 //このエクステンションの必要性については後日確認
