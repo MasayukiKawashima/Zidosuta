@@ -243,8 +243,50 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     showPhotoModal(photoImage: photoImage)
   }
   
-  func deleteButtonAction() {
-    return
+  func deleteButtonAction(in cell: PhotoTableViewCell) {
+    let alert = UIAlertController(title: "確認", message: "写真を削除してもよろしいですか？", preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "OK", style: .destructive) { _ in
+      self.deleteAlertAction(cell)
+    }
+    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+
+    alert.addAction(cancelAction)
+    alert.addAction(okAction)
+    present(alert, animated: true)
+  }
+  //削除ボタンが押された時の確認のアラート
+  func deleteAlertAction(_ cell: PhotoTableViewCell) {
+    let dateDataRealmSearcher = DateDataRealmSearcher()
+    let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
+    let resultsCount = results.count
+    
+    let realm = try! Realm()
+    if resultsCount != 0 {
+      if results.first!.photoFileURL != "" {
+        //ドキュメント内の写真を削除する
+        let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
+        do {
+          try FileManager.default.removeItem(at: documentPath)
+        } catch {
+          print("ファイルの削除に失敗しました: \(error)")
+        }
+        //Realmからも写真パスと写真の方向データを削除する
+        try! realm.write {
+          results.first!.photoFileURL = ""
+          results.first!.imageOrientationRawValue = Int()
+        }
+        //Viewから写真を削除し
+        cell.photoImageView.image = nil
+        //各種UI部品の表示や非表示
+        cell.insertButton.isHidden = false
+        cell.commentLabel.isHidden = false
+        cell.redoButton.isHidden = true
+        cell.deleteButton.isHidden = true
+        cell.expandButton.isHidden = true
+      }
+      cell.photoImageView.image = nil
+    }
+    cell.photoImageView.image = nil
   }
   //写真挿入ボタンとやり直しボタンを押した時の処理
   func insertButtonAction() {
@@ -382,11 +424,11 @@ extension TopViewController: UITextFieldDelegate {
     coverWindow.backgroundColor = UIColor.black.withAlphaComponent(0.15) // 半透明
     coverWindow.isHidden = true // 初期状態で非表示
     coverWindow.windowLevel = .alert // 最前面に表示
+    
     self.coverWindow = coverWindow
     //キーボード以外の部分をタップすることでキーボードを閉じれるようにする
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
     coverWindow.addGestureRecognizer(tapGesture)
-    
   }
   
   @objc private func dismissKeyboard() {
