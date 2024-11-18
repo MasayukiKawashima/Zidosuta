@@ -11,6 +11,62 @@ protocol PhotoTableViewCellDelegate {
   func insertButtonAction()
   func photoDoubleTapAction(photoImage: UIImage)
 }
+//このエクステンションの記述場所は後日変更
+extension UIButton {
+  /// ボタンにすりガラスエフェクトを適用する
+  /// - Parameters:
+  ///   - style: ブラーエフェクトのスタイル（デフォルトは.light）
+  ///   - alpha: エフェクトの透明度（デフォルトは0.5）
+  ///   - cornerRadius: 角丸の半径（デフォルトはボタンの幅の半分）
+  func applyFrostedGlassEffect(
+    _ style: UIBlurEffect.Style = .light,
+    _ alpha: CGFloat = 0.5,
+    _ cornerRadius: CGFloat? = nil
+  ) {
+    // 既存のフロストエフェクトを削除（重複防止）
+    self.subviews.forEach { subview in
+      if subview is UIVisualEffectView {
+        subview.removeFromSuperview()
+      }
+    }
+    
+    // ぼかし効果を持つビューを作成
+    let frostedEffect = UIVisualEffectView(effect: UIBlurEffect(style: style))
+    frostedEffect.frame = self.bounds
+    
+    // 角丸の設定
+    let radius = cornerRadius ?? self.frame.size.width / 2
+    frostedEffect.layer.cornerRadius = radius
+    frostedEffect.clipsToBounds = true
+    
+    // ぼかし効果のユーザーインタラクションを無効にする
+    frostedEffect.isUserInteractionEnabled = false
+    
+    // UIButtonの背景をクリアに設定
+    self.backgroundColor = .clear
+    
+    // ぼかし効果の透明度を設定
+    frostedEffect.alpha = alpha
+    
+    // ぼかし効果をボタンの上に追加
+    self.insertSubview(frostedEffect, at: 0)
+  }
+  
+  /// すりガラスエフェクトを削除する
+  func removeFrostedGlassEffect() {
+    self.subviews.forEach { subview in
+      if subview is UIVisualEffectView {
+        subview.removeFromSuperview()
+      }
+    }
+  }
+  //ボタンを丸くする
+  func setCornerRadius(_ cornerRadius: CGFloat? = nil) {
+    let radius = cornerRadius ?? self.frame.size.width / 2
+    self.layer.cornerRadius = radius
+    self.clipsToBounds = true
+  }
+}
 
 class PhotoTableViewCell: UITableViewCell {
   
@@ -18,8 +74,13 @@ class PhotoTableViewCell: UITableViewCell {
   @IBOutlet weak var insertButton: UIButton!
   @IBOutlet weak var commentLabel: UILabel!
   @IBOutlet weak var redoButton: UIButton!
+  @IBOutlet weak var deleteButton: UIButton!
+  @IBOutlet weak var expandButton: UIButton!
   
   var isRedoButtonConfigured = false
+  var isdeleteButtonConfigured = false
+  var isexpandButtontonConfigured = false
+  
   var delegate: PhotoTableViewCellDelegate?
   
   override func awakeFromNib() {
@@ -31,7 +92,10 @@ class PhotoTableViewCell: UITableViewCell {
     insertButton.setImage(image, for: .normal)
     
     insertButton.imageView?.contentMode = .scaleAspectFit
+    
     redoButton.isHidden = true
+    deleteButton.isHidden = true
+    expandButton.isHidden = true
     
     //ボタンのサイズ調整
     if let image = image {
@@ -44,38 +108,26 @@ class PhotoTableViewCell: UITableViewCell {
   }
 
   override func layoutSubviews() {
+    //各種ボタンのUI設定
     super.layoutSubviews()
     if !isRedoButtonConfigured {
-      setRedoButtonCornerRadius()
-      applyFrostedGlassEffect()
+      redoButton.setCornerRadius()
+      redoButton.applyFrostedGlassEffect()
       isRedoButtonConfigured = true
     }
-  }
-  //やり直しボタンを丸くするメソッド
-  func setRedoButtonCornerRadius() {
-    redoButton.layer.cornerRadius = redoButton.frame.size.width / 2
-    redoButton.clipsToBounds = true
-  }
-  
-  private func applyFrostedGlassEffect() {
-    // ぼかし効果を持つビューを作成
-    let frostedEffect = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-    frostedEffect.frame = redoButton.bounds
-    frostedEffect.layer.cornerRadius = redoButton.frame.size.width / 2
-    frostedEffect.clipsToBounds = true
+    if !isdeleteButtonConfigured {
+      deleteButton.setCornerRadius()
+      deleteButton.applyFrostedGlassEffect()
+      isdeleteButtonConfigured = true
+    }
+    if !isexpandButtontonConfigured {
+      expandButton.applyFrostedGlassEffect()
+      expandButton.setCornerRadius()
+      isexpandButtontonConfigured = true
+    }
     
-    // ぼかし効果のユーザーインタラクションを無効にする
-    //これをしないとボタンをタップしても反応しなくなる
-    //すりガラス効果がボタンの上に乗っかるのでタップイベントがボタンに届かなくなため
-    frostedEffect.isUserInteractionEnabled = false
-    // UIButtonの背景をクリアに設定
-    redoButton.backgroundColor = .clear
-    // ぼかし効果の背景色を設定（透明度を調整）
-    frostedEffect.alpha = 0.5
-    // ぼかし効果をボタンの上に追加
-    redoButton.insertSubview(frostedEffect, at: 0)
   }
-  
+
   //写真がダブルタップを感知できるようにする処理
   func setupPhotoDoubleTapGesture() {
     // ダブルタップジェスチャーの作成

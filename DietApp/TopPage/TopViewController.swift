@@ -176,6 +176,8 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
           cell.commentLabel.isHidden = true
           //やり直しボタンの非表示を解除
           cell.redoButton.isHidden = false
+          cell.deleteButton.isHidden = false
+          cell.expandButton.isHidden = false
         }
       }
       return cell
@@ -309,8 +311,10 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       //ボタンとコメントラベルを非表示にする
       photoTableViewCell.insertButton.isHidden = true
       photoTableViewCell.commentLabel.isHidden = true
-      //やり直しボタンを解除する
+      //各種ボタンの非表示を解除する
       photoTableViewCell.redoButton.isHidden = false
+      photoTableViewCell.deleteButton.isHidden = false
+      photoTableViewCell.expandButton.isHidden = false
       //取得したインスタンスのimageに選択した写真を格納
       photoTableViewCell.photoImageView.image = pickedImage
     }
