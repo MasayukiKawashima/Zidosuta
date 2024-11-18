@@ -41,8 +41,8 @@ class PhotoModalView: UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
     if !isDismissButtonConfigured {
-      setDismissButtonCornerRadius()
-      applyFrostedGlassEffect()
+      dismissButton.applyFrostedGlassEffect()
+      dismissButton.setCornerRadius()
       isDismissButtonConfigured = true
     }
   }
@@ -62,30 +62,6 @@ class PhotoModalView: UIView {
   
   @IBAction func dismissButtonAction(_ sender: Any) {
     delegate?.dismiss()
-  }
-  
-  func setDismissButtonCornerRadius() {
-    dismissButton.layer.cornerRadius = dismissButton.frame.size.width / 2
-    dismissButton.clipsToBounds = true
-  }
-  
-  private func applyFrostedGlassEffect() {
-    // ぼかし効果を持つビューを作成
-    let frostedEffect = UIVisualEffectView(effect: UIBlurEffect(style: .light))
-    frostedEffect.frame = dismissButton.bounds
-    frostedEffect.layer.cornerRadius = dismissButton.frame.size.width / 2
-    frostedEffect.clipsToBounds = true
-    
-    // ぼかし効果のユーザーインタラクションを無効にする
-    //これをしないとボタンをタップしても反応しなくなる
-    //すりガラス効果がボタンの上に乗っかるのでタップイベントがボタンに届かなくなため
-    frostedEffect.isUserInteractionEnabled = false
-    // UIButtonの背景をクリアに設定
-    dismissButton.backgroundColor = .clear
-    // ぼかし効果の背景色を設定（透明度を調整）
-    frostedEffect.alpha = 0.5
-    // ぼかし効果をボタンの上に追加
-    dismissButton.insertSubview(frostedEffect, at: 0)
   }
   
   
