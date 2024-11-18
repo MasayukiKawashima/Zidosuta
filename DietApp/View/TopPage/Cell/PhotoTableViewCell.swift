@@ -9,6 +9,8 @@ import UIKit
 
 protocol PhotoTableViewCellDelegate {
   func insertButtonAction()
+  func expandButtonAction(photoImage: UIImage)
+  func deleteButtonAction(in cell: PhotoTableViewCell)
   func photoDoubleTapAction(photoImage: UIImage)
 }
 //このエクステンションの記述場所は後日変更
@@ -153,6 +155,17 @@ class PhotoTableViewCell: UITableViewCell {
   
   @IBAction func redoButtonAction(_ sender: Any) {
     delegate?.insertButtonAction()
+  }
+  @IBAction func expandButtonAction(_ sender: Any) {
+    if let image = photoImageView.image  {
+      delegate?.expandButtonAction(photoImage: image)
+    }else {
+      return
+    }
+  }
+  
+  @IBAction func deleteButtonAction(_ sender: Any) {
+    delegate?.deleteButtonAction(in: self)
   }
   
   @objc func  photoDoubleTapAction() {
