@@ -238,6 +238,14 @@ extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDeleg
 }
 //写真セル内のボタン押下時処理
 extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  //拡大ボタンが押された時の処理
+  func expandButtonAction(photoImage: UIImage) {
+    showPhotoModal(photoImage: photoImage)
+  }
+  
+  func deleteButtonAction() {
+    return
+  }
   //写真挿入ボタンとやり直しボタンを押した時の処理
   func insertButtonAction() {
     showPhotoSelectionActionSheet()
