@@ -10,7 +10,10 @@ import RealmSwift
 
 class TopViewController: UIViewController {
   var topView = TopView()
-  var coverWindow: UIWindow?
+  
+  private var navigationBarCover: UIView?
+  private var viewCover: UIView?
+  private var tabBarCover: UIView?
   
   var topDateManager = TopDateManager()
   
@@ -84,6 +87,14 @@ class TopViewController: UIViewController {
     view = topView
   }
   
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    
+    // 各カバービューのフレームを更新
+    navigationBarCover?.frame = navigationController?.navigationBar.bounds ?? .zero
+    viewCover?.frame = view.bounds
+    tabBarCover?.frame = tabBarController?.tabBar.bounds ?? .zero
+  }
 //  }
   /*
    // MARK: - Navigation
@@ -415,59 +426,87 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
 }
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {
-  
-  private func createCoverWindow() {
-    // UIWindowの作成と初期化
-    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-    let coverWindow = UIWindow(windowScene: windowScene!)
-    coverWindow.frame = UIScreen.main.bounds
-    coverWindow.backgroundColor = UIColor.black.withAlphaComponent(0.15) // 半透明
-    coverWindow.isHidden = true // 初期状態で非表示
-    coverWindow.windowLevel = .alert // 最前面に表示
+  //各種カバービューを作成し配置
+  func createCoverViews() {
+    addNavigationBarCover()
+    addViewCover()
+    addTabBarCover()
+  }
+  //カバービューを削除
+  func removeCoverviews() {
+    navigationBarCover?.removeFromSuperview()
+    navigationBarCover = nil
     
-    self.coverWindow = coverWindow
-    //キーボード以外の部分をタップすることでキーボードを閉じれるようにする
+    viewCover?.removeFromSuperview()
+    viewCover = nil
+    
+    tabBarCover?.removeFromSuperview()
+    tabBarCover = nil
+  }
+  //個別のカバービューの生成と配置
+  private func addNavigationBarCover() {
+    guard navigationBarCover == nil, let navigationBar = navigationController?.navigationBar else { return }
+    
+    let coverView = UIView(frame: navigationBar.bounds)
+    coverView.backgroundColor = UIColor.clear
+    coverView.isUserInteractionEnabled = true
+    
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-    coverWindow.addGestureRecognizer(tapGesture)
+    coverView.addGestureRecognizer(tapGesture)
+    
+    navigationBar.addSubview(coverView)
+    navigationBarCover = coverView
+  }
+  
+  private func addViewCover() {
+    guard viewCover == nil else { return }
+    
+    let coverView = UIView(frame: view.bounds)
+    coverView.backgroundColor = UIColor.clear
+    coverView.isUserInteractionEnabled = true
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    coverView.addGestureRecognizer(tapGesture)
+    
+    view.addSubview(coverView)
+    viewCover = coverView
+  }
+  
+  private func addTabBarCover() {
+    guard tabBarCover == nil, let tabBar = tabBarController?.tabBar else { return }
+    
+    let coverView = UIView(frame: tabBar.bounds)
+    coverView.backgroundColor = UIColor.clear
+    coverView.isUserInteractionEnabled = true
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+    coverView.addGestureRecognizer(tapGesture)
+    
+    tabBar.addSubview(coverView)
+    tabBarCover = coverView
   }
   
   @objc private func dismissKeyboard() {
-    view.endEditing(true)
-  }
-  
+     view.endEditing(true)
+   }
   @objc private func keyboardWillShow(_ notification: Notification) {
-    if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-      // キーボードとアクセサリビュー以外を覆う
-      //スクリーン全体の高さからキーボード＋アクセサリービューの高さを引く
-      //keyboardFrame.heightにはアクセサリビュー（ツールバー）込みの高さが入っている
-      let screenHeight = UIScreen.main.bounds.height - keyboardFrame.height
-      coverWindow?.frame = CGRect(
-        x: 0,
-        y: 0,
-        width: UIScreen.main.bounds.width,
-        height: screenHeight
-      )
-      //coverWindowを表示する
-      //textFieldDidBeginEditingでも同様の処理を行う
-      coverWindow?.isHidden = false
-    }
+    //カバービューの生成と配置をする
+    //textFieldDidBeginEditing(_ textField: UITextField)でも同様の処理を行う
+    createCoverViews()
   }
   
   @objc private func keyboardWillHide(_ notification: Notification) {
-    //coverWindowを非表示にする
+    //カバービューの削除
     //textFieldDidEndEditingでも同様の処理を行う
-    coverWindow?.isHidden = true
-    // coverWindowを全画面に戻す
-    coverWindow?.frame = UIScreen.main.bounds
+    removeCoverviews()
   }
   
-  
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    if coverWindow == nil {
-      createCoverWindow()
+    //各種カバービューがまだ生成されていなかったら、カバービューの生成と配置をする
+    //カバービューの生成と配置自体はkeyboardWillShow(_ notification: Notification)でも行っている
+    if navigationBarCover == nil && viewCover == nil && tabBarCover == nil {
+      createCoverViews()
     }
-    //coverWindowを表示する
-    coverWindow?.isHidden = false
   }
   
   //リターンが押されたとき
@@ -498,8 +537,9 @@ extension TopViewController: UITextFieldDelegate {
     case .invalid(let error):
       showValidationErrorAlert(errorText: error.localizedDescription, textField: textField)
     }
-    //coverWindowを非表示にする
-    coverWindow?.isHidden = true
+    //カバービューの削除
+    //keyboardWillHide(_ notification: Notification)でも同様の処理を行う
+    removeCoverviews()
   }
   
   //テキストフィールドのバリデート
