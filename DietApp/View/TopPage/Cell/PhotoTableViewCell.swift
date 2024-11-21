@@ -15,6 +15,18 @@ protocol PhotoTableViewCellDelegate {
 }
 //このエクステンションの記述場所は後日変更
 extension UIButton {
+  //非アクティブ状態のボタンの外観の設定
+  func configureDisabledButtonAppearance() {
+    self.tintColor = UIColor.systemGray.withAlphaComponent(0.3)
+    self.backgroundColor = UIColor.systemGray3.withAlphaComponent(0.4)
+  }
+  //アクティブ状態のボタンの外観の設定
+  func configureEnabledButtonAppearance() {
+    self.tintColor = UIColor.systemBlue
+    self.backgroundColor = nil
+    applyFrostedGlassEffect()
+  }
+  
   /// ボタンにすりガラスエフェクトを適用する
   /// - Parameters:
   ///   - style: ブラーエフェクトのスタイル（デフォルトは.light）
@@ -87,18 +99,31 @@ class PhotoTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    
-    //systemImageのサイズ調整
+    //photoImageViewのimageを監視する
+    //imageの値が変わるたびにnilが代入されたか否かで分岐して処理を行う
+    photoImageView.addObserver(self, forKeyPath: #keyPath(UIImageView.image), options: [.new, .old], context: nil)
+   //各種ボタンの初期設定
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
     let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
     insertButton.setImage(image, for: .normal)
     
     insertButton.imageView?.contentMode = .scaleAspectFit
     
-    redoButton.isHidden = true
-    deleteButton.isHidden = true
-    expandButton.isHidden = true
+    redoButton.setCornerRadius()
+    redoButton.configureDisabledButtonAppearance()
+    isRedoButtonConfigured = true
     
+    deleteButton.setCornerRadius()
+    deleteButton.configureDisabledButtonAppearance()
+    isdeleteButtonConfigured = true
+    
+    expandButton.setCornerRadius()
+    expandButton.configureDisabledButtonAppearance()
+    isexpandButtontonConfigured = true
+    
+    redoButton.isUserInteractionEnabled = false
+    deleteButton.isUserInteractionEnabled = false
+    expandButton.isUserInteractionEnabled = false
     //ボタンのサイズ調整
     if let image = image {
       let buttonSize = CGSize(width: image.size.width + 20, height: image.size.height + 20)
@@ -108,26 +133,37 @@ class PhotoTableViewCell: UITableViewCell {
     }
     setupPhotoDoubleTapGesture()
   }
-
-  override func layoutSubviews() {
-    //各種ボタンのUI設定
-    super.layoutSubviews()
-    if !isRedoButtonConfigured {
-      redoButton.setCornerRadius()
-      redoButton.applyFrostedGlassEffect()
-      isRedoButtonConfigured = true
-    }
-    if !isdeleteButtonConfigured {
-      deleteButton.setCornerRadius()
-      deleteButton.applyFrostedGlassEffect()
-      isdeleteButtonConfigured = true
-    }
-    if !isexpandButtontonConfigured {
-      expandButton.applyFrostedGlassEffect()
-      expandButton.setCornerRadius()
-      isexpandButtontonConfigured = true
-    }
+  //photoImageView.imageの値が変わるたびに呼び出される処理
+  //nilが代入されたか否かで分岐して処理する
+  override  func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    guard keyPath == #keyPath(UIImageView.image) else { return }
     
+    if let _ = change?[.newKey] as? UIImage {
+      //nilじゃない値がセットされた場合　＝　画像がセットされたら
+      self.insertButton.isHidden = true
+      self.commentLabel.isHidden = true
+      self.redoButton.configureEnabledButtonAppearance()
+      self.redoButton.isUserInteractionEnabled = true
+      self.deleteButton.configureEnabledButtonAppearance()
+      self.deleteButton.isUserInteractionEnabled = true
+      self.expandButton.configureEnabledButtonAppearance()
+      self.expandButton.isUserInteractionEnabled = true
+      print("Aの処理: 画像がセットされました")
+    } else {
+      //nilがセットされた場合　＝　画像を削除した時
+      self.insertButton.isHidden = false
+      self.commentLabel.isHidden = false
+      self.redoButton.configureDisabledButtonAppearance()
+      self.redoButton.isUserInteractionEnabled = false
+      self.deleteButton.configureDisabledButtonAppearance()
+      self.deleteButton.isUserInteractionEnabled = false
+      self.expandButton.configureDisabledButtonAppearance()
+      self.expandButton.isUserInteractionEnabled = false
+      print("Bの処理: 画像がnilになりました")
+    }
+  }
+  deinit {
+    photoImageView.removeObserver(self, forKeyPath: #keyPath(UIImageView.image))
   }
 
   //写真がダブルタップを感知できるようにする処理

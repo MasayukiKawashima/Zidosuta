@@ -182,13 +182,6 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
           let orientedPhotoImage = UIImage(cgImage: cgImage!, scale: 1.0, orientation: imageOrientation!)
           //写真表示Viewに写真を格納
           cell.photoImageView.image = orientedPhotoImage
-          //挿入ボタンとコメントラベルを非表示
-          cell.insertButton.isHidden = true
-          cell.commentLabel.isHidden = true
-          //やり直しボタンの非表示を解除
-          cell.redoButton.isHidden = false
-          cell.deleteButton.isHidden = false
-          cell.expandButton.isHidden = false
         }
       }
       return cell
@@ -288,16 +281,9 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
         }
         //Viewから写真を削除し
         cell.photoImageView.image = nil
-        //各種UI部品の表示や非表示
-        cell.insertButton.isHidden = false
-        cell.commentLabel.isHidden = false
-        cell.redoButton.isHidden = true
-        cell.deleteButton.isHidden = true
-        cell.expandButton.isHidden = true
       }
-      cell.photoImageView.image = nil
     }
-    cell.photoImageView.image = nil
+    print("なんらかの理由で画像が削除できませんでした")
   }
   //写真挿入ボタンとやり直しボタンを押した時の処理
   func insertButtonAction() {
@@ -369,13 +355,13 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       //取得した写真の表示処理
       //現在表示されているPhotoTAbleViewCellのインスタンス取得
       let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
-      //ボタンとコメントラベルを非表示にする
-      photoTableViewCell.insertButton.isHidden = true
-      photoTableViewCell.commentLabel.isHidden = true
-      //各種ボタンの非表示を解除する
-      photoTableViewCell.redoButton.isHidden = false
-      photoTableViewCell.deleteButton.isHidden = false
-      photoTableViewCell.expandButton.isHidden = false
+//      //ボタンとコメントラベルを非表示にする
+//      photoTableViewCell.insertButton.isHidden = true
+//      photoTableViewCell.commentLabel.isHidden = true
+//      //各種ボタンの非表示を解除する
+//      photoTableViewCell.redoButton.isHidden = false
+//      photoTableViewCell.deleteButton.isHidden = false
+//      photoTableViewCell.expandButton.isHidden = false
       //取得したインスタンスのimageに選択した写真を格納
       photoTableViewCell.photoImageView.image = pickedImage
     }
