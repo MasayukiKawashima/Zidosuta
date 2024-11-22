@@ -36,7 +36,7 @@ extension WeightValidationError: LocalizedError {
   public var errorDescription: String? {
     switch self {
     case .invalidFormat:
-      return "入力できる文字は数字のみです"
+      return "無効な値が入力されました"
     case .negativeNumber:
       return "マイナスの数字は入力できません"
     case .exceedsAllowedDecimalPlaces:

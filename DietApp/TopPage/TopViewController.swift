@@ -283,8 +283,8 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
         cell.photoImageView.image = nil
       }
     }
-    print("なんらかの理由で画像が削除できませんでした")
   }
+  
   //写真挿入ボタンとやり直しボタンを押した時の処理
   func insertButtonAction() {
     showPhotoSelectionActionSheet()

@@ -11,7 +11,6 @@ class TopPageViewController: UIPageViewController {
  
   var controllers: [TopViewController] = []
 
-  
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
@@ -95,6 +94,7 @@ extension TopPageViewController: UIPageViewControllerDelegate {
 extension TopPageViewController {
   //titileの設定
   func navigationBarTitleSetting (currentDate: Date){
+    
     var yearText = ""
     var dateText = ""
     var dayOfWeekText = ""
