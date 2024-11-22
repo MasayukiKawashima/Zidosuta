@@ -34,14 +34,12 @@
                             <action selector="redoButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DYG-m8-sI3"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タップして写真を挿入" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-uU-7i8">
-                        <rect key="frame" x="99" y="217.5" width="122" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-hh-oFN">
-                        <rect key="frame" x="144.5" y="188" width="31.5" height="24.5"/>
+                        <rect key="frame" x="100" y="140" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="4Jz-DC-bxy"/>
+                            <constraint firstAttribute="height" constant="120" id="Fou-OG-b1t"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="camera" catalog="system"/>
@@ -73,10 +71,18 @@
                             <action selector="deleteButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f77-m2-bfc"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タップして写真をセット" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-uU-7i8">
+                        <rect key="frame" x="93" y="268" width="134" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5Vp-cd-3ho"/>
+                    <constraint firstItem="DL6-uU-7i8" firstAttribute="top" secondItem="oKB-hh-oFN" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ez-9h-y9e"/>
+                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="BM5-hy-1K4"/>
                     <constraint firstItem="DL6-uU-7i8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Ir6-0J-1cD"/>
-                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Iyb-zC-eO7"/>
                     <constraint firstAttribute="bottom" secondItem="rrK-eD-DU2" secondAttribute="bottom" constant="1.5" id="Kft-iq-6A3"/>
                     <constraint firstItem="ygx-GC-9Wu" firstAttribute="leading" secondItem="Ytx-di-uC3" secondAttribute="trailing" constant="5" id="QSa-9Y-Ven"/>
                     <constraint firstAttribute="trailing" secondItem="rrK-eD-DU2" secondAttribute="trailing" id="Qs1-TQ-HVp"/>
@@ -85,8 +91,6 @@
                     <constraint firstItem="rrK-eD-DU2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1.5" id="ffh-RN-yVf"/>
                     <constraint firstItem="rrK-eD-DU2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rto-7n-huu"/>
                     <constraint firstAttribute="bottom" secondItem="Tvr-hc-Pm0" secondAttribute="bottom" constant="10" id="s7k-6m-zKV"/>
-                    <constraint firstItem="DL6-uU-7i8" firstAttribute="top" secondItem="oKB-hh-oFN" secondAttribute="bottom" constant="5" id="se1-Iw-BEo"/>
-                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tXL-IB-RQi"/>
                     <constraint firstItem="Ytx-di-uC3" firstAttribute="leading" secondItem="Tvr-hc-Pm0" secondAttribute="trailing" constant="5" id="uh6-nJ-dGj"/>
                     <constraint firstAttribute="trailing" secondItem="ygx-GC-9Wu" secondAttribute="trailing" constant="10" id="utE-AZ-xll"/>
                 </constraints>

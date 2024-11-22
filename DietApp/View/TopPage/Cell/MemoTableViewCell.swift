@@ -29,7 +29,7 @@ class MemoTableViewCell: UITableViewCell {
     //最小サイズは10
     memoTextField.minimumFontSize = 10
     
-    let placeholderText = "ひとことメモ"
+    let placeholderText = "ひとことメモを入力"
     let attributes = [
         NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
     ]

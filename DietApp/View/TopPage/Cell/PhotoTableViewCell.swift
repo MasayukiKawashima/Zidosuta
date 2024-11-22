@@ -18,7 +18,7 @@ extension UIButton {
   //非アクティブ状態のボタンの外観の設定
   func configureDisabledButtonAppearance() {
     self.tintColor = UIColor.systemGray.withAlphaComponent(0.3)
-    self.backgroundColor = UIColor.systemGray3.withAlphaComponent(0.4)
+    self.backgroundColor = UIColor.systemGray5
   }
   //アクティブ状態のボタンの外観の設定
   func configureEnabledButtonAppearance() {
@@ -34,7 +34,7 @@ extension UIButton {
   ///   - cornerRadius: 角丸の半径（デフォルトはボタンの幅の半分）
   func applyFrostedGlassEffect(
     _ style: UIBlurEffect.Style = .light,
-    _ alpha: CGFloat = 0.5,
+    _ alpha: CGFloat = 0.8,
     _ cornerRadius: CGFloat? = nil
   ) {
     // 既存のフロストエフェクトを削除（重複防止）
@@ -90,11 +90,7 @@ class PhotoTableViewCell: UITableViewCell {
   @IBOutlet weak var redoButton: UIButton!
   @IBOutlet weak var deleteButton: UIButton!
   @IBOutlet weak var expandButton: UIButton!
-  
-  var isRedoButtonConfigured = false
-  var isdeleteButtonConfigured = false
-  var isexpandButtontonConfigured = false
-  
+
   var delegate: PhotoTableViewCellDelegate?
   
   override func awakeFromNib() {
@@ -106,21 +102,32 @@ class PhotoTableViewCell: UITableViewCell {
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
     let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
     insertButton.setImage(image, for: .normal)
-    
     insertButton.imageView?.contentMode = .scaleAspectFit
+    let radius = insertButton.frame.size.width / 2
+    insertButton.layer.cornerRadius = radius
+    insertButton.backgroundColor = UIColor.white
     
+    insertButton.layer.shadowColor = UIColor.gray.cgColor  // 影の色
+    insertButton.layer.shadowOffset = CGSize(width: 0, height: 1)  // 影のオフセット
+    insertButton.layer.shadowRadius =  1  // 影のぼかし具合
+    insertButton.layer.shadowOpacity = 0.5  // 影の透明度
+    
+//    if let imageView = insertButton.imageView {
+//      imageView.layer.shadowColor = UIColor.gray.cgColor
+//      imageView.layer.shadowOpacity = 0.5
+//      imageView.layer.shadowOffset = CGSize(width: 0, height: 1)
+//      imageView.layer.shadowRadius = 1.5
+//    }
+//    
     redoButton.setCornerRadius()
     redoButton.configureDisabledButtonAppearance()
-    isRedoButtonConfigured = true
     
     deleteButton.setCornerRadius()
     deleteButton.configureDisabledButtonAppearance()
-    isdeleteButtonConfigured = true
     
     expandButton.setCornerRadius()
     expandButton.configureDisabledButtonAppearance()
-    isexpandButtontonConfigured = true
-    
+
     redoButton.isUserInteractionEnabled = false
     deleteButton.isUserInteractionEnabled = false
     expandButton.isUserInteractionEnabled = false
