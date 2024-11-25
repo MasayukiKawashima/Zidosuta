@@ -421,6 +421,7 @@
 				FA68AF292A135F7100B69D4A /* Assets.xcassets */,
 				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
 				FA68AF2E2A135F7100B69D4A /* Info.plist */,
+				FA9F9CE22CF436B50013886A /* Utilitis */,
 			);
 			path = DietApp;
 			sourceTree = "<group>";
@@ -442,6 +443,13 @@
 				FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */,
 			);
 			path = DietAppUITests;
+			sourceTree = "<group>";
+		};
+		FA9F9CE22CF436B50013886A /* Utilitis */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilitis;
 			sourceTree = "<group>";
 		};
 		FABF36042A283BCC007D91DB /* GraphPage */ = {

@@ -15,7 +15,9 @@ class TabBarController: UITabBarController {
       self.delegate = self
       //TabBarの背景色の設定
       let appearance = UITabBarAppearance()
-      appearance.backgroundColor =  UIColor.systemGray6
+      appearance.backgroundColor = .white
+      
+      UITabBar.appearance().tintColor = UIColor(red: 236/255, green: 104/255, blue: 0/255, alpha: 1)
       UITabBar.appearance().standardAppearance = appearance
       UITabBar.appearance().scrollEdgeAppearance = appearance
         // Do any additional setup after loading the view.

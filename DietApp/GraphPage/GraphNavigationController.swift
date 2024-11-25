@@ -32,6 +32,14 @@ class GraphNavigationController: UINavigationController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = UIColor(red: 236/255, green: 104/255, blue: 0/255, alpha: 1)
+    
+    self.navigationBar.standardAppearance = appearance
+    self.navigationBar.scrollEdgeAppearance = appearance
+    
+    self.navigationController?.navigationBar.compactAppearance = appearance
   }
   
   override func viewWillLayoutSubviews() {

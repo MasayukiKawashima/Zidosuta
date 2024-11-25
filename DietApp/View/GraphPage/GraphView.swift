@@ -31,6 +31,8 @@ class GraphView: UIView {
     //サイズの自動調整
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     
+    graphAreaView.backgroundColor = UIColor(red: 255/255, green: 253/255, blue: 242/255, alpha: 1)
+    
     self.addSubview(view)
   }
     /*
