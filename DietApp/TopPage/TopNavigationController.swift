@@ -13,7 +13,15 @@ class TopNavigationController: UINavigationController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       
-//      let appearance = UINavigationBarAppearance()
+      let appearance = UINavigationBarAppearance()
+      appearance.configureWithOpaqueBackground()
+      appearance.backgroundColor = UIColor.YellowishRed
+      
+      self.navigationBar.standardAppearance = appearance
+      self.navigationBar.scrollEdgeAppearance = appearance
+      
+      self.navigationController?.navigationBar.compactAppearance = appearance
+      
 //      appearance.backgroundColor = .systemBlue
 //      appearance.configureWithOpaqueBackground()
 //      

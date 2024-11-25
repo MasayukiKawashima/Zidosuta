@@ -81,7 +81,7 @@ extension UITextField {
     // heightにはアンダーラインの高さを入れる
     underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
     // 枠線の色
-    underline.backgroundColor = .systemGray
+    underline.backgroundColor = UIColor.YellowishRed
     addSubview(underline)
     // 枠線を最前面に
     bringSubviewToFront(underline)

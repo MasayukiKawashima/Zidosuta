@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,17 +20,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-lh-5cY" customClass="LineChartView" customModule="Charts">
-                    <rect key="frame" x="44" y="20" width="808" height="363"/>
+                    <rect key="frame" x="48" y="5" width="800" height="383"/>
                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="iBf-lh-5cY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="Bfv-jd-VKc"/>
+                <constraint firstItem="iBf-lh-5cY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="7GS-nv-Tjd"/>
                 <constraint firstItem="iBf-lh-5cY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OmW-v8-VIG"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iBf-lh-5cY" secondAttribute="trailing" id="bht-Nd-oLl"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iBf-lh-5cY" secondAttribute="bottom" constant="10" id="c6X-W6-aIu"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iBf-lh-5cY" secondAttribute="bottom" constant="5" id="ndR-rj-tQi"/>
             </constraints>
             <point key="canvasLocation" x="139.28571428571428" y="327.536231884058"/>
         </view>
@@ -39,7 +40,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
