@@ -64,6 +64,7 @@
 		FA7F0B332CC2105F000CB10C /* PhotoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
 		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
+		FA9F9CE42CF449030013886A /* UIColor+AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor+AppThemeColor.swift */; };
 		FABF36082A283CD0007D91DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF36072A283CD0007D91DB /* GraphView.swift */; };
 		FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF36092A283CFF007D91DB /* GraphView.xib */; };
 		FAF1BB0F2A4D92FA00EFD25F /* DateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */; };
@@ -160,6 +161,7 @@
 		FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalViewController.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
+		FA9F9CE32CF449030013886A /* UIColor+AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppThemeColor.swift"; sourceTree = "<group>"; };
 		FABF36072A283CD0007D91DB /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FABF36092A283CFF007D91DB /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
 		FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateData.swift; sourceTree = "<group>"; };
@@ -448,8 +450,17 @@
 		FA9F9CE22CF436B50013886A /* Utilitis */ = {
 			isa = PBXGroup;
 			children = (
+				FA9F9CE52CF44E690013886A /* Extensions */,
 			);
 			path = Utilitis;
+			sourceTree = "<group>";
+		};
+		FA9F9CE52CF44E690013886A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA9F9CE32CF449030013886A /* UIColor+AppThemeColor.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FABF36042A283BCC007D91DB /* GraphPage */ = {
@@ -739,6 +750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7F0B332CC2105F000CB10C /* PhotoModalViewController.swift in Sources */,
+				FA9F9CE42CF449030013886A /* UIColor+AppThemeColor.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
 				FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */,

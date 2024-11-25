@@ -96,13 +96,14 @@ class PhotoTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
-    photoImageView.backgroundColor = UIColor(red: 255/255, green: 253/255, blue: 242/255, alpha: 1)
+    photoImageView.backgroundColor = UIColor.OysterWhite
     //photoImageViewのimageを監視する
     //imageの値が変わるたびにnilが代入されたか否かで分岐して処理を行う
     photoImageView.addObserver(self, forKeyPath: #keyPath(UIImageView.image), options: [.new, .old], context: nil)
    //各種ボタンの初期設定
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
     let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
+    insertButton.tintColor = UIColor.CornflowerBlue
     insertButton.setImage(image, for: .normal)
     insertButton.imageView?.contentMode = .scaleAspectFit
 
