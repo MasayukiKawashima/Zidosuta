@@ -11,14 +11,12 @@
 		28FEC79EA2A87BC01F1C679F /* Pods_DietApp_DietAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B35940D0BF33F93F87E369 /* Pods_DietApp_DietAppUITests.framework */; };
 		60A4C6E95A42A5E6FBC4EC82 /* Pods_DietApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71B7CEEB90849C4649195C6F /* Pods_DietApp.framework */; };
 		FA0F9ECF2A2F0DEC00C7E888 /* GraphPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */; };
-		FA0F9ED12A3016D100C7E888 /* UITabBarController+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F9ED02A3016D100C7E888 /* UITabBarController+Orientation.swift */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
 		FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */; };
 		FA10AD282CE060A600AF9404 /* MemoTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD272CE060A600AF9404 /* MemoTextFieldValidationTest.swift */; };
 		FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11122B2A5923F6007353EA /* IndexSetter.swift */; };
-		FA11122E2A592745007353EA /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11122D2A592745007353EA /* Direction.swift */; };
 		FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */; };
 		FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */; };
 		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
@@ -46,7 +44,6 @@
 		FA42FA332A6CB76200C60F9E /* GraphContentCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA322A6CB76200C60F9E /* GraphContentCreatorTests.swift */; };
 		FA42FA3A2A70B2DC00C60F9E /* DateRangeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA392A70B2DC00C60F9E /* DateRangeCalculator.swift */; };
 		FA42FA3C2A70BD4100C60F9E /* DateRangeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA3B2A70BD4100C60F9E /* DateRangeCalculatorTests.swift */; };
-		FA42FA402A76173D00C60F9E /* KGAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA3F2A76173D00C60F9E /* KGAxisValueFormatter.swift */; };
 		FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA472A7F2F6500C60F9E /* MonthAdjuster.swift */; };
 		FA42FA4A2A7F3BE600C60F9E /* MonthAdjusterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */; };
 		FA42FA522A81D8CC00C60F9E /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */; };
@@ -64,7 +61,9 @@
 		FA7F0B332CC2105F000CB10C /* PhotoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
 		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
-		FA9F9CE42CF449030013886A /* UIColor+AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor+AppThemeColor.swift */; };
+		FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */; };
+		FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */; };
+		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
 		FABF36082A283CD0007D91DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF36072A283CD0007D91DB /* GraphView.swift */; };
 		FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF36092A283CFF007D91DB /* GraphView.xib */; };
 		FAF1BB0F2A4D92FA00EFD25F /* DateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */; };
@@ -104,14 +103,12 @@
 		DB772DAE10CFF85B21588E86 /* Pods-DietAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.release.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		F33E63A5ACE3D0B165D13D9B /* Pods-DietAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA0F9ECE2A2F0DEC00C7E888 /* GraphPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPageViewController.swift; sourceTree = "<group>"; };
-		FA0F9ED02A3016D100C7E888 /* UITabBarController+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Orientation.swift"; sourceTree = "<group>"; };
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError + ValidationResult.swift"; sourceTree = "<group>"; };
 		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
 		FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD272CE060A600AF9404 /* MemoTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTextFieldValidationTest.swift; sourceTree = "<group>"; };
 		FA11122B2A5923F6007353EA /* IndexSetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexSetter.swift; sourceTree = "<group>"; };
-		FA11122D2A592745007353EA /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		FA11879C2A22D2A5004577F8 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
 		FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,7 +136,6 @@
 		FA42FA322A6CB76200C60F9E /* GraphContentCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreatorTests.swift; sourceTree = "<group>"; };
 		FA42FA392A70B2DC00C60F9E /* DateRangeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeCalculator.swift; sourceTree = "<group>"; };
 		FA42FA3B2A70BD4100C60F9E /* DateRangeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeCalculatorTests.swift; sourceTree = "<group>"; };
-		FA42FA3F2A76173D00C60F9E /* KGAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KGAxisValueFormatter.swift; sourceTree = "<group>"; };
 		FA42FA472A7F2F6500C60F9E /* MonthAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdjuster.swift; sourceTree = "<group>"; };
 		FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdjusterTests.swift; sourceTree = "<group>"; };
 		FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
@@ -161,7 +157,9 @@
 		FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalViewController.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
-		FA9F9CE32CF449030013886A /* UIColor+AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+AppThemeColor.swift"; sourceTree = "<group>"; };
+		FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + AppThemeColor.swift"; sourceTree = "<group>"; };
+		FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartAxisBase + setKGFormatter.swift"; sourceTree = "<group>"; };
+		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
 		FABF36072A283CD0007D91DB /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FABF36092A283CFF007D91DB /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
 		FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateData.swift; sourceTree = "<group>"; };
@@ -224,19 +222,9 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FA0A46272A9880CA00675FFA /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				FA42FA3F2A76173D00C60F9E /* KGAxisValueFormatter.swift */,
-				FA11122D2A592745007353EA /* Direction.swift */,
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
 		FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */ = {
 			isa = PBXGroup;
 			children = (
-				FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */,
 				FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */,
 				FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */,
 			);
@@ -307,7 +295,6 @@
 		FA41A2F52A1C8834008DC83E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA0A46272A9880CA00675FFA /* Utility */,
 				FA1112302A59296B007353EA /* Logic */,
 				FA1112312A5929DA007353EA /* Data */,
 			);
@@ -318,7 +305,6 @@
 			isa = PBXGroup;
 			children = (
 				FA41A2EF2A1C861E008DC83E /* TabBarController.swift */,
-				FA0F9ED02A3016D100C7E888 /* UITabBarController+Orientation.swift */,
 				FA41A2FB2A1C8912008DC83E /* TopPage */,
 				FA41A2FD2A1C8940008DC83E /* GraphPage */,
 				FA41A2FE2A1C8973008DC83E /* SettingsPage */,
@@ -417,12 +403,12 @@
 			children = (
 				FA68AF202A135F6F00B69D4A /* AppDelegate.swift */,
 				FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */,
-				FA41A2F52A1C8834008DC83E /* Model */,
-				FA41A2FA2A1C88D5008DC83E /* View */,
-				FA41A2F92A1C88B0008DC83E /* Controller */,
 				FA68AF292A135F7100B69D4A /* Assets.xcassets */,
 				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
 				FA68AF2E2A135F7100B69D4A /* Info.plist */,
+				FA41A2F52A1C8834008DC83E /* Model */,
+				FA41A2FA2A1C88D5008DC83E /* View */,
+				FA41A2F92A1C88B0008DC83E /* Controller */,
 				FA9F9CE22CF436B50013886A /* Utilitis */,
 			);
 			path = DietApp;
@@ -451,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				FA9F9CE52CF44E690013886A /* Extensions */,
+				FA9F9CEE2CF5A91E0013886A /* Constants */,
 			);
 			path = Utilitis;
 			sourceTree = "<group>";
@@ -458,9 +445,19 @@
 		FA9F9CE52CF44E690013886A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FA9F9CE32CF449030013886A /* UIColor+AppThemeColor.swift */,
+				FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */,
+				FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA9F9CEE2CF5A91E0013886A /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */,
+				FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		FABF36042A283BCC007D91DB /* GraphPage */ = {
@@ -750,7 +747,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7F0B332CC2105F000CB10C /* PhotoModalViewController.swift in Sources */,
-				FA9F9CE42CF449030013886A /* UIColor+AppThemeColor.swift in Sources */,
+				FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
 				FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */,
@@ -767,12 +764,11 @@
 				FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */,
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
-				FA0F9ED12A3016D100C7E888 /* UITabBarController+Orientation.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
 				FA42FA522A81D8CC00C60F9E /* CustomMarkerView.swift in Sources */,
 				FAFF6F602A21C60F0092A1A3 /* MemoTableViewCell.swift in Sources */,
 				FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */,
-				FA42FA402A76173D00C60F9E /* KGAxisValueFormatter.swift in Sources */,
+				FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */,
 				FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */,
 				FA42FA542A82166500C60F9E /* CustomMarkerViewController.swift in Sources */,
 				FA24A8732CA66F110082AF19 /* OrientationManager.swift in Sources */,
@@ -787,7 +783,7 @@
 				FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
-				FA11122E2A592745007353EA /* Direction.swift in Sources */,
+				FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */,
 				FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

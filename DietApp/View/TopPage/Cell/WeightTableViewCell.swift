@@ -11,6 +11,19 @@ protocol WeightTableViewCellDelegate: AnyObject {
     func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell)
 }
 
+extension UITextField {
+  func setWeightTextFieldUnderLine() {
+    let underline = UIView()
+    // heightにはアンダーラインの高さを入れる
+    underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
+    // 枠線の色
+    underline.backgroundColor = UIColor.YellowishRed
+    addSubview(underline)
+    // 枠線を最前面に
+    bringSubviewToFront(underline)
+  }
+}
+
 class WeightTableViewCell: UITableViewCell {
   
   @IBOutlet weak var weightTextField: UITextField!
@@ -39,7 +52,7 @@ class WeightTableViewCell: UITableViewCell {
     ]
     weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
     
-    weightTextField.setUnderLine()
+    weightTextField.setWeightTextFieldUnderLine()
     setUpCloseButton()
   }
   
@@ -49,13 +62,6 @@ class WeightTableViewCell: UITableViewCell {
   }
 
 }
-//この設定についてはよう確認
-//extension WeightTableViewCell: UITextFieldDelegate {
-//  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//    weightTextField.resignFirstResponder()
-//    return true
-//  }
-//}
 //キーボード上部の閉じるボタンを作成
 extension WeightTableViewCell {
   func setUpCloseButton() {
@@ -71,19 +77,5 @@ extension WeightTableViewCell {
   }
   @objc private func handleCloseButtonTap() {
     delegate?.weightTableViewCellDidRequestKeyboardDismiss(self)
-  }
-}
-
-//拡張の内容、記述場所は後日検討
-extension UITextField {
-  func setUnderLine() {
-    let underline = UIView()
-    // heightにはアンダーラインの高さを入れる
-    underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
-    // 枠線の色
-    underline.backgroundColor = UIColor.YellowishRed
-    addSubview(underline)
-    // 枠線を最前面に
-    bringSubviewToFront(underline)
   }
 }

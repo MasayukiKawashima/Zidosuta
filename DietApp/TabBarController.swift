@@ -7,6 +7,17 @@
 
 import UIKit
 
+extension UITabBarController {
+
+  open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    if let VC = selectedViewController {
+      return VC.supportedInterfaceOrientations
+    }else{
+      return .portrait
+    }
+  }
+}
+
 class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
