@@ -167,6 +167,6 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
   }
   //色を指定
   func markerBackGroundColor(in customMarkerView: CustomMarkerView) -> UIColor {
-    return UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 0.85)
+    return UIColor.CornflowerBlue
   }
 }

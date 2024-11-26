@@ -107,9 +107,9 @@ extension GraphViewController {
     let xAxisLabelFont = UIFont(name: "Thonburi-Bold", size: 12)
     xAxis.labelFont = xAxisLabelFont ?? UIFont.systemFont(ofSize: 12)
     //X軸のラベルのカラーを設定
-    xAxis.labelTextColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
+    xAxis.labelTextColor = UIColor.CornflowerBlue
     //X軸の軸線のカラーを設定
-    xAxis.axisLineColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
+    xAxis.axisLineColor = UIColor.CornflowerBlue
     //X軸の軸線の太さを設定
     xAxis.axisLineWidth = CGFloat(1.0)
     
@@ -158,7 +158,7 @@ extension GraphViewController {
     //右の軸線を非表示
     rightAxis.drawAxisLineEnabled = false
     //Y軸のラベルにkgという単位を追加
-    rightAxis.valueFormatter = KGAxisValueFormatter()
+    rightAxis.setKGFormatter()
     //Y軸のラベルのフォントの種類とサイズの設定
     let rightAxisLabelFont =  UIFont(name: "Thonburi", size: 9)
     rightAxis.labelFont = rightAxisLabelFont ?? UIFont.systemFont(ofSize: 9)
@@ -193,8 +193,8 @@ extension GraphViewController {
       leftAxis.axisMaximum = calculatedAxisMax// Y軸の最大値
       leftAxis.setLabelCount(6, force: true)
       
-      let entryPointColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 1.0)
-      let graphLineColor = UIColor(red: 72/255, green: 135/255, blue: 191/255, alpha: 0.5)
+      let entryPointColor = UIColor.CornflowerBlue
+      let graphLineColor = UIColor.CornflowerBlue.withAlphaComponent(0.5)
       //エントリーポイントを二重円ではなく、通常の円にする
       dataSet.drawCircleHoleEnabled = false
       //エントリーポイントのサイズの調整

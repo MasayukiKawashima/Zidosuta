@@ -61,7 +61,7 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
     instantiate(direction: .next)
   }
   //GraphPageのページング先のインスタンス生成処理
-  func instantiate(direction: Direction)-> GraphViewController {
+  func instantiate(direction: TransitionDirection)-> GraphViewController {
     //現在のViewControllerのindexを取得
     let currentGraphVC = self.viewControllers?.first! as! GraphViewController
     //次のVCの作成
