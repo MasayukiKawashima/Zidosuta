@@ -31,6 +31,8 @@ class GraphNavigationController: UINavigationController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    view.backgroundColor = .white
     // Do any additional setup after loading the view.
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
@@ -43,7 +45,7 @@ class GraphNavigationController: UINavigationController {
   }
   
   override func viewWillLayoutSubviews() {
-    graphViewControllersRotate()
+//    graphViewControllersRotate()
   }
   
   /*
