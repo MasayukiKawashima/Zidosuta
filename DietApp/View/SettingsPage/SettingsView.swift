@@ -17,6 +17,8 @@ class SettingsView: UIView {
       for identifier in cellIdentifiers {
         let nib = UINib(nibName: identifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: identifier)
+        tableView.backgroundColor = .systemGray6
+        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
       }
     }
   }
@@ -40,6 +42,7 @@ class SettingsView: UIView {
     //サイズの自動調整
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    tableView.separatorStyle = .none
     
     self.addSubview(view)
   }

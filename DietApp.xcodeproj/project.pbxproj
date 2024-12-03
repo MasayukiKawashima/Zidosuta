@@ -21,6 +21,8 @@
 		FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */; };
 		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
 		FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1187A12A22F652004577F8 /* AdTableViewCell.xib */; };
+		FA22110B2CFF1525005C622D /* ShadowLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22110A2CFF1525005C622D /* ShadowLayerView.swift */; };
+		FA22110D2CFF16D6005C622D /* MainBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22110C2CFF16D6005C622D /* MainBackgroundView.swift */; };
 		FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */; };
 		FA24A8732CA66F110082AF19 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A8722CA66F110082AF19 /* OrientationManager.swift */; };
 		FA24A8792CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A8782CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift */; };
@@ -112,6 +114,8 @@
 		FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
 		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		FA1187A12A22F652004577F8 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
+		FA22110A2CFF1525005C622D /* ShadowLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLayerView.swift; sourceTree = "<group>"; };
+		FA22110C2CFF16D6005C622D /* MainBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBackgroundView.swift; sourceTree = "<group>"; };
 		FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		FA24A8722CA66F110082AF19 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
 		FA24A8782CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNavigationControllerTests.swift; sourceTree = "<group>"; };
@@ -255,6 +259,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		FA22110E2CFF1A23005C622D /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				FA22110A2CFF1525005C622D /* ShadowLayerView.swift */,
+				FA22110C2CFF16D6005C622D /* MainBackgroundView.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
 		FA24A8742CA6C2100082AF19 /* AppDelegateTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +297,7 @@
 		FA32F4B92A32BE340058FD32 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				FA22110E2CFF1A23005C622D /* BaseView */,
 				FA32F4C62A32C0900058FD32 /* ThemeColorTableViewCell.swift */,
 				FA32F4C72A32C0900058FD32 /* ThemeColorTableViewCell.xib */,
 				FA32F4C22A32BFCF0058FD32 /* NotificationTableViewCell.swift */,
@@ -765,9 +779,11 @@
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
+				FA22110D2CFF16D6005C622D /* MainBackgroundView.swift in Sources */,
 				FA42FA522A81D8CC00C60F9E /* CustomMarkerView.swift in Sources */,
 				FAFF6F602A21C60F0092A1A3 /* MemoTableViewCell.swift in Sources */,
 				FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */,
+				FA22110B2CFF1525005C622D /* ShadowLayerView.swift in Sources */,
 				FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */,
 				FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */,
 				FA42FA542A82166500C60F9E /* CustomMarkerViewController.swift in Sources */,

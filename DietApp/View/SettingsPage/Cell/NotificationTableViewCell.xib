@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,61 +18,49 @@
                 <rect key="frame" x="0.0" y="0.0" width="319" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yc-ps-Jhh">
-                        <rect key="frame" x="6" y="8" width="32" height="21"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALO-k5-CIG" customClass="ShadowLayerView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="295" height="48"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syX-pv-JIu" customClass="MainBackgroundView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="295" height="48"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yc-ps-Jhh">
+                                <rect key="frame" x="8" y="8" width="32" height="21"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="32" id="8OG-Cs-rmD"/>
-                            <constraint firstAttribute="height" constant="21" id="M9r-3F-6S9"/>
+                            <constraint firstItem="9yc-ps-Jhh" firstAttribute="leading" secondItem="syX-pv-JIu" secondAttribute="leading" constant="8" id="316-PH-9gS"/>
+                            <constraint firstItem="9yc-ps-Jhh" firstAttribute="top" secondItem="syX-pv-JIu" secondAttribute="top" constant="8" id="huv-ik-g8G"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wkd-1R-pvp">
-                        <rect key="frame" x="257" y="15" width="49" height="31"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="47" id="aZh-Bw-Qfb"/>
-                            <constraint firstAttribute="height" constant="31" id="vHT-cF-Dyf"/>
-                        </constraints>
-                    </switch>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwS-Gj-hEs">
-                        <rect key="frame" x="87" y="8" width="140" height="44"/>
-                        <color key="backgroundColor" systemColor="systemGray6Color"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="140" id="CFC-na-wh4"/>
-                            <constraint firstAttribute="height" constant="44" id="nR2-SL-Kch"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain">
-                            <attributedString key="attributedTitle">
-                                <fragment content="7:00">
-                                    <attributes>
-                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <font key="NSFont" size="30" name="Thonburi"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                        </buttonConfiguration>
-                    </button>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="wkd-1R-pvp" firstAttribute="leading" secondItem="UwS-Gj-hEs" secondAttribute="trailing" constant="30" id="1I8-XO-45X"/>
-                    <constraint firstItem="9yc-ps-Jhh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="2Jy-dO-pI3"/>
-                    <constraint firstAttribute="bottom" secondItem="wkd-1R-pvp" secondAttribute="bottom" constant="14" id="7Ka-P2-H0U"/>
-                    <constraint firstItem="wkd-1R-pvp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="U8t-NR-q0N"/>
-                    <constraint firstItem="9yc-ps-Jhh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="UAz-bK-GFY"/>
-                    <constraint firstItem="UwS-Gj-hEs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="XGa-6h-HA7"/>
-                    <constraint firstAttribute="trailing" secondItem="wkd-1R-pvp" secondAttribute="trailing" constant="15" id="tsj-8b-kHB"/>
+                    <constraint firstItem="ALO-k5-CIG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="5Lp-t7-yNI"/>
+                    <constraint firstAttribute="trailing" secondItem="syX-pv-JIu" secondAttribute="trailing" constant="12" id="G53-yB-zJx"/>
+                    <constraint firstItem="ALO-k5-CIG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="GF0-0B-4D7"/>
+                    <constraint firstAttribute="bottom" secondItem="syX-pv-JIu" secondAttribute="bottom" constant="6" id="UyY-wc-Iim"/>
+                    <constraint firstItem="syX-pv-JIu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="fHP-Mn-5OU"/>
+                    <constraint firstAttribute="bottom" secondItem="ALO-k5-CIG" secondAttribute="bottom" constant="6" id="oWt-LA-heb"/>
+                    <constraint firstItem="syX-pv-JIu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="od4-WX-y2b"/>
+                    <constraint firstAttribute="trailing" secondItem="ALO-k5-CIG" secondAttribute="trailing" constant="12" id="sFc-9g-Yhq"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="131.15942028985509" y="77.008928571428569"/>
+            <connections>
+                <outlet property="mainBackgroundView" destination="syX-pv-JIu" id="Er6-LV-8oo"/>
+                <outlet property="shadowLayerView" destination="ALO-k5-CIG" id="vC8-ZB-QsW"/>
+            </connections>
+            <point key="canvasLocation" x="107.97101449275362" y="91.741071428571431"/>
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

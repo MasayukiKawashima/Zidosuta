@@ -9,9 +9,13 @@ import UIKit
 
 class NotificationTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+  @IBOutlet weak var mainBackgroundView: UIView!
+  @IBOutlet weak var shadowLayerView: UIView!
+  
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    self.contentView.backgroundColor = .systemGray6
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
