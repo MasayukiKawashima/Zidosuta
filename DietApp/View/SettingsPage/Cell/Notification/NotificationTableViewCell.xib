@@ -31,11 +31,27 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F45-eB-9IE">
+                                <rect key="frame" x="238" y="8" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="M2b-Vl-f4I"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オフ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCC-rC-5yZ">
+                                <rect key="frame" x="178" y="14" width="34" height="22.5"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="9yc-ps-Jhh" firstAttribute="leading" secondItem="syX-pv-JIu" secondAttribute="leading" constant="8" id="316-PH-9gS"/>
+                            <constraint firstAttribute="trailing" secondItem="F45-eB-9IE" secondAttribute="trailing" constant="8" id="ACY-nW-z23"/>
+                            <constraint firstItem="OCC-rC-5yZ" firstAttribute="top" secondItem="syX-pv-JIu" secondAttribute="top" constant="14" id="DkR-W2-2cX"/>
+                            <constraint firstItem="F45-eB-9IE" firstAttribute="leading" secondItem="OCC-rC-5yZ" secondAttribute="trailing" constant="26" id="JlE-Gb-o3L"/>
                             <constraint firstItem="9yc-ps-Jhh" firstAttribute="top" secondItem="syX-pv-JIu" secondAttribute="top" constant="8" id="huv-ik-g8G"/>
+                            <constraint firstItem="F45-eB-9IE" firstAttribute="top" secondItem="syX-pv-JIu" secondAttribute="top" constant="8" id="zWF-xT-sWs"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -53,7 +69,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="mainBackgroundView" destination="syX-pv-JIu" id="Er6-LV-8oo"/>
+                <outlet property="notificationSwitch" destination="F45-eB-9IE" id="J4I-Fv-bj9"/>
                 <outlet property="shadowLayerView" destination="ALO-k5-CIG" id="vC8-ZB-QsW"/>
+                <outlet property="statusLabel" destination="OCC-rC-5yZ" id="Llo-So-OGA"/>
             </connections>
             <point key="canvasLocation" x="107.97101449275362" y="91.741071428571431"/>
         </tableViewCell>

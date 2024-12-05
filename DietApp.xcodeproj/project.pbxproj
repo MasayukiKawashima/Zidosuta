@@ -23,6 +23,13 @@
 		FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1187A12A22F652004577F8 /* AdTableViewCell.xib */; };
 		FA22110B2CFF1525005C622D /* ShadowLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22110A2CFF1525005C622D /* ShadowLayerView.swift */; };
 		FA22110D2CFF16D6005C622D /* MainBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22110C2CFF16D6005C622D /* MainBackgroundView.swift */; };
+		FA2211112CFF5AF4005C622D /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2211102CFF5AF4005C622D /* NotificationSettingView.swift */; };
+		FA2211132CFF5B8A005C622D /* NotificationSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2211122CFF5B8A005C622D /* NotificationSettingView.xib */; };
+		FA2211172CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2211152CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift */; };
+		FA2211182CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2211162CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib */; };
+		FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */; };
+		FA22111C2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */; };
+		FA22111E2CFF6783005C622D /* NotificationSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22111D2CFF6783005C622D /* NotificationSettingViewController.swift */; };
 		FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */; };
 		FA24A8732CA66F110082AF19 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A8722CA66F110082AF19 /* OrientationManager.swift */; };
 		FA24A8792CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A8782CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift */; };
@@ -63,6 +70,8 @@
 		FA7F0B332CC2105F000CB10C /* PhotoModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
 		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
+		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
+		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
 		FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */; };
 		FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */; };
 		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
@@ -116,6 +125,13 @@
 		FA1187A12A22F652004577F8 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
 		FA22110A2CFF1525005C622D /* ShadowLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLayerView.swift; sourceTree = "<group>"; };
 		FA22110C2CFF16D6005C622D /* MainBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBackgroundView.swift; sourceTree = "<group>"; };
+		FA2211102CFF5AF4005C622D /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
+		FA2211122CFF5B8A005C622D /* NotificationSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationSettingView.xib; sourceTree = "<group>"; };
+		FA2211152CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		FA2211162CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTimeDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeEditTableViewCell.swift; sourceTree = "<group>"; };
+		FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTimeEditTableViewCell.xib; sourceTree = "<group>"; };
+		FA22111D2CFF6783005C622D /* NotificationSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewController.swift; sourceTree = "<group>"; };
 		FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavigationController.swift; sourceTree = "<group>"; };
 		FA24A8722CA66F110082AF19 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
 		FA24A8782CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNavigationControllerTests.swift; sourceTree = "<group>"; };
@@ -160,6 +176,8 @@
 		FA7F0B322CC2105F000CB10C /* PhotoModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalViewController.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
+		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
+		FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationRegisterTableViewCell.xib; sourceTree = "<group>"; };
 		FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + AppThemeColor.swift"; sourceTree = "<group>"; };
 		FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartAxisBase + setKGFormatter.swift"; sourceTree = "<group>"; };
 		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
@@ -268,6 +286,31 @@
 			path = BaseView;
 			sourceTree = "<group>";
 		};
+		FA22110F2CFF59C2005C622D /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				FA32F4C22A32BFCF0058FD32 /* NotificationTableViewCell.swift */,
+				FA32F4C32A32BFCF0058FD32 /* NotificationTableViewCell.xib */,
+				FA2211102CFF5AF4005C622D /* NotificationSettingView.swift */,
+				FA2211122CFF5B8A005C622D /* NotificationSettingView.xib */,
+				FA2211142CFF5D51005C622D /* Cell */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		FA2211142CFF5D51005C622D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA2211152CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift */,
+				FA2211162CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib */,
+				FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */,
+				FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */,
+				FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */,
+				FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		FA24A8742CA6C2100082AF19 /* AppDelegateTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,8 +343,7 @@
 				FA22110E2CFF1A23005C622D /* BaseView */,
 				FA32F4C62A32C0900058FD32 /* ThemeColorTableViewCell.swift */,
 				FA32F4C72A32C0900058FD32 /* ThemeColorTableViewCell.xib */,
-				FA32F4C22A32BFCF0058FD32 /* NotificationTableViewCell.swift */,
-				FA32F4C32A32BFCF0058FD32 /* NotificationTableViewCell.xib */,
+				FA22110F2CFF59C2005C622D /* Notification */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -364,6 +406,7 @@
 			children = (
 				FA24A86E2CA566950082AF19 /* SettingsNavigationController.swift */,
 				FA41A2F32A1C877E008DC83E /* SettingsViewController.swift */,
+				FA22111D2CFF6783005C622D /* NotificationSettingViewController.swift */,
 			);
 			path = SettingsPage;
 			sourceTree = "<group>";
@@ -621,18 +664,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFF6F5A2A21ACE40092A1A3 /* WeightTableViewCell.xib in Resources */,
+				FA2211182CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib in Resources */,
 				FA32F4C92A32C0900058FD32 /* ThemeColorTableViewCell.xib in Resources */,
 				FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */,
 				FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */,
+				FA22111C2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib in Resources */,
 				FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */,
 				FAFF6F612A21C60F0092A1A3 /* MemoTableViewCell.xib in Resources */,
 				FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */,
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
 				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
+				FA2211132CFF5B8A005C622D /* NotificationSettingView.xib in Resources */,
 				FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */,
 				FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */,
 				FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */,
+				FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -764,10 +811,12 @@
 				FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
+				FA2211112CFF5AF4005C622D /* NotificationSettingView.swift in Sources */,
 				FA24A86F2CA566950082AF19 /* SettingsNavigationController.swift in Sources */,
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA32F4C82A32C0900058FD32 /* ThemeColorTableViewCell.swift in Sources */,
 				FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */,
+				FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */,
 				FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
 				FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */,
@@ -776,6 +825,8 @@
 				FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */,
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
 				FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */,
+				FA2211172CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift in Sources */,
+				FA22111E2CFF6783005C622D /* NotificationSettingViewController.swift in Sources */,
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
@@ -791,6 +842,7 @@
 				FA42FA5A2A91BD5700C60F9E /* GraphDateManager.swift in Sources */,
 				FAF1BB0F2A4D92FA00EFD25F /* DateData.swift in Sources */,
 				FA0F9ECF2A2F0DEC00C7E888 /* GraphPageViewController.swift in Sources */,
+				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
 				FA41A2F22A1C8734008DC83E /* GraphViewController.swift in Sources */,
 				FA42FA562A8C863100C60F9E /* TopDateManager.swift in Sources */,
 				FA41A2F02A1C861E008DC83E /* TabBarController.swift in Sources */,
