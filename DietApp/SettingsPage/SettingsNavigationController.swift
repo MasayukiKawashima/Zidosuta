@@ -14,13 +14,13 @@ class SettingsNavigationController: UINavigationController {
 
         // Do any additional setup after loading the view.
       
+      navigationBar.tintColor = .white
       let appearance = UINavigationBarAppearance()
       appearance.configureWithOpaqueBackground()
       appearance.backgroundColor = UIColor.YellowishRed
       
       self.navigationBar.standardAppearance = appearance
       self.navigationBar.scrollEdgeAppearance = appearance
-      
       self.navigationController?.navigationBar.compactAppearance = appearance
     }
     

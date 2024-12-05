@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,75 +18,49 @@
                 <rect key="frame" x="0.0" y="0.0" width="322" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6b-nU-XRE">
-                        <rect key="frame" x="272" y="8" width="44" height="44"/>
-                        <color key="backgroundColor" systemColor="systemCyanColor"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxS-Qa-5o5" customClass="ShadowLayerView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="298" height="48"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JnC-eQ-de1" customClass="MainBackgroundView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="298" height="48"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テスト" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHP-80-GTs">
+                                <rect key="frame" x="8" y="8" width="47.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="9qx-TG-kjX"/>
-                            <constraint firstAttribute="width" constant="44" id="hYB-Zn-HtL"/>
+                            <constraint firstItem="oHP-80-GTs" firstAttribute="leading" secondItem="JnC-eQ-de1" secondAttribute="leading" constant="8" id="D4g-ht-Wcc"/>
+                            <constraint firstItem="oHP-80-GTs" firstAttribute="top" secondItem="JnC-eQ-de1" secondAttribute="top" constant="8" id="pom-yX-bsT"/>
                         </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nqR-9a-EzX">
-                        <rect key="frame" x="219" y="8" width="44" height="44"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="4WW-6A-9ZV"/>
-                            <constraint firstAttribute="width" constant="44" id="xto-oy-8ey"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-X5-7w0">
-                        <rect key="frame" x="166" y="8" width="44" height="44"/>
-                        <color key="backgroundColor" systemColor="systemRedColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="ZfS-Jx-xrW"/>
-                            <constraint firstAttribute="width" constant="44" id="zHO-mK-e5U"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain"/>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テーマカラー" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOs-kS-zyY">
-                        <rect key="frame" x="6" y="8" width="96" height="23"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="96" id="IJA-o4-61g"/>
-                            <constraint firstAttribute="height" constant="23" id="Zsv-Ib-wPe"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="16"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="nqR-9a-EzX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="2rM-8b-0BC"/>
-                    <constraint firstAttribute="bottom" secondItem="nqR-9a-EzX" secondAttribute="bottom" constant="8" id="5uH-in-Csj"/>
-                    <constraint firstAttribute="trailing" secondItem="j6b-nU-XRE" secondAttribute="trailing" constant="6" id="LHg-Qz-ENQ"/>
-                    <constraint firstAttribute="bottom" secondItem="j6b-nU-XRE" secondAttribute="bottom" constant="8" id="Rbu-va-mNY"/>
-                    <constraint firstItem="nqR-9a-EzX" firstAttribute="leading" secondItem="Rht-X5-7w0" secondAttribute="trailing" constant="9" id="Vtp-s9-6HR"/>
-                    <constraint firstItem="Rht-X5-7w0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="X3c-pO-dDX"/>
-                    <constraint firstAttribute="bottom" secondItem="Rht-X5-7w0" secondAttribute="bottom" constant="8" id="ZEI-nX-7yk"/>
-                    <constraint firstItem="HOs-kS-zyY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="c6N-hY-2eh"/>
-                    <constraint firstItem="j6b-nU-XRE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fJ0-ZS-tVH"/>
-                    <constraint firstAttribute="bottom" secondItem="HOs-kS-zyY" secondAttribute="bottom" constant="29" id="jnM-Le-caB"/>
-                    <constraint firstItem="j6b-nU-XRE" firstAttribute="leading" secondItem="nqR-9a-EzX" secondAttribute="trailing" constant="9" id="rbZ-iP-Ioq"/>
-                    <constraint firstItem="HOs-kS-zyY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="uq0-g3-zv1"/>
+                    <constraint firstItem="JnC-eQ-de1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="1uZ-7U-6gn"/>
+                    <constraint firstItem="JxS-Qa-5o5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="5JL-Ph-dbK"/>
+                    <constraint firstAttribute="trailing" secondItem="JxS-Qa-5o5" secondAttribute="trailing" constant="12" id="9xx-Q5-GTn"/>
+                    <constraint firstItem="JnC-eQ-de1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="BnO-5u-YiS"/>
+                    <constraint firstItem="JxS-Qa-5o5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="EUr-Dk-OKp"/>
+                    <constraint firstAttribute="trailing" secondItem="JnC-eQ-de1" secondAttribute="trailing" constant="12" id="P0E-wB-pgb"/>
+                    <constraint firstAttribute="bottom" secondItem="JxS-Qa-5o5" secondAttribute="bottom" constant="6" id="b6f-4z-BMV"/>
+                    <constraint firstAttribute="bottom" secondItem="JnC-eQ-de1" secondAttribute="bottom" constant="6" id="g0U-8G-LrW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mainBackgroundView" destination="JnC-eQ-de1" id="Zmg-4J-pkn"/>
+                <outlet property="shadowLayerView" destination="JxS-Qa-5o5" id="NjU-Kn-UTK"/>
+            </connections>
             <point key="canvasLocation" x="133.33333333333334" y="77.008928571428569"/>
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="systemCyanColor">
-            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

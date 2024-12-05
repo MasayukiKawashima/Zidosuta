@@ -31,6 +31,7 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
       settingsView.tableView.delegate = self
       settingsView.tableView.dataSource = self
+      
       //セルの区切り線を左端まで伸ばす
       settingsView.tableView.separatorInset = UIEdgeInsets.zero
       //navigationBarのタイトルの設定
@@ -79,6 +80,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     case .notificationTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
       return cell
     }
   }
@@ -114,5 +116,13 @@ extension SettingsViewController {
       titleTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor)
     ])
     self.navigationItem.titleView = customTitleView
+  }
+}
+
+extension SettingsViewController: NotificationTableViewCellDelegate {
+  
+  func switchAction() {
+    let notificationSettingViewController = NotificationSettingViewController()
+    navigationController?.pushViewController(notificationSettingViewController, animated: true)
   }
 }

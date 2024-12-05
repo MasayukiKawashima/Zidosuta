@@ -1,16 +1,16 @@
 //
-//  SettingsView.swift
+//  NotificationSettingView.swift
 //  DietApp
 //
-//  Created by 川島真之 on 2023/06/09.
+//  Created by 川島真之 on 2024/12/04.
 //
 
 import UIKit
 
-class SettingsView: UIView {
+class NotificationSettingView: UIView {
   
-  let cellIdentifiers = ["ThemeColorTableViewCell","NotificationTableViewCell"]
-  
+  let cellIdentifiers = ["NotificationTimeDisplayTableViewCell","NotificationTimeEditTableViewCell", "NotificationRegisterTableViewCell"]
+
   @IBOutlet weak var tableView: UITableView!{
     didSet{
       //各セルの登録
@@ -35,7 +35,7 @@ class SettingsView: UIView {
   
   func nibInit() {
     //xibファイルのインスタンス作成
-    let nib = UINib(nibName: "SettingsView", bundle: nil)
+    let nib = UINib(nibName: "NotificationSettingView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
     //viewのサイズを画面のサイズと一緒にする
     view.frame = self.bounds
@@ -46,7 +46,7 @@ class SettingsView: UIView {
     
     self.addSubview(view)
   }
-    /*
+  /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
