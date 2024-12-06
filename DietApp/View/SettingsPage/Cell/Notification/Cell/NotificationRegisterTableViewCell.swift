@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol NotificationRegisterTableViewCellDelegate {
+  func registerButtonAction()
+}
 
 class NotificationRegisterTableViewCell: UITableViewCell {
 
@@ -18,6 +21,9 @@ class NotificationRegisterTableViewCell: UITableViewCell {
       registerButton.setTitleColor(.white, for: .normal)
     }
   }
+  
+  var delegate: NotificationRegisterTableViewCellDelegate?
+  
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,5 +35,9 @@ class NotificationRegisterTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+  
+  @IBAction func registerButtonAction(_ sender: Any) {
+    delegate?.registerButtonAction()
+  }
+  
 }
