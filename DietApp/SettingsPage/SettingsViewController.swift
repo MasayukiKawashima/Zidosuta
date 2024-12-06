@@ -9,6 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
   var settingsView = SettingsView()
+  var receivedNotificationTimeString = ""
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -48,6 +49,16 @@ class SettingsViewController: UIViewController {
     super.loadView()
     view = settingsView
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    if !receivedNotificationTimeString.isEmpty {
+      DispatchQueue.main.async {
+        let indexPath = IndexPath(row: 1, section: 0)
+        self.settingsView.tableView.reloadRows(at: [indexPath], with: .none)
+      }
+    }
+  }
     /*
     // MARK: - Navigation
 
@@ -79,6 +90,11 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       
     case .notificationTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+      
+      if !self.receivedNotificationTimeString.isEmpty {
+        cell.statusLabel.text = receivedNotificationTimeString
+      }
+      
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.delegate = self
       return cell
@@ -121,8 +137,28 @@ extension SettingsViewController {
 
 extension SettingsViewController: NotificationTableViewCellDelegate {
   
-  func switchAction() {
-    let notificationSettingViewController = NotificationSettingViewController()
-    navigationController?.pushViewController(notificationSettingViewController, animated: true)
+  func switchAction(isOn: Bool) {
+    guard let cell = settingsView.tableView.cellForRow(at: IndexPath(row:1, section: 0)) as? NotificationTableViewCell else { return }
+    //スイッチをオンにしたら
+    if isOn {
+      let notificationSettingViewController = NotificationSettingViewController()
+      notificationSettingViewController.delelgate = self
+      navigationController?.pushViewController(notificationSettingViewController, animated: true)
+      cell.statusLabel.textColor = .YellowishRed
+      //オフにしたら
+    } else {
+      cell.statusLabel.text = "オフ"
+      cell.statusLabel.textColor = .lightGray
+    }
   }
+}
+
+extension SettingsViewController: NotificationSettingViewControllerDelegate {
+  func setNotificatonTimeProperyValue(_ value: String) {
+    receivedNotificationTimeString = value
+  }
+  
+ 
+  
+  
 }

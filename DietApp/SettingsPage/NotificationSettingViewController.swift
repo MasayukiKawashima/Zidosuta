@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol NotificationSettingViewControllerDelegate {
+  func setNotificatonTimeProperyValue(_ value: String)
+}
+
 class NotificationSettingViewController: UIViewController {
   
   var notificationSettingView = NotificationSettingView()
+  var delelgate: NotificationSettingViewControllerDelegate?
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -18,6 +23,10 @@ class NotificationSettingViewController: UIViewController {
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     .portrait
   }
+  //選択された時間を保持
+  var selectedHour: Int?
+  var selectedMinute: Int?
+  var combinedSelectedTime: String = "オフ"
   
   var notificationTimeDisplayTableViewCellHeight:CGFloat  = 90.0
   var notificationTimeEditTableViewCellHeight:CGFloat  = 200.0
@@ -28,7 +37,6 @@ class NotificationSettingViewController: UIViewController {
       
       notificationSettingView.tableView.delegate = self
       notificationSettingView.tableView.dataSource = self
-      
       notificationSettingView.tableView.isScrollEnabled = false
       notificationSettingView.tableView.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
@@ -88,6 +96,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
       } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTimeEditTableViewCell", for: indexPath) as! NotificationTimeEditTableViewCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        cell.datePicker.addTarget(self, action: #selector(timeChanged(_:)), for: .valueChanged)
         return cell
       }
       
@@ -95,26 +104,31 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
       let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationRegisterTableViewCell", for: indexPath) as! NotificationRegisterTableViewCell
       //セルの選択時のハイライトを非表示にする
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
       return cell
     default :
       return UITableViewCell()
     }
-    //    switch (cell)! {
-    //    case .notificationTimeDisplayTableViewCell:
-    //      let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTimeDisplayTableViewCell", for: indexPath) as! NotificationTimeDisplayTableViewCell
-    //      //セルの選択時のハイライトを非表示にする
-    //      cell.selectionStyle = UITableViewCell.SelectionStyle.none
-    //      return cell
-    //
-    //    case .notificationTimeEditTableViewCell:
-    //      let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTimeEditTableViewCell", for: indexPath) as! NotificationTimeEditTableViewCell
-    //      cell.selectionStyle = UITableViewCell.SelectionStyle.none
-    //      return cell
-    //    case .notificationRegisterTableViewCell:
-    //      let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationRegisterTableViewCell", for: indexPath) as! NotificationRegisterTableViewCell
-    //      cell.selectionStyle = UITableViewCell.SelectionStyle.none
-    //      return cell
-    //    }
+  }
+  //時間が選択されるたびに呼ばれる時間ラベル更新メソッド
+  @objc func timeChanged(_ sender: UIDatePicker) {
+    guard let notificationTimeDisplayTableviewCell = notificationSettingView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NotificationTimeDisplayTableViewCell else { return }
+    
+    let calendar = Calendar.current
+    let date = sender.date
+    
+    let hour = calendar.component(.hour, from: date)
+    let minute = calendar.component(.minute, from: date)
+    
+    if selectedHour != hour {
+      selectedHour = hour
+      notificationTimeDisplayTableviewCell.timeLabel.text = "\(hour) : \(selectedMinute ?? 0)"
+    }
+    
+    if selectedMinute != minute {
+      selectedMinute = minute
+      notificationTimeDisplayTableviewCell.timeLabel.text = "\(selectedHour ?? 0) : \(minute)"
+    }
   }
   //一つ目のセクションの下にスペースを作るためにフッターViewを作成
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -145,5 +159,19 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
       return 0
     }
   }
+}
+
+extension NotificationSettingViewController: NotificationRegisterTableViewCellDelegate {
+  func registerButtonAction() {
+    guard let hour = selectedHour else { return }
+    guard let minute = selectedMinute else { return }
+    
+    let stringHour = String(hour)
+    let stringMinute = String(minute)
   
+    let combinedString = "\(stringHour) : \(stringMinute)"
+    delelgate?.setNotificatonTimeProperyValue(combinedString)
+    
+    navigationController?.popViewController(animated: true)
+  }
 }

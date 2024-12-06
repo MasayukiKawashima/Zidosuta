@@ -29,6 +29,9 @@
                         <buttonConfiguration key="configuration" style="plain" title="登録する">
                             <fontDescription key="titleFontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="20"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="registerButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xxg-fl-Ppp"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

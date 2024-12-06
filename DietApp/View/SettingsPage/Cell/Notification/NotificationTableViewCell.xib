@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,13 +35,13 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F45-eB-9IE">
                                 <rect key="frame" x="238" y="8" width="51" height="31"/>
                                 <connections>
-                                    <action selector="switchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="M2b-Vl-f4I"/>
+                                    <action selector="switchAction:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Kqn-gR-b6U"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="オフ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCC-rC-5yZ">
                                 <rect key="frame" x="178" y="14" width="34" height="22.5"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="17"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="YellowishRed"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -77,6 +78,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="YellowishRed">
+            <color red="0.92500001192092896" green="0.40799999237060547" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

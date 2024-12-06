@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NotificationTableViewCellDelegate {
-  func switchAction()
+  func switchAction(isOn: Bool)
 }
 
 class NotificationTableViewCell: UITableViewCell {
@@ -16,7 +16,11 @@ class NotificationTableViewCell: UITableViewCell {
   @IBOutlet weak var mainBackgroundView: UIView!
   @IBOutlet weak var shadowLayerView: UIView!
   @IBOutlet weak var notificationSwitch: UISwitch!
-  @IBOutlet weak var statusLabel: UILabel!
+  @IBOutlet weak var statusLabel: UILabel! {
+    didSet {
+      statusLabel.textColor = .YellowishRed
+    }
+  }
   
   var delegate: NotificationTableViewCellDelegate?
   
@@ -26,6 +30,7 @@ class NotificationTableViewCell: UITableViewCell {
     self.contentView.backgroundColor = .systemGray6
     
     notificationSwitch.onTintColor = .YellowishRed
+    notificationSwitch.tintColor = .lightGray
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -34,7 +39,7 @@ class NotificationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-  @IBAction func switchAction(_ sender: Any) {
-    delegate?.switchAction()
+  @IBAction func switchAction(_ sender: UISwitch) {
+    delegate?.switchAction(isOn: sender.isOn)
   }
 }
