@@ -77,6 +77,8 @@
 		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
 		FABF36082A283CD0007D91DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF36072A283CD0007D91DB /* GraphView.swift */; };
 		FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF36092A283CFF007D91DB /* GraphView.xib */; };
+		FAC0A8A32D055D270074D818 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0A8A22D055D270074D818 /* Settings.swift */; };
+		FAC0A8A62D055E010074D818 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0A8A52D055E010074D818 /* Notification.swift */; };
 		FAF1BB0F2A4D92FA00EFD25F /* DateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
@@ -183,6 +185,8 @@
 		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
 		FABF36072A283CD0007D91DB /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FABF36092A283CFF007D91DB /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
+		FAC0A8A22D055D270074D818 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		FAC0A8A52D055E010074D818 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateData.swift; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				FAF1BB0E2A4D92FA00EFD25F /* DateData.swift */,
 				FA42FA552A8C863100C60F9E /* TopDateManager.swift */,
 				FA42FA592A91BD5700C60F9E /* GraphDateManager.swift */,
+				FAC0A8A42D055DBF0074D818 /* Setting */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -525,6 +530,15 @@
 				FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */,
 			);
 			path = GraphPage;
+			sourceTree = "<group>";
+		};
+		FAC0A8A42D055DBF0074D818 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				FAC0A8A22D055D270074D818 /* Settings.swift */,
+				FAC0A8A52D055E010074D818 /* Notification.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 		FAFF6F562A2071C70092A1A3 /* TopPage */ = {
@@ -816,6 +830,7 @@
 				FA41A2EC2A1C84CE008DC83E /* TopViewController.swift in Sources */,
 				FA32F4C82A32C0900058FD32 /* ThemeColorTableViewCell.swift in Sources */,
 				FA3142702A41671900254D60 /* TopNavigationController.swift in Sources */,
+				FAC0A8A32D055D270074D818 /* Settings.swift in Sources */,
 				FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */,
 				FA3142742A4194F300254D60 /* GraphNavigationController.swift in Sources */,
 				FA41A2EE2A1C8531008DC83E /* TopPageViewController.swift in Sources */,
@@ -826,6 +841,7 @@
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
 				FA41A2F42A1C877E008DC83E /* SettingsViewController.swift in Sources */,
 				FA2211172CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift in Sources */,
+				FAC0A8A62D055E010074D818 /* Notification.swift in Sources */,
 				FA22111E2CFF6783005C622D /* NotificationSettingViewController.swift in Sources */,
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
