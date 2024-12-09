@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol NotificationSettingViewControllerDelegate {
-  func setNotificatonTimeProperyValue(_ value: String)
-}
-
 class NotificationSettingViewController: UIViewController {
   
   var notificationSettingView = NotificationSettingView()
-  var delelgate: NotificationSettingViewControllerDelegate?
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -26,7 +21,7 @@ class NotificationSettingViewController: UIViewController {
   //選択された時間を保持
   var selectedHour: Int?
   var selectedMinute: Int?
-  var combinedSelectedTime: String = "オフ"
+  var selectedDate: Date = Settings.shared.notification?.notificationTime ?? Date()
   
   var notificationTimeDisplayTableViewCellHeight:CGFloat  = 90.0
   var notificationTimeEditTableViewCellHeight:CGFloat  = 200.0
@@ -90,6 +85,10 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
     case 0:
       if cell == .notificationTimeDisplayTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTimeDisplayTableViewCell", for: indexPath) as! NotificationTimeDisplayTableViewCell
+        
+        let setDate = Settings.shared.notification?.notificationTime
+        let combinedString = setDate?.convertDateToNotificationTimeString()
+        cell.timeLabel.text = combinedString
         //セルの選択時のハイライトを非表示にする
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
@@ -97,6 +96,9 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTimeEditTableViewCell", for: indexPath) as! NotificationTimeEditTableViewCell
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         cell.datePicker.addTarget(self, action: #selector(timeChanged(_:)), for: .valueChanged)
+        //ホイールのデフォルト値を記録されている（もしくはSettingのデフォルト値）に設定
+        let setDate = Settings.shared.notification?.notificationTime
+        cell.datePicker.date = setDate!
         return cell
       }
       
@@ -113,22 +115,11 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   //時間が選択されるたびに呼ばれる時間ラベル更新メソッド
   @objc func timeChanged(_ sender: UIDatePicker) {
     guard let notificationTimeDisplayTableviewCell = notificationSettingView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NotificationTimeDisplayTableViewCell else { return }
-    
-    let calendar = Calendar.current
-    let date = sender.date
-    
-    let hour = calendar.component(.hour, from: date)
-    let minute = calendar.component(.minute, from: date)
-    
-    if selectedHour != hour {
-      selectedHour = hour
-      notificationTimeDisplayTableviewCell.timeLabel.text = "\(hour) : \(selectedMinute ?? 0)"
-    }
-    
-    if selectedMinute != minute {
-      selectedMinute = minute
-      notificationTimeDisplayTableviewCell.timeLabel.text = "\(selectedHour ?? 0) : \(minute)"
-    }
+    //現在選択されている時間をselectedDateに代入
+    selectedDate = sender.date
+    //時間ラベルの更新
+    let combinedString = selectedDate.convertDateToNotificationTimeString()
+    notificationTimeDisplayTableviewCell.timeLabel.text = combinedString
   }
   //一つ目のセクションの下にスペースを作るためにフッターViewを作成
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -163,15 +154,12 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
 
 extension NotificationSettingViewController: NotificationRegisterTableViewCellDelegate {
   func registerButtonAction() {
-    guard let hour = selectedHour else { return }
-    guard let minute = selectedMinute else { return }
     
-    let stringHour = String(hour)
-    let stringMinute = String(minute)
-  
-    let combinedString = "\(stringHour) : \(stringMinute)"
-    delelgate?.setNotificatonTimeProperyValue(combinedString)
-    
+    let settings = Settings.shared
+    settings.update { settings in
+      settings.notification?.notificationTime = selectedDate
+      settings.notification?.isNotificationEnabled = true
+    }
     navigationController?.popViewController(animated: true)
   }
 }

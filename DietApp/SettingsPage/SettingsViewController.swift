@@ -9,7 +9,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
   var settingsView = SettingsView()
-  var receivedNotificationTimeString = ""
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -52,11 +51,10 @@ class SettingsViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    if !receivedNotificationTimeString.isEmpty {
-      DispatchQueue.main.async {
-        let indexPath = IndexPath(row: 1, section: 0)
-        self.settingsView.tableView.reloadRows(at: [indexPath], with: .none)
-      }
+    
+    DispatchQueue.main.async {
+      let indexPath = IndexPath(row: 1, section: 0)
+      self.settingsView.tableView.reloadRows(at: [indexPath], with: .none)
     }
   }
     /*
@@ -90,9 +88,26 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       
     case .notificationTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
-      
-      if !self.receivedNotificationTimeString.isEmpty {
-        cell.statusLabel.text = receivedNotificationTimeString
+      //statusLabelの内容の確認
+      let isNotificationEnabled = Settings.shared.notification?.isNotificationEnabled
+      //通知機能が有効かどうかで分岐
+      if isNotificationEnabled! {
+        //通知機能が有効な場合
+        //statusLabelに記録されている時間を表示する
+        let setDate = Settings.shared.notification?.notificationTime
+        let combinedString = setDate?.convertDateToNotificationTimeString()
+        cell.statusLabel.text = combinedString
+        cell.statusLabel.textColor = .YellowishRed
+        //スイッチをオンにする
+        cell.notificationSwitch.isOn = true
+      } else {
+        //通知機能が無効な場合
+        //statusLabelにオフと表示し
+        cell.statusLabel.text = "オフ"
+        //テキストカラーをlightGrayにし
+        cell.statusLabel.textColor = .lightGray
+        //スイッチをオフにする
+        cell.notificationSwitch.isOn = false
       }
       
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -141,24 +156,24 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
     guard let cell = settingsView.tableView.cellForRow(at: IndexPath(row:1, section: 0)) as? NotificationTableViewCell else { return }
     //スイッチをオンにしたら
     if isOn {
-      let notificationSettingViewController = NotificationSettingViewController()
-      notificationSettingViewController.delelgate = self
-      navigationController?.pushViewController(notificationSettingViewController, animated: true)
-      cell.statusLabel.textColor = .YellowishRed
+      let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+      guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "NotificationSetting") as? NotificationSettingViewController else { return }
+      self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
+      //一秒間遅延させる
+      //遅延させないと画面遷移アニメーション中にstatusLabelが.yellowishRedになっていることが見えてしまう
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        cell.statusLabel.textColor = .YellowishRed
+      }
       //オフにしたら
     } else {
+      //スイッチオフを記録
+      let settings = Settings.shared
+      settings.update { settings in
+        settings.notification?.isNotificationEnabled = false
+      }
+      //statuLabelの編集
       cell.statusLabel.text = "オフ"
       cell.statusLabel.textColor = .lightGray
     }
   }
-}
-
-extension SettingsViewController: NotificationSettingViewControllerDelegate {
-  func setNotificatonTimeProperyValue(_ value: String) {
-    receivedNotificationTimeString = value
-  }
-  
- 
-  
-  
 }
