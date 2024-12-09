@@ -48,7 +48,7 @@
         <!--Settings View Controller-->
         <scene sceneID="IRs-ol-4oz">
             <objects>
-                <viewController id="8AN-9h-T1k" customClass="SettingsViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" id="8AN-9h-T1k" customClass="SettingsViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aOk-OP-Ssm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,6 +60,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSw-Qy-dib" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1481.1594202898552" y="1391.5178571428571"/>
+        </scene>
+        <!--Notification Setting View Controller-->
+        <scene sceneID="YIu-vs-kc6">
+            <objects>
+                <viewController storyboardIdentifier="NotificationSetting" id="H74-hs-a5e" customClass="NotificationSettingViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pFG-lB-wUw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="NtT-KK-bof"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AsH-xd-797" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="1392"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="42X-Xj-WhJ">

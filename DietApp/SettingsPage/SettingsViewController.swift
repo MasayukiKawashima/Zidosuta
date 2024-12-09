@@ -95,12 +95,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
         //通知機能が有効な場合
         //statusLabelに記録されている時間を表示する
         let setDate = Settings.shared.notification?.notificationTime
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: setDate!)
-        let minute = calendar.component(.minute, from: setDate!)
-        let paddedHour = String(format: "%0d", hour)
-        let paddedMinute = String(format: "%02d", minute)
-        let combinedString = ("\(paddedHour) : \(paddedMinute)")
+        let combinedString = setDate?.convertDateToNotificationTimeString()
         cell.statusLabel.text = combinedString
         cell.statusLabel.textColor = .YellowishRed
         //スイッチをオンにする
@@ -161,9 +156,14 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
     guard let cell = settingsView.tableView.cellForRow(at: IndexPath(row:1, section: 0)) as? NotificationTableViewCell else { return }
     //スイッチをオンにしたら
     if isOn {
-      let notificationSettingViewController = NotificationSettingViewController()
-      navigationController?.pushViewController(notificationSettingViewController, animated: true)
-      cell.statusLabel.textColor = .YellowishRed
+      let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+      guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "NotificationSetting") as? NotificationSettingViewController else { return }
+      self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
+      //一秒間遅延させる
+      //遅延させないと画面遷移アニメーション中にstatusLabelが.yellowishRedになっていることが見えてしまう
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        cell.statusLabel.textColor = .YellowishRed
+      }
       //オフにしたら
     } else {
       //スイッチオフを記録

@@ -87,12 +87,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTimeDisplayTableViewCell", for: indexPath) as! NotificationTimeDisplayTableViewCell
         
         let setDate = Settings.shared.notification?.notificationTime
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: setDate!)
-        let minute = calendar.component(.minute, from: setDate!)
-        let paddedHour = String(format: "%0d", hour)
-        let paddedMinute = String(format: "%02d", minute)
-        let combinedString = ("\(paddedHour) : \(paddedMinute)")
+        let combinedString = setDate?.convertDateToNotificationTimeString()
         cell.timeLabel.text = combinedString
         //セルの選択時のハイライトを非表示にする
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
@@ -123,12 +118,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
     //現在選択されている時間をselectedDateに代入
     selectedDate = sender.date
     //時間ラベルの更新
-    let calendar = Calendar.current
-    let hour = calendar.component(.hour, from: selectedDate)
-    let minute = calendar.component(.minute, from: selectedDate)
-    let paddedHour = String(format: "%0d", hour)
-    let paddedMinute = String(format: "%02d", minute)
-    let combinedString = ("\(paddedHour) : \(paddedMinute)")
+    let combinedString = selectedDate.convertDateToNotificationTimeString()
     notificationTimeDisplayTableviewCell.timeLabel.text = combinedString
   }
   //一つ目のセクションの下にスペースを作るためにフッターViewを作成
