@@ -1,5 +1,5 @@
 //
-//  LoclaNotificationManager.swift
+//  LocalNotificationManager.swift
 //  DietApp
 //
 //  Created by 川島真之 on 2024/12/10.
@@ -9,8 +9,8 @@ import Foundation
 import RealmSwift
 import UserNotifications
 
-class LoclaNotificationManager {
-  static let shared = LoclaNotificationManager()
+class LocalNotificationManager {
+  static let shared = LocalNotificationManager()
   //外部からのインスタンス化を防ぐための空初期化子
   private init() {}
   //Realmインスタンスを保持
@@ -30,7 +30,7 @@ class LoclaNotificationManager {
   /// 通知の許可を要求
   /// - Parameter completion: 許可状態を返すクロージャ
   func requestAuthorization(completion: @escaping (Bool) -> Void) {
-    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { granted, error in
       //ユーザーからの通知許可の返答を待つ
       DispatchQueue.main.async {
         completion(granted)
@@ -39,10 +39,11 @@ class LoclaNotificationManager {
   }
   //通知をスケジュールするメソッド
   //このモデルを使用するオブジェクトで呼ばれるメソッド
-  func setScheduleNotification(date: Date, isEnabled: Bool) {
+  func setScheduleNotification() {
     
     //既存の通知を消去
     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    let isEnabled = currentSettings.isNotificationEnabled
     //通知がオンなら通知をスケジュール
     if isEnabled {
       scheduleNotification(hour: currentSettings.hour, minute: currentSettings.minute)
@@ -58,8 +59,8 @@ class LoclaNotificationManager {
   private func scheduleNotification(hour: Int, minute: Int) {
     //通知の定義
     let content = UNMutableNotificationContent()
-    content.title = "記録時間の通知"
-    content.body = "今日の記録をしましょう"
+    content.title = "今日の記録をしましょう"
+    content.body = "タップしてアプリを起動"
     content.sound = .default
     
     // アクションボタンの定義
