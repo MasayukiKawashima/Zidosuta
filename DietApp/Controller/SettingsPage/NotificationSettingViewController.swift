@@ -153,11 +153,17 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
 }
 
 extension NotificationSettingViewController: NotificationRegisterTableViewCellDelegate {
+  
   func registerButtonAction() {
-    
     let settings = Settings.shared
     settings.update { settings in
+      let calendar = Calendar.current
+      let hour = calendar.component(.hour, from: selectedDate)
+      let minute = calendar.component(.minute, from: selectedDate)
+      
       settings.notification?.notificationTime = selectedDate
+      settings.notification?.hour = hour
+      settings.notification?.minute = minute
       settings.notification?.isNotificationEnabled = true
     }
     navigationController?.popViewController(animated: true)

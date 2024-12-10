@@ -13,9 +13,6 @@ class LoclaNotificationManager {
   static let shared = LoclaNotificationManager()
   //外部からのインスタンス化を防ぐための空初期化子
   private init() {}
-  
-  var hour:Int!
-  var minute:Int!
   //Realmインスタンスを保持
   private var realm: Realm {
     do {
@@ -43,22 +40,19 @@ class LoclaNotificationManager {
   //通知をスケジュールするメソッド
   //このモデルを使用するオブジェクトで呼ばれるメソッド
   func setScheduleNotification(date: Date, isEnabled: Bool) {
-    let calender = Calendar.current
-    let hour = calender.component(.hour, from: date)
-    let minute = calender.component(.minute, from: date)
     
-    self.hour = hour
-    self.minute = minute
     //既存の通知を消去
     UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    //通知がオンなら通知をスケジュール
     if isEnabled {
-      scheduleNotification(hour: self.hour, minute: self.minute)
+      scheduleNotification(hour: currentSettings.hour, minute: currentSettings.minute)
     }
   }
   //スケジュールの再設定
   func restoreNotificationIfNeeded() {
-    let settings = currentSettings.isNotificationEnabled
-    scheduleNotification(hour: self.hour, minute: self.minute)
+    if currentSettings.isNotificationEnabled {
+      scheduleNotification(hour: currentSettings.hour, minute: currentSettings.minute)
+    }
   }
   //スケジュールをする内部メソッド
   private func scheduleNotification(hour: Int, minute: Int) {
