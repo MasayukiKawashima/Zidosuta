@@ -42,7 +42,6 @@ class LocalNotificationManager {
   func setScheduleNotification() {
     
     //既存の通知を消去
-    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     let isEnabled = currentSettings.isNotificationEnabled
     //通知がオンなら通知をスケジュール
     if isEnabled {
@@ -60,7 +59,7 @@ class LocalNotificationManager {
     //通知の定義
     let content = UNMutableNotificationContent()
     content.title = "今日の記録をしましょう"
-    content.body = "タップしてアプリを起動"
+    content.body = "タップして記録する"
     content.sound = .default
     
     // アクションボタンの定義
@@ -106,5 +105,42 @@ class LocalNotificationManager {
       }
     }
   }
+  //ボタンや通知自体をタップした時にアプリのトップ画面に飛ばす処理
+  func navigateToTopScreen() {
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first {
+      
+      // ルートビューコントローラーがUITabBarControllerであることを確認
+      guard let tabBarController = window.rootViewController as? UITabBarController else {
+        print("Error: Root view controller is not UITabBarController")
+        return
+      }
+      
+      // 目的の画面があるタブを選択（通常は最初のタブ）
+      tabBarController.selectedIndex = 0
+      
+      // 選択されたタブのビューコントローラーがUINavigationControllerであることを確認
+      guard let navController = tabBarController.selectedViewController as? UINavigationController else {
+        print("Error: Selected view controller is not UINavigationController")
+        return
+      }
+      
+      // ナビゲーションスタックのルートまで戻る（途中の画面をクリア）
+      navController.popToRootViewController(animated: false)
+      
+      // トップのビューコントローラーがUIPageViewControllerであることを確認
+      guard let pageViewController = navController.topViewController as? UIPageViewController else {
+        print("Error: Top view controller is not UIPageViewController")
+        return
+      }
+      
+      // 新しいTopViewControllerをインスタンス化して表示
+      let topVC = TopViewController()
+      pageViewController.setViewControllers([topVC],
+                                            direction: .forward,
+                                            animated: false)
+    } else {
+      print("Error: Could not find window scene")
+    }
+  }
 }
-
