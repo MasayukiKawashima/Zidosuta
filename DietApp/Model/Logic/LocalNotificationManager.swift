@@ -1,5 +1,5 @@
 //
-//  LoclaNotificationManager.swift
+//  LocalNotificationManager.swift
 //  DietApp
 //
 //  Created by 川島真之 on 2024/12/10.
@@ -9,13 +9,10 @@ import Foundation
 import RealmSwift
 import UserNotifications
 
-class LoclaNotificationManager {
-  static let shared = LoclaNotificationManager()
+class LocalNotificationManager {
+  static let shared = LocalNotificationManager()
   //外部からのインスタンス化を防ぐための空初期化子
   private init() {}
-  
-  var hour:Int!
-  var minute:Int!
   //Realmインスタンスを保持
   private var realm: Realm {
     do {
@@ -33,7 +30,7 @@ class LoclaNotificationManager {
   /// 通知の許可を要求
   /// - Parameter completion: 許可状態を返すクロージャ
   func requestAuthorization(completion: @escaping (Bool) -> Void) {
-    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { granted, error in
       //ユーザーからの通知許可の返答を待つ
       DispatchQueue.main.async {
         completion(granted)
@@ -42,30 +39,27 @@ class LoclaNotificationManager {
   }
   //通知をスケジュールするメソッド
   //このモデルを使用するオブジェクトで呼ばれるメソッド
-  func setScheduleNotification(date: Date, isEnabled: Bool) {
-    let calender = Calendar.current
-    let hour = calender.component(.hour, from: date)
-    let minute = calender.component(.minute, from: date)
+  func setScheduleNotification() {
     
-    self.hour = hour
-    self.minute = minute
     //既存の通知を消去
-    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+    let isEnabled = currentSettings.isNotificationEnabled
+    //通知がオンなら通知をスケジュール
     if isEnabled {
-      scheduleNotification(hour: self.hour, minute: self.minute)
+      scheduleNotification(hour: currentSettings.hour, minute: currentSettings.minute)
     }
   }
   //スケジュールの再設定
   func restoreNotificationIfNeeded() {
-    let settings = currentSettings.isNotificationEnabled
-    scheduleNotification(hour: self.hour, minute: self.minute)
+    if currentSettings.isNotificationEnabled {
+      scheduleNotification(hour: currentSettings.hour, minute: currentSettings.minute)
+    }
   }
   //スケジュールをする内部メソッド
   private func scheduleNotification(hour: Int, minute: Int) {
     //通知の定義
     let content = UNMutableNotificationContent()
-    content.title = "記録時間の通知"
-    content.body = "今日の記録をしましょう"
+    content.title = "今日の記録をしましょう"
+    content.body = "タップして記録する"
     content.sound = .default
     
     // アクションボタンの定義
@@ -111,5 +105,42 @@ class LoclaNotificationManager {
       }
     }
   }
+  //ボタンや通知自体をタップした時にアプリのトップ画面に飛ばす処理
+  func navigateToTopScreen() {
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first {
+      
+      // ルートビューコントローラーがUITabBarControllerであることを確認
+      guard let tabBarController = window.rootViewController as? UITabBarController else {
+        print("Error: Root view controller is not UITabBarController")
+        return
+      }
+      
+      // 目的の画面があるタブを選択（通常は最初のタブ）
+      tabBarController.selectedIndex = 0
+      
+      // 選択されたタブのビューコントローラーがUINavigationControllerであることを確認
+      guard let navController = tabBarController.selectedViewController as? UINavigationController else {
+        print("Error: Selected view controller is not UINavigationController")
+        return
+      }
+      
+      // ナビゲーションスタックのルートまで戻る（途中の画面をクリア）
+      navController.popToRootViewController(animated: false)
+      
+      // トップのビューコントローラーがUIPageViewControllerであることを確認
+      guard let pageViewController = navController.topViewController as? UIPageViewController else {
+        print("Error: Top view controller is not UIPageViewController")
+        return
+      }
+      
+      // 新しいTopViewControllerをインスタンス化して表示
+      let topVC = TopViewController()
+      pageViewController.setViewControllers([topVC],
+                                            direction: .forward,
+                                            animated: false)
+    } else {
+      print("Error: Could not find window scene")
+    }
+  }
 }
-

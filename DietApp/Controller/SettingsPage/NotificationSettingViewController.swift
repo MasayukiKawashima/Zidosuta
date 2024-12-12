@@ -153,13 +153,38 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
 }
 
 extension NotificationSettingViewController: NotificationRegisterTableViewCellDelegate {
+  
   func registerButtonAction() {
-    
     let settings = Settings.shared
     settings.update { settings in
+      let calendar = Calendar.current
+      let hour = calendar.component(.hour, from: selectedDate)
+      let minute = calendar.component(.minute, from: selectedDate)
+      
       settings.notification?.notificationTime = selectedDate
+      settings.notification?.hour = hour
+      settings.notification?.minute = minute
       settings.notification?.isNotificationEnabled = true
+      
+      LocalNotificationManager.shared.requestAuthorization { granted in
+        if granted {
+          LocalNotificationManager.shared.setScheduleNotification()
+          print("ローカル通知を設定")
+        } else {
+          self.showNotificationPermissionAlert()
+        }
+      }
     }
     navigationController?.popViewController(animated: true)
+  }
+  
+  private func showNotificationPermissionAlert() {
+    let alert = UIAlertController(
+      title: "通知が許可されていません",
+      message: "設定アプリから通知を有効にしてください",
+      preferredStyle: .alert
+    )
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    present(alert, animated: true)
   }
 }

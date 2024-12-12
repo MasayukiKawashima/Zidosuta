@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,8 +29,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     return .portrait // デフォルトは縦向き
   }
-  
+
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    let config = Realm.Configuration(
+      schemaVersion: 1,
+      migrationBlock: { migration, oldSchemaVersion in
+        // マイグレーションが必要な場合はここに記述
+      }
+    )
+    Realm.Configuration.defaultConfiguration = config
+    
+    // 通知デリゲートの設定
+    UNUserNotificationCenter.current().delegate = self
+    
+    // 通知機能がオンなら保存された通知設定を復元
+    LocalNotificationManager.shared.restoreNotificationIfNeeded()
     
     return true
   }
@@ -53,3 +67,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+  
+  // ユーザーが通知に対してアクションをとった時に呼ばれるデリゲートメソッド
+  // center: 通知を管理するUNUserNotificationCenterのインスタンス
+  // response: ユーザーの応答情報を含むオブジェクト
+  // completionHandler: 処理完了時に必ず呼び出す必要があるクロージャー
+  
+  func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    didReceive response: UNNotificationResponse,
+    withCompletionHandler completionHandler: @escaping () -> Void
+  ) {
+    // ユーザーが選択したアクションのタイプに基づいて処理を分岐
+    switch response.actionIdentifier {
+    case "RECORD_ACTION":  // レコードアクションが選択された場合
+      LocalNotificationManager.shared.navigateToTopScreen()
+    case "LATER_ACTION":  // 後で見るアクションが選択された場合
+      print("Later action selected")
+      break  // 特に追加の処理は必要なし
+      
+      //通知自体をタップした時の処理
+    default:
+      LocalNotificationManager.shared.navigateToTopScreen()
+      break
+    }
+    // 処理完了をシステムに通知
+    // この呼び出しを忘れるとアプリがクラッシュする可能性がある
+    completionHandler()
+  }
+  
+  //フォアグラウンドで通知を受信した時の処理
+  func userNotificationCenter(
+    _ center: UNUserNotificationCenter,
+    willPresent notification: UNNotification,
+    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+  ) {
+    // フォアグラウンドでも通知を表示する
+    completionHandler([.banner])
+  }
+}
