@@ -64,7 +64,9 @@ class SettingsViewController: UIViewController {
     super.viewWillAppear(animated)
     
     DispatchQueue.main.async {
-      let indexPath = IndexPath(row: 1, section: 0)
+      let section = SettingPageCell.notificationTableViewCell.values.section
+      let row = SettingPageCell.notificationTableViewCell.values.row
+      let indexPath = IndexPath(row: row, section: section)
       self.settingsView.tableView.reloadRows(at: [indexPath], with: .none)
     }
   }
@@ -127,9 +129,10 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       
     case .deleteDataTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteDataTableViewCell", for: indexPath) as! DeleteDataTableViewCell
-            //セルの選択時のハイライトを非表示にする
-            cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            return cell
+      //セルの選択時のハイライトを非表示にする
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
+      return cell
     }
   }
   //セルの高さの推定値の設定
@@ -166,9 +169,8 @@ extension SettingsViewController {
     self.navigationItem.titleView = customTitleView
   }
 }
-
+//通知セルのデリゲート
 extension SettingsViewController: NotificationTableViewCellDelegate {
-  
   func switchAction(isOn: Bool) {
     let row = SettingPageCell.notificationTableViewCell.values.row
     let section = SettingPageCell.notificationTableViewCell.values.section
@@ -194,5 +196,13 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
       cell.statusLabel.text = "オフ"
       cell.statusLabel.textColor = .lightGray
     }
+  }
+}
+//削除セルのデリゲート
+extension SettingsViewController: DeleteDataTableViewCellDelegate {
+  func transitionButtonAction() {
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "DataDeletionExecution") as? DataDeletionExecutionViewController else { return }
+    self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
   }
 }

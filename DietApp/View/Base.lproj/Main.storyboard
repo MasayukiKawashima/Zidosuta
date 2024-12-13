@@ -76,6 +76,21 @@
             </objects>
             <point key="canvasLocation" x="2380" y="1392"/>
         </scene>
+        <!--Data Deletion Execution View Controller-->
+        <scene sceneID="mpk-6L-OqR">
+            <objects>
+                <viewController storyboardIdentifier="DataDeletionExecution" id="wak-t0-pTq" customClass="DataDeletionExecutionViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eEf-AU-NAv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tSE-Hd-zQw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K8p-GX-Wwl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="2106"/>
+        </scene>
         <!--Top View Controller-->
         <scene sceneID="42X-Xj-WhJ">
             <objects>

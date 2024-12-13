@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DeleteDataTableViewCellDelegate {
+  func transitionButtonAction()
+}
+
 class DeleteDataTableViewCell: UITableViewCell {
 
   @IBOutlet weak var shadowLayerView: UIView!
@@ -17,6 +21,8 @@ class DeleteDataTableViewCell: UITableViewCell {
       transitionButton.tintColor = .YellowishRed
     }
   }
+  
+  var delegate: DeleteDataTableViewCellDelegate?
   
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,4 +36,8 @@ class DeleteDataTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+  @IBAction func transitionButtonAction(_ sender: UIButton) {
+    delegate?.transitionButtonAction()
+  }
+  
 }

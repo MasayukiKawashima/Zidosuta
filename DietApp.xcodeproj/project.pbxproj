@@ -82,6 +82,11 @@
 		FAC9EF312D0C11E900DE1E64 /* GraphDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF302D0C11E900DE1E64 /* GraphDateManager.swift */; };
 		FAC9EF352D0C3A7900DE1E64 /* DeleteDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC9EF342D0C3A7900DE1E64 /* DeleteDataTableViewCell.xib */; };
 		FAC9EF362D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF332D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift */; };
+		FAC9EF3A2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF382D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift */; };
+		FAC9EF3B2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC9EF392D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib */; };
+		FAC9EF432D0C562E00DE1E64 /* DataDeletionExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF422D0C562E00DE1E64 /* DataDeletionExecutionView.swift */; };
+		FAC9EF452D0C564100DE1E64 /* DataDeletionExecutionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC9EF442D0C564100DE1E64 /* DataDeletionExecutionView.xib */; };
+		FAC9EF472D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
 		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
@@ -192,6 +197,11 @@
 		FAC9EF302D0C11E900DE1E64 /* GraphDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphDateManager.swift; sourceTree = "<group>"; };
 		FAC9EF332D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteDataTableViewCell.swift; sourceTree = "<group>"; };
 		FAC9EF342D0C3A7900DE1E64 /* DeleteDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteDataTableViewCell.xib; sourceTree = "<group>"; };
+		FAC9EF382D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllDataTableViewCell.swift; sourceTree = "<group>"; };
+		FAC9EF392D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteAllDataTableViewCell.xib; sourceTree = "<group>"; };
+		FAC9EF422D0C562E00DE1E64 /* DataDeletionExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionExecutionView.swift; sourceTree = "<group>"; };
+		FAC9EF442D0C564100DE1E64 /* DataDeletionExecutionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataDeletionExecutionView.xib; sourceTree = "<group>"; };
+		FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionExecutionViewController.swift; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewCell.swift; sourceTree = "<group>"; };
@@ -293,24 +303,19 @@
 			children = (
 				FA32F4C22A32BFCF0058FD32 /* NotificationTableViewCell.swift */,
 				FA32F4C32A32BFCF0058FD32 /* NotificationTableViewCell.xib */,
-				FA2211102CFF5AF4005C622D /* NotificationSettingView.swift */,
-				FA2211122CFF5B8A005C622D /* NotificationSettingView.xib */,
-				FA2211142CFF5D51005C622D /* Cell */,
+				FA2211142CFF5D51005C622D /* NotificationSettingView */,
 			);
 			path = Notification;
 			sourceTree = "<group>";
 		};
-		FA2211142CFF5D51005C622D /* Cell */ = {
+		FA2211142CFF5D51005C622D /* NotificationSettingView */ = {
 			isa = PBXGroup;
 			children = (
-				FA2211152CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift */,
-				FA2211162CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib */,
-				FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */,
-				FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */,
-				FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */,
-				FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */,
+				FA2211102CFF5AF4005C622D /* NotificationSettingView.swift */,
+				FA2211122CFF5B8A005C622D /* NotificationSettingView.xib */,
+				FAC9EF3C2D0C50A800DE1E64 /* Cell */,
 			);
-			path = Cell;
+			path = NotificationSettingView;
 			sourceTree = "<group>";
 		};
 		FA24A8742CA6C2100082AF19 /* AppDelegateTests */ = {
@@ -502,6 +507,7 @@
 				FAC9EF0E2D0C0B5C00DE1E64 /* SettingsNavigationController.swift */,
 				FAC9EF0F2D0C0B5C00DE1E64 /* SettingsViewController.swift */,
 				FAC9EF0D2D0C0B5C00DE1E64 /* NotificationSettingViewController.swift */,
+				FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */,
 			);
 			path = SettingsPage;
 			sourceTree = "<group>";
@@ -551,8 +557,41 @@
 			children = (
 				FAC9EF332D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift */,
 				FAC9EF342D0C3A7900DE1E64 /* DeleteDataTableViewCell.xib */,
+				FAC9EF3D2D0C54C500DE1E64 /* DataDeletionExecutionView */,
 			);
 			path = DeleteData;
+			sourceTree = "<group>";
+		};
+		FAC9EF372D0C4DF400DE1E64 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FAC9EF382D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift */,
+				FAC9EF392D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FAC9EF3C2D0C50A800DE1E64 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA2211152CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift */,
+				FA2211162CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib */,
+				FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */,
+				FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */,
+				FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */,
+				FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FAC9EF3D2D0C54C500DE1E64 /* DataDeletionExecutionView */ = {
+			isa = PBXGroup;
+			children = (
+				FAC9EF422D0C562E00DE1E64 /* DataDeletionExecutionView.swift */,
+				FAC9EF442D0C564100DE1E64 /* DataDeletionExecutionView.xib */,
+				FAC9EF372D0C4DF400DE1E64 /* Cell */,
+			);
+			path = DataDeletionExecutionView;
 			sourceTree = "<group>";
 		};
 		FAFF6F562A2071C70092A1A3 /* TopPage */ = {
@@ -699,6 +738,7 @@
 				FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */,
 				FAFF6F612A21C60F0092A1A3 /* MemoTableViewCell.xib in Resources */,
 				FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */,
+				FAC9EF3B2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib in Resources */,
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
 				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
@@ -708,6 +748,7 @@
 				FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */,
 				FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */,
 				FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */,
+				FAC9EF452D0C564100DE1E64 /* DataDeletionExecutionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +879,7 @@
 				FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
+				FAC9EF432D0C562E00DE1E64 /* DataDeletionExecutionView.swift in Sources */,
 				FA2211112CFF5AF4005C622D /* NotificationSettingView.swift in Sources */,
 				FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */,
 				FAC9EF2D2D0C11C200DE1E64 /* LocalNotificationManager.swift in Sources */,
@@ -853,6 +895,7 @@
 				FAC9EF182D0C0B5C00DE1E64 /* TopViewController.swift in Sources */,
 				FAC9EF192D0C0B5C00DE1E64 /* GraphViewController.swift in Sources */,
 				FAC9EF1A2D0C0B5C00DE1E64 /* GraphNavigationController.swift in Sources */,
+				FAC9EF3A2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift in Sources */,
 				FAC9EF1B2D0C0B5C00DE1E64 /* TopPageViewController.swift in Sources */,
 				FAC9EF1C2D0C0B5C00DE1E64 /* NotificationSettingViewController.swift in Sources */,
 				FAC9EF1D2D0C0B5C00DE1E64 /* PhotoModalViewController.swift in Sources */,
@@ -880,6 +923,7 @@
 				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
+				FAC9EF472D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift in Sources */,
 				FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
