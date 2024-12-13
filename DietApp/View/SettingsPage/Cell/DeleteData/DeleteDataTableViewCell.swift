@@ -1,0 +1,43 @@
+//
+//  DeleteDataTableViewCell.swift
+//  DietApp
+//
+//  Created by 川島真之 on 2024/12/13.
+//
+
+import UIKit
+
+protocol DeleteDataTableViewCellDelegate {
+  func transitionButtonAction()
+}
+
+class DeleteDataTableViewCell: UITableViewCell {
+
+  @IBOutlet weak var shadowLayerView: UIView!
+  @IBOutlet weak var mainBackgroundView: UIView!
+  
+  @IBOutlet weak var transitionButton: UIButton! {
+    didSet {
+      transitionButton.tintColor = .YellowishRed
+    }
+  }
+  
+  var delegate: DeleteDataTableViewCellDelegate?
+  
+  override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    contentView.backgroundColor = .systemGray6
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+  @IBAction func transitionButtonAction(_ sender: UIButton) {
+    delegate?.transitionButtonAction()
+  }
+  
+}

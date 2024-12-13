@@ -37,10 +37,21 @@ class NotificationSettingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
   
-  enum notificationSettingPageCell:Int {
+  enum NotificationSettingPageCell:Int {
     case notificationTimeDisplayTableViewCell = 0
     case notificationTimeEditTableViewCell
     case notificationRegisterTableViewCell
+    
+    var values: (section: Int , row: Int) {
+      switch self {
+      case .notificationTimeDisplayTableViewCell:
+        return (section: 0, row: 0)
+      case .notificationTimeEditTableViewCell:
+        return (section: 0, row: 1)
+      case .notificationRegisterTableViewCell:
+        return (section: 1, row: 0)
+      }
+    }
   }
   
   override func loadView() {
@@ -79,7 +90,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = notificationSettingPageCell(rawValue: indexPath.row)
+    let cell = NotificationSettingPageCell(rawValue: indexPath.row)
     //セクションごとに分岐
     switch indexPath.section {
     case 0:
@@ -114,7 +125,10 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
   //時間が選択されるたびに呼ばれる時間ラベル更新メソッド
   @objc func timeChanged(_ sender: UIDatePicker) {
-    guard let notificationTimeDisplayTableviewCell = notificationSettingView.tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NotificationTimeDisplayTableViewCell else { return }
+    let row = NotificationSettingPageCell.notificationTimeDisplayTableViewCell.values.row
+    let section = NotificationSettingPageCell.notificationTimeDisplayTableViewCell.values.section
+    
+    guard let notificationTimeDisplayTableviewCell = notificationSettingView.tableView.cellForRow(at: IndexPath(row: row, section: section)) as? NotificationTimeDisplayTableViewCell else { return }
     //現在選択されている時間をselectedDateに代入
     selectedDate = sender.date
     //時間ラベルの更新
@@ -136,7 +150,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    let cell = notificationSettingPageCell(rawValue: indexPath.row)
+    let cell = NotificationSettingPageCell(rawValue: indexPath.row)
     switch indexPath.section {
     case 0:
       if cell == .notificationTimeDisplayTableViewCell {

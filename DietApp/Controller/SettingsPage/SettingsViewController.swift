@@ -10,6 +10,7 @@ import UIKit
 class SettingsViewController: UIViewController {
   var settingsView = SettingsView()
   
+  
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
@@ -20,9 +21,19 @@ class SettingsViewController: UIViewController {
   
   var TableViewCellHeight:CGFloat = 60.0
   //cell周り設定用の列挙体
+  
   enum SettingPageCell:Int {
-    case themeColorTableViewCell = 0
-    case notificationTableViewCell
+    case notificationTableViewCell = 0
+    case deleteDataTableViewCell
+    
+    var values: (section: Int, row: Int) {
+      switch self {
+      case .notificationTableViewCell:
+        return (section: 0, row: 0)
+      case .deleteDataTableViewCell:
+        return (section: 0, row: 1)
+      }
+    }
   }
 
     override func viewDidLoad() {
@@ -53,7 +64,9 @@ class SettingsViewController: UIViewController {
     super.viewWillAppear(animated)
     
     DispatchQueue.main.async {
-      let indexPath = IndexPath(row: 1, section: 0)
+      let section = SettingPageCell.notificationTableViewCell.values.section
+      let row = SettingPageCell.notificationTableViewCell.values.row
+      let indexPath = IndexPath(row: row, section: section)
       self.settingsView.tableView.reloadRows(at: [indexPath], with: .none)
     }
   }
@@ -80,11 +93,11 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     let cell = SettingPageCell(rawValue: indexPath.row)
     
     switch (cell)! {
-    case .themeColorTableViewCell:
-      let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeColorTableViewCell", for: indexPath) as! ThemeColorTableViewCell
-      //セルの選択時のハイライトを非表示にする
-      cell.selectionStyle = UITableViewCell.SelectionStyle.none
-      return cell
+//    case .themeColorTableViewCell:
+//      let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeColorTableViewCell", for: indexPath) as! ThemeColorTableViewCell
+//      //セルの選択時のハイライトを非表示にする
+//      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+//      return cell
       
     case .notificationTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
@@ -110,6 +123,13 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
         cell.notificationSwitch.isOn = false
       }
       
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
+      return cell
+      
+    case .deleteDataTableViewCell:
+      let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteDataTableViewCell", for: indexPath) as! DeleteDataTableViewCell
+      //セルの選択時のハイライトを非表示にする
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.delegate = self
       return cell
@@ -149,11 +169,12 @@ extension SettingsViewController {
     self.navigationItem.titleView = customTitleView
   }
 }
-
+//通知セルのデリゲート
 extension SettingsViewController: NotificationTableViewCellDelegate {
-  
   func switchAction(isOn: Bool) {
-    guard let cell = settingsView.tableView.cellForRow(at: IndexPath(row:1, section: 0)) as? NotificationTableViewCell else { return }
+    let row = SettingPageCell.notificationTableViewCell.values.row
+    let section = SettingPageCell.notificationTableViewCell.values.section
+    guard let cell = settingsView.tableView.cellForRow(at: IndexPath(row: row, section: section)) as? NotificationTableViewCell else { return }
     //スイッチをオンにしたら
     if isOn {
       let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -175,5 +196,13 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
       cell.statusLabel.text = "オフ"
       cell.statusLabel.textColor = .lightGray
     }
+  }
+}
+//削除セルのデリゲート
+extension SettingsViewController: DeleteDataTableViewCellDelegate {
+  func transitionButtonAction() {
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "DataDeletionExecution") as? DataDeletionExecutionViewController else { return }
+    self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
   }
 }
