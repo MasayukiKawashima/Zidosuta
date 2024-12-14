@@ -72,6 +72,7 @@ extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDa
       let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteAllDataTableViewCell", for: indexPath) as! DeleteAllDataTableViewCell
       
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
       return cell
       
     default :
@@ -82,4 +83,39 @@ extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDa
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return TableViewCellHeight
   }
+}
+
+extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegate {
+  
+  func deleteButtonAction() {
+    print("aaaaaaaa")
+    showConfirmationAlert()
+  }
+  
+  func showConfirmationAlert() {
+    let alert = UIAlertController(title: nil, message: "全てのデータを削除してもよろしいですか この操作は取り消せません", preferredStyle: .alert)
+    
+    let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+    let attributedTitle = NSAttributedString(string: "警告", attributes: titleAttributes)
+    alert.setValue(attributedTitle, forKey: "attributedTitle")
+    
+    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+    let deleteAction = UIAlertAction(title: "削除する", style: .destructive) { _ in
+      self.showDeletionCompletedAlert()
+    }
+    
+    alert.addAction(cancelAction)
+    alert.addAction(deleteAction)
+    self.present(alert, animated: true)
+  }
+  
+  func showDeletionCompletedAlert() {
+    let alert = UIAlertController(title: nil, message: "全てのデータが削除されました", preferredStyle: .alert)
+    
+    let okAction = UIAlertAction(title: "OK", style: .default)
+    alert.addAction(okAction)
+    
+    self.present(alert, animated: true)
+  }
+  
 }
