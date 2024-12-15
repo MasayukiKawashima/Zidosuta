@@ -248,8 +248,8 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   func deleteButtonAction(in cell: PhotoTableViewCell) {
-    let alert = UIAlertController(title: "確認", message: "写真を削除してもよろしいですか？", preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "OK", style: .destructive) { _ in
+    let alert = UIAlertController(title: nil, message: "写真を削除してもよろしいですか？", preferredStyle: .alert)
+    let okAction = UIAlertAction(title: "削除する", style: .destructive) { _ in
       self.deleteAlertAction(cell)
     }
     let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
@@ -408,7 +408,6 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       print("画像をドキュメントに保存できませんでした")
     }
   }
-  //写真のファイルと、ドキュメントへの保存のためフルパスの作成
 }
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {

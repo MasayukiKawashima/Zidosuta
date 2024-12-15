@@ -29,7 +29,6 @@
 		FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */; };
 		FA22111C2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */; };
 		FA24A8732CA66F110082AF19 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A8722CA66F110082AF19 /* OrientationManager.swift */; };
-		FA24A8792CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A8782CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift */; };
 		FA24A87E2CA6EC100082AF19 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A87D2CA6EC100082AF19 /* AppDelegateTests.swift */; };
 		FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA32F4B52A32BCF50058FD32 /* SettingsView.xib */; };
 		FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32F4B72A32BD130058FD32 /* SettingsView.swift */; };
@@ -87,6 +86,8 @@
 		FAC9EF432D0C562E00DE1E64 /* DataDeletionExecutionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF422D0C562E00DE1E64 /* DataDeletionExecutionView.swift */; };
 		FAC9EF452D0C564100DE1E64 /* DataDeletionExecutionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC9EF442D0C564100DE1E64 /* DataDeletionExecutionView.xib */; };
 		FAC9EF472D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */; };
+		FAC9EF4B2D0E498E00DE1E64 /* DataDeleteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */; };
+		FAC9EF4D2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF4C2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
 		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
@@ -140,7 +141,6 @@
 		FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeEditTableViewCell.swift; sourceTree = "<group>"; };
 		FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTimeEditTableViewCell.xib; sourceTree = "<group>"; };
 		FA24A8722CA66F110082AF19 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
-		FA24A8782CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphNavigationControllerTests.swift; sourceTree = "<group>"; };
 		FA24A87D2CA6EC100082AF19 /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
 		FA32F4B52A32BCF50058FD32 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FA32F4B72A32BD130058FD32 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -202,6 +202,8 @@
 		FAC9EF422D0C562E00DE1E64 /* DataDeletionExecutionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionExecutionView.swift; sourceTree = "<group>"; };
 		FAC9EF442D0C564100DE1E64 /* DataDeletionExecutionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DataDeletionExecutionView.xib; sourceTree = "<group>"; };
 		FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionExecutionViewController.swift; sourceTree = "<group>"; };
+		FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeleteManager.swift; sourceTree = "<group>"; };
+		FAC9EF4C2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeleteManagerTest.swift; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewCell.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */,
 				FA24A8722CA66F110082AF19 /* OrientationManager.swift */,
 				FAC9EF2C2D0C11C200DE1E64 /* LocalNotificationManager.swift */,
+				FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */,
 				FAC9EF282D0C11A000DE1E64 /* Data */,
 				FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */,
 			);
@@ -324,14 +327,6 @@
 				FA24A87D2CA6EC100082AF19 /* AppDelegateTests.swift */,
 			);
 			path = AppDelegateTests;
-			sourceTree = "<group>";
-		};
-		FA24A8752CA6C2450082AF19 /* GraphPageTests */ = {
-			isa = PBXGroup;
-			children = (
-				FA24A8782CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift */,
-			);
-			path = GraphPageTests;
 			sourceTree = "<group>";
 		};
 		FA32F4B02A32BBAE0058FD32 /* SettingsPage */ = {
@@ -381,6 +376,7 @@
 				FA42FA2E2A6B6CB700C60F9E /* DateDataRealmSearcherTests.swift */,
 				FA42FA2C2A6A4C1200C60F9E /* IndexSetterTests.swift */,
 				FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */,
+				FAC9EF4C2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift */,
 				FA55F5B42CE58D080015291F /* TopPageTextFieldValidationTest */,
 			);
 			path = ModelTests;
@@ -436,7 +432,6 @@
 		FA68AF362A135F7200B69D4A /* DietAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA24A8752CA6C2450082AF19 /* GraphPageTests */,
 				FA24A8742CA6C2100082AF19 /* AppDelegateTests */,
 				FA42FA342A6CE85600C60F9E /* ModelTests */,
 			);
@@ -910,6 +905,7 @@
 				FAC9EF232D0C0B5C00DE1E64 /* TabBarController.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
+				FAC9EF4B2D0E498E00DE1E64 /* DataDeleteManager.swift in Sources */,
 				FA22110D2CFF16D6005C622D /* MainBackgroundView.swift in Sources */,
 				FAC9EF312D0C11E900DE1E64 /* GraphDateManager.swift in Sources */,
 				FA42FA522A81D8CC00C60F9E /* CustomMarkerView.swift in Sources */,
@@ -940,8 +936,8 @@
 				FA42FA2F2A6B6CB700C60F9E /* DateDataRealmSearcherTests.swift in Sources */,
 				FA42FA3C2A70BD4100C60F9E /* DateRangeCalculatorTests.swift in Sources */,
 				FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */,
-				FA24A8792CA6C8EF0082AF19 /* GraphNavigationControllerTests.swift in Sources */,
 				FA42FA332A6CB76200C60F9E /* GraphContentCreatorTests.swift in Sources */,
+				FAC9EF4D2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift in Sources */,
 				FA42FA2D2A6A4C1200C60F9E /* IndexSetterTests.swift in Sources */,
 				FA24A87E2CA6EC100082AF19 /* AppDelegateTests.swift in Sources */,
 				FA42FA4A2A7F3BE600C60F9E /* MonthAdjusterTests.swift in Sources */,
@@ -1179,7 +1175,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.DietAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1199,7 +1195,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.DietAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

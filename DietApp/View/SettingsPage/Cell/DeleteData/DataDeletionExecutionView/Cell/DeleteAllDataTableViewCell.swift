@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol DeleteAllDataTableViewCellDelegate {
+  func deleteButtonAction()
+}
+
 class DeleteAllDataTableViewCell: UITableViewCell {
 
   @IBOutlet weak var shadowLayerview: UIView!
@@ -22,6 +26,8 @@ class DeleteAllDataTableViewCell: UITableViewCell {
       deleteButton.setImage(image, for: .normal)
     }
   }
+  
+  var delegate: DeleteAllDataTableViewCellDelegate?
     
   
   override func awakeFromNib() {
@@ -35,5 +41,8 @@ class DeleteAllDataTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+  @IBAction func deleteButtonAction(_ sender: UIButton) {
+    delegate?.deleteButtonAction()
+  }
+  
 }
