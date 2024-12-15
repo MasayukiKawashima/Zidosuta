@@ -88,7 +88,6 @@ extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDa
 extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegate {
   
   func deleteButtonAction() {
-    print("aaaaaaaa")
     showConfirmationAlert()
   }
   

@@ -408,7 +408,6 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       print("画像をドキュメントに保存できませんでした")
     }
   }
-  //写真のファイルと、ドキュメントへの保存のためフルパスの作成
 }
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {
