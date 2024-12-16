@@ -30,8 +30,14 @@ class DataDeleteManager {
       }
       
       try contents.forEach { url in
+        
+        guard !url.lastPathComponent.hasPrefix("default.realm") else {
+          print("ℹ️ default.realmファイルはスキップします: \(url.lastPathComponent)")
+          return
+        }
+        
         try fileManager.removeItem(at: url)
-        print("✅ 削除成功: \(url.lastPathComponent)")
+        print("✅ ドキュメントディレクトリ内の全ファイル削除成功: \(url.lastPathComponent)")
       }
       
       return true
@@ -52,6 +58,7 @@ class DataDeleteManager {
     do {
       try realm.write {
         realm.deleteAll()
+        print("✅ 全てRealmObjectの削除成功")
       }
     } catch {
       print("❌ RealmObjectの削除ができませんでした: \(error.localizedDescription)")
