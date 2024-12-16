@@ -32,7 +32,7 @@ class DataDeleteManager {
       try contents.forEach { url in
         
         guard !url.lastPathComponent.hasPrefix("default.realm") else {
-          print("ℹ️ default.realmファイルはスキップします: \(url.lastPathComponent)")
+          print("ℹ️ default.realmファイルの削除はスキップします: \(url.lastPathComponent)")
           return
         }
         

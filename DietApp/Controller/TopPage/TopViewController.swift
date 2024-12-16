@@ -127,9 +127,6 @@ class TopViewController: UIViewController {
         self.topView.tableView.reloadData()
         print("tableViewのリロード！！！！！！！")
         self.shouldReloadDataAfterDeletion = false
-        
-      } else {
-        print("リロードしていない！！！！！！！！！！！！！")
       }
     }
   }

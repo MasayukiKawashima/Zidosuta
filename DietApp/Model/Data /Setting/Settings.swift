@@ -16,7 +16,7 @@ class Settings: Object {
     return "id"
   }
   //このモデルはレコードが複数存在したらまずいので、シングルトンにする
-  static let shared: Settings = {
+  static var shared: Settings {
     let realm = try! Realm()
     // 既存のSettingsを取得、なければ新規作成
     if let existingSettings = realm.object(ofType: Settings.self, forPrimaryKey: "settings") {
@@ -32,7 +32,12 @@ class Settings: Object {
       }
       return settings
     }
-  }()
+  }
+  //手動でRealmオブジェクトを更新
+  static func refresh() {
+    let realm = try! Realm()
+    realm.refresh()
+  }
   
   func update(operation: (Settings) -> Void) {
     let realm = try! Realm()
