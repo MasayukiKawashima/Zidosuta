@@ -20,6 +20,12 @@ class TopViewController: UIViewController {
   var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
   
   let realm = try! Realm()
+  var notificationToken: NotificationToken?
+  //全データ削除後の更新処理のためプロパティ
+  var shouldReloadDataAfterDeletion: Bool = false
+  //初回レイアウトが完了しているかどうか
+  //全データ削除後のテーブルビューのリロードをするかどうかの分岐で使用する
+  var isViewFirstLayoutFinished = false
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -34,7 +40,7 @@ class TopViewController: UIViewController {
   }
   
   var navigationBarHeight: CGFloat {
-    return self.navigationController!.navigationBar.frame.size.height
+    return self.navigationController?.navigationBar.frame.size.height ?? 44.0
   }
   
   var statusBarHeight: CGFloat {
@@ -48,8 +54,14 @@ class TopViewController: UIViewController {
   var weightTableViewCellHeight:CGFloat = 70.0
   var memoTableViewCellHeight:CGFloat = 47.0
   var photoTableViewCellHeight: CGFloat {
-    return view.frame.height - tabBarHeight - navigationBarHeight - statusBarHeight - weightTableViewCellHeight - memoTableViewCellHeight - adTableViewCellHeight
-  }
+       let totalHeight = view.frame.height
+       let navigationHeight = navigationBarHeight
+       let statusHeight = statusBarHeight
+       let tabHeight = tabBarHeight
+       let adHeight = adTableViewCellHeight
+       
+       return totalHeight - navigationHeight - statusHeight - tabHeight - weightTableViewCellHeight - memoTableViewCellHeight - adHeight
+   }
   var adTableViewCellHeight:CGFloat = 53.0
   
   //セル周り設定用の列挙体
@@ -78,24 +90,56 @@ class TopViewController: UIViewController {
     //スクロールできないようにする
     topView.tableView.isScrollEnabled = false
     //tableViewCellの高さの自動設定
+    topView.tableView.estimatedRowHeight = UITableView.automaticDimension
     topView.tableView.rowHeight = UITableView.automaticDimension
     //セル間の区切り線を非表示
     topView.tableView.separatorStyle = .none
+    
+    setupRealmObserver()
+  }
+  
+  private func setupRealmObserver() {
+    let dateData = realm.objects(DateData.self)
+    
+    notificationToken = dateData.observe { changes in
+      switch changes {
+      case .update:
+        if dateData.isEmpty && !self.shouldReloadDataAfterDeletion {
+          self.shouldReloadDataAfterDeletion = true
+        }
+      case .initial:
+        return
+      case .error(let error):
+        print("RealmObject監視でのエラー: \(error)")
+      }
+    }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    if shouldReloadDataAfterDeletion {
+      //レイアウトが完了しているかどうか
+      //この分岐をしないと、Viewのレイアウトが完了していない状態でtableView.reloadData()を実行してしまい
+      //cellの高さを計算する時に不正な値が算出されてしまいアプリがクラッシュしてしまうことがある
+      if isViewFirstLayoutFinished {
+        // レイアウト更新後にリロードを実行
+        self.topView.tableView.reloadData()
+        print("tableViewのリロード！！！！！！！")
+        self.shouldReloadDataAfterDeletion = false
+      }
+    }
   }
   
   override func loadView() {
     view = topView
   }
   
-  override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
-    
-    // 各カバービューのフレームを更新
-    navigationBarCover?.frame = navigationController?.navigationBar.bounds ?? .zero
-    viewCover?.frame = view.bounds
-    tabBarCover?.frame = tabBarController?.tabBar.bounds ?? .zero
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    //初回レイアウトが完了
+    isViewFirstLayoutFinished = true
   }
-//  }
   /*
    // MARK: - Navigation
    
@@ -132,12 +176,18 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
-      let resultsCount = results.count
       
-      if resultsCount != 0 {
+      if results.isEmpty {
+        cell.weightTextField.text = ""
+      } else {
         let weightString = String(results.first!.weight)
         cell.weightTextField.text = weightString
       }
+      
+//      if resultsCount != 0 {
+//        let weightString = String(results.first!.weight)
+//        cell.weightTextField.text = weightString
+//      }
       
       return cell
       
@@ -149,11 +199,16 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
-      let resultsCount = results.count
       
-      if resultsCount != 0 {
+      if results.isEmpty {
+        cell.memoTextField.text = ""
+      } else {
         cell.memoTextField.text = results.first!.memoText
       }
+      
+//      if resultsCount != 0 {
+//        cell.memoTextField.text = results.first!.memoText
+//      }
       
       return cell
       
@@ -165,24 +220,21 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
             
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
-      let resultsCount = results.count
-      
-      if resultsCount != 0 {
-        //fileURLが存在するかどうか確認
-        if results.first!.photoFileURL != "" {
-          //存在したら
-          let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
-          let filePath = documentPath.path
-          //合体パスをもとに写真のロード
-          let photoImage = UIImage(contentsOfFile: filePath)!
-          //ロードした写真に回転情報の付与するため、一度CGImageに変換する
+      if results.isEmpty {
+        cell.photoImageView.image = nil
+      } else if results.first!.photoFileURL != "" {
+        let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
+        let filePath = documentPath.path
+        if let photoImage = UIImage(contentsOfFile: filePath) {
           let cgImage = photoImage.cgImage
           let imageOrientation = UIImage.Orientation(rawValue: results.first!.imageOrientationRawValue)
-          //その後再度UIImageの初期化
           let orientedPhotoImage = UIImage(cgImage: cgImage!, scale: 1.0, orientation: imageOrientation!)
-          //写真表示Viewに写真を格納
           cell.photoImageView.image = orientedPhotoImage
+        } else {
+          cell.photoImageView.image = nil
         }
+      } else {
+        cell.photoImageView.image = nil
       }
       return cell
       

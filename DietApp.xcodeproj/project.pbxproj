@@ -286,7 +286,6 @@
 				FA24A8722CA66F110082AF19 /* OrientationManager.swift */,
 				FAC9EF2C2D0C11C200DE1E64 /* LocalNotificationManager.swift */,
 				FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */,
-				FAC9EF282D0C11A000DE1E64 /* Data */,
 				FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */,
 			);
 			path = Logic;
@@ -352,6 +351,7 @@
 		FA41A2F52A1C8834008DC83E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FAC9EF282D0C11A000DE1E64 /* Data  */,
 				FA1112302A59296B007353EA /* Logic */,
 			);
 			path = Model;
@@ -538,13 +538,13 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		FAC9EF282D0C11A000DE1E64 /* Data */ = {
+		FAC9EF282D0C11A000DE1E64 /* Data  */ = {
 			isa = PBXGroup;
 			children = (
 				FAC9EF262D0C11A000DE1E64 /* Setting */,
 				FAC9EF272D0C11A000DE1E64 /* DateData.swift */,
 			);
-			path = Data;
+			path = "Data ";
 			sourceTree = "<group>";
 		};
 		FAC9EF322D0C39FF00DE1E64 /* DeleteData */ = {
