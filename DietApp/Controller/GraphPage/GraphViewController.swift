@@ -7,11 +7,17 @@
 
 import UIKit
 import Charts
+import RealmSwift
 
 class GraphViewController: UIViewController {
   var graphView = GraphView()
   
   var graphDateManager = GraphDateManager()
+  
+  let realm = try! Realm()
+  var notificationToken: NotificationToken?
+  var shouldReloadDataAfterDeletion: Bool = false
+  
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
@@ -29,6 +35,7 @@ class GraphViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
     configureDefaultGraph(index: self.graphDateManager.index)
+    setupRealmObserver()
   }
   
   override func loadView() {
@@ -40,6 +47,30 @@ class GraphViewController: UIViewController {
     _ = self.initViewLayout
     //グラフの更新処理
     createLineChartDate()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    if shouldReloadDataAfterDeletion {
+      createLineChartDate()
+      self.shouldReloadDataAfterDeletion = false
+    }
+  }
+  
+  private func setupRealmObserver() {
+    let dateData = realm.objects(DateData.self)
+    
+    notificationToken = dateData.observe { changes in
+      switch changes {
+      case .update:
+        if dateData.isEmpty && !self.shouldReloadDataAfterDeletion {
+          self.shouldReloadDataAfterDeletion = true
+        }
+      case .initial:
+        return
+      case .error(let error):
+        print("RealmObject監視でのエラー: \(error)")
+      }
+    }
   }
   
   private lazy var initViewLayout : Void = {
@@ -169,7 +200,7 @@ extension GraphViewController {
     let graphContetCreator = GraphContentCreator()
     let dataEntries = graphContetCreator.createDataEntry(index: graphDateManager.index)
     if dataEntries.count != 0 {
-      
+      print(dataEntries)
       //以下の処理はモデルに切り出す
       let dataSet = LineChartDataSet(entries: dataEntries)
       
@@ -214,6 +245,12 @@ extension GraphViewController {
       //データのセット
       let data = LineChartData(dataSet: dataSet)
       self.graphView.graphAreaView.data = data
+    } else {
+      //createDataEntry()の結果、エントリーが０（該当するRealmObjectが０件だったら）だったら
+      //からのエントリーセットを作成しグラフに反映（何もエントリーポイントが表示されない）
+      let blankEntries: [ChartDataEntry] = []
+      let dataSet = LineChartDataSet(entries: blankEntries)
+      self.graphView.graphAreaView.data = LineChartData(dataSet: dataSet)
     }
   }
 }
