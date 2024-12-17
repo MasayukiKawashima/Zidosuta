@@ -76,7 +76,7 @@ final class DataDeleteManagerTests: XCTestCase {
       XCTAssertFalse(result)
     }
   }
-  //ドキュメントディレクトリがすでにからの場合のテスト
+  //ドキュメントディレクトリが既にRealmファイル以外が空の場合のテスト
   func testDeleteAllData_EmptyDirectorySuccess() {
     // Given
     // ドキュメントディレクトリを事前にクリア
@@ -97,7 +97,7 @@ final class DataDeleteManagerTests: XCTestCase {
     // Then
     XCTAssertTrue(result)
   }
-  
+  //default.realmファイルの削除をスキップできているかテスト
   func testDeleteAllData_SkipDeleteRealmData() {
     let deleteAllDataResult = sut.deleteAllData()
     XCTAssertTrue(deleteAllDataResult)
@@ -125,7 +125,6 @@ final class DataDeleteManagerTests: XCTestCase {
     try! realm.write {
       realm.deleteAll()
     }
-    
     let result = sut.deleteAllData()
     XCTAssertTrue(result)
   }
