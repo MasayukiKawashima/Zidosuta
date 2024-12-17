@@ -83,6 +83,37 @@ extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDa
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return TableViewCellHeight
   }
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    if section == DataDeletionExecutionViewCell.deleteAllDataTableViewCell.values.section {
+      let footerView = setUpDeleteionDescriptionFooterView()
+      return footerView
+    }
+    return nil
+  }
+  
+  //削除の説明文を表示するフッターを作成
+  private func setUpDeleteionDescriptionFooterView() -> UIView {
+    let footerView = UIView()
+    let textView = UITextView()
+    
+    textView.translatesAutoresizingMaskIntoConstraints = false
+    textView.text = "体重、ひとことメモ、写真、通知設定が全て削除されます"
+    textView.textColor = .darkGray
+    textView.backgroundColor = .clear
+    textView.isScrollEnabled = false
+    textView.isEditable = false
+    textView.isSelectable = false
+    textView.textContainer.lineBreakMode = .byCharWrapping
+    footerView.addSubview(textView)
+    
+    NSLayoutConstraint.activate([
+      textView.centerXAnchor.constraint(equalTo: footerView.centerXAnchor),
+      textView.centerYAnchor.constraint(equalTo: footerView.centerYAnchor),
+      footerView.heightAnchor.constraint(equalToConstant: 30)
+    ])
+    return footerView
+  }
 }
 
 extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegate {
