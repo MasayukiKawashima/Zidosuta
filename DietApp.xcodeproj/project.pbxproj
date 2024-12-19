@@ -55,6 +55,10 @@
 		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
 		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
+		FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */; };
+		FA9E8C392D11AD5E00A05E55 /* TermsOfUseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9E8C372D11AD5E00A05E55 /* TermsOfUseTableViewCell.xib */; };
+		FA9E8C3C2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA9E8C3B2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.xib */; };
+		FA9E8C3D2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C3A2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.swift */; };
 		FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */; };
 		FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */; };
 		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
@@ -171,6 +175,10 @@
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
 		FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationRegisterTableViewCell.xib; sourceTree = "<group>"; };
+		FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseTableViewCell.swift; sourceTree = "<group>"; };
+		FA9E8C372D11AD5E00A05E55 /* TermsOfUseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsOfUseTableViewCell.xib; sourceTree = "<group>"; };
+		FA9E8C3A2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyTableViewCell.swift; sourceTree = "<group>"; };
+		FA9E8C3B2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrivacyPolicyTableViewCell.xib; sourceTree = "<group>"; };
 		FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + AppThemeColor.swift"; sourceTree = "<group>"; };
 		FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartAxisBase + setKGFormatter.swift"; sourceTree = "<group>"; };
 		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
@@ -343,6 +351,8 @@
 			children = (
 				FA22110F2CFF59C2005C622D /* Notification */,
 				FAC9EF322D0C39FF00DE1E64 /* DeleteData */,
+				FA9E8C352D11ACBE00A05E55 /* TermsofUse */,
+				FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */,
 				FA22110E2CFF1A23005C622D /* BaseView */,
 			);
 			path = Cell;
@@ -445,6 +455,24 @@
 				FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */,
 			);
 			path = DietAppUITests;
+			sourceTree = "<group>";
+		};
+		FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */ = {
+			isa = PBXGroup;
+			children = (
+				FA9E8C3A2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.swift */,
+				FA9E8C3B2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.xib */,
+			);
+			path = PrivacyPolicy;
+			sourceTree = "<group>";
+		};
+		FA9E8C352D11ACBE00A05E55 /* TermsofUse */ = {
+			isa = PBXGroup;
+			children = (
+				FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */,
+				FA9E8C372D11AD5E00A05E55 /* TermsOfUseTableViewCell.xib */,
+			);
+			path = TermsofUse;
 			sourceTree = "<group>";
 		};
 		FA9F9CE22CF436B50013886A /* Utilitis */ = {
@@ -729,6 +757,7 @@
 				FA2211182CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib in Resources */,
 				FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */,
 				FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */,
+				FA9E8C392D11AD5E00A05E55 /* TermsOfUseTableViewCell.xib in Resources */,
 				FA22111C2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib in Resources */,
 				FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */,
 				FAFF6F612A21C60F0092A1A3 /* MemoTableViewCell.xib in Resources */,
@@ -737,6 +766,7 @@
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
 				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
+				FA9E8C3C2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.xib in Resources */,
 				FAC9EF352D0C3A7900DE1E64 /* DeleteDataTableViewCell.xib in Resources */,
 				FA2211132CFF5B8A005C622D /* NotificationSettingView.xib in Resources */,
 				FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */,
@@ -871,6 +901,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9E8C3D2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.swift in Sources */,
 				FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
@@ -923,6 +954,7 @@
 				FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
+				FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */,
 				FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */,
 				FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */,
 			);

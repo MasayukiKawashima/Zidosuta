@@ -75,7 +75,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   //セクションの数を設定
   //登録ボタンの上にスペースを作るためにセクションを二つにする
   func numberOfSections(in tableView: UITableView) -> Int {
-    2
+    return 2
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -119,7 +119,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.delegate = self
       return cell
-    default :
+    default:
       return UITableViewCell()
     }
   }
