@@ -25,6 +25,8 @@ class SettingsViewController: UIViewController {
   enum SettingPageCell:Int {
     case notificationTableViewCell = 0
     case deleteDataTableViewCell
+    case termsOfUseTableViewCell
+    case privacyPolicyTableViewCell
     
     var values: (section: Int, row: Int) {
       switch self {
@@ -32,7 +34,45 @@ class SettingsViewController: UIViewController {
         return (section: 0, row: 0)
       case .deleteDataTableViewCell:
         return (section: 0, row: 1)
+      case .termsOfUseTableViewCell:
+        return (section: 1, row: 0)
+      case .privacyPolicyTableViewCell:
+        return (section: 1, row: 1)
       }
+    }
+  }
+  
+  enum SettingPageCells: Int, CaseIterable {
+    case notificationTableViewCell
+    case deleteDataTableViewCell
+    case termsOfUseTableViewCell
+    case privacyPolicyTableViewCell
+    
+    var sectionNumber: Int {
+      switch self {
+      case .notificationTableViewCell, .deleteDataTableViewCell:
+        return 0
+      case .termsOfUseTableViewCell, .privacyPolicyTableViewCell:
+        return 1
+      }
+    }
+    
+    var identifier: String {
+      switch self {
+      case .notificationTableViewCell:
+        return "NotificationTableViewCell"
+      case .deleteDataTableViewCell:
+        return "DeleteDataTableViewCell"
+      case .termsOfUseTableViewCell:
+        return "TermsOfUseTableViewCell"
+      case .privacyPolicyTableViewCell:
+        return "PrivacyPolicyTableViewCell"
+      }
+    }
+    
+    //セクションごとのケースを返すメソッド
+    static func cases(forSection section: Int) -> [SettingPageCells] {
+      return SettingPageCells.allCases.filter {$0.sectionNumber == section}
     }
   }
 
@@ -83,25 +123,34 @@ class SettingsViewController: UIViewController {
 }
 //tableViewの設定
 extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
+  
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 2
+  }
   //セル数の設定
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    switch section {
+    case 0:
+      return 2
+    case 1:
+      return 2
+    default:
+      return 0
+    }
   }
   //各セルの内容の設定
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   //現在設定しているセクションのセルを取得
+    let sectionCells = SettingPageCells.cases(forSection: indexPath.section)
+    //現在設定している行に対応するセルを取得
+    let cellType = sectionCells[indexPath.row]
+    //セルを生成（キャスト前）
+    let preCastCell = tableView.dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath)
     
-    let cell = SettingPageCell(rawValue: indexPath.row)
-    
-    switch (cell)! {
-//    case .themeColorTableViewCell:
-//      let cell = tableView.dequeueReusableCell(withIdentifier: "ThemeColorTableViewCell", for: indexPath) as! ThemeColorTableViewCell
-//      //セルの選択時のハイライトを非表示にする
-//      cell.selectionStyle = UITableViewCell.SelectionStyle.none
-//      return cell
-      
+    //セルの種類によって処理の分岐
+    switch cellType {
     case .notificationTableViewCell:
-      let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
-      //statusLabelの内容の確認
+      let  cell = preCastCell as! NotificationTableViewCell
       let isNotificationEnabled = Settings.shared.notification?.isNotificationEnabled
       //通知機能が有効かどうかで分岐
       if isNotificationEnabled! {
@@ -128,10 +177,19 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       return cell
       
     case .deleteDataTableViewCell:
-      let cell = tableView.dequeueReusableCell(withIdentifier: "DeleteDataTableViewCell", for: indexPath) as! DeleteDataTableViewCell
-      //セルの選択時のハイライトを非表示にする
+      let cell = preCastCell as! DeleteDataTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.delegate = self
+      return cell
+      
+    case .termsOfUseTableViewCell:
+      let cell = preCastCell as! TermsOfUseTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      return cell
+      
+    case .privacyPolicyTableViewCell:
+      let cell = preCastCell as! PrivacyPolicyTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
       return cell
     }
   }
@@ -143,11 +201,24 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return TableViewCellHeight
   }
+  
+  func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    let footerView = UIView()
+    footerView.backgroundColor = .clear
+    return footerView
+  }
+  
+  func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 25
+    }
+    return 0
+  }
+  
 }
 
 extension SettingsViewController {
   func navigationBarTittleSettings() {
-    
     let titleText = "設定"
     
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
