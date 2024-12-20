@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TermsOfUseTableViewCellDelegate {
+  func TermsOfUseTransitionButtonAction()
+}
+
 class TermsOfUseTableViewCell: UITableViewCell {
 
   @IBOutlet weak var shadowLayerView: UIView!
@@ -17,6 +21,7 @@ class TermsOfUseTableViewCell: UITableViewCell {
       transitionButton.tintColor = .YellowishRed
     }
   }
+  var delegate: TermsOfUseTableViewCellDelegate?
   
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,5 +34,9 @@ class TermsOfUseTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+  
+  @IBAction func transitionButtonAction(_ sender: UIButton) {
+    delegate?.TermsOfUseTransitionButtonAction()
+  }
+  
 }

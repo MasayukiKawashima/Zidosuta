@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PrivacyPolicyTableViewCellDelegate {
+  func privacyPolicyTransitionButtonAction()
+}
+
 class PrivacyPolicyTableViewCell: UITableViewCell {
 
   @IBOutlet weak var shadowLayerView: UIView!
@@ -17,6 +21,7 @@ class PrivacyPolicyTableViewCell: UITableViewCell {
       transitionButton.tintColor = .YellowishRed
     }
   }
+  var delegate: PrivacyPolicyTableViewCellDelegate?
   
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,5 +34,8 @@ class PrivacyPolicyTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+  @IBAction func transitionButtonAction(_ sender: UIButton) {
+    delegate?.privacyPolicyTransitionButtonAction()
+  }
+  
 }

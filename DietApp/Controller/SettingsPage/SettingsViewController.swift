@@ -185,11 +185,13 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     case .termsOfUseTableViewCell:
       let cell = preCastCell as! TermsOfUseTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
       return cell
       
     case .privacyPolicyTableViewCell:
       let cell = preCastCell as! PrivacyPolicyTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
       return cell
     }
   }
@@ -275,5 +277,26 @@ extension SettingsViewController: DeleteDataTableViewCellDelegate {
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "DataDeletionExecution") as? DataDeletionExecutionViewController else { return }
     self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
+  }
+}
+//利用規約セルとプライバシーポリシーセルのデリゲート
+extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicyTableViewCellDelegate   {
+  
+  func TermsOfUseTransitionButtonAction() {
+    let termsDisplayViewController = initTermsDisplayViewController()
+    termsDisplayViewController.termsType = .termsOfUse
+    navigationController?.pushViewController(termsDisplayViewController, animated: true)
+  }
+  
+  func privacyPolicyTransitionButtonAction() {
+    let termsDisplayViewController = initTermsDisplayViewController()
+    termsDisplayViewController.termsType = .privacyPolicy
+    navigationController?.pushViewController(termsDisplayViewController, animated: true)
+  }
+  
+  func initTermsDisplayViewController() -> TermsDisplayViewController {
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let termsDisplayViewController = storyBoard.instantiateViewController(withIdentifier: "TermsDisplay") as! TermsDisplayViewController
+    return termsDisplayViewController
   }
 }

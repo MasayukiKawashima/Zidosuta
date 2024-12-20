@@ -31,6 +31,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system">
                                     <color key="baseForegroundColor" name="YellowishRed"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="transitionButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Euw-bV-Roy"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用規約" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlT-67-jap">
                                 <rect key="frame" x="8" y="8" width="64" height="21"/>

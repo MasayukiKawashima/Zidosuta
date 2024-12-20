@@ -91,6 +91,21 @@
             </objects>
             <point key="canvasLocation" x="2380" y="2106"/>
         </scene>
+        <!--Terms Display View Controller-->
+        <scene sceneID="22a-K2-gbQ">
+            <objects>
+                <viewController storyboardIdentifier="TermsDisplay" id="53H-BJ-shI" customClass="TermsDisplayViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0mN-jh-KAF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="RGs-bE-WHd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MW2-5b-v0w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2380" y="2826"/>
+        </scene>
         <!--Top View Controller-->
         <scene sceneID="42X-Xj-WhJ">
             <objects>
