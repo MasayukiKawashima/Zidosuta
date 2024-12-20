@@ -11,11 +11,26 @@ import WebKit
 class TermsDisplayViewController: UIViewController {
   
   let termsDisplayView =  TermsDisplayView()
-  
   var termsType: TermsType!
+  //インジケーター
+  private let indicator: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView(style: .large) // largeスタイルに変更
+    indicator.hidesWhenStopped = true
+    indicator.color = .gray // 必要に応じて色を調整
+    return indicator
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    termsDisplayView.webView.navigationDelegate = self
+    
+    view.addSubview(indicator)
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
     
     loadContent()
     // Do any additional setup after loading the view.
@@ -77,5 +92,23 @@ class TermsDisplayViewController: UIViewController {
   deinit {
     termsDisplayView.webView.navigationDelegate = nil
     termsDisplayView.webView.uiDelegate = nil
+  }
+}
+
+//WKWebViewでのWebコンテンツのナビゲーション（読み込みやリダイレクトなど）を制御・監視するデリゲートメソッド
+extension TermsDisplayViewController: WKNavigationDelegate {
+  
+  func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+    indicator.startAnimating()
+  }
+  
+  // WebViewの読み込み完了時
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    indicator.stopAnimating()
+  }
+  
+  // WebViewの読み込み失敗時
+  func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+    indicator.stopAnimating()
   }
 }

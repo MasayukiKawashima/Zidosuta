@@ -11,7 +11,11 @@ import WebKit
 class TermsDisplayView: UIView {
   
 
-  @IBOutlet weak var webView: WKWebView!
+  @IBOutlet weak var webView: WKWebView! {
+    didSet {
+      webView.backgroundColor = .white
+    }
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
