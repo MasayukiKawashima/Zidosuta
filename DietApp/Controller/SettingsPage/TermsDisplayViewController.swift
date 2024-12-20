@@ -6,25 +6,31 @@
 //
 
 import UIKit
+import WebKit
 
 class TermsDisplayViewController: UIViewController {
   
   let termsDisplayView =  TermsDisplayView()
   
   var termsType: TermsType!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-      loadContent()
-        // Do any additional setup after loading the view.
-    }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    loadContent()
+    // Do any additional setup after loading the view.
+  }
   
   override func loadView() {
     super.loadView()
     view = termsDisplayView
   }
-
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    cleanupWebView()
+  }
+  
   enum TermsType {
     case termsOfUse
     case privacyPolicy
@@ -45,14 +51,31 @@ class TermsDisplayViewController: UIViewController {
       termsDisplayView.webView.load(request)
     }
   }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+  
+  
+  //WebViewが使用するリソースの解放処理
+  //ログの警告を非表示にするための処理
+  private func cleanupWebView() {
+    
+    let webView = termsDisplayView.webView!
+    // 読み込みを停止
+    webView.stopLoading()
+    
+    // キャッシュをクリア
+    if #available(iOS 9.0, *) {
+      WKWebsiteDataStore.default().removeData(
+        ofTypes: [WKWebsiteDataTypeMemoryCache, WKWebsiteDataTypeDiskCache],
+        modifiedSince: Date(timeIntervalSince1970: 0),
+        completionHandler: { }
+      )
     }
-    */
-
+    
+    // 空のページを読み込んでリソースを解放
+    webView.loadHTMLString("", baseURL: nil)
+  }
+  
+  deinit {
+    termsDisplayView.webView.navigationDelegate = nil
+    termsDisplayView.webView.uiDelegate = nil
+  }
 }
