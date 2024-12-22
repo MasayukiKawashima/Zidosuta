@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsView: UIView {
   
-  let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell"]
+  let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell", "ContactTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView!{
     didSet{

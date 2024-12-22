@@ -47,12 +47,13 @@ class SettingsViewController: UIViewController {
     case deleteDataTableViewCell
     case termsOfUseTableViewCell
     case privacyPolicyTableViewCell
+    case contactTableViewCell
     
     var sectionNumber: Int {
       switch self {
       case .notificationTableViewCell, .deleteDataTableViewCell:
         return 0
-      case .termsOfUseTableViewCell, .privacyPolicyTableViewCell:
+      case .termsOfUseTableViewCell, .privacyPolicyTableViewCell, .contactTableViewCell:
         return 1
       }
     }
@@ -67,6 +68,8 @@ class SettingsViewController: UIViewController {
         return "TermsOfUseTableViewCell"
       case .privacyPolicyTableViewCell:
         return "PrivacyPolicyTableViewCell"
+      case .contactTableViewCell:
+        return "ContactTableViewCell"
       }
     }
     
@@ -133,7 +136,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     case 0:
       return 2
     case 1:
-      return 2
+      return 3
     default:
       return 0
     }
@@ -192,6 +195,11 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       let cell = preCastCell as! PrivacyPolicyTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.delegate = self
+      return cell
+      
+    case .contactTableViewCell:
+      let cell = preCastCell as! ContactTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
       return cell
     }
   }

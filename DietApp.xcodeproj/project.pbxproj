@@ -65,6 +65,8 @@
 		FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */; };
 		FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */; };
 		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
+		FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB98562D1865410034F243 /* ContactTableViewCell.swift */; };
+		FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAB98572D1865410034F243 /* ContactTableViewCell.xib */; };
 		FABF36082A283CD0007D91DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF36072A283CD0007D91DB /* GraphView.swift */; };
 		FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABF36092A283CFF007D91DB /* GraphView.xib */; };
 		FAC0A8A82D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0A8A72D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift */; };
@@ -188,6 +190,8 @@
 		FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + AppThemeColor.swift"; sourceTree = "<group>"; };
 		FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartAxisBase + setKGFormatter.swift"; sourceTree = "<group>"; };
 		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
+		FAAB98562D1865410034F243 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		FAAB98572D1865410034F243 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		FABF36072A283CD0007D91DB /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		FABF36092A283CFF007D91DB /* GraphView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GraphView.xib; sourceTree = "<group>"; };
 		FAC0A8A72D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + ConvertDateToNotificationTimeString.swift"; sourceTree = "<group>"; };
@@ -358,6 +362,7 @@
 				FA22110F2CFF59C2005C622D /* Notification */,
 				FAC9EF322D0C39FF00DE1E64 /* DeleteData */,
 				FA9E8C3E2D1462F400A05E55 /* Terms */,
+				FAAB98552D1864F70034F243 /* Contact */,
 				FA22110E2CFF1A23005C622D /* BaseView */,
 			);
 			path = Cell;
@@ -517,6 +522,15 @@
 				FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		FAAB98552D1864F70034F243 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				FAAB98562D1865410034F243 /* ContactTableViewCell.swift */,
+				FAAB98572D1865410034F243 /* ContactTableViewCell.xib */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		FABF36042A283BCC007D91DB /* GraphPage */ = {
@@ -779,6 +793,7 @@
 				FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */,
 				FAFF6F612A21C60F0092A1A3 /* MemoTableViewCell.xib in Resources */,
 				FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */,
+				FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */,
 				FAC9EF3B2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib in Resources */,
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
@@ -975,6 +990,7 @@
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
 				FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */,
+				FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */,
 				FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */,
 				FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */,
 			);

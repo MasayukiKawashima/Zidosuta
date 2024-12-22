@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="ContactTableViewCell" customModule="DietApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLz-Ho-arR" customClass="ShadowLayerView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="296" height="48"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qc9-g3-S6l" customClass="MainBackgroundView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="296" height="48"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お問い合わせ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkT-Ox-5yf">
+                                <rect key="frame" x="8" y="8" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lro-d5-S62">
+                                <rect key="frame" x="248.33333333333329" y="2" width="39.666666666666657" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system">
+                                    <color key="baseForegroundColor" name="YellowishRed"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Lro-d5-S62" secondAttribute="bottom" constant="2" id="2Yn-tQ-aGa"/>
+                            <constraint firstAttribute="trailing" secondItem="Lro-d5-S62" secondAttribute="trailing" constant="8" id="6K8-go-Yyr"/>
+                            <constraint firstItem="TkT-Ox-5yf" firstAttribute="leading" secondItem="qc9-g3-S6l" secondAttribute="leading" constant="8" id="EUl-YU-cga"/>
+                            <constraint firstItem="Lro-d5-S62" firstAttribute="top" secondItem="qc9-g3-S6l" secondAttribute="top" constant="2" id="Hg9-RI-yav"/>
+                            <constraint firstItem="TkT-Ox-5yf" firstAttribute="top" secondItem="qc9-g3-S6l" secondAttribute="top" constant="8" id="jf9-Mx-m7x"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="qc9-g3-S6l" secondAttribute="trailing" constant="12" id="1Ng-P0-fx5"/>
+                    <constraint firstItem="qc9-g3-S6l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="CnH-dB-Ah5"/>
+                    <constraint firstAttribute="bottom" secondItem="pLz-Ho-arR" secondAttribute="bottom" constant="6" id="GxN-CX-djH"/>
+                    <constraint firstAttribute="bottom" secondItem="qc9-g3-S6l" secondAttribute="bottom" constant="6" id="JdU-0g-POh"/>
+                    <constraint firstAttribute="trailing" secondItem="pLz-Ho-arR" secondAttribute="trailing" constant="12" id="Qc7-KJ-f8G"/>
+                    <constraint firstItem="pLz-Ho-arR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="jQH-Dt-Yfn"/>
+                    <constraint firstItem="pLz-Ho-arR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="z2a-ak-dyV"/>
+                    <constraint firstItem="qc9-g3-S6l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="z7y-XL-pdI"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="contactLabel" destination="TkT-Ox-5yf" id="Xcv-H2-hgY"/>
+                <outlet property="mailButton" destination="Lro-d5-S62" id="cxl-vk-SGH"/>
+                <outlet property="mainBackgroundView" destination="qc9-g3-S6l" id="oca-Ua-l8a"/>
+                <outlet property="shadowLayerView" destination="pLz-Ho-arR" id="bKc-4j-qLI"/>
+            </connections>
+            <point key="canvasLocation" x="100.76335877862596" y="-1.4084507042253522"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
+        <namedColor name="YellowishRed">
+            <color red="0.92500001192092896" green="0.40799999237060547" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
