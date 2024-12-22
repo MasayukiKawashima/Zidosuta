@@ -27,8 +27,7 @@ class LocalNotificationManager {
     return settings.notification!
   }
   
-  /// 通知の許可を要求
-  /// - Parameter completion: 許可状態を返すクロージャ
+//ユーザーに通知の許可を確認するメソッド
   func requestAuthorization(completion: @escaping (Bool) -> Void) {
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { granted, error in
       //ユーザーからの通知許可の返答を待つ
@@ -40,8 +39,14 @@ class LocalNotificationManager {
   //通知をスケジュールするメソッド
   //このモデルを使用するオブジェクトで呼ばれるメソッド
   func setScheduleNotification() {
+    //通知リクエストがあれば削除する
+    let center = UNUserNotificationCenter.current()
+    center.getPendingNotificationRequests { requests in
+      if !requests.isEmpty {
+        center.removeAllPendingNotificationRequests()
+      }
+    }
     
-    //既存の通知を消去
     let isEnabled = currentSettings.isNotificationEnabled
     //通知がオンなら通知をスケジュール
     if isEnabled {
