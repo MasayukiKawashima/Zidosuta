@@ -67,10 +67,22 @@ class DataDeleteManager {
     return true
   }
   
+  private func removeNotificationRequests() {
+    let center = UNUserNotificationCenter.current()
+
+    center.getPendingNotificationRequests { requests in
+      if !requests.isEmpty {
+        center.removeAllPendingNotificationRequests()
+      } else {
+        return
+      }
+    }
+  }
+  
   func deleteAllData() -> Bool {
     let DeleteRealmObjectResult = deleteRealmObject()
+    removeNotificationRequests()
     let clearDocumentDirectoryResult = clearDocumentDirectroy()
-    
     if DeleteRealmObjectResult && clearDocumentDirectoryResult {
       return true
     }

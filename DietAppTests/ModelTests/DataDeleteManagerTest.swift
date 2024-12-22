@@ -119,6 +119,33 @@ final class DataDeleteManagerTests: XCTestCase {
     }
     
   }
+  //通知リクエストが削除できているかのテスト
+  func testDeleteAllData_removeNotificationRequests() {
+    
+    let center = UNUserNotificationCenter.current()
+    //テスト用リクエストを設定
+    let content = UNMutableNotificationContent()
+    content.title = "テスト通知"
+    content.body = "これはテスト用の通知です"
+    content.sound = .default
+    
+    let component = DateComponents(hour: 12, minute: 0)
+    let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
+    let request = UNNotificationRequest(identifier: "alerm_id", content: content, trigger: trigger)
+    center.add(request) { error in
+      if let error {
+        print(error.localizedDescription)
+      }
+    }
+    
+    let deleteAllDataResult = sut.deleteAllData()
+    XCTAssertTrue(deleteAllDataResult)
+
+    center.getPendingNotificationRequests { requests in
+      let count = requests.count
+      XCTAssertTrue(count == 0)
+    }
+  }
   //RealmObjectが存在しない場合のテスト
   func testDeleteAllData_EmptyRealmObjectSuccess() {
     //全てのRealmObjectを事前に削除
