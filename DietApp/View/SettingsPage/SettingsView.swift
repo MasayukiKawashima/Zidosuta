@@ -22,6 +22,18 @@ class SettingsView: UIView {
       }
     }
   }
+  @IBOutlet weak var copyrightView: UIView!
+  
+  @IBOutlet weak var versionLabel: UILabel! {
+    didSet {
+      versionLabel.textColor = .darkGray
+    }
+  }
+  @IBOutlet weak var copyrightLabel: UILabel! {
+    didSet {
+      copyrightLabel.textColor = .darkGray
+    }
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -43,7 +55,6 @@ class SettingsView: UIView {
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     tableView.separatorStyle = .none
-    
     self.addSubview(view)
   }
     /*

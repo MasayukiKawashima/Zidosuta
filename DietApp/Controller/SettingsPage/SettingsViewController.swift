@@ -217,12 +217,49 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
     let footerView = UIView()
     footerView.backgroundColor = .clear
-    return footerView
+    
+    if section == 0 {
+      return footerView
+    } else if section == 1 {
+      let explanationTextLabel = UILabel()
+      explanationTextLabel.text = "当アプリ以外のメールサービスをご利用される場合は、お問い合わせ内容をご記入のうえ下記のメールアドレスにお問い合わせください。"
+      explanationTextLabel.font = UIFont(name: "Thonburi-Light", size: 11)
+      explanationTextLabel.textColor = .gray
+      explanationTextLabel.numberOfLines = 0
+      explanationTextLabel.translatesAutoresizingMaskIntoConstraints = false
+      
+      let mailAdressTextLabel = UILabel()
+      mailAdressTextLabel.text = "xxxxxxxxxxxxxxxxxxxxx@gmail.com"
+      mailAdressTextLabel.font = UIFont(name: "Thonburi-Light", size: 14)
+      mailAdressTextLabel.textColor = .gray
+      mailAdressTextLabel.numberOfLines = 0
+      mailAdressTextLabel.translatesAutoresizingMaskIntoConstraints = false
+      
+      footerView.addSubview(explanationTextLabel)
+      footerView.addSubview(mailAdressTextLabel)
+      
+      
+      NSLayoutConstraint.activate([
+        explanationTextLabel.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 0),
+        explanationTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
+        explanationTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
+        
+        mailAdressTextLabel.topAnchor.constraint(equalTo: explanationTextLabel.bottomAnchor, constant: 4),
+        mailAdressTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
+        mailAdressTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
+        mailAdressTextLabel.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -4)
+        ])
+      
+      return footerView
+    }
+    return nil
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
     if section == 0 {
       return 25
+    } else if section == 1 {
+      return UITableView.automaticDimension
     }
     return 0
   }
