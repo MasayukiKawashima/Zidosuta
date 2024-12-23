@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -38,6 +37,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system">
                                     <color key="baseForegroundColor" name="YellowishRed"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="mailingButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jLE-ZE-uVG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -64,7 +66,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="contactLabel" destination="TkT-Ox-5yf" id="Xcv-H2-hgY"/>
-                <outlet property="mailButton" destination="Lro-d5-S62" id="cxl-vk-SGH"/>
+                <outlet property="mailingButton" destination="Lro-d5-S62" id="MVv-cK-UrZ"/>
                 <outlet property="mainBackgroundView" destination="qc9-g3-S6l" id="oca-Ua-l8a"/>
                 <outlet property="shadowLayerView" destination="pLz-Ho-arR" id="bKc-4j-qLI"/>
             </connections>
