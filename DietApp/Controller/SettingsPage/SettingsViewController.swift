@@ -224,14 +224,14 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       let explanationTextLabel = UILabel()
       explanationTextLabel.text = "当アプリ以外のメールサービスをご利用される場合は、お問い合わせ内容をご記入のうえ下記のメールアドレスにお問い合わせください。"
       explanationTextLabel.font = UIFont(name: "Thonburi-Light", size: 11)
-      explanationTextLabel.textColor = .darkGray
+      explanationTextLabel.textColor = .gray
       explanationTextLabel.numberOfLines = 0
       explanationTextLabel.translatesAutoresizingMaskIntoConstraints = false
       
       let mailAdressTextLabel = UILabel()
       mailAdressTextLabel.text = "xxxxxxxxxxxxxxxxxxxxx@gmail.com"
       mailAdressTextLabel.font = UIFont(name: "Thonburi-Light", size: 14)
-      mailAdressTextLabel.textColor = .darkGray
+      mailAdressTextLabel.textColor = .gray
       mailAdressTextLabel.numberOfLines = 0
       mailAdressTextLabel.translatesAutoresizingMaskIntoConstraints = false
       
@@ -241,12 +241,12 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       
       NSLayoutConstraint.activate([
         explanationTextLabel.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 0),
-        explanationTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 12),
-        explanationTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -12),
+        explanationTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
+        explanationTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
         
         mailAdressTextLabel.topAnchor.constraint(equalTo: explanationTextLabel.bottomAnchor, constant: 4),
-        mailAdressTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 12),
-        mailAdressTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -12),
+        mailAdressTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
+        mailAdressTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
         mailAdressTextLabel.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -4)
         ])
       
