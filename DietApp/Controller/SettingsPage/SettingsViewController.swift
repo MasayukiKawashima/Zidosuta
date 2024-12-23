@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class SettingsViewController: UIViewController {
   var settingsView = SettingsView()
@@ -200,6 +201,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     case .contactTableViewCell:
       let cell = preCastCell as! ContactTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
       return cell
     }
   }
@@ -306,5 +308,50 @@ extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicy
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     let termsDisplayViewController = storyBoard.instantiateViewController(withIdentifier: "TermsDisplay") as! TermsDisplayViewController
     return termsDisplayViewController
+  }
+}
+//メーリング機能周り、お問い合わせセルのデリゲート
+extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate {
+  func mailingButtonAction() {
+    //メーリング機能が使えるかどうかチェック
+    if MFMailComposeViewController.canSendMail() {
+      //使えるなら
+      let mail = MFMailComposeViewController()
+      mail.mailComposeDelegate = self
+      mail.setToRecipients(["xxxxxx@gmail.com"])
+      present(mail, animated: true, completion: nil)
+    } else {
+      //使えないなら
+      showEmailUnavailableAlert()
+    }
+  }
+  //メールの送信後に呼ばれるデリゲートメソッド
+  //送信の成功、失敗によって異なるアラートを表示
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: (any Error)?) {
+    controller.dismiss(animated: true)
+    
+    if result == .sent {
+      showEmailSendSuccessAlert()
+    } else if result == .failed {
+      showEmailSendfailureAlert()
+    }
+  }
+  
+  func showEmailSendfailureAlert() {
+    let alert = UIAlertController(title: "メール機能が使えません", message: nil, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    present(alert, animated: true)
+  }
+  
+  func showEmailSendSuccessAlert() {
+    let alert = UIAlertController(title: "メールを送信しました", message: nil, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    present(alert, animated: true)
+  }
+  
+  func showEmailUnavailableAlert() {
+    let alert = UIAlertController(title: "メールを送信できませんでした", message: nil, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    present(alert, animated: true)
   }
 }

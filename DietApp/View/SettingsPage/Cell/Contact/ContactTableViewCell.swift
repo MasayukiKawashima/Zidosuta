@@ -7,15 +7,18 @@
 
 import UIKit
 
+protocol ContactTableViewCellDelegate {
+  func mailingButtonAction()
+}
+
 class ContactTableViewCell: UITableViewCell {
   @IBOutlet weak var shadowLayerView: UIView!
   @IBOutlet weak var mainBackgroundView: UIView!
   @IBOutlet weak var contactLabel: UILabel!
-  @IBOutlet weak var mailButton: UIButton! {
-    didSet {
-      mailButton.tintColor = .YellowishRed
-    }
-  }
+  
+  @IBOutlet weak var mailingButton: UIButton!
+  
+  var delegate: ContactTableViewCellDelegate?
   
   override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,5 +32,10 @@ class ContactTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
+  @IBAction func mailingButtonAction(_ sender: UIButton) {
+    delegate?.mailingButtonAction()
+  }
+  
+  
 }
