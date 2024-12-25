@@ -10,6 +10,12 @@ import Charts
 
 class GraphView: UIView {
   
+  @IBOutlet weak var mainBackgroundView: UIView! {
+    didSet {
+      mainBackgroundView.backgroundColor = .OysterWhite
+    }
+  }
+  
   @IBOutlet weak var graphAreaView: LineChartView!
   
   override init(frame: CGRect) {

@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    //スプラッシュ画面を1秒表示する
+    let splashScreenDuration: UInt32 = 1
+    sleep(splashScreenDuration)
+    
     let config = Realm.Configuration(
       schemaVersion: 1,
       migrationBlock: { migration, oldSchemaVersion in

@@ -380,6 +380,7 @@
 		FA41A2FA2A1C88D5008DC83E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
 				FA68AF262A135F6F00B69D4A /* Main.storyboard */,
 				FAFF6F562A2071C70092A1A3 /* TopPage */,
 				FABF36042A283BCC007D91DB /* GraphPage */,
@@ -439,7 +440,6 @@
 				FA68AF202A135F6F00B69D4A /* AppDelegate.swift */,
 				FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */,
 				FA68AF292A135F7100B69D4A /* Assets.xcassets */,
-				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
 				FA68AF2E2A135F7100B69D4A /* Info.plist */,
 				FA41A2F52A1C8834008DC83E /* Model */,
 				FA41A2FA2A1C88D5008DC83E /* View */,
