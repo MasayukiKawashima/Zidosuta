@@ -382,8 +382,8 @@
 		FA41A2FA2A1C88D5008DC83E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA6B660E2D1D3AB1009D6D44 /* OnBoardView.swift */,
 				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
+				FA6B660E2D1D3AB1009D6D44 /* OnBoardView.swift */,
 				FA68AF262A135F6F00B69D4A /* Main.storyboard */,
 				FAFF6F562A2071C70092A1A3 /* TopPage */,
 				FABF36042A283BCC007D91DB /* GraphPage */,
