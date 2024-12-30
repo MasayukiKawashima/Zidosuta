@@ -139,7 +139,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="QSF-2k-PN7">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="F92-bx-bHI" customClass="TabBarController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="F92-bx-bHI" customClass="TabBarController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="ycD-k0-lis">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

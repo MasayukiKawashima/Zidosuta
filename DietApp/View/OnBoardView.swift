@@ -75,7 +75,27 @@ struct OnBoardView: View {
             
             Button(
               action: {
-                //ボタンアクション
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                   let window = windowScene.windows.first {
+                  let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                  if let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+                    // アニメーションなしでrootViewControllerを設定
+                    window.rootViewController = tabBarController
+                    
+                    // カスタムフェードインアニメーション
+                    //オンボード画面のスナップショット（UIView）を作成
+                    let snapshot = UIScreen.main.snapshotView(afterScreenUpdates: true)
+                    window.addSubview(snapshot)
+                    //スナップショットをアニメーション付きで非表示にしていく　＝　メインコンテンツ画面がアニメーション付きで表示されていく
+                    UIView.animate(withDuration: 0.5, animations: {
+                      snapshot.alpha = 0
+                    }, completion: { _ in
+                      snapshot.removeFromSuperview()
+                    })
+                  }
+                }
+                // 初回起動フラグを更新
+                UserDefaults.standard.set(true, forKey: "didCompleteFirstLaunch")
               },
               label: {
                 Text("始める")

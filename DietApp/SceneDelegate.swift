@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,6 +14,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    
+    guard let windowScene = (scene as? UIWindowScene) else { return }
+            
+            let window = UIWindow(windowScene: windowScene)
+            self.window = window
+            
+            // UserDefaultsで初回起動判定
+            let isFirstLaunch = !UserDefaults.standard.bool(forKey: "didCompleteFirstLaunch")
+            
+            if isFirstLaunch {
+                // 初回起動時：オンボード画面を表示
+                let onboardingView = OnBoardView() // SwiftUIのView
+                let onboardingViewController = UIHostingController(rootView: onboardingView)
+                window.rootViewController = onboardingViewController
+                
+                // 初回起動フラグを更新
+                UserDefaults.standard.set(true, forKey: "didCompleteFirstLaunch")
+                
+            } else {
+                // 2回目以降：メインコンテンツを表示
+              let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+              if let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+                window.rootViewController = tabBarController
+              }
+            }
+            
+            window.makeKeyAndVisible()
+    
+    
     // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
     // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
