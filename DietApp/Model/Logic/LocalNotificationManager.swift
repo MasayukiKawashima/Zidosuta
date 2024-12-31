@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftUI
 import UserNotifications
 
 class LocalNotificationManager {
@@ -39,18 +40,20 @@ class LocalNotificationManager {
   //通知をスケジュールするメソッド
   //このモデルを使用するオブジェクトで呼ばれるメソッド
   func setScheduleNotification() {
-    //通知リクエストがあれば削除する
     let center = UNUserNotificationCenter.current()
-    center.getPendingNotificationRequests { requests in
-      if !requests.isEmpty {
-        center.removeAllPendingNotificationRequests()
-      }
-    }
-    
     let isEnabled = currentSettings.isNotificationEnabled
-    //通知がオンなら通知をスケジュール
-    if isEnabled {
-      scheduleNotification(hour: currentSettings.hour, minute: currentSettings.minute)
+    
+    center.getPendingNotificationRequests { requests in
+      center.removeAllPendingNotificationRequests()
+      center.removeAllDeliveredNotifications()
+      
+      // 削除完了後に新しい通知をスケジュール
+      DispatchQueue.main.async {
+        if isEnabled {
+          self.scheduleNotification(hour: self.currentSettings.hour,
+                                  minute: self.currentSettings.minute)
+        }
+      }
     }
   }
   //スケジュールの再設定
@@ -63,8 +66,8 @@ class LocalNotificationManager {
   private func scheduleNotification(hour: Int, minute: Int) {
     //通知の定義
     let content = UNMutableNotificationContent()
-    content.title = "今日の記録をしましょう"
-    content.body = "タップして記録する"
+    content.title = "ジドスタ"
+    content.body = "記録時間の通知です"
     content.sound = .default
     
     // アクションボタンの定義
@@ -110,10 +113,22 @@ class LocalNotificationManager {
       }
     }
   }
+  
   //ボタンや通知自体をタップした時にアプリのトップ画面に飛ばす処理
   func navigateToTopScreen() {
     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
        let window = windowScene.windows.first {
+      
+      let didCompleteOnboarding = UserDefaults.standard.bool(forKey: "didCompleteFirstLaunch")
+      
+      if !didCompleteOnboarding {
+        // オンボーディングが未完了の場合、オンボーディング画面を表示
+        let onboardVC = OnBoardView() // あなたのオンボーディング画面のビューコントローラー
+        window.rootViewController = UIHostingController(rootView: onboardVC)
+        window.makeKeyAndVisible()
+        return
+      }
+      
       
       // ルートビューコントローラーがUITabBarControllerであることを確認
       guard let tabBarController = window.rootViewController as? UITabBarController else {

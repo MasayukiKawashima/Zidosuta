@@ -54,6 +54,14 @@ class NotificationSettingViewController: UIViewController {
     }
   }
   
+  enum TransitionSource {
+    case swiftUI
+    case uiKit
+  }
+  
+  var transitionSource: TransitionSource = .uiKit // デフォルトはUIKit
+  var dismissCallback: (() -> Void)?
+  
   override func loadView() {
     view = notificationSettingView
   }
@@ -170,26 +178,51 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
   
   func registerButtonAction() {
     let settings = Settings.shared
-    settings.update { settings in
-      let calendar = Calendar.current
-      let hour = calendar.component(.hour, from: selectedDate)
-      let minute = calendar.component(.minute, from: selectedDate)
+    
+    LocalNotificationManager.shared.requestAuthorization { [weak self] granted in
+      guard let self = self else { return }
       
-      settings.notification?.notificationTime = selectedDate
-      settings.notification?.hour = hour
-      settings.notification?.minute = minute
-      settings.notification?.isNotificationEnabled = true
-      
-      LocalNotificationManager.shared.requestAuthorization { granted in
-        if granted {
+      if granted {
+        settings.update { settings in
+          let calendar = Calendar.current
+          let hour = calendar.component(.hour, from: self.selectedDate)
+          let minute = calendar.component(.minute, from: self.selectedDate)
+          
+          settings.notification?.notificationTime = self.selectedDate
+          settings.notification?.hour = hour
+          settings.notification?.minute = minute
+          settings.notification?.isNotificationEnabled = true
+          
           LocalNotificationManager.shared.setScheduleNotification()
           print("ローカル通知を設定")
-        } else {
+        }
+        
+        // 遷移元に応じて適切な戻る処理を実行
+        DispatchQueue.main.async {
+          switch self.transitionSource {
+          case .swiftUI:
+            self.showRegistrationNotificationSucceses()
+          case .uiKit:
+            self.navigationController?.popViewController(animated: true)
+          }
+        }
+      } else {
+        DispatchQueue.main.async {
           self.showNotificationPermissionAlert()
         }
       }
     }
-    navigationController?.popViewController(animated: true)
+  }  //オンボード画面から遷移していたときのみ表示するアラート
+  private func showRegistrationNotificationSucceses() {
+    let alert = UIAlertController(
+      title: "通知を登録しました",
+      message: nil,
+      preferredStyle: .alert
+    )
+    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+      self.dismissCallback?()
+    })
+    present(alert, animated: true)
   }
   
   private func showNotificationPermissionAlert() {

@@ -98,6 +98,7 @@
 		FAC9EF472D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */; };
 		FAC9EF4B2D0E498E00DE1E64 /* DataDeleteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */; };
 		FAC9EF4D2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF4C2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift */; };
+		FACA1A412D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A402D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
 		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
@@ -224,6 +225,7 @@
 		FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionExecutionViewController.swift; sourceTree = "<group>"; };
 		FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeleteManager.swift; sourceTree = "<group>"; };
 		FAC9EF4C2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeleteManagerTest.swift; sourceTree = "<group>"; };
+		FACA1A402D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewControllerWrapper.swift; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewCell.swift; sourceTree = "<group>"; };
@@ -383,7 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
-				FA6B660E2D1D3AB1009D6D44 /* OnBoardView.swift */,
+				FACA1A3F2D2398AA00B2768D /* OnBoardView */,
 				FA68AF262A135F6F00B69D4A /* Main.storyboard */,
 				FAFF6F562A2071C70092A1A3 /* TopPage */,
 				FABF36042A283BCC007D91DB /* GraphPage */,
@@ -649,6 +651,15 @@
 				FAC9EF372D0C4DF400DE1E64 /* Cell */,
 			);
 			path = DataDeletionExecutionView;
+			sourceTree = "<group>";
+		};
+		FACA1A3F2D2398AA00B2768D /* OnBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				FA6B660E2D1D3AB1009D6D44 /* OnBoardView.swift */,
+				FACA1A402D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift */,
+			);
+			path = OnBoardView;
 			sourceTree = "<group>";
 		};
 		FAFF6F562A2071C70092A1A3 /* TopPage */ = {
@@ -987,6 +998,7 @@
 				FA24A8732CA66F110082AF19 /* OrientationManager.swift in Sources */,
 				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
+				FACA1A412D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
 				FAC9EF472D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift in Sources */,
 				FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */,
