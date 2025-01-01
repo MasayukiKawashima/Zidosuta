@@ -35,8 +35,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     if isFirstLaunch {
       // 初回起動時：オンボード画面を表示
-      let onboardingView = OnBoardView() // SwiftUIのView
-      let onboardingViewController = UIHostingController(rootView: onboardingView)
+      let onboardView = OnboardView() // SwiftUIのView
+      let onboardingViewController = UIHostingController(rootView: onboardView)
       window.rootViewController = onboardingViewController
       
     } else {

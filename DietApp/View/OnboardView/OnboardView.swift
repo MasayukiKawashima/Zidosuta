@@ -1,5 +1,5 @@
 //
-//  OnBoardView.swift
+//  OnboardView.swift
 //  DietApp
 //
 //  Created by 川島真之 on 2024/12/26.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OnBoardView: View {
+struct OnboardView: View {
   
   init() {
     let appearance = UINavigationBarAppearance()
@@ -175,5 +175,5 @@ struct OnBoardView: View {
 }
 
 #Preview {
-  OnBoardView()
+  OnboardView()
 }
