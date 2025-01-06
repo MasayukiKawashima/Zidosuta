@@ -51,7 +51,7 @@
 		FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */; };
 		FA68AF422A135F7200B69D4A /* DietAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF412A135F7200B69D4A /* DietAppUITests.swift */; };
 		FA68AF442A135F7200B69D4A /* DietAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */; };
-		FA6B660F2D1D3AB1009D6D44 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B660E2D1D3AB1009D6D44 /* OnboardView.swift */; };
+		FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
 		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
@@ -100,6 +100,8 @@
 		FAC9EF4D2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC9EF4C2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift */; };
 		FACA1A412D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A402D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift */; };
 		FACA1A482D255ECD00B2768D /* LocalNotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A472D255ECD00B2768D /* LocalNotificationManagerTests.swift */; };
+		FACA1A522D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */; };
+		FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
 		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
@@ -179,7 +181,7 @@
 		FA68AF3D2A135F7200B69D4A /* DietAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DietAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF412A135F7200B69D4A /* DietAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITests.swift; sourceTree = "<group>"; };
 		FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FA6B660E2D1D3AB1009D6D44 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
+		FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
@@ -228,6 +230,8 @@
 		FAC9EF4C2D0EA98F00DE1E64 /* DataDeleteManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeleteManagerTest.swift; sourceTree = "<group>"; };
 		FACA1A402D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingViewControllerWrapper.swift; sourceTree = "<group>"; };
 		FACA1A472D255ECD00B2768D /* LocalNotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManagerTests.swift; sourceTree = "<group>"; };
+		FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsDisplayViewControllerWrapper.swift; sourceTree = "<group>"; };
+		FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextView.swift; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
 		FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,8 +391,8 @@
 			isa = PBXGroup;
 			children = (
 				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
-				FACA1A3F2D2398AA00B2768D /* OnboardView */,
 				FA68AF262A135F6F00B69D4A /* Main.storyboard */,
+				FACA1A3F2D2398AA00B2768D /* OnboardingView */,
 				FAFF6F562A2071C70092A1A3 /* TopPage */,
 				FABF36042A283BCC007D91DB /* GraphPage */,
 				FA32F4B02A32BBAE0058FD32 /* SettingsPage */,
@@ -656,13 +660,23 @@
 			path = DataDeletionExecutionView;
 			sourceTree = "<group>";
 		};
-		FACA1A3F2D2398AA00B2768D /* OnboardView */ = {
+		FACA1A3F2D2398AA00B2768D /* OnboardingView */ = {
 			isa = PBXGroup;
 			children = (
-				FA6B660E2D1D3AB1009D6D44 /* OnboardView.swift */,
-				FACA1A402D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift */,
+				FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */,
+				FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */,
+				FACA1A552D2BE88600B2768D /* UIViewControllerRepresentable */,
 			);
-			path = OnboardView;
+			path = OnboardingView;
+			sourceTree = "<group>";
+		};
+		FACA1A552D2BE88600B2768D /* UIViewControllerRepresentable */ = {
+			isa = PBXGroup;
+			children = (
+				FACA1A402D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift */,
+				FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */,
+			);
+			path = UIViewControllerRepresentable;
 			sourceTree = "<group>";
 		};
 		FAFF6F562A2071C70092A1A3 /* TopPage */ = {
@@ -958,6 +972,7 @@
 				FAC9EF432D0C562E00DE1E64 /* DataDeletionExecutionView.swift in Sources */,
 				FA2211112CFF5AF4005C622D /* NotificationSettingView.swift in Sources */,
 				FA9E8C442D14649300A05E55 /* TermsDisplayViewController.swift in Sources */,
+				FACA1A522D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift in Sources */,
 				FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */,
 				FAC9EF2D2D0C11C200DE1E64 /* LocalNotificationManager.swift in Sources */,
 				FAC0A8A82D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift in Sources */,
@@ -984,6 +999,7 @@
 				FAC9EF2A2D0C11A000DE1E64 /* DateData.swift in Sources */,
 				FAC9EF2B2D0C11A000DE1E64 /* Settings.swift in Sources */,
 				FAC9EF222D0C0B5C00DE1E64 /* TopNavigationController.swift in Sources */,
+				FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */,
 				FAC9EF232D0C0B5C00DE1E64 /* TabBarController.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
@@ -1008,7 +1024,7 @@
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
 				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
 				FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */,
-				FA6B660F2D1D3AB1009D6D44 /* OnboardView.swift in Sources */,
+				FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */,
 				FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */,
 				FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */,
 				FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */,

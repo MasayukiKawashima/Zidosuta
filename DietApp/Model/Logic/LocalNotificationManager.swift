@@ -123,7 +123,7 @@ class LocalNotificationManager {
       
       if !didCompleteOnboarding {
         // オンボーディングが未完了の場合、オンボーディング画面を表示
-        let onboardVC = OnboardView() // あなたのオンボーディング画面のビューコントローラー
+        let onboardVC = OnboardingView() // あなたのオンボーディング画面のビューコントローラー
         window.rootViewController = UIHostingController(rootView: onboardVC)
         window.makeKeyAndVisible()
         return
