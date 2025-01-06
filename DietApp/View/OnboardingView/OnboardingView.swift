@@ -7,32 +7,27 @@
 
 import SwiftUI
 
-struct OnboardView: View {
-  
+struct OnboardingView: View {
   init() {
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = UIColor(named: "YellowishRed")
-    // タイトルの色を白に設定
     appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-    // 戻るボタンの文字色を白に設定
     appearance.buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
     
-    // バックボタンの画像の色を白に設定
     let backIndicatorImage = UIImage(systemName: "chevron.backward")?
       .withTintColor(.white, renderingMode: .alwaysOriginal)
     appearance.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
     
-    // NavigationBarの設定を適用
     UINavigationBar.appearance().standardAppearance = appearance
     UINavigationBar.appearance().scrollEdgeAppearance = appearance
     UINavigationBar.appearance().compactAppearance = appearance
-    
-    // NavigationBarの tintColor を白に設定
     UINavigationBar.appearance().tintColor = .white
   }
   
   @State private var showingNotificationSetting = false
+  @State private var showTermsDisplay = false
+  @State private var selectedTermsType: TermsDisplayViewController.TermsType?
   
   var body: some View {
     NavigationView {
@@ -53,51 +48,32 @@ struct OnboardView: View {
                 .scaledToFit()
                 .minimumScaleFactor(0.5)
               
-              Text("記録忘れ防止に便利な通知機能をご活用ください。")
-                .font(.custom("Thonburi", size: geometry.size.width * 0.035, relativeTo: .body))
-                .foregroundColor(Color(UIColor.darkGray))
-                .padding(.horizontal, 5)
-                .scaledToFit()
-                .minimumScaleFactor(0.5)
-              
-              NavigationLink(
-                isActive: $showingNotificationSetting,
-                destination: {
-                  NotificationSettingViewControllerWrapper(isPresented: $showingNotificationSetting)
-                  
-                },
-                label: {
-                  Label("通知を登録する", systemImage: "timer")
-                    .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.03733, relativeTo: .body))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 10)
-                }
-              )
-              .background(Color("YellowishRed"))
-              .cornerRadius(10)
-              .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
-              
-              Text(makeAttributedString())
-                .environment(\.openURL, OpenURLAction { url in
-                  if url.scheme == "action" {
-                    switch url.host {
-                    case "terms":
-                      print("利用規約がタップされました")
-                    case "privacy":
-                      print("プライバシーポリシーがタップされました")
-                    default:
-                      break
-                    }
-                    return .handled
+              VStack {
+                Text("記録忘れ防止に便利な通知機能をご活用ください")
+                  .font(.custom("Thonburi", size: geometry.size.width * 0.035, relativeTo: .body))
+                  .foregroundColor(Color(UIColor.black))
+                  .padding(.horizontal, 5)
+                  .scaledToFit()
+                  .minimumScaleFactor(0.5)
+                
+                NavigationLink(
+                  isActive: $showingNotificationSetting,
+                  destination: {
+                    NotificationSettingViewControllerWrapper(isPresented: $showingNotificationSetting)
+                  },
+                  label: {
+                    Label("通知時間を登録する", systemImage: "timer")
+                      .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.03733, relativeTo: .body))
+                      .foregroundStyle(.white)
+                      .padding(.horizontal, 10)
+                      .padding(.vertical, 10)
                   }
-                  return .systemAction
-                })
-                .padding(.horizontal, 10)
-                .font(.custom("Thonburi", size: geometry.size.width * 0.032, relativeTo: .body))
-                .minimumScaleFactor(0.5)
-                .lineLimit(2)
-                .font(.body)
+                )
+                .background(Color("YellowishRed"))
+                .cornerRadius(10)
+                .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
+              }
+              .padding(.bottom)
               
               Button(
                 action: {
@@ -109,12 +85,19 @@ struct OnboardView: View {
                     .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.0533, relativeTo: .body))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 100)
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 12)
                 }
               )
               .background(Color("YellowishRed"))
               .cornerRadius(10)
               .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
+              
+              TermsTextView(
+                showTermsDisplay: $showTermsDisplay,
+                selectedTermsType: $selectedTermsType,
+                fontSize: geometry.size.width * 0.032
+              )
+              
             }
             .frame(width: geometry.size.width - 30, height: geometry.size.height / 2)
             .background(
@@ -127,32 +110,13 @@ struct OnboardView: View {
             )
           }
           .frame(width: geometry.size.width, height: geometry.size.height)
-          .position(x:geometry.size.width / 2, y: geometry.size.height / 2)
+          .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
           .dynamicTypeSize(DynamicTypeSize.small...DynamicTypeSize.xLarge)
         }
       }
       .navigationBarHidden(true)
       .accentColor(.white)
     }
-  }
-  
-  private func makeAttributedString() -> AttributedString {
-    var attributedString = AttributedString("利用規約とプライバシーポリシーをご確認の上、ご同意いただける場合は本アプリの利用を開始してください。")
-    attributedString.foregroundColor = .darkGray
-    
-    if let termsRange = attributedString.range(of: "利用規約") {
-      attributedString[termsRange].foregroundColor = .blue
-      attributedString[termsRange].underlineStyle = .single
-      attributedString[termsRange].link = URL(string: "action://terms")
-    }
-    
-    if let privacyRange = attributedString.range(of: "プライバシーポリシー") {
-      attributedString[privacyRange].foregroundColor = .blue
-      attributedString[privacyRange].underlineStyle = .single
-      attributedString[privacyRange].link = URL(string: "action://privacy")
-    }
-    
-    return attributedString
   }
   
   private func transitionToMainContent() {
@@ -175,5 +139,5 @@ struct OnboardView: View {
 }
 
 #Preview {
-  OnboardView()
+  OnboardingView()
 }
