@@ -96,6 +96,8 @@ class TopViewController: UIViewController {
     topView.tableView.separatorStyle = .none
     
     setupRealmObserver()
+    
+    
   }
   
   private func setupRealmObserver() {
