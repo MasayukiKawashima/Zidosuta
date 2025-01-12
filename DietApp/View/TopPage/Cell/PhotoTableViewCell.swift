@@ -96,6 +96,9 @@ class PhotoTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     
+    commentLabel.adjustsFontSizeToFitWidth = true
+    commentLabel.minimumScaleFactor = 0.5
+    
     photoImageView.backgroundColor = UIColor.OysterWhite
     //photoImageViewのimageを監視する
     //imageの値が変わるたびにnilが代入されたか否かで分岐して処理を行う
