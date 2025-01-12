@@ -219,6 +219,9 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       //写真セルのデリゲート
       cell.delegate = self
+      //テキストカラーをダークグレイに再設定
+    //写真読み込み時にテキストカラーが.redに変更されるため
+      cell.commentLabel.textColor = .darkGray
             
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
@@ -232,8 +235,10 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
           let imageOrientation = UIImage.Orientation(rawValue: results.first!.imageOrientationRawValue)
           let orientedPhotoImage = UIImage(cgImage: cgImage!, scale: 1.0, orientation: imageOrientation!)
           cell.photoImageView.image = orientedPhotoImage
-        } else {
+        } else { //画像ファイルの読み込みに失敗した時の処理
           cell.photoImageView.image = nil
+          cell.commentLabel.text = "読み込みエラー。写真の再セットをお願いします。"
+          cell.commentLabel.textColor = .red
         }
       } else {
         cell.photoImageView.image = nil
