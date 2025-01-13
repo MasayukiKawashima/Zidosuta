@@ -23,6 +23,8 @@ class SettingsViewController: UIViewController {
   var TableViewCellHeight:CGFloat = 60.0
   //cell周り設定用の列挙体
   
+  let contactEmailAdress = "info.zidosuta@gmail.com"
+  
   enum SettingPageCell:Int {
     case notificationTableViewCell = 0
     case deleteDataTableViewCell
@@ -220,37 +222,6 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
     
     if section == 0 {
       return footerView
-    } else if section == 1 {
-      let explanationTextLabel = UILabel()
-      explanationTextLabel.text = "当アプリ以外のメールサービスをご利用される場合は、お問い合わせ内容をご記入のうえ下記のメールアドレスにお問い合わせください。"
-      explanationTextLabel.font = UIFont(name: "Thonburi-Light", size: 11)
-      explanationTextLabel.textColor = .gray
-      explanationTextLabel.numberOfLines = 0
-      explanationTextLabel.translatesAutoresizingMaskIntoConstraints = false
-      
-      let mailAdressTextLabel = UILabel()
-      mailAdressTextLabel.text = "xxxxxxxxxxxxxxxxxxxxx@gmail.com"
-      mailAdressTextLabel.font = UIFont(name: "Thonburi-Light", size: 14)
-      mailAdressTextLabel.textColor = .gray
-      mailAdressTextLabel.numberOfLines = 0
-      mailAdressTextLabel.translatesAutoresizingMaskIntoConstraints = false
-      
-      footerView.addSubview(explanationTextLabel)
-      footerView.addSubview(mailAdressTextLabel)
-      
-      
-      NSLayoutConstraint.activate([
-        explanationTextLabel.topAnchor.constraint(equalTo: footerView.topAnchor, constant: 0),
-        explanationTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
-        explanationTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
-        
-        mailAdressTextLabel.topAnchor.constraint(equalTo: explanationTextLabel.bottomAnchor, constant: 4),
-        mailAdressTextLabel.leadingAnchor.constraint(equalTo: footerView.leadingAnchor, constant: 16),
-        mailAdressTextLabel.trailingAnchor.constraint(equalTo: footerView.trailingAnchor, constant: -16),
-        mailAdressTextLabel.bottomAnchor.constraint(equalTo: footerView.bottomAnchor, constant: -4)
-        ])
-      
-      return footerView
     }
     return nil
   }
@@ -355,7 +326,7 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTa
       //使えるなら
       let mail = MFMailComposeViewController()
       mail.mailComposeDelegate = self
-      mail.setToRecipients(["xxxxxx@gmail.com"])
+      mail.setToRecipients([contactEmailAdress])
       present(mail, animated: true, completion: nil)
     } else {
       //使えないなら
