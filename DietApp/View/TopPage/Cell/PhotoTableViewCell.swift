@@ -106,7 +106,6 @@ class PhotoTableViewCell: UITableViewCell {
    //各種ボタンの初期設定
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
     let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
-    insertButton.tintColor = UIColor.CornflowerBlue
     insertButton.setImage(image, for: .normal)
     insertButton.imageView?.contentMode = .scaleAspectFit
 
