@@ -49,7 +49,6 @@
 		FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF262A135F6F00B69D4A /* Main.storyboard */; };
 		FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF292A135F7100B69D4A /* Assets.xcassets */; };
 		FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */; };
-		FA68AF422A135F7200B69D4A /* DietAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF412A135F7200B69D4A /* DietAppUITests.swift */; };
 		FA68AF442A135F7200B69D4A /* DietAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */; };
 		FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
@@ -66,6 +65,7 @@
 		FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */; };
 		FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */; };
 		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
+		FAAB5D292D394D59003EAD71 /* TopScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */; };
 		FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB98562D1865410034F243 /* ContactTableViewCell.swift */; };
 		FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAB98572D1865410034F243 /* ContactTableViewCell.xib */; };
 		FABF36082A283CD0007D91DB /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABF36072A283CD0007D91DB /* GraphView.swift */; };
@@ -179,7 +179,6 @@
 		FA68AF2E2A135F7100B69D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA68AF332A135F7200B69D4A /* DietAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DietAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF3D2A135F7200B69D4A /* DietAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DietAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA68AF412A135F7200B69D4A /* DietAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITests.swift; sourceTree = "<group>"; };
 		FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
@@ -196,6 +195,7 @@
 		FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + AppThemeColor.swift"; sourceTree = "<group>"; };
 		FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartAxisBase + setKGFormatter.swift"; sourceTree = "<group>"; };
 		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
+		FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopScreenUITests.swift; sourceTree = "<group>"; };
 		FAAB98562D1865410034F243 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		FAAB98572D1865410034F243 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		FABF36072A283CD0007D91DB /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
@@ -473,7 +473,7 @@
 		FA68AF402A135F7200B69D4A /* DietAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FA68AF412A135F7200B69D4A /* DietAppUITests.swift */,
+				FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */,
 				FA68AF432A135F7200B69D4A /* DietAppUITestsLaunchTests.swift */,
 			);
 			path = DietAppUITests;
@@ -1053,7 +1053,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA68AF442A135F7200B69D4A /* DietAppUITestsLaunchTests.swift in Sources */,
-				FA68AF422A135F7200B69D4A /* DietAppUITests.swift in Sources */,
+				FAAB5D292D394D59003EAD71 /* TopScreenUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
