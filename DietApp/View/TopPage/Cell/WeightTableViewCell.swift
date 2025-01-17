@@ -26,7 +26,11 @@ extension UITextField {
 
 class WeightTableViewCell: UITableViewCell {
   
-  @IBOutlet weak var weightTextField: UITextField!
+  @IBOutlet weak var weightTextField: UITextField! {
+    didSet {
+      weightTextField.accessibilityIdentifier = "weightTextField"
+    }
+  }
   @IBOutlet weak var kgLabel: UILabel!
   
   var delegate: WeightTableViewCellDelegate?

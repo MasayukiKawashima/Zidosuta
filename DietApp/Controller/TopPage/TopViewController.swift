@@ -96,8 +96,6 @@ class TopViewController: UIViewController {
     topView.tableView.separatorStyle = .none
     
     setupRealmObserver()
-    
-    
   }
   
   private func setupRealmObserver() {
@@ -305,7 +303,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   func expandButtonAction(photoImage: UIImage) {
     showPhotoModal(photoImage: photoImage)
   }
-  
+  //削除ボタンが押された時の処理
   func deleteButtonAction(in cell: PhotoTableViewCell) {
     let alert = UIAlertController(title: nil, message: "写真を削除してもよろしいですか？", preferredStyle: .alert)
     let okAction = UIAlertAction(title: "削除する", style: .destructive) { _ in
@@ -431,6 +429,8 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   //アクションシートの表示
   func showPhotoSelectionActionSheet() {
     let actionSheet = UIAlertController(title: "写真の選択", message: nil, preferredStyle: .actionSheet)
+    
+    actionSheet.view.accessibilityIdentifier = "photoSelectionSheet"
     
     let cameraAction = UIAlertAction(title: "カメラ", style: .default) { action in
       self.showImagePicker(sourceType: .camera)

@@ -85,7 +85,11 @@ extension UIButton {
 class PhotoTableViewCell: UITableViewCell {
   
   @IBOutlet weak var photoImageView: UIImageView!
-  @IBOutlet weak var insertButton: UIButton!
+  @IBOutlet weak var insertButton: UIButton! {
+    didSet {
+      insertButton.accessibilityIdentifier = "insertButton"
+    }
+  }
   @IBOutlet weak var commentLabel: UILabel!
   @IBOutlet weak var redoButton: UIButton!
   @IBOutlet weak var deleteButton: UIButton!
