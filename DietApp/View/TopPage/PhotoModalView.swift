@@ -7,11 +7,20 @@
 
 import UIKit
 
+
+// MARK: - PhotoModalViewDelegate
+
 protocol PhotoModalViewDelegate {
   func dismiss()
 }
 
+
+// MARK: - PhotoModalView
+
 class PhotoModalView: UIView {
+  
+  
+  // MARK: - Properties
   
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var photoImageView: UIImageView!
@@ -19,6 +28,9 @@ class PhotoModalView: UIView {
   var  isDismissButtonConfigured = false
   
   var delegate: PhotoModalViewDelegate?
+  
+  
+  // MARK: - Init
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -30,24 +42,8 @@ class PhotoModalView: UIView {
     self.nibInit()
   }
   
-  override  func awakeFromNib() {
-    //シンボルのサイズ設定
-    let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
-    let image = dismissButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
-    dismissButton.setImage(image, for: .normal)
-  }
-  
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    if !isDismissButtonConfigured {
-      dismissButton.applyFrostedGlassEffect()
-      dismissButton.setCornerRadius()
-      isDismissButtonConfigured = true
-    }
-  }
-  
-  
   func nibInit(){
+    
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "PhotoModalView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
@@ -59,17 +55,31 @@ class PhotoModalView: UIView {
     self.addSubview(view)
   }
   
-  @IBAction func dismissButtonAction(_ sender: Any) {
-    delegate?.dismiss()
+  // MARK: - LifeCycle
+  
+  override func layoutSubviews() {
+    
+    super.layoutSubviews()
+    if !isDismissButtonConfigured {
+      dismissButton.applyFrostedGlassEffect()
+      dismissButton.setCornerRadius()
+      isDismissButtonConfigured = true
+    }
+  }
+  
+  override  func awakeFromNib() {
+    
+    //シンボルのサイズ設定
+    let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
+    let image = dismissButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
+    dismissButton.setImage(image, for: .normal)
   }
   
   
-  /*
-   // Only override draw() if you perform custom drawing.
-   // An empty implementation adversely affects performance during animation.
-   override func draw(_ rect: CGRect) {
-   // Drawing code
-   }
-   */
+  // MARK: - Methods
   
+  @IBAction func dismissButtonAction(_ sender: Any) {
+    
+    delegate?.dismiss()
+  }
 }

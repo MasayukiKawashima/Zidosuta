@@ -9,6 +9,7 @@ import Foundation
 
 class DateRangeCalculator {
   func calculateMonthHalfDayRange(index: Int,  date: Date = Date()) -> (startDay: Int, endDay: Int) {
+    
     let calendar = Calendar.current
     //現在の日付を取得
     //月の更新

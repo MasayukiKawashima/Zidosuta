@@ -9,6 +9,9 @@ import UIKit
 
 class NotificationSettingViewController: UIViewController {
   
+  
+  // MARK: - Properties
+  
   var notificationSettingView = NotificationSettingView()
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -26,16 +29,12 @@ class NotificationSettingViewController: UIViewController {
   var notificationTimeDisplayTableViewCellHeight:CGFloat  = 90.0
   var notificationTimeEditTableViewCellHeight:CGFloat  = 200.0
   var notificationRegisterTableViewCellHeight:CGFloat = 60.0
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-      notificationSettingView.tableView.delegate = self
-      notificationSettingView.tableView.dataSource = self
-      notificationSettingView.tableView.isScrollEnabled = false
-      notificationSettingView.tableView.rowHeight = UITableView.automaticDimension
-        // Do any additional setup after loading the view.
-    }
+  
+  var transitionSource: TransitionSource = .uiKit // デフォルトはUIKit
+  var dismissCallback: (() -> Void)?
+  
+  
+  // MARK: - Enums
   
   enum NotificationSettingPageCell:Int {
     case notificationTimeDisplayTableViewCell = 0
@@ -59,34 +58,40 @@ class NotificationSettingViewController: UIViewController {
     case uiKit
   }
   
-  var transitionSource: TransitionSource = .uiKit // デフォルトはUIKit
-  var dismissCallback: (() -> Void)?
+  
+  // MARK: - LifeCycle
+  
+  override func viewDidLoad() {
+    
+    super.viewDidLoad()
+    
+    notificationSettingView.tableView.delegate = self
+    notificationSettingView.tableView.dataSource = self
+    notificationSettingView.tableView.isScrollEnabled = false
+    notificationSettingView.tableView.rowHeight = UITableView.automaticDimension
+    // Do any additional setup after loading the view.
+  }
   
   override func loadView() {
+    
     view = notificationSettingView
   }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
+
+// MARK: - UITableViewDelegate, UITableViewDataSource
+
 extension NotificationSettingViewController :UITableViewDelegate, UITableViewDataSource {
+  
   //セクションの数を設定
   //登録ボタンの上にスペースを作るためにセクションを二つにする
   func numberOfSections(in tableView: UITableView) -> Int {
+    
     return 2
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     switch section {
     case 0:
       return 2  // 1つ目のセクションには2つのセル
@@ -98,6 +103,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = NotificationSettingPageCell(rawValue: indexPath.row)
     //セクションごとに分岐
     switch indexPath.section {
@@ -133,6 +139,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
   //時間が選択されるたびに呼ばれる時間ラベル更新メソッド
   @objc func timeChanged(_ sender: UIDatePicker) {
+    
     let row = NotificationSettingPageCell.notificationTimeDisplayTableViewCell.values.row
     let section = NotificationSettingPageCell.notificationTimeDisplayTableViewCell.values.section
     
@@ -143,14 +150,18 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
     let combinedString = selectedDate.convertDateToNotificationTimeString()
     notificationTimeDisplayTableviewCell.timeLabel.text = combinedString
   }
+  
   //一つ目のセクションの下にスペースを作るためにフッターViewを作成
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-      let footerView = UIView()
+    
+    let footerView = UIView()
     footerView.backgroundColor = .systemGray6
-      return footerView
+    return footerView
   }
+  
   //フッターの高さ
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    
     if section == 0 {  // 1つ目のセクションの後にスペースを入れる
       return 50
     }
@@ -158,6 +169,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
     let cell = NotificationSettingPageCell(rawValue: indexPath.row)
     switch indexPath.section {
     case 0:
@@ -174,11 +186,15 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
 }
 
+
+
+// MARK: - NotificationRegisterTableViewCellDelegate
+
 extension NotificationSettingViewController: NotificationRegisterTableViewCellDelegate {
   
   func registerButtonAction() {
-    let settings = Settings.shared
     
+    let settings = Settings.shared
     LocalNotificationManager.shared.requestAuthorization { [weak self] granted in
       guard let self = self else { return }
       
@@ -212,8 +228,11 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
         }
       }
     }
-  }  //オンボード画面から遷移していたときのみ表示するアラート
+  }
+  
+  //オンボード画面から遷移していたときのみ表示するアラート
   private func showRegistrationNotificationSucceses() {
+    
     let alert = UIAlertController(
       title: "通知を登録しました",
       message: nil,
@@ -226,6 +245,7 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
   }
   
   private func showNotificationPermissionAlert() {
+    
     let alert = UIAlertController(
       title: "通知が許可されていません",
       message: "設定アプリから通知を有効にしてください",

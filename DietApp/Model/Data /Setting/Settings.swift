@@ -9,12 +9,12 @@ import Foundation
 import RealmSwift
 
 class Settings: Object {
+  
+  
+  // MARK: - Properties
+  
   @Persisted var id: String = "settings"
   @Persisted var notification: Notification?
-  
-  override static func primaryKey() -> String? {
-    return "id"
-  }
   //このモデルはレコードが複数存在したらまずいので、シングルトンにする
   static var shared: Settings {
     let realm = try! Realm()
@@ -33,13 +33,22 @@ class Settings: Object {
       return settings
     }
   }
+  
+  
+  // MARK: - Methods
+  
+  override static func primaryKey() -> String? {
+    return "id"
+  }
   //手動でRealmオブジェクトを更新
   static func refresh() {
+    
     let realm = try! Realm()
     realm.refresh()
   }
   
   func update(operation: (Settings) -> Void) {
+    
     let realm = try! Realm()
     try! realm.write {
       operation(self)

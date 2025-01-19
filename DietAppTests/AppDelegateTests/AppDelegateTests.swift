@@ -10,6 +10,9 @@ import XCTest
 
 final class AppDelegateTests: XCTestCase {
   
+  
+  // MARK: - Properties
+  
   var appDelegate: AppDelegate!
   var window: UIWindow!
   var tabBarController: TabBarController!
@@ -22,15 +25,19 @@ final class AppDelegateTests: XCTestCase {
   var settingsNavigationController: SettingsNavigationController!
   var settingsViewController: SettingsViewController!
   
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+  
+  // MARK: - Methods
+  
+  override func setUpWithError() throws {
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+  }
+  
+  override func tearDownWithError() throws {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+  }
   
   override func setUp() {
+    
     super.setUp()
     
     appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -45,15 +52,16 @@ final class AppDelegateTests: XCTestCase {
     self.settingsNavigationController = SettingsNavigationController()
     self.settingsViewController = SettingsViewController()
   }
-  
-  override func tearDown() {
-  }
 }
+
+
+// MARK: - TestCases
 
 extension AppDelegateTests {
   //supportedInterfaceOrientationsForTopViewController(window: )のテスト
   //グラフページ（左横向き）のテスト
   func testGraphPage() {
+    
     graphNavigationController.viewControllers = [graphViewController]
     tabBarController.viewControllers = [graphNavigationController]
     window.rootViewController = tabBarController
@@ -61,8 +69,10 @@ extension AppDelegateTests {
     let result = appDelegate.supportedInterfaceOrientationsForTopViewController(window: window)
     XCTAssertEqual(result, .landscapeLeft)
   }
+  
   //トップページ（縦向き）のテスト
   func testTopPage() {
+    
     topNavigationController.viewControllers = [topViewController]
     tabBarController.viewControllers = [topNavigationController]
     window.rootViewController = tabBarController
@@ -73,6 +83,7 @@ extension AppDelegateTests {
   
   //設定ページ（縦向き)のテスト
   func testSettingsPage() {
+    
     settingsNavigationController.viewControllers = [settingsViewController]
     tabBarController.viewControllers = [settingsNavigationController]
     window.rootViewController = tabBarController
@@ -80,5 +91,4 @@ extension AppDelegateTests {
     let result = appDelegate.supportedInterfaceOrientationsForTopViewController(window: window)
     XCTAssertEqual(result, .portrait)
   }
-  
 }

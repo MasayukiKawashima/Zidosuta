@@ -8,20 +8,31 @@
 import Foundation
 
 class GraphDateManager {
+  
+  
+  // MARK: - Properties
+  
   var firstDateOfHalfMonth: Date?
   var lastDateOfHalfMonth: Date?
   lazy var index: Int = {
     //月の前半か後半かによるindexの調整
-      let date = Date()
-      let indexSetter = IndexSetter()
-      return indexSetter.indexSetting(date: date)
-    }()
+    let date = Date()
+    let indexSetter = IndexSetter()
+    return indexSetter.indexSetting(date: date)
+  }()
+  
+  
+  // MARK: - Init
   
   init(date: Date = Date()) {
     updateDate(index: self.index, date: date)
   }
   
+  
+  // MARK: - Methods
+  
   func updateDate(index: Int, date: Date = Date()) {
+    
     let calendar = Calendar.current
     var modifiedDate = Date()
     

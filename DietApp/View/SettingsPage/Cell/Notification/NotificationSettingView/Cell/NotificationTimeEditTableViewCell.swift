@@ -8,11 +8,19 @@
 import UIKit
 
 class NotificationTimeEditTableViewCell: UITableViewCell {
-
+  
+  
+  // MARK: - Properties
+  
   @IBOutlet weak var datePicker: UIDatePicker!
+  
+  
+  // MARK: - LifeCycle
+  
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    super.awakeFromNib()
+    // Initialization code
     datePicker.datePickerMode = .time
     if #available(iOS 13.4, *) {
       datePicker.preferredDatePickerStyle = .wheels // ホイールスタイルを使用
@@ -21,11 +29,10 @@ class NotificationTimeEditTableViewCell: UITableViewCell {
     datePicker.transform = CGAffineTransform(scaleX: 1, y: 1)
   }
   
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+  override func setSelected(_ selected: Bool, animated: Bool) {
     
+    super.setSelected(selected, animated: animated)
+    
+    // Configure the view for the selected state
+  }
 }

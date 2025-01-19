@@ -9,11 +9,20 @@ import XCTest
 import RealmSwift
 @testable import DietApp
 
+
+// MARK: - TestRealmObject
+
 class TestRealmObject: Object {
   @Persisted var id = UUID().uuidString
 }
 
+
+// MARK: - DataDeleteManagerTests
+
 final class DataDeleteManagerTests: XCTestCase {
+  
+  
+  // MARK: - Properties
   
   var sut: DataDeleteManager!
   var realm: Realm!
@@ -22,8 +31,13 @@ final class DataDeleteManagerTests: XCTestCase {
   var dummyFiles: [String]!
   var fileURLs:[URL]!
   
+  
+  // MARK: - Methods
+  
   override func setUp() {
+    
     super.setUp()
+    
     sut = DataDeleteManager.shared
     realm = try! Realm()
     fileManager = FileManager.default
@@ -34,16 +48,19 @@ final class DataDeleteManagerTests: XCTestCase {
   }
   
   override func tearDown() {
+    
     sut = nil
     realm = nil
     fileManager = nil
     documentURL = nil
     dummyFiles = nil
     fileURLs = nil
+    
     super.tearDown()
   }
   
   private func setupTestData() {
+    
     // テスト用のRealmオブジェクトを作成
     try! realm.write {
       let testObject = TestRealmObject()
@@ -63,6 +80,9 @@ final class DataDeleteManagerTests: XCTestCase {
     }
   }
   
+  
+  // MARK: - TestCases
+  
   //成功の場合のテスト
   func testDeleteAllData_Success() {
     
@@ -78,7 +98,7 @@ final class DataDeleteManagerTests: XCTestCase {
   }
   //ドキュメントディレクトリが既にRealmファイル以外が空の場合のテスト
   func testDeleteAllData_EmptyDirectorySuccess() {
-    // Given
+    
     // ドキュメントディレクトリを事前にクリア
     let contents = try? fileManager.contentsOfDirectory(at: documentURL, includingPropertiesForKeys: nil, options: [])
     try? contents?.forEach { url in
@@ -97,8 +117,10 @@ final class DataDeleteManagerTests: XCTestCase {
     // Then
     XCTAssertTrue(result)
   }
+  
   //default.realmファイルの削除をスキップできているかテスト
   func testDeleteAllData_SkipDeleteRealmData() {
+    
     let deleteAllDataResult = sut.deleteAllData()
     XCTAssertTrue(deleteAllDataResult)
     
@@ -117,8 +139,8 @@ final class DataDeleteManagerTests: XCTestCase {
     }catch {
       print("ドキュメントディレクトリ内のファイル一覧取得に失敗しました: \(error)")
     }
-    
   }
+  
   //通知リクエストが削除できているかのテスト
   func testDeleteAllData_removeNotificationRequests() {
     
@@ -140,14 +162,16 @@ final class DataDeleteManagerTests: XCTestCase {
     
     let deleteAllDataResult = sut.deleteAllData()
     XCTAssertTrue(deleteAllDataResult)
-
+    
     center.getPendingNotificationRequests { requests in
       let count = requests.count
       XCTAssertTrue(count == 0)
     }
   }
+  
   //RealmObjectが存在しない場合のテスト
   func testDeleteAllData_EmptyRealmObjectSuccess() {
+    
     //全てのRealmObjectを事前に削除
     try! realm.write {
       realm.deleteAll()

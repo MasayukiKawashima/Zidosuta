@@ -10,16 +10,13 @@ import XCTest
 
 final class MemoTextFieldValidationTest: XCTestCase {
   
-  override func setUpWithError() throws {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-  }
   
-  override func tearDownWithError() throws {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-  }
+  // MARK: - TestCases
+  
   //CharacterLengthValidator
   //有効な値
   func testCharacterLengthValidator_ValidInput_ShouldReturnValid(){
+    
     let validInputs = ["あ",
                        "あいうえお",
                        "aiueo",
@@ -38,9 +35,11 @@ final class MemoTextFieldValidationTest: XCTestCase {
       XCTAssertTrue(result.isValid, "Input \(input) は無効な値です")
     }
   }
+  
   //無効な値
   func testCharacterLengthValidator_InvalidInput_ShouldReturnInvalid(){
-                          //36文字
+    
+    //36文字
     let invalidInputs = ["あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもや",
                          //46文字
                          "あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりるれろわをん"
@@ -52,16 +51,18 @@ final class MemoTextFieldValidationTest: XCTestCase {
       XCTAssertFalse(result.isValid)
     }
   }
+  
   //NewLineValidator
   //有効な値
   func testNewLineValidator_ValidInput_ShouldReturnValid() {
+    
     let validInputs = ["あ",
-                      "あいうえお",
-                      "あ　いうえお",
-                      "123",
-                      "aiu",
-                      " ",
-                      ""
+                       "あいうえお",
+                       "あ　いうえお",
+                       "123",
+                       "aiu",
+                       " ",
+                       ""
     ]
     
     validInputs.forEach{ input in
@@ -70,8 +71,10 @@ final class MemoTextFieldValidationTest: XCTestCase {
       XCTAssertTrue(result.isValid, "Input \(input) は無効な値です")
     }
   }
+  
   //無効な値
   func testNewLineValidator_InvalidInput_ShouldReturnInvalid() {
+    
     let invalidInputs = ["\n",
                          "\nあいうえお",
                          "あいうえお\nかきくけこ",
@@ -87,6 +90,7 @@ final class MemoTextFieldValidationTest: XCTestCase {
   }
   
   func testMemoInputValidator_ValidInput_ShouldReturnValid() {
+    
     let validInputs = ["あいうえおかきくけこ",
                        "あいうえお　かきくけこ",
                        "aiu",
@@ -103,6 +107,7 @@ final class MemoTextFieldValidationTest: XCTestCase {
   }
   
   func testMemovalidator_InvalidInput_ShouldReturnInvalid() {
+    
     let testCases = [
       ("あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりるれろわをん", MemoValidationError.exceedsMaximumCharacterLength),
       ("あいうえお\nかきくけこ\nさしすせそ", MemoValidationError.newLine)

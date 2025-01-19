@@ -9,10 +9,11 @@ import Foundation
 import Charts
 
 extension AxisBase {
-    /// 軸ラベルに "kg" を追加するフォーマッターを設定
-    func setKGFormatter() {
-        self.valueFormatter = DefaultAxisValueFormatter { value, _ in
-            return "\(value)kg"
-        }
+  
+  /// 軸ラベルに "kg" を追加するフォーマッターを設定
+  func setKGFormatter() {
+    self.valueFormatter = DefaultAxisValueFormatter { value, _ in
+      return "\(value)kg"
     }
+  }
 }

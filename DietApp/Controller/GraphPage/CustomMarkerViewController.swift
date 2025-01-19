@@ -9,7 +9,14 @@ import UIKit
 import Charts
 
 class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
+  
+  
+  // MARK: - Properties
+  
   var index: Int
+  
+  
+  // MARK: - Init
   
   init(index: Int){
     self.index = index
@@ -19,8 +26,13 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
+  
+  // MARK: - Methods
+  
   //テキストの作成
   func customMarkerView(_ customMarkerView: CustomMarkerView, textsInMarker entry: ChartDataEntry, highlight: Highlight) -> [NSMutableAttributedString] {
+    
     //日付と曜日の設定
     let calendar = Calendar.current
     let monthAdjuster = MonthAdjuster()
@@ -31,7 +43,7 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
     
     let dateComponents = DateComponents(year: year, month: month, day: day)
     guard let date = calendar.date(from: dateComponents) else {
-        fatalError("Invalid date components.")
+      fatalError("Invalid date components.")
     }
     let weekdayNumber = calendar.component(.weekday, from: date)
     let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -95,8 +107,10 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
     
     return texts
   }
+  
   //テキストのサイズをもとにMakerを作成
   func customMarkerView(_ customMarkerView: CustomMarkerView, pathOfMakerCreatedFromTextSize texts: [NSMutableAttributedString], context: CGContext, point: CGPoint) -> UIBezierPath {
+    
     let dateTextSize = texts[0].size()
     let valueWithKgTextSize = texts[1].size()
     //Makerの基本の位置とサイズを定義
@@ -129,8 +143,10 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
     
     return roundedRectPath
   }
+  
   //マーカー内のテキストの位置の調整
   func customMarkerView(_ customMarkerView: CustomMarkerView, adjustedTextCGRects texts: [NSMutableAttributedString], markerPath: UIBezierPath) -> [(textRect: CGRect, text: NSMutableAttributedString)] {
+    
     //日付テキストのサイズ取得
     let dateSize = texts[0].size()
     
@@ -158,15 +174,17 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
     // 体重テキストを描画する領域を定義
     let valueTextRect = CGRect(x: valueCenteredX, y: valueCenteredY, width: valueSize.width, height: valueSize.height)
     let valueTextRectWithText = (valueTextRect, texts[1])
-
+    
     var textRects: [(textRect: CGRect, text: NSMutableAttributedString)] = []
     textRects.append(dateTextRectWithText)
     textRects.append(valueTextRectWithText)
     
     return textRects
   }
+  
   //色を指定
   func markerBackGroundColor(in customMarkerView: CustomMarkerView) -> UIColor {
+    
     return UIColor.CornflowerBlue
   }
 }

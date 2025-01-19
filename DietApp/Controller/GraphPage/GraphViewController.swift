@@ -10,14 +10,15 @@ import Charts
 import RealmSwift
 
 class GraphViewController: UIViewController {
+  
+  
+  // MARK: - Properties
+  
   var graphView = GraphView()
-  
   var graphDateManager = GraphDateManager()
-  
   let realm = try! Realm()
   var notificationToken: NotificationToken?
   var shouldReloadDataAfterDeletion: Bool = false
-  
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
@@ -31,7 +32,11 @@ class GraphViewController: UIViewController {
   var safeAreaLeft:CGFloat = CGFloat()
   var safeAreaBottom:CGFloat = CGFloat()
   
+  
+  // MARK: - LifeCycle
+  
   override func viewDidLoad() {
+    
     super.viewDidLoad()
     // Do any additional setup after loading the view.
     configureDefaultGraph(index: self.graphDateManager.index)
@@ -41,10 +46,12 @@ class GraphViewController: UIViewController {
   }
   
   override func loadView() {
+    
     view = graphView
   }
   
   override func viewDidLayoutSubviews() {
+    
     super.viewDidLayoutSubviews()
     _ = self.initViewLayout
     //グラフの更新処理
@@ -52,13 +59,24 @@ class GraphViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    
     if shouldReloadDataAfterDeletion {
       createLineChartDate()
       self.shouldReloadDataAfterDeletion = false
     }
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // Get the new view controller using segue.destination.
+    // Pass the selected object to the new view controller.
+  }
+  
+  
+  // MARK: - Methods
+  
   //graphView上での複数種類のユーザーアクションに対応するためメソッド
   private func configureGestureRecognizers() {
+    
     guard let pageViewController = parent as? UIPageViewController else { return }
     let pageGestureRecognizers = pageViewController.gestureRecognizers
     
@@ -78,6 +96,7 @@ class GraphViewController: UIViewController {
   }
   
   private func setupRealmObserver() {
+    
     let dateData = realm.objects(DateData.self)
     
     notificationToken = dateData.observe { changes in
@@ -102,19 +121,14 @@ class GraphViewController: UIViewController {
     }
     //    graphAreaViewAutoLayoutSetting()
   }()
-  
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Get the new view controller using segue.destination.
-    // Pass the selected object to the new view controller.
-  }
 }
 
-//グラフの設定
+
+// MARK: - ConfigureDefaultGraph
+
 extension GraphViewController {
   func configureDefaultGraph(index: Int) {
+    
     // データエントリーポイントは初期では空にしておく
     let dataEntries: [ChartDataEntry] = []
     let dataSet = LineChartDataSet(entries: dataEntries)
@@ -223,8 +237,14 @@ extension GraphViewController {
     let rightAxisLabelFont =  UIFont(name: "Thonburi", size: 9)
     rightAxis.labelFont = rightAxisLabelFont ?? UIFont.systemFont(ofSize: 9)
   }
-  
+}
+
+
+// MARK: - CreateLineChartDate(
+
+extension GraphViewController {
   func createLineChartDate() {
+    
     let graphContetCreator = GraphContentCreator()
     let dataEntries = graphContetCreator.createDataEntry(index: graphDateManager.index)
     if dataEntries.count != 0 {
@@ -283,11 +303,15 @@ extension GraphViewController {
   }
 }
 
+
+// MARK: - UIGestureRecognizerDelegate
+
 extension GraphViewController: UIGestureRecognizerDelegate {
   //グラフView上でスワイプによる画面遷移を可能にするデリゲートメソッド
   
   func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                          shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    
     // グラフ上でのタップやズームなどの操作は維持しつつ、
     // PageViewControllerのスワイプジェスチャーとの同時認識を許可
     return true

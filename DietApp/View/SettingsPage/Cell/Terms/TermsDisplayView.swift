@@ -10,12 +10,17 @@ import WebKit
 
 class TermsDisplayView: UIView {
   
-
+  
+  // MARK: - Properties
+  
   @IBOutlet weak var webView: WKWebView! {
     didSet {
       webView.backgroundColor = .white
     }
   }
+  
+  
+  // MARK: - LifeCycle
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -27,6 +32,9 @@ class TermsDisplayView: UIView {
     nibInit()
   }
   
+  
+  // MARK: - Methods
+  
   func nibInit() {
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "TermsDisplayView", bundle: nil)
@@ -37,13 +45,4 @@ class TermsDisplayView: UIView {
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     self.addSubview(view)
   }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

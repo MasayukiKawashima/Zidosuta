@@ -28,7 +28,6 @@
 		FA2211182CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA2211162CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib */; };
 		FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */; };
 		FA22111C2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */; };
-		FA24A8732CA66F110082AF19 /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A8722CA66F110082AF19 /* OrientationManager.swift */; };
 		FA24A87E2CA6EC100082AF19 /* AppDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA24A87D2CA6EC100082AF19 /* AppDelegateTests.swift */; };
 		FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA32F4B52A32BCF50058FD32 /* SettingsView.xib */; };
 		FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA32F4B72A32BD130058FD32 /* SettingsView.swift */; };
@@ -44,6 +43,7 @@
 		FA42FA4A2A7F3BE600C60F9E /* MonthAdjusterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */; };
 		FA42FA522A81D8CC00C60F9E /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */; };
 		FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */; };
+		FA5DF1C92D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DF1C82D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift */; };
 		FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF202A135F6F00B69D4A /* AppDelegate.swift */; };
 		FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */; };
 		FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF262A135F6F00B69D4A /* Main.storyboard */; };
@@ -154,7 +154,6 @@
 		FA2211162CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTimeDisplayTableViewCell.xib; sourceTree = "<group>"; };
 		FA2211192CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeEditTableViewCell.swift; sourceTree = "<group>"; };
 		FA22111A2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTimeEditTableViewCell.xib; sourceTree = "<group>"; };
-		FA24A8722CA66F110082AF19 /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
 		FA24A87D2CA6EC100082AF19 /* AppDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateTests.swift; sourceTree = "<group>"; };
 		FA32F4B52A32BCF50058FD32 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		FA32F4B72A32BD130058FD32 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -170,6 +169,7 @@
 		FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdjusterTests.swift; sourceTree = "<group>"; };
 		FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreator.swift; sourceTree = "<group>"; };
+		FA5DF1C82D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + AdjustmentOfappearance.swift"; sourceTree = "<group>"; };
 		FA68AF1D2A135F6F00B69D4A /* DietApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DietApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF202A135F6F00B69D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -311,7 +311,6 @@
 				FAC9EF2E2D0C11E000DE1E64 /* TopDateManager.swift */,
 				FAC9EF302D0C11E900DE1E64 /* GraphDateManager.swift */,
 				FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */,
-				FA24A8722CA66F110082AF19 /* OrientationManager.swift */,
 				FAC9EF2C2D0C11C200DE1E64 /* LocalNotificationManager.swift */,
 				FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */,
 				FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */,
@@ -521,6 +520,7 @@
 			isa = PBXGroup;
 			children = (
 				FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */,
+				FA5DF1C82D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift */,
 				FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */,
 				FAC0A8A72D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift */,
 			);
@@ -977,6 +977,7 @@
 				FAC9EF2D2D0C11C200DE1E64 /* LocalNotificationManager.swift in Sources */,
 				FAC0A8A82D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift in Sources */,
 				FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */,
+				FA5DF1C92D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift in Sources */,
 				FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */,
 				FAC9EF2F2D0C11E000DE1E64 /* TopDateManager.swift in Sources */,
 				FA42FA3A2A70B2DC00C60F9E /* DateRangeCalculator.swift in Sources */,
@@ -1014,7 +1015,6 @@
 				FA9E8C402D14641C00A05E55 /* TermsDisplayView.swift in Sources */,
 				FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */,
 				FAC9EF362D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift in Sources */,
-				FA24A8732CA66F110082AF19 /* OrientationManager.swift in Sources */,
 				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
 				FACA1A412D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift in Sources */,

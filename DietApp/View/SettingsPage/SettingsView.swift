@@ -9,6 +9,9 @@ import UIKit
 
 class SettingsView: UIView {
   
+  
+  // MARK: - Properties
+  
   let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell", "ContactTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView!{
@@ -35,6 +38,9 @@ class SettingsView: UIView {
     }
   }
   
+  
+  // MARK: - LifeCycle
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     nibInit()
@@ -45,7 +51,11 @@ class SettingsView: UIView {
     nibInit()
   }
   
+  
+  // MARK: - Methods
+  
   func nibInit() {
+    
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "SettingsView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
@@ -57,12 +67,4 @@ class SettingsView: UIView {
     tableView.separatorStyle = .none
     self.addSubview(view)
   }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

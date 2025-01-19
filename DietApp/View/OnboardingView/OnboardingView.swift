@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct OnboardingView: View {
+  
+  
+  // MARK: - Init
+  
   init() {
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
@@ -25,9 +29,15 @@ struct OnboardingView: View {
     UINavigationBar.appearance().tintColor = .white
   }
   
+  
+  // MARK: - Properties
+  
   @State private var showingNotificationSetting = false
   @State private var showTermsDisplay = false
   @State private var selectedTermsType: TermsDisplayViewController.TermsType?
+  
+  
+  // MARK: - Body
   
   var body: some View {
     NavigationView {
@@ -119,7 +129,11 @@ struct OnboardingView: View {
     }
   }
   
+  
+  // MARK: - Methods
+  
   private func transitionToMainContent() {
+    
     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
        let window = windowScene.windows.first {
       let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -137,6 +151,9 @@ struct OnboardingView: View {
     }
   }
 }
+
+
+// MARK: - Preview
 
 #Preview {
   OnboardingView()

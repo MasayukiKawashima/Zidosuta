@@ -9,6 +9,10 @@ import UIKit
 import RealmSwift
 
 class TopViewController: UIViewController {
+  
+  
+  // MARK: - Properties
+  
   var topView = TopView()
   
   private var navigationBarCover: UIView?
@@ -54,15 +58,18 @@ class TopViewController: UIViewController {
   var weightTableViewCellHeight:CGFloat = 70.0
   var memoTableViewCellHeight:CGFloat = 47.0
   var photoTableViewCellHeight: CGFloat {
-       let totalHeight = view.frame.height
-       let navigationHeight = navigationBarHeight
-       let statusHeight = statusBarHeight
-       let tabHeight = tabBarHeight
-       let adHeight = adTableViewCellHeight
-       
-       return totalHeight - navigationHeight - statusHeight - tabHeight - weightTableViewCellHeight - memoTableViewCellHeight - adHeight
-   }
+    let totalHeight = view.frame.height
+    let navigationHeight = navigationBarHeight
+    let statusHeight = statusBarHeight
+    let tabHeight = tabBarHeight
+    let adHeight = adTableViewCellHeight
+    
+    return totalHeight - navigationHeight - statusHeight - tabHeight - weightTableViewCellHeight - memoTableViewCellHeight - adHeight
+  }
   var adTableViewCellHeight:CGFloat = 53.0
+  
+  
+  // MARK: - Enums
   
   //セル周り設定用の列挙体
   enum TopPageCell: Int {
@@ -77,16 +84,19 @@ class TopViewController: UIViewController {
     case memo = 4
   }
   
+  
+  // MARK: - LifeCycle
+  
   override func viewDidLoad() {
+    
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
-    //    topView.navigationBar.delegate = self
+    
     topView.tableView.delegate = self
     topView.tableView.dataSource = self
     //キーボードの表示と非表示の監視
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+    
     //スクロールできないようにする
     topView.tableView.isScrollEnabled = false
     //tableViewCellの高さの自動設定
@@ -99,6 +109,7 @@ class TopViewController: UIViewController {
   }
   
   private func setupRealmObserver() {
+    
     let dateData = realm.objects(DateData.self)
     
     notificationToken = dateData.observe { changes in
@@ -116,6 +127,7 @@ class TopViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    
     super.viewWillAppear(animated)
     
     if shouldReloadDataAfterDeletion {
@@ -132,6 +144,7 @@ class TopViewController: UIViewController {
   }
   
   override func loadView() {
+    
     view = topView
   }
   
@@ -140,24 +153,21 @@ class TopViewController: UIViewController {
     //初回レイアウトが完了
     isViewFirstLayoutFinished = true
   }
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
 }
+
+
+// MARK: - UITableViewDelegate,UITableViewDataSource
+
 //TableViewの設定
 extension TopViewController: UITableViewDelegate,UITableViewDataSource {
   //TableViewのセクション内のセルの数（5.28時点で１セクション、４セル）
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     return 4
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
+    
     return 1
   }
   
@@ -184,11 +194,6 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
         cell.weightTextField.text = weightString
       }
       
-//      if resultsCount != 0 {
-//        let weightString = String(results.first!.weight)
-//        cell.weightTextField.text = weightString
-//      }
-      
       return cell
       
     case .memoTableViewCell:
@@ -206,10 +211,6 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
         cell.memoTextField.text = results.first!.memoText
       }
       
-//      if resultsCount != 0 {
-//        cell.memoTextField.text = results.first!.memoText
-//      }
-      
       return cell
       
     case .photoTableViewCell:
@@ -218,9 +219,9 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       //写真セルのデリゲート
       cell.delegate = self
       //テキストカラーをダークグレイに再設定
-    //写真読み込み時にテキストカラーが.redに変更されるため
+      //写真読み込み時にテキストカラーが.redに変更されるため
       cell.commentLabel.textColor = .darkGray
-            
+      
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
       if results.isEmpty {
@@ -249,8 +250,10 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       return cell
     }
   }
+  
   //各セルの高さの推定値を設定
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    
     let cell = TopPageCell(rawValue: indexPath.row)
     
     switch (cell)! {
@@ -267,8 +270,10 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       return adTableViewCellHeight
     }
   }
+  
   //セルの高さの設定
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
     let cell = TopPageCell(rawValue: indexPath.row)
     
     switch (cell)! {
@@ -286,37 +291,50 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
     }
   }
 }
-//UITextField周りの処理
+
+
+// MARK: - WeightTableViewCellDelegate, MemoTableViewCellDelegate
+
 //エンターを押したらキーボードを閉じる処理
 extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDelegate {
   //notificationCenterのメソッド
   func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell) {
+    
     view.endEditing(true)
   }
   func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell) {
+    
     view.endEditing(true)
   }
 }
+
+
+// MARK: - PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+
 //写真セル内のボタン押下時処理
 extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   //拡大ボタンが押された時の処理
   func expandButtonAction(photoImage: UIImage) {
+    
     showPhotoModal(photoImage: photoImage)
   }
   //削除ボタンが押された時の処理
   func deleteButtonAction(in cell: PhotoTableViewCell) {
+    
     let alert = UIAlertController(title: nil, message: "写真を削除してもよろしいですか？", preferredStyle: .alert)
     let okAction = UIAlertAction(title: "削除する", style: .destructive) { _ in
       self.deleteAlertAction(cell)
     }
     let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-
+    
     alert.addAction(cancelAction)
     alert.addAction(okAction)
     present(alert, animated: true)
   }
+  
   //削除ボタンが押された時の確認のアラート
   func deleteAlertAction(_ cell: PhotoTableViewCell) {
+    
     let dateDataRealmSearcher = DateDataRealmSearcher()
     let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
     let resultsCount = results.count
@@ -344,14 +362,18 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   
   //写真挿入ボタンとやり直しボタンを押した時の処理
   func insertButtonAction() {
+    
     showPhotoSelectionActionSheet()
   }
   //写真がダブルタップされた時の処理
   func photoDoubleTapAction(photoImage: UIImage) {
+    
     showPhotoModal(photoImage: photoImage)
   }
+  
   //モーダル表示するメソッド
   func showPhotoModal(photoImage: UIImage) {
+    
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     if let photoModalVC = storyboard.instantiateViewController(withIdentifier: "PhotoModalVC") as? PhotoModalViewController {
       photoModalVC.modalPresentationStyle = .fullScreen
@@ -361,10 +383,13 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   //カメラ及びフォトライブラリでキャンセルしたときのデリゲートメソッド
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    
     picker.dismiss(animated: true, completion: nil)
   }
+  
   //UIImagePickerController内で画像を選択したときの処理
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
     if let pickedImage = info[.originalImage] as? UIImage {
       //保存した
       let fileName = "\(NSUUID().uuidString)"
@@ -412,13 +437,6 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       //取得した写真の表示処理
       //現在表示されているPhotoTAbleViewCellのインスタンス取得
       let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
-//      //ボタンとコメントラベルを非表示にする
-//      photoTableViewCell.insertButton.isHidden = true
-//      photoTableViewCell.commentLabel.isHidden = true
-//      //各種ボタンの非表示を解除する
-//      photoTableViewCell.redoButton.isHidden = false
-//      photoTableViewCell.deleteButton.isHidden = false
-//      photoTableViewCell.expandButton.isHidden = false
       //取得したインスタンスのimageに選択した写真を格納
       photoTableViewCell.photoImageView.image = pickedImage
     }
@@ -428,6 +446,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   
   //アクションシートの表示
   func showPhotoSelectionActionSheet() {
+    
     let actionSheet = UIAlertController(title: "写真の選択", message: nil, preferredStyle: .actionSheet)
     
     actionSheet.view.accessibilityIdentifier = "photoSelectionSheet"
@@ -449,6 +468,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   
   //ImagePickerControllerの表示
   func showImagePicker(sourceType: UIImagePickerController.SourceType) {
+    
     if UIImagePickerController.isSourceTypeAvailable(sourceType) {
       let imagePicker = UIImagePickerController()
       imagePicker.sourceType = sourceType
@@ -468,16 +488,19 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     }
   }
 }
+
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {
   //各種カバービューを作成し配置
   func createCoverViews() {
+    
     addNavigationBarCover()
     addViewCover()
     addTabBarCover()
   }
   //カバービューを削除
   func removeCoverviews() {
+    
     navigationBarCover?.removeFromSuperview()
     navigationBarCover = nil
     
@@ -487,8 +510,10 @@ extension TopViewController: UITextFieldDelegate {
     tabBarCover?.removeFromSuperview()
     tabBarCover = nil
   }
+  
   //個別のカバービューの生成と配置
   private func addNavigationBarCover() {
+    
     guard navigationBarCover == nil, let navigationBar = navigationController?.navigationBar else { return }
     
     let coverView = UIView(frame: navigationBar.bounds)
@@ -503,6 +528,7 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   private func addViewCover() {
+    
     guard viewCover == nil else { return }
     
     let coverView = UIView(frame: view.bounds)
@@ -517,6 +543,7 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   private func addTabBarCover() {
+    
     guard tabBarCover == nil, let tabBar = tabBarController?.tabBar else { return }
     
     let coverView = UIView(frame: tabBar.bounds)
@@ -531,8 +558,9 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   @objc private func dismissKeyboard() {
-     view.endEditing(true)
-   }
+    
+    view.endEditing(true)
+  }
   @objc private func keyboardWillShow(_ notification: Notification) {
     //カバービューの生成と配置をする
     //textFieldDidBeginEditing(_ textField: UITextField)でも同様の処理を行う
@@ -555,7 +583,7 @@ extension TopViewController: UITextFieldDelegate {
   
   //リターンが押されたとき
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-
+    
     textField.resignFirstResponder()
     return true
   }
@@ -613,8 +641,10 @@ extension TopViewController: UITextFieldDelegate {
       }
     }
   }
+  
   //バリデーションエラーのアラートを表示する
   func showValidationErrorAlert(errorText: String, textField: UITextField) {
+    
     let alert = UIAlertController(title: "", message: errorText, preferredStyle: .alert)
     
     let attributedTitle = NSAttributedString(string: "入力エラー", attributes: [
@@ -637,6 +667,7 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   private func handleWeightTextFieldEditing(with results: Results<DateData>, text: String) {
+    
     let realm = try! Realm()
     //空文字（"")でないかを確認
     if !text.isEmpty {
@@ -675,125 +706,40 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   private func handleMemoTextFieldEditing(with results: Results<DateData>, text: String) {
+    
     let realm = try! Realm()
-      //テキストが空文字じゃないかを確認
-      if !text.isEmpty {
-        //空文字じゃなければ
-        //Realmのデータがあるかを確認
-        if results.isEmpty {
-          //データがなければ
-          let dateData = DateData()
-          dateData.date = topDateManager.date
-          dateData.memoText = text
-          try! realm.write {
-            realm.add(dateData)
-          }
-          print("新しいメモデータが作成されました")
-        } else {
-          //データあれば
-          try! realm.write {
-            results[0].memoText = text
-            print("メモデータを更新しました")
-          }
+    //テキストが空文字じゃないかを確認
+    if !text.isEmpty {
+      //空文字じゃなければ
+      //Realmのデータがあるかを確認
+      if results.isEmpty {
+        //データがなければ
+        let dateData = DateData()
+        dateData.date = topDateManager.date
+        dateData.memoText = text
+        try! realm.write {
+          realm.add(dateData)
         }
+        print("新しいメモデータが作成されました")
       } else {
-        //Realmのデータがない場合
-        if results.isEmpty {
-          print("メモデータなし。メモが未入力です")
-        } else {
-          //Realmのデータはある場合
-          //Realmのデータはあるのに、テキストフィールドを空にした　→ データを消去したいということ
-          try! realm.write {
-            results[0].memoText = ""
-            print("メモデータを消去しました")
-          }
+        //データあれば
+        try! realm.write {
+          results[0].memoText = text
+          print("メモデータを更新しました")
+        }
+      }
+    } else {
+      //Realmのデータがない場合
+      if results.isEmpty {
+        print("メモデータなし。メモが未入力です")
+      } else {
+        //Realmのデータはある場合
+        //Realmのデータはあるのに、テキストフィールドを空にした　→ データを消去したいということ
+        try! realm.write {
+          results[0].memoText = ""
+          print("メモデータを消去しました")
         }
       }
     }
   }
-  //以下のコメントアウトは少しの間保管する（2024.10.31 〜）
-  //textFieldDidEndEditing内の処理をリファレンスしたので、挙動を少しの間確認したい
-  //キーボードが閉じたとき
-//  func textFieldDidEndEditing(_ textField: UITextField) {
-//    let dateDataRealmSearcher = DateDataRealmSearcher()
-//    let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
-//    let resultsCount = results.count
-//    //体重が入力された場合
-//    if textField.tag == 3 {
-//      //入力された文字が空の場合
-//      if textField.text == "" {
-//        //データがなければ
-//        if (resultsCount == 0) {
-//          print("データなし。体重が未入力です")
-//        }else{
-//          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
-//          //なのでレラムインスタンスを作り、データの上書き＝データを消す
-//          let realm = try! Realm()
-//          try! realm.write() {
-//            results[0].weight = 0
-//            print("体重データを消去しました")
-//          }
-//        }
-//        //文字列が空じゃなかったら
-//      }else{
-//        let realm = try! Realm()
-//        //そして今日の日付のデータも存在しなかったら
-//        if (resultsCount == 0) {
-//          //今日の日付のデータを作る
-//          let dateData = DateData()
-//          
-//          dateData.date = topDateManager.date
-//          let weightDouble = Double(textField.text!)!
-//          dateData.weight = weightDouble
-//          try! realm.write {
-//            realm.add(dateData)
-//          }
-//          //もしデータがあれば更新
-//        }else{
-//          try! realm.write() {
-//            let weightDouble = Double(textField.text!)!
-//            results[0].weight = weightDouble
-//            print("体重を更新しました")
-//          }
-//        }
-//      }
-//    }
-//    //メモが入力されたとき
-//    if textField.tag == 4 {
-//      if textField.text == "" {
-//        //データがなければ
-//        if (resultsCount == 0) {
-//          print("データなし。メモが未入力です")
-//        }else{
-//          //入力された文字が空であり、データが存在している＝その日付のデータを消したい（空にしたい）ということ
-//          //なのでレラムインスタンスを作り、データの上書き＝データを消す
-//          let realm = try! Realm()
-//          try! realm.write() {
-//            results[0].memoText = textField.text!
-//            print("メモを消去しました")
-//          }
-//        }
-//        //文字列が空じゃなかったら
-//      }else{
-//        let realm = try! Realm()
-//        //そして今日の日付のデータも存在しなかったら
-//        if (resultsCount == 0) {
-//          //今日の日付のデータを作る
-//          let dateData = DateData()
-//          dateData.date = topDateManager.date
-//          dateData.memoText = textField.text!
-//          try! realm.write {
-//            realm.add(dateData)
-//          }
-//          print("あたらしいRealmオブジェクトが生成され、メモが追加されました")
-//          //もしデータがあれば更新
-//        }else{
-//          try! realm.write() {
-//            results[0].memoText = textField.text!
-//            print("メモを更新しました")
-//          }
-//        }
-//      }
-//    }
-//  }
-
+}

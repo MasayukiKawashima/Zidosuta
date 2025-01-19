@@ -7,12 +7,19 @@
 
 import UIKit
 
+
+// MARK: - WeightTableViewCellDelegate
+
 protocol WeightTableViewCellDelegate: AnyObject {
-    func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell)
+  func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell)
 }
+
+
+// MARK: - SetWeightTextFieldUnderLine
 
 extension UITextField {
   func setWeightTextFieldUnderLine() {
+    
     let underline = UIView()
     // heightにはアンダーラインの高さを入れる
     underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
@@ -24,7 +31,12 @@ extension UITextField {
   }
 }
 
+// MARK: - WeightTableViewCell
+
 class WeightTableViewCell: UITableViewCell {
+  
+  
+  // MARK: - Properties
   
   @IBOutlet weak var weightTextField: UITextField! {
     didSet {
@@ -35,7 +47,11 @@ class WeightTableViewCell: UITableViewCell {
   
   var delegate: WeightTableViewCellDelegate?
   
+  
+  // MARK: - LifeCycle
+  
   override func awakeFromNib() {
+    
     super.awakeFromNib()
     // Initialization code
     //キーボードタイプ設定
@@ -61,25 +77,33 @@ class WeightTableViewCell: UITableViewCell {
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
+    
     super.setSelected(selected, animated: animated)
     // Configure the view for the selected state
   }
-
+  
 }
+
+
+// MARK: - SetUpCloseButton
+
 //キーボード上部の閉じるボタンを作成
 extension WeightTableViewCell {
   func setUpCloseButton() {
+    
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
     // セル自身をターゲットとして、内部メソッド経由でデリゲートを呼び出す
-//    let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleCloseButtonTap))
+    //    let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleCloseButtonTap))
     
     let closeButton = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(handleCloseButtonTap))
     
     toolBar.items = [spacer, closeButton]
     weightTextField.inputAccessoryView = toolBar
   }
+  
   @objc private func handleCloseButtonTap() {
+    
     delegate?.weightTableViewCellDidRequestKeyboardDismiss(self)
   }
 }

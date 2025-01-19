@@ -8,37 +8,20 @@
 import UIKit
 
 class TopNavigationController: UINavigationController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-      
-      let appearance = UINavigationBarAppearance()
-      appearance.configureWithOpaqueBackground()
-      appearance.backgroundColor = UIColor.YellowishRed
-      
-      self.navigationBar.standardAppearance = appearance
-      self.navigationBar.scrollEdgeAppearance = appearance
-      
-      self.navigationController?.navigationBar.compactAppearance = appearance
-      
-//      appearance.backgroundColor = .systemBlue
-//      appearance.configureWithOpaqueBackground()
-//      
-//      navigationBar.standardAppearance = appearance
-//      navigationBar.scrollEdgeAppearance = appearance
-    }
+  
+  
+  // MARK: - LifeCycle
+  
+  override func viewDidLoad() {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    super.viewDidLoad()
+    
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = UIColor.YellowishRed
+    
+    self.navigationBar.standardAppearance = appearance
+    self.navigationBar.scrollEdgeAppearance = appearance
+    self.navigationController?.navigationBar.compactAppearance = appearance
+  }
 }
-
-

@@ -7,19 +7,31 @@
 
 import UIKit
 
+
+// MARK: - MemoTableViewCellDelegate
+
 protocol MemoTableViewCellDelegate: AnyObject {
   func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell)
 }
 
-class MemoTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var memoTextField: UITextField!
+// MARK: - MemoTableViewCell
+
+class MemoTableViewCell: UITableViewCell {
   
+  
+  // MARK: - Properties
+  
+  @IBOutlet weak var memoTextField: UITextField!
   var delegate: MemoTableViewCellDelegate?
   
+  
+  // MARK: - LifeCycle
+  
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    super.awakeFromNib()
+    // Initialization code
     memoTextField.keyboardType = .default
     memoTextField.returnKeyType = .done
     memoTextField.delegate = self
@@ -31,66 +43,49 @@ class MemoTableViewCell: UITableViewCell {
     
     let placeholderText = "ひとことメモを入力"
     let attributes = [
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
     ]
     memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
     
     setUpCloseButton()
-    }
+  }
   
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
     
+    // Configure the view for the selected state
+  }
+  
 }
+
+
+// MARK: - UITextFieldDelegate
 
 extension MemoTableViewCell: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
     memoTextField.resignFirstResponder()
     return true
   }
 }
 
+
+// MARK: - SetUpCloseButton
+
 extension MemoTableViewCell {
   func setUpCloseButton() {
+    
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-   
-    
     let closeButton = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(handleCloseButtonTap))
     
     toolBar.items = [spacer, closeButton]
     memoTextField.inputAccessoryView = toolBar
   }
+  
   @objc private func handleCloseButtonTap() {
+    
     delegate?.memoTableViewCellDidRequestKeyboardDismiss(self)
   }
 }
 
-
-
-
-//このエクステンションの必要性については後日確認
-//extension UITextField {
-//  func setPlaceholder(text: String, systemImageName: String) {
-//    let placeholderView = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 44))
-//
-//    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-//    imageView.image = UIImage(systemName: systemImageName)
-//    imageView.tintColor = .systemGray
-//    placeholderView.addSubview(imageView)
-//
-//    let label = UILabel(frame: CGRect(x: 25, y: 0, width: 175, height: 44))
-//    label.text = text
-//    label.textColor = .black
-//    label.font = UIFont.systemFont(ofSize: 14.0)
-//    placeholderView.addSubview(label)
-//
-//    self.placeholder = ""
-//    self.leftView = placeholderView
-//    self.leftViewMode = .always
-//  }
-//}

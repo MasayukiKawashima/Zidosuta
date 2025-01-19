@@ -7,12 +7,18 @@
 
 import UIKit
 
+
+// MARK: - DeleteAllDataTableViewCellDelegate
+
 protocol DeleteAllDataTableViewCellDelegate {
   func deleteButtonAction()
 }
 
 class DeleteAllDataTableViewCell: UITableViewCell {
-
+  
+  
+  // MARK: - Properties
+  
   @IBOutlet weak var shadowLayerview: UIView!
   @IBOutlet weak var mainBackgroundView: UIView! {
     didSet {
@@ -28,21 +34,29 @@ class DeleteAllDataTableViewCell: UITableViewCell {
   }
   
   var delegate: DeleteAllDataTableViewCellDelegate?
-    
+  
+  
+  // MARK: - LifeCycle
   
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    super.awakeFromNib()
+    // Initialization code
     self.contentView.backgroundColor = .systemGray6
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-  @IBAction func deleteButtonAction(_ sender: UIButton) {
-    delegate?.deleteButtonAction()
   }
   
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    
+    super.setSelected(selected, animated: animated)
+    
+    // Configure the view for the selected state
+  }
+  
+  
+  // MARK: - Methods
+  
+  @IBAction func deleteButtonAction(_ sender: UIButton) {
+    
+    delegate?.deleteButtonAction()
+  }
 }
