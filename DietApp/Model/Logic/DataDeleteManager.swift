@@ -10,12 +10,23 @@ import RealmSwift
 
 class DataDeleteManager {
   
+  
+  // MARK: - Properties
+  
   static let shared = DataDeleteManager()
   private let fileManager = FileManager.default
   private let realm = try! Realm()
+  
+  
+  // MARK: - Init
+  
   private init() {}
   
+  
+  // MARK: - Methods
+  
   private func clearDocumentDirectroy() -> Bool {
+    
     do {
       //ドキュメントディレクトリのパスを取得
       guard let documentPath = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
@@ -30,7 +41,6 @@ class DataDeleteManager {
       }
       
       try contents.forEach { url in
-        
         guard !url.lastPathComponent.hasPrefix("default.realm") else {
           print("ℹ️ default.realmファイルの削除はスキップします: \(url.lastPathComponent)")
           return
@@ -54,7 +64,7 @@ class DataDeleteManager {
       print("ℹ️ Realmデータベースは既に空です")
       return true
     }
-     
+    
     do {
       try realm.write {
         realm.deleteAll()
@@ -68,8 +78,9 @@ class DataDeleteManager {
   }
   
   private func removeNotificationRequests() {
+    
     let center = UNUserNotificationCenter.current()
-
+    
     center.getPendingNotificationRequests { requests in
       if !requests.isEmpty {
         center.removeAllPendingNotificationRequests()
@@ -80,6 +91,7 @@ class DataDeleteManager {
   }
   
   func deleteAllData() -> Bool {
+    
     let DeleteRealmObjectResult = deleteRealmObject()
     removeNotificationRequests()
     let clearDocumentDirectoryResult = clearDocumentDirectroy()

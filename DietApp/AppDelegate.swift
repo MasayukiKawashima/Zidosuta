@@ -11,9 +11,17 @@ import RealmSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
+  
+  // MARK: - Properties
+  
   var window: UIWindow?
+  
+  
+  // MARK: - Methods
+  
   //画面の向きを設定するメソッド
   func supportedInterfaceOrientationsForTopViewController(window: UIWindow?) -> UIInterfaceOrientationMask {
+    
     if let rootViewController = window?.rootViewController {
       // TabBarControllerを取得
       if let tabBarController = rootViewController as? UITabBarController {
@@ -29,8 +37,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     return .portrait // デフォルトは縦向き
   }
+  
+  
+  // MARK: - LifeCycle
+  
+  //ViewControllerの向きの設定
+  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+    
+    supportedInterfaceOrientationsForTopViewController(window: window)
+  }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    
     //スプラッシュ画面を1秒表示する
     let splashScreenDuration: UInt32 = 1
     sleep(splashScreenDuration)
@@ -45,18 +63,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // 通知デリゲートの設定
     UNUserNotificationCenter.current().delegate = self
-    
     // 通知機能がオンなら保存された通知設定を復元
     LocalNotificationManager.shared.restoreNotificationIfNeeded()
     
     return true
   }
-  //ViewControllerの向きの設定
-  func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-    supportedInterfaceOrientationsForTopViewController(window: window)
-  }
-  
-  // MARK: UISceneSession Lifecycle
   
   func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
     // Called when a new scene session is being created.
@@ -72,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-  
   // ユーザーが通知に対してアクションをとった時に呼ばれるデリゲートメソッド
   // center: 通知を管理するUNUserNotificationCenterのインスタンス
   // response: ユーザーの応答情報を含むオブジェクト
@@ -83,6 +93,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     didReceive response: UNNotificationResponse,
     withCompletionHandler completionHandler: @escaping () -> Void
   ) {
+    
     // ユーザーが選択したアクションのタイプに基づいて処理を分岐
     switch response.actionIdentifier {
     case "RECORD_ACTION":  // レコードアクションが選択された場合
@@ -107,6 +118,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     willPresent notification: UNNotification,
     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
   ) {
+    
     // フォアグラウンドでも通知を表示する
     completionHandler([.banner])
   }

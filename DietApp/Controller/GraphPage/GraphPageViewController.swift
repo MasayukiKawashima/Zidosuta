@@ -8,8 +8,12 @@
 import UIKit
 
 class GraphPageViewController: UIPageViewController {
+  
+  
+  // MARK: - Properties
+  
   var controllers: [UIViewController] = [GraphViewController()]
-
+  
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
   }
@@ -18,7 +22,11 @@ class GraphPageViewController: UIPageViewController {
     return .landscapeLeft
   }
   
+  
+  // MARK: - LifeCycle
+  
   override func viewDidLoad() {
+    
     super.viewDidLoad()
     
     self.dataSource = self
@@ -34,7 +42,10 @@ class GraphPageViewController: UIPageViewController {
     navigationBarButtonSetting()
   }
   
+  // MARK: - Methods
+  
   private func initGraphPageViewContoller() {
+    
     let graphVC = storyboard!.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
     
     self.controllers = [graphVC]
@@ -45,23 +56,31 @@ class GraphPageViewController: UIPageViewController {
   }
 }
 
+
+// MARK: - UIPageViewControllerDataSource
+
 extension GraphPageViewController: UIPageViewControllerDataSource {
   
   func presentationCount(for pageViewController: UIPageViewController) -> Int {
+    
     return self.controllers.count
   }
-
+  
   //右スワイプ（左から右にスワイプ）戻る
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    
     instantiate(direction: .previous)
   }
   
   //左スワイプ（右から左にスワイプ）進む
   func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    
     instantiate(direction: .next)
   }
+  
   //GraphPageのページング先のインスタンス生成処理
   func instantiate(direction: TransitionDirection)-> GraphViewController {
+    
     //現在のViewControllerのindexを取得
     let currentGraphVC = self.viewControllers?.first! as! GraphViewController
     //次のVCの作成
@@ -81,18 +100,25 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
     }
   }
 }
+
 //画面遷移が終わった後に呼び出されるデリゲートメソッド
 extension GraphPageViewController: UIPageViewControllerDelegate {
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    
     if completed {
       let currentVC = pageViewController.viewControllers?.first as! GraphViewController
       navigationBarTitleSetting(currentVC: currentVC)
     }
   }
 }
+
+
+// MARK: - navigationBarViewSettings
+
 //NavigationBarの設定
 extension GraphPageViewController {
   func navigationBarTitleSetting (currentVC: GraphViewController){
+    
     var yearText = ""
     var dateText = ""
     let dateFontSize: CGFloat = 18.0
@@ -111,7 +137,7 @@ extension GraphPageViewController {
     let firstDateOfHalfMonthString = dateFormatter.string(from: firstDateOfHalfMonth!)
     let lastDateOfHalfMonthString = dateFormatter.string(from: lastDateOfHalfMonth!)
     dateText = firstDateOfHalfMonthString + " - " + lastDateOfHalfMonthString
-  
+    
     let dateTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     dateTextLabel.text = dateText
     dateTextLabel.font = UIFont(name: "Thonburi-Bold", size: dateFontSize)
@@ -122,7 +148,7 @@ extension GraphPageViewController {
     let yearFormatter = DateFormatter()
     yearFormatter.dateFormat = "yyyy"
     yearText = yearFormatter.string(from: firstDateOfHalfMonth!)
-   
+    
     let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     yearTextLabel.text = yearText
     yearTextLabel.font = UIFont(name: "Thonburi", size: fontSize)
@@ -153,8 +179,10 @@ extension GraphPageViewController {
     //カスタムビューをNavigationBarに追加
     self.navigationItem.titleView = customTitleView
   }
+  
   //barButtonの設定
   func navigationBarButtonSetting() {
+    
     let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
     nextBarButtonItem.tag = 1
     nextBarButtonItem.tintColor = .white
@@ -167,6 +195,7 @@ extension GraphPageViewController {
   }
   
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
+    
     //現在のVCを作成
     let currentVC = self.viewControllers?.first as! GraphViewController
     //次のVCを作成

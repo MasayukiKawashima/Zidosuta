@@ -9,6 +9,10 @@ import UIKit
 import MessageUI
 
 class SettingsViewController: UIViewController {
+  
+  
+  // MARK: - Properties
+  
   var settingsView = SettingsView()
   
   
@@ -21,9 +25,10 @@ class SettingsViewController: UIViewController {
   }
   
   var TableViewCellHeight:CGFloat = 60.0
-  //cell周り設定用の列挙体
   
   let contactEmailAdress = "info.zidosuta@gmail.com"
+  
+  // MARK: - Enums
   
   enum SettingPageCell:Int {
     case notificationTableViewCell = 0
@@ -78,35 +83,42 @@ class SettingsViewController: UIViewController {
     
     //セクションごとのケースを返すメソッド
     static func cases(forSection section: Int) -> [SettingPageCells] {
+      
       return SettingPageCells.allCases.filter {$0.sectionNumber == section}
     }
   }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-      settingsView.tableView.delegate = self
-      settingsView.tableView.dataSource = self
-      
-      //セルの区切り線を左端まで伸ばす
-      settingsView.tableView.separatorInset = UIEdgeInsets.zero
-      //navigationBarのタイトルの設定
-//      settingsView.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Thonburi-Bold", size: 20)!]
-      //スクロールできないようにする
-      settingsView.tableView.isScrollEnabled = false
-      //セルの高さの自動設定
-      settingsView.tableView.rowHeight = UITableView.automaticDimension
-      
-      navigationBarTittleSettings()
-    }
+  
+  
+  // MARK: - LifeCycle
+  
+  override func viewDidLoad() {
+    
+    super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
+    settingsView.tableView.delegate = self
+    settingsView.tableView.dataSource = self
+    
+    //セルの区切り線を左端まで伸ばす
+    settingsView.tableView.separatorInset = UIEdgeInsets.zero
+    //navigationBarのタイトルの設定
+    //      settingsView.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Thonburi-Bold", size: 20)!]
+    //スクロールできないようにする
+    settingsView.tableView.isScrollEnabled = false
+    //セルの高さの自動設定
+    settingsView.tableView.rowHeight = UITableView.automaticDimension
+    
+    navigationBarTittleSettings()
+  }
   
   override func loadView() {
+    
     super.loadView()
     view = settingsView
   }
   
   override func viewWillAppear(_ animated: Bool) {
+    
     super.viewWillAppear(animated)
     
     DispatchQueue.main.async {
@@ -116,25 +128,22 @@ class SettingsViewController: UIViewController {
       self.settingsView.tableView.reloadRows(at: [indexPath], with: .none)
     }
   }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+// MARK: - UITableViewDelegate,UITableViewDataSource
+
 //tableViewの設定
 extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   
   func numberOfSections(in tableView: UITableView) -> Int {
+    
     return 2
   }
+  
   //セル数の設定
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     switch section {
     case 0:
       return 2
@@ -144,9 +153,11 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       return 0
     }
   }
+  
   //各セルの内容の設定
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   //現在設定しているセクションのセルを取得
+    
+    //現在設定しているセクションのセルを取得
     let sectionCells = SettingPageCells.cases(forSection: indexPath.section)
     //現在設定している行に対応するセルを取得
     let cellType = sectionCells[indexPath.row]
@@ -207,16 +218,20 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
       return cell
     }
   }
+  
   //セルの高さの推定値の設定
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    
     return TableViewCellHeight
   }
   //セルの高さを設定
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
     return TableViewCellHeight
   }
   
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    
     let footerView = UIView()
     footerView.backgroundColor = .clear
     
@@ -227,6 +242,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    
     if section == 0 {
       return 25
     } else if section == 1 {
@@ -237,10 +253,13 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
   
 }
 
+
+// MARK: - NavigationBarTittleSetting
+
 extension SettingsViewController {
   func navigationBarTittleSettings() {
-    let titleText = "設定"
     
+    let titleText = "設定"
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     
     let titleTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
@@ -260,9 +279,13 @@ extension SettingsViewController {
     self.navigationItem.titleView = customTitleView
   }
 }
-//通知セルのデリゲート
+
+
+// MARK: - NotificationTableViewCellDelegate
+
 extension SettingsViewController: NotificationTableViewCellDelegate {
   func switchAction(isOn: Bool) {
+    
     let row = SettingPageCell.notificationTableViewCell.values.row
     let section = SettingPageCell.notificationTableViewCell.values.section
     guard let cell = settingsView.tableView.cellForRow(at: IndexPath(row: row, section: section)) as? NotificationTableViewCell else { return }
@@ -289,38 +312,52 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
     }
   }
 }
-//削除セルのデリゲート
+
+
+// MARK: - DeleteDataTableViewCellDelegate
+
 extension SettingsViewController: DeleteDataTableViewCellDelegate {
   func transitionButtonAction() {
+    
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "DataDeletionExecution") as? DataDeletionExecutionViewController else { return }
     self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
   }
 }
-//利用規約セルとプライバシーポリシーセルのデリゲート
+
+
+// MARK: - TermsOfUseTableViewCellDelegate, PrivacyPolicyTableViewCellDelegate
+
 extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicyTableViewCellDelegate   {
   
   func TermsOfUseTransitionButtonAction() {
+    
     let termsDisplayViewController = initTermsDisplayViewController()
     termsDisplayViewController.termsType = .termsOfUse
     navigationController?.pushViewController(termsDisplayViewController, animated: true)
   }
   
   func privacyPolicyTransitionButtonAction() {
+    
     let termsDisplayViewController = initTermsDisplayViewController()
     termsDisplayViewController.termsType = .privacyPolicy
     navigationController?.pushViewController(termsDisplayViewController, animated: true)
   }
   
   func initTermsDisplayViewController() -> TermsDisplayViewController {
+    
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     let termsDisplayViewController = storyBoard.instantiateViewController(withIdentifier: "TermsDisplay") as! TermsDisplayViewController
     return termsDisplayViewController
   }
 }
-//メーリング機能周り、お問い合わせセルのデリゲート
+
+
+// MARK: - MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate
+
 extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate {
   func mailingButtonAction() {
+    
     //メーリング機能が使えるかどうかチェック
     if MFMailComposeViewController.canSendMail() {
       //使えるなら
@@ -333,9 +370,11 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTa
       showEmailUnavailableAlert()
     }
   }
+  
   //メールの送信後に呼ばれるデリゲートメソッド
   //送信の成功、失敗によって異なるアラートを表示
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: (any Error)?) {
+    
     controller.dismiss(animated: true)
     
     if result == .sent {
@@ -346,18 +385,21 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTa
   }
   
   func showEmailSendfailureAlert() {
+    
     let alert = UIAlertController(title: "メール機能が使えません", message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)
   }
   
   func showEmailSendSuccessAlert() {
+    
     let alert = UIAlertController(title: "メールを送信しました", message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)
   }
   
   func showEmailUnavailableAlert() {
+    
     let alert = UIAlertController(title: "メールを送信できませんでした", message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)

@@ -9,24 +9,22 @@ import UIKit
 
 class MainBackgroundView: UIView {
   
+  
+  // MARK: - Properties
+  
   override var bounds: CGRect {
     didSet {
       setupMainBackgroundView()
     }
   }
-
+  
+  
+  // MARK: - Methods
+  
   func setupMainBackgroundView() {
+    
     self.layer.cornerRadius = 8
     self.layer.masksToBounds = true
     self.backgroundColor = .OysterWhite
   }
-  
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

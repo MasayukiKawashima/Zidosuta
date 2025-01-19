@@ -7,9 +7,15 @@
 
 import Foundation
 
+
+// MARK: - WeightValidator
+
 protocol WeightValidator {
   func validate() -> ValidationResult
 }
+
+
+// MARK: - CompositeWeightValidator
 
 protocol CompositeWeightValidator: WeightValidator {
   var validators: [WeightValidator] { get }
@@ -20,9 +26,13 @@ extension CompositeWeightValidator {
     guard let result = validators.map({ $0.validate() }).first(where: { !$0.isValid }) else {
       return .valid
     }
-          return result
-      }
+    return result
+  }
 }
+
+
+// MARK: - WeightValidationError
+
 //体重textField
 //エ-ラケースの定義
 enum WeightValidationError: ValidationError{
@@ -46,6 +56,9 @@ extension WeightValidationError: LocalizedError {
     }
   }
 }
+
+
+// MARK: - WeightValidatorLogics
 
 //検証ロジックの実装
 //入力された値が適正な形式かどうか
@@ -117,6 +130,10 @@ struct MaxWeightValidator: WeightValidator {
     return .valid
   }
 }
+
+
+// MARK: - WeightInputValidator
+
 //検証構造体をまとめる
 struct WeightInputValidator: CompositeWeightValidator {
   var validators: [WeightValidator]

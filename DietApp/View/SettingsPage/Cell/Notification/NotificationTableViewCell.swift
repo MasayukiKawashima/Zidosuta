@@ -7,12 +7,21 @@
 
 import UIKit
 
+
+// MARK: - NotificationTableViewCellDelegate
+
 protocol NotificationTableViewCellDelegate {
   func switchAction(isOn: Bool)
 }
 
-class NotificationTableViewCell: UITableViewCell {
 
+// MARK: - NotificationTableViewCell
+
+class NotificationTableViewCell: UITableViewCell {
+  
+  
+  // MARK: - Properties
+  
   @IBOutlet weak var mainBackgroundView: UIView!
   @IBOutlet weak var shadowLayerView: UIView!
   @IBOutlet weak var notificationSwitch: UISwitch!
@@ -24,22 +33,31 @@ class NotificationTableViewCell: UITableViewCell {
   
   var delegate: NotificationTableViewCellDelegate?
   
+  
+  // MARK: - LifeCycle
+  
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    super.awakeFromNib()
+    // Initialization code
     self.contentView.backgroundColor = .systemGray6
     
     notificationSwitch.onTintColor = .YellowishRed
     notificationSwitch.tintColor = .lightGray
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
     
+    super.setSelected(selected, animated: animated)
+    
+    // Configure the view for the selected state
+  }
+  
+  
+  // MARK: - Methods
+  
   @IBAction func switchAction(_ sender: UISwitch) {
+    
     delegate?.switchAction(isOn: sender.isOn)
   }
 }

@@ -16,6 +16,7 @@ class DateDataRealmSearcher {
   }
   
   func searchForDateDataInRealm(currentDate: Date) -> Results<DateData> {
+    
     //日付の正規化
     let startOfDay = Calendar.current.startOfDay(for: currentDate)
     let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!

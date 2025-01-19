@@ -7,8 +7,36 @@
 
 import UIKit
 
-extension UITabBarController {
 
+// MARK: - TabBarController
+
+class TabBarController: UITabBarController {
+  
+  
+  // MARK: - LifeCycle
+  
+  override func viewDidLoad() {
+    
+    super.viewDidLoad()
+    
+    self.delegate = self
+    
+    //TabBarの背景色の設定
+    let appearance = UITabBarAppearance()
+    appearance.backgroundColor = .white
+    
+    UITabBar.appearance().tintColor = UIColor.YellowishRed
+    UITabBar.appearance().standardAppearance = appearance
+    UITabBar.appearance().scrollEdgeAppearance = appearance
+    // Do any additional setup after loading the view.
+  }
+}
+
+
+// MARK: - SupportedInterfaceOrientations
+
+extension UITabBarController {
+  
   open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     if let VC = selectedViewController {
       return VC.supportedInterfaceOrientations
@@ -18,33 +46,12 @@ extension UITabBarController {
   }
 }
 
-class TabBarController: UITabBarController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-      self.delegate = self
-      //TabBarの背景色の設定
-      let appearance = UITabBarAppearance()
-      appearance.backgroundColor = .white
-      
-      UITabBar.appearance().tintColor = UIColor.YellowishRed
-      UITabBar.appearance().standardAppearance = appearance
-      UITabBar.appearance().scrollEdgeAppearance = appearance
-        // Do any additional setup after loading the view.
-    }
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-}
+// MARK: - UITabBarControllerDelegate
 
 extension TabBarController: UITabBarControllerDelegate {
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+    
     //タブをグラフページに切り替えたときのグラフ描画処理
     if let graphNavigationController = viewController as? GraphNavigationController,
        let graphPageViewController = graphNavigationController.viewControllers.first as? GraphPageViewController,
@@ -55,7 +62,7 @@ extension TabBarController: UITabBarControllerDelegate {
   
   func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
     
-    // 24.12.2  iOS18バグへの対処のためのダミーのタブ切り替え時のアニメーションを実装した
+    //iOS18バグへの対処のためのダミーのタブ切り替え時のアニメーションを実装した
     //Appleがバグに対処するまでこの実装を維持する
     //フェードだがduration: 0のためアニメーションは発生しない。
     //意味のない実装だがこれをしないと、iOS18のバグでタブ切り替え直後に画面の向きが切り替え前の画面の向きで表示されてしまい、崩れたレイアウトが表示されてしまう。
@@ -66,6 +73,7 @@ extension TabBarController: UITabBarControllerDelegate {
     //https://qiita.com/tzono/items/c2770e7ad5da7b5e107e
     //https://stackoverflow.com/questions/79006130/ios-18-tab-switch-flashes-screen
     //上記の記事では画面のチラつきに関するものだが、このチラつきも当初発生しておりこれに対処しようとしたところ上記のバグにもすこし効果があった。しかし、記事内の方法だけでは完全にバグが治らず別の手段を模索していたところアニメーションの上書きというアイデアを思いついた。
+    
     guard let fromView = selectedViewController?.view, let toView = viewController.view else {
       return false
     }

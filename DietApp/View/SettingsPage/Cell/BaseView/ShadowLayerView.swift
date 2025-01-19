@@ -8,13 +8,21 @@
 import UIKit
 
 class ShadowLayerView: UIView {
+  
+  
+  // MARK: - Properties
+  
   override var bounds: CGRect {
     didSet {
       setupShadow()
     }
   }
   
+  
+  // MARK: - Methods
+  
   private func setupShadow() {
+    
     self.layer.cornerRadius = 8
     self.layer.shadowOffset = CGSize(width: 0, height: 0)
     self.layer.shadowRadius = 3
@@ -23,11 +31,5 @@ class ShadowLayerView: UIView {
     self.layer.shouldRasterize = true
     self.layer.rasterizationScale = UIScreen.main.scale
   }
-  /*
-   // Only override draw() if you perform custom drawing.
-   // An empty implementation adversely affects performance during animation.
-   override func draw(_ rect: CGRect) {
-   // Drawing code
-   }
-   */
 }
+

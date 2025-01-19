@@ -9,6 +9,7 @@ import Foundation
 
 class MonthAdjuster  {
   func adjustMonth (index: Int, date: Date = Date()) ->  Date  {
+    
     let calendar = Calendar.current
     //現在の日付を取得
     //月の更新

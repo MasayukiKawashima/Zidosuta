@@ -11,17 +11,28 @@ import Charts
 
 class GraphContentCreator {
   
+  
+  // MARK: - Properties
+  
   private let realm: Realm!
   private let currentDate: Date!
+  
+  
+  // MARK: - Init
   
   init(realm: Realm = try! Realm(), currentDate: Date = Date()){
     self.realm = realm
     self.currentDate = currentDate
   }
+  
+  
+  // MARK: - Methods
+  
   //エントリーポイントを作成するメソッド
   func createDataEntry(index: Int) -> [ChartDataEntry] {
+    
     let calendar = Calendar.current
-  
+    
     let monthAdjuster = MonthAdjuster()
     let modifiedDate = monthAdjuster.adjustMonth(index: index, date: currentDate)
     
@@ -31,7 +42,7 @@ class GraphContentCreator {
     
     let dateRangeCalculator = DateRangeCalculator()
     let range = dateRangeCalculator.calculateMonthHalfDayRange(index: index, date: currentDate)
-
+    
     var dataEntries: [ChartDataEntry] = []
     
     for day in range.startDay...range.endDay {
@@ -42,11 +53,11 @@ class GraphContentCreator {
       // 指定した日付のエントリを検索
       let results = self.realm.objects(DateData.self)
         .filter("date >= %@ && date < %@ && weight != 0", startOfCurrentDay, startOfNextDay)
-
+      
       // すべての結果をループし、チャートエントリーを作成
       for result in results {
         let entry = ChartDataEntry(x: Double(day), y: result.weight)
-          dataEntries.append(entry)
+        dataEntries.append(entry)
       }
     }
     return dataEntries

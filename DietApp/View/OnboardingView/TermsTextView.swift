@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct TermsTextView: View {
+  
+  
+  // MARK: - Properties
+  
   @Binding var showTermsDisplay: Bool
   @Binding var selectedTermsType: TermsDisplayViewController.TermsType?
   let fontSize: CGFloat
+  
+  
+  // MARK: - Body
   
   var body: some View {
     VStack {
@@ -40,7 +47,11 @@ struct TermsTextView: View {
     .padding(.horizontal, 10)
   }
   
+  
+  // MARK: - Methods
+  
   private func makeAttributedString() -> AttributedString {
+    
     var text = AttributedString("利用規約とプライバシーポリシーをご確認頂き、ご同意の上アプリをご利用ください")
     text.foregroundColor = .darkGray
     

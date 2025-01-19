@@ -9,6 +9,9 @@ import UIKit
 
 class DataDeletionExecutionView: UIView {
   
+  
+  // MARK: - Properties
+  
   let cellIdentifiers = ["DeleteAllDataTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView!  {
@@ -23,6 +26,9 @@ class DataDeletionExecutionView: UIView {
     }
   }
   
+  
+  // MARK: - LifeCycle
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     nibInit()
@@ -33,7 +39,10 @@ class DataDeletionExecutionView: UIView {
     nibInit()
   }
   
+  // MARK: - Methods
+  
   func nibInit() {
+    
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "DataDeletionExecutionView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
@@ -46,13 +55,4 @@ class DataDeletionExecutionView: UIView {
     
     self.addSubview(view)
   }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

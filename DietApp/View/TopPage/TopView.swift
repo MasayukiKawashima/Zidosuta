@@ -8,7 +8,10 @@
 import UIKit
 
 class TopView: UIView {
- 
+  
+  
+  // MARK: - Properties
+  
   let cellIdentifiers = ["WeightTableViewCell","MemoTableViewCell","PhotoTableViewCell","AdTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView! {
@@ -21,17 +24,22 @@ class TopView: UIView {
     }
   }
   
+  
+  
+  // MARK: - Init
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.nibInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
-          super.init(coder: aDecoder)
-          self.nibInit()
-      }
+    super.init(coder: aDecoder)
+    self.nibInit()
+  }
   
   func nibInit() {
+    
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "TopView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
@@ -43,13 +51,4 @@ class TopView: UIView {
     
     self.addSubview(view)
   }
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
 }

@@ -8,6 +8,10 @@
 import UIKit
 
 class DataDeletionExecutionViewController: UIViewController {
+  
+  
+  // MARK: - Properties
+  
   var dataDeletionExecutionView = DataDeletionExecutionView()
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -19,6 +23,9 @@ class DataDeletionExecutionViewController: UIViewController {
   }
   
   var TableViewCellHeight:CGFloat = 60.0
+  
+  
+  // MARK: - Enums
   
   enum DataDeletionExecutionViewCell: Int {
     case deleteAllDataTableViewCell = 0
@@ -32,7 +39,10 @@ class DataDeletionExecutionViewController: UIViewController {
   }
   
   
+  // MARK: - LifeCycle
+  
   override func viewDidLoad() {
+    
     super.viewDidLoad()
     
     dataDeletionExecutionView.tableView.delegate = self
@@ -43,28 +53,24 @@ class DataDeletionExecutionViewController: UIViewController {
   }
   
   override func loadView() {
+    
     super.loadView()
     view = dataDeletionExecutionView
   }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
+
+
+// MARK: - UITableViewDelegate,UITableViewDataSource
 
 extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
     return 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = DataDeletionExecutionViewCell(rawValue: indexPath.row)
     
     switch cell {
@@ -81,10 +87,12 @@ extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDa
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
     return TableViewCellHeight
   }
   
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    
     if section == DataDeletionExecutionViewCell.deleteAllDataTableViewCell.values.section {
       let footerView = setUpDeleteionDescriptionFooterView()
       return footerView
@@ -94,6 +102,7 @@ extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDa
   
   //削除の説明文を表示するフッターを作成
   private func setUpDeleteionDescriptionFooterView() -> UIView {
+    
     let footerView = UIView()
     let textView = UITextView()
     
@@ -116,13 +125,18 @@ extension DataDeletionExecutionViewController: UITableViewDelegate,UITableViewDa
   }
 }
 
+
+// MARK: - DeleteAllDataTableViewCellDelegate
+
 extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegate {
   
   func deleteButtonAction() {
+    
     showConfirmationAlert()
   }
   //最終確認アラート
   func showConfirmationAlert() {
+    
     let alert = UIAlertController(title: nil, message: "全てのデータを削除してもよろしいですか \nこの操作は取り消せません", preferredStyle: .alert)
     
     let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
@@ -147,6 +161,7 @@ extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegat
   }
   //削除成功アラート
   func showDeletionCompletedAlert() {
+    
     let alert = UIAlertController(title: nil, message: "全てのデータが削除されました", preferredStyle: .alert)
     
     let okAction = UIAlertAction(title: "OK", style: .default)
@@ -163,5 +178,4 @@ extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegat
     
     self.present(alert, animated: true)
   }
-  
 }

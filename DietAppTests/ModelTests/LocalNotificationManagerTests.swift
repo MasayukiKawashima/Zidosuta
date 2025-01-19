@@ -9,28 +9,40 @@ import XCTest
 @testable import DietApp
 
 class LocalNotificationManagerTests: XCTestCase {
+  
+  
+  // MARK: - Properties
+  
     var notificationManager: LocalNotificationManager!
     var notificationCenter: UNUserNotificationCenter!
+  
+  
+  // MARK: - Methods
     
     override func setUp() {
+      
         super.setUp()
+      
         notificationManager = LocalNotificationManager.shared
         notificationCenter = UNUserNotificationCenter.current()
     }
     
     override func tearDown() {
+      
         notificationCenter.removeAllPendingNotificationRequests()
+      
         super.tearDown()
     }
     
+  
+  // MARK: - TestCases
+  
     func testSetScheduleNotification() {
-        // Given
+      
         let expectation = XCTestExpectation(description: "Notification scheduled")
         
-        // When
         notificationManager.setScheduleNotification()
         
-        // Then
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.notificationCenter.getPendingNotificationRequests { requests in
                 // テスト1: 通知リクエストが登録できているか
@@ -42,7 +54,6 @@ class LocalNotificationManagerTests: XCTestCase {
                 expectation.fulfill()
             }
         }
-        
         wait(for: [expectation], timeout: 2.0)
     }
 }

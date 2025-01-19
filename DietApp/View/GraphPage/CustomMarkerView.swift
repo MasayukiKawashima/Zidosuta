@@ -8,6 +8,9 @@
 import Foundation
 import Charts
 
+
+// MARK: - CustomMarkerViewDataSource
+
 protocol CustomMarkerViewDataSource {
   //テキストを作成
   func customMarkerView(
@@ -32,15 +35,24 @@ protocol CustomMarkerViewDataSource {
   func markerBackGroundColor(in customMarkerView: CustomMarkerView) -> UIColor
 }
 
+
+// MARK: - CustomMarkerView
 class CustomMarkerView: MarkerView {
+  
+  
+  // MARK: - Properties
+  
   var texts: [NSMutableAttributedString]?
   var markerPath: UIBezierPath?
   var dataSource: CustomMarkerViewDataSource?
   
+  
+  // MARK: - Methods
+  
   override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {
+    
     super.refreshContent(entry: entry, highlight: highlight)
     
-  
     guard let dataSource = dataSource else {
       return
     }
@@ -48,6 +60,7 @@ class CustomMarkerView: MarkerView {
   }
   
   override func draw(context: CGContext, point: CGPoint) {
+    
     guard let dataSource = dataSource, let texts = texts  else {
       return
     }

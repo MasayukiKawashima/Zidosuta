@@ -11,6 +11,10 @@ import SwiftUI
 import UserNotifications
 
 class LocalNotificationManager {
+  
+  
+  // MARK: - Properties
+  
   static let shared = LocalNotificationManager()
   //外部からのインスタンス化を防ぐための空初期化子
   private init() {}
@@ -28,8 +32,12 @@ class LocalNotificationManager {
     return settings.notification!
   }
   
-//ユーザーに通知の許可を確認するメソッド
+  
+  // MARK: - Methods
+  
+  //ユーザーに通知の許可を確認するメソッド
   func requestAuthorization(completion: @escaping (Bool) -> Void) {
+    
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { granted, error in
       //ユーザーからの通知許可の返答を待つ
       DispatchQueue.main.async {
@@ -40,6 +48,7 @@ class LocalNotificationManager {
   //通知をスケジュールするメソッド
   //このモデルを使用するオブジェクトで呼ばれるメソッド
   func setScheduleNotification() {
+    
     let center = UNUserNotificationCenter.current()
     let isEnabled = currentSettings.isNotificationEnabled
     
@@ -51,19 +60,21 @@ class LocalNotificationManager {
       DispatchQueue.main.async {
         if isEnabled {
           self.scheduleNotification(hour: self.currentSettings.hour,
-                                  minute: self.currentSettings.minute)
+                                    minute: self.currentSettings.minute)
         }
       }
     }
   }
   //スケジュールの再設定
   func restoreNotificationIfNeeded() {
+    
     if currentSettings.isNotificationEnabled {
       scheduleNotification(hour: currentSettings.hour, minute: currentSettings.minute)
     }
   }
   //スケジュールをする内部メソッド
   private func scheduleNotification(hour: Int, minute: Int) {
+    
     //通知の定義
     let content = UNMutableNotificationContent()
     content.title = "ジドスタ"
@@ -116,6 +127,7 @@ class LocalNotificationManager {
   
   //ボタンや通知自体をタップした時にアプリのトップ画面に飛ばす処理
   func navigateToTopScreen() {
+    
     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
        let window = windowScene.windows.first {
       
@@ -128,7 +140,6 @@ class LocalNotificationManager {
         window.makeKeyAndVisible()
         return
       }
-      
       
       // ルートビューコントローラーがUITabBarControllerであることを確認
       guard let tabBarController = window.rootViewController as? UITabBarController else {

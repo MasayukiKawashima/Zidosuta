@@ -10,6 +10,9 @@ import Charts
 
 class GraphView: UIView {
   
+  
+  // MARK: - Properties
+  
   @IBOutlet weak var mainBackgroundView: UIView! {
     didSet {
       mainBackgroundView.backgroundColor = .OysterWhite
@@ -17,6 +20,9 @@ class GraphView: UIView {
   }
   
   @IBOutlet weak var graphAreaView: LineChartView!
+  
+  
+  // MARK: - Init
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -28,7 +34,11 @@ class GraphView: UIView {
     self.nibInit()
   }
   
+  
+  // MARK: - Methods
+  
   func nibInit() {
+    
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "GraphView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
@@ -41,11 +51,4 @@ class GraphView: UIView {
     
     self.addSubview(view)
   }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
 }
