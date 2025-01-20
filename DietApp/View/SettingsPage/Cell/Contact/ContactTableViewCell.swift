@@ -11,6 +11,7 @@ import UIKit
 // MARK: - ContactTableViewCellDelegate
 
 protocol ContactTableViewCellDelegate {
+  
   func mailingButtonAction()
 }
 

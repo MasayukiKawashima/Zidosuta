@@ -19,7 +19,6 @@ class SettingsViewController: UIViewController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     .portrait
   }
@@ -257,6 +256,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
 // MARK: - NavigationBarTittleSetting
 
 extension SettingsViewController {
+  
   func navigationBarTittleSettings() {
     
     let titleText = "設定"
@@ -284,6 +284,7 @@ extension SettingsViewController {
 // MARK: - NotificationTableViewCellDelegate
 
 extension SettingsViewController: NotificationTableViewCellDelegate {
+  
   func switchAction(isOn: Bool) {
     
     let row = SettingPageCell.notificationTableViewCell.values.row
@@ -317,6 +318,7 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
 // MARK: - DeleteDataTableViewCellDelegate
 
 extension SettingsViewController: DeleteDataTableViewCellDelegate {
+  
   func transitionButtonAction() {
     
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -356,6 +358,7 @@ extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicy
 // MARK: - MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate
 
 extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate {
+  
   func mailingButtonAction() {
     
     //メーリング機能が使えるかどうかチェック

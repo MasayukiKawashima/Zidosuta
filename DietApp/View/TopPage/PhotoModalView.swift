@@ -11,6 +11,7 @@ import UIKit
 // MARK: - PhotoModalViewDelegate
 
 protocol PhotoModalViewDelegate {
+  
   func dismiss()
 }
 
@@ -25,6 +26,7 @@ class PhotoModalView: UIView {
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var photoImageView: UIImageView!
   @IBOutlet weak var dismissButton: UIButton!
+  
   var  isDismissButtonConfigured = false
   
   var delegate: PhotoModalViewDelegate?
@@ -33,11 +35,13 @@ class PhotoModalView: UIView {
   // MARK: - Init
   
   override init(frame: CGRect) {
+    
     super.init(frame: frame)
     self.nibInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
+    
     super.init(coder: aDecoder)
     self.nibInit()
   }
@@ -72,6 +76,7 @@ class PhotoModalView: UIView {
     //シンボルのサイズ設定
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
     let image = dismissButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
+    
     dismissButton.setImage(image, for: .normal)
   }
   

@@ -24,6 +24,7 @@ class TopViewController: UIViewController {
   var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
   
   let realm = try! Realm()
+  
   var notificationToken: NotificationToken?
   //全データ削除後の更新処理のためプロパティ
   var shouldReloadDataAfterDeletion: Bool = false
@@ -34,7 +35,6 @@ class TopViewController: UIViewController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .portrait
   }
@@ -42,11 +42,9 @@ class TopViewController: UIViewController {
   var tabBarHeight: CGFloat {
     return tabBarController?.tabBar.frame.size.height ?? 49.0
   }
-  
   var navigationBarHeight: CGFloat {
     return self.navigationController?.navigationBar.frame.size.height ?? 44.0
   }
-  
   var statusBarHeight: CGFloat {
     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
        let statusBarFrame = windowScene.statusBarManager?.statusBarFrame {
@@ -78,6 +76,7 @@ class TopViewController: UIViewController {
     case photoTableViewCell
     case adTableViewCell
   }
+  
   //テキストフィールドのタグの意味を示す列挙体
   enum TopPageTextFieldType: Int {
     case weight = 3
@@ -149,6 +148,7 @@ class TopViewController: UIViewController {
   }
   
   override func viewDidLayoutSubviews() {
+    
     super.viewDidLayoutSubviews()
     //初回レイアウトが完了
     isViewFirstLayoutFinished = true
@@ -160,6 +160,7 @@ class TopViewController: UIViewController {
 
 //TableViewの設定
 extension TopViewController: UITableViewDelegate,UITableViewDataSource {
+  
   //TableViewのセクション内のセルの数（5.28時点で１セクション、４セル）
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
@@ -297,6 +298,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
 
 //エンターを押したらキーボードを閉じる処理
 extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDelegate {
+  
   //notificationCenterのメソッド
   func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell) {
     
@@ -313,6 +315,7 @@ extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDeleg
 
 //写真セル内のボタン押下時処理
 extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  
   //拡大ボタンが押された時の処理
   func expandButtonAction(photoImage: UIImage) {
     
@@ -491,6 +494,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
 
 //各TextFieldのイベント処理
 extension TopViewController: UITextFieldDelegate {
+  
   //各種カバービューを作成し配置
   func createCoverViews() {
     
@@ -561,19 +565,23 @@ extension TopViewController: UITextFieldDelegate {
     
     view.endEditing(true)
   }
+  
   @objc private func keyboardWillShow(_ notification: Notification) {
+    
     //カバービューの生成と配置をする
     //textFieldDidBeginEditing(_ textField: UITextField)でも同様の処理を行う
     createCoverViews()
   }
   
   @objc private func keyboardWillHide(_ notification: Notification) {
+    
     //カバービューの削除
     //textFieldDidEndEditingでも同様の処理を行う
     removeCoverviews()
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
+    
     //各種カバービューがまだ生成されていなかったら、カバービューの生成と配置をする
     //カバービューの生成と配置自体はkeyboardWillShow(_ notification: Notification)でも行っている
     if navigationBarCover == nil && viewCover == nil && tabBarCover == nil {

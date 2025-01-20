@@ -12,11 +12,13 @@ extension UIButton {
   
   //非アクティブ状態のボタンの外観の設定
   func configureDisabledButtonAppearance() {
+    
     self.tintColor = UIColor.systemGray.withAlphaComponent(0.3)
     self.backgroundColor = UIColor.systemGray5
   }
   //アクティブ状態のボタンの外観の設定
   func configureEnabledButtonAppearance() {
+    
     self.tintColor = UIColor.systemBlue
     self.backgroundColor = nil
     applyFrostedGlassEffect()
@@ -32,6 +34,7 @@ extension UIButton {
     _ alpha: CGFloat = 0.8,
     _ cornerRadius: CGFloat? = nil
   ) {
+    
     // 既存のフロストエフェクトを削除（重複防止）
     self.subviews.forEach { subview in
       if subview is UIVisualEffectView {
@@ -63,6 +66,7 @@ extension UIButton {
   
   /// すりガラスエフェクトを削除する
   func removeFrostedGlassEffect() {
+    
     self.subviews.forEach { subview in
       if subview is UIVisualEffectView {
         subview.removeFromSuperview()
@@ -71,6 +75,7 @@ extension UIButton {
   }
   //ボタンを丸くする
   func setCornerRadius(_ cornerRadius: CGFloat? = nil) {
+    
     let radius = cornerRadius ?? self.frame.size.width / 2
     self.layer.cornerRadius = radius
     self.clipsToBounds = true

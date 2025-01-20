@@ -11,6 +11,7 @@ import Foundation
 //MARK: - MemoValidator
 
 protocol MemoValidator {
+  
   func validate() -> ValidationResult
 }
 
@@ -18,11 +19,14 @@ protocol MemoValidator {
 //MARK: - CompositeMemoValidator
 
 protocol CompositeMemoValidator: MemoValidator {
+  
   var validators: [MemoValidator] { get }
 }
 
 extension CompositeMemoValidator {
+  
   func validate() -> ValidationResult {
+    
     guard let result = validators.map({ $0.validate() }).first(where: { !$0.isValid }) else {
       return .valid
     }
@@ -41,6 +45,7 @@ enum MemoValidationError: ValidationError {
 
 //各エラーケースのメッセージ定義
 extension MemoValidationError: LocalizedError {
+  
   public var errorDescription: String? {
     switch self {
     case .exceedsMaximumCharacterLength:
@@ -56,6 +61,7 @@ extension MemoValidationError: LocalizedError {
 
 //文字数が35文字を超えていないか
 struct CharacterLengthValidator: MemoValidator {
+  
   let memoString: String
   
   func validate() -> ValidationResult {
@@ -69,6 +75,7 @@ struct CharacterLengthValidator: MemoValidator {
 }
 //改行をしていないか
 struct NewLineValidator: MemoValidator {
+  
   let memoString: String
   
   func validate() -> ValidationResult {
@@ -85,6 +92,7 @@ struct NewLineValidator: MemoValidator {
 
 //validatorをまとめる
 struct MemoInputValidator: CompositeMemoValidator {
+  
   var validators: [MemoValidator]
   
   init(text: String) {

@@ -23,11 +23,13 @@ class TermsDisplayView: UIView {
   // MARK: - LifeCycle
   
   override init(frame: CGRect) {
+    
     super.init(frame: frame)
     nibInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
+    
     super.init(coder: aDecoder)
     nibInit()
   }
@@ -36,6 +38,7 @@ class TermsDisplayView: UIView {
   // MARK: - Methods
   
   func nibInit() {
+    
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "TermsDisplayView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }

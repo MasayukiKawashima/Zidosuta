@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ValidationError: Swift.Error {
+  
 }
 
 enum ValidationResult {
@@ -16,6 +17,7 @@ enum ValidationResult {
 }
 
 extension ValidationResult {
+  
   var isValid: Bool {
     switch self {
     case .valid:

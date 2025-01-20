@@ -9,9 +9,11 @@ import Foundation
 import RealmSwift
 
 class DateDataRealmSearcher {
+  
   private let realm: Realm!
   
   init(realm: Realm = try! Realm()){
+    
     self.realm = realm
   }
   

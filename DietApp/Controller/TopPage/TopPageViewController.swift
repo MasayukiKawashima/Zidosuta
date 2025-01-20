@@ -17,7 +17,6 @@ class TopPageViewController: UIPageViewController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .portrait
   }
@@ -55,6 +54,7 @@ class TopPageViewController: UIPageViewController {
 // MARK: - GetCurrentPageTopDateManager
 
 extension TopPageViewController {
+  
   func getCurrentPageTopDateManager() -> TopDateManager {
     
     let currentVC = self.viewControllers?.first as! TopViewController
@@ -106,6 +106,7 @@ extension TopPageViewController: UIPageViewControllerDataSource {
 
 //遷移時の処理
 extension TopPageViewController: UIPageViewControllerDelegate {
+  
   //遷移が終わった後に呼び出されるデリゲートメソッド
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     
@@ -122,6 +123,7 @@ extension TopPageViewController: UIPageViewControllerDelegate {
 
 //navigationBarの設定
 extension TopPageViewController {
+  
   //titileの設定
   func navigationBarTitleSetting (currentDate: Date){
     

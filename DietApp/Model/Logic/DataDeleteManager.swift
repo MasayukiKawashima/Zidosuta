@@ -14,7 +14,9 @@ class DataDeleteManager {
   // MARK: - Properties
   
   static let shared = DataDeleteManager()
+  
   private let fileManager = FileManager.default
+  
   private let realm = try! Realm()
   
   

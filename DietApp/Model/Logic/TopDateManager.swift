@@ -8,9 +8,11 @@
 import Foundation
 
 class TopDateManager {
+  
   var date: Date!
   
   init(date: Date = Date()){
+    
     self.date = date
   }
   

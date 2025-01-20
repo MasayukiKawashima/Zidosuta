@@ -29,14 +29,18 @@ class TopView: UIView {
   // MARK: - Init
   
   override init(frame: CGRect) {
+    
     super.init(frame: frame)
     self.nibInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
+    
     super.init(coder: aDecoder)
     self.nibInit()
   }
+  
+  // MARK: - Methods
   
   func nibInit() {
     

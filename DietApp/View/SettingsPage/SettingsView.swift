@@ -25,6 +25,7 @@ class SettingsView: UIView {
       }
     }
   }
+  
   @IBOutlet weak var copyrightView: UIView!
   
   @IBOutlet weak var versionLabel: UILabel! {
@@ -32,6 +33,7 @@ class SettingsView: UIView {
       versionLabel.textColor = .darkGray
     }
   }
+  
   @IBOutlet weak var copyrightLabel: UILabel! {
     didSet {
       copyrightLabel.textColor = .darkGray
@@ -42,11 +44,13 @@ class SettingsView: UIView {
   // MARK: - LifeCycle
   
   override init(frame: CGRect) {
+    
     super.init(frame: frame)
     nibInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
+    
     super.init(coder: aDecoder)
     nibInit()
   }

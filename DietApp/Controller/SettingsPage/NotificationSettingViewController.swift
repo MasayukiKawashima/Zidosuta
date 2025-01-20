@@ -17,7 +17,6 @@ class NotificationSettingViewController: UIViewController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     .portrait
   }
@@ -31,6 +30,7 @@ class NotificationSettingViewController: UIViewController {
   var notificationRegisterTableViewCellHeight:CGFloat = 60.0
   
   var transitionSource: TransitionSource = .uiKit // デフォルトはUIKit
+  
   var dismissCallback: (() -> Void)?
   
   
@@ -137,6 +137,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
       return UITableViewCell()
     }
   }
+  
   //時間が選択されるたびに呼ばれる時間ラベル更新メソッド
   @objc func timeChanged(_ sender: UIDatePicker) {
     

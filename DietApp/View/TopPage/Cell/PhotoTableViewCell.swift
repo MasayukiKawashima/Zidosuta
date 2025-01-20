@@ -11,6 +11,7 @@ import UIKit
 // MARK: - PhotoTableViewCellDelegate
 
 protocol PhotoTableViewCellDelegate {
+  
   func insertButtonAction()
   func expandButtonAction(photoImage: UIImage)
   func deleteButtonAction(in cell: PhotoTableViewCell)
@@ -155,6 +156,7 @@ class PhotoTableViewCell: UITableViewCell {
     
     delegate?.insertButtonAction()
   }
+  
   @IBAction func expandButtonAction(_ sender: Any) {
     
     if let image = photoImageView.image  {
