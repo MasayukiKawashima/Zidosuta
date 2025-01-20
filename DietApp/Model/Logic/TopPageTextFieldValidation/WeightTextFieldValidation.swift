@@ -71,7 +71,7 @@ struct WeightFormatValidator: WeightValidator {
   
   let weightString: String
   
-  func validate() -> ValidationResult {
+   func validate() -> ValidationResult {
     let pattern = "^-?\\d*\\.?\\d*$"
     if weightString.range(of: pattern, options: .regularExpression) == nil {
       return .invalid(WeightValidationError.invalidFormat)

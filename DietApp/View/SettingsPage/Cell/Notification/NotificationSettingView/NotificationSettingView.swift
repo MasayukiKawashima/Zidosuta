@@ -12,7 +12,7 @@ class NotificationSettingView: UIView {
   
   // MARK: - Properties
   
-  let cellIdentifiers = ["NotificationTimeDisplayTableViewCell","NotificationTimeEditTableViewCell", "NotificationRegisterTableViewCell"]
+  private let cellIdentifiers = ["NotificationTimeDisplayTableViewCell","NotificationTimeEditTableViewCell", "NotificationRegisterTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView!{
     didSet{
@@ -44,7 +44,7 @@ class NotificationSettingView: UIView {
   
   // MARK: - Methods
   
-  func nibInit() {
+  private func nibInit() {
     
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "NotificationSettingView", bundle: nil)

@@ -14,15 +14,15 @@ class GraphViewController: UIViewController {
   
   // MARK: - Properties
   
-  var graphView = GraphView()
+  private var graphView = GraphView()
   
   var graphDateManager = GraphDateManager()
   
-  let realm = try! Realm()
+  private let realm = try! Realm()
   
-  var notificationToken: NotificationToken?
+  private var notificationToken: NotificationToken?
   
-  var shouldReloadDataAfterDeletion: Bool = false
+  private var shouldReloadDataAfterDeletion: Bool = false
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
@@ -31,9 +31,9 @@ class GraphViewController: UIViewController {
     return .landscapeLeft
   }
   
-  var safeAreaRight:CGFloat = CGFloat()
-  var safeAreaLeft:CGFloat = CGFloat()
-  var safeAreaBottom:CGFloat = CGFloat()
+  private var safeAreaRight:CGFloat = CGFloat()
+  private var safeAreaLeft:CGFloat = CGFloat()
+  private var safeAreaBottom:CGFloat = CGFloat()
   
   
   // MARK: - LifeCycle
@@ -132,7 +132,7 @@ class GraphViewController: UIViewController {
 
 extension GraphViewController {
   
-  func configureDefaultGraph(index: Int) {
+  private func configureDefaultGraph(index: Int) {
     
     // データエントリーポイントは初期では空にしておく
     let dataEntries: [ChartDataEntry] = []
@@ -249,7 +249,7 @@ extension GraphViewController {
 
 extension GraphViewController {
   
-  func createLineChartDate() {
+   func createLineChartDate() {
     
     let graphContetCreator = GraphContentCreator()
     let dataEntries = graphContetCreator.createDataEntry(index: graphDateManager.index)

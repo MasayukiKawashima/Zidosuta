@@ -134,7 +134,7 @@ class PhotoTableViewCell: UITableViewCell {
   }
   
   //写真がダブルタップを感知できるようにする処理
-  func setupPhotoDoubleTapGesture() {
+  private func setupPhotoDoubleTapGesture() {
     
     // ダブルタップジェスチャーの作成
     let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(photoDoubleTapAction))
@@ -171,7 +171,7 @@ class PhotoTableViewCell: UITableViewCell {
     delegate?.deleteButtonAction(in: self)
   }
   
-  @objc func  photoDoubleTapAction() {
+  @objc private func  photoDoubleTapAction() {
     
     if let image = photoImageView.image  {
       delegate?.photoDoubleTapAction(photoImage: image)

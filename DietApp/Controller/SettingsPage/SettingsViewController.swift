@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
   
   // MARK: - Properties
   
-  var settingsView = SettingsView()
+  private var settingsView = SettingsView()
   
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -23,9 +23,9 @@ class SettingsViewController: UIViewController {
     .portrait
   }
   
-  var TableViewCellHeight:CGFloat = 60.0
+  private var TableViewCellHeight:CGFloat = 60.0
   
-  let contactEmailAdress = "info.zidosuta@gmail.com"
+  private let contactEmailAdress = "info.zidosuta@gmail.com"
   
   // MARK: - Enums
   
@@ -257,7 +257,7 @@ extension SettingsViewController: UITableViewDelegate,UITableViewDataSource {
 
 extension SettingsViewController {
   
-  func navigationBarTittleSettings() {
+  private func navigationBarTittleSettings() {
     
     let titleText = "設定"
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
@@ -387,21 +387,21 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTa
     }
   }
   
-  func showEmailSendfailureAlert() {
+  private func showEmailSendfailureAlert() {
     
     let alert = UIAlertController(title: "メール機能が使えません", message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)
   }
   
-  func showEmailSendSuccessAlert() {
+  private func showEmailSendSuccessAlert() {
     
     let alert = UIAlertController(title: "メールを送信しました", message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)
   }
   
-  func showEmailUnavailableAlert() {
+  private func showEmailUnavailableAlert() {
     
     let alert = UIAlertController(title: "メールを送信できませんでした", message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))

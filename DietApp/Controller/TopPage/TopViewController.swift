@@ -13,7 +13,7 @@ class TopViewController: UIViewController {
   
   // MARK: - Properties
   
-  var topView = TopView()
+  private var topView = TopView()
   
   private var navigationBarCover: UIView?
   private var viewCover: UIView?
@@ -21,16 +21,16 @@ class TopViewController: UIViewController {
   
   var topDateManager = TopDateManager()
   
-  var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+  private var documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
   
-  let realm = try! Realm()
+  private let realm = try! Realm()
   
-  var notificationToken: NotificationToken?
+  private var notificationToken: NotificationToken?
   //全データ削除後の更新処理のためプロパティ
-  var shouldReloadDataAfterDeletion: Bool = false
+  private var shouldReloadDataAfterDeletion: Bool = false
   //初回レイアウトが完了しているかどうか
   //全データ削除後のテーブルビューのリロードをするかどうかの分岐で使用する
-  var isViewFirstLayoutFinished = false
+  private var isViewFirstLayoutFinished = false
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -39,13 +39,13 @@ class TopViewController: UIViewController {
     return .portrait
   }
   
-  var tabBarHeight: CGFloat {
+  private var tabBarHeight: CGFloat {
     return tabBarController?.tabBar.frame.size.height ?? 49.0
   }
-  var navigationBarHeight: CGFloat {
+  private var navigationBarHeight: CGFloat {
     return self.navigationController?.navigationBar.frame.size.height ?? 44.0
   }
-  var statusBarHeight: CGFloat {
+  private var statusBarHeight: CGFloat {
     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
        let statusBarFrame = windowScene.statusBarManager?.statusBarFrame {
       return statusBarFrame.height
@@ -53,9 +53,9 @@ class TopViewController: UIViewController {
     return 0
   }
   //各セルの高さの定義
-  var weightTableViewCellHeight:CGFloat = 70.0
-  var memoTableViewCellHeight:CGFloat = 47.0
-  var photoTableViewCellHeight: CGFloat {
+  private var weightTableViewCellHeight:CGFloat = 70.0
+  private var memoTableViewCellHeight:CGFloat = 47.0
+  private var photoTableViewCellHeight: CGFloat {
     let totalHeight = view.frame.height
     let navigationHeight = navigationBarHeight
     let statusHeight = statusBarHeight
@@ -64,7 +64,7 @@ class TopViewController: UIViewController {
     
     return totalHeight - navigationHeight - statusHeight - tabHeight - weightTableViewCellHeight - memoTableViewCellHeight - adHeight
   }
-  var adTableViewCellHeight:CGFloat = 53.0
+  private var adTableViewCellHeight:CGFloat = 53.0
   
   
   // MARK: - Enums
@@ -336,7 +336,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   //削除ボタンが押された時の確認のアラート
-  func deleteAlertAction(_ cell: PhotoTableViewCell) {
+  private func deleteAlertAction(_ cell: PhotoTableViewCell) {
     
     let dateDataRealmSearcher = DateDataRealmSearcher()
     let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
@@ -375,7 +375,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   //モーダル表示するメソッド
-  func showPhotoModal(photoImage: UIImage) {
+  private func showPhotoModal(photoImage: UIImage) {
     
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     if let photoModalVC = storyboard.instantiateViewController(withIdentifier: "PhotoModalVC") as? PhotoModalViewController {
@@ -448,7 +448,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   //アクションシートの表示
-  func showPhotoSelectionActionSheet() {
+  private func showPhotoSelectionActionSheet() {
     
     let actionSheet = UIAlertController(title: "写真の選択", message: nil, preferredStyle: .actionSheet)
     
@@ -470,7 +470,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   //ImagePickerControllerの表示
-  func showImagePicker(sourceType: UIImagePickerController.SourceType) {
+  private func showImagePicker(sourceType: UIImagePickerController.SourceType) {
     
     if UIImagePickerController.isSourceTypeAvailable(sourceType) {
       let imagePicker = UIImagePickerController()
@@ -481,7 +481,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   //写真をドキュメントに保存するメソッド
-  func saveImageToDocument(pickedImage: UIImage, path: URL) {
+  private func saveImageToDocument(pickedImage: UIImage, path: URL) {
     
     let pngImageData = pickedImage.pngData()
     do {
@@ -496,14 +496,14 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
 extension TopViewController: UITextFieldDelegate {
   
   //各種カバービューを作成し配置
-  func createCoverViews() {
+  private func createCoverViews() {
     
     addNavigationBarCover()
     addViewCover()
     addTabBarCover()
   }
   //カバービューを削除
-  func removeCoverviews() {
+  private func removeCoverviews() {
     
     navigationBarCover?.removeFromSuperview()
     navigationBarCover = nil
@@ -623,7 +623,7 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   //テキストフィールドのバリデート
-  func textFieldValidate(_ textField : UITextField) -> ValidationResult? {
+  private func textFieldValidate(_ textField : UITextField) -> ValidationResult? {
     
     guard let type = TopPageTextFieldType(rawValue: textField.tag) else { return nil }
     
@@ -651,7 +651,7 @@ extension TopViewController: UITextFieldDelegate {
   }
   
   //バリデーションエラーのアラートを表示する
-  func showValidationErrorAlert(errorText: String, textField: UITextField) {
+  private func showValidationErrorAlert(errorText: String, textField: UITextField) {
     
     let alert = UIAlertController(title: "", message: errorText, preferredStyle: .alert)
     

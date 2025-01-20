@@ -92,7 +92,7 @@ class WeightTableViewCell: UITableViewCell {
 //キーボード上部の閉じるボタンを作成
 extension WeightTableViewCell {
   
-  func setUpCloseButton() {
+  private func setUpCloseButton() {
     
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

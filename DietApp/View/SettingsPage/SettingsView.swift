@@ -12,7 +12,7 @@ class SettingsView: UIView {
   
   // MARK: - Properties
   
-  let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell", "ContactTableViewCell"]
+  private let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell", "ContactTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView!{
     didSet{
@@ -58,7 +58,7 @@ class SettingsView: UIView {
   
   // MARK: - Methods
   
-  func nibInit() {
+  private func nibInit() {
     
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "SettingsView", bundle: nil)

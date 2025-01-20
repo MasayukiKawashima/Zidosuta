@@ -12,7 +12,7 @@ class TopView: UIView {
   
   // MARK: - Properties
   
-  let cellIdentifiers = ["WeightTableViewCell","MemoTableViewCell","PhotoTableViewCell","AdTableViewCell"]
+  private let cellIdentifiers = ["WeightTableViewCell","MemoTableViewCell","PhotoTableViewCell","AdTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView! {
     didSet{
@@ -42,7 +42,7 @@ class TopView: UIView {
   
   // MARK: - Methods
   
-  func nibInit() {
+  private func nibInit() {
     
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "TopView", bundle: nil)

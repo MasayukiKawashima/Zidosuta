@@ -12,7 +12,7 @@ class DataDeletionExecutionView: UIView {
   
   // MARK: - Properties
   
-  let cellIdentifiers = ["DeleteAllDataTableViewCell"]
+  private let cellIdentifiers = ["DeleteAllDataTableViewCell"]
   
   @IBOutlet weak var tableView: UITableView!  {
     didSet {
@@ -43,7 +43,7 @@ class DataDeletionExecutionView: UIView {
   
   // MARK: - Methods
   
-  func nibInit() {
+  private func nibInit() {
     
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "DataDeletionExecutionView", bundle: nil)
