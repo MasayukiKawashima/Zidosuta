@@ -39,7 +39,7 @@ class GraphView: UIView {
   
   // MARK: - Methods
   
-  func nibInit() {
+  private func nibInit() {
     
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "GraphView", bundle: nil)

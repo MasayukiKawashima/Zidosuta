@@ -12,7 +12,7 @@ class TopPageViewController: UIPageViewController {
   
   // MARK: - Properties
   
-  var controllers: [TopViewController] = []
+  private var controllers: [TopViewController] = []
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -55,7 +55,7 @@ class TopPageViewController: UIPageViewController {
 
 extension TopPageViewController {
   
-  func getCurrentPageTopDateManager() -> TopDateManager {
+  private func getCurrentPageTopDateManager() -> TopDateManager {
     
     let currentVC = self.viewControllers?.first as! TopViewController
     return currentVC.topDateManager
@@ -84,7 +84,7 @@ extension TopPageViewController: UIPageViewControllerDataSource {
     return instantiate(direction: .next)
   }
   //TopPageのページング先のインスタンス生成処理
-  func instantiate(direction: TransitionDirection)-> TopViewController {
+  private func instantiate(direction: TransitionDirection)-> TopViewController {
     
     let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
     let topVC = stroyBoard.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
@@ -125,7 +125,7 @@ extension TopPageViewController: UIPageViewControllerDelegate {
 extension TopPageViewController {
   
   //titileの設定
-  func navigationBarTitleSetting (currentDate: Date){
+  private func navigationBarTitleSetting (currentDate: Date){
     
     var yearText = ""
     var dateText = ""
@@ -200,7 +200,7 @@ extension TopPageViewController {
   }
   
   //BarButtonの設定
-  func navigationBarButtonSetting() {
+  private func navigationBarButtonSetting() {
     
     let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
     nextBarButtonItem.tag = 1

@@ -12,7 +12,7 @@ class NotificationSettingViewController: UIViewController {
   
   // MARK: - Properties
   
-  var notificationSettingView = NotificationSettingView()
+  private var notificationSettingView = NotificationSettingView()
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -21,13 +21,13 @@ class NotificationSettingViewController: UIViewController {
     .portrait
   }
   //選択された時間を保持
-  var selectedHour: Int?
-  var selectedMinute: Int?
-  var selectedDate: Date = Settings.shared.notification?.notificationTime ?? Date()
+  private var selectedHour: Int?
+  private var selectedMinute: Int?
+  private var selectedDate: Date = Settings.shared.notification?.notificationTime ?? Date()
   
-  var notificationTimeDisplayTableViewCellHeight:CGFloat  = 90.0
-  var notificationTimeEditTableViewCellHeight:CGFloat  = 200.0
-  var notificationRegisterTableViewCellHeight:CGFloat = 60.0
+  private var notificationTimeDisplayTableViewCellHeight:CGFloat  = 90.0
+  private var notificationTimeEditTableViewCellHeight:CGFloat  = 200.0
+  private var notificationRegisterTableViewCellHeight:CGFloat = 60.0
   
   var transitionSource: TransitionSource = .uiKit // デフォルトはUIKit
   
@@ -41,7 +41,7 @@ class NotificationSettingViewController: UIViewController {
     case notificationTimeEditTableViewCell
     case notificationRegisterTableViewCell
     
-    var values: (section: Int , row: Int) {
+     var values: (section: Int , row: Int) {
       switch self {
       case .notificationTimeDisplayTableViewCell:
         return (section: 0, row: 0)
@@ -139,7 +139,7 @@ extension NotificationSettingViewController :UITableViewDelegate, UITableViewDat
   }
   
   //時間が選択されるたびに呼ばれる時間ラベル更新メソッド
-  @objc func timeChanged(_ sender: UIDatePicker) {
+  @objc private func timeChanged(_ sender: UIDatePicker) {
     
     let row = NotificationSettingPageCell.notificationTimeDisplayTableViewCell.values.row
     let section = NotificationSettingPageCell.notificationTimeDisplayTableViewCell.values.section

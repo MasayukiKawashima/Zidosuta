@@ -43,8 +43,8 @@ class CustomMarkerView: MarkerView {
   
   // MARK: - Properties
   
-  var texts: [NSMutableAttributedString]?
-  var markerPath: UIBezierPath?
+  private var texts: [NSMutableAttributedString]?
+  private var markerPath: UIBezierPath?
   var dataSource: CustomMarkerViewDataSource?
   
   

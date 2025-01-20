@@ -12,7 +12,7 @@ class GraphPageViewController: UIPageViewController {
   
   // MARK: - Properties
   
-  var controllers: [UIViewController] = [GraphViewController()]
+  private var controllers: [UIViewController] = [GraphViewController()]
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
@@ -119,7 +119,7 @@ extension GraphPageViewController: UIPageViewControllerDelegate {
 //NavigationBarの設定
 extension GraphPageViewController {
   
-  func navigationBarTitleSetting (currentVC: GraphViewController){
+  private func navigationBarTitleSetting (currentVC: GraphViewController){
     
     var yearText = ""
     var dateText = ""
@@ -183,7 +183,7 @@ extension GraphPageViewController {
   }
   
   //barButtonの設定
-  func navigationBarButtonSetting() {
+  private func navigationBarButtonSetting() {
     
     let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
     nextBarButtonItem.tag = 1
@@ -196,7 +196,7 @@ extension GraphPageViewController {
     self.navigationItem.leftBarButtonItem = previousBarButtomItem
   }
   
-  @objc func buttonPaging(_ sender: UIBarButtonItem) {
+  @objc private func buttonPaging(_ sender: UIBarButtonItem) {
     
     //現在のVCを作成
     let currentVC = self.viewControllers?.first as! GraphViewController

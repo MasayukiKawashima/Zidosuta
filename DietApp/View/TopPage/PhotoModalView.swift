@@ -27,7 +27,7 @@ class PhotoModalView: UIView {
   @IBOutlet weak var photoImageView: UIImageView!
   @IBOutlet weak var dismissButton: UIButton!
   
-  var  isDismissButtonConfigured = false
+  private var  isDismissButtonConfigured = false
   
   var delegate: PhotoModalViewDelegate?
   
@@ -46,7 +46,7 @@ class PhotoModalView: UIView {
     self.nibInit()
   }
   
-  func nibInit(){
+  private func nibInit(){
     
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "PhotoModalView", bundle: nil)

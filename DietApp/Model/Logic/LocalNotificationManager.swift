@@ -27,7 +27,7 @@ class LocalNotificationManager {
     }
   }
   //現在の設定情報を保持
-  var currentSettings: Notification {
+  private var currentSettings: Notification {
     let settings = Settings.shared
     return settings.notification!
   }

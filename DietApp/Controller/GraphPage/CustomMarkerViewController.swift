@@ -13,7 +13,7 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
   
   // MARK: - Properties
   
-  var index: Int
+  private var index: Int
   
   
   // MARK: - Init

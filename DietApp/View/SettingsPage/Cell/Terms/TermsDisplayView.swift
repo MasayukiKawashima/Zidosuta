@@ -37,7 +37,7 @@ class TermsDisplayView: UIView {
   
   // MARK: - Methods
   
-  func nibInit() {
+  private func nibInit() {
     
     //xibファイルのインスタンス作成
     let nib = UINib(nibName: "TermsDisplayView", bundle: nil)

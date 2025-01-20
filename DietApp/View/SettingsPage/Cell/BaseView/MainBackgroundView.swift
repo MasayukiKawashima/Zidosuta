@@ -21,7 +21,7 @@ class MainBackgroundView: UIView {
   
   // MARK: - Methods
   
-  func setupMainBackgroundView() {
+  private func setupMainBackgroundView() {
     
     self.layer.cornerRadius = 8
     self.layer.masksToBounds = true
