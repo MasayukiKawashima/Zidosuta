@@ -11,6 +11,7 @@ import UIKit
 // MARK: - MemoTableViewCellDelegate
 
 protocol MemoTableViewCellDelegate: AnyObject {
+  
   func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell)
 }
 
@@ -51,6 +52,7 @@ class MemoTableViewCell: UITableViewCell {
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
+    
     super.setSelected(selected, animated: animated)
     
     // Configure the view for the selected state
@@ -62,6 +64,7 @@ class MemoTableViewCell: UITableViewCell {
 // MARK: - UITextFieldDelegate
 
 extension MemoTableViewCell: UITextFieldDelegate {
+  
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     
     memoTextField.resignFirstResponder()
@@ -73,6 +76,7 @@ extension MemoTableViewCell: UITextFieldDelegate {
 // MARK: - SetUpCloseButton
 
 extension MemoTableViewCell {
+  
   func setUpCloseButton() {
     
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))

@@ -14,6 +14,7 @@ class GraphDateManager {
   
   var firstDateOfHalfMonth: Date?
   var lastDateOfHalfMonth: Date?
+  
   lazy var index: Int = {
     //月の前半か後半かによるindexの調整
     let date = Date()
@@ -25,6 +26,7 @@ class GraphDateManager {
   // MARK: - Init
   
   init(date: Date = Date()) {
+    
     updateDate(index: self.index, date: date)
   }
   

@@ -13,6 +13,7 @@ struct OnboardingView: View {
   // MARK: - Init
   
   init() {
+    
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = UIColor(named: "YellowishRed")

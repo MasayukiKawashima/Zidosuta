@@ -14,6 +14,7 @@ class TermsDisplayViewController: UIViewController {
   // MARK: - Properties
   
   let termsDisplayView =  TermsDisplayView()
+  
   var termsType: TermsType!
   //インジケーター
   private let indicator: UIActivityIndicatorView = {

@@ -30,11 +30,13 @@ class NotificationSettingView: UIView {
   // MARK: - LifeCycle
   
   override init(frame: CGRect) {
+    
     super.init(frame: frame)
     nibInit()
   }
   
   required init?(coder aDecoder: NSCoder) {
+    
     super.init(coder: aDecoder)
     nibInit()
   }

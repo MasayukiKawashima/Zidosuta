@@ -11,8 +11,12 @@ import UIKit
 // MARK: - TermsOfUseTableViewCellDelegate
 
 protocol TermsOfUseTableViewCellDelegate {
+  
   func TermsOfUseTransitionButtonAction()
 }
+
+
+// MARK: - TermsOfUseTableViewCell
 
 class TermsOfUseTableViewCell: UITableViewCell {
   
@@ -40,6 +44,7 @@ class TermsOfUseTableViewCell: UITableViewCell {
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {
+    
     super.setSelected(selected, animated: animated)
     
     // Configure the view for the selected state

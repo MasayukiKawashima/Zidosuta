@@ -17,7 +17,6 @@ class DataDeletionExecutionViewController: UIViewController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     .portrait
   }

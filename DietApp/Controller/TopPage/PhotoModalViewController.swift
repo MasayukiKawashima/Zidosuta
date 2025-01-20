@@ -18,6 +18,7 @@ class PhotoModalViewController: UIViewController {
   // MARK: - Init
   
   required init?(coder: NSCoder) {
+    
     super.init(coder: coder)
   }
   
@@ -50,6 +51,7 @@ class PhotoModalViewController: UIViewController {
 // MARK: - PhotoModalViewDelegate
 
 extension PhotoModalViewController: PhotoModalViewDelegate {
+  
   //モーダルを閉じる処理
   func dismiss() {
     

@@ -11,6 +11,7 @@ import UIKit
 // MARK: - NotificationTableViewCellDelegate
 
 protocol NotificationTableViewCellDelegate {
+  
   func switchAction(isOn: Bool)
 }
 

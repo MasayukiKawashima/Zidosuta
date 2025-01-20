@@ -15,15 +15,18 @@ class GraphViewController: UIViewController {
   // MARK: - Properties
   
   var graphView = GraphView()
+  
   var graphDateManager = GraphDateManager()
+  
   let realm = try! Realm()
+  
   var notificationToken: NotificationToken?
+  
   var shouldReloadDataAfterDeletion: Bool = false
   
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .landscapeLeft
   }
@@ -67,6 +70,7 @@ class GraphViewController: UIViewController {
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
     // Get the new view controller using segue.destination.
     // Pass the selected object to the new view controller.
   }
@@ -127,6 +131,7 @@ class GraphViewController: UIViewController {
 // MARK: - ConfigureDefaultGraph
 
 extension GraphViewController {
+  
   func configureDefaultGraph(index: Int) {
     
     // データエントリーポイントは初期では空にしておく
@@ -243,6 +248,7 @@ extension GraphViewController {
 // MARK: - CreateLineChartDate(
 
 extension GraphViewController {
+  
   func createLineChartDate() {
     
     let graphContetCreator = GraphContentCreator()
@@ -307,6 +313,7 @@ extension GraphViewController {
 // MARK: - UIGestureRecognizerDelegate
 
 extension GraphViewController: UIGestureRecognizerDelegate {
+  
   //グラフView上でスワイプによる画面遷移を可能にするデリゲートメソッド
   
   func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,

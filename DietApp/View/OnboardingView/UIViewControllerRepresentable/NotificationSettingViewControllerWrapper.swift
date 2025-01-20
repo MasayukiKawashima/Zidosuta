@@ -37,9 +37,11 @@ struct NotificationSettingViewControllerWrapper: UIViewControllerRepresentable {
   }
   
   class Coordinator: NSObject {
+    
     var parent: NotificationSettingViewControllerWrapper
     
     init(_ parent: NotificationSettingViewControllerWrapper) {
+      
       self.parent = parent
     }
     

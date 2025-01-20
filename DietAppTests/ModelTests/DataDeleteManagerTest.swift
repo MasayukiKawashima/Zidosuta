@@ -13,6 +13,7 @@ import RealmSwift
 // MARK: - TestRealmObject
 
 class TestRealmObject: Object {
+  
   @Persisted var id = UUID().uuidString
 }
 
@@ -25,10 +26,15 @@ final class DataDeleteManagerTests: XCTestCase {
   // MARK: - Properties
   
   var sut: DataDeleteManager!
+  
   var realm: Realm!
+  
   var fileManager: FileManager!
+  
   var documentURL: URL!
+  
   var dummyFiles: [String]!
+  
   var fileURLs:[URL]!
   
   

@@ -17,7 +17,6 @@ class GraphPageViewController: UIPageViewController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .landscapeLeft
   }
@@ -41,6 +40,7 @@ class GraphPageViewController: UIPageViewController {
     }
     navigationBarButtonSetting()
   }
+  
   
   // MARK: - Methods
   
@@ -103,6 +103,7 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
 
 //画面遷移が終わった後に呼び出されるデリゲートメソッド
 extension GraphPageViewController: UIPageViewControllerDelegate {
+  
   func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
     
     if completed {
@@ -117,6 +118,7 @@ extension GraphPageViewController: UIPageViewControllerDelegate {
 
 //NavigationBarの設定
 extension GraphPageViewController {
+  
   func navigationBarTitleSetting (currentVC: GraphViewController){
     
     var yearText = ""

@@ -11,6 +11,7 @@ import UIKit
 // MARK: - WeightTableViewCellDelegate
 
 protocol WeightTableViewCellDelegate: AnyObject {
+  
   func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell)
 }
 
@@ -18,6 +19,7 @@ protocol WeightTableViewCellDelegate: AnyObject {
 // MARK: - SetWeightTextFieldUnderLine
 
 extension UITextField {
+  
   func setWeightTextFieldUnderLine() {
     
     let underline = UIView()
@@ -89,6 +91,7 @@ class WeightTableViewCell: UITableViewCell {
 
 //キーボード上部の閉じるボタンを作成
 extension WeightTableViewCell {
+  
   func setUpCloseButton() {
     
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))

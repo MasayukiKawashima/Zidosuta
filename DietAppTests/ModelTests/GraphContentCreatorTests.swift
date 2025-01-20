@@ -47,6 +47,7 @@ class GraphContentCreatorTests: XCTestCase {
   }
   
   override func tearDown() {
+    
     // インメモリのRealmを削除
     try! self.inMemoryRealm.write {
       self.inMemoryRealm.deleteAll()

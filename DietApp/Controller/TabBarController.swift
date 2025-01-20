@@ -7,9 +7,6 @@
 
 import UIKit
 
-
-// MARK: - TabBarController
-
 class TabBarController: UITabBarController {
   
   
@@ -50,6 +47,7 @@ extension UITabBarController {
 // MARK: - UITabBarControllerDelegate
 
 extension TabBarController: UITabBarControllerDelegate {
+  
   func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
     
     //タブをグラフページに切り替えたときのグラフ描画処理

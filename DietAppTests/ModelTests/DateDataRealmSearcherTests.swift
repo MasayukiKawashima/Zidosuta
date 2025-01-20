@@ -9,7 +9,6 @@ import XCTest
 import RealmSwift
 @testable import DietApp
 
-
 class DateDataRealmSearcherTests: XCTestCase {
   
   

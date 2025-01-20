@@ -11,6 +11,7 @@ import UIKit
 // MARK: - NotificationRegisterTableViewCellDelegate
 
 protocol NotificationRegisterTableViewCellDelegate {
+  
   func registerButtonAction()
 }
 

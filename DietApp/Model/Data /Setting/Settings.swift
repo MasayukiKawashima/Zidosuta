@@ -15,6 +15,7 @@ class Settings: Object {
   
   @Persisted var id: String = "settings"
   @Persisted var notification: Notification?
+  
   //このモデルはレコードが複数存在したらまずいので、シングルトンにする
   static var shared: Settings {
     let realm = try! Realm()
@@ -38,6 +39,7 @@ class Settings: Object {
   // MARK: - Methods
   
   override static func primaryKey() -> String? {
+    
     return "id"
   }
   //手動でRealmオブジェクトを更新

@@ -11,6 +11,7 @@ import Foundation
 // MARK: - WeightValidator
 
 protocol WeightValidator {
+  
   func validate() -> ValidationResult
 }
 
@@ -18,11 +19,14 @@ protocol WeightValidator {
 // MARK: - CompositeWeightValidator
 
 protocol CompositeWeightValidator: WeightValidator {
+  
   var validators: [WeightValidator] { get }
 }
 
 extension CompositeWeightValidator {
+  
   func validate() -> ValidationResult {
+    
     guard let result = validators.map({ $0.validate() }).first(where: { !$0.isValid }) else {
       return .valid
     }
@@ -43,6 +47,7 @@ enum WeightValidationError: ValidationError{
 }
 //各エラーケースのメッセージの定義
 extension WeightValidationError: LocalizedError {
+  
   public var errorDescription: String? {
     switch self {
     case .invalidFormat:
@@ -63,6 +68,7 @@ extension WeightValidationError: LocalizedError {
 //検証ロジックの実装
 //入力された値が適正な形式かどうか
 struct WeightFormatValidator: WeightValidator {
+  
   let weightString: String
   
   func validate() -> ValidationResult {
@@ -75,6 +81,7 @@ struct WeightFormatValidator: WeightValidator {
 }
 //マイナスの値であるかどうか
 struct NegativeNumberValidator: WeightValidator {
+  
   let weightString: String
   
   func validate() -> ValidationResult {
@@ -96,6 +103,7 @@ struct NegativeNumberValidator: WeightValidator {
 }
 //小数点以下が１桁までであるかどうか
 struct DecimalPlacesValidator: WeightValidator {
+  
   let weightString: String
   
   func validate() -> ValidationResult {
@@ -111,8 +119,10 @@ struct DecimalPlacesValidator: WeightValidator {
     return .valid
   }
 }
+
 //入力上限値を超えていないかどうか
 struct MaxWeightValidator: WeightValidator {
+  
   let weightString: String
   func validate() -> ValidationResult {
     //空文字はパス
@@ -136,6 +146,7 @@ struct MaxWeightValidator: WeightValidator {
 
 //検証構造体をまとめる
 struct WeightInputValidator: CompositeWeightValidator {
+  
   var validators: [WeightValidator]
   init(text: String) {
     self.validators = [

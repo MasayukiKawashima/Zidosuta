@@ -14,6 +14,7 @@ struct TermsTextView: View {
   
   @Binding var showTermsDisplay: Bool
   @Binding var selectedTermsType: TermsDisplayViewController.TermsType?
+  
   let fontSize: CGFloat
   
   
@@ -69,7 +70,6 @@ struct TermsTextView: View {
       text[range].underlineStyle = .single
       text[range].link = URL(string: "privacy://tap")
     }
-    
     return text
   }
 }

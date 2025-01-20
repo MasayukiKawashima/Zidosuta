@@ -11,6 +11,7 @@ import UIKit
 // MARK: - DeleteDataTableViewCellDelegate
 
 protocol DeleteDataTableViewCellDelegate {
+  
   func transitionButtonAction()
 }
 

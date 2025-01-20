@@ -15,7 +15,6 @@ class GraphNavigationController: UINavigationController {
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .landscapeLeft
   }
-  
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .landscapeLeft
   }

@@ -14,6 +14,7 @@ class MonthAdjusterTests: XCTestCase {
   // MARK: - Properties
   
   var monthAdjuter: MonthAdjuster!
+  
   var date: Date!
   
   

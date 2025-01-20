@@ -15,12 +15,14 @@ class GraphContentCreator {
   // MARK: - Properties
   
   private let realm: Realm!
+  
   private let currentDate: Date!
   
   
   // MARK: - Init
   
   init(realm: Realm = try! Realm(), currentDate: Date = Date()){
+    
     self.realm = realm
     self.currentDate = currentDate
   }

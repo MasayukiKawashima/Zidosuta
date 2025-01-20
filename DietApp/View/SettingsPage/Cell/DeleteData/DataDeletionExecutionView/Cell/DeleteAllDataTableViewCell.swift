@@ -11,6 +11,7 @@ import UIKit
 // MARK: - DeleteAllDataTableViewCellDelegate
 
 protocol DeleteAllDataTableViewCellDelegate {
+  
   func deleteButtonAction()
 }
 
@@ -25,6 +26,7 @@ class DeleteAllDataTableViewCell: UITableViewCell {
       mainBackgroundView.backgroundColor = .OysterWhite
     }
   }
+  
   @IBOutlet weak var deleteButton: UIButton! {
     didSet {
       let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)

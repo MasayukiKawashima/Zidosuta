@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
       }
     }
-    return .portrait // デフォルトは縦向き
+    // デフォルトは縦向き
+    return .portrait 
   }
   
   
@@ -83,11 +84,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
+  
   // ユーザーが通知に対してアクションをとった時に呼ばれるデリゲートメソッド
   // center: 通知を管理するUNUserNotificationCenterのインスタンス
   // response: ユーザーの応答情報を含むオブジェクト
   // completionHandler: 処理完了時に必ず呼び出す必要があるクロージャー
-  
   func userNotificationCenter(
     _ center: UNUserNotificationCenter,
     didReceive response: UNNotificationResponse,
