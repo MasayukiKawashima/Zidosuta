@@ -307,6 +307,12 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
       settings.update { settings in
         settings.notification?.isNotificationEnabled = false
       }
+      //通知スケジュールの削除
+      let center = UNUserNotificationCenter.current()
+      center.getPendingNotificationRequests { requests in
+        center.removeAllPendingNotificationRequests()
+        center.removeAllDeliveredNotifications()
+      }
       //statuLabelの編集
       cell.statusLabel.text = "オフ"
       cell.statusLabel.textColor = .lightGray
