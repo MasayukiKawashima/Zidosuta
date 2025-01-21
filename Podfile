@@ -1,20 +1,20 @@
 # Uncomment the next line to define a global platform for your project
  platform :ios, '15.0'
 
-target 'Zidosuta' do
+target 'ZidoSuta' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Zidosuta
+  # Pods for ZidoSuta
    pod  'Charts'
    pod 'RealmSwift'
 
-  target 'ZidosutaTests' do
+  target 'ZidoSutaTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'ZidosutaUITests' do
+  target 'ZidoSutaUITests' do
     # Pods for testing
   end
   post_install do |installer|

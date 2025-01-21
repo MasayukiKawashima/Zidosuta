@@ -9,17 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Zidosuta-ZidosutaUITests.xcscheme</key>
+		<key>Pods-ZidoSuta-ZidoSutaUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-Zidosuta.xcscheme</key>
+		<key>Pods-ZidoSuta.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ZidosutaTests.xcscheme</key>
+		<key>Pods-ZidoSutaTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
