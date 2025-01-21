@@ -1229,6 +1229,7 @@
 				DEVELOPMENT_TEAM = N373UCP9BA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ジドスタ";
 				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1237,6 +1238,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1261,6 +1263,7 @@
 				DEVELOPMENT_TEAM = N373UCP9BA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "ジドスタ";
 				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1269,6 +1272,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
