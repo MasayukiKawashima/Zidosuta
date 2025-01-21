@@ -9,17 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-DietApp-DietAppUITests.xcscheme</key>
+		<key>Pods-Zidosuta-ZidosutaUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-DietApp.xcscheme</key>
+		<key>Pods-Zidosuta.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-DietAppTests.xcscheme</key>
+		<key>Pods-ZidosutaTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
