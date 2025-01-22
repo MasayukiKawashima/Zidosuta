@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA68AF1C2A135F6F00B69D4A"
-               BuildableName = "ZidoSuta.app"
-               BlueprintName = "ZidoSuta"
+               BuildableName = "Zidosuta.app"
+               BlueprintName = "Zidosuta"
                ReferencedContainer = "container:Zidosuta.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -35,8 +35,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA68AF322A135F7200B69D4A"
-               BuildableName = "ZidoSutaTests.xctest"
-               BlueprintName = "ZidoSutaTests"
+               BuildableName = "ZidosutaTests.xctest"
+               BlueprintName = "ZidosutaTests"
                ReferencedContainer = "container:Zidosuta.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -45,8 +45,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FA68AF3C2A135F7200B69D4A"
-               BuildableName = "ZidoSutaUITests.xctest"
-               BlueprintName = "ZidoSutaUITests"
+               BuildableName = "ZidosutaUITests.xctest"
+               BlueprintName = "ZidosutaUITests"
                ReferencedContainer = "container:Zidosuta.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -67,8 +67,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA68AF1C2A135F6F00B69D4A"
-            BuildableName = "ZidoSuta.app"
-            BlueprintName = "ZidoSuta"
+            BuildableName = "Zidosuta.app"
+            BlueprintName = "Zidosuta"
             ReferencedContainer = "container:Zidosuta.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -91,8 +91,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FA68AF1C2A135F6F00B69D4A"
-            BuildableName = "ZidoSuta.app"
-            BlueprintName = "ZidoSuta"
+            BuildableName = "Zidosuta.app"
+            BlueprintName = "Zidosuta"
             ReferencedContainer = "container:Zidosuta.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

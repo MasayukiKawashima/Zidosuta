@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D88BC71075D3579B30C6A65 /* Pods_ZidoSuta_ZidoSutaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85399E9F50086FF872EB229F /* Pods_ZidoSuta_ZidoSutaUITests.framework */; };
-		680DE7F44207702145BDE483 /* Pods_ZidoSutaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF0B034557D45D879AF7891 /* Pods_ZidoSutaTests.framework */; };
-		B42E12214A4157C98ACAF0E7 /* Pods_ZidoSuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DC7C99CBE9C3923A426CCA /* Pods_ZidoSuta.framework */; };
+		056AEBE9ECFDC14DC49F09E4 /* Pods_Zidosuta_ZidosutaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E3A84AA8FAF96AF2CB2FED /* Pods_Zidosuta_ZidosutaUITests.framework */; };
+		21088586F2697E9A55EFF369 /* Pods_Zidosuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */; };
+		804A376645ECEE3C7BEC4E4C /* Pods_ZidosutaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92BC427561F0F9FAB0EB6D8 /* Pods_ZidosutaTests.framework */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
@@ -49,7 +49,7 @@
 		FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF262A135F6F00B69D4A /* Main.storyboard */; };
 		FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF292A135F7100B69D4A /* Assets.xcassets */; };
 		FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */; };
-		FA68AF442A135F7200B69D4A /* ZidoSutaTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* ZidoSutaTestsLaunchTests.swift */; };
+		FA68AF442A135F7200B69D4A /* ZidosutaTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* ZidosutaTestsLaunchTests.swift */; };
 		FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
 		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
@@ -132,15 +132,15 @@
 		0D2B7527553F064199C31AAF /* Pods-DietApp-DietAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietApp-DietAppUITests.release.xcconfig"; path = "Target Support Files/Pods-DietApp-DietAppUITests/Pods-DietApp-DietAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		0F5B60097D08A8216B3ADDB0 /* Pods-DietApp-DietAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietApp-DietAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-DietApp-DietAppUITests/Pods-DietApp-DietAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D3216C0D309DB7A4495A782 /* Pods-ZidosutaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidosutaTests.debug.xcconfig"; path = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		39DC7C99CBE9C3923A426CCA /* Pods_ZidoSuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZidoSuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46EC8D43F940F8A32E432562 /* Pods-DietAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4DF0B034557D45D879AF7891 /* Pods_ZidoSutaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZidoSutaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		670F3242D4F31CE4E09845CF /* Pods-ZidoSuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta.release.xcconfig"; path = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta.release.xcconfig"; sourceTree = "<group>"; };
+		68E3A84AA8FAF96AF2CB2FED /* Pods_Zidosuta_ZidosutaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zidosuta_ZidosutaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B8929D833C11B369780701C /* Pods-Zidosuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta.release.xcconfig"; path = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.release.xcconfig"; sourceTree = "<group>"; };
 		72832DA61A6590BA60429876 /* Pods-DietAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.release.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		85399E9F50086FF872EB229F /* Pods_ZidoSuta_ZidoSutaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZidoSuta_ZidoSutaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zidosuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C80464C016CC56F0AA62A86 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta-ZidosutaUITests.release.xcconfig"; path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A2C917BB0E91CAD6EE10CBBC /* Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig"; path = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A92BC427561F0F9FAB0EB6D8 /* Pods_ZidosutaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZidosutaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5C33142B6D6FE949E68AAF /* Pods-ZidoSuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta.debug.xcconfig"; path = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta.debug.xcconfig"; sourceTree = "<group>"; };
 		CB24F8A72D8F9F13EF5C9284 /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D369A6B7DD9A99C8896B9CF7 /* Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -181,16 +181,16 @@
 		FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
 		FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreator.swift; sourceTree = "<group>"; };
 		FA5DF1C82D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + AdjustmentOfappearance.swift"; sourceTree = "<group>"; };
-		FA68AF1D2A135F6F00B69D4A /* ZidoSuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZidoSuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA68AF1D2A135F6F00B69D4A /* Zidosuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zidosuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF202A135F6F00B69D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FA68AF272A135F6F00B69D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA68AF292A135F7100B69D4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA68AF2C2A135F7100B69D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA68AF2E2A135F7100B69D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA68AF332A135F7200B69D4A /* ZidoSutaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZidoSutaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA68AF3D2A135F7200B69D4A /* ZidoSutaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZidoSutaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA68AF432A135F7200B69D4A /* ZidoSutaTestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZidoSutaTestsLaunchTests.swift; sourceTree = "<group>"; };
+		FA68AF332A135F7200B69D4A /* ZidosutaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZidosutaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA68AF3D2A135F7200B69D4A /* ZidosutaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZidosutaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA68AF432A135F7200B69D4A /* ZidosutaTestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZidosutaTestsLaunchTests.swift; sourceTree = "<group>"; };
 		FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B42E12214A4157C98ACAF0E7 /* Pods_ZidoSuta.framework in Frameworks */,
+				21088586F2697E9A55EFF369 /* Pods_Zidosuta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +266,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				680DE7F44207702145BDE483 /* Pods_ZidoSutaTests.framework in Frameworks */,
+				804A376645ECEE3C7BEC4E4C /* Pods_ZidosutaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +274,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D88BC71075D3579B30C6A65 /* Pods_ZidoSuta_ZidoSutaUITests.framework in Frameworks */,
+				056AEBE9ECFDC14DC49F09E4 /* Pods_Zidosuta_ZidosutaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,9 +309,9 @@
 		93B1198B63959D7595269D26 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				39DC7C99CBE9C3923A426CCA /* Pods_ZidoSuta.framework */,
-				85399E9F50086FF872EB229F /* Pods_ZidoSuta_ZidoSutaUITests.framework */,
-				4DF0B034557D45D879AF7891 /* Pods_ZidoSutaTests.framework */,
+				8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */,
+				68E3A84AA8FAF96AF2CB2FED /* Pods_Zidosuta_ZidosutaUITests.framework */,
+				A92BC427561F0F9FAB0EB6D8 /* Pods_ZidosutaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -450,9 +450,9 @@
 		FA68AF142A135F6F00B69D4A = {
 			isa = PBXGroup;
 			children = (
-				FA68AF1F2A135F6F00B69D4A /* ZidoSuta */,
-				FA68AF362A135F7200B69D4A /* ZidoSutaTests */,
-				FA68AF402A135F7200B69D4A /* ZidoSutaUITests */,
+				FA68AF1F2A135F6F00B69D4A /* Zidosuta */,
+				FA68AF362A135F7200B69D4A /* ZidosutaTests */,
+				FA68AF402A135F7200B69D4A /* ZidosutaUITests */,
 				FA68AF1E2A135F6F00B69D4A /* Products */,
 				868533CA143429F6F9FD4225 /* Pods */,
 				93B1198B63959D7595269D26 /* Frameworks */,
@@ -462,14 +462,14 @@
 		FA68AF1E2A135F6F00B69D4A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA68AF1D2A135F6F00B69D4A /* ZidoSuta.app */,
-				FA68AF332A135F7200B69D4A /* ZidoSutaTests.xctest */,
-				FA68AF3D2A135F7200B69D4A /* ZidoSutaUITests.xctest */,
+				FA68AF1D2A135F6F00B69D4A /* Zidosuta.app */,
+				FA68AF332A135F7200B69D4A /* ZidosutaTests.xctest */,
+				FA68AF3D2A135F7200B69D4A /* ZidosutaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FA68AF1F2A135F6F00B69D4A /* ZidoSuta */ = {
+		FA68AF1F2A135F6F00B69D4A /* Zidosuta */ = {
 			isa = PBXGroup;
 			children = (
 				FA68AF202A135F6F00B69D4A /* AppDelegate.swift */,
@@ -481,25 +481,25 @@
 				FAC9EF172D0C0B5C00DE1E64 /* Controller */,
 				FA9F9CE22CF436B50013886A /* Utilitis */,
 			);
-			path = ZidoSuta;
+			path = Zidosuta;
 			sourceTree = "<group>";
 		};
-		FA68AF362A135F7200B69D4A /* ZidoSutaTests */ = {
+		FA68AF362A135F7200B69D4A /* ZidosutaTests */ = {
 			isa = PBXGroup;
 			children = (
 				FA24A8742CA6C2100082AF19 /* AppDelegateTests */,
 				FA42FA342A6CE85600C60F9E /* ModelTests */,
 			);
-			path = ZidoSutaTests;
+			path = ZidosutaTests;
 			sourceTree = "<group>";
 		};
-		FA68AF402A135F7200B69D4A /* ZidoSutaUITests */ = {
+		FA68AF402A135F7200B69D4A /* ZidosutaUITests */ = {
 			isa = PBXGroup;
 			children = (
 				FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */,
-				FA68AF432A135F7200B69D4A /* ZidoSutaTestsLaunchTests.swift */,
+				FA68AF432A135F7200B69D4A /* ZidosutaTestsLaunchTests.swift */,
 			);
-			path = ZidoSutaUITests;
+			path = ZidosutaUITests;
 			sourceTree = "<group>";
 		};
 		FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */ = {
@@ -733,9 +733,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FA68AF1C2A135F6F00B69D4A /* ZidoSuta */ = {
+		FA68AF1C2A135F6F00B69D4A /* Zidosuta */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA68AF472A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidoSuta" */;
+			buildConfigurationList = FA68AF472A135F7200B69D4A /* Build configuration list for PBXNativeTarget "Zidosuta" */;
 			buildPhases = (
 				B74A1872FECA6FE901F2367F /* [CP] Check Pods Manifest.lock */,
 				FA68AF192A135F6F00B69D4A /* Sources */,
@@ -747,14 +747,14 @@
 			);
 			dependencies = (
 			);
-			name = ZidoSuta;
+			name = Zidosuta;
 			productName = DietApp;
-			productReference = FA68AF1D2A135F6F00B69D4A /* ZidoSuta.app */;
+			productReference = FA68AF1D2A135F6F00B69D4A /* Zidosuta.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FA68AF322A135F7200B69D4A /* ZidoSutaTests */ = {
+		FA68AF322A135F7200B69D4A /* ZidosutaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA68AF4A2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidoSutaTests" */;
+			buildConfigurationList = FA68AF4A2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidosutaTests" */;
 			buildPhases = (
 				5197E636E317EE30C4985E42 /* [CP] Check Pods Manifest.lock */,
 				FA68AF2F2A135F7200B69D4A /* Sources */,
@@ -766,14 +766,14 @@
 			dependencies = (
 				FA68AF352A135F7200B69D4A /* PBXTargetDependency */,
 			);
-			name = ZidoSutaTests;
+			name = ZidosutaTests;
 			productName = DietAppTests;
-			productReference = FA68AF332A135F7200B69D4A /* ZidoSutaTests.xctest */;
+			productReference = FA68AF332A135F7200B69D4A /* ZidosutaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FA68AF3C2A135F7200B69D4A /* ZidoSutaUITests */ = {
+		FA68AF3C2A135F7200B69D4A /* ZidosutaUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA68AF4D2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidoSutaUITests" */;
+			buildConfigurationList = FA68AF4D2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidosutaUITests" */;
 			buildPhases = (
 				0069EC3666F94E7760226013 /* [CP] Check Pods Manifest.lock */,
 				FA68AF392A135F7200B69D4A /* Sources */,
@@ -786,9 +786,9 @@
 			dependencies = (
 				FA68AF3F2A135F7200B69D4A /* PBXTargetDependency */,
 			);
-			name = ZidoSutaUITests;
+			name = ZidosutaUITests;
 			productName = DietAppUITests;
-			productReference = FA68AF3D2A135F7200B69D4A /* ZidoSutaUITests.xctest */;
+			productReference = FA68AF3D2A135F7200B69D4A /* ZidosutaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -814,7 +814,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FA68AF182A135F6F00B69D4A /* Build configuration list for PBXProject "ZidoSuta" */;
+			buildConfigurationList = FA68AF182A135F6F00B69D4A /* Build configuration list for PBXProject "Zidosuta" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -827,9 +827,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA68AF1C2A135F6F00B69D4A /* ZidoSuta */,
-				FA68AF322A135F7200B69D4A /* ZidoSutaTests */,
-				FA68AF3C2A135F7200B69D4A /* ZidoSutaUITests */,
+				FA68AF1C2A135F6F00B69D4A /* Zidosuta */,
+				FA68AF322A135F7200B69D4A /* ZidosutaTests */,
+				FA68AF3C2A135F7200B69D4A /* ZidosutaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -897,7 +897,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZidoSuta-ZidoSutaUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Zidosuta-ZidosutaUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -919,7 +919,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZidoSutaTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ZidosutaTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -932,15 +932,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		98B8080B916270707BA2BCAB /* [CP] Embed Pods Frameworks */ = {
@@ -949,15 +949,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B74A1872FECA6FE901F2367F /* [CP] Check Pods Manifest.lock */ = {
@@ -975,7 +975,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ZidoSuta-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Zidosuta-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1076,7 +1076,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA68AF442A135F7200B69D4A /* ZidoSutaTestsLaunchTests.swift in Sources */,
+				FA68AF442A135F7200B69D4A /* ZidosutaTestsLaunchTests.swift in Sources */,
 				FAAB5D292D394D59003EAD71 /* TopScreenUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1086,12 +1086,12 @@
 /* Begin PBXTargetDependency section */
 		FA68AF352A135F7200B69D4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA68AF1C2A135F6F00B69D4A /* ZidoSuta */;
+			target = FA68AF1C2A135F6F00B69D4A /* Zidosuta */;
 			targetProxy = FA68AF342A135F7200B69D4A /* PBXContainerItemProxy */;
 		};
 		FA68AF3F2A135F7200B69D4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FA68AF1C2A135F6F00B69D4A /* ZidoSuta */;
+			target = FA68AF1C2A135F6F00B69D4A /* Zidosuta */;
 			targetProxy = FA68AF3E2A135F7200B69D4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1232,7 +1232,7 @@
 		};
 		FA68AF482A135F7200B69D4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB5C33142B6D6FE949E68AAF /* Pods-ZidoSuta.debug.xcconfig */;
+			baseConfigurationReference = E2BE357559E7AD61C391E8CB /* Pods-Zidosuta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1240,7 +1240,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N373UCP9BA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ZidoSuta/Info.plist;
+				INFOPLIST_FILE = Zidosuta/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ジドスタ";
 				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
@@ -1256,7 +1256,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.ZidoSuta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1266,7 +1266,7 @@
 		};
 		FA68AF492A135F7200B69D4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 670F3242D4F31CE4E09845CF /* Pods-ZidoSuta.release.xcconfig */;
+			baseConfigurationReference = 6B8929D833C11B369780701C /* Pods-Zidosuta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1274,7 +1274,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N373UCP9BA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ZidoSuta/Info.plist;
+				INFOPLIST_FILE = Zidosuta/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ジドスタ";
 				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
@@ -1290,7 +1290,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.ZidoSuta;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gmail.mkogori01.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1300,7 +1300,7 @@
 		};
 		FA68AF4B2A135F7200B69D4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F07282B85C14901564D1EFA4 /* Pods-ZidoSutaTests.debug.xcconfig */;
+			baseConfigurationReference = 1D3216C0D309DB7A4495A782 /* Pods-ZidosutaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1315,13 +1315,13 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZidoSuta.app/ZidoSuta";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zidosuta.app/Zidosuta";
 			};
 			name = Debug;
 		};
 		FA68AF4C2A135F7200B69D4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E068D36DDADCA805BA5D62F8 /* Pods-ZidoSutaTests.release.xcconfig */;
+			baseConfigurationReference = FAFE599C3B8495FFB72EEEA0 /* Pods-ZidosutaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1336,13 +1336,13 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ZidoSuta.app/ZidoSuta";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zidosuta.app/Zidosuta";
 			};
 			name = Release;
 		};
 		FA68AF4E2A135F7200B69D4A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D369A6B7DD9A99C8896B9CF7 /* Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig */;
+			baseConfigurationReference = CB24F8A72D8F9F13EF5C9284 /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1361,7 +1361,7 @@
 		};
 		FA68AF4F2A135F7200B69D4A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2C917BB0E91CAD6EE10CBBC /* Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig */;
+			baseConfigurationReference = 8C80464C016CC56F0AA62A86 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1381,7 +1381,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA68AF182A135F6F00B69D4A /* Build configuration list for PBXProject "ZidoSuta" */ = {
+		FA68AF182A135F6F00B69D4A /* Build configuration list for PBXProject "Zidosuta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA68AF452A135F7200B69D4A /* Debug */,
@@ -1390,7 +1390,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA68AF472A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidoSuta" */ = {
+		FA68AF472A135F7200B69D4A /* Build configuration list for PBXNativeTarget "Zidosuta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA68AF482A135F7200B69D4A /* Debug */,
@@ -1399,7 +1399,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA68AF4A2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidoSutaTests" */ = {
+		FA68AF4A2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidosutaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA68AF4B2A135F7200B69D4A /* Debug */,
@@ -1408,7 +1408,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA68AF4D2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidoSutaUITests" */ = {
+		FA68AF4D2A135F7200B69D4A /* Build configuration list for PBXNativeTarget "ZidosutaUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA68AF4E2A135F7200B69D4A /* Debug */,

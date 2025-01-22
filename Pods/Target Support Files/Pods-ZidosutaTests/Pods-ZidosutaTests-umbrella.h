@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_ZidoSutaTestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_ZidoSutaTestsVersionString[];
+FOUNDATION_EXPORT double Pods_ZidosutaTestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_ZidosutaTestsVersionString[];
 

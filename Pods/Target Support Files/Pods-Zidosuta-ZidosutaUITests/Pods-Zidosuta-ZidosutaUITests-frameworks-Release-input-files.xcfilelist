@@ -1,4 +1,4 @@
-${PODS_ROOT}/Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests-frameworks.sh
+${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
 ${BUILT_PRODUCTS_DIR}/Realm/Realm.framework
 ${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework
