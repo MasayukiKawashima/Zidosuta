@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -49,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    //AdMobの初期化
+    GADMobileAds.sharedInstance().start(completionHandler: nil)
     
     //スプラッシュ画面を1秒表示する
     let splashScreenDuration: UInt32 = 1

@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import GoogleMobileAds
 
 class TopViewController: UIViewController {
   
@@ -248,6 +249,9 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
     case .adTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+      cell.bannerView.rootViewController = self
+      cell.bannerView.load(GADRequest())
       return cell
     }
   }
