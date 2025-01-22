@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "24567514567892D51AB3160030C47BDC"
-               BuildableName = "Pods_ZidoSuta_ZidoSutaUITests.framework"
-               BlueprintName = "Pods-ZidoSuta-ZidoSutaUITests"
+               BlueprintIdentifier = "47ADD1ADF8BA3C813711D3D13986B331"
+               BuildableName = "Pods_Zidosuta_ZidosutaUITests.framework"
+               BlueprintName = "Pods-Zidosuta-ZidosutaUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

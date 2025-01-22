@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8540E0461E9058CD439B2EFB83590166"
-               BuildableName = "Pods_ZidoSuta.framework"
-               BlueprintName = "Pods-ZidoSuta"
+               BlueprintIdentifier = "5771AA40929450DBE40C6E12F31338E9"
+               BuildableName = "Pods_Zidosuta.framework"
+               BlueprintName = "Pods-Zidosuta"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

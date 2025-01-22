@@ -17,6 +17,7 @@
 		02E30FBD4DC2BA1021C92284B6A951E4 /* RealmSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 54FD0577D6D328AF7E2CCA1E2CC4302F /* RealmSwift-dummy.m */; };
 		0382A6D93C8BB1218EB1DBA3CF1B3BA7 /* BubbleChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C273E8B8DA8CAE984760512F31193362 /* BubbleChartData.swift */; };
 		04360A4DF646DD99E7AF0AC83FAA56AB /* CandleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3EA452A3D27477FECD6C549F64DBA2 /* CandleChartDataSet.swift */; };
+		05795F0098A78E20E166A7D5EE24E016 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952925E838A0DE4D7BDC4EE54022633D /* Foundation.framework */; };
 		057CBA4CFD4D2D2DDF4E3EC2E3D4AFB2 /* RLMCollection_Private.h in Copy . Private Headers */ = {isa = PBXBuildFile; fileRef = DE58A96663E95D76E96AAC0C11BAF390 /* RLMCollection_Private.h */; };
 		05C1B7985E83EBC77EA9E3F6CE4C3BA5 /* RLMUtil.mm in Sources */ = {isa = PBXBuildFile; fileRef = A4DB4E7659C06AE3027A84481A17DA71 /* RLMUtil.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		06563F485A3AB37F4353924BB2C5A09D /* RLMProperty.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 9770497B3E0622A8220B91B3CEC7FC33 /* RLMProperty.h */; };
@@ -37,15 +38,14 @@
 		16A830BB8675E82018E0F9B54606BE7A /* RLMManagedSet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D17FB29CF1EBF29D8BF63D42C9A90C5 /* RLMManagedSet.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		16C5A86B21B4BF6C530A96DC25C9ECDB /* PieChartDataEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8189D012F33B68107ABB84476E77B4C /* PieChartDataEntry.swift */; };
 		16D9410A001E9A1D8C4A73FC1114C1C6 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0418882353B34078B4BD5B2FA5952DF /* Results.swift */; };
+		16DEA490EE11EDB851E25B2872C1B51F /* Pods-Zidosuta-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 80C9C0E85F79BBD1AB306F7DB57C01BD /* Pods-Zidosuta-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		16EBF021255B0ED346790253433E4032 /* Projection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B6140E80F467F5B437D260E1B64D63 /* Projection.swift */; };
 		16F9874F8D5D8F384DF381A603DCB90C /* RLMSwiftProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A9DDF0F4DDDA3DE98D71136EEB2DC63 /* RLMSwiftProperty.h */; };
 		18D0B516334C2D28FC0C09390536120E /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD07668003F3BEF9D425A8D7BB65CD0 /* Combine.swift */; };
 		19F40EB97D44872C2F155EB91889EEDD /* BarChartDataSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54BB44E5C71915230774A65EF649BD9 /* BarChartDataSetProtocol.swift */; };
 		1A1E90CDA29D2394044D3359DFD4CC86 /* RealmCollectionImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC88BAD65B494279371D12BE5452DBF /* RealmCollectionImpl.swift */; };
 		1AC05F8A4B5087003EE3BE43F501CAA7 /* RLMRealmConfiguration_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = B59C14663F35890E6C8956B125A2B4C0 /* RLMRealmConfiguration_Private.h */; };
-		1C701FFF3748E7E436BAB5D24A130BAE /* Pods-ZidoSutaTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A35831B282C891C29ECEA5A84DC7846 /* Pods-ZidoSutaTests-dummy.m */; };
 		1C7423F964AEF53EA37E1B4F2F4C8A3D /* MoveViewJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C492CCE750CF5A1FC09055FE3F9CA6FA /* MoveViewJob.swift */; };
-		1CCF007EFC28013747D109708E3AF6D0 /* Pods-ZidoSuta-ZidoSutaUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D399BBA07B9C94D2D42287943FB7EA95 /* Pods-ZidoSuta-ZidoSutaUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1E8631F970CA9385805144BD7143BE7B /* RLMValue.h in Headers */ = {isa = PBXBuildFile; fileRef = D4CE3A82A23869F4576F99047494DBE5 /* RLMValue.h */; };
 		21CE032FBFE4E614648DD3F75419543F /* EmbeddedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6040DD58D03231489BCDBFF8751B023 /* EmbeddedObject.swift */; };
 		222338F71CA896A83077252FC843EB27 /* RLMSectionedResults.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = A91FF6768AE655C50C7E9572787F9EA5 /* RLMSectionedResults.h */; };
@@ -64,7 +64,6 @@
 		295E7D31962EAA43CE02A22D291AC827 /* YAxisRendererHorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92C790D5D3D827CEECB5A31D19E4B69 /* YAxisRendererHorizontalBarChart.swift */; };
 		2A7F15734FC3523439B69A3936A555FC /* RLMMigration.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = A089611767DEB5E78720D2F2CF1A570A /* RLMMigration.h */; };
 		2B5C395F6E89166EF13820A62EAC063A /* RLMSwiftCollectionBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 83B80D7F30AF554B5F340842B6E344B4 /* RLMSwiftCollectionBase.h */; };
-		2B6A3795225A6D2B0E9710637FA6E5DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952925E838A0DE4D7BDC4EE54022633D /* Foundation.framework */; };
 		2CB8FF880D2D40D38B038852AA1AC589 /* RLMMigration.h in Headers */ = {isa = PBXBuildFile; fileRef = A089611767DEB5E78720D2F2CF1A570A /* RLMMigration.h */; };
 		2CBCB0B2523BBF2EF0645CFF7C897AED /* ThreadSafeReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEDF6F000556C4F3C5F96436C96D941 /* ThreadSafeReference.swift */; };
 		2D7A2EBC2FC440678E3F1D63D375EA31 /* CombinedChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822C035591EBEAD854EEA24F90BDCC2C /* CombinedChartData.swift */; };
@@ -100,7 +99,6 @@
 		432AD2F111C39780AE7A6481FDA0B435 /* RLMDecimal128.h in Headers */ = {isa = PBXBuildFile; fileRef = DEA278C0BE7F2A277A08931FD6ABC8E1 /* RLMDecimal128.h */; };
 		43C856127F4C96FE9EF2CBFD545B1FE1 /* RLMSchema.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE27B518EB54DC6C77F0892D12CFC543 /* RLMSchema.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		4412B151ED4921518E19FA644D282D99 /* LineRadarRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA3F7FB66DF99E122BED2C2B30BE89B /* LineRadarRenderer.swift */; };
-		441E9D3E46794617A9C3A48F08B9B981 /* Pods-ZidoSuta-ZidoSutaUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F88749D85AF87AE546BDADEBBCE59EEA /* Pods-ZidoSuta-ZidoSutaUITests-dummy.m */; };
 		45350F187C0792E5458F3587566FFB34 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDCD854FE93C0AB6481788F077F4F24 /* Property.swift */; };
 		461C64837E004AC3C0DF52D00D47A197 /* MutableSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D700FB253037F43B3C9746C2ABE893 /* MutableSet.swift */; };
 		46D629F718073D7735C888E42E1EAB17 /* PieChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483830AB477011C72FD405C72D58004E /* PieChartDataSet.swift */; };
@@ -127,7 +125,6 @@
 		5697CF4BBB48C32A77A55DD6388080C8 /* RLMObjectSchema.mm in Sources */ = {isa = PBXBuildFile; fileRef = D4C1A699CD5FF30190DAE6F6B1E337F5 /* RLMObjectSchema.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		56B8DFC76669BEF3F2A7CCEB4819E650 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AAE9786F4A1E2B86C8C9424DA4D5639 /* Util.swift */; };
 		56C71B82E08666FBEC2E57178FF7EB18 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD2192BD6BB227A31309BBA24DEAE33 /* Platform.swift */; };
-		56D201781084DB6B2DB155DB803E441E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952925E838A0DE4D7BDC4EE54022633D /* Foundation.framework */; };
 		56FC8F31D86EBF209DE6B570A70D7155 /* RLMLogger.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 05F7E0520F8C798F20A883E724C2C401 /* RLMLogger.h */; };
 		5751FF8F73931CF52C588FC93DF87069 /* HorizontalBarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24219A7C5AD2C983467FB377A46737E7 /* HorizontalBarChartView.swift */; };
 		5829E60F3B1D9D7166301BC4AA17E83D /* ViewPortJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D32808674DD20F9C9784B1B7ABED615 /* ViewPortJob.swift */; };
@@ -142,7 +139,6 @@
 		5F698DB898F315504CB7D15F0DC0E9F4 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 63AD5150247428474631984BE27FD1CD /* PrivacyInfo.xcprivacy */; };
 		5FEBF6B968DEDC26C7F4D4D033C40A1F /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55902C085C5E63BAF6564DE8D98C105 /* Error.swift */; };
 		5FFB0442423AFC0BFC70DA91859C1FA7 /* SquareShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5501DEBFC1D59D2DC00F2B819B33CABB /* SquareShapeRenderer.swift */; };
-		60AEE12AD04FD4BA050832A641F143E2 /* Pods-ZidoSuta-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D104655C76B97B9FFBCD021939EC05E3 /* Pods-ZidoSuta-dummy.m */; };
 		60F208C320EA137DF1E35F58D848DE9A /* CandleStickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06153C7C793BF6F36C94136E0562E939 /* CandleStickChartView.swift */; };
 		6130B294DE88ECF9F4706D1895CC6279 /* ChartDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380547ED40B87D2EC0DFC0E8DE83722E /* ChartDataProvider.swift */; };
 		6131C6F2A6A53F5A68D9D1ED1854A978 /* RLMLogger_Private.h in Copy . Private Headers */ = {isa = PBXBuildFile; fileRef = B9A6F91BE975FAED98003C5267A82E58 /* RLMLogger_Private.h */; };
@@ -151,9 +147,9 @@
 		6291997C9089F0F4FF4B0172331B31AC /* RadarChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EEE25BAF62460C4B6C61FDC8BAC21A0 /* RadarChartRenderer.swift */; };
 		62A0FD75EE052334691FEA59D80AD7FB /* Split.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6186134843CA8ECF17F2C23C1219834 /* Split.swift */; };
 		62B2D58DC7E840C14EDAF4A049C64A7F /* RLMSwiftValueStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 0655F58551F743990734184A35ED04F5 /* RLMSwiftValueStorage.h */; };
+		62D3CE9E0B1955457038CCF08D399280 /* Pods-ZidosutaTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 754B0FF17DF697073A362F72025E8F3D /* Pods-ZidosutaTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62D8577306ADECE7E6EF8F97EEC6B887 /* RLMThreadSafeReference.mm in Sources */ = {isa = PBXBuildFile; fileRef = AB0A888F93C1CDD0ECF9D8D7A2C7A191 /* RLMThreadSafeReference.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		6351CC48D4CD08A64B93027110D0BFD7 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF57D198BAE53F6D7E1F47E60ED75C9 /* Marker.swift */; };
-		63A1DC509C282BC60D61749F6B1346CB /* Pods-ZidoSuta-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7007F73E0AF5D1B7736EFFCDF721BC1A /* Pods-ZidoSuta-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		63C81C1BFB3CBE99963581CA7EDE73B4 /* ComplexTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8F2164CD740509475B65FACACA0ED /* ComplexTypes.swift */; };
 		646FE6A25A724BC685702BFB101E021E /* ChartBaseDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB758FA46C669631E8A7A4BEBDEFA2C /* ChartBaseDataSet.swift */; };
 		64B59451EB2C31914C278348F911C715 /* CandleChartDataSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49D7F1376AFDB8AFC1C2263D8799485 /* CandleChartDataSetProtocol.swift */; };
@@ -161,7 +157,6 @@
 		64E36FF14DDE083130EAD49EB027C6F4 /* LineChartDataSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5138E8158E6643F4E0B7CC951F97EDFF /* LineChartDataSetProtocol.swift */; };
 		6570E55252FE06E1EBFF5F6D05DED070 /* RLMObjectBase_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = CE4AA65F3434625D4A26936F6F0C8C91 /* RLMObjectBase_Private.h */; };
 		66D7AE3A07B5A706A6981CF7BCA838BC /* RLMObjectBase.h in Headers */ = {isa = PBXBuildFile; fileRef = E1C1FD8F28F7993F47AB50ABFA0AF6BA /* RLMObjectBase.h */; };
-		66EAAEB80B7714260CF03A9D1B0269FC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952925E838A0DE4D7BDC4EE54022633D /* Foundation.framework */; };
 		66F3B6C98F43E73B2AC39903CA76DDD5 /* Realm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB6E5E32293397FDBE2C27D8CF9A132 /* Realm-dummy.m */; };
 		67AF0FFA8C4DD3594D2D4F7F0EB13D6F /* LineChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC73477024823DA1557133C455E9E442 /* LineChartDataSet.swift */; };
 		68047C5BD5B0C77274FAB5CD38F2EF0E /* TriangleShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA160C1F33B91B67997DF98D9463EA1 /* TriangleShapeRenderer.swift */; };
@@ -190,6 +185,7 @@
 		7B577F0C4113EFF318451C8D8EFF72C6 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91001D80A0B718FF54F49DCEFF1B9A2E /* Object.swift */; };
 		7BF69F474CF14CDA063E80324FA69E8D /* SchemaDiscovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21989698941AF25D026975513EABE8B3 /* SchemaDiscovery.swift */; };
 		7C09D13338B7A0BF4A0EB9763EE60339 /* ChevronUpShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17135002960266CD6AE9E46B20840590 /* ChevronUpShapeRenderer.swift */; };
+		7CAADC736DD219449E2DFB25A52C7C5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952925E838A0DE4D7BDC4EE54022633D /* Foundation.framework */; };
 		7EEF27ACEDAF091D83A346F18271B37E /* RLMMigration.mm in Sources */ = {isa = PBXBuildFile; fileRef = DF2A768A41229E1805F87101287E368D /* RLMMigration.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		7F2ECB89283EDABCB673D98DFAA5B768 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EBC43D2CCEC34319C9BA120C4EBEE4 /* RealmConfiguration.swift */; };
 		801BC85AE4AA0A41C6F47FBD4B45DE15 /* RLMScheduler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9184387786BAF4E43C24B55C5FC82751 /* RLMScheduler.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
@@ -227,6 +223,7 @@
 		9488B16D61B0C91FAB1A66BD082A2C0E /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AD6C81DF9BFD3F6739BCC57647E2E /* MinMax.swift */; };
 		94F9048B20BBE7C4C13162E165B7F27A /* Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265EDEE2070B8F2E4FE7BE301AD01726 /* Migration.swift */; };
 		95826C07F14DFF13BAA349F49C84917F /* Platform+Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B680335B3F154E3B7CC1BCA1206DFFD /* Platform+Graphics.swift */; };
+		95E6DB37FBF2610E7C094377A0145A58 /* Pods-Zidosuta-ZidosutaUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 682922D317C76F8312194BF314E976C5 /* Pods-Zidosuta-ZidosutaUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		968CA639D9CA2E9D8A41F1038F03C2AE /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F57AB188F6455725DBEE04193904B2F /* Description.swift */; };
 		96AFBE5852D6EFC5DA1EEA30F2F94731 /* RealmSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 96C0A566F4DCD526D418AEBE549E47D9 /* RealmSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		97528183B1A64DF1AFB370063327C922 /* PieRadarChartViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA78C093892AA104A538037BC2BD4D81 /* PieRadarChartViewBase.swift */; };
@@ -257,6 +254,7 @@
 		A403ACC928700F9D1C30C7D3D3821F50 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF20FAB158F9192B9537B56E0215928 /* Realm.swift */; };
 		A5A2B62222D6B52255157E45BBFC2D78 /* DefaultFillFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A213BCE85E8CF999F78A511749E80CD /* DefaultFillFormatter.swift */; };
 		A5D486D49360864C62B4792EC48B1531 /* RLMObjectId.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = C0BA13F62077ACA4CC0B2DCDF2D34214 /* RLMObjectId.h */; };
+		A6CD74129ADC62F086E177249542E0DA /* Pods-Zidosuta-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A82F37B541F29E0F927E95491BB4DECC /* Pods-Zidosuta-dummy.m */; };
 		A900A345222AA91DAC92BA1E75B6C6F3 /* RLMError.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 49E648E150DF52A0D4DB7BF6D3E0A11E /* RLMError.h */; };
 		A90A272F4B1735E0644FD2464064E428 /* LineScatterCandleRadarChartDataSetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBEA0AF9268BB9C9A1D6950DA24CC61C /* LineScatterCandleRadarChartDataSetProtocol.swift */; };
 		AD39498BCB9B2C9DA4C02C6397102FE1 /* RLMResults.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 82B6B79BBCC408683E6098DB29E2E8C5 /* RLMResults.h */; };
@@ -270,7 +268,7 @@
 		B1AB552A58B7BF4B59D8FBB0409D51DF /* RLMThreadSafeReference.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = F57E922EE10CB0802E3A537D2CD1DA66 /* RLMThreadSafeReference.h */; };
 		B2162A26B36709F6F1B6976DF1A65DAB /* DataRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1252108927443D339A2763CE6F855C /* DataRenderer.swift */; };
 		B2DD7CF96035374C7AC80D88B8904691 /* ShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075CD170A9C6C7E377EF267705EB5BB8 /* ShapeRenderer.swift */; };
-		B3A44D370FC358181990625496531B4A /* Pods-ZidoSutaTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 714193172E937E853F1B7D23F25AFE99 /* Pods-ZidoSutaTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2DF4F3B41CC16529C660D10FFF037D8 /* Pods-ZidosutaTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E167CF4DCD6E2C1C4651D1FB277F67D7 /* Pods-ZidosutaTests-dummy.m */; };
 		B4015BE1313094DACA3DBB86191C5030 /* CombinedHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F03A48AF9EC1F4AEAF55EF327D1B8E /* CombinedHighlighter.swift */; };
 		B4D7DBBE6B8329E0947FFC9D1721B3CD /* YAxisRendererRadarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9844163CD17B50F532867422AE8317DB /* YAxisRendererRadarChart.swift */; };
 		B53F05BBBD7383FA8C3860599A7537C1 /* Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081E6DA72FB5AA76D1507CFE9A6E18EC /* Query.swift */; };
@@ -288,6 +286,7 @@
 		BBA36C516D94DA38E2C520B4BCB75398 /* Decimal128.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570BD197A05278DE162F41C132BBB9C /* Decimal128.swift */; };
 		BC24F99E6D030D3A39CF1AF0DACABD29 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F7C93FEAEC779A12683AE596E0173F /* Product.swift */; };
 		BC2A7125DBEDAFBBCBB179B036DF0CF6 /* ObjcBridgeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4515961CE9B93586788161C63B76640 /* ObjcBridgeable.swift */; };
+		BC7F33E4C3A93A05BC249F3924B775A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952925E838A0DE4D7BDC4EE54022633D /* Foundation.framework */; };
 		BCDD845A4DE2369319428997ABE664BA /* RLMLogger.mm in Sources */ = {isa = PBXBuildFile; fileRef = 44B04FD1680855CDDDC6828278D0EFA7 /* RLMLogger.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		BCFC6173E3ED60450F75B8F948EDC811 /* RLMCollection_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = DE58A96663E95D76E96AAC0C11BAF390 /* RLMCollection_Private.h */; };
 		BDFE5C038BFAEDE5843A3BE7B78DAB9B /* AnimatedViewPortJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECACFF1C8E9F3472670A235C04A8480 /* AnimatedViewPortJob.swift */; };
@@ -313,6 +312,7 @@
 		CDEC25CE08EA75994905C6416807A531 /* RLMProperty.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4C9F8B63E708163C743DA9D54DDA521 /* RLMProperty.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
 		CF491A4A998823F62438EFF79A37028E /* ViewPortHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED5AE9C2AFA81E7F52112D9881DBA2D3 /* ViewPortHandler.swift */; };
 		CF53CF4998B07E3B054A32F34598D911 /* CombinedChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449447D6C8A770BF46D23D9F091290F7 /* CombinedChartRenderer.swift */; };
+		CFBE97ED5442FDB30CEC984B900AB661 /* Pods-Zidosuta-ZidosutaUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 31039EE558E3EC6870877A28B4EFD366 /* Pods-Zidosuta-ZidosutaUITests-dummy.m */; };
 		D0B62E8A518C73BE0BAC24D8A9D2E758 /* SwiftAlgorithms-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C7F42456B7A1C01D54029EF3D1C86127 /* SwiftAlgorithms-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0C9A502D2862423FBBDA403AAA04943 /* Suffix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC007D859ABD4C103AE38878DBAF623 /* Suffix.swift */; };
 		D0DFBAB8C82D992144636634F06056DD /* RLMResults.mm in Sources */ = {isa = PBXBuildFile; fileRef = BABF730ADCC1E9E3EFED1A9DD2B81291 /* RLMResults.mm */; settings = {COMPILER_FLAGS = "-DREALM_HAVE_CONFIG -DREALM_COCOA_VERSION='@\"20.0.0\"' -D__ASSERTMACROS__"; }; };
@@ -388,13 +388,6 @@
 			remoteGlobalIDString = 68494F30B4A13F8E5E88BCCAEC25B0A4;
 			remoteInfo = Realm;
 		};
-		27215CE2A7F30AA5F60681AF17E3BC16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF03B0B2B8B052092CB5F90CC5FB3757;
-			remoteInfo = Charts;
-		};
 		2C066C9FE7BB7FA0B0B07CEC69B47A4D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -402,54 +395,33 @@
 			remoteGlobalIDString = 2C511EE63C6E7D5843B971D1E441119E;
 			remoteInfo = SwiftAlgorithms;
 		};
-		31C957EB22D9918EFE9815E3A80A6385 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68494F30B4A13F8E5E88BCCAEC25B0A4;
-			remoteInfo = Realm;
-		};
-		3262817D79C276E558EDD288AB94BE32 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BF03B0B2B8B052092CB5F90CC5FB3757;
-			remoteInfo = Charts;
-		};
-		55C0D4E2DA12ABDE84A373875476259D /* PBXContainerItemProxy */ = {
+		4157CDA90E7F82B6C24DC612E57C527E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2C511EE63C6E7D5843B971D1E441119E;
 			remoteInfo = SwiftAlgorithms;
 		};
-		5F46646A7CA4C99A1201EF2A454EF408 /* PBXContainerItemProxy */ = {
+		49B15DCD3357CB565E60A712476DA5AF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 782725687624F8665247B84AB581BEB1;
-			remoteInfo = RealmSwift;
+			remoteGlobalIDString = BF03B0B2B8B052092CB5F90CC5FB3757;
+			remoteInfo = Charts;
 		};
-		6006FD9DF3A6B9DD6B1E687E1684631D /* PBXContainerItemProxy */ = {
+		79513F4B66883484B6111566AC9436E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 68494F30B4A13F8E5E88BCCAEC25B0A4;
-			remoteInfo = Realm;
+			remoteGlobalIDString = 5771AA40929450DBE40C6E12F31338E9;
+			remoteInfo = "Pods-Zidosuta";
 		};
-		7CF37E59A8C30A055FCBF396C48C0B84 /* PBXContainerItemProxy */ = {
+		84DC56D82E87B653F4F97BBD6D1359B4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 782725687624F8665247B84AB581BEB1;
-			remoteInfo = RealmSwift;
-		};
-		8E36B828586395B7DF482E57031D7EE8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8540E0461E9058CD439B2EFB83590166;
-			remoteInfo = "Pods-ZidoSuta";
+			remoteGlobalIDString = 2C511EE63C6E7D5843B971D1E441119E;
+			remoteInfo = SwiftAlgorithms;
 		};
 		97DB65BE0B57C18EC57D4EDA2943EFBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -458,12 +430,12 @@
 			remoteGlobalIDString = D8F7D719B6671C5E3A6851AFBAF78574;
 			remoteInfo = "Realm-realm_objc_privacy";
 		};
-		A14AFE995EC4049C0FA8CE5AE9A2424A /* PBXContainerItemProxy */ = {
+		B05ABF513AF1D9AAA0806FFB14455C0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2C511EE63C6E7D5843B971D1E441119E;
-			remoteInfo = SwiftAlgorithms;
+			remoteGlobalIDString = BF03B0B2B8B052092CB5F90CC5FB3757;
+			remoteInfo = Charts;
 		};
 		B2DC9386BAB902B5E13FC1622CADB699 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -471,6 +443,34 @@
 			proxyType = 1;
 			remoteGlobalIDString = A6CEC262606E26A9A4D370183283DC78;
 			remoteInfo = "RealmSwift-realm_swift_privacy";
+		};
+		C960B5F82EA8E7EAC33CC8705437F455 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68494F30B4A13F8E5E88BCCAEC25B0A4;
+			remoteInfo = Realm;
+		};
+		D19C85A713FA5E52E271D7C69B299D63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 782725687624F8665247B84AB581BEB1;
+			remoteInfo = RealmSwift;
+		};
+		D731F26C5060D8D3C34422B33D5746F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 68494F30B4A13F8E5E88BCCAEC25B0A4;
+			remoteInfo = Realm;
+		};
+		F18B6837964E09046A8DA651C1F1A856 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 782725687624F8665247B84AB581BEB1;
+			remoteInfo = RealmSwift;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -546,8 +546,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0029E2A15408750014F464839946DC35 /* Pods-Zidosuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zidosuta.release.xcconfig"; sourceTree = "<group>"; };
 		00947FA3CAAFC6ECE46ABF1F16381B37 /* PropertyAccessors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PropertyAccessors.swift; path = RealmSwift/Impl/PropertyAccessors.swift; sourceTree = "<group>"; };
 		00A0F3F4E04005A2287A7269BEAE84AB /* RLMRealm_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealm_Private.h; path = include/RLMRealm_Private.h; sourceTree = "<group>"; };
+		01150213237C732CE2E3B9502D88BB2C /* Pods-Zidosuta-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Zidosuta-frameworks.sh"; sourceTree = "<group>"; };
 		01C3FF6537E2D50417DA6A71C667F648 /* RLMScheduler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMScheduler.h; path = include/RLMScheduler.h; sourceTree = "<group>"; };
 		01FDA0C91E833A78198452B4B418A116 /* BarLineChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineChartViewBase.swift; path = Source/Charts/Charts/BarLineChartViewBase.swift; sourceTree = "<group>"; };
 		02260466459F6E6B59EB8B33E215C719 /* Charts.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Charts.modulemap; sourceTree = "<group>"; };
@@ -568,7 +570,6 @@
 		07425E0DAE5713000BA0C4FE73CFE88F /* Permutations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Permutations.swift; path = Sources/Algorithms/Permutations.swift; sourceTree = "<group>"; };
 		075CD170A9C6C7E377EF267705EB5BB8 /* ShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/ShapeRenderer.swift; sourceTree = "<group>"; };
 		081E6DA72FB5AA76D1507CFE9A6E18EC /* Query.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Query.swift; path = RealmSwift/Query.swift; sourceTree = "<group>"; };
-		09185EB5F6E6C45BA4EE7FE578127E9F /* Pods-ZidoSutaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidoSutaTests.release.xcconfig"; sourceTree = "<group>"; };
 		099C7BB61CE3B4F8646F0B0A760689EC /* RLMProperty_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMProperty_Private.h; path = include/RLMProperty_Private.h; sourceTree = "<group>"; };
 		099DD0899C155FFEE23EDBEE15E23FF0 /* RLMArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMArray.h; path = include/RLMArray.h; sourceTree = "<group>"; };
 		09DC7F53174F5DFBD9154D8D3EC51BFF /* Intersperse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Intersperse.swift; path = Sources/Algorithms/Intersperse.swift; sourceTree = "<group>"; };
@@ -584,6 +585,7 @@
 		0EF67D5654AE13AEE8A02613733DBE5B /* RadarChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartData.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartData.swift; sourceTree = "<group>"; };
 		0F40402ED05D19E41E8B224A3CC71EB5 /* realm-monorepo.xcframework */ = {isa = PBXFileReference; includeInIndex = 1; name = "realm-monorepo.xcframework"; path = "core/realm-monorepo.xcframework"; sourceTree = "<group>"; };
 		0F62FB7D677329843194D3D32893E9D9 /* RLMDecimal128.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMDecimal128.mm; path = Realm/RLMDecimal128.mm; sourceTree = "<group>"; };
+		0F675ECD944F4DB6C24205BAB71DE93D /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1008F7C42092C5DA69794583F54CA36F /* ResourceBundle-realm_objc_privacy-Realm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-realm_objc_privacy-Realm-Info.plist"; sourceTree = "<group>"; };
 		10CCBA346B091E9626D02D7F8D00A2F7 /* RLMObjectBase.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectBase.mm; path = Realm/RLMObjectBase.mm; sourceTree = "<group>"; };
 		10CD7C4967ECB98C6EE6FAE7FD04F1AE /* RealmSwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RealmSwift-Info.plist"; sourceTree = "<group>"; };
@@ -594,15 +596,14 @@
 		153CF7A4A4B9755DCF233753E58B5699 /* MarkerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkerView.swift; path = Source/Charts/Components/MarkerView.swift; sourceTree = "<group>"; };
 		17135002960266CD6AE9E46B20840590 /* ChevronUpShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChevronUpShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/ChevronUpShapeRenderer.swift; sourceTree = "<group>"; };
 		17EF9CB1E478DC305BA61D5EC9A16E48 /* Realm-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Realm-Info.plist"; sourceTree = "<group>"; };
-		18FE566721C345A37699F26E96AFFF2E /* Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1A25B5B01975CBAA0E01C2C1765E8EBA /* YAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxis.swift; path = Source/Charts/Components/YAxis.swift; sourceTree = "<group>"; };
 		1A9DDF0F4DDDA3DE98D71136EEB2DC63 /* RLMSwiftProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSwiftProperty.h; path = include/RLMSwiftProperty.h; sourceTree = "<group>"; };
 		1AAE9786F4A1E2B86C8C9424DA4D5639 /* Util.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Util.swift; path = RealmSwift/Util.swift; sourceTree = "<group>"; };
-		1AD07DBE31D84B453934A7731927C3E7 /* Pods-ZidoSuta-ZidoSutaUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZidoSuta-ZidoSutaUITests.modulemap"; sourceTree = "<group>"; };
 		1AFC594BA8F7A6BF67C9A715020849EE /* Realm-realm_objc_privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Realm-realm_objc_privacy"; path = realm_objc_privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C76E79551EB8B31D6DED44B4365886E /* HorizontalBarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarHighlighter.swift; path = Source/Charts/Highlight/HorizontalBarHighlighter.swift; sourceTree = "<group>"; };
 		1D6A6395F24EFC549F2B0AD14372150E /* RadarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarHighlighter.swift; path = Source/Charts/Highlight/RadarHighlighter.swift; sourceTree = "<group>"; };
-		211B4DABBD5CB9B8AC22D6F6FD24EC3C /* Pods-ZidoSutaTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZidoSutaTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1DFAF62F65200ED7A1719FA32F3A3C45 /* Pods-ZidosutaTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZidosutaTests.modulemap"; sourceTree = "<group>"; };
+		1E5C7574446316D334EB031E07D86DAC /* Pods-ZidosutaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidosutaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		21989698941AF25D026975513EABE8B3 /* SchemaDiscovery.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SchemaDiscovery.swift; path = RealmSwift/Impl/SchemaDiscovery.swift; sourceTree = "<group>"; };
 		21F4BBB135B5FE47665FB9D0EB07F21B /* RealmProperty.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RealmProperty.swift; path = RealmSwift/RealmProperty.swift; sourceTree = "<group>"; };
 		23BF722C6EFEE1E39CC6F3D420362D3B /* RLMAccessor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMAccessor.h; path = include/RLMAccessor.h; sourceTree = "<group>"; };
@@ -625,20 +626,22 @@
 		2FC277863D26038DB6DF76AF4663516B /* CollectionAccess.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CollectionAccess.swift; path = RealmSwift/Impl/CollectionAccess.swift; sourceTree = "<group>"; };
 		2FED537AF954585C0B6A0E7F16A7C8C8 /* BarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		30903C6BBB72B08A3713E3C9F67741A8 /* AnyRealmValue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyRealmValue.swift; path = RealmSwift/AnyRealmValue.swift; sourceTree = "<group>"; };
+		31039EE558E3EC6870877A28B4EFD366 /* Pods-Zidosuta-ZidosutaUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Zidosuta-ZidosutaUITests-dummy.m"; sourceTree = "<group>"; };
 		32AFD9AB6CDA856C90E4704308FDAD14 /* Cycle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cycle.swift; path = Sources/Algorithms/Cycle.swift; sourceTree = "<group>"; };
 		32EB74473B062C7681225DDD3097F985 /* RadarChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/RadarChartDataSetProtocol.swift; sourceTree = "<group>"; };
 		350488E61C7148225CFB8DAB8204023B /* Compacted.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compacted.swift; path = Sources/Algorithms/Compacted.swift; sourceTree = "<group>"; };
 		3684779714910FAFAD3F1AF77F338927 /* BubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataSet.swift; sourceTree = "<group>"; };
+		371D05F0E09D055DE694111BE0BB5E79 /* Pods-Zidosuta-ZidosutaUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Zidosuta-ZidosutaUITests"; path = Pods_Zidosuta_ZidosutaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		376ADE12A0F2E93AB3A46D114A351B63 /* ChartUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartUtils.swift; path = Source/Charts/Utils/ChartUtils.swift; sourceTree = "<group>"; };
 		37E6AF6D56D9607930029FACC4D1F2AB /* MarkerImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MarkerImage.swift; path = Source/Charts/Components/MarkerImage.swift; sourceTree = "<group>"; };
 		380547ED40B87D2EC0DFC0E8DE83722E /* ChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataProvider.swift; path = Source/Charts/Interfaces/ChartDataProvider.swift; sourceTree = "<group>"; };
 		3BC643D21FB4CFF5B45A7E180978AD23 /* Chunked.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Chunked.swift; path = Sources/Algorithms/Chunked.swift; sourceTree = "<group>"; };
 		3CE806D6560C06DEF51DCD38F52B8DB9 /* SwiftAlgorithms-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftAlgorithms-dummy.m"; sourceTree = "<group>"; };
 		3E0DD885E81B686B06DBB0E6B0FD4DE1 /* RLMAsyncTask.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMAsyncTask.mm; path = Realm/RLMAsyncTask.mm; sourceTree = "<group>"; };
-		3E106FDF98FBEDF94969877C5D796325 /* Pods-ZidoSuta-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidoSuta-acknowledgements.plist"; sourceTree = "<group>"; };
 		3E30AAFABFA8AD3A9DEE3B28C86D249C /* RLMQueryUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMQueryUtil.mm; path = Realm/RLMQueryUtil.mm; sourceTree = "<group>"; };
 		3EC6BC166C9AAD6053A650C80C0C9EE1 /* BarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartRenderer.swift; path = Source/Charts/Renderers/BarChartRenderer.swift; sourceTree = "<group>"; };
 		3EF20FAB158F9192B9537B56E0215928 /* Realm.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Realm.swift; path = RealmSwift/Realm.swift; sourceTree = "<group>"; };
+		3F4473E9123EA1FF0F4CD457F1FCE641 /* Pods-Zidosuta-ZidosutaUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Zidosuta-ZidosutaUITests-frameworks.sh"; sourceTree = "<group>"; };
 		405AD23F7C265AEBF773BC038D35E0C2 /* RLMSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RLMSupport.swift; path = Realm/Swift/RLMSupport.swift; sourceTree = "<group>"; };
 		40BCA572E9B95BEDBC38EF83558A2F61 /* Charts-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Charts-Info.plist"; sourceTree = "<group>"; };
 		421342C0088D39041005A71B79C5CEBE /* BubbleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataProvider.swift; path = Source/Charts/Interfaces/BubbleChartDataProvider.swift; sourceTree = "<group>"; };
@@ -659,6 +662,7 @@
 		49E648E150DF52A0D4DB7BF6D3E0A11E /* RLMError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMError.h; path = include/RLMError.h; sourceTree = "<group>"; };
 		4C6F22234ABDDA4F5BE0CB45F5A33A34 /* RLMCollection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMCollection.h; path = include/RLMCollection.h; sourceTree = "<group>"; };
 		4DA4309EBE611A024A4B3399DAC78B61 /* RLMEmbeddedObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMEmbeddedObject.h; path = include/RLMEmbeddedObject.h; sourceTree = "<group>"; };
+		4EA99A416D8328F824856E0393294441 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zidosuta-ZidosutaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4FD2192BD6BB227A31309BBA24DEAE33 /* Platform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Source/Charts/Utils/Platform.swift; sourceTree = "<group>"; };
 		50360BB2BB18BFE55A14B155A6A03BF4 /* RLMAsyncTask.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMAsyncTask.h; path = include/RLMAsyncTask.h; sourceTree = "<group>"; };
 		5138E8158E6643F4E0B7CC951F97EDFF /* LineChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/LineChartDataSetProtocol.swift; sourceTree = "<group>"; };
@@ -669,28 +673,26 @@
 		54D56075922AC5C5B6BE16563A4C43C0 /* PieChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartRenderer.swift; path = Source/Charts/Renderers/PieChartRenderer.swift; sourceTree = "<group>"; };
 		54FD0577D6D328AF7E2CCA1E2CC4302F /* RealmSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RealmSwift-dummy.m"; sourceTree = "<group>"; };
 		5501DEBFC1D59D2DC00F2B819B33CABB /* SquareShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SquareShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/SquareShapeRenderer.swift; sourceTree = "<group>"; };
-		553612ECC883FC0358F26B83E8C09914 /* Pods-ZidoSutaTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZidoSutaTests"; path = Pods_ZidoSutaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		560B0D0FCAA9849506D7B101135421E6 /* Schema.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Schema.swift; path = RealmSwift/Schema.swift; sourceTree = "<group>"; };
 		563A1881AA4DCBF049104F363C5FAB8A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = RealmSwift/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		57D224F78BD425A8862E41159E1D633A /* Pods-ZidoSuta-ZidoSutaUITests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZidoSuta-ZidoSutaUITests"; path = Pods_ZidoSuta_ZidoSutaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5899F50B60B3356EA676D15D8A97FD5D /* Pods-Zidosuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Zidosuta.debug.xcconfig"; sourceTree = "<group>"; };
 		59784C5263878974798D62D05BF89EEB /* RLMObjectId.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectId.mm; path = Realm/RLMObjectId.mm; sourceTree = "<group>"; };
 		59815C8068C63D765993CB765E65683A /* RLMSectionedResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSectionedResults.mm; path = Realm/RLMSectionedResults.mm; sourceTree = "<group>"; };
 		59B5650636AA9967FB2C1B9596389DA5 /* XAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRenderer.swift; path = Source/Charts/Renderers/XAxisRenderer.swift; sourceTree = "<group>"; };
-		5A9D08C3D65043B05A50E6822ABFC748 /* Pods-ZidoSuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidoSuta.debug.xcconfig"; sourceTree = "<group>"; };
 		5AB6E5E32293397FDBE2C27D8CF9A132 /* Realm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Realm-dummy.m"; sourceTree = "<group>"; };
 		5D0B6B31EAACCF465E6AEEED4C7C9060 /* Charts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Charts-prefix.pch"; sourceTree = "<group>"; };
-		5D364816B0CACCDE49DB6214E7BCFCED /* Pods-ZidoSuta-ZidoSutaUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidoSuta-ZidoSutaUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		5DC007D859ABD4C103AE38878DBAF623 /* Suffix.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Suffix.swift; path = Sources/Algorithms/Suffix.swift; sourceTree = "<group>"; };
 		5E1EA3AADA07E71AF4D142A2B4A5D284 /* LineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
 		5F1252108927443D339A2763CE6F855C /* DataRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataRenderer.swift; path = Source/Charts/Renderers/DataRenderer.swift; sourceTree = "<group>"; };
 		5F7F48E3FF5737F5E71599159B10DA9E /* Highlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Highlighter.swift; path = Source/Charts/Highlight/Highlighter.swift; sourceTree = "<group>"; };
 		6083ABBAAF675A6FC7975875B9693A22 /* RLMObservation.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObservation.mm; path = Realm/RLMObservation.mm; sourceTree = "<group>"; };
 		6385F0934F96893C19F57C7825AA6BD6 /* RLMConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMConstants.h; path = include/RLMConstants.h; sourceTree = "<group>"; };
-		6390E310D0D3CBB5EED3FF0AEFA38BBD /* Pods-ZidoSuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidoSuta.release.xcconfig"; sourceTree = "<group>"; };
 		63AD5150247428474631984BE27FD1CD /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Realm/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		6568555DB60C8467AF50EEBCEACB25A8 /* Stride.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Stride.swift; path = Sources/Algorithms/Stride.swift; sourceTree = "<group>"; };
+		682922D317C76F8312194BF314E976C5 /* Pods-Zidosuta-ZidosutaUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Zidosuta-ZidosutaUITests-umbrella.h"; sourceTree = "<group>"; };
 		69BD99E6829497F48C00BE1E1EDE7F23 /* Windows.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Windows.swift; path = Sources/Algorithms/Windows.swift; sourceTree = "<group>"; };
 		6AC88BAD65B494279371D12BE5452DBF /* RealmCollectionImpl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RealmCollectionImpl.swift; path = RealmSwift/Impl/RealmCollectionImpl.swift; sourceTree = "<group>"; };
+		6B9FF939CC56EDF61528709062472FC2 /* Pods-Zidosuta */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-Zidosuta"; path = Pods_Zidosuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB4B4BB3D4B549BF7B34FA406759C7E /* RLMSet.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSet.mm; path = Realm/RLMSet.mm; sourceTree = "<group>"; };
 		6C0E4C0524E610A188FB2CA138A519E8 /* Unique.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Unique.swift; path = Sources/Algorithms/Unique.swift; sourceTree = "<group>"; };
 		6C18CEFE2487EC3D5C5ADF2A93694494 /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Source/Charts/Animation/Animator.swift; sourceTree = "<group>"; };
@@ -699,12 +701,11 @@
 		6DA31DEAC63C3A2F0A7D740946C92409 /* BubbleChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/BubbleChartDataSetProtocol.swift; sourceTree = "<group>"; };
 		6DC32C71EAE92F7D6A6B60C185D5F52A /* RLMSwiftValueStorage.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSwiftValueStorage.mm; path = Realm/RLMSwiftValueStorage.mm; sourceTree = "<group>"; };
 		6F5497E3E07C0258B88BD8537352E2BD /* Charts-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Charts-umbrella.h"; sourceTree = "<group>"; };
-		7007F73E0AF5D1B7736EFFCDF721BC1A /* Pods-ZidoSuta-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZidoSuta-umbrella.h"; sourceTree = "<group>"; };
 		70934BA663487232B2C30C4B97D10D29 /* SwiftUI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftUI.swift; path = RealmSwift/SwiftUI.swift; sourceTree = "<group>"; };
-		714193172E937E853F1B7D23F25AFE99 /* Pods-ZidoSutaTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZidoSutaTests-umbrella.h"; sourceTree = "<group>"; };
-		74773BCE4CC72C3F76A0630E3775130A /* Pods-ZidoSuta */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZidoSuta"; path = Pods_ZidoSuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		74EBC43D2CCEC34319C9BA120C4EBEE4 /* RealmConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RealmConfiguration.swift; path = RealmSwift/RealmConfiguration.swift; sourceTree = "<group>"; };
 		753CD7DBE7068FFBA47BBAEF106F907B /* RLMRealm.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMRealm.mm; path = Realm/RLMRealm.mm; sourceTree = "<group>"; };
+		754B0FF17DF697073A362F72025E8F3D /* Pods-ZidosutaTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZidosutaTests-umbrella.h"; sourceTree = "<group>"; };
+		76147DB1A21D540CC2884124A6718FC4 /* Pods-Zidosuta-ZidosutaUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Zidosuta-ZidosutaUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		76AC5EF0DA661C7D1976622CB7843DE4 /* LineRadarChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/LineRadarChartDataSetProtocol.swift; sourceTree = "<group>"; };
 		77D003604876AEF5BB81CAEE569D61EC /* ObjectiveCSupport+AnyRealmValue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ObjectiveCSupport+AnyRealmValue.swift"; path = "RealmSwift/ObjectiveCSupport+AnyRealmValue.swift"; sourceTree = "<group>"; };
 		784E71B3BCB4E548F1A331E32D029A54 /* RLMSchema.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSchema.h; path = include/RLMSchema.h; sourceTree = "<group>"; };
@@ -726,7 +727,7 @@
 		7FD8F2164CD740509475B65FACACA0ED /* ComplexTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ComplexTypes.swift; path = RealmSwift/Impl/ComplexTypes.swift; sourceTree = "<group>"; };
 		8000FAA98EE495E4CAD98B1FEED04F2A /* Partition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Partition.swift; path = Sources/Algorithms/Partition.swift; sourceTree = "<group>"; };
 		803449EADFEE8909B4598D8461AA7171 /* CandleStickChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleStickChartRenderer.swift; path = Source/Charts/Renderers/CandleStickChartRenderer.swift; sourceTree = "<group>"; };
-		80A908CC633A0BCC3EB990AA8FDA9A48 /* Pods-ZidoSuta-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZidoSuta-frameworks.sh"; sourceTree = "<group>"; };
+		80C9C0E85F79BBD1AB306F7DB57C01BD /* Pods-Zidosuta-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Zidosuta-umbrella.h"; sourceTree = "<group>"; };
 		81F03A48AF9EC1F4AEAF55EF327D1B8E /* CombinedHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedHighlighter.swift; path = Source/Charts/Highlight/CombinedHighlighter.swift; sourceTree = "<group>"; };
 		820146CA32E84E9661E01322E91D5ED2 /* RealmCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RealmCollection.swift; path = RealmSwift/RealmCollection.swift; sourceTree = "<group>"; };
 		822C035591EBEAD854EEA24F90BDCC2C /* CombinedChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartData.swift; path = Source/Charts/Data/Implementations/Standard/CombinedChartData.swift; sourceTree = "<group>"; };
@@ -735,25 +736,24 @@
 		83D0E13CE23336A1F08EA53AC327FA7A /* CombinedChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartView.swift; path = Source/Charts/Charts/CombinedChartView.swift; sourceTree = "<group>"; };
 		84100A19FCA73C118D181FA5887E0741 /* RLMRealm_Dynamic.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealm_Dynamic.h; path = include/RLMRealm_Dynamic.h; sourceTree = "<group>"; };
 		84FD9C2FA30A2083A9DC1950D9E156FD /* AxisBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AxisBase.swift; path = Source/Charts/Components/AxisBase.swift; sourceTree = "<group>"; };
+		85CF6E492A9C2E6D4FA9ED2ADA0D30BB /* Pods-Zidosuta-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Zidosuta-acknowledgements.plist"; sourceTree = "<group>"; };
 		85EED6C51A778D1C1E7A2768FBACBE2C /* SwiftAlgorithms.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftAlgorithms.debug.xcconfig; sourceTree = "<group>"; };
 		86C67D8112C26F66EFCF91A4D8B3F31D /* Indexed.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Indexed.swift; path = Sources/Algorithms/Indexed.swift; sourceTree = "<group>"; };
-		8710A4D23F9F370E34CE4861DF6658BB /* Pods-ZidoSutaTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZidoSutaTests.modulemap"; sourceTree = "<group>"; };
 		87E02CBC2306E3888B89A937C68EA489 /* Realm-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Realm-prefix.pch"; sourceTree = "<group>"; };
 		891285D9587B49056D438F218ADDC281 /* Charts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Charts.release.xcconfig; sourceTree = "<group>"; };
-		8A35831B282C891C29ECEA5A84DC7846 /* Pods-ZidoSutaTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZidoSutaTests-dummy.m"; sourceTree = "<group>"; };
 		8A5C2E120C2CC8FB6DDDD27C9599570A /* BubbleChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartView.swift; path = Source/Charts/Charts/BubbleChartView.swift; sourceTree = "<group>"; };
 		8B3EA452A3D27477FECD6C549F64DBA2 /* CandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartDataSet.swift; sourceTree = "<group>"; };
 		8B5433FB238422CAD4E64DFC20C22985 /* RLMObjectSchema_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectSchema_Private.h; path = include/RLMObjectSchema_Private.h; sourceTree = "<group>"; };
 		8BBAE0976CD8AC7DFF53B6F7F9BA3793 /* RLMObject.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObject.mm; path = Realm/RLMObject.mm; sourceTree = "<group>"; };
 		8E68DA23CA8EC2F47D3064AA58B148AC /* RLMConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RLMConstants.m; path = Realm/RLMConstants.m; sourceTree = "<group>"; };
 		8EEE25BAF62460C4B6C61FDC8BAC21A0 /* RadarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartRenderer.swift; path = Source/Charts/Renderers/RadarChartRenderer.swift; sourceTree = "<group>"; };
-		90E57DEDA4ECA6536895D1B2E2A9B26A /* Pods-ZidoSutaTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidoSutaTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		91001D80A0B718FF54F49DCEFF1B9A2E /* Object.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Object.swift; path = RealmSwift/Object.swift; sourceTree = "<group>"; };
 		9184387786BAF4E43C24B55C5FC82751 /* RLMScheduler.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMScheduler.mm; path = Realm/RLMScheduler.mm; sourceTree = "<group>"; };
 		920B5C7630C6CD258AD0E56AAB7B5517 /* Combinations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Combinations.swift; path = Sources/Algorithms/Combinations.swift; sourceTree = "<group>"; };
 		921BE4A82C4A7A5C72A0C6F8B8FEF200 /* Realm */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Realm; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9292C41E60A5C483998824326F9DD52A /* RLMGeospatial.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMGeospatial.h; path = include/RLMGeospatial.h; sourceTree = "<group>"; };
 		93449AB00BDF34F12A1E59A53CF5BB3E /* ChartAnimationEasing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartAnimationEasing.swift; path = Source/Charts/Animation/ChartAnimationEasing.swift; sourceTree = "<group>"; };
+		9391DB03848C32966300370AA032817E /* Pods-Zidosuta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Zidosuta.modulemap"; sourceTree = "<group>"; };
 		94856E6100E5A06C1344BA645CAF22A2 /* ScatterChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartRenderer.swift; path = Source/Charts/Renderers/ScatterChartRenderer.swift; sourceTree = "<group>"; };
 		952925E838A0DE4D7BDC4EE54022633D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		95B507022FD03351D96444A639DFAEB1 /* ScatterChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartDataProvider.swift; path = Source/Charts/Interfaces/ScatterChartDataProvider.swift; sourceTree = "<group>"; };
@@ -772,22 +772,26 @@
 		9BEDF6F000556C4F3C5F96436C96D941 /* ThreadSafeReference.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadSafeReference.swift; path = RealmSwift/ThreadSafeReference.swift; sourceTree = "<group>"; };
 		9C1FB25FD5145F54A869D672C96EAFA2 /* ScatterChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/ScatterChartDataSetProtocol.swift; sourceTree = "<group>"; };
 		9CA160C1F33B91B67997DF98D9463EA1 /* TriangleShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TriangleShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/TriangleShapeRenderer.swift; sourceTree = "<group>"; };
+		9CBB2573F5F51AAEA54F03A92542D6FB /* Pods-Zidosuta-ZidosutaUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Zidosuta-ZidosutaUITests-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9E1F46428FC90BCE65DE88FD2FC69072 /* Pods-ZidosutaTests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-ZidosutaTests"; path = Pods_ZidosutaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F5534EF647B02ADA82FF2F671AD40C0 /* PieHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieHighlighter.swift; path = Source/Charts/Highlight/PieHighlighter.swift; sourceTree = "<group>"; };
 		9FA3F7FB66DF99E122BED2C2B30BE89B /* LineRadarRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarRenderer.swift; path = Source/Charts/Renderers/LineRadarRenderer.swift; sourceTree = "<group>"; };
-		A055D70C001EF95AFBD58480BC3B670B /* Pods-ZidoSuta-ZidoSutaUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ZidoSuta-ZidoSutaUITests-frameworks.sh"; sourceTree = "<group>"; };
 		A089611767DEB5E78720D2F2CF1A570A /* RLMMigration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMMigration.h; path = include/RLMMigration.h; sourceTree = "<group>"; };
 		A1C1B977ED8804E8AEEC884E7359EE58 /* Charts */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1ECBD48D1FD41BED9D1E19A90FD161A /* LineScatterCandleRadarRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineScatterCandleRadarRenderer.swift; path = Source/Charts/Renderers/LineScatterCandleRadarRenderer.swift; sourceTree = "<group>"; };
 		A468CC47C0D97FC355D848AE5CB5F240 /* RLMAsyncTask_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMAsyncTask_Private.h; path = include/RLMAsyncTask_Private.h; sourceTree = "<group>"; };
 		A49844D0648C56D25CDB83FED412DB7F /* RealmSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RealmSwift.release.xcconfig; sourceTree = "<group>"; };
 		A4DB4E7659C06AE3027A84481A17DA71 /* RLMUtil.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMUtil.mm; path = Realm/RLMUtil.mm; sourceTree = "<group>"; };
+		A5063ABA39EA633D46CF859C8FDC9DDE /* Pods-Zidosuta-ZidosutaUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Zidosuta-ZidosutaUITests.modulemap"; sourceTree = "<group>"; };
 		A5A02E33A436B77CE5EE6EFF23D9A176 /* Realm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Realm.debug.xcconfig; sourceTree = "<group>"; };
 		A65F59B35E7F853D10EB897FD6D5F768 /* ChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataSet.swift; sourceTree = "<group>"; };
 		A7A8A87722ED42584FB5ADF1610CB244 /* RLMRealm.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealm.h; path = include/RLMRealm.h; sourceTree = "<group>"; };
+		A82F37B541F29E0F927E95491BB4DECC /* Pods-Zidosuta-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Zidosuta-dummy.m"; sourceTree = "<group>"; };
 		A82FFAEE9F877E0DED292E4E2ADCE10C /* ObjectiveCSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjectiveCSupport.swift; path = RealmSwift/ObjectiveCSupport.swift; sourceTree = "<group>"; };
 		A8E642EB0ED04B33E8997E7421731D7B /* ChartDataEntryBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataEntryBase.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataEntryBase.swift; sourceTree = "<group>"; };
 		A91FF6768AE655C50C7E9572787F9EA5 /* RLMSectionedResults.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSectionedResults.h; path = include/RLMSectionedResults.h; sourceTree = "<group>"; };
+		A939506D2D7876B8BE62596FD8591F60 /* Pods-Zidosuta-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Zidosuta-acknowledgements.markdown"; sourceTree = "<group>"; };
 		AAED9459208B743AD5887D809CCAA807 /* DefaultAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultAxisValueFormatter.swift; path = Source/Charts/Formatters/DefaultAxisValueFormatter.swift; sourceTree = "<group>"; };
 		AB0A888F93C1CDD0ECF9D8D7A2C7A191 /* RLMThreadSafeReference.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMThreadSafeReference.mm; path = Realm/RLMThreadSafeReference.mm; sourceTree = "<group>"; };
 		AC70800BBC39EB966B610857C5D5404A /* RealmSwift-realm_swift_privacy */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "RealmSwift-realm_swift_privacy"; path = realm_swift_privacy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -805,15 +809,14 @@
 		B5FF7EEA0CAC4A58D511F0752BDD16FE /* PieChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartView.swift; path = Source/Charts/Charts/PieChartView.swift; sourceTree = "<group>"; };
 		B7B91B7D0B587FB6E4B713391C882D6E /* RLMSwiftObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMSwiftObject.h; path = include/RLMSwiftObject.h; sourceTree = "<group>"; };
 		B8189D012F33B68107ABB84476E77B4C /* PieChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/PieChartDataEntry.swift; sourceTree = "<group>"; };
+		B90D6F1828A9D77B0AA5E776A4064C10 /* Pods-Zidosuta-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Zidosuta-Info.plist"; sourceTree = "<group>"; };
 		B9A6F91BE975FAED98003C5267A82E58 /* RLMLogger_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMLogger_Private.h; path = include/RLMLogger_Private.h; sourceTree = "<group>"; };
-		B9F46CFD0FAD6AA6D4B43744A41397F8 /* Pods-ZidoSutaTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidoSutaTests-Info.plist"; sourceTree = "<group>"; };
 		BA78C093892AA104A538037BC2BD4D81 /* PieRadarChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieRadarChartViewBase.swift; path = Source/Charts/Charts/PieRadarChartViewBase.swift; sourceTree = "<group>"; };
 		BAAFDEC28F007334BE3C69A80BB714C2 /* RLMUUID.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMUUID.mm; path = Realm/RLMUUID.mm; sourceTree = "<group>"; };
 		BABF730ADCC1E9E3EFED1A9DD2B81291 /* RLMResults.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMResults.mm; path = Realm/RLMResults.mm; sourceTree = "<group>"; };
 		BAF57D198BAE53F6D7E1F47E60ED75C9 /* Marker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Marker.swift; path = Source/Charts/Components/Marker.swift; sourceTree = "<group>"; };
 		BB8BB49F9124D096BFFE0675C3E85848 /* SortDescriptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SortDescriptor.swift; path = RealmSwift/SortDescriptor.swift; sourceTree = "<group>"; };
 		BCCC55D7E129BDFD11107E5972D88F2C /* RLMArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMArray.mm; path = Realm/RLMArray.mm; sourceTree = "<group>"; };
-		BCD5F0C24E95724CE09BDCFE0EEE52BE /* Pods-ZidoSuta-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZidoSuta-acknowledgements.markdown"; sourceTree = "<group>"; };
 		BDF3DD27813C4F1757620AB55E1A2A60 /* RLMObjectStore.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectStore.mm; path = Realm/RLMObjectStore.mm; sourceTree = "<group>"; };
 		C04A50C4778E328158630924EC488605 /* RealmKeyedCollection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RealmKeyedCollection.swift; path = RealmSwift/RealmKeyedCollection.swift; sourceTree = "<group>"; };
 		C0BA13F62077ACA4CC0B2DCDF2D34214 /* RLMObjectId.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectId.h; path = include/RLMObjectId.h; sourceTree = "<group>"; };
@@ -825,6 +828,7 @@
 		C42A477FDB2A25694CA5C6851264A6E4 /* ObjectId.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjectId.swift; path = RealmSwift/ObjectId.swift; sourceTree = "<group>"; };
 		C437347C1A22B66D5F71A1A5DF8B904D /* List.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = List.swift; path = RealmSwift/List.swift; sourceTree = "<group>"; };
 		C492CCE750CF5A1FC09055FE3F9CA6FA /* MoveViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MoveViewJob.swift; path = Source/Charts/Jobs/MoveViewJob.swift; sourceTree = "<group>"; };
+		C4ACA8635F2318678E3DEC7D03D4BBB4 /* Pods-Zidosuta-ZidosutaUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Zidosuta-ZidosutaUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		C54BB44E5C71915230774A65EF649BD9 /* BarChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/BarChartDataSetProtocol.swift; sourceTree = "<group>"; };
 		C70838707E2DB3B03760C3F3FD080615 /* Fill.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Fill.swift; path = Source/Charts/Utils/Fill.swift; sourceTree = "<group>"; };
 		C71C3DB99CC686374DEDFC8F395068F6 /* RLMRealmConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMRealmConfiguration.h; path = include/RLMRealmConfiguration.h; sourceTree = "<group>"; };
@@ -835,24 +839,19 @@
 		CA5D29153699D60723AD3B892EEA50B2 /* RadarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartDataEntry.swift; sourceTree = "<group>"; };
 		CAB758FA46C669631E8A7A4BEBDEFA2C /* ChartBaseDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartBaseDataSet.swift; path = Source/Charts/Data/Implementations/ChartBaseDataSet.swift; sourceTree = "<group>"; };
 		CC9BD3D39400EF37D29D66471298DE76 /* Joined.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Joined.swift; path = Sources/Algorithms/Joined.swift; sourceTree = "<group>"; };
-		CCD5184715C748BAAF5890C452AB8575 /* Pods-ZidoSuta-ZidoSutaUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidoSuta-ZidoSutaUITests-Info.plist"; sourceTree = "<group>"; };
 		CE27B518EB54DC6C77F0892D12CFC543 /* RLMSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMSchema.mm; path = Realm/RLMSchema.mm; sourceTree = "<group>"; };
 		CE4AA65F3434625D4A26936F6F0C8C91 /* RLMObjectBase_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectBase_Private.h; path = include/RLMObjectBase_Private.h; sourceTree = "<group>"; };
 		CE5E9F866D7A9A5EFFD5FFA6CA8DA757 /* XAxisRendererRadarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRendererRadarChart.swift; path = Source/Charts/Renderers/XAxisRendererRadarChart.swift; sourceTree = "<group>"; };
 		CE63BD4A8239D642346630BE2284EA73 /* Optional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Optional.swift; path = RealmSwift/Optional.swift; sourceTree = "<group>"; };
 		CECACFF1C8E9F3472670A235C04A8480 /* AnimatedViewPortJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedViewPortJob.swift; path = Source/Charts/Jobs/AnimatedViewPortJob.swift; sourceTree = "<group>"; };
 		D00560199396494178F1BACB91853685 /* RLMObject_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObject_Private.h; path = include/RLMObject_Private.h; sourceTree = "<group>"; };
-		D0141F07263DB7DDCF7815F5743B95AC /* Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D038D1A053A7C00E2CFA520548A8FDC0 /* BarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BarChartDataSet.swift; sourceTree = "<group>"; };
 		D0418882353B34078B4BD5B2FA5952DF /* Results.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Results.swift; path = RealmSwift/Results.swift; sourceTree = "<group>"; };
-		D104655C76B97B9FFBCD021939EC05E3 /* Pods-ZidoSuta-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZidoSuta-dummy.m"; sourceTree = "<group>"; };
 		D2C34BA787FCD4AA5321238A7531DA9B /* Platform+Touch Handling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Platform+Touch Handling.swift"; path = "Source/Charts/Utils/Platform+Touch Handling.swift"; sourceTree = "<group>"; };
 		D38439B7B2CE0D249221395F0CA35931 /* ScatterChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartView.swift; path = Source/Charts/Charts/ScatterChartView.swift; sourceTree = "<group>"; };
-		D399BBA07B9C94D2D42287943FB7EA95 /* Pods-ZidoSuta-ZidoSutaUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ZidoSuta-ZidoSutaUITests-umbrella.h"; sourceTree = "<group>"; };
 		D4515961CE9B93586788161C63B76640 /* ObjcBridgeable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ObjcBridgeable.swift; path = RealmSwift/Impl/ObjcBridgeable.swift; sourceTree = "<group>"; };
 		D49D7F1376AFDB8AFC1C2263D8799485 /* CandleChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/CandleChartDataSetProtocol.swift; sourceTree = "<group>"; };
 		D4C1A699CD5FF30190DAE6F6B1E337F5 /* RLMObjectSchema.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMObjectSchema.mm; path = Realm/RLMObjectSchema.mm; sourceTree = "<group>"; };
-		D4C4CD84B770A5DE4910BBA6F2E11199 /* Pods-ZidoSuta-ZidoSutaUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZidoSuta-ZidoSutaUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D4CE3A82A23869F4576F99047494DBE5 /* RLMValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMValue.h; path = include/RLMValue.h; sourceTree = "<group>"; };
 		D55FED6A42E1D55149044C656FB028E3 /* RLMSwiftSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RLMSwiftSupport.m; path = Realm/RLMSwiftSupport.m; sourceTree = "<group>"; };
 		D5F358EE4EA072A62BD99E62CFBAAA64 /* LineChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartData.swift; path = Source/Charts/Data/Implementations/Standard/LineChartData.swift; sourceTree = "<group>"; };
@@ -869,8 +868,8 @@
 		DEA278C0BE7F2A277A08931FD6ABC8E1 /* RLMDecimal128.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMDecimal128.h; path = include/RLMDecimal128.h; sourceTree = "<group>"; };
 		DF2A768A41229E1805F87101287E368D /* RLMMigration.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMMigration.mm; path = Realm/RLMMigration.mm; sourceTree = "<group>"; };
 		DFF286F255C7F240330F5CBC1E2425CE /* BarLineScatterCandleBubbleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartData.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartData.swift; sourceTree = "<group>"; };
+		E167CF4DCD6E2C1C4651D1FB277F67D7 /* Pods-ZidosutaTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZidosutaTests-dummy.m"; sourceTree = "<group>"; };
 		E1C1FD8F28F7993F47AB50ABFA0AF6BA /* RLMObjectBase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectBase.h; path = include/RLMObjectBase.h; sourceTree = "<group>"; };
-		E1F84A521D34E8E7513E103EE4AE1937 /* Pods-ZidoSuta-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidoSuta-Info.plist"; sourceTree = "<group>"; };
 		E226DAA76A7D452F9A971D396CBAA427 /* RLMObjectSchema.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMObjectSchema.h; path = include/RLMObjectSchema.h; sourceTree = "<group>"; };
 		E3950E069FB12CC026747DBF67B8BA7D /* ScatterChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartData.swift; path = Source/Charts/Data/Implementations/Standard/ScatterChartData.swift; sourceTree = "<group>"; };
 		E4C9F8B63E708163C743DA9D54DDA521 /* RLMProperty.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMProperty.mm; path = Realm/RLMProperty.mm; sourceTree = "<group>"; };
@@ -880,11 +879,9 @@
 		E6186134843CA8ECF17F2C23C1219834 /* Split.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Split.swift; path = Sources/Algorithms/Split.swift; sourceTree = "<group>"; };
 		E76BC7CFFF7A5A0CC3A22729D0D92F73 /* Geospatial.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Geospatial.swift; path = RealmSwift/Geospatial.swift; sourceTree = "<group>"; };
 		E7F2CA2FC654B93ADFF297D84EF40B59 /* Transformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transformer.swift; path = Source/Charts/Utils/Transformer.swift; sourceTree = "<group>"; };
-		E7F88EB45D09C19F1CE4C7BBDEDCBDCE /* Pods-ZidoSuta.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ZidoSuta.modulemap"; sourceTree = "<group>"; };
 		E7FCC33103F31B52BBEE2B89DD70FDBE /* KeyPathStrings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyPathStrings.swift; path = RealmSwift/Impl/KeyPathStrings.swift; sourceTree = "<group>"; };
 		E843CC44DB381139CCA04D031E221C66 /* LineChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataProvider.swift; path = Source/Charts/Interfaces/LineChartDataProvider.swift; sourceTree = "<group>"; };
 		E86EFA40F998897DD89FF3B06F003F61 /* Realm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Realm.release.xcconfig; sourceTree = "<group>"; };
-		E88775C163BC679737E96E9AF1B97B80 /* Pods-ZidoSutaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidoSutaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9128BE7F7F37F251E956C5F8D568C10 /* CandleChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartDataEntry.swift; sourceTree = "<group>"; };
 		E9181ABE21D062BE12F76B4DCED87876 /* SwiftAlgorithms-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftAlgorithms-Info.plist"; sourceTree = "<group>"; };
 		E92C790D5D3D827CEECB5A31D19E4B69 /* YAxisRendererHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRendererHorizontalBarChart.swift; path = Source/Charts/Renderers/YAxisRendererHorizontalBarChart.swift; sourceTree = "<group>"; };
@@ -894,8 +891,10 @@
 		EB4A03146E0DC6B5F646A2E28A89CBE8 /* TransformerHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransformerHorizontalBarChart.swift; path = Source/Charts/Utils/TransformerHorizontalBarChart.swift; sourceTree = "<group>"; };
 		EBEA0AF9268BB9C9A1D6950DA24CC61C /* LineScatterCandleRadarChartDataSetProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineScatterCandleRadarChartDataSetProtocol.swift; path = Source/Charts/Data/Interfaces/LineScatterCandleRadarChartDataSetProtocol.swift; sourceTree = "<group>"; };
 		EC3CE9BFDF17DF8EB8B3C9670AB69283 /* RLMManagedArray.mm */ = {isa = PBXFileReference; includeInIndex = 1; name = RLMManagedArray.mm; path = Realm/RLMManagedArray.mm; sourceTree = "<group>"; };
+		ECB5A0785913ACBEF3DF3600FBD31C9C /* Pods-ZidosutaTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidosutaTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		ED5AE9C2AFA81E7F52112D9881DBA2D3 /* ViewPortHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewPortHandler.swift; path = Source/Charts/Utils/ViewPortHandler.swift; sourceTree = "<group>"; };
 		EF01E126E0BFF8F23DF87E9D9BD2A9C1 /* DataApproximator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataApproximator.swift; path = Source/Charts/Filters/DataApproximator.swift; sourceTree = "<group>"; };
+		F1D11C5C22F0F622F6D639C3FF45BD21 /* Pods-ZidosutaTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ZidosutaTests-Info.plist"; sourceTree = "<group>"; };
 		F3E7458F7D38C89A9DE4BBACD3450C88 /* SwiftAlgorithms */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftAlgorithms; path = Algorithms.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C2F5C593876179F8C0A4D2367A3BC0 /* RLMDictionary_Private.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMDictionary_Private.h; path = include/RLMDictionary_Private.h; sourceTree = "<group>"; };
 		F57E922EE10CB0802E3A537D2CD1DA66 /* RLMThreadSafeReference.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RLMThreadSafeReference.h; path = include/RLMThreadSafeReference.h; sourceTree = "<group>"; };
@@ -905,7 +904,6 @@
 		F61ADB529E9BE50DDF1EFD901DE119B8 /* Realm-xcframeworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Realm-xcframeworks.sh"; sourceTree = "<group>"; };
 		F707DE94E002A2C24CAACF23C094F11F /* ChartLimitLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartLimitLine.swift; path = Source/Charts/Components/ChartLimitLine.swift; sourceTree = "<group>"; };
 		F71A60D692801284F0FD0D850174B160 /* LegendRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendRenderer.swift; path = Source/Charts/Renderers/LegendRenderer.swift; sourceTree = "<group>"; };
-		F88749D85AF87AE546BDADEBBCE59EEA /* Pods-ZidoSuta-ZidoSutaUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ZidoSuta-ZidoSutaUITests-dummy.m"; sourceTree = "<group>"; };
 		F9024C9BB730C4E101B1E2C4DA5B49F8 /* RadarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartView.swift; path = Source/Charts/Charts/RadarChartView.swift; sourceTree = "<group>"; };
 		F97E3EFD9A27C6780E9CAA8223AB3A9F /* IndexAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IndexAxisValueFormatter.swift; path = Source/Charts/Formatters/IndexAxisValueFormatter.swift; sourceTree = "<group>"; };
 		FC523811E72B8A96C8932E68476DDDC6 /* DataApproximator+N.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DataApproximator+N.swift"; path = "Source/Charts/Filters/DataApproximator+N.swift"; sourceTree = "<group>"; };
@@ -913,27 +911,13 @@
 		FC73477024823DA1557133C455E9E442 /* LineChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineChartDataSet.swift; sourceTree = "<group>"; };
 		FC761CC79D5523763F7F9787490CE102 /* BarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BarChartDataEntry.swift; sourceTree = "<group>"; };
 		FE538434DC355E61F5711EB570035AD9 /* Aliases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Aliases.swift; path = RealmSwift/Aliases.swift; sourceTree = "<group>"; };
+		FE89693722BE1DB33F5397401419A22F /* Pods-ZidosutaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ZidosutaTests.release.xcconfig"; sourceTree = "<group>"; };
 		FEDCD854FE93C0AB6481788F077F4F24 /* Property.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Property.swift; path = RealmSwift/Property.swift; sourceTree = "<group>"; };
 		FF4ED37D51C5D3C83DE50BD88D6D7F2A /* BubbleChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartRenderer.swift; path = Source/Charts/Renderers/BubbleChartRenderer.swift; sourceTree = "<group>"; };
+		FFF12798957C963BDA96BA8D0EA88A13 /* Pods-ZidosutaTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ZidosutaTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0ACE95A47EA6E9B926EA32DEBFDB7586 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				56D201781084DB6B2DB155DB803E441E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4BE256858DE5D5A9205BC918D7FF93B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2B6A3795225A6D2B0E9710637FA6E5DD /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		53385EA6DDD7AC08345901C2C796F5B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -957,11 +941,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8480AD3954DFBB03E3EABE612252732A /* Frameworks */ = {
+		706BB35E3916E5048882B357751DD206 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66EAAEB80B7714260CF03A9D1B0269FC /* Foundation.framework in Frameworks */,
+				BC7F33E4C3A93A05BC249F3924B775A0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,6 +963,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD6A9FC5127879A7389236329CB2B58A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEB033D22188EB8F095854262C605DB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CAADC736DD219449E2DFB25A52C7C5E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA48ECE8B94AD66CB360BC5A1444FF32 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				05795F0098A78E20E166A7D5EE24E016 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,16 +1013,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Charts";
-			sourceTree = "<group>";
-		};
-		39D7BFDE5180E70669CBF9EC446FA63D /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				DAD10F5DC0A30D6C346CDB46051D215D /* Pods-ZidoSuta */,
-				EF07799C875A2FE00BEDAF0F6F0028CB /* Pods-ZidoSuta-ZidoSutaUITests */,
-				8C75959894AACABCE467AC38E4D8177B /* Pods-ZidoSutaTests */,
-			);
-			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		3FE161C962FF6488B795FA044BD6BF16 /* Headers */ = {
@@ -1282,22 +1272,6 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		8C75959894AACABCE467AC38E4D8177B /* Pods-ZidoSutaTests */ = {
-			isa = PBXGroup;
-			children = (
-				8710A4D23F9F370E34CE4861DF6658BB /* Pods-ZidoSutaTests.modulemap */,
-				211B4DABBD5CB9B8AC22D6F6FD24EC3C /* Pods-ZidoSutaTests-acknowledgements.markdown */,
-				90E57DEDA4ECA6536895D1B2E2A9B26A /* Pods-ZidoSutaTests-acknowledgements.plist */,
-				8A35831B282C891C29ECEA5A84DC7846 /* Pods-ZidoSutaTests-dummy.m */,
-				B9F46CFD0FAD6AA6D4B43744A41397F8 /* Pods-ZidoSutaTests-Info.plist */,
-				714193172E937E853F1B7D23F25AFE99 /* Pods-ZidoSutaTests-umbrella.h */,
-				E88775C163BC679737E96E9AF1B97B80 /* Pods-ZidoSutaTests.debug.xcconfig */,
-				09185EB5F6E6C45BA4EE7FE578127E9F /* Pods-ZidoSutaTests.release.xcconfig */,
-			);
-			name = "Pods-ZidoSutaTests";
-			path = "Target Support Files/Pods-ZidoSutaTests";
-			sourceTree = "<group>";
-		};
 		8D47AF57149926F0C871B1B6FC96D7B8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1307,6 +1281,56 @@
 				D5ACC14B9F8FADDDE01ED0FA80E9FB58 /* SwiftAlgorithms */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9DC779DB737FBB5DF0A54C2276AA275C /* Pods-Zidosuta-ZidosutaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A5063ABA39EA633D46CF859C8FDC9DDE /* Pods-Zidosuta-ZidosutaUITests.modulemap */,
+				76147DB1A21D540CC2884124A6718FC4 /* Pods-Zidosuta-ZidosutaUITests-acknowledgements.markdown */,
+				C4ACA8635F2318678E3DEC7D03D4BBB4 /* Pods-Zidosuta-ZidosutaUITests-acknowledgements.plist */,
+				31039EE558E3EC6870877A28B4EFD366 /* Pods-Zidosuta-ZidosutaUITests-dummy.m */,
+				3F4473E9123EA1FF0F4CD457F1FCE641 /* Pods-Zidosuta-ZidosutaUITests-frameworks.sh */,
+				9CBB2573F5F51AAEA54F03A92542D6FB /* Pods-Zidosuta-ZidosutaUITests-Info.plist */,
+				682922D317C76F8312194BF314E976C5 /* Pods-Zidosuta-ZidosutaUITests-umbrella.h */,
+				0F675ECD944F4DB6C24205BAB71DE93D /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */,
+				4EA99A416D8328F824856E0393294441 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */,
+			);
+			name = "Pods-Zidosuta-ZidosutaUITests";
+			path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests";
+			sourceTree = "<group>";
+		};
+		A7CAD562494616F9192EB418166B1AEB /* Pods-Zidosuta */ = {
+			isa = PBXGroup;
+			children = (
+				9391DB03848C32966300370AA032817E /* Pods-Zidosuta.modulemap */,
+				A939506D2D7876B8BE62596FD8591F60 /* Pods-Zidosuta-acknowledgements.markdown */,
+				85CF6E492A9C2E6D4FA9ED2ADA0D30BB /* Pods-Zidosuta-acknowledgements.plist */,
+				A82F37B541F29E0F927E95491BB4DECC /* Pods-Zidosuta-dummy.m */,
+				01150213237C732CE2E3B9502D88BB2C /* Pods-Zidosuta-frameworks.sh */,
+				B90D6F1828A9D77B0AA5E776A4064C10 /* Pods-Zidosuta-Info.plist */,
+				80C9C0E85F79BBD1AB306F7DB57C01BD /* Pods-Zidosuta-umbrella.h */,
+				5899F50B60B3356EA676D15D8A97FD5D /* Pods-Zidosuta.debug.xcconfig */,
+				0029E2A15408750014F464839946DC35 /* Pods-Zidosuta.release.xcconfig */,
+			);
+			name = "Pods-Zidosuta";
+			path = "Target Support Files/Pods-Zidosuta";
+			sourceTree = "<group>";
+		};
+		AC8005B659795C18C3EDB66831B34B71 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1C1B977ED8804E8AEEC884E7359EE58 /* Charts */,
+				6B9FF939CC56EDF61528709062472FC2 /* Pods-Zidosuta */,
+				371D05F0E09D055DE694111BE0BB5E79 /* Pods-Zidosuta-ZidosutaUITests */,
+				9E1F46428FC90BCE65DE88FD2FC69072 /* Pods-ZidosutaTests */,
+				921BE4A82C4A7A5C72A0C6F8B8FEF200 /* Realm */,
+				1AFC594BA8F7A6BF67C9A715020849EE /* Realm-realm_objc_privacy */,
+				437919EE08EC6BFCCBAC3BD346309742 /* RealmSwift */,
+				AC70800BBC39EB966B610857C5D5404A /* RealmSwift-realm_swift_privacy */,
+				F3E7458F7D38C89A9DE4BBACD3450C88 /* SwiftAlgorithms */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		AD3E16A3313F156576ACC059F8A42981 /* Resources */ = {
@@ -1387,22 +1411,6 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
-		C9144AC281ABE864265A28F3BC7E1F97 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A1C1B977ED8804E8AEEC884E7359EE58 /* Charts */,
-				74773BCE4CC72C3F76A0630E3775130A /* Pods-ZidoSuta */,
-				57D224F78BD425A8862E41159E1D633A /* Pods-ZidoSuta-ZidoSutaUITests */,
-				553612ECC883FC0358F26B83E8C09914 /* Pods-ZidoSutaTests */,
-				921BE4A82C4A7A5C72A0C6F8B8FEF200 /* Realm */,
-				1AFC594BA8F7A6BF67C9A715020849EE /* Realm-realm_objc_privacy */,
-				437919EE08EC6BFCCBAC3BD346309742 /* RealmSwift */,
-				AC70800BBC39EB966B610857C5D5404A /* RealmSwift-realm_swift_privacy */,
-				F3E7458F7D38C89A9DE4BBACD3450C88 /* SwiftAlgorithms */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CBEDA3A572B559EF078D6707DE3EC51A /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1425,9 +1433,19 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
 				8D47AF57149926F0C871B1B6FC96D7B8 /* Pods */,
-				C9144AC281ABE864265A28F3BC7E1F97 /* Products */,
-				39D7BFDE5180E70669CBF9EC446FA63D /* Targets Support Files */,
+				AC8005B659795C18C3EDB66831B34B71 /* Products */,
+				D10C2D6682D41BC6D686F8C849F1CA0A /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D10C2D6682D41BC6D686F8C849F1CA0A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A7CAD562494616F9192EB418166B1AEB /* Pods-Zidosuta */,
+				9DC779DB737FBB5DF0A54C2276AA275C /* Pods-Zidosuta-ZidosutaUITests */,
+				FEF49606C80D922DED2F8C8698C4AFA1 /* Pods-ZidosutaTests */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		D5ACC14B9F8FADDDE01ED0FA80E9FB58 /* SwiftAlgorithms */ = {
@@ -1479,40 +1497,6 @@
 			path = "../Target Support Files/Realm";
 			sourceTree = "<group>";
 		};
-		DAD10F5DC0A30D6C346CDB46051D215D /* Pods-ZidoSuta */ = {
-			isa = PBXGroup;
-			children = (
-				E7F88EB45D09C19F1CE4C7BBDEDCBDCE /* Pods-ZidoSuta.modulemap */,
-				BCD5F0C24E95724CE09BDCFE0EEE52BE /* Pods-ZidoSuta-acknowledgements.markdown */,
-				3E106FDF98FBEDF94969877C5D796325 /* Pods-ZidoSuta-acknowledgements.plist */,
-				D104655C76B97B9FFBCD021939EC05E3 /* Pods-ZidoSuta-dummy.m */,
-				80A908CC633A0BCC3EB990AA8FDA9A48 /* Pods-ZidoSuta-frameworks.sh */,
-				E1F84A521D34E8E7513E103EE4AE1937 /* Pods-ZidoSuta-Info.plist */,
-				7007F73E0AF5D1B7736EFFCDF721BC1A /* Pods-ZidoSuta-umbrella.h */,
-				5A9D08C3D65043B05A50E6822ABFC748 /* Pods-ZidoSuta.debug.xcconfig */,
-				6390E310D0D3CBB5EED3FF0AEFA38BBD /* Pods-ZidoSuta.release.xcconfig */,
-			);
-			name = "Pods-ZidoSuta";
-			path = "Target Support Files/Pods-ZidoSuta";
-			sourceTree = "<group>";
-		};
-		EF07799C875A2FE00BEDAF0F6F0028CB /* Pods-ZidoSuta-ZidoSutaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1AD07DBE31D84B453934A7731927C3E7 /* Pods-ZidoSuta-ZidoSutaUITests.modulemap */,
-				D4C4CD84B770A5DE4910BBA6F2E11199 /* Pods-ZidoSuta-ZidoSutaUITests-acknowledgements.markdown */,
-				5D364816B0CACCDE49DB6214E7BCFCED /* Pods-ZidoSuta-ZidoSutaUITests-acknowledgements.plist */,
-				F88749D85AF87AE546BDADEBBCE59EEA /* Pods-ZidoSuta-ZidoSutaUITests-dummy.m */,
-				A055D70C001EF95AFBD58480BC3B670B /* Pods-ZidoSuta-ZidoSutaUITests-frameworks.sh */,
-				CCD5184715C748BAAF5890C452AB8575 /* Pods-ZidoSuta-ZidoSutaUITests-Info.plist */,
-				D399BBA07B9C94D2D42287943FB7EA95 /* Pods-ZidoSuta-ZidoSutaUITests-umbrella.h */,
-				D0141F07263DB7DDCF7815F5743B95AC /* Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig */,
-				18FE566721C345A37699F26E96AFFF2E /* Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig */,
-			);
-			name = "Pods-ZidoSuta-ZidoSutaUITests";
-			path = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests";
-			sourceTree = "<group>";
-		};
 		F166D5F225ECF2E1D6830A46FE2E46C9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1546,17 +1530,25 @@
 			path = Charts;
 			sourceTree = "<group>";
 		};
+		FEF49606C80D922DED2F8C8698C4AFA1 /* Pods-ZidosutaTests */ = {
+			isa = PBXGroup;
+			children = (
+				1DFAF62F65200ED7A1719FA32F3A3C45 /* Pods-ZidosutaTests.modulemap */,
+				FFF12798957C963BDA96BA8D0EA88A13 /* Pods-ZidosutaTests-acknowledgements.markdown */,
+				ECB5A0785913ACBEF3DF3600FBD31C9C /* Pods-ZidosutaTests-acknowledgements.plist */,
+				E167CF4DCD6E2C1C4651D1FB277F67D7 /* Pods-ZidosutaTests-dummy.m */,
+				F1D11C5C22F0F622F6D639C3FF45BD21 /* Pods-ZidosutaTests-Info.plist */,
+				754B0FF17DF697073A362F72025E8F3D /* Pods-ZidosutaTests-umbrella.h */,
+				1E5C7574446316D334EB031E07D86DAC /* Pods-ZidosutaTests.debug.xcconfig */,
+				FE89693722BE1DB33F5397401419A22F /* Pods-ZidosutaTests.release.xcconfig */,
+			);
+			name = "Pods-ZidosutaTests";
+			path = "Target Support Files/Pods-ZidosutaTests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0F70ABEFEA9C083517FD2C762983B461 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1CCF007EFC28013747D109708E3AF6D0 /* Pods-ZidoSuta-ZidoSutaUITests-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		287BB0CA55B95C204450DD74BA612945 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1612,19 +1604,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		52FB3E5A6673FFA4843D18E3CF8840EA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16DEA490EE11EDB851E25B2872C1B51F /* Pods-Zidosuta-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7866DD6A90995A1EACDAA3850BD428CF /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				96AFBE5852D6EFC5DA1EEA30F2F94731 /* RealmSwift-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		786738935E6CB682F9BCF69E12E8788D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				63A1DC509C282BC60D61749F6B1346CB /* Pods-ZidoSuta-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1636,6 +1628,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BBCE18AD7B87237805859B44D0F30094 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62D3CE9E0B1955457038CCF08D399280 /* Pods-ZidosutaTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EDE61DD0FA4F27F177FC2851874BD2A3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -1644,58 +1644,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FFD4D579768A8E8F1985222F1D2DD125 /* Headers */ = {
+		F64C8BD6A096649F328757E4FA6C2D14 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3A44D370FC358181990625496531B4A /* Pods-ZidoSutaTests-umbrella.h in Headers */,
+				95E6DB37FBF2610E7C094377A0145A58 /* Pods-Zidosuta-ZidosutaUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		18AD1F2E4D0EBCC79801CC7C6D0CA839 /* Pods-ZidoSutaTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F1AC7F91B1E6FACEEBD70BC198973783 /* Build configuration list for PBXNativeTarget "Pods-ZidoSutaTests" */;
-			buildPhases = (
-				FFD4D579768A8E8F1985222F1D2DD125 /* Headers */,
-				E288B6E9B37D3D0A0E62C981F470AEAC /* Sources */,
-				8480AD3954DFBB03E3EABE612252732A /* Frameworks */,
-				E133BE99C9654F144022584FDFE5D496 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5BBD60631864B2786B7136324E7C40D2 /* PBXTargetDependency */,
-			);
-			name = "Pods-ZidoSutaTests";
-			productName = Pods_ZidoSutaTests;
-			productReference = 553612ECC883FC0358F26B83E8C09914 /* Pods-ZidoSutaTests */;
-			productType = "com.apple.product-type.framework";
-		};
-		24567514567892D51AB3160030C47BDC /* Pods-ZidoSuta-ZidoSutaUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6A496C3FA19D5A3C6004EDA978178B9C /* Build configuration list for PBXNativeTarget "Pods-ZidoSuta-ZidoSutaUITests" */;
-			buildPhases = (
-				0F70ABEFEA9C083517FD2C762983B461 /* Headers */,
-				4AAE92402DE637B83085E1BA0AEBD42B /* Sources */,
-				0ACE95A47EA6E9B926EA32DEBFDB7586 /* Frameworks */,
-				4FA5516BBAC5EA9ED85CA8F51427FC21 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0A1B58E4BA991B2E87A7D79B9A530F6F /* PBXTargetDependency */,
-				37AF79B70E6D695483F285ADC07BD6B1 /* PBXTargetDependency */,
-				ECA848B6E2AE4E48976DDB141B52AC56 /* PBXTargetDependency */,
-				5660F3EEA6ED51A158F0A7688832F07A /* PBXTargetDependency */,
-			);
-			name = "Pods-ZidoSuta-ZidoSutaUITests";
-			productName = Pods_ZidoSuta_ZidoSutaUITests;
-			productReference = 57D224F78BD425A8862E41159E1D633A /* Pods-ZidoSuta-ZidoSutaUITests */;
-			productType = "com.apple.product-type.framework";
-		};
 		2C511EE63C6E7D5843B971D1E441119E /* SwiftAlgorithms */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C2B9DB976CF1E89963CEE9DADD0559BB /* Build configuration list for PBXNativeTarget "SwiftAlgorithms" */;
@@ -1712,6 +1671,50 @@
 			name = SwiftAlgorithms;
 			productName = Algorithms;
 			productReference = F3E7458F7D38C89A9DE4BBACD3450C88 /* SwiftAlgorithms */;
+			productType = "com.apple.product-type.framework";
+		};
+		47ADD1ADF8BA3C813711D3D13986B331 /* Pods-Zidosuta-ZidosutaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D7CA9FB6FB30EDE31A9A875C8F85FF5 /* Build configuration list for PBXNativeTarget "Pods-Zidosuta-ZidosutaUITests" */;
+			buildPhases = (
+				F64C8BD6A096649F328757E4FA6C2D14 /* Headers */,
+				E269A48DEA8D4AFF9434D56280D90E72 /* Sources */,
+				BEB033D22188EB8F095854262C605DB7 /* Frameworks */,
+				B6DDD347F0DCCA376B1B94E120774760 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C75D97FC7F6570207BA76ABC2173601B /* PBXTargetDependency */,
+				50A75AE9072D6F29BD822220F1E532A7 /* PBXTargetDependency */,
+				AE2A14F373906F057716128DE4888537 /* PBXTargetDependency */,
+				F7DA30B4DD08C67220FB9AD5DBD16212 /* PBXTargetDependency */,
+			);
+			name = "Pods-Zidosuta-ZidosutaUITests";
+			productName = Pods_Zidosuta_ZidosutaUITests;
+			productReference = 371D05F0E09D055DE694111BE0BB5E79 /* Pods-Zidosuta-ZidosutaUITests */;
+			productType = "com.apple.product-type.framework";
+		};
+		5771AA40929450DBE40C6E12F31338E9 /* Pods-Zidosuta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4EEB6F619010F04C36C2FB4DED60363B /* Build configuration list for PBXNativeTarget "Pods-Zidosuta" */;
+			buildPhases = (
+				52FB3E5A6673FFA4843D18E3CF8840EA /* Headers */,
+				2CC167AC359D1FA99BD7E95536CA8B3C /* Sources */,
+				DA48ECE8B94AD66CB360BC5A1444FF32 /* Frameworks */,
+				76D2EBDA60A5A869ABB176C5F74E1526 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				79E41873A47C5748AF4C134D2AB9B30A /* PBXTargetDependency */,
+				FD512843ABAEAD3CC89000ABD5DB8802 /* PBXTargetDependency */,
+				98AC81157A854182A1AF4747F4570199 /* PBXTargetDependency */,
+				123326EE7CB3992A8FD2C7CD4608156F /* PBXTargetDependency */,
+			);
+			name = "Pods-Zidosuta";
+			productName = Pods_Zidosuta;
+			productReference = 6B9FF939CC56EDF61528709062472FC2 /* Pods-Zidosuta */;
 			productType = "com.apple.product-type.framework";
 		};
 		68494F30B4A13F8E5E88BCCAEC25B0A4 /* Realm */ = {
@@ -1757,26 +1760,23 @@
 			productReference = 437919EE08EC6BFCCBAC3BD346309742 /* RealmSwift */;
 			productType = "com.apple.product-type.framework";
 		};
-		8540E0461E9058CD439B2EFB83590166 /* Pods-ZidoSuta */ = {
+		9EF34E8065BADF80218E7F09E889D008 /* Pods-ZidosutaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8463E2D54E946983552DA543FDB4B025 /* Build configuration list for PBXNativeTarget "Pods-ZidoSuta" */;
+			buildConfigurationList = 91E820A94922F07E91C1BF03378C9B41 /* Build configuration list for PBXNativeTarget "Pods-ZidosutaTests" */;
 			buildPhases = (
-				786738935E6CB682F9BCF69E12E8788D /* Headers */,
-				4FA7F21550167A87B3C1261747EF89BA /* Sources */,
-				4BE256858DE5D5A9205BC918D7FF93B2 /* Frameworks */,
-				1246AC2BE08C2F2686EBCA7C0B8E4767 /* Resources */,
+				BBCE18AD7B87237805859B44D0F30094 /* Headers */,
+				275D0A8AA108B0D4B0C5C6A00C88395B /* Sources */,
+				706BB35E3916E5048882B357751DD206 /* Frameworks */,
+				5F22CA816D6B64F3E146728274ED173C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DF8C7A877085AEB2BB6E1FF874403F98 /* PBXTargetDependency */,
-				7131257358EC36135800E27AEA690A98 /* PBXTargetDependency */,
-				795E784CD9847C9DB76F959E2F3DD5FC /* PBXTargetDependency */,
-				FED79EC0768C0249DE9FDD9E185A74C2 /* PBXTargetDependency */,
+				BCA5E06354CA5D2B2ECDDD0B95A2FD80 /* PBXTargetDependency */,
 			);
-			name = "Pods-ZidoSuta";
-			productName = Pods_ZidoSuta;
-			productReference = 74773BCE4CC72C3F76A0630E3775130A /* Pods-ZidoSuta */;
+			name = "Pods-ZidosutaTests";
+			productName = Pods_ZidosutaTests;
+			productReference = 9E1F46428FC90BCE65DE88FD2FC69072 /* Pods-ZidosutaTests */;
 			productType = "com.apple.product-type.framework";
 		};
 		A6CEC262606E26A9A4D370183283DC78 /* RealmSwift-realm_swift_privacy */ = {
@@ -1851,14 +1851,14 @@
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			minimizedProjectReferenceProxies = 0;
-			productRefGroup = C9144AC281ABE864265A28F3BC7E1F97 /* Products */;
+			productRefGroup = AC8005B659795C18C3EDB66831B34B71 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */,
-				8540E0461E9058CD439B2EFB83590166 /* Pods-ZidoSuta */,
-				24567514567892D51AB3160030C47BDC /* Pods-ZidoSuta-ZidoSutaUITests */,
-				18AD1F2E4D0EBCC79801CC7C6D0CA839 /* Pods-ZidoSutaTests */,
+				5771AA40929450DBE40C6E12F31338E9 /* Pods-Zidosuta */,
+				47ADD1ADF8BA3C813711D3D13986B331 /* Pods-Zidosuta-ZidosutaUITests */,
+				9EF34E8065BADF80218E7F09E889D008 /* Pods-ZidosutaTests */,
 				68494F30B4A13F8E5E88BCCAEC25B0A4 /* Realm */,
 				D8F7D719B6671C5E3A6851AFBAF78574 /* Realm-realm_objc_privacy */,
 				782725687624F8665247B84AB581BEB1 /* RealmSwift */,
@@ -1869,13 +1869,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1246AC2BE08C2F2686EBCA7C0B8E4767 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1941C6AC69A7731539E6DD7745A2D98E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1892,7 +1885,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA5516BBAC5EA9ED85CA8F51427FC21 /* Resources */ = {
+		5F22CA816D6B64F3E146728274ED173C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76D2EBDA60A5A869ABB176C5F74E1526 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1913,18 +1913,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6DDD347F0DCCA376B1B94E120774760 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BC65F672DFA8BC4F7686E1E4A0301E6C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				525EBC78C4793C4F18214BC966A8D98B /* Realm-realm_objc_privacy in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E133BE99C9654F144022584FDFE5D496 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2182,19 +2182,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4AAE92402DE637B83085E1BA0AEBD42B /* Sources */ = {
+		275D0A8AA108B0D4B0C5C6A00C88395B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				441E9D3E46794617A9C3A48F08B9B981 /* Pods-ZidoSuta-ZidoSutaUITests-dummy.m in Sources */,
+				B2DF4F3B41CC16529C660D10FFF037D8 /* Pods-ZidosutaTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4FA7F21550167A87B3C1261747EF89BA /* Sources */ = {
+		2CC167AC359D1FA99BD7E95536CA8B3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60AEE12AD04FD4BA050832A641F143E2 /* Pods-ZidoSuta-dummy.m in Sources */,
+				A6CD74129ADC62F086E177249542E0DA /* Pods-Zidosuta-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2290,28 +2290,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E288B6E9B37D3D0A0E62C981F470AEAC /* Sources */ = {
+		E269A48DEA8D4AFF9434D56280D90E72 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C701FFF3748E7E436BAB5D24A130BAE /* Pods-ZidoSutaTests-dummy.m in Sources */,
+				CFBE97ED5442FDB30CEC984B900AB661 /* Pods-Zidosuta-ZidosutaUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0A1B58E4BA991B2E87A7D79B9A530F6F /* PBXTargetDependency */ = {
+		123326EE7CB3992A8FD2C7CD4608156F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = Charts;
-			target = BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */;
-			targetProxy = 3262817D79C276E558EDD288AB94BE32 /* PBXContainerItemProxy */;
-		};
-		37AF79B70E6D695483F285ADC07BD6B1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Realm;
-			target = 68494F30B4A13F8E5E88BCCAEC25B0A4 /* Realm */;
-			targetProxy = 6006FD9DF3A6B9DD6B1E687E1684631D /* PBXContainerItemProxy */;
+			name = SwiftAlgorithms;
+			target = 2C511EE63C6E7D5843B971D1E441119E /* SwiftAlgorithms */;
+			targetProxy = 84DC56D82E87B653F4F97BBD6D1359B4 /* PBXContainerItemProxy */;
 		};
 		43149927289D529B1762748880F4CF5B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2319,17 +2313,11 @@
 			target = A6CEC262606E26A9A4D370183283DC78 /* RealmSwift-realm_swift_privacy */;
 			targetProxy = B2DC9386BAB902B5E13FC1622CADB699 /* PBXContainerItemProxy */;
 		};
-		5660F3EEA6ED51A158F0A7688832F07A /* PBXTargetDependency */ = {
+		50A75AE9072D6F29BD822220F1E532A7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftAlgorithms;
-			target = 2C511EE63C6E7D5843B971D1E441119E /* SwiftAlgorithms */;
-			targetProxy = 55C0D4E2DA12ABDE84A373875476259D /* PBXContainerItemProxy */;
-		};
-		5BBD60631864B2786B7136324E7C40D2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-ZidoSuta";
-			target = 8540E0461E9058CD439B2EFB83590166 /* Pods-ZidoSuta */;
-			targetProxy = 8E36B828586395B7DF482E57031D7EE8 /* PBXContainerItemProxy */;
+			name = Realm;
+			target = 68494F30B4A13F8E5E88BCCAEC25B0A4 /* Realm */;
+			targetProxy = D731F26C5060D8D3C34422B33D5746F7 /* PBXContainerItemProxy */;
 		};
 		61665E7723AFEC7534AEA19535AD3F31 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2337,23 +2325,41 @@
 			target = D8F7D719B6671C5E3A6851AFBAF78574 /* Realm-realm_objc_privacy */;
 			targetProxy = 97DB65BE0B57C18EC57D4EDA2943EFBA /* PBXContainerItemProxy */;
 		};
-		7131257358EC36135800E27AEA690A98 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Realm;
-			target = 68494F30B4A13F8E5E88BCCAEC25B0A4 /* Realm */;
-			targetProxy = 31C957EB22D9918EFE9815E3A80A6385 /* PBXContainerItemProxy */;
-		};
 		77A950F5A6E0CF1FF2FC929E2CE1F979 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftAlgorithms;
 			target = 2C511EE63C6E7D5843B971D1E441119E /* SwiftAlgorithms */;
 			targetProxy = 2C066C9FE7BB7FA0B0B07CEC69B47A4D /* PBXContainerItemProxy */;
 		};
-		795E784CD9847C9DB76F959E2F3DD5FC /* PBXTargetDependency */ = {
+		79E41873A47C5748AF4C134D2AB9B30A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			target = BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */;
+			targetProxy = B05ABF513AF1D9AAA0806FFB14455C0F /* PBXContainerItemProxy */;
+		};
+		98AC81157A854182A1AF4747F4570199 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = RealmSwift;
 			target = 782725687624F8665247B84AB581BEB1 /* RealmSwift */;
-			targetProxy = 5F46646A7CA4C99A1201EF2A454EF408 /* PBXContainerItemProxy */;
+			targetProxy = F18B6837964E09046A8DA651C1F1A856 /* PBXContainerItemProxy */;
+		};
+		AE2A14F373906F057716128DE4888537 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RealmSwift;
+			target = 782725687624F8665247B84AB581BEB1 /* RealmSwift */;
+			targetProxy = D19C85A713FA5E52E271D7C69B299D63 /* PBXContainerItemProxy */;
+		};
+		BCA5E06354CA5D2B2ECDDD0B95A2FD80 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Zidosuta";
+			target = 5771AA40929450DBE40C6E12F31338E9 /* Pods-Zidosuta */;
+			targetProxy = 79513F4B66883484B6111566AC9436E1 /* PBXContainerItemProxy */;
+		};
+		C75D97FC7F6570207BA76ABC2173601B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			target = BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */;
+			targetProxy = 49B15DCD3357CB565E60A712476DA5AF /* PBXContainerItemProxy */;
 		};
 		CA4AFDCE2D3CEE1706068EC81B445535 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2361,23 +2367,17 @@
 			target = 68494F30B4A13F8E5E88BCCAEC25B0A4 /* Realm */;
 			targetProxy = 119C1C8751D1EDFB12FD8BCF28DD2B31 /* PBXContainerItemProxy */;
 		};
-		DF8C7A877085AEB2BB6E1FF874403F98 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Charts;
-			target = BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */;
-			targetProxy = 27215CE2A7F30AA5F60681AF17E3BC16 /* PBXContainerItemProxy */;
-		};
-		ECA848B6E2AE4E48976DDB141B52AC56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = RealmSwift;
-			target = 782725687624F8665247B84AB581BEB1 /* RealmSwift */;
-			targetProxy = 7CF37E59A8C30A055FCBF396C48C0B84 /* PBXContainerItemProxy */;
-		};
-		FED79EC0768C0249DE9FDD9E185A74C2 /* PBXTargetDependency */ = {
+		F7DA30B4DD08C67220FB9AD5DBD16212 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftAlgorithms;
 			target = 2C511EE63C6E7D5843B971D1E441119E /* SwiftAlgorithms */;
-			targetProxy = A14AFE995EC4049C0FA8CE5AE9A2424A /* PBXContainerItemProxy */;
+			targetProxy = 4157CDA90E7F82B6C24DC612E57C527E /* PBXContainerItemProxy */;
+		};
+		FD512843ABAEAD3CC89000ABD5DB8802 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Realm;
+			target = 68494F30B4A13F8E5E88BCCAEC25B0A4 /* Realm */;
+			targetProxy = C960B5F82EA8E7EAC33CC8705437F455 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2398,9 +2398,9 @@
 			};
 			name = Debug;
 		};
-		0D78A7C58C9B5C620DE53450F0A08190 /* Release */ = {
+		00B641552425C8CEA08298F96E324F23 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18FE566721C345A37699F26E96AFFF2E /* Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig */;
+			baseConfigurationReference = 0F675ECD944F4DB6C24205BAB71DE93D /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2412,7 +2412,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2421,7 +2421,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -2430,11 +2430,10 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		1305A278AE682511C2837805AB8D6733 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2451,81 +2450,6 @@
 				WRAPPER_EXTENSION = bundle;
 			};
 			name = Debug;
-		};
-		14D1EF7A9842F2F5457512DA481BA6D7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E88775C163BC679737E96E9AF1B97B80 /* Pods-ZidoSutaTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZidoSutaTests/Pods-ZidoSutaTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZidoSutaTests/Pods-ZidoSutaTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1E4ED0988E20ADE687747E05569700E3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09185EB5F6E6C45BA4EE7FE578127E9F /* Pods-ZidoSutaTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZidoSutaTests/Pods-ZidoSutaTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZidoSutaTests/Pods-ZidoSutaTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		32F66577617D403AC7649D8422AF3FE2 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -2612,6 +2536,43 @@
 			};
 			name = Release;
 		};
+		6DE3C1466CE8C22858FAB60FE10A9B6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E5C7574446316D334EB031E07D86DAC /* Pods-ZidosutaTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		707DAD90410798AFAFED9EA5ADD885E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 25FFC42D6C8F0E032B97A477C1660EF4 /* RealmSwift.debug.xcconfig */;
@@ -2646,9 +2607,9 @@
 			};
 			name = Debug;
 		};
-		719F9E07F58A1D4E7DDDC186F1CF519B /* Debug */ = {
+		82BB28299427D22D1C9BFC2D55433078 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A9D08C3D65043B05A50E6822ABFC748 /* Pods-ZidoSuta.debug.xcconfig */;
+			baseConfigurationReference = 5899F50B60B3356EA676D15D8A97FD5D /* Pods-Zidosuta.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2660,7 +2621,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2669,7 +2630,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -2846,9 +2807,9 @@
 			};
 			name = Release;
 		};
-		AEF622338DB3439468CD970B9B05A153 /* Release */ = {
+		C4132C8783CCEAE77F0817CE74648192 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6390E310D0D3CBB5EED3FF0AEFA38BBD /* Pods-ZidoSuta.release.xcconfig */;
+			baseConfigurationReference = 4EA99A416D8328F824856E0393294441 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2860,7 +2821,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2869,7 +2830,45 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D168F05495A1C836313F7D352158CFEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE89693722BE1DB33F5397401419A22F /* Pods-ZidosutaTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -2955,9 +2954,9 @@
 			};
 			name = Debug;
 		};
-		F210F96E0F0E8C79BEEAC57D6BF68CB4 /* Debug */ = {
+		EBD2B1259A469819E61D489253A5379F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0141F07263DB7DDCF7815F5743B95AC /* Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig */;
+			baseConfigurationReference = 0029E2A15408750014F464839946DC35 /* Pods-Zidosuta.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2969,7 +2968,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2978,7 +2977,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -2987,10 +2986,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		F270902035E12AE827F04E9D43BF1873 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -3091,6 +3091,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		0D7CA9FB6FB30EDE31A9A875C8F85FF5 /* Build configuration list for PBXNativeTarget "Pods-Zidosuta-ZidosutaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00B641552425C8CEA08298F96E324F23 /* Debug */,
+				C4132C8783CCEAE77F0817CE74648192 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3C9F1E8CC2EB7C944989DFC3E98E9033 /* Build configuration list for PBXNativeTarget "Charts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3109,11 +3118,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6A496C3FA19D5A3C6004EDA978178B9C /* Build configuration list for PBXNativeTarget "Pods-ZidoSuta-ZidoSutaUITests" */ = {
+		4EEB6F619010F04C36C2FB4DED60363B /* Build configuration list for PBXNativeTarget "Pods-Zidosuta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F210F96E0F0E8C79BEEAC57D6BF68CB4 /* Debug */,
-				0D78A7C58C9B5C620DE53450F0A08190 /* Release */,
+				82BB28299427D22D1C9BFC2D55433078 /* Debug */,
+				EBD2B1259A469819E61D489253A5379F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3127,11 +3136,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8463E2D54E946983552DA543FDB4B025 /* Build configuration list for PBXNativeTarget "Pods-ZidoSuta" */ = {
+		91E820A94922F07E91C1BF03378C9B41 /* Build configuration list for PBXNativeTarget "Pods-ZidosutaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				719F9E07F58A1D4E7DDDC186F1CF519B /* Debug */,
-				AEF622338DB3439468CD970B9B05A153 /* Release */,
+				6DE3C1466CE8C22858FAB60FE10A9B6E /* Debug */,
+				D168F05495A1C836313F7D352158CFEE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -3159,15 +3168,6 @@
 			buildConfigurations = (
 				32F66577617D403AC7649D8422AF3FE2 /* Debug */,
 				556567108002C9E8A05B112649C3DF88 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F1AC7F91B1E6FACEEBD70BC198973783 /* Build configuration list for PBXNativeTarget "Pods-ZidoSutaTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				14D1EF7A9842F2F5457512DA481BA6D7 /* Debug */,
-				1E4ED0988E20ADE687747E05569700E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
