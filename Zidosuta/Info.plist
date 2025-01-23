@@ -13,6 +13,11 @@
           <string>cstr6suwn9.skadnetwork</string>
       </dict>
   </array>
+  <key>AdUnitIDs</key>
+  <dict>
+    <key>TopScreenBannerID</key>
+    <string>$(TOPSCREEN_BANNER_ID)</string>
+  </dict>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ja</string>
