@@ -207,6 +207,14 @@ Apache License
 
 
 
+## Google-Mobile-Ads-SDK
+
+Copyright 2024 Google LLC
+
+## GoogleUserMessagingPlatform
+
+Copyright 2024 Google LLC
+
 ## Realm
 
                                  Apache License

@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		056AEBE9ECFDC14DC49F09E4 /* Pods_Zidosuta_ZidosutaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E3A84AA8FAF96AF2CB2FED /* Pods_Zidosuta_ZidosutaUITests.framework */; };
 		21088586F2697E9A55EFF369 /* Pods_Zidosuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */; };
-		804A376645ECEE3C7BEC4E4C /* Pods_ZidosutaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A92BC427561F0F9FAB0EB6D8 /* Pods_ZidosutaTests.framework */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
@@ -128,25 +126,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000F5C37C55285736747EA0A /* Pods-DietApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietApp.release.xcconfig"; path = "Target Support Files/Pods-DietApp/Pods-DietApp.release.xcconfig"; sourceTree = "<group>"; };
-		0D2B7527553F064199C31AAF /* Pods-DietApp-DietAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietApp-DietAppUITests.release.xcconfig"; path = "Target Support Files/Pods-DietApp-DietAppUITests/Pods-DietApp-DietAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		0F5B60097D08A8216B3ADDB0 /* Pods-DietApp-DietAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietApp-DietAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-DietApp-DietAppUITests/Pods-DietApp-DietAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1D3216C0D309DB7A4495A782 /* Pods-ZidosutaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidosutaTests.debug.xcconfig"; path = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		46EC8D43F940F8A32E432562 /* Pods-DietAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.debug.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		670F3242D4F31CE4E09845CF /* Pods-ZidoSuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta.release.xcconfig"; path = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta.release.xcconfig"; sourceTree = "<group>"; };
-		68E3A84AA8FAF96AF2CB2FED /* Pods_Zidosuta_ZidosutaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zidosuta_ZidosutaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B8929D833C11B369780701C /* Pods-Zidosuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta.release.xcconfig"; path = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.release.xcconfig"; sourceTree = "<group>"; };
-		72832DA61A6590BA60429876 /* Pods-DietAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietAppTests.release.xcconfig"; path = "Target Support Files/Pods-DietAppTests/Pods-DietAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zidosuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C80464C016CC56F0AA62A86 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta-ZidosutaUITests.release.xcconfig"; path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.release.xcconfig"; sourceTree = "<group>"; };
-		A2C917BB0E91CAD6EE10CBBC /* Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig"; path = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig"; sourceTree = "<group>"; };
-		A92BC427561F0F9FAB0EB6D8 /* Pods_ZidosutaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZidosutaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB5C33142B6D6FE949E68AAF /* Pods-ZidoSuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta.debug.xcconfig"; path = "Target Support Files/Pods-ZidoSuta/Pods-ZidoSuta.debug.xcconfig"; sourceTree = "<group>"; };
 		CB24F8A72D8F9F13EF5C9284 /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D369A6B7DD9A99C8896B9CF7 /* Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig"; path = "Target Support Files/Pods-ZidoSuta-ZidoSutaUITests/Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E068D36DDADCA805BA5D62F8 /* Pods-ZidoSutaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSutaTests.release.xcconfig"; path = "Target Support Files/Pods-ZidoSutaTests/Pods-ZidoSutaTests.release.xcconfig"; sourceTree = "<group>"; };
 		E2BE357559E7AD61C391E8CB /* Pods-Zidosuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta.debug.xcconfig"; path = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.debug.xcconfig"; sourceTree = "<group>"; };
-		F07282B85C14901564D1EFA4 /* Pods-ZidoSutaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidoSutaTests.debug.xcconfig"; path = "Target Support Files/Pods-ZidoSutaTests/Pods-ZidoSutaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError + ValidationResult.swift"; sourceTree = "<group>"; };
 		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
@@ -250,7 +235,6 @@
 		FAFF6F582A21ACE40092A1A3 /* WeightTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeightTableViewCell.xib; sourceTree = "<group>"; };
 		FAFF6F5E2A21C60F0092A1A3 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		FAFF6F5F2A21C60F0092A1A3 /* MemoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoTableViewCell.xib; sourceTree = "<group>"; };
-		FB4F537C586BF775282B0AC1 /* Pods-DietApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DietApp.debug.xcconfig"; path = "Target Support Files/Pods-DietApp/Pods-DietApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,7 +250,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				804A376645ECEE3C7BEC4E4C /* Pods_ZidosutaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +257,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				056AEBE9ECFDC14DC49F09E4 /* Pods_Zidosuta_ZidosutaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,24 +266,12 @@
 		868533CA143429F6F9FD4225 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FB4F537C586BF775282B0AC1 /* Pods-DietApp.debug.xcconfig */,
-				000F5C37C55285736747EA0A /* Pods-DietApp.release.xcconfig */,
-				0F5B60097D08A8216B3ADDB0 /* Pods-DietApp-DietAppUITests.debug.xcconfig */,
-				0D2B7527553F064199C31AAF /* Pods-DietApp-DietAppUITests.release.xcconfig */,
-				46EC8D43F940F8A32E432562 /* Pods-DietAppTests.debug.xcconfig */,
-				72832DA61A6590BA60429876 /* Pods-DietAppTests.release.xcconfig */,
 				E2BE357559E7AD61C391E8CB /* Pods-Zidosuta.debug.xcconfig */,
 				6B8929D833C11B369780701C /* Pods-Zidosuta.release.xcconfig */,
 				CB24F8A72D8F9F13EF5C9284 /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */,
 				8C80464C016CC56F0AA62A86 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */,
 				1D3216C0D309DB7A4495A782 /* Pods-ZidosutaTests.debug.xcconfig */,
 				FAFE599C3B8495FFB72EEEA0 /* Pods-ZidosutaTests.release.xcconfig */,
-				AB5C33142B6D6FE949E68AAF /* Pods-ZidoSuta.debug.xcconfig */,
-				670F3242D4F31CE4E09845CF /* Pods-ZidoSuta.release.xcconfig */,
-				D369A6B7DD9A99C8896B9CF7 /* Pods-ZidoSuta-ZidoSutaUITests.debug.xcconfig */,
-				A2C917BB0E91CAD6EE10CBBC /* Pods-ZidoSuta-ZidoSutaUITests.release.xcconfig */,
-				F07282B85C14901564D1EFA4 /* Pods-ZidoSutaTests.debug.xcconfig */,
-				E068D36DDADCA805BA5D62F8 /* Pods-ZidoSutaTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -310,8 +280,6 @@
 			isa = PBXGroup;
 			children = (
 				8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */,
-				68E3A84AA8FAF96AF2CB2FED /* Pods_Zidosuta_ZidosutaUITests.framework */,
-				A92BC427561F0F9FAB0EB6D8 /* Pods_ZidosutaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -742,6 +710,7 @@
 				FA68AF1A2A135F6F00B69D4A /* Frameworks */,
 				FA68AF1B2A135F6F00B69D4A /* Resources */,
 				7B8D24CA841605071BC19C52 /* [CP] Embed Pods Frameworks */,
+				7676739F407C2E372F6CCA49 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -780,6 +749,7 @@
 				FA68AF3A2A135F7200B69D4A /* Frameworks */,
 				FA68AF3B2A135F7200B69D4A /* Resources */,
 				98B8080B916270707BA2BCAB /* [CP] Embed Pods Frameworks */,
+				F121A2D431AFF7E0A7CB0214 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -926,6 +896,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7676739F407C2E372F6CCA49 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7B8D24CA841605071BC19C52 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -980,6 +967,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F121A2D431AFF7E0A7CB0214 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1152,6 +1156,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				GADApplicationIdentifier = "ca-app-pub-3940256099942544~1458002511";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1173,6 +1178,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TOPSCREEN_BANNER_ID = "ca-app-pub-3940256099942544/2934735716";
 			};
 			name = Debug;
 		};
@@ -1212,6 +1218,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GADApplicationIdentifier = "ca-app-pub-7661829655812679~4204258913";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1226,6 +1233,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TOPSCREEN_BANNER_ID = "ca-app-pub-7661829655812679/8275930515";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

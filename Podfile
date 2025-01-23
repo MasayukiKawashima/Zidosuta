@@ -8,6 +8,7 @@ target 'Zidosuta' do
   # Pods for Zidosuta
    pod  'Charts'
    pod 'RealmSwift'
+   pod 'Google-Mobile-Ads-SDK'
 
   target 'ZidosutaTests' do
     inherit! :search_paths

@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import GoogleMobileAds
 
 class TopViewController: UIViewController {
   
@@ -248,9 +249,23 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
     case .adTableViewCell:
       let cell = tableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      //バナーIDの取得
+      if let bannerID = fetchAdUnitID(key: "TopScreenBannerID") {
+        cell.bannerView.adUnitID = bannerID
+        cell.bannerView.rootViewController = self
+        cell.bannerView.load(GADRequest())
+      }
+      
       return cell
     }
   }
+  
+  private func fetchAdUnitID(key: String) -> String? {
+    guard let adUnitIDs = Bundle.main.object(forInfoDictionaryKey: "AdUnitIDs") as? [String: String] else {
+        return nil
+    }
+    return adUnitIDs[key]
+}
   
   //各セルの高さの推定値を設定
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -292,6 +307,8 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
     }
   }
 }
+
+
 
 
 // MARK: - WeightTableViewCellDelegate, MemoTableViewCellDelegate

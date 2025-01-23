@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class AdTableViewCell: UITableViewCell {
+  
+  
+  // MARK: - Properties
+  
+  @IBOutlet weak var bannerView: GADBannerView!
   
   
   // MARK: - LifeCycle
