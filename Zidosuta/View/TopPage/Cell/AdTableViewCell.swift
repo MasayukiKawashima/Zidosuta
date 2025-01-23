@@ -13,8 +13,15 @@ class AdTableViewCell: UITableViewCell {
   
   // MARK: - Properties
   
-  @IBOutlet weak var bannerView: GADBannerView!
+  @IBOutlet weak var bannerView: GADBannerView! {
+    didSet {
+      backgroundView?.backgroundColor = .OysterWhite
+    }
+  }
   
+  @IBOutlet weak var placeholderView: UIView!
+  
+  @IBOutlet weak var placeholderLogo: UIImageView!
   
   // MARK: - LifeCycle
   

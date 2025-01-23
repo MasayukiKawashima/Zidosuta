@@ -162,7 +162,7 @@ class TopViewController: UIViewController {
 //TableViewの設定
 extension TopViewController: UITableViewDelegate,UITableViewDataSource {
   
-  //TableViewのセクション内のセルの数（5.28時点で１セクション、４セル）
+  //TableViewのセクション内のセルの数
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     return 4
@@ -252,6 +252,8 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       //バナーIDの取得
       if let bannerID = fetchAdUnitID(key: "TopScreenBannerID") {
         cell.bannerView.adUnitID = bannerID
+        let width = view.frame.size.width
+        cell.bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width)
         cell.bannerView.rootViewController = self
         cell.bannerView.load(GADRequest())
       }
@@ -765,6 +767,20 @@ extension TopViewController: UITextFieldDelegate {
           print("メモデータを消去しました")
         }
       }
+    }
+  }
+}
+
+
+// MARK: - GADBannerViewDelegate
+
+extension TopViewController: GADBannerViewDelegate {
+  //広告のロードが成功して、表示準備が完了したときに呼ばれるデリゲートメソッド
+  func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+    
+    if let cell = topView.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AdTableViewCell {
+      cell.placeholderView.isHidden = true
+      cell.placeholderLogo.isHidden = true
     }
   }
 }

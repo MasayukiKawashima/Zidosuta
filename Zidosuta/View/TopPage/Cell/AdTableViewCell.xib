@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,32 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWI-z0-wyS" customClass="GADBannerView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JU0-Zg-VpB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AdPlaceholderLogo" translatesAutoresizingMaskIntoConstraints="NO" id="2aI-a3-h29">
+                                        <rect key="frame" x="10" y="0.0" width="300" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="8JK-ky-Wxh"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="OysterWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2aI-a3-h29" firstAttribute="centerX" secondItem="JU0-Zg-VpB" secondAttribute="centerX" id="Oz0-NX-rJu"/>
+                                    <constraint firstItem="2aI-a3-h29" firstAttribute="top" secondItem="JU0-Zg-VpB" secondAttribute="top" id="d4Y-Sb-yZe"/>
+                                    <constraint firstAttribute="bottom" secondItem="2aI-a3-h29" secondAttribute="bottom" id="xRQ-eZ-ou9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="OysterWhite"/>
+                        <constraints>
+                            <constraint firstItem="JU0-Zg-VpB" firstAttribute="top" secondItem="JWI-z0-wyS" secondAttribute="top" id="BfZ-Ck-8Qy"/>
+                            <constraint firstItem="JU0-Zg-VpB" firstAttribute="leading" secondItem="JWI-z0-wyS" secondAttribute="leading" id="TaX-Hr-d5c"/>
+                            <constraint firstAttribute="trailing" secondItem="JU0-Zg-VpB" secondAttribute="trailing" id="gBb-J1-xQg"/>
+                            <constraint firstAttribute="bottom" secondItem="JU0-Zg-VpB" secondAttribute="bottom" id="xD6-Yr-B2L"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
@@ -32,8 +58,15 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bannerView" destination="JWI-z0-wyS" id="7ds-Mw-xPL"/>
+                <outlet property="placeholderView" destination="JU0-Zg-VpB" id="qHd-bL-Wnh"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="63.28125"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="AdPlaceholderLogo" width="600" height="106"/>
+        <namedColor name="OysterWhite">
+            <color red="1" green="0.99215686274509807" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
