@@ -189,7 +189,8 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
       
-      if results.isEmpty {
+      //検索結果が0件か、該当するデータの体重が0の場合は""をセットする
+      if results.isEmpty || results.first!.weight == 0 {
         cell.weightTextField.text = ""
       } else {
         let weightString = String(results.first!.weight)
