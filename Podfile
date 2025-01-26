@@ -6,7 +6,7 @@ target 'Zidosuta' do
   use_frameworks!
 
   # Pods for Zidosuta
-   pod  'Charts'
+   pod 'Charts'
    pod 'RealmSwift'
    pod 'Google-Mobile-Ads-SDK'
 

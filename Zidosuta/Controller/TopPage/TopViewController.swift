@@ -264,6 +264,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
   }
   
   private func fetchAdUnitID(key: String) -> String? {
+    
     guard let adUnitIDs = Bundle.main.object(forInfoDictionaryKey: "AdUnitIDs") as? [String: String] else {
         return nil
     }
@@ -776,6 +777,7 @@ extension TopViewController: UITextFieldDelegate {
 // MARK: - GADBannerViewDelegate
 
 extension TopViewController: GADBannerViewDelegate {
+  
   //広告のロードが成功して、表示準備が完了したときに呼ばれるデリゲートメソッド
   func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
     
