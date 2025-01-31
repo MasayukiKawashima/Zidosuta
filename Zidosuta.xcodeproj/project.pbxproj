@@ -347,14 +347,14 @@
 			path = AppDelegateTests;
 			sourceTree = "<group>";
 		};
-		FA32F4B02A32BBAE0058FD32 /* SettingsPage */ = {
+		FA32F4B02A32BBAE0058FD32 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				FA32F4B72A32BD130058FD32 /* SettingsView.swift */,
 				FA32F4B52A32BCF50058FD32 /* SettingsView.xib */,
 				FA32F4B92A32BE340058FD32 /* Cell */,
 			);
-			path = SettingsPage;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		FA32F4B92A32BE340058FD32 /* Cell */ = {
@@ -384,9 +384,9 @@
 				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
 				FA68AF262A135F6F00B69D4A /* Main.storyboard */,
 				FACA1A3F2D2398AA00B2768D /* OnboardingView */,
-				FAFF6F562A2071C70092A1A3 /* TopPage */,
-				FABF36042A283BCC007D91DB /* GraphPage */,
-				FA32F4B02A32BBAE0058FD32 /* SettingsPage */,
+				FAFF6F562A2071C70092A1A3 /* Top */,
+				FABF36042A283BCC007D91DB /* Graph */,
+				FA32F4B02A32BBAE0058FD32 /* Settings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -537,17 +537,17 @@
 			path = Contact;
 			sourceTree = "<group>";
 		};
-		FABF36042A283BCC007D91DB /* GraphPage */ = {
+		FABF36042A283BCC007D91DB /* Graph */ = {
 			isa = PBXGroup;
 			children = (
 				FABF36072A283CD0007D91DB /* GraphView.swift */,
 				FABF36092A283CFF007D91DB /* GraphView.xib */,
 				FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */,
 			);
-			path = GraphPage;
+			path = Graph;
 			sourceTree = "<group>";
 		};
-		FAC9EF0C2D0C0B5C00DE1E64 /* GraphPage */ = {
+		FAC9EF0C2D0C0B5C00DE1E64 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
 				FAC9EF082D0C0B5C00DE1E64 /* CustomMarkerViewController.swift */,
@@ -555,10 +555,10 @@
 				FAC9EF0A2D0C0B5C00DE1E64 /* GraphPageViewController.swift */,
 				FAC9EF0B2D0C0B5C00DE1E64 /* GraphViewController.swift */,
 			);
-			path = GraphPage;
+			path = Graph;
 			sourceTree = "<group>";
 		};
-		FAC9EF102D0C0B5C00DE1E64 /* SettingsPage */ = {
+		FAC9EF102D0C0B5C00DE1E64 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				FAC9EF0E2D0C0B5C00DE1E64 /* SettingsNavigationController.swift */,
@@ -567,10 +567,10 @@
 				FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */,
 				FA9E8C432D14649300A05E55 /* TermsDisplayViewController.swift */,
 			);
-			path = SettingsPage;
+			path = Settings;
 			sourceTree = "<group>";
 		};
-		FAC9EF152D0C0B5C00DE1E64 /* TopPage */ = {
+		FAC9EF152D0C0B5C00DE1E64 /* Top */ = {
 			isa = PBXGroup;
 			children = (
 				FAC9EF112D0C0B5C00DE1E64 /* PhotoModalViewController.swift */,
@@ -578,16 +578,16 @@
 				FAC9EF132D0C0B5C00DE1E64 /* TopPageViewController.swift */,
 				FAC9EF142D0C0B5C00DE1E64 /* TopViewController.swift */,
 			);
-			path = TopPage;
+			path = Top;
 			sourceTree = "<group>";
 		};
 		FAC9EF172D0C0B5C00DE1E64 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				FAC9EF162D0C0B5C00DE1E64 /* TabBarController.swift */,
-				FAC9EF152D0C0B5C00DE1E64 /* TopPage */,
-				FAC9EF0C2D0C0B5C00DE1E64 /* GraphPage */,
-				FAC9EF102D0C0B5C00DE1E64 /* SettingsPage */,
+				FAC9EF152D0C0B5C00DE1E64 /* Top */,
+				FAC9EF0C2D0C0B5C00DE1E64 /* Graph */,
+				FAC9EF102D0C0B5C00DE1E64 /* Settings */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -671,7 +671,7 @@
 			path = UIViewControllerRepresentable;
 			sourceTree = "<group>";
 		};
-		FAFF6F562A2071C70092A1A3 /* TopPage */ = {
+		FAFF6F562A2071C70092A1A3 /* Top */ = {
 			isa = PBXGroup;
 			children = (
 				FAFF6F522A2055430092A1A3 /* TopView.swift */,
@@ -680,7 +680,7 @@
 				FA7F0B382CC21211000CB10C /* PhotoModalView.xib */,
 				FAFF6F5B2A21C5D00092A1A3 /* Cell */,
 			);
-			path = TopPage;
+			path = Top;
 			sourceTree = "<group>";
 		};
 		FAFF6F5B2A21C5D00092A1A3 /* Cell */ = {
