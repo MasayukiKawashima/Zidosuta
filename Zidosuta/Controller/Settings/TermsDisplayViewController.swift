@@ -34,9 +34,9 @@ class TermsDisplayViewController: UIViewController {
     var url: URL? {
       switch self {
       case .termsOfUse:
-        return URL(string: "https://night-beryl-de2.notion.site/Zidosuta-1619e6db1ebc801297fdfef8e61cc911?pvs=4")
+        return URL(string: "https://night-beryl-de2.notion.site/1619e6db1ebc801297fdfef8e61cc911")
       case .privacyPolicy:
-        return URL(string: "https://night-beryl-de2.notion.site/Zidosuta-1619e6db1ebc801097eed65897bb162f?pvs=4")
+        return URL(string: "https://night-beryl-de2.notion.site/1619e6db1ebc801097eed65897bb162f")
       }
     }
   }
