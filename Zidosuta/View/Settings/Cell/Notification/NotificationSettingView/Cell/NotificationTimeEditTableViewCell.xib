@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="KGk-i7-Jjw" customClass="NotificationTimeEditTableViewCell" customModule="DietApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="BnV-ID-bie">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+                    </datePicker>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="BnV-ID-bie" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Jhs-gI-hoi"/>
+                    <constraint firstAttribute="trailing" secondItem="BnV-ID-bie" secondAttribute="trailing" id="UyY-T7-iHe"/>
+                    <constraint firstItem="BnV-ID-bie" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YF9-dq-LGE"/>
+                    <constraint firstAttribute="bottom" secondItem="BnV-ID-bie" secondAttribute="bottom" id="YOM-bn-mIq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="datePicker" destination="BnV-ID-bie" id="Yfm-Tt-h7p"/>
+            </connections>
+            <point key="canvasLocation" x="4.5801526717557248" y="-47.887323943661976"/>
+        </tableViewCell>
+    </objects>
+</document>

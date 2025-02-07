@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsView" customModule="Zidosuta" customModuleProvider="target">
+            <connections>
+                <outlet property="copyrightLabel" destination="TZt-ri-EsX" id="kU2-0N-lIu"/>
+                <outlet property="copyrightView" destination="Cti-E8-Z4B" id="xC4-bR-hcy"/>
+                <outlet property="tableView" destination="RmB-YX-ePb" id="4Xg-C3-kCc"/>
+                <outlet property="versionLabel" destination="Q2D-sJ-Dai" id="Vmy-pk-XgQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RmB-YX-ePb">
+                    <rect key="frame" x="0.0" y="48" width="414" height="764"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cti-E8-Z4B">
+                    <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2025 Masayuki Kawashima" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZt-ri-EsX">
+                            <rect key="frame" x="122" y="26" width="170.5" height="16"/>
+                            <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="12"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2D-sJ-Dai">
+                            <rect key="frame" x="167.5" y="8" width="79" height="16"/>
+                            <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="12"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstItem="Q2D-sJ-Dai" firstAttribute="centerX" secondItem="Cti-E8-Z4B" secondAttribute="centerX" id="8nt-H0-x6P"/>
+                        <constraint firstAttribute="height" constant="50" id="C5A-Br-1si"/>
+                        <constraint firstItem="TZt-ri-EsX" firstAttribute="top" secondItem="Q2D-sJ-Dai" secondAttribute="bottom" constant="2" id="PaO-HE-d0A"/>
+                        <constraint firstAttribute="bottom" secondItem="TZt-ri-EsX" secondAttribute="bottom" constant="8" id="W1b-Hz-9Do"/>
+                        <constraint firstItem="TZt-ri-EsX" firstAttribute="centerX" secondItem="Cti-E8-Z4B" secondAttribute="centerX" id="ZH3-0o-zc3"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Cti-E8-Z4B" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="JG8-m2-lEx"/>
+                <constraint firstItem="RmB-YX-ePb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SC0-8T-Q0k"/>
+                <constraint firstItem="RmB-YX-ePb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="cQR-E4-xZW"/>
+                <constraint firstItem="Cti-E8-Z4B" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fYe-Ts-zY7"/>
+                <constraint firstItem="Cti-E8-Z4B" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="kqc-dA-GqV"/>
+                <constraint firstItem="RmB-YX-ePb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="m82-KN-aSU"/>
+                <constraint firstItem="Cti-E8-Z4B" firstAttribute="top" secondItem="RmB-YX-ePb" secondAttribute="bottom" id="xnd-9y-uSX"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="48.883928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

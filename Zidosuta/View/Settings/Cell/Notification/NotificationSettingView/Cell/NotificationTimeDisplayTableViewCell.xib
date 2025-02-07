@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="KGk-i7-Jjw" customClass="NotificationTimeDisplayTableViewCell" customModule="DietApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQ3-Ko-Tyi">
+                        <rect key="frame" x="0.0" y="6" width="320" height="68"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mnp-hs-u1L">
+                        <rect key="frame" x="0.0" y="6" width="320" height="68"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="通知時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3E6-L8-API">
+                                <rect key="frame" x="8" y="8.0000000000000018" width="56" height="18.666666666666671"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caH-Nk-dCp">
+                                <rect key="frame" x="102" y="13" width="116.33333333333331" height="42"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3E6-L8-API" firstAttribute="top" secondItem="mnp-hs-u1L" secondAttribute="top" constant="8" id="10X-kE-BxE"/>
+                            <constraint firstItem="3E6-L8-API" firstAttribute="leading" secondItem="mnp-hs-u1L" secondAttribute="leading" constant="8" id="oKA-e6-6n9"/>
+                            <constraint firstItem="caH-Nk-dCp" firstAttribute="centerY" secondItem="mnp-hs-u1L" secondAttribute="centerY" id="tAX-qr-V6P"/>
+                            <constraint firstItem="caH-Nk-dCp" firstAttribute="centerX" secondItem="mnp-hs-u1L" secondAttribute="centerX" id="xt5-7T-gWY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="BQ3-Ko-Tyi" secondAttribute="trailing" id="0v6-7O-Yyb"/>
+                    <constraint firstItem="mnp-hs-u1L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="97h-5x-U3r"/>
+                    <constraint firstItem="mnp-hs-u1L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="DKX-FN-Y4O"/>
+                    <constraint firstAttribute="trailing" secondItem="mnp-hs-u1L" secondAttribute="trailing" id="JPR-YO-RbX"/>
+                    <constraint firstItem="BQ3-Ko-Tyi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JX5-5d-B9E"/>
+                    <constraint firstAttribute="bottom" secondItem="mnp-hs-u1L" secondAttribute="bottom" constant="6" id="ilO-vr-3my"/>
+                    <constraint firstItem="BQ3-Ko-Tyi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="mhy-S8-moZ"/>
+                    <constraint firstAttribute="bottom" secondItem="BQ3-Ko-Tyi" secondAttribute="bottom" constant="6" id="zZs-py-sQC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mainBackgroundView" destination="mnp-hs-u1L" id="9GW-oj-Mn0"/>
+                <outlet property="shadowLayerView" destination="BQ3-Ko-Tyi" id="eh7-lS-dmN"/>
+                <outlet property="timeLabel" destination="caH-Nk-dCp" id="pkl-zl-Uia"/>
+            </connections>
+            <point key="canvasLocation" x="4.5801526717557248" y="-12.67605633802817"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

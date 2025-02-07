@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="KGk-i7-Jjw" customClass="TermsOfUseTableViewCell" customModule="DietApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2S-Ip-X7W" customClass="ShadowLayerView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="296" height="48"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GQg-8G-O43" customClass="MainBackgroundView" customModule="DietApp" customModuleProvider="target">
+                        <rect key="frame" x="12" y="6" width="296" height="48"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CS-04-bbH">
+                                <rect key="frame" x="248" y="2" width="40" height="44"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system">
+                                    <color key="baseForegroundColor" name="YellowishRed"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="transitionButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Euw-bV-Roy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="利用規約" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlT-67-jap">
+                                <rect key="frame" x="8" y="8" width="64" height="21"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4CS-04-bbH" secondAttribute="trailing" constant="8" id="6f9-fw-MLl"/>
+                            <constraint firstAttribute="bottom" secondItem="4CS-04-bbH" secondAttribute="bottom" constant="2" id="EOA-fi-MhN"/>
+                            <constraint firstItem="VlT-67-jap" firstAttribute="top" secondItem="GQg-8G-O43" secondAttribute="top" constant="8" id="cDI-Vq-cxT"/>
+                            <constraint firstItem="4CS-04-bbH" firstAttribute="top" secondItem="GQg-8G-O43" secondAttribute="top" constant="2" id="g4l-df-BLF"/>
+                            <constraint firstItem="VlT-67-jap" firstAttribute="leading" secondItem="GQg-8G-O43" secondAttribute="leading" constant="8" id="x91-VL-wd1"/>
+                            <constraint firstItem="4CS-04-bbH" firstAttribute="centerY" secondItem="GQg-8G-O43" secondAttribute="centerY" id="xAG-aS-krJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="O2S-Ip-X7W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="JBq-Nc-RZB"/>
+                    <constraint firstAttribute="trailing" secondItem="O2S-Ip-X7W" secondAttribute="trailing" constant="12" id="OaR-D9-4QS"/>
+                    <constraint firstItem="O2S-Ip-X7W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="P1h-4r-irS"/>
+                    <constraint firstItem="GQg-8G-O43" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="hGP-Vs-7GH"/>
+                    <constraint firstItem="GQg-8G-O43" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="kOj-4w-BpA"/>
+                    <constraint firstAttribute="trailing" secondItem="GQg-8G-O43" secondAttribute="trailing" constant="12" id="m6Z-Zn-LLZ"/>
+                    <constraint firstAttribute="bottom" secondItem="GQg-8G-O43" secondAttribute="bottom" constant="6" id="rDz-hx-T71"/>
+                    <constraint firstAttribute="bottom" secondItem="O2S-Ip-X7W" secondAttribute="bottom" constant="6" id="yRU-tw-qen"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mainBackgroundView" destination="GQg-8G-O43" id="29Q-AB-wsR"/>
+                <outlet property="shadowLayerView" destination="O2S-Ip-X7W" id="Bis-6d-SXM"/>
+                <outlet property="termsOfUseLabel" destination="VlT-67-jap" id="sDj-f1-494"/>
+                <outlet property="transitionButton" destination="4CS-04-bbH" id="54k-ZN-JbZ"/>
+            </connections>
+            <point key="canvasLocation" x="-166" y="-1"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.forward" catalog="system" width="97" height="128"/>
+        <namedColor name="YellowishRed">
+            <color red="0.92500001192092896" green="0.40799999237060547" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

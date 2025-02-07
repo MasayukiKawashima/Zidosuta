@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PhotoTableViewCell" rowHeight="407" id="KGk-i7-Jjw" customClass="PhotoTableViewCell" customModule="DietApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rrK-eD-DU2">
+                        <rect key="frame" x="0.0" y="1.5" width="320" height="397"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ytx-di-uC3">
+                        <rect key="frame" x="217" y="346" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="B0W-Fa-Ia8"/>
+                            <constraint firstAttribute="height" constant="44" id="Jje-GH-GcB"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.left.fill" catalog="system"/>
+                        <connections>
+                            <action selector="redoButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DYG-m8-sI3"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKB-hh-oFN">
+                        <rect key="frame" x="100" y="140" width="120" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="4Jz-DC-bxy"/>
+                            <constraint firstAttribute="height" constant="120" id="Fou-OG-b1t"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="camera" catalog="system"/>
+                        <connections>
+                            <action selector="insertButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="UlB-ga-9NP"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvr-hc-Pm0">
+                        <rect key="frame" x="168" y="346" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="7Uq-1G-8My"/>
+                            <constraint firstAttribute="height" constant="44" id="sI6-u5-9BA"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="plus.magnifyingglass" catalog="system"/>
+                        <connections>
+                            <action selector="expandButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xBX-Qf-RVM"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ygx-GC-9Wu">
+                        <rect key="frame" x="266" y="346" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="dAx-T8-3rb"/>
+                            <constraint firstAttribute="height" constant="44" id="mQw-Ir-u9Z"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="trash.fill" catalog="system"/>
+                        <connections>
+                            <action selector="deleteButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f77-m2-bfc"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="タップして写真をセット" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL6-uU-7i8">
+                        <rect key="frame" x="93" y="268" width="134" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="5Vp-cd-3ho"/>
+                    <constraint firstItem="DL6-uU-7i8" firstAttribute="top" secondItem="oKB-hh-oFN" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ez-9h-y9e"/>
+                    <constraint firstItem="oKB-hh-oFN" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="BM5-hy-1K4"/>
+                    <constraint firstItem="DL6-uU-7i8" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Ir6-0J-1cD"/>
+                    <constraint firstAttribute="bottom" secondItem="rrK-eD-DU2" secondAttribute="bottom" constant="1.5" id="Kft-iq-6A3"/>
+                    <constraint firstItem="ygx-GC-9Wu" firstAttribute="leading" secondItem="Ytx-di-uC3" secondAttribute="trailing" constant="5" id="QSa-9Y-Ven"/>
+                    <constraint firstAttribute="trailing" secondItem="rrK-eD-DU2" secondAttribute="trailing" id="Qs1-TQ-HVp"/>
+                    <constraint firstAttribute="bottom" secondItem="Ytx-di-uC3" secondAttribute="bottom" constant="10" id="YHd-yJ-jVN"/>
+                    <constraint firstAttribute="bottom" secondItem="ygx-GC-9Wu" secondAttribute="bottom" constant="10" id="ayp-uH-d76"/>
+                    <constraint firstItem="rrK-eD-DU2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1.5" id="ffh-RN-yVf"/>
+                    <constraint firstItem="rrK-eD-DU2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rto-7n-huu"/>
+                    <constraint firstAttribute="bottom" secondItem="Tvr-hc-Pm0" secondAttribute="bottom" constant="10" id="s7k-6m-zKV"/>
+                    <constraint firstItem="Ytx-di-uC3" firstAttribute="leading" secondItem="Tvr-hc-Pm0" secondAttribute="trailing" constant="5" id="uh6-nJ-dGj"/>
+                    <constraint firstAttribute="trailing" secondItem="ygx-GC-9Wu" secondAttribute="trailing" constant="10" id="utE-AZ-xll"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commentLabel" destination="DL6-uU-7i8" id="V1u-rp-Xsb"/>
+                <outlet property="deleteButton" destination="ygx-GC-9Wu" id="RJh-j5-rMm"/>
+                <outlet property="expandButton" destination="Tvr-hc-Pm0" id="dXC-Gm-1HV"/>
+                <outlet property="insertButton" destination="oKB-hh-oFN" id="qZw-f3-LUi"/>
+                <outlet property="photoImageView" destination="rrK-eD-DU2" id="Utg-w1-725"/>
+                <outlet property="redoButton" destination="Ytx-di-uC3" id="GO2-68-B6c"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="70.3125"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="104"/>
+        <image name="camera" catalog="system" width="128" height="93"/>
+        <image name="plus.magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="trash.fill" catalog="system" width="117" height="128"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
