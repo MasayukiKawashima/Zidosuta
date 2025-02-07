@@ -60,7 +60,7 @@ struct OnboardingView: View {
                 .minimumScaleFactor(0.5)
               
               VStack {
-                Text("記録忘れ防止に便利な通知機能をご活用ください")
+                Text("記録忘れ防止に便利なデイリー通知をご活用下さい")
                   .font(.custom("Thonburi", size: geometry.size.width * 0.035, relativeTo: .body))
                   .foregroundColor(Color(UIColor.black))
                   .padding(.horizontal, 5)
