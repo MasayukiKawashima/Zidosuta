@@ -14,7 +14,7 @@
 	<key>GADApplicationIdentifier</key>
 	<string>$(GADApplicationIdentifier)</string>
 	<key>NSUserNotificationsUsageDescription</key>
-	<string>記録時間の通知のため、許可が必要です</string>
+	<string>記録時間の通知のために通知機能を使用します。</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
