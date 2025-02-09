@@ -13,8 +13,6 @@
 	</array>
 	<key>GADApplicationIdentifier</key>
 	<string>$(GADApplicationIdentifier)</string>
-	<key>NSUserNotificationsUsageDescription</key>
-	<string>記録時間の通知のため、許可が必要です</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -22,24 +20,11 @@
 			<string>cstr6suwn9.skadnetwork</string>
 		</dict>
 	</array>
-	<key>UIApplicationSceneManifest</key>
-	<dict>
-		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
-		<key>UISceneConfigurations</key>
-		<dict>
-			<key>UIWindowSceneSessionRoleApplication</key>
-			<array>
-				<dict>
-					<key>UISceneConfigurationName</key>
-					<string>Default Configuration</string>
-					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
-					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
-				</dict>
-			</array>
-		</dict>
-	</dict>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>記録時間の通知のため、通知機能を使用します。</string>
+	<key>NSCameraUsageDescription</key>
+	<string>アプリ内に表示するための写真を撮影する目的でカメラを使用します。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>アプリ内に表示するための写真を選択する目的でフォトライブラリを使用します。</string>
 </dict>
 </plist>
