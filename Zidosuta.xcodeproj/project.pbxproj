@@ -1253,8 +1253,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ジドスタ";
-				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "アプリ内に表示する写真を撮影するためにカメラを使用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "アプリ内に表示する写真を選択するためにフォトライブラリを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1292,8 +1292,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "ジドスタ";
-				INFOPLIST_KEY_NSCameraUsageDescription = "カメラを使用するには許可が必要です。";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "フォトライブラリを使用するには許可が必要です。";
+				INFOPLIST_KEY_NSCameraUsageDescription = "アプリ内に表示する写真を撮影するためにカメラを使用します。";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "アプリ内に表示する写真を選択するためにフォトライブラリを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
