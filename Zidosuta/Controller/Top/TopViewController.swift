@@ -447,6 +447,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   
   //PHPickerViewControllerの表示
   private func showPHPicker() {
+    
     var configuration = PHPickerConfiguration()
     configuration.filter = .images
     configuration.selectionLimit = 1
@@ -484,6 +485,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   
   //PHPickerViewController内でで画像を選択した際の処理
   func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    
     if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
       itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
         guard let self = self,
