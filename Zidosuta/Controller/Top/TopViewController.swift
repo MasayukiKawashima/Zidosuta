@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 import RealmSwift
 import GoogleMobileAds
 
@@ -332,11 +333,11 @@ extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDeleg
 }
 
 
-// MARK: - PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+// MARK: - PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, PHPickerViewControllerDelegate,UINavigationControllerDelegate
 
 //写真セル内のボタン押下時処理
-extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  
+extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, PHPickerViewControllerDelegate, UINavigationControllerDelegate {
+ 
   //拡大ボタンが押された時の処理
   func expandButtonAction(photoImage: UIImage) {
     
@@ -411,63 +412,6 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     picker.dismiss(animated: true, completion: nil)
   }
   
-  //UIImagePickerController内で画像を選択したときの処理
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    
-    if let pickedImage = info[.originalImage] as? UIImage {
-      //保存した
-      let fileName = "\(NSUUID().uuidString)"
-      //後にファイル名だけをrealmに保存する
-      let photoFileName = fileName
-      
-      //フルパスを作成
-      let path = documentDirectoryFileURL.appendingPathComponent(fileName)
-      
-      //取得した写真の保存処理
-      saveImageToDocument(pickedImage: pickedImage, path: path)
-      
-      //現在のページの日付のRealmObjectが存在するか検索
-      let dateDataRealmSearcher = DateDataRealmSearcher()
-      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
-      let resultsCount = results.count
-      
-      let realm = try! Realm()
-      //存在した場合
-      if resultsCount != 0 {
-        //そのRealmObjectのphotoFileURLに古い写真のFileURLが登録されていたら
-        if results.first!.photoFileURL != "" {
-          //その古い写真を削除する
-          let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
-          do {
-            try FileManager.default.removeItem(at: documentPath)
-          } catch {
-            print("ファイルの削除に失敗しました: \(error)")
-          }
-        }
-        try! realm.write {
-          results.first!.photoFileURL = photoFileName
-          results.first!.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
-        }
-      }
-      //存在しなかった場合
-      //新しいRealObjectを現在のページの日付で登録
-      let dateData = DateData()
-      dateData.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
-      dateData.photoFileURL = photoFileName
-      dateData.date = topDateManager.date
-      try! realm.write {
-        realm.add(dateData)
-      }
-      //取得した写真の表示処理
-      //現在表示されているPhotoTAbleViewCellのインスタンス取得
-      let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
-      //取得したインスタンスのimageに選択した写真を格納
-      photoTableViewCell.photoImageView.image = pickedImage
-    }
-    //UIImagePickerControllerを閉じる
-    picker.dismiss(animated: true, completion: nil)
-  }
-  
   //アクションシートの表示
   private func showPhotoSelectionActionSheet() {
     
@@ -479,7 +423,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       self.showImagePicker(sourceType: .camera)
     }
     let photoLibraryAction = UIAlertAction(title: "フォトライブラリ", style: .default) { action in
-      self.showImagePicker(sourceType: .photoLibrary)
+      self.showPHPicker()
     }
     let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
     
@@ -498,6 +442,120 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       imagePicker.sourceType = sourceType
       imagePicker.delegate = self
       self.present(imagePicker, animated: true, completion: nil)
+    }
+  }
+  
+  //PHPickerViewControllerの表示
+  private func showPHPicker() {
+    var configuration = PHPickerConfiguration()
+    configuration.filter = .images
+    configuration.selectionLimit = 1
+    configuration.preferredAssetRepresentationMode = .current
+    
+    let picker = PHPickerViewController(configuration: configuration)
+    picker.delegate = self
+    self.present(picker, animated: true, completion: nil)
+  }
+  
+  //UIImagePickerController内で画像を選択したときの処理
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    
+    if let pickedImage = info[.originalImage] as? UIImage {
+     
+      let imageInfo = createImageInfo()
+      
+      //取得した写真の保存処理
+      saveImageToDocument(pickedImage: pickedImage, path: imageInfo.path)
+      
+      //現在のページの日付のRealmObjectが存在するか検索
+      let dateDataRealmSearcher = DateDataRealmSearcher()
+      let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
+      
+      handlePhotoStrorageAndRealm(results: results, pickedImage: pickedImage, imageInfo: imageInfo)
+      //取得した写真の表示処理
+      //現在表示されているPhotoTAbleViewCellのインスタンス取得
+      let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
+      //取得したインスタンスのimageに選択した写真を格納
+      photoTableViewCell.photoImageView.image = pickedImage
+    }
+    //UIImagePickerControllerを閉じる
+    picker.dismiss(animated: true, completion: nil)
+  }
+  
+  //PHPickerViewController内でで画像を選択した際の処理
+  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+      itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, _ in
+        guard let self = self,
+              let pickedImage = image as? UIImage else { return }
+        
+        // UI更新とRealm操作はメインスレッドで実行
+        DispatchQueue.main.async {
+          let imageInfo = self.createImageInfo()
+          self.saveImageToDocument(pickedImage: pickedImage, path: imageInfo.path)
+          
+          let dateDataRealmSearcher = DateDataRealmSearcher()
+          let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.topDateManager.date)
+          
+          self.handlePhotoStrorageAndRealm(results: results, pickedImage: pickedImage, imageInfo: imageInfo)
+          
+          // UI更新
+          if let photoTableViewCell = self.topView.tableView.visibleCells[2] as? PhotoTableViewCell {
+            photoTableViewCell.photoImageView.image = pickedImage
+          }
+          // 画像セット後にピッカーを閉じる
+          picker.dismiss(animated: true)
+        }
+      }
+    } else {
+      // 画像が選択されなかった場合はそのままピッカーを閉じる
+      picker.dismiss(animated: true)
+    }
+  }
+  
+  //ドキュメントディレクトリへ写真を保存するためのファイル名とフルパスを作成する処理
+  private func createImageInfo() -> (fileName: String, path: URL) {
+    
+    let fileName = "\(NSUUID().uuidString)"
+    //ファイル名
+    let photoFileName = fileName
+    //フルパス
+    let path = documentDirectoryFileURL.appendingPathComponent(fileName)
+    
+    return (fileName: photoFileName, path: path)
+  }
+  
+  //写真選択後のドキュメントディレクトリとRealmのハンドリング
+  private func handlePhotoStrorageAndRealm(results: Results<DateData>, pickedImage: UIImage, imageInfo: (fileName: String, path: URL)) {
+    
+    //検索結果の件数を確認
+    let resultsCount = results.count
+    //現在のページの日付のRealmObjectが存在するか確認
+    if resultsCount != 0 {
+      //存在した場合
+      //そのRealmObjectのphotoFileURLに古い写真のFileURLが登録されていたら
+      if results.first!.photoFileURL != "" {
+        //その古い写真を削除する
+        let documentPath = documentDirectoryFileURL.appendingPathComponent(results.first!.photoFileURL)
+        do {
+          try FileManager.default.removeItem(at: documentPath)
+        } catch {
+          print("ファイルの削除に失敗しました: \(error)")
+        }
+      }
+      try! realm.write {
+        results.first!.photoFileURL = imageInfo.fileName
+        results.first!.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
+      }
+    }
+    //存在しなかった場合
+    //新しいRealObjectを現在のページの日付で登録
+    let dateData = DateData()
+    dateData.imageOrientationRawValue = pickedImage.imageOrientation.rawValue
+    dateData.photoFileURL = imageInfo.fileName
+    dateData.date = topDateManager.date
+    try! realm.write {
+      realm.add(dateData)
     }
   }
   
