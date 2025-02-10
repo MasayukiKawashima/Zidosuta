@@ -249,7 +249,7 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
     
     let alert = UIAlertController(
       title: "通知が許可されていません",
-      message: "設定アプリから通知を有効にしてください",
+      message: "設定アプリから通知を許可してください",
       preferredStyle: .alert
     )
     alert.addAction(UIAlertAction(title: "OK", style: .default))

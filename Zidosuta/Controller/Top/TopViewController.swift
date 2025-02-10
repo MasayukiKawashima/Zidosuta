@@ -138,7 +138,6 @@ class TopViewController: UIViewController {
       if isViewFirstLayoutFinished {
         // レイアウト更新後にリロードを実行
         self.topView.tableView.reloadData()
-        print("tableViewのリロード！！！！！！！")
         self.shouldReloadDataAfterDeletion = false
       }
     }
@@ -406,7 +405,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       self.present(photoModalVC, animated: true, completion: nil)
     }
   }
-  //カメラ及びフォトライブラリでキャンセルしたときのデリゲートメソッド
+  //カメラでキャンセルしたときのデリゲートメソッド
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
     
     picker.dismiss(animated: true, completion: nil)
@@ -420,10 +419,25 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     actionSheet.view.accessibilityIdentifier = "photoSelectionSheet"
     
     let cameraAction = UIAlertAction(title: "カメラ", style: .default) { action in
-      self.showImagePicker(sourceType: .camera)
+      //カメラ起動前にアクセス権限の状態を確認
+      let status = AVCaptureDevice.authorizationStatus(for: .video)
+      switch status {
+        //許可済み、未決定の場合
+      case .authorized, .notDetermined:
+        self.showImagePicker(sourceType: .camera)
+        //不許可の場合
+      case .denied:
+        self.showCameraPermissionAlert()
+      case.restricted:
+        //制限の場合
+        self.showCameraUnavailableAlert()
+      @unknown default:
+        return
+      }
     }
+    
     let photoLibraryAction = UIAlertAction(title: "フォトライブラリ", style: .default) { action in
-      self.showPHPicker()
+      self.showPHPicker(sourceType: .images)
     }
     let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
     
@@ -446,10 +460,10 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
   
   //PHPickerViewControllerの表示
-  private func showPHPicker() {
+  private func showPHPicker(sourceType: PHPickerFilter) {
     
     var configuration = PHPickerConfiguration()
-    configuration.filter = .images
+    configuration.filter = sourceType
     configuration.selectionLimit = 1
     configuration.preferredAssetRepresentationMode = .current
     
@@ -570,6 +584,32 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     } catch {
       print("画像をドキュメントに保存できませんでした")
     }
+  }
+  
+  //カメラへのアクセスを許可するよう促すアラート
+  private func showCameraPermissionAlert() {
+    
+    let alert = UIAlertController(
+      title: "カメラへのアクセスが許可されていません",
+      message: "カメラを使用するには設定アプリからカメラへのアクセスを許可してください",
+      preferredStyle: .alert
+    )
+    
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    present(alert, animated: true)
+  }
+  
+  //カメラが使用できない旨のアラート
+  private func showCameraUnavailableAlert() {
+    
+    let alert = UIAlertController(
+      title: nil,
+      message: "カメラは使用できません",
+      preferredStyle: .alert
+    )
+    
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    present(alert, animated: true)
   }
 }
 
