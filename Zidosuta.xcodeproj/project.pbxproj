@@ -179,6 +179,8 @@
 		FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
+		FA9366C12D68B662007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FA9366C22D68B663007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
 		FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationRegisterTableViewCell.xib; sourceTree = "<group>"; };
 		FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseTableViewCell.swift; sourceTree = "<group>"; };
@@ -788,11 +790,11 @@
 			};
 			buildConfigurationList = FA68AF182A135F6F00B69D4A /* Build configuration list for PBXProject "Zidosuta" */;
 			compatibilityVersion = "Xcode 13.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				ja,
 			);
 			mainGroup = FA68AF142A135F6F00B69D4A;
 			productRefGroup = FA68AF1E2A135F6F00B69D4A /* Products */;
@@ -1107,6 +1109,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FA68AF272A135F6F00B69D4A /* Base */,
+				FA9366C22D68B663007B14C1 /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FA68AF2C2A135F7100B69D4A /* Base */,
+				FA9366C12D68B662007B14C1 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1126,6 +1130,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1188,6 +1193,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1248,7 +1254,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Zidosuta/Zidosuta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = BNT6DPTTX4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
@@ -1266,7 +1272,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.Kawashima.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1287,7 +1293,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Zidosuta/Zidosuta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.3;
 				DEVELOPMENT_TEAM = BNT6DPTTX4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
@@ -1305,7 +1311,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.Kawashima.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
