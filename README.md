@@ -54,7 +54,7 @@
 
 | 体重の登録                                                                                         | ひとことメモの登録                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | 
-|<img src="https://github.com/user-attachments/assets/64a17079-a802-4fe3-b04e-f2400b357a98" width="300px">| <img src="https://github.com/user-attachments/assets/b6b19b61-206f-4277-8c47-3f305652b6d6" width="300px">|
+|<img src="https://github.com/user-attachments/assets/54a52df8-fb25-45d8-bbf7-e86c5b5f0751" width="300px">| <img src="https://github.com/user-attachments/assets/b6b19b61-206f-4277-8c47-3f305652b6d6" width="300px">|
 
 |写真の登録|
 |--------|
