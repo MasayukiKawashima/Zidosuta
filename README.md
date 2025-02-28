@@ -1,10 +1,13 @@
 ## ■　ジドスタ
 
+  
 ![Image](https://github.com/user-attachments/assets/be81e459-d1ca-4ff6-afc2-63187e65d9bd)
+
 
 [App Storeからインストール](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
 
 ## ■　アプリのイメージ
+
 
 <img src="https://github.com/user-attachments/assets/be007de9-9c89-4778-8b6e-f4906c6a4399" width="300px">
 
@@ -52,9 +55,11 @@
 
 - トップ画面で体重、ひとことメモ、写真の登録ができます。
 
+
 | 体重の登録                                                                                         | ひとことメモの登録                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | 
 |<img src="https://github.com/user-attachments/assets/54a52df8-fb25-45d8-bbf7-e86c5b5f0751" width="300px">| <img src="https://github.com/user-attachments/assets/b6b19b61-206f-4277-8c47-3f305652b6d6" width="300px">|
+
 
 |写真の登録|
 |--------|
