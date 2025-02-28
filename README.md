@@ -1,10 +1,12 @@
-![Frame 1 .png](/Users/kawashimamasayuki/Desktop/AppDevelop/ジドスタ/他リソース/Github/README関係リソース/Frame%201%20.png)
+## ■　ジドスタ
+
+![Image](https://github.com/user-attachments/assets/afb02117-ed5a-4ec0-970d-4e7ea10bce7e)
 
 [App Storeからインストール](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
 
 ## ■　アプリのイメージ
+![Image](https://github.com/user-attachments/assets/094a454f-691d-498d-9cba-cdbfd8d7f34a)
 
-![アプリイメージ(オリジナルサイズ).gif](/Users/kawashimamasayuki/Desktop/AppDevelop/ジドスタ/他リソース/Github/README関係リソース/アプリイメージ(オリジナルサイズ).gif)
 
 ## ■　アプリを作ったキッカケ
 
@@ -51,13 +53,15 @@
 
 | 体重の登録                                                                                            | ひとことメモの登録                                                                                             | 写真の登録                                                                                            |
 | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| ![Top画面](/Users/kawashimamasayuki/Desktop/AppDevelop/ジドスタ/他リソース/Github/README関係リソース/体重の登録.gif) | ![ログイン画面](/Users/kawashimamasayuki/Desktop/AppDevelop/ジドスタ/他リソース/Github/README関係リソース/ひとことメモの登録.gif) | ![Top画面](/Users/kawashimamasayuki/Desktop/AppDevelop/ジドスタ/他リソース/Github/README関係リソース/写真の登録.gif) |
+| ![Image](https://github.com/user-attachments/assets/a36861b0-11f6-4060-8d3f-191f98bffd9e) | ![Image](https://github.com/user-attachments/assets/e32e967b-5365-4f03-9b9f-6669c660c595)|
+![Image](https://github.com/user-attachments/assets/b6d7875c-9570-45ba-95f0-4c7183f46650) |
 
 ### 登録したデータの確認
 
 - 画面を左右にスワイプするか、画面上部の矢印アイコンをタップすると前後の日付のページに移動します。
 
-![Top画面](/Users/kawashimamasayuki/Desktop/AppDevelop/ジドスタ/他リソース/Github/README関係リソース/過去のデータの確認.gif) 
+![Image](https://github.com/user-attachments/assets/a6cff4c9-10c2-412a-b759-d7209cfb67a9)
+
 
 ### グラフの表示
 
@@ -65,6 +69,6 @@
 
 - グラフ中のデータをタップすると、そのデータの情報がポップアップで表示されます。
 
-![Top画面](/Users/kawashimamasayuki/Desktop/AppDevelop/ジドスタ/他リソース/Github/README関係リソース/グラフの表示2025-02-28%202.gif)  
+![Image](https://github.com/user-attachments/assets/b9a953f5-8053-4c40-85d4-f7de46017898)
 
 ## ■　今後の課題
