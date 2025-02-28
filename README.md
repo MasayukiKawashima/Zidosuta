@@ -54,18 +54,18 @@
 
 | 体重の登録                                                                                         | ひとことメモの登録                                                                                      |
 | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | 
-|<img src="https://github.com/user-attachments/assets/54a52df8-fb25-45d8-bbf7-e86c5b5f0751" width="300px">| <img src="https://github.com/user-attachments/assets/a4eba28d-46ae-4fac-8a7e-a48eefef7c83" width="300px">|
+|<img src="https://github.com/user-attachments/assets/64a17079-a802-4fe3-b04e-f2400b357a98" width="300px">| <img src="https://github.com/user-attachments/assets/b6b19b61-206f-4277-8c47-3f305652b6d6" width="300px">|
 
 |写真の登録|
 |--------|
-|<img src="https://github.com/user-attachments/assets/565ee73c-8370-4edb-8974-02811e46aac8" width="300px">|
+|<img src="https://github.com/user-attachments/assets/4e6bb3e0-1389-4433-9fa2-a7419e261ccd" width="300px">|
 
 
 ### 登録したデータの確認
 
 - 画面を左右にスワイプするか、画面上部の矢印アイコンをタップすると前後の日付のページに移動します。
 
-<img src="https://github.com/user-attachments/assets/6e30008d-d64e-4b57-96aa-14a5a024e944" width="300px">
+<img src="https://github.com/user-attachments/assets/57d2e8ba-a01d-4574-99b9-18bb235a4fe2" width="300px">
 
 
 ### グラフの表示
