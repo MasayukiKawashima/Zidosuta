@@ -5,8 +5,8 @@
 [App Storeからインストール](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
 
 ## ■　アプリのイメージ
-![Image](https://github.com/user-attachments/assets/be007de9-9c89-4778-8b6e-f4906c6a4399)
 
+<img src="https://github.com/user-attachments/assets/be007de9-9c89-4778-8b6e-f4906c6a4399" width="300px">
 
 
 ## ■　アプリを作ったキッカケ
@@ -52,16 +52,20 @@
 
 - トップ画面で体重、ひとことメモ、写真の登録ができます。
 
-| 体重の登録                                                                                            | ひとことメモの登録                                                                                             | 写真の登録                                                                                            |
-| ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| ![Image](https://github.com/user-attachments/assets/54a52df8-fb25-45d8-bbf7-e86c5b5f0751)| ![Image](https://github.com/user-attachments/assets/a4eba28d-46ae-4fac-8a7e-a48eefef7c83)|
- ![Image](https://github.com/user-attachments/assets/565ee73c-8370-4edb-8974-02811e46aac8)|
+| 体重の登録                                                                                         | ひとことメモの登録                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | 
+|<img src="https://github.com/user-attachments/assets/54a52df8-fb25-45d8-bbf7-e86c5b5f0751" width="300px">| <img src="https://github.com/user-attachments/assets/a4eba28d-46ae-4fac-8a7e-a48eefef7c83" width="300px">|
+
+|写真の登録|
+|--------|
+|<img src="https://github.com/user-attachments/assets/565ee73c-8370-4edb-8974-02811e46aac8" width="300px">|
+
 
 ### 登録したデータの確認
 
 - 画面を左右にスワイプするか、画面上部の矢印アイコンをタップすると前後の日付のページに移動します。
 
-![Image](https://github.com/user-attachments/assets/6e30008d-d64e-4b57-96aa-14a5a024e944)
+<img src="https://github.com/user-attachments/assets/6e30008d-d64e-4b57-96aa-14a5a024e944" width="300px">
 
 
 ### グラフの表示
@@ -69,7 +73,7 @@
 - トップ画面で体重データを登録すると、グラフ画面にグラフが表示されます。
 
 - グラフ中のデータをタップすると、そのデータの情報がポップアップで表示されます。
+<img src="https://github.com/user-attachments/assets/a3dd946b-dcca-4465-8c7b-9ff17a7a7f1f" width="800px">
 
-![Image](https://github.com/user-attachments/assets/a3dd946b-dcca-4465-8c7b-9ff17a7a7f1f)
 
 ## ■　今後の課題
