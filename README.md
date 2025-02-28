@@ -1,11 +1,12 @@
 ## ■　ジドスタ
 
-![Image](https://github.com/user-attachments/assets/afb02117-ed5a-4ec0-970d-4e7ea10bce7e)
+![Image](https://github.com/user-attachments/assets/be81e459-d1ca-4ff6-afc2-63187e65d9bd)
 
 [App Storeからインストール](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
 
 ## ■　アプリのイメージ
-![Image](https://github.com/user-attachments/assets/094a454f-691d-498d-9cba-cdbfd8d7f34a)
+![Image](https://github.com/user-attachments/assets/be007de9-9c89-4778-8b6e-f4906c6a4399)
+
 
 
 ## ■　アプリを作ったキッカケ
@@ -53,14 +54,14 @@
 
 | 体重の登録                                                                                            | ひとことメモの登録                                                                                             | 写真の登録                                                                                            |
 | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| ![Image](https://github.com/user-attachments/assets/a36861b0-11f6-4060-8d3f-191f98bffd9e) | ![Image](https://github.com/user-attachments/assets/e32e967b-5365-4f03-9b9f-6669c660c595)|
-![Image](https://github.com/user-attachments/assets/b6d7875c-9570-45ba-95f0-4c7183f46650) |
+| ![Image](https://github.com/user-attachments/assets/54a52df8-fb25-45d8-bbf7-e86c5b5f0751)| ![Image](https://github.com/user-attachments/assets/a4eba28d-46ae-4fac-8a7e-a48eefef7c83)|
+ ![Image](https://github.com/user-attachments/assets/565ee73c-8370-4edb-8974-02811e46aac8)|
 
 ### 登録したデータの確認
 
 - 画面を左右にスワイプするか、画面上部の矢印アイコンをタップすると前後の日付のページに移動します。
 
-![Image](https://github.com/user-attachments/assets/a6cff4c9-10c2-412a-b759-d7209cfb67a9)
+![Image](https://github.com/user-attachments/assets/6e30008d-d64e-4b57-96aa-14a5a024e944)
 
 
 ### グラフの表示
@@ -69,6 +70,6 @@
 
 - グラフ中のデータをタップすると、そのデータの情報がポップアップで表示されます。
 
-![Image](https://github.com/user-attachments/assets/b9a953f5-8053-4c40-85d4-f7de46017898)
+![Image](https://github.com/user-attachments/assets/a3dd946b-dcca-4465-8c7b-9ff17a7a7f1f)
 
 ## ■　今後の課題
