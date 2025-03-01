@@ -1,7 +1,7 @@
 ## ■　ジドスタ
 
   
-![Image](https://github.com/user-attachments/assets/be81e459-d1ca-4ff6-afc2-63187e65d9bd)
+![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
 
 [App Storeからインストール](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
