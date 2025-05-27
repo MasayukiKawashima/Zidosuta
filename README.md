@@ -43,10 +43,10 @@
 | ------- | ---------------------------------|
 | 言語      | Swift  6.0.3                    |
 | アーキテクチャ | MVC                          |
-| UI構築    | UIKit, Storyboard, Xib, SwiftUI |
+| UI    | UIKit, Storyboard, Xib, SwiftUI |
 | データベース  | RealmSwift, UserDefaults      |
 | グラフ描画   | Charts                        |
-| 広告表示    | AdMob                          |
+| 広告    | AdMob                          |
 | テスト     | XCTest                          |
 | バージョン管理 | Git, GitHub                  |
 | デザイン    | Figma, Canva                   |
