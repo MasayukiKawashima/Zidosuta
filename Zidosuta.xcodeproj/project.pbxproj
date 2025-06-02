@@ -63,6 +63,7 @@
 		FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */; };
 		FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */; };
 		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
+		FAA926A82DED6AA000608AA6 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA926A72DED6AA000608AA6 /* OnboardingModel.swift */; };
 		FAAB5D292D394D59003EAD71 /* TopScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */; };
 		FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB98562D1865410034F243 /* ContactTableViewCell.swift */; };
 		FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAB98572D1865410034F243 /* ContactTableViewCell.xib */; };
@@ -193,6 +194,7 @@
 		FA9F9CE32CF449030013886A /* UIColor + AppThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + AppThemeColor.swift"; sourceTree = "<group>"; };
 		FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartAxisBase + setKGFormatter.swift"; sourceTree = "<group>"; };
 		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
+		FAA926A72DED6AA000608AA6 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopScreenUITests.swift; sourceTree = "<group>"; };
 		FAAB98562D1865410034F243 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		FAAB98572D1865410034F243 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */,
 				FAC9EF2C2D0C11C200DE1E64 /* LocalNotificationManager.swift */,
 				FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */,
+				FAA926A72DED6AA000608AA6 /* OnboardingModel.swift */,
 				FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */,
 			);
 			path = Logic;
@@ -1033,6 +1036,7 @@
 				FAC9EF2B2D0C11A000DE1E64 /* Settings.swift in Sources */,
 				FAC9EF222D0C0B5C00DE1E64 /* TopNavigationController.swift in Sources */,
 				FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */,
+				FAA926A82DED6AA000608AA6 /* OnboardingModel.swift in Sources */,
 				FAC9EF232D0C0B5C00DE1E64 /* TabBarController.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
 				FABF36082A283CD0007D91DB /* GraphView.swift in Sources */,
