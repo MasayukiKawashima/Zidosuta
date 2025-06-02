@@ -64,6 +64,7 @@
 		FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */; };
 		FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */; };
 		FAA926A82DED6AA000608AA6 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA926A72DED6AA000608AA6 /* OnboardingModel.swift */; };
+		FAA926AA2DEDBD9300608AA6 /* PhotoTipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA926A92DEDBD9300608AA6 /* PhotoTipsView.swift */; };
 		FAAB5D292D394D59003EAD71 /* TopScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */; };
 		FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB98562D1865410034F243 /* ContactTableViewCell.swift */; };
 		FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAB98572D1865410034F243 /* ContactTableViewCell.xib */; };
@@ -195,6 +196,7 @@
 		FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartAxisBase + setKGFormatter.swift"; sourceTree = "<group>"; };
 		FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionDirection.swift; sourceTree = "<group>"; };
 		FAA926A72DED6AA000608AA6 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		FAA926A92DEDBD9300608AA6 /* PhotoTipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTipsView.swift; sourceTree = "<group>"; };
 		FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopScreenUITests.swift; sourceTree = "<group>"; };
 		FAAB98562D1865410034F243 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		FAAB98572D1865410034F243 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 			children = (
 				FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */,
 				FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */,
+				FAA926A92DEDBD9300608AA6 /* PhotoTipsView.swift */,
 				FACA1A552D2BE88600B2768D /* UIViewControllerRepresentable */,
 			);
 			path = OnboardingView;
@@ -1026,6 +1029,7 @@
 				FAC9EF3A2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift in Sources */,
 				FAC9EF1B2D0C0B5C00DE1E64 /* TopPageViewController.swift in Sources */,
 				FAC9EF1C2D0C0B5C00DE1E64 /* NotificationSettingViewController.swift in Sources */,
+				FAA926AA2DEDBD9300608AA6 /* PhotoTipsView.swift in Sources */,
 				FAC9EF1D2D0C0B5C00DE1E64 /* PhotoModalViewController.swift in Sources */,
 				FAC9EF1E2D0C0B5C00DE1E64 /* CustomMarkerViewController.swift in Sources */,
 				FAC9EF1F2D0C0B5C00DE1E64 /* SettingsNavigationController.swift in Sources */,
