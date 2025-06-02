@@ -1,5 +1,5 @@
 //
-//  OnboardView.swift
+//  OnboardingView.swift
 //  Zidosuta
 //
 //  Created by 川島真之 on 2024/12/26.
@@ -32,7 +32,7 @@ struct OnboardingView: View {
   
   
   // MARK: - Properties
-  
+  @StateObject private var model = OnboardingModel()
   @State private var showingNotificationSetting = false
   @State private var showTermsDisplay = false
   @State private var selectedTermsType: TermsDisplayViewController.TermsType?
@@ -88,8 +88,8 @@ struct OnboardingView: View {
               
               Button(
                 action: {
-                  transitionToMainContent()
-                  UserDefaults.standard.set(true, forKey: "didCompleteFirstLaunch")
+                  model.transitionToMainContent()
+                  model.completeFirstLaunch()
                 },
                 label: {
                   Text("始める")
@@ -127,28 +127,6 @@ struct OnboardingView: View {
       }
       .navigationBarHidden(true)
       .accentColor(.white)
-    }
-  }
-  
-  
-  // MARK: - Methods
-  
-  private func transitionToMainContent() {
-    
-    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-       let window = windowScene.windows.first {
-      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-      if let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-        window.rootViewController = tabBarController
-        
-        let snapshot = UIScreen.main.snapshotView(afterScreenUpdates: true)
-        window.addSubview(snapshot)
-        UIView.animate(withDuration: 0.5, animations: {
-          snapshot.alpha = 0
-        }, completion: { _ in
-          snapshot.removeFromSuperview()
-        })
-      }
     }
   }
 }
