@@ -32,10 +32,10 @@ struct OnboardingView: View {
   
   
   // MARK: - Properties
-  @StateObject private var model = OnboardingModel()
   @State private var showingNotificationSetting = false
   @State private var showTermsDisplay = false
   @State private var selectedTermsType: TermsDisplayViewController.TermsType?
+  @State private var showNextView = false
   
   
   // MARK: - Body
@@ -88,8 +88,7 @@ struct OnboardingView: View {
               
               Button(
                 action: {
-                  model.transitionToMainContent()
-                  model.completeFirstLaunch()
+                  showNextView = true
                 },
                 label: {
                   Text("始める")
@@ -124,6 +123,16 @@ struct OnboardingView: View {
           .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
           .dynamicTypeSize(DynamicTypeSize.small...DynamicTypeSize.xLarge)
         }
+        //始めるボタンの遷移のための空View
+        NavigationLink(
+          isActive: $showNextView ,
+          destination: {
+            PhotoTipsView()
+          },
+          label: {
+            EmptyView()
+          }
+                )
       }
       .navigationBarHidden(true)
       .accentColor(.white)
