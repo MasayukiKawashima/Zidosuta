@@ -45,18 +45,26 @@ struct PhotoTipsView: View {
                 .foregroundStyle(.blue)
             }
             
-            Button (action:  {
-              //ボタン押下時の処理
-            },
-                    label:  {
+            HStack {
               
-              Text("OK")
-                .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.0533, relativeTo: .body))
-                .foregroundStyle(.white)
-            })
-            .background(Color("YellowishRed"))
-            .cornerRadius(10)
-            .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
+              Button("もどる") {
+                //ボタン押下時の処理
+              }
+              .foregroundStyle(.gray)
+              
+              Button (action:  {
+                //ボタン押下時の処理
+              },
+                      label:  {
+                
+                Text("OK")
+                  .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.0533, relativeTo: .body))
+                  .foregroundStyle(.white)
+              })
+              .background(Color("YellowishRed"))
+              .cornerRadius(10)
+              .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
+            }
           }
           .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
