@@ -17,7 +17,7 @@ struct PhotoTipsView: View {
       ZStack {
         Color("YellowishRed")
           .ignoresSafeArea()
-        ZStack { //このZStack - レスポンシブマージン対応
+        ZStack {
           Color("OysterWhite")
           GeometryReader { geometry in
             
@@ -26,7 +26,7 @@ struct PhotoTipsView: View {
                 .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.08, relativeTo: .body))
                 .foregroundStyle(.black)
                 .minimumScaleFactor(0.5)
-                .padding(.top, 60)
+                .padding(.top, 50)
               
               VStack {
                 Text(createAttributedString())
@@ -50,7 +50,7 @@ struct PhotoTipsView: View {
                   Image(systemName: "circle")
                     .foregroundStyle(.blue)
                     .font(.system(size: 40))
-                    .padding(.top, 15)
+                    .padding(.top, 8)
                 }
                 .padding(.leading, 5)
                 .padding(.trailing, 5)
@@ -65,7 +65,7 @@ struct PhotoTipsView: View {
                   Image(systemName: "triangle")
                     .foregroundStyle(.red)
                     .font(.system(size: 40))
-                    .padding(.top, 15)
+                    .padding(.top, 8)
                 }
                 .padding(.trailing, 5)
               }
@@ -105,7 +105,7 @@ struct PhotoTipsView: View {
                   .padding(.trailing, 20)
                 
               }
-              .padding(.bottom, 35)
+              .padding(.bottom, 30)
               .padding(.top, 10)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -122,12 +122,12 @@ struct PhotoTipsView: View {
   
   
   // MARK: - Method
-  
+  //外側のYellowishRedの領域の高さの設定
   private func calculateVerticalMargin(for screenSize: CGSize) -> CGFloat {
     
     let screenHeight = screenSize.height
   
-    let baseRatio: CGFloat = 0.047
+    let baseRatio: CGFloat = 0.050
     
     //許容される最小、最大の余白サイズ
     let minMargin: CGFloat = 10
