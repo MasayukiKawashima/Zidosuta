@@ -1,5 +1,5 @@
 //
-//  OnboardView.swift
+//  OnboardingView.swift
 //  Zidosuta
 //
 //  Created by 川島真之 on 2024/12/26.
@@ -36,6 +36,7 @@ struct OnboardingView: View {
   @State private var showingNotificationSetting = false
   @State private var showTermsDisplay = false
   @State private var selectedTermsType: TermsDisplayViewController.TermsType?
+  @State private var showNextView = false
   
   
   // MARK: - Body
@@ -88,11 +89,10 @@ struct OnboardingView: View {
               
               Button(
                 action: {
-                  transitionToMainContent()
-                  UserDefaults.standard.set(true, forKey: "didCompleteFirstLaunch")
+                  showNextView = true
                 },
                 label: {
-                  Text("始める")
+                  Text("はじめる")
                     .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.0533, relativeTo: .body))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 100)
@@ -124,31 +124,19 @@ struct OnboardingView: View {
           .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
           .dynamicTypeSize(DynamicTypeSize.small...DynamicTypeSize.xLarge)
         }
+        //始めるボタンの遷移のための空View
+        NavigationLink(
+          isActive: $showNextView ,
+          destination: {
+            PhotoTipsView()
+          },
+          label: {
+            EmptyView()
+          }
+                )
       }
       .navigationBarHidden(true)
       .accentColor(.white)
-    }
-  }
-  
-  
-  // MARK: - Methods
-  
-  private func transitionToMainContent() {
-    
-    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-       let window = windowScene.windows.first {
-      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-      if let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
-        window.rootViewController = tabBarController
-        
-        let snapshot = UIScreen.main.snapshotView(afterScreenUpdates: true)
-        window.addSubview(snapshot)
-        UIView.animate(withDuration: 0.5, animations: {
-          snapshot.alpha = 0
-        }, completion: { _ in
-          snapshot.removeFromSuperview()
-        })
-      }
     }
   }
 }
