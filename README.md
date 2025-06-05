@@ -42,7 +42,7 @@
 | カテゴリ    | 使用技術                        |
 | ------- | ---------------------------------|
 | 言語      | Swift  6.0.3                    |
-| アーキテクチャ | MVC                          |
+| アーキテクチャ | MVC, MV                          |
 | UI    | UIKit, Storyboard, Xib, SwiftUI |
 | データベース  | RealmSwift, UserDefaults      |
 | グラフ描画   | Charts                        |
