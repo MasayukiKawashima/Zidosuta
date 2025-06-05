@@ -98,6 +98,7 @@
 
 Onboarding機能の一部として、最適な写真とその撮影法を紹介するページを実装した。
 
+![Image](https://github.com/user-attachments/assets/f6109045-310b-4758-ae93-63315e18838c)
 
 
 ### 2. 実務開発を意識した作業フロー
