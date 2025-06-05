@@ -32,6 +32,7 @@ struct OnboardingView: View {
   
   
   // MARK: - Properties
+  
   @State private var showingNotificationSetting = false
   @State private var showTermsDisplay = false
   @State private var selectedTermsType: TermsDisplayViewController.TermsType?

@@ -11,6 +11,7 @@ struct PhotoTipsView: View {
   
   
   // MARK: - Properties
+  
   @StateObject private var model = OnboardingModel()
   @Environment(\.dismiss) private var dismiss
   
@@ -110,7 +111,6 @@ struct PhotoTipsView: View {
                   Color.clear
                     .frame(width: 80, height: 40)
                     .padding(.trailing, 20)
-                  
                 }
                 .padding(.bottom, 30)
                 .padding(.top, 10)
