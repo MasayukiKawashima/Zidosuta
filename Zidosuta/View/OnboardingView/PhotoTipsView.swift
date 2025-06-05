@@ -12,6 +12,7 @@ struct PhotoTipsView: View {
   
   // MARK: - Properties
   @StateObject private var model = OnboardingModel()
+  @Environment(\.dismiss) private var dismiss
   
   
   // MARK: - Body
@@ -79,7 +80,14 @@ struct PhotoTipsView: View {
                 Spacer()
                 
                 HStack {
+                  Button("もどる") {
+                    dismiss()
+                  }
+                  .frame(width: 80, height: 40)
+                  .foregroundStyle(.gray)
+                  .padding(.leading, 20)
                   
+                  Spacer()
                   
                   Button (action:  {
                     model.transitionToMainContent()
@@ -96,6 +104,13 @@ struct PhotoTipsView: View {
                   .background(Color("YellowishRed"))
                   .cornerRadius(10)
                   .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
+                  
+                  Spacer()
+                  
+                  Color.clear
+                    .frame(width: 80, height: 40)
+                    .padding(.trailing, 20)
+                  
                 }
                 .padding(.bottom, 30)
                 .padding(.top, 10)
@@ -111,6 +126,7 @@ struct PhotoTipsView: View {
         }
       }
     }
+    .navigationBarHidden(true)
   }
   
   
