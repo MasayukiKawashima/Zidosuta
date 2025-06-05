@@ -91,7 +91,7 @@ struct OnboardingView: View {
                   showNextView = true
                 },
                 label: {
-                  Text("始める")
+                  Text("はじめる")
                     .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.0533, relativeTo: .body))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 100)
