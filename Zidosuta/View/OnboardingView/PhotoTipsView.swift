@@ -12,6 +12,7 @@ struct PhotoTipsView: View {
   
   // MARK: - Properties
   @StateObject private var model = OnboardingModel()
+  @Environment(\.dismiss) private var dismiss
   
   
   // MARK: - Body
@@ -80,7 +81,7 @@ struct PhotoTipsView: View {
                 
                 HStack {
                   Button("もどる") {
-                    //ボタン押下時の処理
+                    dismiss()
                   }
                   .frame(width: 80, height: 40)
                   .foregroundStyle(.gray)
