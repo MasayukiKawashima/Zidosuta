@@ -96,7 +96,7 @@
 
 **[実装した機能]**
 
-Onboarding機能の一部として、最適な写真とその撮影法を紹介するページを実装した。
+オンボーディング機能の一部として、最適な写真とその撮影法を紹介するページを実装した。
 
 ![Image](https://github.com/user-attachments/assets/369fb25e-d751-4d91-82a8-b0bff551d67a)
 
