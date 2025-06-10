@@ -4,7 +4,11 @@
 ![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
 
-[App Storeからインストール](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
+## ■ インストールはこちら
+
+[App Store ジドスタ](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
+
+![Image](https://github.com/user-attachments/assets/2bb21a8b-c805-49eb-991f-a02f7621979a)
 
 ## ■ アプリのイメージ
 
@@ -42,7 +46,7 @@
 | カテゴリ    | 使用技術                        |
 | ------- | ---------------------------------|
 | 言語      | Swift  6.0.3                    |
-| アーキテクチャ | MVC, MV                          |
+| アーキテクチャ | MVC                         |
 | UI    | UIKit, Storyboard, Xib, SwiftUI |
 | データベース  | RealmSwift, UserDefaults      |
 | グラフ描画   | Charts                        |
@@ -88,7 +92,7 @@
 ### 1. ユーザーフィードバックを反映した機能開発
 アプリの開発にあたりユーザーから意見を頂き、それを機能開発に活かすということを意識しています。
 
-以下は写真撮影のコツを紹介するオンボーディング機能を開発した例です。
+以下はアプリに使用する写真の撮影時にユーザーから頂いたご意見をもとに開発した機能の例です。
 
 **[フィードバック内容]**
 
