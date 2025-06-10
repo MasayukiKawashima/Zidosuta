@@ -4,7 +4,7 @@
 ![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
 
-## ■ インストールはこちら
+## ■ ダウンロードはこちら
 
 [App Store ジドスタ](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
 
