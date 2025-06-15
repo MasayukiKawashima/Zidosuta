@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 extension Date {
-  
+
   func convertDateToNotificationTimeString() -> String {
-    
+
     let calendar = Calendar.current
     let hour = calendar.component(.hour, from: self)
     let minute = calendar.component(.minute, from: self)

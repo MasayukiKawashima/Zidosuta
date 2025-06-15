@@ -7,26 +7,24 @@
 
 import Foundation
 
-
-//MARK: - MemoValidator
+// MARK: - MemoValidator
 
 protocol MemoValidator {
-  
+
   func validate() -> ValidationResult
 }
 
-
-//MARK: - CompositeMemoValidator
+// MARK: - CompositeMemoValidator
 
 protocol CompositeMemoValidator: MemoValidator {
-  
+
   var validators: [MemoValidator] { get }
 }
 
 extension CompositeMemoValidator {
-  
+
   func validate() -> ValidationResult {
-    
+
     guard let result = validators.map({ $0.validate() }).first(where: { !$0.isValid }) else {
       return .valid
     }
@@ -34,18 +32,17 @@ extension CompositeMemoValidator {
   }
 }
 
+// MARK: - MemoValidationError
 
-//MARK: - MemoValidationError
-
-//エラーケースの定義
+// エラーケースの定義
 enum MemoValidationError: ValidationError {
   case exceedsMaximumCharacterLength
   case newLine
 }
 
-//各エラーケースのメッセージ定義
+// 各エラーケースのメッセージ定義
 extension MemoValidationError: LocalizedError {
-  
+
   public var errorDescription: String? {
     switch self {
     case .exceedsMaximumCharacterLength:
@@ -56,16 +53,15 @@ extension MemoValidationError: LocalizedError {
   }
 }
 
+// MARK: - MemoValidatorLogics
 
-//MARK: - MemoValidatorLogics
-
-//文字数が35文字を超えていないか
+// 文字数が35文字を超えていないか
 struct CharacterLengthValidator: MemoValidator {
-  
+
   let memoString: String
-  
+
   func validate() -> ValidationResult {
-    
+
     let characterCount = memoString.count
     if characterCount > 35 {
       return .invalid(MemoValidationError.exceedsMaximumCharacterLength)
@@ -73,28 +69,27 @@ struct CharacterLengthValidator: MemoValidator {
     return .valid
   }
 }
-//改行をしていないか
+// 改行をしていないか
 struct NewLineValidator: MemoValidator {
-  
+
   let memoString: String
-  
+
   func validate() -> ValidationResult {
-    
-    if memoString.contains("\n")  {
+
+    if memoString.contains("\n") {
       return .invalid(MemoValidationError.newLine)
     }
     return .valid
   }
 }
 
+// MARK: - MemoInputValidator
 
-//MARK: - MemoInputValidator
-
-//validatorをまとめる
+// validatorをまとめる
 struct MemoInputValidator: CompositeMemoValidator {
-  
+
   var validators: [MemoValidator]
-  
+
   init(text: String) {
     self.validators = [
       CharacterLengthValidator(memoString: text),
