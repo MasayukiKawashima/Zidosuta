@@ -8,18 +8,17 @@
 import UIKit
 
 class TopNavigationController: UINavigationController {
-  
-  
+
   // MARK: - LifeCycle
-  
+
   override func viewDidLoad() {
-    
+
     super.viewDidLoad()
-    
+
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = UIColor.YellowishRed
-    
+
     self.navigationBar.standardAppearance = appearance
     self.navigationBar.scrollEdgeAppearance = appearance
     self.navigationController?.navigationBar.compactAppearance = appearance

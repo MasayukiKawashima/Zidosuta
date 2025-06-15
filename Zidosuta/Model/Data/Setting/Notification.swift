@@ -13,7 +13,7 @@ class Notification: Object {
   @Persisted var hour: Int = 9
   @Persisted var minute: Int = 0
   @Persisted var isNotificationEnabled: Bool = false
-  
+
   convenience init(time: Date, isEnabled: Bool) {
     self.init()
     self.notificationTime = time

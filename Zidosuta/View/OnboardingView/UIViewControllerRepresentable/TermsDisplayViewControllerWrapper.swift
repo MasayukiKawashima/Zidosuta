@@ -9,23 +9,21 @@ import Foundation
 import SwiftUI
 
 struct TermsDisplayViewControllerWrapper: UIViewControllerRepresentable {
-  
-  
+
   // MARK: - Properties
-  
+
   let termsType: TermsDisplayViewController.TermsType
-  
-  
+
   // MARK: - Methods
-  
+
   func makeUIViewController(context: Context) -> TermsDisplayViewController {
-    
+
     let viewController = TermsDisplayViewController()
     viewController.termsType = termsType
     return viewController
   }
-  
+
   func updateUIViewController(_ uiViewController: TermsDisplayViewController, context: Context) {
-    
+
   }
 }

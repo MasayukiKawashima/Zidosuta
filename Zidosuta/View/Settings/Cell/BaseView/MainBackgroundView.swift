@@ -8,21 +8,19 @@
 import UIKit
 
 class MainBackgroundView: UIView {
-  
-  
+
   // MARK: - Properties
-  
+
   override var bounds: CGRect {
     didSet {
       setupMainBackgroundView()
     }
   }
-  
-  
+
   // MARK: - Methods
-  
+
   private func setupMainBackgroundView() {
-    
+
     self.layer.cornerRadius = 8
     self.layer.masksToBounds = true
     self.backgroundColor = .OysterWhite

@@ -11,11 +11,11 @@ import RealmSwift
 class Settings: Object {
   @Persisted var id: String = "settings"
   @Persisted var notification: Notification?
-  
+
   override static func primaryKey() -> String? {
     return "id"
   }
-  //このモデルはレコードが複数存在したらまずいので、シングルトンにする
+  // このモデルはレコードが複数存在したらまずいので、シングルトンにする
   static let shared: Settings = {
     let realm = try! Realm()
     // 既存のSettingsを取得、なければ新規作成
@@ -24,7 +24,7 @@ class Settings: Object {
     } else {
       let settings = Settings()
       let notification = Notification()
-      
+
       try! realm.write {
         realm.add(notification)
         settings.notification = notification
@@ -33,7 +33,7 @@ class Settings: Object {
       return settings
     }
   }()
-  
+
   func update(operation: (Settings) -> Void) {
     let realm = try! Realm()
     try! realm.write {

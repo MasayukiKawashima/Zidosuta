@@ -8,16 +8,16 @@
 import Foundation
 
 class TopDateManager {
-  
+
   var date: Date!
-  
-  init(date: Date = Date()){
-    
+
+  init(date: Date = Date()) {
+
     self.date = date
   }
-  
+
   func updateDate(currentDate: Date, byDays days: Int) {
-    
+
     let calendar = Calendar.current
     let modifiedDate = calendar.date(byAdding: .day, value: days, to: currentDate)
     date = modifiedDate

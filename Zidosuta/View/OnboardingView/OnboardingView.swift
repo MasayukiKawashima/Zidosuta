@@ -8,39 +8,36 @@
 import SwiftUI
 
 struct OnboardingView: View {
-  
-  
+
   // MARK: - Init
-  
+
   init() {
-    
+
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = UIColor(named: "YellowishRed")
     appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
     appearance.buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
-    
+
     let backIndicatorImage = UIImage(systemName: "chevron.backward")?
       .withTintColor(.white, renderingMode: .alwaysOriginal)
     appearance.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
-    
+
     UINavigationBar.appearance().standardAppearance = appearance
     UINavigationBar.appearance().scrollEdgeAppearance = appearance
     UINavigationBar.appearance().compactAppearance = appearance
     UINavigationBar.appearance().tintColor = .white
   }
-  
-  
+
   // MARK: - Properties
-  
+
   @State private var showingNotificationSetting = false
   @State private var showTermsDisplay = false
   @State private var selectedTermsType: TermsDisplayViewController.TermsType?
   @State private var showNextView = false
-  
-  
+
   // MARK: - Body
-  
+
   var body: some View {
     NavigationView {
       ZStack {
@@ -53,13 +50,13 @@ struct OnboardingView: View {
               .scaledToFit()
               .frame(width: geometry.size.width * 0.75)
               .padding(.top, 20)
-            
+
             VStack(alignment: .center, spacing: 20) {
               Text("Welcome!")
                 .font(.custom("Futura-Bold", size: geometry.size.width * 0.096, relativeTo: .body))
                 .scaledToFit()
                 .minimumScaleFactor(0.5)
-              
+
               VStack {
                 Text("記録忘れ防止に便利なデイリー通知をご活用下さい")
                   .font(.custom("Thonburi", size: geometry.size.width * 0.035, relativeTo: .body))
@@ -67,7 +64,7 @@ struct OnboardingView: View {
                   .padding(.horizontal, 5)
                   .scaledToFit()
                   .minimumScaleFactor(0.5)
-                
+
                 NavigationLink(
                   isActive: $showingNotificationSetting,
                   destination: {
@@ -86,7 +83,7 @@ struct OnboardingView: View {
                 .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
               }
               .padding(.bottom)
-              
+
               Button(
                 action: {
                   showNextView = true
@@ -102,13 +99,13 @@ struct OnboardingView: View {
               .background(Color("YellowishRed"))
               .cornerRadius(10)
               .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
-              
+
               TermsTextView(
                 showTermsDisplay: $showTermsDisplay,
                 selectedTermsType: $selectedTermsType,
                 fontSize: geometry.size.width * 0.032
               )
-              
+
             }
             .frame(width: geometry.size.width - 30, height: geometry.size.height / 2)
             .background(
@@ -124,9 +121,9 @@ struct OnboardingView: View {
           .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
           .dynamicTypeSize(DynamicTypeSize.small...DynamicTypeSize.xLarge)
         }
-        //始めるボタンの遷移のための空View
+        // 始めるボタンの遷移のための空View
         NavigationLink(
-          isActive: $showNextView ,
+          isActive: $showNextView,
           destination: {
             PhotoTipsView()
           },
@@ -141,10 +138,8 @@ struct OnboardingView: View {
   }
 }
 
-
 // MARK: - Preview
 
 #Preview {
   OnboardingView()
 }
-
