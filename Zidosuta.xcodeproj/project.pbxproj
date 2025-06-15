@@ -721,6 +721,7 @@
 				FA68AF1B2A135F6F00B69D4A /* Resources */,
 				7B8D24CA841605071BC19C52 /* [CP] Embed Pods Frameworks */,
 				7676739F407C2E372F6CCA49 /* [CP] Copy Pods Resources */,
+				FA6E461E2DFF00CC002BE579 /* SwiftLint Auto-Fix */,
 			);
 			buildRules = (
 			);
@@ -995,6 +996,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		FA6E461E2DFF00CC002BE579 /* SwiftLint Auto-Fix */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Auto-Fix";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint --fix --quiet\n  if [ $? -ne 0 ]; then\n    echo \"SwiftLint found violations that were auto-corrected\"\n  fi\nelse\n  echo \"warning: SwiftLint not installed, install with 'brew install swiftlint'\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
