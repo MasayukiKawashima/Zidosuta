@@ -4,12 +4,16 @@
 ![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
 
-[App Storeからインストール](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
+## ■ ダウンロードはこちら
+
+[App Store ジドスタ](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
+
+![Image](https://github.com/user-attachments/assets/2bb21a8b-c805-49eb-991f-a02f7621979a)
 
 ## ■ アプリのイメージ
 
 
-<img src="https://github.com/user-attachments/assets/be007de9-9c89-4778-8b6e-f4906c6a4399" width="300px">
+<img src="https://github.com/user-attachments/assets/6cf18815-40bd-4cb8-8aca-a6274cbced57" width="300px">
 
 
 ## ■ アプリを作ったキッカケ
@@ -40,14 +44,15 @@
 ## ■ 使用技術一覧
 
 | カテゴリ    | 使用技術                        |
-| ------- | ---------------------------------|
+| :------- | :---------------------------------|
 | 言語      | Swift  6.0.3                    |
-| アーキテクチャ | MVC                          |
+| アーキテクチャ | MVC                         |
 | UI    | UIKit, Storyboard, Xib, SwiftUI |
 | データベース  | RealmSwift, UserDefaults      |
 | グラフ描画   | Charts                        |
 | 広告    | AdMob                          |
 | テスト     | XCTest                          |
+| コード整形 | SwiftLint                       |
 | バージョン管理 | Git, GitHub                  |
 | デザイン    | Figma, Canva                   |
 | その他     | Notion (Webサイト作成)           |
@@ -85,7 +90,20 @@
 
 ## ■ 工夫した点
 
-### 1.
+### 1. ユーザーフィードバックを反映した機能開発
+アプリの開発にあたりユーザーから意見を頂き、それを機能開発に活かすということを意識しています。
+
+以下はアプリに使用する写真の撮影時にユーザーから頂いたご意見をもとに開発した機能の例です。
+
+**[フィードバック内容]**
+
+「どういう写真を撮ったらいいのか分からない」
+
+**[実装した機能]**
+
+オンボーディング機能の一部として、最適な写真とその撮影法を紹介するページを実装した。
+
+![Image](https://github.com/user-attachments/assets/369fb25e-d751-4d91-82a8-b0bff551d67a)
 
 
 ### 2. 実務開発を意識した作業フロー

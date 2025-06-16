@@ -7,62 +7,58 @@
 
 import UIKit
 
-
 // MARK: - PhotoModalViewDelegate
 
 protocol PhotoModalViewDelegate {
-  
+
   func dismiss()
 }
-
 
 // MARK: - PhotoModalView
 
 class PhotoModalView: UIView {
-  
-  
+
   // MARK: - Properties
-  
+
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var photoImageView: UIImageView!
   @IBOutlet weak var dismissButton: UIButton!
-  
+
   private var  isDismissButtonConfigured = false
-  
+
   var delegate: PhotoModalViewDelegate?
-  
-  
+
   // MARK: - Init
-  
+
   override init(frame: CGRect) {
-    
+
     super.init(frame: frame)
     self.nibInit()
   }
-  
+
   required init?(coder aDecoder: NSCoder) {
-    
+
     super.init(coder: aDecoder)
     self.nibInit()
   }
-  
-  private func nibInit(){
-    
-    //xibファイルのインスタンス作成
+
+  private func nibInit() {
+
+    // xibファイルのインスタンス作成
     let nib = UINib(nibName: "PhotoModalView", bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
-    //viewのサイズを画面のサイズと一緒にする
+    // viewのサイズを画面のサイズと一緒にする
     view.frame = self.bounds
-    //サイズの自動調整
+    // サイズの自動調整
     view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    
+
     self.addSubview(view)
   }
-  
+
   // MARK: - LifeCycle
-  
+
   override func layoutSubviews() {
-    
+
     super.layoutSubviews()
     if !isDismissButtonConfigured {
       dismissButton.applyFrostedGlassEffect()
@@ -70,21 +66,20 @@ class PhotoModalView: UIView {
       isDismissButtonConfigured = true
     }
   }
-  
+
   override  func awakeFromNib() {
-    
-    //シンボルのサイズ設定
+
+    // シンボルのサイズ設定
     let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
     let image = dismissButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
-    
+
     dismissButton.setImage(image, for: .normal)
   }
-  
-  
+
   // MARK: - Methods
-  
+
   @IBAction func dismissButtonAction(_ sender: Any) {
-    
+
     delegate?.dismiss()
   }
 }

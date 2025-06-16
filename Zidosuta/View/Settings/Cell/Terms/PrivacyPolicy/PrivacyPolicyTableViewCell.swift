@@ -22,7 +22,7 @@ class PrivacyPolicyTableViewCell: UITableViewCell {
     }
   }
   var delegate: PrivacyPolicyTableViewCellDelegate?
-  
+
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,5 +37,5 @@ class PrivacyPolicyTableViewCell: UITableViewCell {
   @IBAction func transitionButtonAction(_ sender: UIButton) {
     delegate?.privacyPolicyTransitionButtonAction()
   }
-  
+
 }

@@ -9,13 +9,11 @@ import UIKit
 import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-  
-  
+
   // MARK: - Properties
 
   var window: UIWindow?
 
-  
   // MARK: - LifeCycle
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -50,26 +48,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Use this method to save data, release shared resources, and store enough scene-specific state information
     // to restore the scene back to its current state.
   }
-  
-  
+
   // MARK: - Methods
 
-  //初回起動かどうかで最初に表示する画面を分岐させるメソッド
+  // 初回起動かどうかで最初に表示する画面を分岐させるメソッド
   private func routeToAppropriateScreen(_ scene: UIScene) {
-    
+
     guard let windowScene = (scene as? UIWindowScene) else { return }
     let window = UIWindow(windowScene: windowScene)
     self.window = window
-    
+
     // UserDefaultsで初回起動判定
     let isFirstLaunch = !UserDefaults.standard.bool(forKey: "didCompleteFirstLaunch")
-    
+
     if isFirstLaunch {
       // 初回起動時：オンボード画面を表示
       let onboardingView = OnboardingView() // SwiftUIのView
       let onboardingViewController = UIHostingController(rootView: onboardingView)
       window.rootViewController = onboardingViewController
-      
+
     } else {
       // 2回目以降：メインコンテンツを表示
       let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
@@ -80,4 +77,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.makeKeyAndVisible()
   }
 }
-

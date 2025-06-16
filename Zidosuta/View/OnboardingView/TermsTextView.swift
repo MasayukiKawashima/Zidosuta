@@ -8,18 +8,16 @@
 import SwiftUI
 
 struct TermsTextView: View {
-  
-  
+
   // MARK: - Properties
-  
+
   @Binding var showTermsDisplay: Bool
   @Binding var selectedTermsType: TermsDisplayViewController.TermsType?
-  
+
   let fontSize: CGFloat
-  
-  
+
   // MARK: - Body
-  
+
   var body: some View {
     VStack {
       Text(makeAttributedString())
@@ -35,7 +33,7 @@ struct TermsTextView: View {
           }
           return .handled
         })
-      
+
       NavigationLink(isActive: $showTermsDisplay) {
         if let termsType = selectedTermsType {
           TermsDisplayViewControllerWrapper(termsType: termsType)
@@ -47,23 +45,22 @@ struct TermsTextView: View {
     }
     .padding(.horizontal, 10)
   }
-  
-  
+
   // MARK: - Methods
-  
+
   private func makeAttributedString() -> AttributedString {
-    
+
     var text = AttributedString("利用規約とプライバシーポリシーをご確認頂き、ご同意の上アプリをご利用下さい")
     text.foregroundColor = .darkGray
-    
+
     // 利用規約の部分にスタイルを適用
     if let range = text.range(of: "利用規約") {
-      
+
       text[range].foregroundColor = .blue
       text[range].underlineStyle = .single
       text[range].link = URL(string: "terms://tap")
     }
-    
+
     // プライバシーポリシーの部分にスタイルを適用
     if let range = text.range(of: "プライバシーポリシー") {
       text[range].foregroundColor = .blue
@@ -73,4 +70,3 @@ struct TermsTextView: View {
     return text
   }
 }
-

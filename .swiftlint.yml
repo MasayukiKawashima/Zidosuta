@@ -1,0 +1,62 @@
+
+# SwiftLint設定ファイル - スタイル系ルールのみ
+# プロジェクトルートに .swiftlint.yml として保存
+
+# スタイル系ルールのみを有効化
+only_rules:
+  # 空白・スペース関連
+  - leading_whitespace
+  - trailing_whitespace
+  - operator_whitespace
+  - return_arrow_whitespace
+  - no_space_in_method_call
+  - vertical_whitespace
+
+  # 括弧・記号の配置
+  - opening_brace
+  - closing_brace
+  - colon
+  - comma
+
+  # 改行・セミコロン
+  - trailing_newline
+  - trailing_semicolon
+
+  # import文整理
+  - duplicate_imports
+
+  # コメント関連
+  - comment_spacing
+
+  # 行の長さ（必要に応じて追加）
+  # - line_length
+
+# 自動修正を有効化
+autocorrect: true
+
+# 対象ディレクトリの指定
+included:
+  - Zidosuta
+  - ZidosutaTests
+  - ZidosutaUITests
+
+# 除外するディレクトリ・ファイル
+excluded:
+  - Pods
+  - Carthage
+  - .build
+  - Generated
+  - "*/.generated.swift"
+  - DerivedData
+
+# カスタム設定
+vertical_whitespace:
+  max_empty_lines: 1
+
+# line_lengthを有効にする場合の設定例
+# line_length:
+#   ignores_urls: true
+#   ignores_function_declarations: true
+#   ignores_comments: true
+
+reporter: "xcode"
