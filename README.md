@@ -13,7 +13,7 @@
 ## ■ アプリのイメージ
 
 
-<img src="https://github.com/user-attachments/assets/be007de9-9c89-4778-8b6e-f4906c6a4399" width="300px">
+<img src="https://github.com/user-attachments/assets/6cf18815-40bd-4cb8-8aca-a6274cbced57" width="300px">
 
 
 ## ■ アプリを作ったキッカケ
