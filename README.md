@@ -3,12 +3,15 @@
   
 ![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
+Qiitaのアプリ紹介記事 →　https://qiita.com/poppinmasa/items/495fa7433e76f5320751
+
+
 
 ## ■ ダウンロードはこちら
 
-[App Store ジドスタ](https://itunes.apple.com/jp/app/id6741679575?mt=8"アプリページ")
-
 ![Image](https://github.com/user-attachments/assets/2bb21a8b-c805-49eb-991f-a02f7621979a)
+
+App Storeのページ → https://itunes.apple.com/jp/app/id6741679575?mt=8"
 
 ## ■ アプリのイメージ
 
