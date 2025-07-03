@@ -51,7 +51,7 @@ App Storeのページ → https://itunes.apple.com/jp/app/id6741679575?mt=8"
 | 言語      | Swift  6.0.3                    |
 | アーキテクチャ | MVC                         |
 | UI    | UIKit, Storyboard, Xib, SwiftUI |
-| データベース  | RealmSwift, UserDefaults      |
+| データベース  | Realm, UserDefaults      |
 | グラフ描画   | Charts                        |
 | 広告    | AdMob                          |
 | テスト     | XCTest                          |
