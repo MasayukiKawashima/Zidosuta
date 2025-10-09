@@ -3,7 +3,7 @@
   
 ![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
-Qiitaのアプリ紹介記事 →　https://qiita.com/poppinmasa/items/495fa7433e76f5320751
+Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e76f5320751
 
 
 
