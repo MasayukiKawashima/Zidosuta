@@ -208,8 +208,7 @@ extension TopPageViewController {
   }
   // BarButton押下時の画面遷移
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
-    //    let currentVC = self.viewControllers?.first as! TopViewController
-    //    let currentPageIndex = currentVC.index
+
     let topVC = storyboard?.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     let currentDate = getCurrentPageTopDateManager().date!
 
