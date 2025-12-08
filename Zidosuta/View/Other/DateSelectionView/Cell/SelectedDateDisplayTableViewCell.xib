@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="SelectedDateDisplayTableViewCell" customModule="Zidosuta" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29C-Wr-FKH" customClass="ShadowLayerView" customModule="Zidosuta" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="6" width="320" height="68"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMA-5v-qOg">
+                        <rect key="frame" x="0.0" y="6" width="320" height="68"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付の選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D2z-ZC-gX0">
+                                <rect key="frame" x="8" y="0.0" width="70" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000年" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lky-XD-Qcq">
+                                <rect key="frame" x="40" y="27" width="77" height="28"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJa-Bd-kXQ">
+                                <rect key="frame" x="149" y="27" width="49" height="28"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dZ-Rb-OAe">
+                                <rect key="frame" x="231" y="27" width="49" height="28"/>
+                                <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6dZ-Rb-OAe" firstAttribute="leading" secondItem="YJa-Bd-kXQ" secondAttribute="trailing" constant="33" id="Gik-6x-loI"/>
+                            <constraint firstAttribute="bottom" secondItem="6dZ-Rb-OAe" secondAttribute="bottom" constant="13" id="Ilo-a0-lkD"/>
+                            <constraint firstItem="YJa-Bd-kXQ" firstAttribute="leading" secondItem="Lky-XD-Qcq" secondAttribute="trailing" constant="32" id="NSw-JM-tOz"/>
+                            <constraint firstAttribute="trailing" secondItem="6dZ-Rb-OAe" secondAttribute="trailing" constant="40" id="Ujm-rf-N6C"/>
+                            <constraint firstAttribute="bottom" secondItem="Lky-XD-Qcq" secondAttribute="bottom" constant="13" id="Yol-1i-c6j"/>
+                            <constraint firstAttribute="bottom" secondItem="YJa-Bd-kXQ" secondAttribute="bottom" constant="13" id="vPb-OT-G5J"/>
+                            <constraint firstItem="Lky-XD-Qcq" firstAttribute="leading" secondItem="PMA-5v-qOg" secondAttribute="leading" constant="40" id="vVl-3V-JYz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="29C-Wr-FKH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="0mT-cS-eib"/>
+                    <constraint firstAttribute="bottom" secondItem="29C-Wr-FKH" secondAttribute="bottom" constant="6" id="5pM-AX-oPJ"/>
+                    <constraint firstItem="PMA-5v-qOg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="b10-FU-0Dh"/>
+                    <constraint firstAttribute="bottom" secondItem="PMA-5v-qOg" secondAttribute="bottom" constant="6" id="cIQ-u7-dQA"/>
+                    <constraint firstItem="29C-Wr-FKH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="h3w-wA-iqK"/>
+                    <constraint firstItem="PMA-5v-qOg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lTU-Et-8I5"/>
+                    <constraint firstAttribute="trailing" secondItem="29C-Wr-FKH" secondAttribute="trailing" id="mSI-qo-UEa"/>
+                    <constraint firstAttribute="trailing" secondItem="PMA-5v-qOg" secondAttribute="trailing" id="wvJ-Jp-aLb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dayLabel" destination="6dZ-Rb-OAe" id="K7Z-tw-NOx"/>
+                <outlet property="mainBackgroundView" destination="PMA-5v-qOg" id="oLI-Km-aKo"/>
+                <outlet property="monthLabel" destination="YJa-Bd-kXQ" id="jGl-7U-qp4"/>
+                <outlet property="shadowLayerView" destination="29C-Wr-FKH" id="Oun-8v-rnS"/>
+                <outlet property="yearLabel" destination="Lky-XD-Qcq" id="uZM-ds-7uD"/>
+            </connections>
+            <point key="canvasLocation" x="16.793893129770993" y="0.0"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
