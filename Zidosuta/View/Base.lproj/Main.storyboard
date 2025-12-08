@@ -12,7 +12,7 @@
         <!--Top Page View Controller-->
         <scene sceneID="act-0i-Z1E">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kRm-x5-GvX" customClass="TopPageViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="kRm-x5-GvX" customClass="TopPageViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="FKq-MS-0Y2"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExT-Fe-Ne3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -22,7 +22,7 @@
         <!--Graph Page View Controller-->
         <scene sceneID="zin-L8-Wwf">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="rla-Or-1Df" customClass="GraphPageViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="rla-Or-1Df" customClass="GraphPageViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Eqw-xq-TgG"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWS-NQ-eT8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -32,7 +32,7 @@
         <!--グラフ-->
         <scene sceneID="893-PQ-lQ6">
             <objects>
-                <viewController storyboardIdentifier="GraphVC" id="MyK-35-keA" customClass="GraphViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GraphVC" id="MyK-35-keA" customClass="GraphViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7w3-dl-bVb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
         <!--Settings View Controller-->
         <scene sceneID="IRs-ol-4oz">
             <objects>
-                <viewController storyboardIdentifier="Settings" id="8AN-9h-T1k" customClass="SettingsViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" id="8AN-9h-T1k" customClass="SettingsViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aOk-OP-Ssm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,7 +64,7 @@
         <!--Notification Setting View Controller-->
         <scene sceneID="YIu-vs-kc6">
             <objects>
-                <viewController storyboardIdentifier="NotificationSetting" id="H74-hs-a5e" customClass="NotificationSettingViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NotificationSetting" id="H74-hs-a5e" customClass="NotificationSettingViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pFG-lB-wUw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
         <!--Data Deletion Execution View Controller-->
         <scene sceneID="mpk-6L-OqR">
             <objects>
-                <viewController storyboardIdentifier="DataDeletionExecution" id="wak-t0-pTq" customClass="DataDeletionExecutionViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DataDeletionExecution" id="wak-t0-pTq" customClass="DataDeletionExecutionViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eEf-AU-NAv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,10 +91,25 @@
             </objects>
             <point key="canvasLocation" x="2380" y="2106"/>
         </scene>
+        <!--Date Selection View Controller-->
+        <scene sceneID="9pb-3H-LoM">
+            <objects>
+                <viewController id="iAn-LN-dAA" customClass="DateSelectionViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mkb-w0-2LF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9jL-Gf-t3p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWl-D3-IS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="571" y="3573"/>
+        </scene>
         <!--Terms Display View Controller-->
         <scene sceneID="22a-K2-gbQ">
             <objects>
-                <viewController storyboardIdentifier="TermsDisplay" id="53H-BJ-shI" customClass="TermsDisplayViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsDisplay" id="53H-BJ-shI" customClass="TermsDisplayViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0mN-jh-KAF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,8 +124,8 @@
         <!--Top View Controller-->
         <scene sceneID="42X-Xj-WhJ">
             <objects>
-                <viewController storyboardIdentifier="TopVC" id="LDj-rO-Ns2" customClass="TopViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yx7-rP-3qU" customClass="TopView" customModule="DietApp" customModuleProvider="target">
+                <viewController storyboardIdentifier="TopVC" id="LDj-rO-Ns2" customClass="TopViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yx7-rP-3qU" customClass="TopView" customModule="Zidosuta" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="i9o-le-VbM"/>
@@ -124,7 +139,7 @@
         <!--Photo Modal View Controller-->
         <scene sceneID="Lp3-ZZ-qHS">
             <objects>
-                <viewController storyboardIdentifier="PhotoModalVC" id="COb-2Z-XrH" customClass="PhotoModalViewController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotoModalVC" id="COb-2Z-XrH" customClass="PhotoModalViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BFb-wN-Y63">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,7 +154,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="QSF-2k-PN7">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="F92-bx-bHI" customClass="TabBarController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="F92-bx-bHI" customClass="TabBarController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="ycD-k0-lis">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -158,7 +173,7 @@
         <!--トップ-->
         <scene sceneID="icR-DE-8nb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3an-lQ-V07" customClass="TopNavigationController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3an-lQ-V07" customClass="TopNavigationController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="トップ" image="house" catalog="system" selectedImage="house" id="noS-pd-IpZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xsN-Db-zYa">
@@ -181,7 +196,7 @@
         <!--グラフ-->
         <scene sceneID="kiP-6u-ge3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0pI-mw-1KE" customClass="GraphNavigationController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0pI-mw-1KE" customClass="GraphNavigationController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="グラフ" image="chart.xyaxis.line" catalog="system" id="qx3-1w-E1q"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ml3-ha-DEn">
@@ -204,7 +219,7 @@
         <!--設定-->
         <scene sceneID="R54-Zi-dbb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vvf-7G-zEG" customClass="SettingsNavigationController" customModule="DietApp" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vvf-7G-zEG" customClass="SettingsNavigationController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="yok-7R-Obr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jd2-7p-XMa">
@@ -233,10 +248,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

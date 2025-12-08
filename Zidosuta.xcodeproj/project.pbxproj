@@ -59,6 +59,7 @@
 		FA8069212EE6868B0013CBB3 /* DateEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA80691F2EE6868B0013CBB3 /* DateEditTableViewCell.xib */; };
 		FA8069282EE686C60013CBB3 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8069262EE686C60013CBB3 /* ConfirmTableViewCell.swift */; };
 		FA8069292EE686C60013CBB3 /* ConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */; };
+		FA80692C2EE6F84F0013CBB3 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
 		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
 		FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */; };
@@ -197,6 +198,7 @@
 		FA80691F2EE6868B0013CBB3 /* DateEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateEditTableViewCell.xib; sourceTree = "<group>"; };
 		FA8069262EE686C60013CBB3 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
 		FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
+		FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
 		FA9366C12D68B662007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FA9366C22D68B663007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
@@ -527,6 +529,14 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		FA80692A2EE6F7B80013CBB3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC9EF162D0C0B5C00DE1E64 /* TabBarController.swift */,
+				FA80692A2EE6F7B80013CBB3 /* Other */,
 				FAC9EF152D0C0B5C00DE1E64 /* Top */,
 				FAC9EF0C2D0C0B5C00DE1E64 /* Graph */,
 				FAC9EF102D0C0B5C00DE1E64 /* Settings */,
@@ -1097,6 +1108,7 @@
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
 				FAC9EF182D0C0B5C00DE1E64 /* TopViewController.swift in Sources */,
 				FAC9EF192D0C0B5C00DE1E64 /* GraphViewController.swift in Sources */,
+				FA80692C2EE6F84F0013CBB3 /* DateSelectionViewController.swift in Sources */,
 				FAC9EF1A2D0C0B5C00DE1E64 /* GraphNavigationController.swift in Sources */,
 				FAC9EF3A2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift in Sources */,
 				FAC9EF1B2D0C0B5C00DE1E64 /* TopPageViewController.swift in Sources */,
