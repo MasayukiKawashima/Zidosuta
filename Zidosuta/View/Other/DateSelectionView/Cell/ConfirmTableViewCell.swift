@@ -10,7 +10,7 @@ import UIKit
 class ConfirmTableViewCell: UITableViewCell {
 
   @IBOutlet weak var shadowLayerView: ShadowLayerView!
-  
+
   @IBOutlet weak var confirmButton: UIButton! {
     didSet {
       confirmButton.layer.cornerRadius = 8
@@ -19,7 +19,7 @@ class ConfirmTableViewCell: UITableViewCell {
       confirmButton.setTitleColor(.white, for: .normal)
     }
   }
-  
+
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -31,7 +31,7 @@ class ConfirmTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
   @IBAction func confirmButtonAction(_ sender: Any) {
   }
 }

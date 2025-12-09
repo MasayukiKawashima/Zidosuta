@@ -91,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="2380" y="2106"/>
         </scene>
-        <!--Date Selection View Controller-->
+        <!--Item-->
         <scene sceneID="9pb-3H-LoM">
             <objects>
                 <viewController id="iAn-LN-dAA" customClass="DateSelectionViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
@@ -101,6 +101,7 @@
                         <viewLayoutGuide key="safeArea" id="9jL-Gf-t3p"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="XUl-jq-KzV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWl-D3-IS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,7 +169,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtR-cH-93i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-362.31884057971018" y="-17.410714285714285"/>
+            <point key="canvasLocation" x="-710" y="-17"/>
         </scene>
         <!--トップ-->
         <scene sceneID="icR-DE-8nb">

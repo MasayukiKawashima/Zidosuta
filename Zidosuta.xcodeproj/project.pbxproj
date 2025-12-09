@@ -60,6 +60,7 @@
 		FA8069282EE686C60013CBB3 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8069262EE686C60013CBB3 /* ConfirmTableViewCell.swift */; };
 		FA8069292EE686C60013CBB3 /* ConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */; };
 		FA80692C2EE6F84F0013CBB3 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */; };
+		FA80692E2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
 		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
 		FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */; };
@@ -199,6 +200,7 @@
 		FA8069262EE686C60013CBB3 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
 		FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
 		FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
+		FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + setStatusBarBackgroundColor.swift"; sourceTree = "<group>"; };
 		FA9366C12D68B662007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FA9366C22D68B663007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				FA5DF1C82D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift */,
 				FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */,
 				FAC0A8A72D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift */,
+				FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1139,6 +1142,7 @@
 				FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */,
 				FA9E8C402D14641C00A05E55 /* TermsDisplayView.swift in Sources */,
 				FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */,
+				FA80692E2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift in Sources */,
 				FAC9EF362D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift in Sources */,
 				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,

@@ -10,11 +10,11 @@ import UIKit
 class DateEditTableViewCell: UITableViewCell {
 
   @IBOutlet weak var datePicker: UIDatePicker!
-  
+
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    
+
     datePicker.datePickerMode = .date
     if #available(iOS 13.4, *) {
       datePicker.preferredDatePickerStyle = .wheels
@@ -28,5 +28,5 @@ class DateEditTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

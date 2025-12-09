@@ -8,9 +8,9 @@
 import UIKit
 
 class DateSelectionViewController: UIViewController {
-  
+
   // MARK: - Properties
-  
+
   private var dateSeletionView = DateSelectionView()
 
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -19,13 +19,13 @@ class DateSelectionViewController: UIViewController {
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     .portrait
   }
-  
+
   private var selectedDateDisplayTableViewCellHeight: CGFloat = 90.0
   private var dateEditTableViewCellHeight: CGFloat = 200.0
   private var confirmTableViewCelllHeight: CGFloat = 60.0
-  
+
   // MARK: - Enums
-  
+
   enum DateSelectionPageCell: Int {
     case selectedDateDisplayTableViewCell = 0
     case dateEditTableViewCellHeight
@@ -42,20 +42,23 @@ class DateSelectionViewController: UIViewController {
       }
     }
   }
-  
+
   // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+
       dateSeletionView.tableView.delegate = self
       dateSeletionView.tableView.dataSource = self
       dateSeletionView.tableView.isScrollEnabled = false
       dateSeletionView.tableView.rowHeight = UITableView.automaticDimension
 
+      // ステータスバー部分の背景色の指定
+      setStatusBarBackgroundColor(.YellowishRed)
+
         // Do any additional setup after loading the view.
     }
-    
+
   override func loadView() {
 
     view = dateSeletionView
@@ -76,15 +79,15 @@ class DateSelectionViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSource {
-  
+
   func numberOfSections(in tableView: UITableView) -> Int {
-    
+
     return 2
   }
-  
-  //12.8ひとまずTableViewを表示させる
+
+  // 12.8ひとまずTableViewを表示させる
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    
+
     switch section {
     case 0:
       return 2  // 1つ目のセクションには2つのセル
@@ -94,13 +97,13 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
       return 0
     }
   }
-  
+
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
+
     let cell = DateSelectionPageCell(rawValue: indexPath.row)
-    
+
     switch indexPath.section {
-      
+
     case 0:
       if cell == .selectedDateDisplayTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedDateDisplayTableViewCell", for: indexPath) as! SelectedDateDisplayTableViewCell
@@ -115,12 +118,12 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
       let cell = tableView.dequeueReusableCell(withIdentifier: "ConfirmTableViewCell", for: indexPath) as! ConfirmTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       return cell
-      
+
     default:
       return UITableViewCell()
     }
   }
-  
+
   // 一つ目のセクションの下にスペースを作るためにフッターViewを作成
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 
@@ -128,17 +131,17 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
     footerView.backgroundColor = .systemGray6
     return footerView
   }
-  
-  //1つ目のセクションの後にスペースを入れる
+
+  // 1つ目のセクションの後にスペースを入れる
   func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
 
-    if section == 0 { 
+    if section == 0 {
       return 50
     }
     return 0
   }
-  
-  //各セルの高さ設定
+
+  // 各セルの高さ設定
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
     let cell = DateSelectionPageCell(rawValue: indexPath.row)

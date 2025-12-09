@@ -8,13 +8,12 @@
 import UIKit
 
 class DateSelectionView: UIView {
-  
-  
+
   // MARK: - Properties
-  
+
   private let cellIdentifiers = ["SelectedDateDisplayTableViewCell", "DateEditTableViewCell", "ConfirmTableViewCell"]
-  
-  @IBOutlet weak var tableView: UITableView!{
+
+  @IBOutlet weak var tableView: UITableView! {
     didSet {
       // 各セルの登録
       for identifier in cellIdentifiers {
@@ -25,7 +24,7 @@ class DateSelectionView: UIView {
       }
     }
   }
-  
+
   // MARK: - LifeCycle
 
   override init(frame: CGRect) {
@@ -39,9 +38,9 @@ class DateSelectionView: UIView {
     super.init(coder: aDecoder)
     nibInit()
   }
-  
+
   // MARK: - Methods
-  
+
   private func nibInit() {
 
     // xibファイルのインスタンス作成
