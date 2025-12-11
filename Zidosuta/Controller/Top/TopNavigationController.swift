@@ -22,5 +22,6 @@ class TopNavigationController: UINavigationController {
     self.navigationBar.standardAppearance = appearance
     self.navigationBar.scrollEdgeAppearance = appearance
     self.navigationController?.navigationBar.compactAppearance = appearance
+
   }
 }

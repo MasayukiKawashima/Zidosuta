@@ -53,8 +53,8 @@ class DateSelectionViewController: UIViewController {
       dateSeletionView.tableView.isScrollEnabled = false
       dateSeletionView.tableView.rowHeight = UITableView.automaticDimension
 
-      // ステータスバー部分の背景色の指定
-      setStatusBarBackgroundColor(.YellowishRed)
+      // NavigtionBarの戻るボタンの色を変更
+      self.navigationController?.navigationBar.tintColor = UIColor.white
 
         // Do any additional setup after loading the view.
     }

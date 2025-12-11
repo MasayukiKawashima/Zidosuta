@@ -130,6 +130,12 @@ extension TopPageViewController {
 
     // カスタムビューをインスタンス化
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+    customTitleView.translatesAutoresizingMaskIntoConstraints = false
+
+    // ★★【追加】タップジェスチャーを付与 ★★
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(titleViewTapped))
+    customTitleView.isUserInteractionEnabled = true
+    customTitleView.addGestureRecognizer(tapGesture)
 
     // 年の表示形式の設定
     let yearFormatter = DateFormatter()
@@ -176,6 +182,11 @@ extension TopPageViewController {
 
     // AutoLayoutの設定
     NSLayoutConstraint.activate([
+
+      // カスタムビューの領域範囲の制約
+      customTitleView.widthAnchor.constraint(equalToConstant: 200),
+      customTitleView.heightAnchor.constraint(equalToConstant: 44),
+
       // yearTextLabelのY座標の中心はcustomTitleViewのY座標の中心に等しいという制約→つまりNavigationBarのY座標の中心
       yearTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
       // この制約については後日確認
@@ -192,6 +203,14 @@ extension TopPageViewController {
     ])
     // カスタムビューをNavigationBarに追加
     self.navigationItem.titleView = customTitleView
+  }
+
+  @objc private func titleViewTapped() {
+      print("タイトルビューがタップされました！")
+
+    let dateSelectionVC = storyboard?.instantiateViewController(identifier: "DateSelection") as! DateSelectionViewController
+
+    navigationController?.pushViewController(dateSelectionVC, animated: true)
   }
 
   // BarButtonの設定

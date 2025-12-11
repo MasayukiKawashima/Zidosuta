@@ -94,7 +94,7 @@
         <!--Item-->
         <scene sceneID="9pb-3H-LoM">
             <objects>
-                <viewController id="iAn-LN-dAA" customClass="DateSelectionViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DateSelection" id="iAn-LN-dAA" customClass="DateSelectionViewController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mkb-w0-2LF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
