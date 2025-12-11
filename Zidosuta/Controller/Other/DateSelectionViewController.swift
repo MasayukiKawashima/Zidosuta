@@ -107,6 +107,11 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
     case 0:
       if cell == .selectedDateDisplayTableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedDateDisplayTableViewCell", for: indexPath) as! SelectedDateDisplayTableViewCell
+
+        let defaultDate = Date()
+        let combinedString = defaultDate.convertDateToSelectedDateString()
+        cell.dateLabel.text = combinedString
+
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
       } else {
