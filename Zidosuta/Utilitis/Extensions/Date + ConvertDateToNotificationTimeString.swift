@@ -20,4 +20,19 @@ extension Date {
     let combinedString = ("\(paddedHour) : \(paddedMinute)")
     return combinedString
   }
+
+  func convertDateToSelectedDateString() -> String {
+
+    let calendar = Calendar.current
+
+    let year = calendar.component(.year, from: self)
+    let month = calendar.component(.month, from: self)
+    let day = calendar.component(.day, from: self)
+
+    let paddedMonth = String(format: "%02d", month)
+    let paddedDay = String(format: "%02d", day)
+
+    let combinedString = "\(year)年 \(paddedMonth)月 \(paddedDay)日"
+    return combinedString
+  }
 }
