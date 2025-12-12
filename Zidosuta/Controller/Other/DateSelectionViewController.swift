@@ -192,6 +192,7 @@ extension DateSelectionViewController: ConfirmTableViewCellDelegate {
   func confirmButtonAction() {
 
     print("OKボタンが押された")
+    self.navigationController?.popViewController(animated: true)
   }
 
 }
