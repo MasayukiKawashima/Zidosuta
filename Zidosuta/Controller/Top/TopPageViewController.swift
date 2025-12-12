@@ -132,7 +132,7 @@ extension TopPageViewController {
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
     customTitleView.translatesAutoresizingMaskIntoConstraints = false
 
-    // ★★【追加】タップジェスチャーを付与 ★★
+    // カスタムビューをタップ可能にする
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(titleViewTapped))
     customTitleView.isUserInteractionEnabled = true
     customTitleView.addGestureRecognizer(tapGesture)
@@ -205,11 +205,10 @@ extension TopPageViewController {
     self.navigationItem.titleView = customTitleView
   }
 
+  // 日付がタップされた時の処理
   @objc private func titleViewTapped() {
-      print("タイトルビューがタップされました！")
 
     let dateSelectionVC = storyboard?.instantiateViewController(identifier: "DateSelection") as! DateSelectionViewController
-
     navigationController?.pushViewController(dateSelectionVC, animated: true)
   }
 
