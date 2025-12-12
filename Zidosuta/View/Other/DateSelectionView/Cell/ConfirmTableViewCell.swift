@@ -5,6 +5,11 @@
 //  Created by 川島真之 on 2025/12/08.
 //
 
+protocol ConfirmTableViewCellDelegate {
+
+  func confirmButtonAction()
+}
+
 import UIKit
 
 class ConfirmTableViewCell: UITableViewCell {
@@ -20,6 +25,8 @@ class ConfirmTableViewCell: UITableViewCell {
     }
   }
 
+  var delegate: ConfirmTableViewCellDelegate?
+
   override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,5 +40,6 @@ class ConfirmTableViewCell: UITableViewCell {
     }
 
   @IBAction func confirmButtonAction(_ sender: Any) {
+    delegate?.confirmButtonAction()
   }
 }

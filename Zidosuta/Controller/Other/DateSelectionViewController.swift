@@ -129,6 +129,8 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
     case 1:
       let cell = tableView.dequeueReusableCell(withIdentifier: "ConfirmTableViewCell", for: indexPath) as! ConfirmTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+
+      cell.delegate = self
       return cell
 
     default:
@@ -183,4 +185,13 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
       return 0
     }
   }
+}
+
+extension DateSelectionViewController: ConfirmTableViewCellDelegate {
+
+  func confirmButtonAction() {
+
+    print("OKボタンが押された")
+  }
+
 }
