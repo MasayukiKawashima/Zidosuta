@@ -20,6 +20,11 @@ class DateSelectionViewController: UIViewController {
     .portrait
   }
 
+  private var selectedYear: Int?
+  private var selectedMonth: Int?
+  private var selectedDay: Int?
+  private var selectedDate = Date()
+
   private var selectedDateDisplayTableViewCellHeight: CGFloat = 90.0
   private var dateEditTableViewCellHeight: CGFloat = 200.0
   private var confirmTableViewCelllHeight: CGFloat = 60.0
@@ -116,6 +121,8 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
       } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DateEditTableViewCell", for: indexPath) as! DateEditTableViewCell
+
+        cell.datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell
       }
@@ -127,6 +134,19 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
     default:
       return UITableViewCell()
     }
+  }
+
+  // ピッカーで日付が選択されるたびに呼ばれるメソッド
+  @objc private func dateChanged(_ sender: UIDatePicker) {
+
+    let cellRow = DateSelectionPageCell.selectedDateDisplayTableViewCell.values.row
+    let cellSection = DateSelectionPageCell.selectedDateDisplayTableViewCell.values.section
+
+    guard let selectedDateDisplayTableViewCell = dateSeletionView.tableView.cellForRow(at: IndexPath(row: cellRow, section: cellSection)) as? SelectedDateDisplayTableViewCell else { return }
+
+    selectedDate = sender.date
+    let combinedString = selectedDate.convertDateToSelectedDateString()
+    selectedDateDisplayTableViewCell.dateLabel.text = combinedString
   }
 
   // 一つ目のセクションの下にスペースを作るためにフッターViewを作成
