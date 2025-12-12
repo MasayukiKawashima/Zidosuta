@@ -20,6 +20,8 @@ class DateSelectionViewController: UIViewController {
     .portrait
   }
 
+  var dismissCallback: ((Date) -> Void)?
+
   private var selectedYear: Int?
   private var selectedMonth: Int?
   private var selectedDay: Int?
@@ -129,6 +131,8 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
     case 1:
       let cell = tableView.dequeueReusableCell(withIdentifier: "ConfirmTableViewCell", for: indexPath) as! ConfirmTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
+
+      cell.delegate = self
       return cell
 
     default:
@@ -183,4 +187,17 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
       return 0
     }
   }
+}
+
+// MARK: - ConfirmTableViewCellDelegate
+
+extension DateSelectionViewController: ConfirmTableViewCellDelegate {
+
+  func confirmButtonAction() {
+
+    print("OKボタンが押された")
+    dismissCallback?(selectedDate)
+    self.navigationController?.popViewController(animated: true)
+  }
+
 }
