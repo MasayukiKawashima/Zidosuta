@@ -45,7 +45,7 @@ class TopPageViewController: UIPageViewController {
 
     let topVC = storyboard!.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     self.controllers = [topVC]
-    setViewControllers([self.controllers[0]], direction: .forward, animated: true, completion: nil)
+    setViewControllers([self.controllers[0]], direction: .forward, animated: false, completion: nil)
   }
 }
 
@@ -216,15 +216,15 @@ extension TopPageViewController {
         print("新しい日付の取得エラー")
         return
       }
-      
+
       //　新しい日付で TopViewControllerを再生成しセット
       let newDateVC = storyboard!.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
       newDateVC.topDateManager.exchangeDate(newDate: newDate)
       self.controllers = [newDateVC]
-      //NavigationBarの表示も再設定
+      // NavigationBarの表示も再設定
       self.navigationBarTitleSetting(currentDate: newDateVC.topDateManager.date)
       self.navigationBarButtonSetting()
-      setViewControllers([self.controllers[0]], direction: .forward, animated: true, completion: nil)
+      setViewControllers([self.controllers[0]], direction: .forward, animated: false, completion: nil)
     }
     navigationController?.pushViewController(dateSelectionVC, animated: true)
   }
