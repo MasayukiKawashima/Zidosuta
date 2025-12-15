@@ -45,12 +45,16 @@ class SettingsView: UIView {
 
     super.init(frame: frame)
     nibInit()
+
+    versionLabel.text = makeAppVersionText()
+    copyrightLabel.text = makeCopyrightText()
   }
 
   required init?(coder aDecoder: NSCoder) {
 
     super.init(coder: aDecoder)
     nibInit()
+
   }
 
   // MARK: - Methods
@@ -67,5 +71,15 @@ class SettingsView: UIView {
     tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     tableView.separatorStyle = .none
     self.addSubview(view)
+  }
+
+  private func makeAppVersionText() -> String {
+      let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+      return "Version \(version)"
+  }
+
+  private func makeCopyrightText() -> String {
+      let year = Calendar.current.component(.year, from: Date())
+      return "© \(year) Masayuki Kawashima"
   }
 }
