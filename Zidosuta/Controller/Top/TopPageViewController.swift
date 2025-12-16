@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 確認完了
 class TopPageViewController: UIPageViewController {
 
   // MARK: - Properties
@@ -44,7 +45,7 @@ class TopPageViewController: UIPageViewController {
 
     let topVC = storyboard!.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     self.controllers = [topVC]
-    setViewControllers([self.controllers[0]], direction: .forward, animated: true, completion: nil)
+    setViewControllers([self.controllers[0]], direction: .forward, animated: false, completion: nil)
   }
 }
 
@@ -129,6 +130,12 @@ extension TopPageViewController {
 
     // カスタムビューをインスタンス化
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 44))
+    customTitleView.translatesAutoresizingMaskIntoConstraints = false
+
+    // カスタムビューをタップ可能にする
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(titleViewTapped))
+    customTitleView.isUserInteractionEnabled = true
+    customTitleView.addGestureRecognizer(tapGesture)
 
     // 年の表示形式の設定
     let yearFormatter = DateFormatter()
@@ -175,6 +182,11 @@ extension TopPageViewController {
 
     // AutoLayoutの設定
     NSLayoutConstraint.activate([
+
+      // カスタムビューの領域範囲の制約
+      customTitleView.widthAnchor.constraint(equalToConstant: 200),
+      customTitleView.heightAnchor.constraint(equalToConstant: 44),
+
       // yearTextLabelのY座標の中心はcustomTitleViewのY座標の中心に等しいという制約→つまりNavigationBarのY座標の中心
       yearTextLabel.centerYAnchor.constraint(equalTo: customTitleView.centerYAnchor),
       // この制約については後日確認
@@ -193,6 +205,30 @@ extension TopPageViewController {
     self.navigationItem.titleView = customTitleView
   }
 
+  // 日付がタップされた時の処理
+  @objc private func titleViewTapped() {
+
+    let dateSelectionVC = storyboard?.instantiateViewController(identifier: "DateSelection") as! DateSelectionViewController
+
+    dateSelectionVC.dismissCallback = { [weak self] newDate in
+
+      guard let self = self else {
+        print("新しい日付の取得エラー")
+        return
+      }
+
+      //　新しい日付で TopViewControllerを再生成しセット
+      let newDateVC = storyboard!.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
+      newDateVC.topDateManager.exchangeDate(newDate: newDate)
+      self.controllers = [newDateVC]
+      // NavigationBarの表示も再設定
+      self.navigationBarTitleSetting(currentDate: newDateVC.topDateManager.date)
+      self.navigationBarButtonSetting()
+      setViewControllers([self.controllers[0]], direction: .forward, animated: false, completion: nil)
+    }
+    navigationController?.pushViewController(dateSelectionVC, animated: true)
+  }
+
   // BarButtonの設定
   private func navigationBarButtonSetting() {
 
@@ -208,8 +244,7 @@ extension TopPageViewController {
   }
   // BarButton押下時の画面遷移
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
-    //    let currentVC = self.viewControllers?.first as! TopViewController
-    //    let currentPageIndex = currentVC.index
+
     let topVC = storyboard?.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     let currentDate = getCurrentPageTopDateManager().date!
 

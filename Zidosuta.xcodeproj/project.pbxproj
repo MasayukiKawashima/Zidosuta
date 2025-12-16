@@ -51,6 +51,16 @@
 		FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
 		FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */; };
+		FA80690F2EE67FD90013CBB3 /* DateSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA80690E2EE67FD90013CBB3 /* DateSelectionView.xib */; };
+		FA8069112EE67FEE0013CBB3 /* DateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8069102EE67FEE0013CBB3 /* DateSelectionView.swift */; };
+		FA8069182EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8069172EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib */; };
+		FA8069192EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8069162EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.swift */; };
+		FA8069202EE6868B0013CBB3 /* DateEditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80691E2EE6868B0013CBB3 /* DateEditTableViewCell.swift */; };
+		FA8069212EE6868B0013CBB3 /* DateEditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA80691F2EE6868B0013CBB3 /* DateEditTableViewCell.xib */; };
+		FA8069282EE686C60013CBB3 /* ConfirmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8069262EE686C60013CBB3 /* ConfirmTableViewCell.swift */; };
+		FA8069292EE686C60013CBB3 /* ConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */; };
+		FA80692C2EE6F84F0013CBB3 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */; };
+		FA80692E2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
 		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
 		FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */; };
@@ -181,6 +191,16 @@
 		FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		FA7F0B382CC21211000CB10C /* PhotoModalView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoModalView.xib; sourceTree = "<group>"; };
 		FA7F0B3A2CC21233000CB10C /* PhotoModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModalView.swift; sourceTree = "<group>"; };
+		FA80690E2EE67FD90013CBB3 /* DateSelectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateSelectionView.xib; sourceTree = "<group>"; };
+		FA8069102EE67FEE0013CBB3 /* DateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionView.swift; sourceTree = "<group>"; };
+		FA8069162EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedDateDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		FA8069172EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedDateDisplayTableViewCell.xib; sourceTree = "<group>"; };
+		FA80691E2EE6868B0013CBB3 /* DateEditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateEditTableViewCell.swift; sourceTree = "<group>"; };
+		FA80691F2EE6868B0013CBB3 /* DateEditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateEditTableViewCell.xib; sourceTree = "<group>"; };
+		FA8069262EE686C60013CBB3 /* ConfirmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmTableViewCell.swift; sourceTree = "<group>"; };
+		FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
+		FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
+		FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + setStatusBarBackgroundColor.swift"; sourceTree = "<group>"; };
 		FA9366C12D68B662007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FA9366C22D68B663007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
@@ -389,6 +409,7 @@
 		FA41A2FA2A1C88D5008DC83E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA80690B2EE67E530013CBB3 /* Other */,
 				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
 				FA68AF262A135F6F00B69D4A /* Main.storyboard */,
 				FACA1A3F2D2398AA00B2768D /* OnboardingView */,
@@ -479,6 +500,45 @@
 			path = ZidosutaUITests;
 			sourceTree = "<group>";
 		};
+		FA80690B2EE67E530013CBB3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				FA8069142EE685C50013CBB3 /* DateSelectionView */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		FA8069142EE685C50013CBB3 /* DateSelectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FA80690E2EE67FD90013CBB3 /* DateSelectionView.xib */,
+				FA8069102EE67FEE0013CBB3 /* DateSelectionView.swift */,
+				FA8069152EE685D80013CBB3 /* Cell */,
+			);
+			path = DateSelectionView;
+			sourceTree = "<group>";
+		};
+		FA8069152EE685D80013CBB3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA8069162EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.swift */,
+				FA8069172EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib */,
+				FA80691E2EE6868B0013CBB3 /* DateEditTableViewCell.swift */,
+				FA80691F2EE6868B0013CBB3 /* DateEditTableViewCell.xib */,
+				FA8069262EE686C60013CBB3 /* ConfirmTableViewCell.swift */,
+				FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FA80692A2EE6F7B80013CBB3 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +584,7 @@
 				FA5DF1C82D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift */,
 				FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase + setKGFormatter.swift */,
 				FAC0A8A72D06D3010074D818 /* Date + ConvertDateToNotificationTimeString.swift */,
+				FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -594,6 +655,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC9EF162D0C0B5C00DE1E64 /* TabBarController.swift */,
+				FA80692A2EE6F7B80013CBB3 /* Other */,
 				FAC9EF152D0C0B5C00DE1E64 /* Top */,
 				FAC9EF0C2D0C0B5C00DE1E64 /* Graph */,
 				FAC9EF102D0C0B5C00DE1E64 /* Settings */,
@@ -831,16 +893,20 @@
 				FABF360A2A283CFF007D91DB /* GraphView.xib in Resources */,
 				FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */,
 				FAC9EF3B2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib in Resources */,
+				FA8069292EE686C60013CBB3 /* ConfirmTableViewCell.xib in Resources */,
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
+				FA8069182EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib in Resources */,
 				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
 				FA9E8C422D14643E00A05E55 /* TermsDisplayView.xib in Resources */,
 				FA9E8C3C2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.xib in Resources */,
+				FA8069212EE6868B0013CBB3 /* DateEditTableViewCell.xib in Resources */,
 				FAC9EF352D0C3A7900DE1E64 /* DeleteDataTableViewCell.xib in Resources */,
 				FA2211132CFF5B8A005C622D /* NotificationSettingView.xib in Resources */,
 				FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */,
 				FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */,
 				FA11879F2A22D2A5004577F8 /* PhotoTableViewCell.xib in Resources */,
+				FA80690F2EE67FD90013CBB3 /* DateSelectionView.xib in Resources */,
 				FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */,
 				FAC9EF452D0C564100DE1E64 /* DataDeletionExecutionView.xib in Resources */,
 			);
@@ -1023,6 +1089,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA9E8C3D2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.swift in Sources */,
+				FA8069202EE6868B0013CBB3 /* DateEditTableViewCell.swift in Sources */,
 				FA9F9CE42CF449030013886A /* UIColor + AppThemeColor.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
@@ -1044,6 +1111,7 @@
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
 				FAC9EF182D0C0B5C00DE1E64 /* TopViewController.swift in Sources */,
 				FAC9EF192D0C0B5C00DE1E64 /* GraphViewController.swift in Sources */,
+				FA80692C2EE6F84F0013CBB3 /* DateSelectionViewController.swift in Sources */,
 				FAC9EF1A2D0C0B5C00DE1E64 /* GraphNavigationController.swift in Sources */,
 				FAC9EF3A2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.swift in Sources */,
 				FAC9EF1B2D0C0B5C00DE1E64 /* TopPageViewController.swift in Sources */,
@@ -1059,6 +1127,7 @@
 				FAC9EF2B2D0C11A000DE1E64 /* Settings.swift in Sources */,
 				FAC9EF222D0C0B5C00DE1E64 /* TopNavigationController.swift in Sources */,
 				FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */,
+				FA8069112EE67FEE0013CBB3 /* DateSelectionView.swift in Sources */,
 				FAA926A82DED6AA000608AA6 /* OnboardingModel.swift in Sources */,
 				FAC9EF232D0C0B5C00DE1E64 /* TabBarController.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
@@ -1073,6 +1142,7 @@
 				FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */,
 				FA9E8C402D14641C00A05E55 /* TermsDisplayView.swift in Sources */,
 				FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */,
+				FA80692E2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift in Sources */,
 				FAC9EF362D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift in Sources */,
 				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
@@ -1080,7 +1150,9 @@
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
 				FAC9EF472D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift in Sources */,
 				FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */,
+				FA8069282EE686C60013CBB3 /* ConfirmTableViewCell.swift in Sources */,
 				FA11879E2A22D2A5004577F8 /* PhotoTableViewCell.swift in Sources */,
+				FA8069192EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.swift in Sources */,
 				FA7F0B3B2CC21233000CB10C /* PhotoModalView.swift in Sources */,
 				FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */,
 				FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */,
@@ -1281,7 +1353,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Zidosuta/Zidosuta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = BNT6DPTTX4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
@@ -1299,7 +1371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.Kawashima.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1320,7 +1392,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Zidosuta/Zidosuta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = BNT6DPTTX4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
@@ -1338,7 +1410,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.Kawashima.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

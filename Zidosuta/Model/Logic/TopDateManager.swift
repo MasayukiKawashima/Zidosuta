@@ -22,4 +22,9 @@ class TopDateManager {
     let modifiedDate = calendar.date(byAdding: .day, value: days, to: currentDate)
     date = modifiedDate
   }
+
+  func exchangeDate(newDate: Date) {
+
+    date = newDate
+  }
 }

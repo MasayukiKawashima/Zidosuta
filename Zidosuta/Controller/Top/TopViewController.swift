@@ -108,6 +108,7 @@ class TopViewController: UIViewController {
     setupRealmObserver()
   }
 
+  // Realm内のDateDataの全データ削除後のTableViewのリロードを行うためのDateDataを監視のセットアップを行うメソッド
   private func setupRealmObserver() {
 
     let dateData = realm.objects(DateData.self)
@@ -115,6 +116,8 @@ class TopViewController: UIViewController {
     notificationToken = dateData.observe { changes in
       switch changes {
       case .update:
+        // DateDataが空でありかつ、!self.shouldReloadDataAfterDeletionがtrue（shouldReloadDataAfterDeletioがfalseの場合にtrueとなる）であるということは
+        // 全てのDateDataが削除されたということなので、shouldReloadDataAfterDeletionをtrueにして、データ削除後のリロードが必要な状況であることを明示する
         if dateData.isEmpty && !self.shouldReloadDataAfterDeletion {
           self.shouldReloadDataAfterDeletion = true
         }

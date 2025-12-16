@@ -47,7 +47,7 @@ class GraphPageViewController: UIPageViewController {
 
     self.controllers = [graphVC]
 
-    setViewControllers([self.controllers[0]], direction: .forward, animated: true, completion: nil)
+    setViewControllers([self.controllers[0]], direction: .forward, animated: false, completion: nil)
 
     self.dataSource = self
   }
