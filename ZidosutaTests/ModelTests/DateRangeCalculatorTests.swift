@@ -23,6 +23,7 @@ class DateRangeCalculatorTests: XCTestCase {
 
   // MARK: - TestCases
 
+  // calculateMonthHalfDayRangeのテスト
   // indexが偶数の場合のテスト
   func testCalculateMonthHalfDayRangeWithEvenIndex() {
 

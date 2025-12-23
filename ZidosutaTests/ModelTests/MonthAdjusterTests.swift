@@ -32,6 +32,7 @@ class MonthAdjusterTests: XCTestCase {
 
   // MARK: - TestCases
 
+  // adjustMonthのテスト
   // 現在の月を翌月にするテスト
   func testAdjustMonthToNextMonth() {
 

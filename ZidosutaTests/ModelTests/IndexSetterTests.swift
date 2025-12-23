@@ -24,6 +24,7 @@ class IndexSetterTests: XCTestCase {
 
   // MARK: -  TestCases
 
+  // indexSettingのテスト
   // 日付が17日以前だった場合のテスト
   func testIndexSettingBefore17() {
 

@@ -84,6 +84,7 @@ final class DataDeleteManagerTests: XCTestCase {
 
   // MARK: - TestCases
 
+  // deleteAllDataのテスト
   // 成功の場合のテスト
   func testDeleteAllData_Success() {
 
@@ -97,6 +98,7 @@ final class DataDeleteManagerTests: XCTestCase {
       XCTAssertFalse(result)
     }
   }
+
   // ドキュメントディレクトリが既にRealmファイル以外が空の場合のテスト
   func testDeleteAllData_EmptyDirectorySuccess() {
 
