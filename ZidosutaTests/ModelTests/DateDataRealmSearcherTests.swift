@@ -29,8 +29,6 @@ class DateDataRealmSearcherTests: XCTestCase {
 
   override  func tearDown() {
 
-    // 使用後の Realm を無効化します。
-    // 各テスト後のクリーンアップは、テストが互いに影響を与えないことを保証するために重要です。
     inMeomoryRealm.invalidate()
 
     searcher = nil
@@ -41,7 +39,7 @@ class DateDataRealmSearcherTests: XCTestCase {
 
   // MARK: - TestCases
 
-  // テストを実行するメソッド
+  // searchForDateDataInRealmのテスト
   func testSearchForDateDataInRealm() {
 
     let dateData = DateData()
