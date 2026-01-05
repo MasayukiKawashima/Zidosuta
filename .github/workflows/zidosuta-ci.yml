@@ -1,0 +1,22 @@
+name: Zidosuta CI
+
+on:
+  push:
+    branches:
+      - feature/**
+
+jobs:
+  ci:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2
+          bundler-cache: true
+
+      - name: Run CI tests
+        run: bundle exec fastlane ios ci_test
