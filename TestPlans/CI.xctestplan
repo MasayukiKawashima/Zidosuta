@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "A0E7DB14-5D49-47E7-937F-2A2DDFE2DF73",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : [
+        "LocalNotificationManagerTests",
+        "LocalNotificationManagerTests\/testSetScheduleNotification()"
+      ],
+      "target" : {
+        "containerPath" : "container:Zidosuta.xcodeproj",
+        "identifier" : "FA68AF322A135F7200B69D4A",
+        "name" : "ZidosutaTests"
+      }
+    }
+  ],
+  "version" : 1
+}

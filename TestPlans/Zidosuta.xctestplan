@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "A6F7C2B3-B950-4AE9-BC55-EA303A6487A7",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Zidosuta.xcodeproj",
+        "identifier" : "FA68AF322A135F7200B69D4A",
+        "name" : "ZidosutaTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Zidosuta.xcodeproj",
+        "identifier" : "FA68AF3C2A135F7200B69D4A",
+        "name" : "ZidosutaUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
