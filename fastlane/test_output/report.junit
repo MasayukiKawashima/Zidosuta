@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='ZidosutaTests.xctest' tests='38' failures='0'>
+  <testsuite name='ZidosutaTests.AppDelegateTests' tests='3' failures='0'>
+    <testcase classname='ZidosutaTests.AppDelegateTests' name='testGraphPage' time='0.010'/>
+    <testcase classname='ZidosutaTests.AppDelegateTests' name='testSettingsPage' time='0.004'/>
+    <testcase classname='ZidosutaTests.AppDelegateTests' name='testTopPage' time='0.004'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.DataDeleteManagerTests' tests='5' failures='0'>
+    <testcase classname='ZidosutaTests.DataDeleteManagerTests' name='testDeleteAllData_EmptyDirectorySuccess' time='0.040'/>
+    <testcase classname='ZidosutaTests.DataDeleteManagerTests' name='testDeleteAllData_EmptyRealmObjectSuccess' time='0.005'/>
+    <testcase classname='ZidosutaTests.DataDeleteManagerTests' name='testDeleteAllData_removeNotificationRequests' time='0.013'/>
+    <testcase classname='ZidosutaTests.DataDeleteManagerTests' name='testDeleteAllData_SkipDeleteRealmData' time='0.006'/>
+    <testcase classname='ZidosutaTests.DataDeleteManagerTests' name='testDeleteAllData_Success' time='0.005'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.DateDataRealmSearcherTests' tests='1' failures='0'>
+    <testcase classname='ZidosutaTests.DateDataRealmSearcherTests' name='testSearchForDateDataInRealm' time='0.015'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.DateRangeCalculatorTests' tests='2' failures='0'>
+    <testcase classname='ZidosutaTests.DateRangeCalculatorTests' name='testCalculateMonthHalfDayRangeWithEvenIndex' time='0.001'/>
+    <testcase classname='ZidosutaTests.DateRangeCalculatorTests' name='testCalculateMonthHalfDayRangeWithOddIndex' time='0.001'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.GraphContentCreatorTests' tests='2' failures='0'>
+    <testcase classname='ZidosutaTests.GraphContentCreatorTests' name='testCreateDataEntryAfter17' time='0.007'/>
+    <testcase classname='ZidosutaTests.GraphContentCreatorTests' name='testCreateDataEntryBefore17' time='0.003'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.IndexSetterTests' tests='2' failures='0'>
+    <testcase classname='ZidosutaTests.IndexSetterTests' name='testIndexSettingAfter17' time='0.001'/>
+    <testcase classname='ZidosutaTests.IndexSetterTests' name='testIndexSettingBefore17' time='0.000'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.MemoTextFieldValidationTest' tests='6' failures='0'>
+    <testcase classname='ZidosutaTests.MemoTextFieldValidationTest' name='testCharacterLengthValidator_InvalidInput_ShouldReturnInvalid' time='0.000'/>
+    <testcase classname='ZidosutaTests.MemoTextFieldValidationTest' name='testCharacterLengthValidator_ValidInput_ShouldReturnValid' time='0.000'/>
+    <testcase classname='ZidosutaTests.MemoTextFieldValidationTest' name='testMemoInputValidator_ValidInput_ShouldReturnValid' time='0.000'/>
+    <testcase classname='ZidosutaTests.MemoTextFieldValidationTest' name='testMemovalidator_InvalidInput_ShouldReturnInvalid' time='0.000'/>
+    <testcase classname='ZidosutaTests.MemoTextFieldValidationTest' name='testNewLineValidator_InvalidInput_ShouldReturnInvalid' time='0.000'/>
+    <testcase classname='ZidosutaTests.MemoTextFieldValidationTest' name='testNewLineValidator_ValidInput_ShouldReturnValid' time='0.000'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.MonthAdjusterTests' tests='5' failures='0'>
+    <testcase classname='ZidosutaTests.MonthAdjusterTests' name='testAdjustMonthToNextMonth' time='0.001'/>
+    <testcase classname='ZidosutaTests.MonthAdjusterTests' name='testAdjustMonthToPreviousMonth' time='0.001'/>
+    <testcase classname='ZidosutaTests.MonthAdjusterTests' name='testAdjustMonthToTwoMonthsAhead' time='0.000'/>
+    <testcase classname='ZidosutaTests.MonthAdjusterTests' name='testAdjustMonthToTwoMonthsBefore' time='0.000'/>
+    <testcase classname='ZidosutaTests.MonthAdjusterTests' name='testAdjustMonthWithoutChange' time='0.008'/>
+  </testsuite>
+  <testsuite name='ZidosutaTests.WeightTextFieldValidationTest' tests='12' failures='0'>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testDecimalPlacesValidator_InvalidInput_ShouldReturnInvalid' time='0.006'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testDecimalPlacesValidator_ValidInput_ShouldReturnValid' time='0.000'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testMaxWeightValidator_InvalidInput_ShouldReturnInvalid' time='0.001'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testMaxWeightValidator_NumberConversionFails_ShouldReturnInvalidFormat' time='0.004'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testMaxWeightValidator_ValidInput_ShouldReturnValid' time='0.000'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testNegativeNumberValidator_InvalidInput_ShouldReturnInvalid' time='0.000'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testNegativeNumberValidator_NumberConversionFails_ShouldReturnInvalidFormat' time='0.000'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testNegativeNumberValidator_ValidInput_ShouldReturnValid' time='0.000'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testWeightFormatValidator_InvalidInput_ShouldReturnInvalid' time='0.000'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testWeightFormatValidator_ValidInput_ShouldReturnValid' time='0.010'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testWeightInputValidator_InvalidInput_ShouldReturnInvalid' time='0.001'/>
+    <testcase classname='ZidosutaTests.WeightTextFieldValidationTest' name='testWeightInputValidator_ValidInput_ShouldReturnValid' time='0.000'/>
+  </testsuite>
+</testsuites>

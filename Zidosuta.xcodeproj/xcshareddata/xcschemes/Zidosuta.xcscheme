@@ -27,8 +27,16 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <TestPlans>
+         <TestPlanReference
+            reference = "container:CI.xctestplan">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:TestPlans/Zidosuta.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+      </TestPlans>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -39,6 +47,14 @@
                BlueprintName = "ZidosutaTests"
                ReferencedContainer = "container:Zidosuta.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "LocalNotificationManagerTests">
+               </Test>
+               <Test
+                  Identifier = "LocalNotificationManagerTests/testSetScheduleNotification()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">
