@@ -12,6 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Xcode 16 を明示的に選択
+      - name: Select Xcode 16
+        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.2
@@ -20,3 +24,4 @@ jobs:
 
       - name: Run CI tests
         run: bundle exec fastlane ios ci_test
+
