@@ -33,13 +33,12 @@ platform :ios do
       readonly: true
     )
 
-    # デフォルトは CI Test Plan
-    test_plan = options[:testplan] || "CI"
+    # デフォルトは Zidosuta Test Plan
+    test_plan = options[:testplan] || "Zidosuta"
 
     run_tests(
       scheme: "Zidosuta",
       testplan: test_plan,
-      devices: ["iPhone 14"],
       clean: true,
       fail_build: true
     )
@@ -60,12 +59,11 @@ platform :ios do
   # ============================
   # CI用 lane（featureブランチ）
   # ============================
-  desc "featureブランチ用 CIテスト（Test Plan: CI）"
+  desc "featureブランチ用 CIテスト（Test Plan: Zidosuta）"
   lane :ci_test do
     run_tests(
       scheme: "Zidosuta",
-      testplan: "CI",
-      devices: ["iPhone 14"],
+      testplan: "Zidosuta",
       clean: true,
       fail_build: true
     )
