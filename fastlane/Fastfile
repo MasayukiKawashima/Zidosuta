@@ -45,7 +45,12 @@ platform :ios do
     build_app(
       scheme: "Zidosuta",
       clean: true,
-      export_method: "app-store"
+      export_method: "app-store",
+      export_options: {
+        provisioningProfiles: {
+          "dev.Kawashima.Zidosuta" => "match AppStore dev.Kawashima.Zidosuta"
+        }
+      }
     )
 
     upload_to_testflight(
