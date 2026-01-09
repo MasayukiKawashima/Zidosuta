@@ -56,6 +56,7 @@ App Storeのページ → https://itunes.apple.com/jp/app/id6741679575?mt=8
 | グラフ描画   | Charts                        |
 | 広告    | AdMob                          |
 | テスト     | XCTest                          |
+| CI/CD     | Github Actions, fastlane        |
 | コード整形 | SwiftLint                       |
 | バージョン管理 | Git, GitHub                  |
 | デザイン    | Figma, Canva                   |
@@ -134,6 +135,8 @@ App Storeのページ → https://itunes.apple.com/jp/app/id6741679575?mt=8
 
 ### 2. 実務開発を意識した作業フロー
 ブランチ戦略としてGit-flowを採用しています。また、各タスクをGitHubのissueで管理したり、プルリクを活用するなどチーム開発になるべく近い形になるように意識しています。
+<br>
+さらに、Github Actions + fastlaneの組み合わせでCI/CDパイプラインを構築しており、開発効率の向上も進めています。
 
 ## ■ 今後追加してみたい機能など
 
