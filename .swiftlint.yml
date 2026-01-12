@@ -4,7 +4,6 @@ only_rules:
   # 空白・スペース関連
   - leading_whitespace
   - trailing_whitespace
-  - function_name_whitespace
   - return_arrow_whitespace
   - no_space_in_method_call
   - vertical_whitespace
@@ -37,11 +36,6 @@ excluded:
   - Generated
   - "*/.generated.swift"
   - DerivedData
-
-
-function_name_whitespace:
-  warning: 1
-  error: 1
 
 vertical_whitespace:
   max_empty_lines: 1
