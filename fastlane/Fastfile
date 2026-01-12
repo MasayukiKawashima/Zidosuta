@@ -61,7 +61,7 @@ platform :ios do
   end
 
   # ============================
-  # CI用 lane（featureブランチ）
+  # CI用 lane（テスト）
   # ============================
   desc "featureブランチ用 CIテスト（Test Plan: Zidosuta）"
   lane :ci_test do
@@ -70,6 +70,19 @@ platform :ios do
       testplan: "Zidosuta",
       clean: true,
       fail_build: true
+    )
+  end
+
+  # ============================
+  # CI用 lane（SwiftLint）
+  # ============================
+  desc "CI用 SwiftLint ルール検証"
+  lane :ci_lint do
+    swiftlint(
+      mode: :lint,
+      strict: true,
+      config_file: ".swiftlint.yml",
+      ignore_exit_status: false
     )
   end
 end
