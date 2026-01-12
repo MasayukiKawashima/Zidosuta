@@ -22,6 +22,12 @@ jobs:
           ruby-version: 3.2.2
           bundler: 2.7.2
           bundler-cache: true
+          
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - name: Run SwiftLint
+        run: bundle exec fastlane ios ci_lint
 
       - name: Run CI tests
         run: bundle exec fastlane ios ci_test
