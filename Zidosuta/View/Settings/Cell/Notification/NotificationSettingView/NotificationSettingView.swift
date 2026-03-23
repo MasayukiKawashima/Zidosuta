@@ -9,6 +9,7 @@ import UIKit
 
 class NotificationSettingView: UIView {
 
+
   // MARK: - Properties
 
   private let cellIdentifiers = ["NotificationTimeDisplayTableViewCell", "NotificationTimeEditTableViewCell", "NotificationRegisterTableViewCell"]
@@ -25,6 +26,7 @@ class NotificationSettingView: UIView {
     }
   }
 
+
   // MARK: - LifeCycle
 
   override init(frame: CGRect) {
@@ -39,6 +41,7 @@ class NotificationSettingView: UIView {
     nibInit()
   }
 
+  
   // MARK: - Methods
 
   private func nibInit() {

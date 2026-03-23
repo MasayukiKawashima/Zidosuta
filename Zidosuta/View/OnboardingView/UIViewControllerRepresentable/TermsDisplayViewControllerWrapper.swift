@@ -10,10 +10,12 @@ import SwiftUI
 
 struct TermsDisplayViewControllerWrapper: UIViewControllerRepresentable {
 
+
   // MARK: - Properties
 
   let termsType: TermsDisplayViewController.TermsType
 
+  
   // MARK: - Methods
 
   func makeUIViewController(context: Context) -> TermsDisplayViewController {

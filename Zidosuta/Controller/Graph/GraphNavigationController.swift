@@ -9,6 +9,7 @@ import UIKit
 
 class GraphNavigationController: UINavigationController {
 
+
   // MARK: - Properties
 
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -17,6 +18,7 @@ class GraphNavigationController: UINavigationController {
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .landscapeLeft
   }
+
 
   // MARK: - LifeCycle
 
@@ -34,6 +36,7 @@ class GraphNavigationController: UINavigationController {
     self.navigationController?.navigationBar.compactAppearance = appearance
   }
 
+  
   // MARK: - Methods
 
   // 現状必要のないメソッドだが将来の作業に備えて残しておく

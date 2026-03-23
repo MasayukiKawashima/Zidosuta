@@ -9,9 +9,11 @@ import XCTest
 
 final class TopScreenUITests: XCTestCase {
 
+
   // MARK: - Properties
 
   let app = XCUIApplication()
+
 
   // MARK: - Methods
 
@@ -22,6 +24,7 @@ final class TopScreenUITests: XCTestCase {
     app.launch()
   }
 
+  
   // MARK: - TestCases
 
   // weightTextField

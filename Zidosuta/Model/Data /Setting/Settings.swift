@@ -10,6 +10,7 @@ import RealmSwift
 
 class Settings: Object {
 
+
   // MARK: - Properties
 
   @Persisted var id: String = "settings"
@@ -33,6 +34,7 @@ class Settings: Object {
       return settings
     }
   }
+  
 
   // MARK: - Methods
 

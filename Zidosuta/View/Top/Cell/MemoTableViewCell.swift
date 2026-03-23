@@ -7,12 +7,14 @@
 
 import UIKit
 
+
 // MARK: - MemoTableViewCellDelegate
 
 protocol MemoTableViewCellDelegate: AnyObject {
 
   func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell)
 }
+
 
 // MARK: - MemoTableViewCell
 
@@ -23,6 +25,7 @@ class MemoTableViewCell: UITableViewCell {
   @IBOutlet weak var memoTextField: UITextField!
 
   var delegate: MemoTableViewCellDelegate?
+
 
   // MARK: - LifeCycle
 
@@ -57,6 +60,7 @@ class MemoTableViewCell: UITableViewCell {
 
 }
 
+
 // MARK: - UITextFieldDelegate
 
 extension MemoTableViewCell: UITextFieldDelegate {
@@ -67,6 +71,7 @@ extension MemoTableViewCell: UITextFieldDelegate {
     return true
   }
 }
+
 
 // MARK: - SetUpCloseButton
 

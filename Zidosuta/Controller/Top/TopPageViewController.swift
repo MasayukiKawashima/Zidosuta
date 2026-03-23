@@ -10,6 +10,7 @@ import UIKit
 // 確認完了
 class TopPageViewController: UIPageViewController {
 
+
   // MARK: - Properties
 
   private var controllers: [TopViewController] = []
@@ -20,6 +21,7 @@ class TopPageViewController: UIPageViewController {
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .portrait
   }
+
 
   // MARK: - LifeCycle
 
@@ -39,6 +41,7 @@ class TopPageViewController: UIPageViewController {
     navigationBarButtonSetting()
   }
 
+
   // MARK: - Methods
 
   private func initTopPageViewContoller() {
@@ -48,6 +51,7 @@ class TopPageViewController: UIPageViewController {
     setViewControllers([self.controllers[0]], direction: .forward, animated: false, completion: nil)
   }
 }
+
 
 // MARK: - GetCurrentPageTopDateManager
 
@@ -59,6 +63,7 @@ extension TopPageViewController {
     return currentVC.topDateManager
   }
 }
+
 
 // MARK: - UIPageViewControllerDataSource
 
@@ -98,6 +103,7 @@ extension TopPageViewController: UIPageViewControllerDataSource {
   }
 }
 
+
 // MARK: - UIPageViewControllerDelegate
 
 // 遷移時の処理
@@ -113,6 +119,7 @@ extension TopPageViewController: UIPageViewControllerDelegate {
     }
   }
 }
+
 
 // MARK: - NavigationBarViewSettings
 

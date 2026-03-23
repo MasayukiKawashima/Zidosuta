@@ -9,6 +9,7 @@ import UIKit
 
 class NotificationSettingViewController: UIViewController {
 
+
   // MARK: - Properties
 
   private var notificationSettingView = NotificationSettingView()
@@ -31,6 +32,7 @@ class NotificationSettingViewController: UIViewController {
   var transitionSource: TransitionSource = .uiKit // デフォルトはUIKit
 
   var dismissCallback: (() -> Void)?
+
 
   // MARK: - Enums
 
@@ -56,6 +58,7 @@ class NotificationSettingViewController: UIViewController {
     case uiKit
   }
 
+
   // MARK: - LifeCycle
 
   override func viewDidLoad() {
@@ -74,6 +77,7 @@ class NotificationSettingViewController: UIViewController {
     view = notificationSettingView
   }
 }
+
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
@@ -182,6 +186,7 @@ extension NotificationSettingViewController: UITableViewDelegate, UITableViewDat
     }
   }
 }
+
 
 // MARK: - NotificationRegisterTableViewCellDelegate
 

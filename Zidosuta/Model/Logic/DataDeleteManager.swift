@@ -10,6 +10,7 @@ import RealmSwift
 
 class DataDeleteManager {
 
+
   // MARK: - Properties
 
   static let shared = DataDeleteManager()
@@ -18,9 +19,11 @@ class DataDeleteManager {
 
   private let realm = try! Realm()
 
+
   // MARK: - Init
 
   private init() {}
+  
 
   // MARK: - Methods
 

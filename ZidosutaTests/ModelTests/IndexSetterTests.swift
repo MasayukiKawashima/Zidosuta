@@ -10,9 +10,11 @@ import XCTest
 
 class IndexSetterTests: XCTestCase {
 
+
   // MARK: - Properties
 
   var indexSetter: IndexSetter!
+
 
   // MARK: - Methods
 
@@ -22,6 +24,7 @@ class IndexSetterTests: XCTestCase {
     indexSetter = IndexSetter()
   }
 
+  
   // MARK: -  TestCases
 
   // indexSettingのテスト

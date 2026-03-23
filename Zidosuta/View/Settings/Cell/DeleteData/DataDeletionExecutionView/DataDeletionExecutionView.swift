@@ -9,6 +9,7 @@ import UIKit
 
 class DataDeletionExecutionView: UIView {
 
+
   // MARK: - Properties
 
   private let cellIdentifiers = ["DeleteAllDataTableViewCell"]
@@ -25,6 +26,7 @@ class DataDeletionExecutionView: UIView {
     }
   }
 
+
   // MARK: - LifeCycle
 
   override init(frame: CGRect) {
@@ -39,6 +41,7 @@ class DataDeletionExecutionView: UIView {
     nibInit()
   }
 
+  
   // MARK: - Methods
 
   private func nibInit() {

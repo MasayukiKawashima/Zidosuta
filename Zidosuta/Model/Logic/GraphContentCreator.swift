@@ -11,11 +11,13 @@ import Charts
 
 class GraphContentCreator {
 
+
   // MARK: - Properties
 
   private let realm: Realm!
 
   private let currentDate: Date!
+
 
   // MARK: - Init
 
@@ -24,6 +26,7 @@ class GraphContentCreator {
     self.realm = realm
     self.currentDate = currentDate
   }
+  
 
   // MARK: - Methods
 

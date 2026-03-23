@@ -9,6 +9,7 @@ import Foundation
 
 class GraphDateManager {
 
+
   // MARK: - Properties
 
   var firstDateOfHalfMonth: Date?
@@ -20,6 +21,7 @@ class GraphDateManager {
     let indexSetter = IndexSetter()
     return indexSetter.indexSetting(date: date)
   }()
+  
 
   // MARK: - Init
 
@@ -27,6 +29,7 @@ class GraphDateManager {
 
     updateDate(index: self.index, date: date)
   }
+  
 
   // MARK: - Methods
 

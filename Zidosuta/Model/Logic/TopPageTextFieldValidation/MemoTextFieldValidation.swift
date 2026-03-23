@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 // MARK: - MemoValidator
 
 protocol MemoValidator {
@@ -14,7 +15,9 @@ protocol MemoValidator {
   func validate() -> ValidationResult
 }
 
+
 // MARK: - CompositeMemoValidator
+
 
 protocol CompositeMemoValidator: MemoValidator {
 
@@ -31,6 +34,7 @@ extension CompositeMemoValidator {
     return result
   }
 }
+
 
 // MARK: - MemoValidationError
 
@@ -52,6 +56,7 @@ extension MemoValidationError: LocalizedError {
     }
   }
 }
+
 
 // MARK: - MemoValidatorLogics
 
@@ -82,6 +87,7 @@ struct NewLineValidator: MemoValidator {
     return .valid
   }
 }
+
 
 // MARK: - MemoInputValidator
 

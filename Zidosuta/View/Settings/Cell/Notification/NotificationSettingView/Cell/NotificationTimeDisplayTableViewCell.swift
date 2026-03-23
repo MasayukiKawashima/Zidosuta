@@ -9,6 +9,7 @@ import UIKit
 
 class NotificationTimeDisplayTableViewCell: UITableViewCell {
 
+
   // MARK: - Properties
 
   @IBOutlet weak var shadowLayerView: UIView!
@@ -19,6 +20,7 @@ class NotificationTimeDisplayTableViewCell: UITableViewCell {
   }
   @IBOutlet weak var timeLabel: UILabel!
 
+  
   // MARK: - LifeCycle
 
   override func awakeFromNib() {

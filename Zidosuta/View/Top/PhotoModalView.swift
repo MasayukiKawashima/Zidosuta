@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - PhotoModalViewDelegate
 
 protocol PhotoModalViewDelegate {
@@ -14,9 +15,11 @@ protocol PhotoModalViewDelegate {
   func dismiss()
 }
 
+
 // MARK: - PhotoModalView
 
 class PhotoModalView: UIView {
+
 
   // MARK: - Properties
 
@@ -27,6 +30,7 @@ class PhotoModalView: UIView {
   private var  isDismissButtonConfigured = false
 
   var delegate: PhotoModalViewDelegate?
+
 
   // MARK: - Init
 
@@ -55,6 +59,7 @@ class PhotoModalView: UIView {
     self.addSubview(view)
   }
 
+
   // MARK: - LifeCycle
 
   override func layoutSubviews() {
@@ -76,6 +81,7 @@ class PhotoModalView: UIView {
     dismissButton.setImage(image, for: .normal)
   }
 
+  
   // MARK: - Methods
 
   @IBAction func dismissButtonAction(_ sender: Any) {

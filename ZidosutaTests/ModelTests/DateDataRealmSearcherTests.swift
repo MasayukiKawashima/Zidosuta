@@ -11,10 +11,12 @@ import RealmSwift
 
 class DateDataRealmSearcherTests: XCTestCase {
 
+
   // MARK: - Properties
 
-  var inMeomoryRealm: Realm!
+  var inMemoryRealm: Realm!
   var searcher: DateDataRealmSearcher!
+
 
   // MARK: - Methods
 
@@ -23,20 +25,21 @@ class DateDataRealmSearcherTests: XCTestCase {
     super.setUp()
     // realmの初期化をメモリ上で行う。
     // これにより、各テストが孤立して実行され、実際のアプリケーションのデータに影響を与えないことを保証します。
-    inMeomoryRealm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "inMemoryRealm"))
-    searcher = DateDataRealmSearcher(realm: inMeomoryRealm)
+    inMemoryRealm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "inMemoryRealm"))
+    searcher = DateDataRealmSearcher(realm: inMemoryRealm)
   }
 
   override  func tearDown() {
 
-    inMeomoryRealm.invalidate()
+    inMemoryRealm.invalidate()
 
     searcher = nil
-    inMeomoryRealm = nil
+    inMemoryRealm = nil
 
     super.tearDown()
   }
 
+  
   // MARK: - TestCases
 
   // searchForDateDataInRealmのテスト
@@ -45,8 +48,8 @@ class DateDataRealmSearcherTests: XCTestCase {
     let dateData = DateData()
     let currentDate = Date()
     dateData.date = currentDate
-    try! inMeomoryRealm.write {
-      inMeomoryRealm.add(dateData)
+    try! inMemoryRealm.write {
+      inMemoryRealm.add(dateData)
     }
 
     let results = searcher.searchForDateDataInRealm(currentDate: currentDate)

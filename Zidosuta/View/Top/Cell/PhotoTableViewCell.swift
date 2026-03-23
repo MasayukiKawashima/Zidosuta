@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - PhotoTableViewCellDelegate
 
 protocol PhotoTableViewCellDelegate {
@@ -17,9 +18,11 @@ protocol PhotoTableViewCellDelegate {
   func photoDoubleTapAction(photoImage: UIImage)
 }
 
+
 // MARK: - PhotoTableViewCell
 
 class PhotoTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -35,6 +38,7 @@ class PhotoTableViewCell: UITableViewCell {
   @IBOutlet weak var expandButton: UIButton!
 
   var delegate: PhotoTableViewCellDelegate?
+
 
   // MARK: - LifeCycle
 
@@ -92,6 +96,7 @@ class PhotoTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
+  
   // MARK: - Methods
 
   // photoImageView.imageの値が変わるたびに呼び出される処理

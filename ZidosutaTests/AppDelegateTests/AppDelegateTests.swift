@@ -10,6 +10,7 @@ import XCTest
 
 final class AppDelegateTests: XCTestCase {
 
+
   // MARK: - Properties
 
   var appDelegate: AppDelegate!
@@ -33,6 +34,7 @@ final class AppDelegateTests: XCTestCase {
   var settingsNavigationController: SettingsNavigationController!
 
   var settingsViewController: SettingsViewController!
+
 
   // MARK: - Methods
 
@@ -61,6 +63,7 @@ final class AppDelegateTests: XCTestCase {
     self.settingsViewController = SettingsViewController()
   }
 }
+
 
 // MARK: - TestCases
 

@@ -9,9 +9,11 @@ import UIKit
 
 class PhotoModalViewController: UIViewController {
 
+
   // MARK: - Properties
 
   var photoModalView = PhotoModalView()
+
 
   // MARK: - Init
 
@@ -19,6 +21,7 @@ class PhotoModalViewController: UIViewController {
 
     super.init(coder: coder)
   }
+
 
   // MARK: - LifeCycle
 
@@ -44,6 +47,7 @@ class PhotoModalViewController: UIViewController {
   }
 }
 
+
 // MARK: - PhotoModalViewDelegate
 
 extension PhotoModalViewController: PhotoModalViewDelegate {
@@ -54,6 +58,7 @@ extension PhotoModalViewController: PhotoModalViewDelegate {
     dismiss(animated: true)
   }
 }
+
 
 // MARK: - UIScrollViewDelegate
 

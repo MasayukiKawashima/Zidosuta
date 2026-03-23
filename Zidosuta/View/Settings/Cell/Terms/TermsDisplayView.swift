@@ -10,6 +10,7 @@ import WebKit
 
 class TermsDisplayView: UIView {
 
+
   // MARK: - Properties
 
   @IBOutlet weak var webView: WKWebView! {
@@ -17,6 +18,7 @@ class TermsDisplayView: UIView {
       webView.backgroundColor = .white
     }
   }
+
 
   // MARK: - LifeCycle
 
@@ -32,6 +34,7 @@ class TermsDisplayView: UIView {
     nibInit()
   }
 
+  
   // MARK: - Methods
 
   private func nibInit() {

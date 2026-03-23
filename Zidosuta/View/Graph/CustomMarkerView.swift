@@ -8,6 +8,7 @@
 import Foundation
 import Charts
 
+
 // MARK: - CustomMarkerViewDataSource
 
 protocol CustomMarkerViewDataSource {
@@ -35,8 +36,11 @@ protocol CustomMarkerViewDataSource {
   func markerBackGroundColor(in customMarkerView: CustomMarkerView) -> UIColor
 }
 
+
 // MARK: - CustomMarkerView
+
 class CustomMarkerView: MarkerView {
+
 
   // MARK: - Properties
 
@@ -44,6 +48,7 @@ class CustomMarkerView: MarkerView {
   private var markerPath: UIBezierPath?
   var dataSource: CustomMarkerViewDataSource?
 
+  
   // MARK: - Methods
 
   override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {

@@ -9,10 +9,12 @@ import SwiftUI
 
 struct NotificationSettingViewControllerWrapper: UIViewControllerRepresentable {
 
+
   // MARK: - Properties
 
   @Binding var isPresented: Bool
 
+  
   // MARK: - Methods
 
   func makeCoordinator() -> Coordinator {

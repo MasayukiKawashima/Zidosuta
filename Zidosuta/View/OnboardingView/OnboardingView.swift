@@ -9,6 +9,7 @@ import SwiftUI
 
 struct OnboardingView: View {
 
+
   // MARK: - Init
 
   init() {
@@ -29,12 +30,14 @@ struct OnboardingView: View {
     UINavigationBar.appearance().tintColor = .white
   }
 
+
   // MARK: - Properties
 
   @State private var showingNotificationSetting = false
   @State private var showTermsDisplay = false
   @State private var selectedTermsType: TermsDisplayViewController.TermsType?
   @State private var showNextView = false
+
 
   // MARK: - Body
 
@@ -137,6 +140,7 @@ struct OnboardingView: View {
     }
   }
 }
+
 
 // MARK: - Preview
 

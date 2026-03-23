@@ -9,6 +9,7 @@ import UIKit
 
 class SettingsView: UIView {
 
+
   // MARK: - Properties
 
   private let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell", "ContactTableViewCell"]
@@ -39,6 +40,7 @@ class SettingsView: UIView {
     }
   }
 
+
   // MARK: - LifeCycle
 
   override init(frame: CGRect) {
@@ -57,6 +59,7 @@ class SettingsView: UIView {
 
   }
 
+  
   // MARK: - Methods
 
   private func nibInit() {

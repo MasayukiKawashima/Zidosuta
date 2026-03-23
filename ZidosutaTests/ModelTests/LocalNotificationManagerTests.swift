@@ -19,10 +19,12 @@ import XCTest
 
 class LocalNotificationManagerTests: XCTestCase {
 
+
   // MARK: - Properties
 
   var notificationManager: LocalNotificationManager!
   var notificationCenter: UNUserNotificationCenter!
+
 
   // MARK: - Methods
 
@@ -41,6 +43,7 @@ class LocalNotificationManagerTests: XCTestCase {
     super.tearDown()
   }
 
+  
   // MARK: - TestCases
 
   // setScheduleNotificationのテスト

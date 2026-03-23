@@ -10,6 +10,7 @@ import Charts
 
 class GraphView: UIView {
 
+
   // MARK: - Properties
 
   @IBOutlet weak var mainBackgroundView: UIView! {
@@ -20,6 +21,7 @@ class GraphView: UIView {
 
   @IBOutlet weak var graphAreaView: LineChartView!
 
+  
   // MARK: - Init
 
   override init(frame: CGRect) {
@@ -34,6 +36,7 @@ class GraphView: UIView {
     self.nibInit()
   }
 
+  
   // MARK: - Methods
 
   private func nibInit() {

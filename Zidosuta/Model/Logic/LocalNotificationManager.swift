@@ -12,6 +12,7 @@ import UserNotifications
 
 class LocalNotificationManager {
 
+
   // MARK: - Properties
 
   static let shared = LocalNotificationManager()
@@ -30,6 +31,7 @@ class LocalNotificationManager {
     let settings = Settings.shared
     return settings.notification!
   }
+  
 
   // MARK: - Methods
 

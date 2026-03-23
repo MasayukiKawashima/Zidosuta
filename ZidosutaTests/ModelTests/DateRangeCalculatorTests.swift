@@ -10,9 +10,11 @@ import XCTest
 
 class DateRangeCalculatorTests: XCTestCase {
 
+
   // MARK: - Properties
 
   var dateRangeCalculator: DateRangeCalculator!
+
 
   // MARK: - Methods
 
@@ -21,6 +23,7 @@ class DateRangeCalculatorTests: XCTestCase {
     dateRangeCalculator = DateRangeCalculator()
   }
 
+  
   // MARK: - TestCases
 
   // calculateMonthHalfDayRangeのテスト

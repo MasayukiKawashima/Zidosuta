@@ -9,11 +9,13 @@ import XCTest
 
 class ZidosutaUITestsLaunchTests: XCTestCase {
 
+
   // MARK: - Properties
 
   override class var runsForEachTargetApplicationUIConfiguration: Bool {
     true
   }
+
 
   // MARK: - Methods
 
@@ -22,6 +24,7 @@ class ZidosutaUITestsLaunchTests: XCTestCase {
     continueAfterFailure = false
   }
 
+  
   // MARK: - TestCases
 
   func testLaunch() throws {

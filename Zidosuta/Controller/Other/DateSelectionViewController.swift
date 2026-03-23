@@ -9,6 +9,7 @@ import UIKit
 
 class DateSelectionViewController: UIViewController {
 
+
   // MARK: - Properties
 
   private var dateSeletionView = DateSelectionView()
@@ -31,6 +32,7 @@ class DateSelectionViewController: UIViewController {
   private var dateEditTableViewCellHeight: CGFloat = 200.0
   private var confirmTableViewCelllHeight: CGFloat = 60.0
 
+
   // MARK: - Enums
 
   enum DateSelectionPageCell: Int {
@@ -49,6 +51,7 @@ class DateSelectionViewController: UIViewController {
       }
     }
   }
+
 
   // MARK: - LifeCycle
 
@@ -82,6 +85,7 @@ class DateSelectionViewController: UIViewController {
     */
 
 }
+
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 
@@ -188,6 +192,7 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
     }
   }
 }
+
 
 // MARK: - ConfirmTableViewCellDelegate
 
