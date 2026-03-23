@@ -9,6 +9,7 @@ import UIKit
 
 class TabBarController: UITabBarController {
 
+
   // MARK: - LifeCycle
 
   override func viewDidLoad() {
@@ -28,6 +29,7 @@ class TabBarController: UITabBarController {
   }
 }
 
+
 // MARK: - SupportedInterfaceOrientations
 
 extension UITabBarController {
@@ -40,6 +42,7 @@ extension UITabBarController {
     }
   }
 }
+
 
 // MARK: - UITabBarControllerDelegate
 

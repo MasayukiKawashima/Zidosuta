@@ -12,7 +12,6 @@ import GoogleMobileAds
 
 class TopViewController: UIViewController {
 
-  // SwiftLinttest
 
   // MARK: - Properties
 
@@ -69,6 +68,7 @@ class TopViewController: UIViewController {
   }
   private var adTableViewCellHeight: CGFloat = 53.0
 
+  
   // MARK: - Enums
 
   // セル周り設定用の列挙体
@@ -84,6 +84,7 @@ class TopViewController: UIViewController {
     case weight = 3
     case memo = 4
   }
+
 
   // MARK: - LifeCycle
 
@@ -157,6 +158,7 @@ class TopViewController: UIViewController {
     isViewFirstLayoutFinished = true
   }
 }
+
 
 // MARK: - UITableViewDelegate,UITableViewDataSource
 
@@ -328,6 +330,7 @@ extension TopViewController: WeightTableViewCellDelegate, MemoTableViewCellDeleg
     view.endEditing(true)
   }
 }
+
 
 // MARK: - PhotoTableViewCellDelegate, UIImagePickerControllerDelegate, PHPickerViewControllerDelegate,UINavigationControllerDelegate
 
@@ -869,6 +872,7 @@ extension TopViewController: UITextFieldDelegate {
     }
   }
 }
+
 
 // MARK: - GADBannerViewDelegate
 

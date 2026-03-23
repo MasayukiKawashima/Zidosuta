@@ -10,6 +10,7 @@ import XCTest
 
 final class MemoTextFieldValidationTest: XCTestCase {
 
+  
   // MARK: - TestCases
 
   // CharacterLengthValidator

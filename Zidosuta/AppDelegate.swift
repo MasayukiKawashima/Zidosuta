@@ -12,9 +12,11 @@ import GoogleMobileAds
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+
   // MARK: - Properties
 
   var window: UIWindow?
+
 
   // MARK: - Methods
 
@@ -37,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // デフォルトは縦向き
     return .portrait
   }
+  
 
   // MARK: - LifeCycle
 

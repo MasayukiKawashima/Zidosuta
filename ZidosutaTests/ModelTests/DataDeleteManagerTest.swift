@@ -9,6 +9,7 @@ import XCTest
 import RealmSwift
 @testable import Zidosuta
 
+
 // MARK: - TestRealmObject
 
 class TestRealmObject: Object {
@@ -16,9 +17,11 @@ class TestRealmObject: Object {
   @Persisted var id = UUID().uuidString
 }
 
+
 // MARK: - DataDeleteManagerTests
 
 final class DataDeleteManagerTests: XCTestCase {
+
 
   // MARK: - Properties
 
@@ -33,6 +36,7 @@ final class DataDeleteManagerTests: XCTestCase {
   var dummyFiles: [String]!
 
   var fileURLs: [URL]!
+
 
   // MARK: - Methods
 
@@ -82,6 +86,7 @@ final class DataDeleteManagerTests: XCTestCase {
     }
   }
 
+  
   // MARK: - TestCases
 
   // deleteAllDataのテスト

@@ -10,6 +10,7 @@ import WebKit
 
 class TermsDisplayViewController: UIViewController {
 
+
   // MARK: - Properties
 
   private let termsDisplayView =  TermsDisplayView()
@@ -22,6 +23,7 @@ class TermsDisplayViewController: UIViewController {
     indicator.color = .gray // 必要に応じて色を調整
     return indicator
   }()
+
 
   // MARK: - Enums
 
@@ -38,6 +40,7 @@ class TermsDisplayViewController: UIViewController {
       }
     }
   }
+
 
   // MARK: - LifeCycle
 
@@ -68,6 +71,7 @@ class TermsDisplayViewController: UIViewController {
     super.viewWillDisappear(animated)
     cleanupWebView()
   }
+
 
   // MARK: - Methods
 
@@ -104,6 +108,7 @@ class TermsDisplayViewController: UIViewController {
     termsDisplayView.webView.uiDelegate = nil
   }
 }
+
 
 // MARK: - WKNavigationDelegate
 

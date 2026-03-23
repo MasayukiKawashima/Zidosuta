@@ -9,6 +9,7 @@ import UIKit
 
 class TopView: UIView {
 
+
   // MARK: - Properties
 
   private let cellIdentifiers = ["WeightTableViewCell", "MemoTableViewCell", "PhotoTableViewCell", "AdTableViewCell"]
@@ -22,6 +23,7 @@ class TopView: UIView {
       }
     }
   }
+
 
   // MARK: - Init
 
@@ -37,6 +39,7 @@ class TopView: UIView {
     self.nibInit()
   }
 
+  
   // MARK: - Methods
 
   private func nibInit() {

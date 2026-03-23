@@ -10,11 +10,13 @@ import XCTest
 
 class MonthAdjusterTests: XCTestCase {
 
+
   // MARK: - Properties
 
   var monthAdjuter: MonthAdjuster!
 
   var date: Date!
+
 
   // MARK: - Methods
 
@@ -30,6 +32,7 @@ class MonthAdjusterTests: XCTestCase {
     date = dateFormatter.date(from: dateString)!
   }
 
+  
   // MARK: - TestCases
 
   // adjustMonthのテスト

@@ -9,6 +9,7 @@ import UIKit
 
 class DateSelectionView: UIView {
 
+
   // MARK: - Properties
 
   private let cellIdentifiers = ["SelectedDateDisplayTableViewCell", "DateEditTableViewCell", "ConfirmTableViewCell"]
@@ -25,6 +26,7 @@ class DateSelectionView: UIView {
     }
   }
 
+
   // MARK: - LifeCycle
 
   override init(frame: CGRect) {
@@ -38,6 +40,7 @@ class DateSelectionView: UIView {
     super.init(coder: aDecoder)
     nibInit()
   }
+  
 
   // MARK: - Methods
 

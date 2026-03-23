@@ -10,6 +10,7 @@ import XCTest
 
 final class WeightTextFieldValidationTest: XCTestCase {
 
+  
   // MARK: - TestCases
 
   // WeightFormatValidator

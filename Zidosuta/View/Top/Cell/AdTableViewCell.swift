@@ -10,6 +10,7 @@ import GoogleMobileAds
 
 class AdTableViewCell: UITableViewCell {
 
+
   // MARK: - Properties
 
   @IBOutlet weak var bannerView: GADBannerView! {
@@ -21,6 +22,7 @@ class AdTableViewCell: UITableViewCell {
   @IBOutlet weak var placeholderView: UIView!
   @IBOutlet weak var placeholderLogo: UIImageView!
 
+  
   // MARK: - LifeCycle
 
   override func awakeFromNib() {

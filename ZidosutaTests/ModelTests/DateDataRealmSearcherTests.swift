@@ -11,10 +11,12 @@ import RealmSwift
 
 class DateDataRealmSearcherTests: XCTestCase {
 
+
   // MARK: - Properties
 
   var inMeomoryRealm: Realm!
   var searcher: DateDataRealmSearcher!
+
 
   // MARK: - Methods
 
@@ -37,6 +39,7 @@ class DateDataRealmSearcherTests: XCTestCase {
     super.tearDown()
   }
 
+  
   // MARK: - TestCases
 
   // searchForDateDataInRealmのテスト

@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - ContactTableViewCellDelegate
 
 protocol ContactTableViewCellDelegate {
@@ -14,9 +15,11 @@ protocol ContactTableViewCellDelegate {
   func mailingButtonAction()
 }
 
+
 // MARK: - ContactTableViewCell
 
 class ContactTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -26,6 +29,7 @@ class ContactTableViewCell: UITableViewCell {
   @IBOutlet weak var mailingButton: UIButton!
 
   var delegate: ContactTableViewCellDelegate?
+
 
   // MARK: - LifeCycle
 
@@ -44,6 +48,7 @@ class ContactTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
+  
   // MARK: - Methods
 
   @IBAction func mailingButtonAction(_ sender: UIButton) {

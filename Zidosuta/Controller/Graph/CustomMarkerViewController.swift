@@ -10,9 +10,11 @@ import Charts
 
 class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
 
+
   // MARK: - Properties
 
   private var index: Int
+
 
   // MARK: - Init
 
@@ -27,6 +29,7 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
     fatalError("init(coder:) has not been implemented")
   }
 
+  
   // MARK: - Methods
 
   // テキストの作成

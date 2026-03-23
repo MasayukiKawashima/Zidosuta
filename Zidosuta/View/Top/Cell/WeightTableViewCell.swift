@@ -7,12 +7,14 @@
 
 import UIKit
 
+
 // MARK: - WeightTableViewCellDelegate
 
 protocol WeightTableViewCellDelegate: AnyObject {
 
   func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell)
 }
+
 
 // MARK: - SetWeightTextFieldUnderLine
 
@@ -31,9 +33,11 @@ extension UITextField {
   }
 }
 
+
 // MARK: - WeightTableViewCell
 
 class WeightTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -45,6 +49,7 @@ class WeightTableViewCell: UITableViewCell {
   @IBOutlet weak var kgLabel: UILabel!
 
   var delegate: WeightTableViewCellDelegate?
+
 
   // MARK: - LifeCycle
 
@@ -81,6 +86,7 @@ class WeightTableViewCell: UITableViewCell {
   }
 
 }
+
 
 // MARK: - SetUpCloseButton
 

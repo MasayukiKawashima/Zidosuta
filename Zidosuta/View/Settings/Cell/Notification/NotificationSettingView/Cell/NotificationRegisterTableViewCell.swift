@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - NotificationRegisterTableViewCellDelegate
 
 protocol NotificationRegisterTableViewCellDelegate {
@@ -15,6 +16,7 @@ protocol NotificationRegisterTableViewCellDelegate {
 }
 
 class NotificationRegisterTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -29,6 +31,7 @@ class NotificationRegisterTableViewCell: UITableViewCell {
   }
 
   var delegate: NotificationRegisterTableViewCellDelegate?
+
 
   // MARK: - LifeCycle
 
@@ -45,6 +48,7 @@ class NotificationRegisterTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
+  
   // MARK: - Methods
 
   @IBAction func registerButtonAction(_ sender: Any) {

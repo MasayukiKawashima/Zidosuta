@@ -7,12 +7,14 @@
 
 import Foundation
 
+
 // MARK: - WeightValidator
 
 protocol WeightValidator {
 
   func validate() -> ValidationResult
 }
+
 
 // MARK: - CompositeWeightValidator
 
@@ -31,6 +33,7 @@ extension CompositeWeightValidator {
     return result
   }
 }
+
 
 // MARK: - WeightValidationError
 
@@ -58,6 +61,7 @@ extension WeightValidationError: LocalizedError {
     }
   }
 }
+
 
 // MARK: - WeightValidatorLogics
 
@@ -136,6 +140,7 @@ struct MaxWeightValidator: WeightValidator {
     return .valid
   }
 }
+
 
 // MARK: - WeightInputValidator
 

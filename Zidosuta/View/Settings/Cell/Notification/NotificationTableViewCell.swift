@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - NotificationTableViewCellDelegate
 
 protocol NotificationTableViewCellDelegate {
@@ -14,9 +15,11 @@ protocol NotificationTableViewCellDelegate {
   func switchAction(isOn: Bool)
 }
 
+
 // MARK: - NotificationTableViewCell
 
 class NotificationTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -31,6 +34,7 @@ class NotificationTableViewCell: UITableViewCell {
 
   var delegate: NotificationTableViewCellDelegate?
 
+  
   // MARK: - LifeCycle
 
   override func awakeFromNib() {
@@ -50,6 +54,7 @@ class NotificationTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
+  
   // MARK: - Methods
 
   @IBAction func switchAction(_ sender: UISwitch) {

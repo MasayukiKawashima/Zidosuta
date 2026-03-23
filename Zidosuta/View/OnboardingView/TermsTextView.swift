@@ -9,12 +9,14 @@ import SwiftUI
 
 struct TermsTextView: View {
 
+
   // MARK: - Properties
 
   @Binding var showTermsDisplay: Bool
   @Binding var selectedTermsType: TermsDisplayViewController.TermsType?
 
   let fontSize: CGFloat
+
 
   // MARK: - Body
 
@@ -46,6 +48,7 @@ struct TermsTextView: View {
     .padding(.horizontal, 10)
   }
 
+  
   // MARK: - Methods
 
   private func makeAttributedString() -> AttributedString {

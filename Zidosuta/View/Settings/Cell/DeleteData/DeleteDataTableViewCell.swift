@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - DeleteDataTableViewCellDelegate
 
 protocol DeleteDataTableViewCellDelegate {
@@ -14,9 +15,11 @@ protocol DeleteDataTableViewCellDelegate {
   func transitionButtonAction()
 }
 
+
 // MARK: - DeleteDataTableViewCell
 
 class DeleteDataTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -30,6 +33,7 @@ class DeleteDataTableViewCell: UITableViewCell {
   }
 
   var delegate: DeleteDataTableViewCellDelegate?
+
 
   // MARK: - LifeCycle
 
@@ -47,6 +51,7 @@ class DeleteDataTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
+  
   // MARK: - Methods
 
   @IBAction func transitionButtonAction(_ sender: UIButton) {

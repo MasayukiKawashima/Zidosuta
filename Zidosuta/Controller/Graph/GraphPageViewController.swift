@@ -9,6 +9,7 @@ import UIKit
 
 class GraphPageViewController: UIPageViewController {
 
+
   // MARK: - Properties
 
   private var controllers: [UIViewController] = [GraphViewController()]
@@ -19,6 +20,7 @@ class GraphPageViewController: UIPageViewController {
   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
     return .landscapeLeft
   }
+
 
   // MARK: - LifeCycle
 
@@ -39,6 +41,7 @@ class GraphPageViewController: UIPageViewController {
     navigationBarButtonSetting()
   }
 
+
   // MARK: - Methods
 
   private func initGraphPageViewContoller() {
@@ -52,6 +55,7 @@ class GraphPageViewController: UIPageViewController {
     self.dataSource = self
   }
 }
+
 
 // MARK: - UIPageViewControllerDataSource
 
@@ -108,6 +112,7 @@ extension GraphPageViewController: UIPageViewControllerDelegate {
     }
   }
 }
+
 
 // MARK: - navigationBarViewSettings
 

@@ -9,6 +9,7 @@ import UIKit
 
 class DataDeletionExecutionViewController: UIViewController {
 
+
   // MARK: - Properties
 
   private var dataDeletionExecutionView = DataDeletionExecutionView()
@@ -22,6 +23,7 @@ class DataDeletionExecutionViewController: UIViewController {
 
   private var TableViewCellHeight: CGFloat = 60.0
 
+
   // MARK: - Enums
 
   enum DataDeletionExecutionViewCell: Int {
@@ -34,6 +36,7 @@ class DataDeletionExecutionViewController: UIViewController {
       }
     }
   }
+
 
   // MARK: - LifeCycle
 
@@ -54,6 +57,7 @@ class DataDeletionExecutionViewController: UIViewController {
     view = dataDeletionExecutionView
   }
 }
+
 
 // MARK: - UITableViewDelegate,UITableViewDataSource
 
@@ -119,6 +123,7 @@ extension DataDeletionExecutionViewController: UITableViewDelegate, UITableViewD
     return footerView
   }
 }
+
 
 // MARK: - DeleteAllDataTableViewCellDelegate
 

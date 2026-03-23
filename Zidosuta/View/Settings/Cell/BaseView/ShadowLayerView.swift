@@ -9,6 +9,7 @@ import UIKit
 
 class ShadowLayerView: UIView {
 
+
   // MARK: - Properties
 
   override var bounds: CGRect {
@@ -17,6 +18,7 @@ class ShadowLayerView: UIView {
     }
   }
 
+  
   // MARK: - Methods
 
   private func setupShadow() {

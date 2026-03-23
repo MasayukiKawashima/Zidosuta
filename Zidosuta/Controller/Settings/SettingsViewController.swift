@@ -10,6 +10,7 @@ import MessageUI
 
 class SettingsViewController: UIViewController {
 
+
   // MARK: - Properties
 
   private var settingsView = SettingsView()
@@ -24,6 +25,7 @@ class SettingsViewController: UIViewController {
   private var TableViewCellHeight: CGFloat = 60.0
 
   private let contactEmailAdress = "info.zidosuta@gmail.com"
+
 
   // MARK: - Enums
 
@@ -85,6 +87,7 @@ class SettingsViewController: UIViewController {
     }
   }
 
+
   // MARK: - LifeCycle
 
   override func viewDidLoad() {
@@ -125,6 +128,7 @@ class SettingsViewController: UIViewController {
     }
   }
 }
+
 
 // MARK: - UITableViewDelegate,UITableViewDataSource
 
@@ -248,6 +252,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
 }
 
+
 // MARK: - NavigationBarTittleSetting
 
 extension SettingsViewController {
@@ -274,6 +279,7 @@ extension SettingsViewController {
     self.navigationItem.titleView = customTitleView
   }
 }
+
 
 // MARK: - NotificationTableViewCellDelegate
 
@@ -314,6 +320,7 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
   }
 }
 
+
 // MARK: - DeleteDataTableViewCellDelegate
 
 extension SettingsViewController: DeleteDataTableViewCellDelegate {
@@ -325,6 +332,7 @@ extension SettingsViewController: DeleteDataTableViewCellDelegate {
     self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
   }
 }
+
 
 // MARK: - TermsOfUseTableViewCellDelegate, PrivacyPolicyTableViewCellDelegate
 
@@ -351,6 +359,7 @@ extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicy
     return termsDisplayViewController
   }
 }
+
 
 // MARK: - MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate
 

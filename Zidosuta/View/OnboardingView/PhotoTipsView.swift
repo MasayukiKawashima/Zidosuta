@@ -9,10 +9,12 @@ import SwiftUI
 
 struct PhotoTipsView: View {
 
+
   // MARK: - Properties
 
   @StateObject private var model = OnboardingModel()
   @Environment(\.dismiss) private var dismiss
+
 
   // MARK: - Body
 
@@ -127,6 +129,7 @@ struct PhotoTipsView: View {
     .navigationBarHidden(true)
   }
 
+
   // MARK: - Method
 
   // 外側のYellowishRedの領域の高さの設定
@@ -156,6 +159,7 @@ private func createAttributedString() -> AttributedString {
   }
   return attributedString
 }
+
 
 // MARK: - Preview
 

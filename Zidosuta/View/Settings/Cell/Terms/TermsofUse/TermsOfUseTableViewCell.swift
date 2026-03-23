@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - TermsOfUseTableViewCellDelegate
 
 protocol TermsOfUseTableViewCellDelegate {
@@ -14,9 +15,11 @@ protocol TermsOfUseTableViewCellDelegate {
   func TermsOfUseTransitionButtonAction()
 }
 
+
 // MARK: - TermsOfUseTableViewCell
 
 class TermsOfUseTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -29,6 +32,7 @@ class TermsOfUseTableViewCell: UITableViewCell {
     }
   }
   var delegate: TermsOfUseTableViewCellDelegate?
+
 
   // MARK: - LifeCycle
 
@@ -46,6 +50,7 @@ class TermsOfUseTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
+  
   // MARK: - Methods
 
   @IBAction func transitionButtonAction(_ sender: UIButton) {

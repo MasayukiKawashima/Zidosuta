@@ -9,6 +9,7 @@ import UIKit
 
 class MainBackgroundView: UIView {
 
+
   // MARK: - Properties
 
   override var bounds: CGRect {
@@ -17,6 +18,7 @@ class MainBackgroundView: UIView {
     }
   }
 
+  
   // MARK: - Methods
 
   private func setupMainBackgroundView() {

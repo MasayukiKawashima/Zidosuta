@@ -11,6 +11,7 @@ import RealmSwift
 
 class GraphViewController: UIViewController {
 
+
   // MARK: - Properties
 
   private var graphView = GraphView()
@@ -33,6 +34,7 @@ class GraphViewController: UIViewController {
   private var safeAreaRight: CGFloat = CGFloat()
   private var safeAreaLeft: CGFloat = CGFloat()
   private var safeAreaBottom: CGFloat = CGFloat()
+
 
   // MARK: - LifeCycle
 
@@ -72,6 +74,7 @@ class GraphViewController: UIViewController {
     // Get the new view controller using segue.destination.
     // Pass the selected object to the new view controller.
   }
+
 
   // MARK: - Methods
 
@@ -123,6 +126,7 @@ class GraphViewController: UIViewController {
     //    graphAreaViewAutoLayoutSetting()
   }()
 }
+
 
 // MARK: - ConfigureDefaultGraph
 
@@ -240,6 +244,7 @@ extension GraphViewController {
   }
 }
 
+
 // MARK: - CreateLineChartDate(
 
 extension GraphViewController {
@@ -303,6 +308,7 @@ extension GraphViewController {
     }
   }
 }
+
 
 // MARK: - UIGestureRecognizerDelegate
 

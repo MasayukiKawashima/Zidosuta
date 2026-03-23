@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 // MARK: - DeleteAllDataTableViewCellDelegate
 
 protocol DeleteAllDataTableViewCellDelegate {
@@ -15,6 +16,7 @@ protocol DeleteAllDataTableViewCellDelegate {
 }
 
 class DeleteAllDataTableViewCell: UITableViewCell {
+
 
   // MARK: - Properties
 
@@ -35,6 +37,7 @@ class DeleteAllDataTableViewCell: UITableViewCell {
 
   var delegate: DeleteAllDataTableViewCellDelegate?
 
+
   // MARK: - LifeCycle
 
   override func awakeFromNib() {
@@ -51,6 +54,7 @@ class DeleteAllDataTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
+  
   // MARK: - Methods
 
   @IBAction func deleteButtonAction(_ sender: UIButton) {
