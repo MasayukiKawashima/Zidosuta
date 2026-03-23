@@ -13,7 +13,7 @@ class MonthAdjusterTests: XCTestCase {
 
   // MARK: - Properties
 
-  var monthAdjuter: MonthAdjuster!
+  var monthAdjuster: MonthAdjuster!
 
   var date: Date!
 
@@ -24,7 +24,7 @@ class MonthAdjusterTests: XCTestCase {
 
     super.setUp()
 
-    monthAdjuter = MonthAdjuster()
+    monthAdjuster = MonthAdjuster()
     // テスト用Dateを作成
     let dateString = "2023-07-16"
     let dateFormatter = DateFormatter()
@@ -41,7 +41,7 @@ class MonthAdjusterTests: XCTestCase {
 
     // 翌月にするためにはindexの値が2である必要がある
     let index = 2
-    let result = monthAdjuter.adjustMonth(index: index, date: date)
+    let result = monthAdjuster.adjustMonth(index: index, date: date)
 
     let calendar = Calendar.current
     let month = calendar.component(.month, from: result)
@@ -52,7 +52,7 @@ class MonthAdjusterTests: XCTestCase {
   func testAdjustMonthToTwoMonthsAhead() {
 
     let index = 4
-    let result = monthAdjuter.adjustMonth(index: index, date: date)
+    let result = monthAdjuster.adjustMonth(index: index, date: date)
 
     let calendar = Calendar.current
     let month = calendar.component(.month, from: result)
@@ -63,7 +63,7 @@ class MonthAdjusterTests: XCTestCase {
   func testAdjustMonthToPreviousMonth() {
 
     let index = -1
-    let result = monthAdjuter.adjustMonth(index: index, date: date)
+    let result = monthAdjuster.adjustMonth(index: index, date: date)
 
     let calendar = Calendar.current
     let month = calendar.component(.month, from: result)
@@ -74,7 +74,7 @@ class MonthAdjusterTests: XCTestCase {
   func testAdjustMonthToTwoMonthsBefore() {
 
     let index = -3
-    let result = monthAdjuter.adjustMonth(index: index, date: date)
+    let result = monthAdjuster.adjustMonth(index: index, date: date)
 
     let calendar = Calendar.current
     let month = calendar.component(.month, from: result)
@@ -85,7 +85,7 @@ class MonthAdjusterTests: XCTestCase {
   func testAdjustMonthWithoutChange() {
 
     let index = 0
-    let result = monthAdjuter.adjustMonth(index: index, date: date)
+    let result = monthAdjuster.adjustMonth(index: index, date: date)
 
     let calendar = Calendar.current
     let month = calendar.component(.month, from: result)
