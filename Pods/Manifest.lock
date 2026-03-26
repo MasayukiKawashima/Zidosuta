@@ -3,14 +3,14 @@ PODS:
     - Charts/Core (= 4.1.0)
   - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
-  - Google-Mobile-Ads-SDK (11.13.0):
+  - Google-Mobile-Ads-SDK (13.1.0):
     - GoogleUserMessagingPlatform (>= 1.1)
-  - GoogleUserMessagingPlatform (2.7.0)
-  - Realm (20.0.0):
-    - Realm/Headers (= 20.0.0)
-  - Realm/Headers (20.0.0)
-  - RealmSwift (20.0.0):
-    - Realm (= 20.0.0)
+  - GoogleUserMessagingPlatform (3.1.0)
+  - Realm (20.0.4):
+    - Realm/Headers (= 20.0.4)
+  - Realm/Headers (20.0.4)
+  - RealmSwift (20.0.4):
+    - Realm (= 20.0.4)
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
@@ -29,12 +29,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
-  Google-Mobile-Ads-SDK: 14f57f2dc33532a24db288897e26494640810407
-  GoogleUserMessagingPlatform: a8b56893477f67212fbc8411c139e61d463349f5
-  Realm: a799b5f9145623fb0bfe149fe81422863631dd0f
-  RealmSwift: f8c4354ebd5053343e6ab9f4eda244145308a51e
+  Google-Mobile-Ads-SDK: 8429bef6ee1a4e322b0a5571b64217ed8317a3d5
+  GoogleUserMessagingPlatform: befe603da6501006420c206222acd449bba45a9c
+  Realm: 1fca83c42ac1d5c7767974882c8de5a7abca4d89
+  RealmSwift: 84f36320f6133dea78d05c55bb46bba4387d6828
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 4ea0dde3f19ba20d0165f1a02df084dc21685f9e
+PODFILE CHECKSUM: 04ec340a831d1c632ca321e33d6ba3551c1b1a26
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2

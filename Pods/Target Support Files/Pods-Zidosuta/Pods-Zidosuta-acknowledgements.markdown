@@ -209,11 +209,11 @@ Apache License
 
 ## Google-Mobile-Ads-SDK
 
-Copyright 2024 Google LLC
+Copyright 2026 Google LLC
 
 ## GoogleUserMessagingPlatform
 
-Copyright 2024 Google LLC
+Copyright 2025 Google LLC
 
 ## Realm
 

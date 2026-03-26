@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		21088586F2697E9A55EFF369 /* Pods_Zidosuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */; };
+		97DBE8473BE588C72DF7973F /* Pods_Zidosuta_ZidosutaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D3DF69FB04EBA91E41EB2B /* Pods_Zidosuta_ZidosutaUITests.framework */; };
+		DB52D99CCC4AAB85DACF5FEE /* Pods_ZidosutaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7AA16EA544E3873DEB6A28 /* Pods_ZidosutaTests.framework */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD152CDDC39700AF9404 /* ValidationError + ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
@@ -139,10 +141,12 @@
 
 /* Begin PBXFileReference section */
 		1D3216C0D309DB7A4495A782 /* Pods-ZidosutaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidosutaTests.debug.xcconfig"; path = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		43D3DF69FB04EBA91E41EB2B /* Pods_Zidosuta_ZidosutaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zidosuta_ZidosutaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B8929D833C11B369780701C /* Pods-Zidosuta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta.release.xcconfig"; path = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.release.xcconfig"; sourceTree = "<group>"; };
 		8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zidosuta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C80464C016CC56F0AA62A86 /* Pods-Zidosuta-ZidosutaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta-ZidosutaUITests.release.xcconfig"; path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CB24F8A72D8F9F13EF5C9284 /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DD7AA16EA544E3873DEB6A28 /* Pods_ZidosutaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZidosutaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BE357559E7AD61C391E8CB /* Pods-Zidosuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta.debug.xcconfig"; path = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.debug.xcconfig"; sourceTree = "<group>"; };
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD142CDDC39700AF9404 /* ValidationError + ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ValidationError + ValidationResult.swift"; sourceTree = "<group>"; };
@@ -265,7 +269,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FAECB4E12F0A3C59004A4223 /* TestPlans */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TestPlans; sourceTree = "<group>"; };
+		FAECB4E12F0A3C59004A4223 /* TestPlans */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
+			path = TestPlans;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB52D99CCC4AAB85DACF5FEE /* Pods_ZidosutaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97DBE8473BE588C72DF7973F /* Pods_Zidosuta_ZidosutaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +323,8 @@
 			isa = PBXGroup;
 			children = (
 				8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */,
+				43D3DF69FB04EBA91E41EB2B /* Pods_Zidosuta_ZidosutaUITests.framework */,
+				DD7AA16EA544E3873DEB6A28 /* Pods_ZidosutaTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -863,7 +877,6 @@
 				};
 			};
 			buildConfigurationList = FA68AF182A135F6F00B69D4A /* Build configuration list for PBXProject "Zidosuta" */;
-			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -871,6 +884,7 @@
 				ja,
 			);
 			mainGroup = FA68AF142A135F6F00B69D4A;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = FA68AF1E2A135F6F00B69D4A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
