@@ -13,7 +13,7 @@ class AdTableViewCell: UITableViewCell {
 
   // MARK: - Properties
 
-  @IBOutlet weak var bannerView: GADBannerView! {
+  @IBOutlet weak var bannerView: BannerView! {
     didSet {
       backgroundView?.backgroundColor = .OysterWhite
     }
