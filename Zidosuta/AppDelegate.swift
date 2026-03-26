@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // デフォルトは縦向き
     return .portrait
   }
-  
+
 
   // MARK: - LifeCycle
 

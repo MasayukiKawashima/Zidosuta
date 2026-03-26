@@ -22,7 +22,7 @@ class AdTableViewCell: UITableViewCell {
   @IBOutlet weak var placeholderView: UIView!
   @IBOutlet weak var placeholderLogo: UIImageView!
 
-  
+
   // MARK: - LifeCycle
 
   override func awakeFromNib() {

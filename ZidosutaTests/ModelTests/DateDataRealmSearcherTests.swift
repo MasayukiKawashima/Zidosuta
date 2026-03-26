@@ -39,7 +39,7 @@ class DateDataRealmSearcherTests: XCTestCase {
     super.tearDown()
   }
 
-  
+
   // MARK: - TestCases
 
   // searchForDateDataInRealmのテスト

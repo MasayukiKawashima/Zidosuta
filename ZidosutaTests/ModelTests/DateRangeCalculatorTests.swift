@@ -23,7 +23,7 @@ class DateRangeCalculatorTests: XCTestCase {
     dateRangeCalculator = DateRangeCalculator()
   }
 
-  
+
   // MARK: - TestCases
 
   // calculateMonthHalfDayRangeのテスト

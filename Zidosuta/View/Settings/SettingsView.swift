@@ -59,7 +59,7 @@ class SettingsView: UIView {
 
   }
 
-  
+
   // MARK: - Methods
 
   private func nibInit() {

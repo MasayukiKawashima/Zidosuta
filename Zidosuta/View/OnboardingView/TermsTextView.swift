@@ -48,7 +48,7 @@ struct TermsTextView: View {
     .padding(.horizontal, 10)
   }
 
-  
+
   // MARK: - Methods
 
   private func makeAttributedString() -> AttributedString {

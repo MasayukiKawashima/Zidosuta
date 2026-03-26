@@ -43,7 +43,7 @@ class LocalNotificationManagerTests: XCTestCase {
     super.tearDown()
   }
 
-  
+
   // MARK: - TestCases
 
   // setScheduleNotificationのテスト

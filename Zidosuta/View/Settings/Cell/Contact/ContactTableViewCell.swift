@@ -48,7 +48,7 @@ class ContactTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
-  
+
   // MARK: - Methods
 
   @IBAction func mailingButtonAction(_ sender: UIButton) {

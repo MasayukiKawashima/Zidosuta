@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsNavigationController: UINavigationController {
 
-  
+
   // MARK: - LifeCycle
 
   override func viewDidLoad() {

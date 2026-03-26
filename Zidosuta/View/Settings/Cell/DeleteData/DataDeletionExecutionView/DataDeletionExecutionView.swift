@@ -41,7 +41,7 @@ class DataDeletionExecutionView: UIView {
     nibInit()
   }
 
-  
+
   // MARK: - Methods
 
   private func nibInit() {

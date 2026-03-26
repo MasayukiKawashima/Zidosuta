@@ -54,7 +54,7 @@ class DeleteAllDataTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
-  
+
   // MARK: - Methods
 
   @IBAction func deleteButtonAction(_ sender: UIButton) {

@@ -18,7 +18,7 @@ class MainBackgroundView: UIView {
     }
   }
 
-  
+
   // MARK: - Methods
 
   private func setupMainBackgroundView() {

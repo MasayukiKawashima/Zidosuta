@@ -86,7 +86,7 @@ final class DataDeleteManagerTests: XCTestCase {
     }
   }
 
-  
+
   // MARK: - TestCases
 
   // deleteAllDataのテスト

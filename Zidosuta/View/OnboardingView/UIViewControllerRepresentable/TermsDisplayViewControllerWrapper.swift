@@ -15,7 +15,7 @@ struct TermsDisplayViewControllerWrapper: UIViewControllerRepresentable {
 
   let termsType: TermsDisplayViewController.TermsType
 
-  
+
   // MARK: - Methods
 
   func makeUIViewController(context: Context) -> TermsDisplayViewController {

@@ -36,7 +36,7 @@ class GraphNavigationController: UINavigationController {
     self.navigationController?.navigationBar.compactAppearance = appearance
   }
 
-  
+
   // MARK: - Methods
 
   // 現状必要のないメソッドだが将来の作業に備えて残しておく

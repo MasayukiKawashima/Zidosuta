@@ -41,7 +41,7 @@ class NotificationSettingView: UIView {
     nibInit()
   }
 
-  
+
   // MARK: - Methods
 
   private func nibInit() {
