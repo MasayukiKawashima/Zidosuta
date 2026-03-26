@@ -257,9 +257,9 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
       if let bannerID = fetchAdUnitID(key: "TopScreenBannerID") {
         cell.bannerView.adUnitID = bannerID
         let width = view.frame.size.width
-        cell.bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(width)
+        cell.bannerView.adSize = currentOrientationAnchoredAdaptiveBanner(width: width)
         cell.bannerView.rootViewController = self
-        cell.bannerView.load(GADRequest())
+        cell.bannerView.load(Request())
       }
 
       return cell
@@ -876,10 +876,10 @@ extension TopViewController: UITextFieldDelegate {
 
 // MARK: - GADBannerViewDelegate
 
-extension TopViewController: GADBannerViewDelegate {
+extension TopViewController: BannerViewDelegate {
 
   // 広告のロードが成功して、表示準備が完了したときに呼ばれるデリゲートメソッド
-  func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+  func bannerViewDidReceiveAd(_ bannerView: BannerView) {
 
     if let cell = topView.tableView.cellForRow(at: IndexPath(row: 3, section: 0)) as? AdTableViewCell {
       cell.placeholderView.isHidden = true
