@@ -26,7 +26,7 @@ class GraphContentCreator {
     self.realm = realm
     self.currentDate = currentDate
   }
-  
+
 
   // MARK: - Methods
 

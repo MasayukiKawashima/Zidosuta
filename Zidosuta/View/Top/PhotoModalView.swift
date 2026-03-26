@@ -81,7 +81,7 @@ class PhotoModalView: UIView {
     dismissButton.setImage(image, for: .normal)
   }
 
-  
+
   // MARK: - Methods
 
   @IBAction func dismissButtonAction(_ sender: Any) {

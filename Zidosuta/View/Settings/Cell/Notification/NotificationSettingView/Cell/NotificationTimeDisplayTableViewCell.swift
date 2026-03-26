@@ -20,7 +20,7 @@ class NotificationTimeDisplayTableViewCell: UITableViewCell {
   }
   @IBOutlet weak var timeLabel: UILabel!
 
-  
+
   // MARK: - LifeCycle
 
   override func awakeFromNib() {

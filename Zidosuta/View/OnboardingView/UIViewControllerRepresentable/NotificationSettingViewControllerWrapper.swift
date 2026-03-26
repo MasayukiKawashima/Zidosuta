@@ -14,7 +14,7 @@ struct NotificationSettingViewControllerWrapper: UIViewControllerRepresentable {
 
   @Binding var isPresented: Bool
 
-  
+
   // MARK: - Methods
 
   func makeCoordinator() -> Coordinator {

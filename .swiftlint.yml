@@ -38,7 +38,7 @@ excluded:
   - DerivedData
 
 vertical_whitespace:
-  max_empty_lines: 1
+  max_empty_lines: 2
 
 reporter: xcode
 

@@ -68,7 +68,7 @@ class TopViewController: UIViewController {
   }
   private var adTableViewCellHeight: CGFloat = 53.0
 
-  
+
   // MARK: - Enums
 
   // セル周り設定用の列挙体

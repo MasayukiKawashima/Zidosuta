@@ -34,7 +34,7 @@ class Settings: Object {
       return settings
     }
   }
-  
+
 
   // MARK: - Methods
 

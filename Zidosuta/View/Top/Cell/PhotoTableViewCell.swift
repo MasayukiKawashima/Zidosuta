@@ -96,7 +96,7 @@ class PhotoTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
-  
+
   // MARK: - Methods
 
   // photoImageView.imageの値が変わるたびに呼び出される処理

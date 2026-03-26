@@ -24,7 +24,7 @@ final class TopScreenUITests: XCTestCase {
     app.launch()
   }
 
-  
+
   // MARK: - TestCases
 
   // weightTextField

@@ -39,7 +39,7 @@ class TopView: UIView {
     self.nibInit()
   }
 
-  
+
   // MARK: - Methods
 
   private func nibInit() {

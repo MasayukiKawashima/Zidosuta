@@ -24,7 +24,7 @@ class IndexSetterTests: XCTestCase {
     indexSetter = IndexSetter()
   }
 
-  
+
   // MARK: -  TestCases
 
   // indexSettingのテスト

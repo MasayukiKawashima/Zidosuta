@@ -24,7 +24,7 @@ class ZidosutaUITestsLaunchTests: XCTestCase {
     continueAfterFailure = false
   }
 
-  
+
   // MARK: - TestCases
 
   func testLaunch() throws {

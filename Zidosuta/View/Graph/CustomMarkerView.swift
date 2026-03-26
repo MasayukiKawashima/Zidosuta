@@ -48,7 +48,7 @@ class CustomMarkerView: MarkerView {
   private var markerPath: UIBezierPath?
   var dataSource: CustomMarkerViewDataSource?
 
-  
+
   // MARK: - Methods
 
   override func refreshContent(entry: ChartDataEntry, highlight: Highlight) {

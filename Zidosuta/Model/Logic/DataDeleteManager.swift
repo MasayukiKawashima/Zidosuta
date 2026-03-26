@@ -23,7 +23,7 @@ class DataDeleteManager {
   // MARK: - Init
 
   private init() {}
-  
+
 
   // MARK: - Methods
 

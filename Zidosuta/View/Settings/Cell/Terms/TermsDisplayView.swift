@@ -34,7 +34,7 @@ class TermsDisplayView: UIView {
     nibInit()
   }
 
-  
+
   // MARK: - Methods
 
   private func nibInit() {

@@ -18,7 +18,7 @@ class ShadowLayerView: UIView {
     }
   }
 
-  
+
   // MARK: - Methods
 
   private func setupShadow() {

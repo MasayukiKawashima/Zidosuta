@@ -32,7 +32,7 @@ class MonthAdjusterTests: XCTestCase {
     date = dateFormatter.date(from: dateString)!
   }
 
-  
+
   // MARK: - TestCases
 
   // adjustMonthのテスト

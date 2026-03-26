@@ -34,7 +34,7 @@ class NotificationTableViewCell: UITableViewCell {
 
   var delegate: NotificationTableViewCellDelegate?
 
-  
+
   // MARK: - LifeCycle
 
   override func awakeFromNib() {
@@ -54,7 +54,7 @@ class NotificationTableViewCell: UITableViewCell {
     // Configure the view for the selected state
   }
 
-  
+
   // MARK: - Methods
 
   @IBAction func switchAction(_ sender: UISwitch) {

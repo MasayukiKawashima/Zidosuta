@@ -40,7 +40,7 @@ class DateSelectionView: UIView {
     super.init(coder: aDecoder)
     nibInit()
   }
-  
+
 
   // MARK: - Methods
 

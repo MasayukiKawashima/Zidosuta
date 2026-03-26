@@ -31,7 +31,7 @@ class LocalNotificationManager {
     let settings = Settings.shared
     return settings.notification!
   }
-  
+
 
   // MARK: - Methods
 
