@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIDesignRequiresCompatibility</key>
-	<true/>
 	<key>AdUnitIDs</key>
 	<dict>
 		<key>TopScreenBannerID</key>
@@ -38,10 +36,12 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneStoryboardFile</key>
-					<string>Main</string>
+					<string>Tab</string>
 				</dict>
 			</array>
 		</dict>
 	</dict>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 </dict>
 </plist>

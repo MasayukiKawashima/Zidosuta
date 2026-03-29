@@ -72,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     } else {
       // 2回目以降：メインコンテンツを表示
-      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let mainStoryboard = UIStoryboard(name: "Tab", bundle: nil)
       if let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
         window.rootViewController = tabBarController
       }
