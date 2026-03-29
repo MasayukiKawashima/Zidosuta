@@ -36,30 +36,6 @@
             </objects>
             <point key="canvasLocation" x="571" y="-17"/>
         </scene>
-        <!--TopVC-->
-        <scene sceneID="NZv-CY-ec8">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="TopVC" storyboardName="Top" referencedIdentifier="TopVC" id="IBG-hZ-FXZ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fit-4b-zbk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2381" y="-17"/>
-        </scene>
-        <!--PhotoModalVC-->
-        <scene sceneID="nYA-Zs-awo">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="PhotoModalVC" storyboardName="Top" referencedIdentifier="PhotoModalVC" id="Bf4-AI-Oam" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fg1-Ut-lDd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3238" y="-17"/>
-        </scene>
-        <!--DateSelection-->
-        <scene sceneID="IbH-GI-fnq">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DateSelection" storyboardName="Top" referencedIdentifier="DateSelection" id="thE-PP-utm" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4zX-Eh-xrk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4151" y="-17"/>
-        </scene>
         <!--GraphNavigationController-->
         <scene sceneID="pLR-BK-XW9">
             <objects>
@@ -70,14 +46,6 @@
             </objects>
             <point key="canvasLocation" x="570" y="696"/>
         </scene>
-        <!--GraphVC-->
-        <scene sceneID="fQB-Rc-wgk">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="GraphVC" storyboardName="Graph" referencedIdentifier="GraphVC" id="Bz2-zm-ZcD" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fkk-6s-ikj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2360.8695652173915" y="695.75892857142856"/>
-        </scene>
         <!--SettingsNavigationController-->
         <scene sceneID="Inf-26-uN2">
             <objects>
@@ -87,38 +55,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6E-Cb-0Ia" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="571.01449275362324" y="1391.5178571428571"/>
-        </scene>
-        <!--NotificationSetting-->
-        <scene sceneID="uXw-wS-dKL">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="NotificationSetting" storyboardName="Settings" referencedIdentifier="NotificationSetting" id="9qq-Y8-4GN" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vaU-Ii-kmK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2380" y="1392"/>
-        </scene>
-        <!--DataDeletionExecution-->
-        <scene sceneID="4Ub-OR-iQN">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="DataDeletionExecution" storyboardName="Settings" referencedIdentifier="DataDeletionExecution" id="l3L-Eq-AEM" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="btr-eU-S0R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3239" y="1392"/>
-        </scene>
-        <!--TermsDisplay-->
-        <scene sceneID="e2K-kS-be5">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="TermsDisplay" storyboardName="Settings" referencedIdentifier="TermsDisplay" id="rvs-Az-OcZ" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XSR-gV-nYj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4151" y="1392"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="5RP-jW-ZY3">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="Settings" storyboardName="Settings" referencedIdentifier="Settings" id="Dnf-DX-cbO" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MG3-39-5qg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1481.1594202898552" y="1391.5178571428571"/>
         </scene>
     </scenes>
 </document>
