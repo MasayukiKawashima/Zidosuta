@@ -398,7 +398,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   // モーダル表示するメソッド
   private func showPhotoModal(photoImage: UIImage) {
 
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let storyboard = UIStoryboard(name: "Top", bundle: nil)
     if let photoModalVC = storyboard.instantiateViewController(withIdentifier: "PhotoModalVC") as? PhotoModalViewController {
       photoModalVC.modalPresentationStyle = .fullScreen
       photoModalVC.photoModalView.photoImageView.image = photoImage

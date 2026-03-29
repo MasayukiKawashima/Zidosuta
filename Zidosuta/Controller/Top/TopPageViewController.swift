@@ -88,8 +88,8 @@ extension TopPageViewController: UIPageViewControllerDataSource {
   // TopPageのページング先のインスタンス生成処理
   private func instantiate(direction: TransitionDirection) -> TopViewController {
 
-    let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
-    let topVC = stroyBoard.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
+    let storyBoard = UIStoryboard(name: "Top", bundle: nil)
+    let topVC = storyBoard.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     let currentDate = getCurrentPageTopDateManager().date!
 
     switch direction {

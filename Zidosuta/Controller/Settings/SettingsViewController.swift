@@ -292,7 +292,7 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
     guard let cell = settingsView.tableView.cellForRow(at: IndexPath(row: row, section: section)) as? NotificationTableViewCell else { return }
     // スイッチをオンにしたら
     if isOn {
-      let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+      let storyBoard = UIStoryboard(name: "Settings", bundle: nil)
       guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "NotificationSetting") as? NotificationSettingViewController else { return }
       self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
       // 一秒間遅延させる
@@ -327,7 +327,7 @@ extension SettingsViewController: DeleteDataTableViewCellDelegate {
 
   func transitionButtonAction() {
 
-    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let storyBoard = UIStoryboard(name: "Settings", bundle: nil)
     guard let notificationSettingViewController = storyBoard.instantiateViewController(withIdentifier: "DataDeletionExecution") as? DataDeletionExecutionViewController else { return }
     self.navigationController?.pushViewController(notificationSettingViewController, animated: true)
   }
@@ -354,7 +354,7 @@ extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicy
 
   func initTermsDisplayViewController() -> TermsDisplayViewController {
 
-    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+    let storyBoard = UIStoryboard(name: "Settings", bundle: nil)
     let termsDisplayViewController = storyBoard.instantiateViewController(withIdentifier: "TermsDisplay") as! TermsDisplayViewController
     return termsDisplayViewController
   }
