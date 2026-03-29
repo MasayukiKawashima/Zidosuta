@@ -46,9 +46,7 @@
 		FA5DF1C92D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DF1C82D3CFB6A006F5ECA /* UIButton + AdjustmentOfappearance.swift */; };
 		FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF202A135F6F00B69D4A /* AppDelegate.swift */; };
 		FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */; };
-		FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF262A135F6F00B69D4A /* Main.storyboard */; };
 		FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF292A135F7100B69D4A /* Assets.xcassets */; };
-		FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */; };
 		FA68AF442A135F7200B69D4A /* ZidosutaTestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF432A135F7200B69D4A /* ZidosutaTestsLaunchTests.swift */; };
 		FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */; };
 		FA7F0B392CC21211000CB10C /* PhotoModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA7F0B382CC21211000CB10C /* PhotoModalView.xib */; };
@@ -185,9 +183,7 @@
 		FA68AF1D2A135F6F00B69D4A /* Zidosuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zidosuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF202A135F6F00B69D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA68AF272A135F6F00B69D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA68AF292A135F7100B69D4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FA68AF2C2A135F7100B69D4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA68AF2E2A135F7100B69D4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA68AF332A135F7200B69D4A /* ZidosutaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZidosutaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF3D2A135F7200B69D4A /* ZidosutaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZidosutaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,8 +201,6 @@
 		FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
 		FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
 		FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + setStatusBarBackgroundColor.swift"; sourceTree = "<group>"; };
-		FA9366C12D68B662007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		FA9366C22D68B663007B14C1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
 		FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationRegisterTableViewCell.xib; sourceTree = "<group>"; };
 		FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseTableViewCell.swift; sourceTree = "<group>"; };
@@ -269,10 +263,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		FA87FF7D2F7940670067EAD5 /* Storyboard */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		FAECB4E12F0A3C59004A4223 /* TestPlans */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
 			path = TestPlans;
 			sourceTree = "<group>";
 		};
@@ -427,9 +424,8 @@
 		FA41A2FA2A1C88D5008DC83E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA87FF7D2F7940670067EAD5 /* Storyboard */,
 				FA80690B2EE67E530013CBB3 /* Other */,
-				FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */,
-				FA68AF262A135F6F00B69D4A /* Main.storyboard */,
 				FACA1A3F2D2398AA00B2768D /* OnboardingView */,
 				FAFF6F562A2071C70092A1A3 /* Top */,
 				FABF36042A283BCC007D91DB /* Graph */,
@@ -808,6 +804,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				FA87FF7D2F7940670067EAD5 /* Storyboard */,
+			);
 			name = Zidosuta;
 			productName = DietApp;
 			productReference = FA68AF1D2A135F6F00B69D4A /* Zidosuta.app */;
@@ -904,7 +903,6 @@
 				FAFF6F5A2A21ACE40092A1A3 /* WeightTableViewCell.xib in Resources */,
 				FA2211182CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.xib in Resources */,
 				FA32F4B62A32BCF50058FD32 /* SettingsView.xib in Resources */,
-				FA68AF2D2A135F7100B69D4A /* LaunchScreen.storyboard in Resources */,
 				FA9E8C392D11AD5E00A05E55 /* TermsOfUseTableViewCell.xib in Resources */,
 				FA22111C2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.xib in Resources */,
 				FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */,
@@ -916,7 +914,6 @@
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
 				FA8069182EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib in Resources */,
-				FA68AF282A135F6F00B69D4A /* Main.storyboard in Resources */,
 				FA9E8C422D14643E00A05E55 /* TermsDisplayView.xib in Resources */,
 				FA9E8C3C2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.xib in Resources */,
 				FA8069212EE6868B0013CBB3 /* DateEditTableViewCell.xib in Resources */,
@@ -1000,9 +997,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1017,9 +1018,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta/Pods-Zidosuta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1034,9 +1039,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1073,9 +1082,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1222,27 +1235,6 @@
 			targetProxy = FA68AF3E2A135F7200B69D4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		FA68AF262A135F6F00B69D4A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA68AF272A135F6F00B69D4A /* Base */,
-				FA9366C22D68B663007B14C1 /* ja */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FA68AF2B2A135F7100B69D4A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FA68AF2C2A135F7100B69D4A /* Base */,
-				FA9366C12D68B662007B14C1 /* ja */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FA68AF452A135F7200B69D4A /* Debug */ = {
