@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -67,7 +68,7 @@
         <!--トップ-->
         <scene sceneID="icR-DE-8nb">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-3an-lQ-V07" automaticallyAdjustsScrollViewInsets="NO" id="3an-lQ-V07" customClass="TopNavigationController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TopNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="3an-lQ-V07" customClass="TopNavigationController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="トップ" image="house" catalog="system" selectedImage="house" id="noS-pd-IpZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xsN-Db-zYa">

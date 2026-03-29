@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -72,7 +73,7 @@
         <!--設定-->
         <scene sceneID="R54-Zi-dbb">
             <objects>
-                <navigationController storyboardIdentifier="UINavigationController-Vvf-7G-zEG" automaticallyAdjustsScrollViewInsets="NO" id="Vvf-7G-zEG" customClass="SettingsNavigationController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Vvf-7G-zEG" customClass="SettingsNavigationController" customModule="Zidosuta" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="設定" image="gearshape" catalog="system" id="yok-7R-Obr"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jd2-7p-XMa">
