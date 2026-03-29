@@ -61,6 +61,11 @@
 		FA8069292EE686C60013CBB3 /* ConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */; };
 		FA80692C2EE6F84F0013CBB3 /* DateSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */; };
 		FA80692E2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */; };
+		FA87003C2F7975E00067EAD5 /* Graph.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8700352F7975E00067EAD5 /* Graph.storyboard */; };
+		FA87003D2F7975E00067EAD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8700362F7975E00067EAD5 /* LaunchScreen.storyboard */; };
+		FA87003E2F7975E00067EAD5 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8700372F7975E00067EAD5 /* Settings.storyboard */; };
+		FA87003F2F7975E00067EAD5 /* Tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8700382F7975E00067EAD5 /* Tab.storyboard */; };
+		FA8700402F7975E00067EAD5 /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8700392F7975E00067EAD5 /* Top.storyboard */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
 		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
 		FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */; };
@@ -201,6 +206,12 @@
 		FA8069272EE686C60013CBB3 /* ConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmTableViewCell.xib; sourceTree = "<group>"; };
 		FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectionViewController.swift; sourceTree = "<group>"; };
 		FA80692D2EE7F59A0013CBB3 /* UIViewController + setStatusBarBackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + setStatusBarBackgroundColor.swift"; sourceTree = "<group>"; };
+		FA8700352F7975E00067EAD5 /* Graph.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Graph.storyboard; sourceTree = "<group>"; };
+		FA8700372F7975E00067EAD5 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		FA8700382F7975E00067EAD5 /* Tab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tab.storyboard; sourceTree = "<group>"; };
+		FA8700392F7975E00067EAD5 /* Top.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Top.storyboard; sourceTree = "<group>"; };
+		FA87003A2F7975E00067EAD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA87003B2F7975E00067EAD5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
 		FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationRegisterTableViewCell.xib; sourceTree = "<group>"; };
 		FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseTableViewCell.swift; sourceTree = "<group>"; };
@@ -263,11 +274,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		FA87FF7D2F7940670067EAD5 /* Storyboard */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Storyboard;
-			sourceTree = "<group>";
-		};
 		FAECB4E12F0A3C59004A4223 /* TestPlans */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = TestPlans;
@@ -424,7 +430,7 @@
 		FA41A2FA2A1C88D5008DC83E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA87FF7D2F7940670067EAD5 /* Storyboard */,
+				FA8700412F7975FD0067EAD5 /* Storyboard */,
 				FA80690B2EE67E530013CBB3 /* Other */,
 				FACA1A3F2D2398AA00B2768D /* OnboardingView */,
 				FAFF6F562A2071C70092A1A3 /* Top */,
@@ -552,6 +558,18 @@
 				FA80692B2EE6F84F0013CBB3 /* DateSelectionViewController.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		FA8700412F7975FD0067EAD5 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FA8700352F7975E00067EAD5 /* Graph.storyboard */,
+				FA8700362F7975E00067EAD5 /* LaunchScreen.storyboard */,
+				FA8700372F7975E00067EAD5 /* Settings.storyboard */,
+				FA8700382F7975E00067EAD5 /* Tab.storyboard */,
+				FA8700392F7975E00067EAD5 /* Top.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 		FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */ = {
@@ -804,9 +822,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				FA87FF7D2F7940670067EAD5 /* Storyboard */,
-			);
 			name = Zidosuta;
 			productName = DietApp;
 			productReference = FA68AF1D2A135F6F00B69D4A /* Zidosuta.app */;
@@ -911,6 +926,11 @@
 				FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */,
 				FAC9EF3B2D0C4EC700DE1E64 /* DeleteAllDataTableViewCell.xib in Resources */,
 				FA8069292EE686C60013CBB3 /* ConfirmTableViewCell.xib in Resources */,
+				FA87003C2F7975E00067EAD5 /* Graph.storyboard in Resources */,
+				FA87003D2F7975E00067EAD5 /* LaunchScreen.storyboard in Resources */,
+				FA87003E2F7975E00067EAD5 /* Settings.storyboard in Resources */,
+				FA87003F2F7975E00067EAD5 /* Tab.storyboard in Resources */,
+				FA8700402F7975E00067EAD5 /* Top.storyboard in Resources */,
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
 				FA8069182EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib in Resources */,
@@ -1235,6 +1255,18 @@
 			targetProxy = FA68AF3E2A135F7200B69D4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA8700362F7975E00067EAD5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA87003A2F7975E00067EAD5 /* Base */,
+				FA87003B2F7975E00067EAD5 /* ja */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FA68AF452A135F7200B69D4A /* Debug */ = {
