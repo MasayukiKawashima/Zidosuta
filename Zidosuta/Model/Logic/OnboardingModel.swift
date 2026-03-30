@@ -14,7 +14,7 @@ class OnboardingModel: ObservableObject {
 
     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
        let window = windowScene.windows.first {
-      let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+      let mainStoryboard = UIStoryboard(name: "Tab", bundle: nil)
       if let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
         window.rootViewController = tabBarController
 

@@ -84,8 +84,8 @@ extension GraphPageViewController: UIPageViewControllerDataSource {
     // 現在のViewControllerのindexを取得
     let currentGraphVC = self.viewControllers?.first! as! GraphViewController
     // 次のVCの作成
-    let stroyBoard = UIStoryboard(name: "Main", bundle: nil)
-    let graphVC = stroyBoard.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
+    let storyBoard = UIStoryboard(name: "Graph", bundle: nil)
+    let graphVC = storyBoard.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
 
     switch direction {
     case .next:
