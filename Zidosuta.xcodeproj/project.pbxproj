@@ -67,6 +67,7 @@
 		FA8700402F7975E00067EAD5 /* Top.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8700392F7975E00067EAD5 /* Top.storyboard */; };
 		FA8700452F7A2CF90067EAD5 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8700442F7A2CF90067EAD5 /* ValidationError.swift */; };
 		FA8700472F7A2D190067EAD5 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8700462F7A2D190067EAD5 /* ValidationResult.swift */; };
+		FA87004A2F7A55F60067EAD5 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8700492F7A55F50067EAD5 /* NibLoadable.swift */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
 		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
 		FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */; };
@@ -214,6 +215,7 @@
 		FA87003B2F7975E00067EAD5 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FA8700442F7A2CF90067EAD5 /* ValidationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
 		FA8700462F7A2D190067EAD5 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		FA8700492F7A55F50067EAD5 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
 		FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationRegisterTableViewCell.xib; sourceTree = "<group>"; };
 		FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseTableViewCell.swift; sourceTree = "<group>"; };
@@ -434,8 +436,9 @@
 		FA41A2FA2A1C88D5008DC83E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA8700482F7A559D0067EAD5 /* Base */,
 				FA8700412F7975FD0067EAD5 /* Storyboard */,
-				FA80690B2EE67E530013CBB3 /* Other */,
+				FA80690B2EE67E530013CBB3 /* OtherView */,
 				FACA1A3F2D2398AA00B2768D /* OnboardingView */,
 				FAFF6F562A2071C70092A1A3 /* Top */,
 				FABF36042A283BCC007D91DB /* Graph */,
@@ -525,12 +528,12 @@
 			path = ZidosutaUITests;
 			sourceTree = "<group>";
 		};
-		FA80690B2EE67E530013CBB3 /* Other */ = {
+		FA80690B2EE67E530013CBB3 /* OtherView */ = {
 			isa = PBXGroup;
 			children = (
 				FA8069142EE685C50013CBB3 /* DateSelectionView */,
 			);
-			path = Other;
+			path = OtherView;
 			sourceTree = "<group>";
 		};
 		FA8069142EE685C50013CBB3 /* DateSelectionView */ = {
@@ -582,6 +585,14 @@
 				FA9F9CEC2CF5A8540013886A /* TransitionDirection.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		FA8700482F7A559D0067EAD5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				FA8700492F7A55F50067EAD5 /* NibLoadable.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */ = {
@@ -1190,6 +1201,7 @@
 				FAC9EF292D0C11A000DE1E64 /* Notification.swift in Sources */,
 				FAC9EF2A2D0C11A000DE1E64 /* DateData.swift in Sources */,
 				FAC9EF2B2D0C11A000DE1E64 /* Settings.swift in Sources */,
+				FA87004A2F7A55F60067EAD5 /* NibLoadable.swift in Sources */,
 				FAC9EF222D0C0B5C00DE1E64 /* TopNavigationController.swift in Sources */,
 				FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */,
 				FA8069112EE67FEE0013CBB3 /* DateSelectionView.swift in Sources */,

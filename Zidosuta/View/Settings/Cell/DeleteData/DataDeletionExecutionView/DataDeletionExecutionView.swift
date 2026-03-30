@@ -44,6 +44,8 @@ class DataDeletionExecutionView: UIView {
 
   // MARK: - Methods
 
+  // REFACTOR: init共通化、TableViewの設定分離
+
   private func nibInit() {
 
     // xibファイルのインスタンス作成
