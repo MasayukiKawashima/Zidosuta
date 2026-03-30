@@ -106,7 +106,7 @@ final class MemoTextFieldValidationTest: XCTestCase {
     }
   }
 
-  func testMemovalidator_InvalidInput_ShouldReturnInvalid() {
+  func testMemoValidator_InvalidInput_ShouldReturnInvalid() {
 
     let testCases = [
       ("あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへもまみむめもやゆよらりるれろわをん", MemoValidationError.exceedsMaximumCharacterLength),

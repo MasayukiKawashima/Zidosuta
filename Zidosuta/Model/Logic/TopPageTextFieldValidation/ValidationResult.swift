@@ -1,15 +1,11 @@
 //
-//  ValidationError + ValidationResult.swift
+//  ValidationResult.swift
 //  Zidosuta
 //
-//  Created by 川島真之 on 2024/11/08.
+//  Created by 川島真之 on 2026/03/30.
 //
 
 import Foundation
-
-protocol ValidationError: Swift.Error {
-
-}
 
 enum ValidationResult {
   case valid

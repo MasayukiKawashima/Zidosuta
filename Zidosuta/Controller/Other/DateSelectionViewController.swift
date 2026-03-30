@@ -12,7 +12,7 @@ class DateSelectionViewController: UIViewController {
 
   // MARK: - Properties
 
-  private var dateSeletionView = DateSelectionView()
+  private var dateSelectionView = DateSelectionView()
 
   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
     return .portrait
@@ -30,7 +30,7 @@ class DateSelectionViewController: UIViewController {
 
   private var selectedDateDisplayTableViewCellHeight: CGFloat = 90.0
   private var dateEditTableViewCellHeight: CGFloat = 200.0
-  private var confirmTableViewCelllHeight: CGFloat = 60.0
+  private var confirmTableViewCellHeight: CGFloat = 60.0
 
 
   // MARK: - Enums
@@ -38,7 +38,7 @@ class DateSelectionViewController: UIViewController {
   enum DateSelectionPageCell: Int {
     case selectedDateDisplayTableViewCell = 0
     case dateEditTableViewCellHeight
-    case confirmTableViewCelllHeight
+    case confirmTableViewCellHeight
 
      var values: (section: Int, row: Int) {
       switch self {
@@ -46,7 +46,7 @@ class DateSelectionViewController: UIViewController {
         return (section: 0, row: 0)
       case .dateEditTableViewCellHeight:
         return (section: 0, row: 1)
-      case .confirmTableViewCelllHeight:
+      case .confirmTableViewCellHeight:
         return (section: 1, row: 0)
       }
     }
@@ -58,12 +58,12 @@ class DateSelectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-      dateSeletionView.tableView.delegate = self
-      dateSeletionView.tableView.dataSource = self
-      dateSeletionView.tableView.isScrollEnabled = false
-      dateSeletionView.tableView.rowHeight = UITableView.automaticDimension
+      dateSelectionView.tableView.delegate = self
+      dateSelectionView.tableView.dataSource = self
+      dateSelectionView.tableView.isScrollEnabled = false
+      dateSelectionView.tableView.rowHeight = UITableView.automaticDimension
 
-      // NavigtionBarの戻るボタンの色を変更
+      // NavigationBarの戻るボタンの色を変更
       self.navigationController?.navigationBar.tintColor = UIColor.white
 
         // Do any additional setup after loading the view.
@@ -71,7 +71,7 @@ class DateSelectionViewController: UIViewController {
 
   override func loadView() {
 
-    view = dateSeletionView
+    view = dateSelectionView
   }
 
     /*
@@ -150,7 +150,7 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
     let cellRow = DateSelectionPageCell.selectedDateDisplayTableViewCell.values.row
     let cellSection = DateSelectionPageCell.selectedDateDisplayTableViewCell.values.section
 
-    guard let selectedDateDisplayTableViewCell = dateSeletionView.tableView.cellForRow(at: IndexPath(row: cellRow, section: cellSection)) as? SelectedDateDisplayTableViewCell else { return }
+    guard let selectedDateDisplayTableViewCell = dateSelectionView.tableView.cellForRow(at: IndexPath(row: cellRow, section: cellSection)) as? SelectedDateDisplayTableViewCell else { return }
 
     selectedDate = sender.date
     let combinedString = selectedDate.convertDateToSelectedDateString()
@@ -186,7 +186,7 @@ extension DateSelectionViewController: UITableViewDelegate, UITableViewDataSourc
         return dateEditTableViewCellHeight
       }
     case 1:
-      return confirmTableViewCelllHeight
+      return confirmTableViewCellHeight
     default:
       return 0
     }

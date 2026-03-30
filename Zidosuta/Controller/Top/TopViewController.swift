@@ -257,6 +257,8 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
       if let bannerID = fetchAdUnitID(key: "TopScreenBannerID") {
         cell.bannerView.adUnitID = bannerID
         let width = view.frame.size.width
+
+        // NOTE: GADLargeAnchoredAdaptiveBannerAdSizeWithWidthへの移行は保留中。広告のサイズが変更される可能性があるため。
         cell.bannerView.adSize = currentOrientationAnchoredAdaptiveBanner(width: width)
         cell.bannerView.rootViewController = self
         cell.bannerView.load(Request())
@@ -486,7 +488,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       let dateDataRealmSearcher = DateDataRealmSearcher()
       let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: topDateManager.date)
 
-      handlePhotoStrorageAndRealm(results: results, pickedImage: pickedImage, imageInfo: imageInfo)
+      handlePhotoStorageAndRealm(results: results, pickedImage: pickedImage, imageInfo: imageInfo)
       // 取得した写真の表示処理
       // 現在表示されているPhotoTAbleViewCellのインスタンス取得
       let photoTableViewCell = topView.tableView.visibleCells[2] as! PhotoTableViewCell
@@ -513,7 +515,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
           let dateDataRealmSearcher = DateDataRealmSearcher()
           let results = dateDataRealmSearcher.searchForDateDataInRealm(currentDate: self.topDateManager.date)
 
-          self.handlePhotoStrorageAndRealm(results: results, pickedImage: pickedImage, imageInfo: imageInfo)
+          self.handlePhotoStorageAndRealm(results: results, pickedImage: pickedImage, imageInfo: imageInfo)
 
           // UI更新
           if let photoTableViewCell = self.topView.tableView.visibleCells[2] as? PhotoTableViewCell {
@@ -542,7 +544,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
 
   // 写真選択後のドキュメントディレクトリとRealmのハンドリング
-  private func handlePhotoStrorageAndRealm(results: Results<DateData>, pickedImage: UIImage, imageInfo: (fileName: String, path: URL)) {
+  private func handlePhotoStorageAndRealm(results: Results<DateData>, pickedImage: UIImage, imageInfo: (fileName: String, path: URL)) {
 
     // 検索結果の件数を確認
     let resultsCount = results.count

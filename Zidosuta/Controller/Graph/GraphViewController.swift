@@ -318,9 +318,6 @@ extension GraphViewController: UIGestureRecognizerDelegate {
 
   func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                          shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-
-    // グラフ上でのタップやズームなどの操作は維持しつつ、
-    // PageViewControllerのスワイプジェスチャーとの同時認識を許可
     return true
   }
 }

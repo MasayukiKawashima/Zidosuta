@@ -1,5 +1,5 @@
 //
-//  UIButton + AdjustmentOfappearance.swift
+//  UIButton+AdjustmentOfAppearance.swift
 //  Zidosuta
 //
 //  Created by 川島真之 on 2025/01/19.

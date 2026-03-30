@@ -1,18 +1,18 @@
 //
-//  DataDeletionExecutionView.swift
+//  DateSelectionView.swift
 //  Zidosuta
 //
-//  Created by 川島真之 on 2024/12/13.
+//  Created by 川島真之 on 2025/12/08.
 //
 
 import UIKit
 
-class DataDeletionExecutionView: UIView, NibLoadable {
+class DateSelectionView: UIView, NibLoadable {
 
 
   // MARK: - Properties
 
-  private let cellIdentifiers = ["DeleteAllDataTableViewCell"]
+  private let cellIdentifiers = ["SelectedDateDisplayTableViewCell", "DateEditTableViewCell", "ConfirmTableViewCell"]
 
   @IBOutlet weak var tableView: UITableView! {
     didSet {
@@ -38,14 +38,12 @@ class DataDeletionExecutionView: UIView, NibLoadable {
 
   // MARK: - Methods
 
-
   private func setUpTableView() {
 
     for identifier in cellIdentifiers {
       let nib = UINib(nibName: identifier, bundle: nil)
       tableView.register(nib, forCellReuseIdentifier: identifier)
     }
-
     tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
     tableView.separatorStyle = .none

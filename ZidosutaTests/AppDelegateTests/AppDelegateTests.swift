@@ -14,25 +14,15 @@ final class AppDelegateTests: XCTestCase {
   // MARK: - Properties
 
   var appDelegate: AppDelegate!
-
   var window: UIWindow!
-
   var tabBarController: TabBarController!
-
   var topNavigationController: TopNavigationController!
-
   var topPageviewController: TopPageViewController!
-
   var topViewController: TopViewController!
-
   var graphNavigationController: GraphNavigationController!
-
   var graphPageViewController: GraphPageViewController!
-
   var graphViewController: GraphViewController!
-
   var settingsNavigationController: SettingsNavigationController!
-
   var settingsViewController: SettingsViewController!
 
 

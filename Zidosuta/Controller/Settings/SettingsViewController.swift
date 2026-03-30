@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
 
   private var TableViewCellHeight: CGFloat = 60.0
 
-  private let contactEmailAdress = "info.zidosuta@gmail.com"
+  private let contactEmailAddress = "info.zidosuta@gmail.com"
 
 
   // MARK: - Enums
@@ -372,7 +372,7 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTa
       // 使えるなら
       let mail = MFMailComposeViewController()
       mail.mailComposeDelegate = self
-      mail.setToRecipients([contactEmailAdress])
+      mail.setToRecipients([contactEmailAddress])
       present(mail, animated: true, completion: nil)
     } else {
       // 使えないなら

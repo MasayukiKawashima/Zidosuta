@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopView: UIView {
+class TopView: UIView, NibLoadable {
 
 
   // MARK: - Properties
@@ -16,11 +16,7 @@ class TopView: UIView {
 
   @IBOutlet weak var tableView: UITableView! {
     didSet {
-      // 各セルの登録
-      for identifier in cellIdentifiers {
-        let nib = UINib(nibName: identifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: identifier)
-      }
+      setUpTableView()
     }
   }
 
@@ -30,29 +26,25 @@ class TopView: UIView {
   override init(frame: CGRect) {
 
     super.init(frame: frame)
-    self.nibInit()
+    nibInit()
   }
 
   required init?(coder aDecoder: NSCoder) {
 
     super.init(coder: aDecoder)
-    self.nibInit()
+    nibInit()
   }
 
 
   // MARK: - Methods
 
-  private func nibInit() {
+  private func setUpTableView() {
 
-    // xibファイルのインスタンス作成
-    let nib = UINib(nibName: "TopView", bundle: nil)
-    guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
-    // viewのサイズを画面のサイズと一緒にする
-    view.frame = self.bounds
-    // サイズの自動調整
-    view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    for identifier in cellIdentifiers {
+      let nib = UINib(nibName: identifier, bundle: nil)
+      tableView.register(nib, forCellReuseIdentifier: identifier)
+    }
+
     tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-
-    self.addSubview(view)
   }
 }
