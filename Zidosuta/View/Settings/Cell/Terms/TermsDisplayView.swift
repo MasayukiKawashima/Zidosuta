@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class TermsDisplayView: UIView {
+class TermsDisplayView: UIView, NibLoadable {
 
 
   // MARK: - Properties
@@ -37,15 +37,4 @@ class TermsDisplayView: UIView {
 
   // MARK: - Methods
 
-  private func nibInit() {
-
-    // xibファイルのインスタンス作成
-    let nib = UINib(nibName: "TermsDisplayView", bundle: nil)
-    guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
-    // viewのサイズを画面のサイズと一緒にする
-    view.frame = self.bounds
-    // サイズの自動調整
-    view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    self.addSubview(view)
-  }
 }

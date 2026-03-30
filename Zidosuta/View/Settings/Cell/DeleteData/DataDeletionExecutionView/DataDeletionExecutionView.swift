@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DataDeletionExecutionView: UIView {
+class DataDeletionExecutionView: UIView, NibLoadable {
 
 
   // MARK: - Properties
@@ -16,13 +16,7 @@ class DataDeletionExecutionView: UIView {
 
   @IBOutlet weak var tableView: UITableView! {
     didSet {
-      // 各セルの登録
-      for identifier in cellIdentifiers {
-        let nib = UINib(nibName: identifier, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: identifier)
-        tableView.backgroundColor = .systemGray6
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-      }
+      setUpTableView()
     }
   }
 
@@ -44,20 +38,18 @@ class DataDeletionExecutionView: UIView {
 
   // MARK: - Methods
 
-  // REFACTOR: init共通化、TableViewの設定分離
 
-  private func nibInit() {
+  private func setUpTableView() {
 
-    // xibファイルのインスタンス作成
-    let nib = UINib(nibName: "DataDeletionExecutionView", bundle: nil)
-    guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
-    // viewのサイズを画面のサイズと一緒にする
-    view.frame = self.bounds
-    // サイズの自動調整
-    view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    for identifier in cellIdentifiers {
+      let nib = UINib(nibName: identifier, bundle: nil)
+      tableView.register(nib, forCellReuseIdentifier: identifier)
+    }
+
     tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    tableView.separatorStyle = .none
 
-    self.addSubview(view)
+    tableView.separatorStyle = .none
+    tableView.backgroundColor = .systemGray6
+    tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
   }
 }

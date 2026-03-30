@@ -20,7 +20,7 @@ extension NibLoadable {
   }
 
   func nibInit() {
-    
+
     let nib = UINib(nibName: Self.nibName, bundle: nil)
     guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else {
       print("nibの初期化失敗：\(Self.nibName)")
