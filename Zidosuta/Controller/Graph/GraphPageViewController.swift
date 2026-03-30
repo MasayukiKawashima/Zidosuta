@@ -205,14 +205,14 @@ extension GraphPageViewController {
 
     if sender.tag == 1 {
       // 次のページのindex番号を作成し、それをもとに次のページの日付データの更新
-      let nextPageindex = currentVC.graphDateManager.index + 1
-      graphVC.graphDateManager.updateDate(index: nextPageindex)
+      let nextPageIndex = currentVC.graphDateManager.index + 1
+      graphVC.graphDateManager.updateDate(index: nextPageIndex)
       navigationBarTitleSetting(currentVC: graphVC)
       setViewControllers([graphVC], direction: .forward, animated: true)
     }
     if sender.tag == 2 {
-      let nextPageindex = currentVC.graphDateManager.index - 1
-      graphVC.graphDateManager.updateDate(index: nextPageindex)
+      let nextPageIndex = currentVC.graphDateManager.index - 1
+      graphVC.graphDateManager.updateDate(index: nextPageIndex)
       navigationBarTitleSetting(currentVC: graphVC)
       setViewControllers([graphVC], direction: .reverse, animated: true)
     }

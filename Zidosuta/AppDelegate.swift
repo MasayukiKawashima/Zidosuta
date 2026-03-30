@@ -5,6 +5,8 @@
 //  Created by 川島真之 on 2023/05/16.
 //
 
+// FIXME: - scene-basedライフサイクルへの移行
+
 import UIKit
 import RealmSwift
 import GoogleMobileAds
