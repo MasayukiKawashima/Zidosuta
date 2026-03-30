@@ -1,5 +1,5 @@
 //
-//  Date + ConvertDateToNotificationTimeString.swift
+//  Date+ConvertDateToNotificationTimeString.swift
 //  Zidosuta
 //
 //  Created by 川島真之 on 2024/12/09.

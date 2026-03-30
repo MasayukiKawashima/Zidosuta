@@ -257,6 +257,8 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
       if let bannerID = fetchAdUnitID(key: "TopScreenBannerID") {
         cell.bannerView.adUnitID = bannerID
         let width = view.frame.size.width
+
+        // NOTE: GADLargeAnchoredAdaptiveBannerAdSizeWithWidthへの移行は保留中。広告のサイズが変更される可能性があるため。
         cell.bannerView.adSize = currentOrientationAnchoredAdaptiveBanner(width: width)
         cell.bannerView.rootViewController = self
         cell.bannerView.load(Request())

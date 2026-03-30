@@ -5,10 +5,11 @@
 //  Created by 川島真之 on 2024/11/08.
 //
 
+// REFACTOR: ファイル切り分け、配置場所検討
+
 import Foundation
 
 protocol ValidationError: Swift.Error {
-
 }
 
 enum ValidationResult {

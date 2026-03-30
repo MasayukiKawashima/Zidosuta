@@ -27,7 +27,7 @@ class DataDeleteManager {
 
   // MARK: - Methods
 
-  private func clearDocumentDirectroy() -> Bool {
+  private func clearDocumentDirectory() -> Bool {
 
     do {
       // ドキュメントディレクトリのパスを取得
@@ -96,7 +96,7 @@ class DataDeleteManager {
 
     let DeleteRealmObjectResult = deleteRealmObject()
     removeNotificationRequests()
-    let clearDocumentDirectoryResult = clearDocumentDirectroy()
+    let clearDocumentDirectoryResult = clearDocumentDirectory()
     if DeleteRealmObjectResult && clearDocumentDirectoryResult {
       return true
     }

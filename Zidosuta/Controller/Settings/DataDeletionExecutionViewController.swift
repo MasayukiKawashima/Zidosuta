@@ -93,14 +93,14 @@ extension DataDeletionExecutionViewController: UITableViewDelegate, UITableViewD
   func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
 
     if section == DataDeletionExecutionViewCell.deleteAllDataTableViewCell.values.section {
-      let footerView = setUpDeleteionDescriptionFooterView()
+      let footerView = setUpDeletionDescriptionFooterView()
       return footerView
     }
     return nil
   }
 
-  // 削除の説明文を表示するフッターを作成
-  private func setUpDeleteionDescriptionFooterView() -> UIView {
+  // 削除の説明文を表示するフッターを作成 Deletion
+  private func setUpDeletionDescriptionFooterView() -> UIView {
 
     let footerView = UIView()
     let textView = UITextView()

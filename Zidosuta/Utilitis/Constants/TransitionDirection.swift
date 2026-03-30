@@ -7,6 +7,8 @@
 
 // 画面遷移のボタン等で使用される列挙体
 
+// REFACTOR: 配置場所検討
+
 enum TransitionDirection: Int {
   case next
   case previous

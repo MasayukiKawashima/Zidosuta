@@ -1,5 +1,5 @@
 //
-//  UIViewController + setStatusBarBackgroundColor.swift
+//  UIViewController+setStatusBarBackgroundColor.swift
 //  Zidosuta
 //
 //  Created by 川島真之 on 2025/12/09.
