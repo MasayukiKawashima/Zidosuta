@@ -629,7 +629,6 @@
 			children = (
 				FA8700432F7A2C740067EAD5 /* Enums */,
 				FA9F9CE52CF44E690013886A /* Extensions */,
-				FA9F9CEE2CF5A91E0013886A /* Constants */,
 			);
 			path = Utilitis;
 			sourceTree = "<group>";
@@ -644,13 +643,6 @@
 				FA80692D2EE7F59A0013CBB3 /* UIViewController+setStatusBarBackgroundColor.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		FA9F9CEE2CF5A91E0013886A /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Constants;
 			sourceTree = "<group>";
 		};
 		FAAB98552D1864F70034F243 /* Contact */ = {
@@ -1422,7 +1414,7 @@
 				CODE_SIGN_ENTITLEMENTS = Zidosuta/Zidosuta.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = BNT6DPTTX4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zidosuta/Info.plist;
@@ -1440,7 +1432,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.Kawashima.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1464,7 +1456,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = BNT6DPTTX4;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1483,7 +1475,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.Kawashima.Zidosuta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
