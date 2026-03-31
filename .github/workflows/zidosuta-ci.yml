@@ -8,6 +8,9 @@ on:
 jobs:
   ci:
     runs-on: macos-26
+    env:
+      FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT: "120"
+      FASTLANE_XCODEBUILD_SETTINGS_RETRIES: "6"
 
     steps:
       - uses: actions/checkout@v4
