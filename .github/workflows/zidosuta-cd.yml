@@ -30,6 +30,9 @@ jobs:
         with:
           xcode-version: "26.4"
 
+      - name: Install iOS Simulator Runtime
+        run: xcodebuild -downloadPlatform iOS
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
