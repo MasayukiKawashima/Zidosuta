@@ -40,7 +40,7 @@ platform :ios do
     run_tests(
       scheme: "Zidosuta",
       testplan: test_plan,
-      destination: "platform=iOS Simulator,name=iPhone 17 Pro,OS=26.0",
+      destination: "platform=iOS Simulator,name=iPhone 17 Pro",
       clean: true,
       fail_build: true
     )
@@ -71,7 +71,7 @@ platform :ios do
     run_tests(
       scheme: "Zidosuta",
       testplan: "Zidosuta",
-      destination: "platform=iOS Simulator,name=iPhone 17 Pro,OS=26.0",
+      destination: "platform=iOS Simulator,name=iPhone 17 Pro",
       clean: true,
       fail_build: true
     )
