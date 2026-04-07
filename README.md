@@ -49,7 +49,7 @@ App Storeのページ → https://itunes.apple.com/jp/app/id6741679575?mt=8
 
 | カテゴリ    | 使用技術                        |
 | :------- | :---------------------------------|
-| 言語      | Swift  6.0.3                    |
+| 言語      | Swift 6.3                    |
 | アーキテクチャ | MVC                         |
 | UI    | UIKit, Storyboard, Xib, SwiftUI |
 | データベース  | Realm, UserDefaults      |
@@ -59,6 +59,7 @@ App Storeのページ → https://itunes.apple.com/jp/app/id6741679575?mt=8
 | CI/CD     | Github Actions, fastlane        |
 | コード整形 | SwiftLint                       |
 | バージョン管理 | Git, GitHub                  |
+|ブランチ戦略|Git-flow                         |
 | デザイン    | Figma, Canva                   |
 | その他     | Notion (Webサイト作成)           |
 
