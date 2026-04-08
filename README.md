@@ -9,9 +9,10 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 
 ## ■ ダウンロードはこちら
 
-![Image](https://github.com/user-attachments/assets/2bb21a8b-c805-49eb-991f-a02f7621979a)
-
-App Storeのページ → https://itunes.apple.com/jp/app/id6741679575?mt=8
+|App Store|
+|:--:|
+|![Image](https://github.com/user-attachments/assets/2bb21a8b-c805-49eb-991f-a02f7621979a)|
+|https://itunes.apple.com/jp/app/id6741679575?mt=8|
 
 ## ■ アプリのイメージ
 
