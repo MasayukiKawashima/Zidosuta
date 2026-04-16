@@ -81,7 +81,7 @@ extension MemoTableViewCell {
 
     let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    let closeButton = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(handleCloseButtonTap))
+    let closeButton = UIBarButtonItem(title: ToolBarString.closeButtonTitle, style: .plain, target: self, action: #selector(handleCloseButtonTap))
 
     toolBar.items = [spacer, closeButton]
     memoTextField.inputAccessoryView = toolBar

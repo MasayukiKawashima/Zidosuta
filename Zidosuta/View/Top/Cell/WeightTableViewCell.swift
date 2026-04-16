@@ -100,7 +100,7 @@ extension WeightTableViewCell {
     // セル自身をターゲットとして、内部メソッド経由でデリゲートを呼び出す
     //    let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleCloseButtonTap))
 
-    let closeButton = UIBarButtonItem(title: "閉じる", style: .plain, target: self, action: #selector(handleCloseButtonTap))
+    let closeButton = UIBarButtonItem(title: ToolBarString.closeButtonTitle, style: .plain, target: self, action: #selector(handleCloseButtonTap))
 
     toolBar.items = [spacer, closeButton]
     weightTextField.inputAccessoryView = toolBar
