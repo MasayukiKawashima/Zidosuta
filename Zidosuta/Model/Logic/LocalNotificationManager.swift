@@ -77,20 +77,20 @@ class LocalNotificationManager {
 
     // 通知の定義
     let content = UNMutableNotificationContent()
-    content.title = "ジドスタ"
-    content.body = "記録時間の通知です"
+    content.title = LocalNotificationMessage.notificationTitle
+    content.body = LocalNotificationMessage.notificationBody
     content.sound = .default
 
     // アクションボタンの定義
     let recordAction = UNNotificationAction(
       identifier: "RECORD_ACTION",
-      title: "記録する",
+      title: LocalNotificationMessage.recordActionTitle,
       options: .foreground
     )
 
     let laterAction = UNNotificationAction(
       identifier: "LATER_ACTION",
-      title: "あとで",
+      title: LocalNotificationMessage.laterActionTitle,
       options: []
     )
 
