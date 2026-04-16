@@ -69,6 +69,7 @@
 		FA8700472F7A2D190067EAD5 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8700462F7A2D190067EAD5 /* ValidationResult.swift */; };
 		FA87004A2F7A55F60067EAD5 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8700492F7A55F50067EAD5 /* NibLoadable.swift */; };
 		FA9553662F90F66700A97A2D /* LocalNotificationMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9553652F90F66700A97A2D /* LocalNotificationMessage.swift */; };
+		FA9553692F912A2800A97A2D /* ToolBarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9553682F912A2800A97A2D /* ToolBarString.swift */; };
 		FA97A9752D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */; };
 		FA97A9762D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */; };
 		FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */; };
@@ -218,6 +219,7 @@
 		FA8700462F7A2D190067EAD5 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		FA8700492F7A55F50067EAD5 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		FA9553652F90F66700A97A2D /* LocalNotificationMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationMessage.swift; sourceTree = "<group>"; };
+		FA9553682F912A2800A97A2D /* ToolBarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarString.swift; sourceTree = "<group>"; };
 		FA97A9732D014EF800BC85A8 /* NotificationRegisterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationRegisterTableViewCell.swift; sourceTree = "<group>"; };
 		FA97A9742D014EF800BC85A8 /* NotificationRegisterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationRegisterTableViewCell.xib; sourceTree = "<group>"; };
 		FA9E8C362D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseTableViewCell.swift; sourceTree = "<group>"; };
@@ -606,6 +608,14 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		FA9553672F91299100A97A2D /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				FA9553682F912A2800A97A2D /* ToolBarString.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		FA9E8C342D11AC8F00A05E55 /* PrivacyPolicy */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,6 +834,7 @@
 				FA11879D2A22D2A5004577F8 /* PhotoTableViewCell.xib */,
 				FA1187A02A22F652004577F8 /* AdTableViewCell.swift */,
 				FA1187A12A22F652004577F8 /* AdTableViewCell.xib */,
+				FA9553672F91299100A97A2D /* Constant */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1226,6 +1237,7 @@
 				FA80692E2EE7F59A0013CBB3 /* UIViewController+setStatusBarBackgroundColor.swift in Sources */,
 				FAC9EF362D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift in Sources */,
 				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
+				FA9553692F912A2800A97A2D /* ToolBarString.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
 				FACA1A412D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
