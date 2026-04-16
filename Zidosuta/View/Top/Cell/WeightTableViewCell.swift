@@ -69,7 +69,7 @@ class WeightTableViewCell: UITableViewCell {
     // メモテキストフィールドでは上記の現象はいまのところ発生していないのでtrueにする
     weightTextField.adjustsFontSizeToFitWidth = false
 
-    let placeholderText = "体重を入力"
+    let placeholderText = PlaceholderString.weightTextField
     let attributes = [
       NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
     ]
