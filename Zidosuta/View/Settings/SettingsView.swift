@@ -42,8 +42,8 @@ class SettingsView: UIView, NibLoadable {
     super.init(frame: frame)
     nibInit()
 
-    versionLabel.text = makeAppVersionText()
-    copyrightLabel.text = makeCopyrightText()
+    versionLabel.text = AppInfoString.makeAppVersionText()
+    copyrightLabel.text = AppInfoString.makeCopyrightText()
   }
 
   required init?(coder aDecoder: NSCoder) {
@@ -68,15 +68,5 @@ class SettingsView: UIView, NibLoadable {
     tableView.separatorStyle = .none
     tableView.backgroundColor = .systemGray6
     tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-  }
-
-  private func makeAppVersionText() -> String {
-      let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-      return "Version \(version)"
-  }
-
-  private func makeCopyrightText() -> String {
-      let year = Calendar.current.component(.year, from: Date())
-      return "© \(year) Masayuki Kawashima"
   }
 }

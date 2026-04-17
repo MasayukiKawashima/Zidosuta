@@ -20,7 +20,7 @@ class DeleteAllDataTableViewCell: UITableViewCell {
 
   // MARK: - Properties
 
-  @IBOutlet weak var shadowLayerview: UIView!
+  @IBOutlet weak var shadowLayerView: UIView!
   @IBOutlet weak var mainBackgroundView: UIView! {
     didSet {
       mainBackgroundView.backgroundColor = .OysterWhite
