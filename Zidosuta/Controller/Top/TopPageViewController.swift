@@ -168,7 +168,7 @@ extension TopPageViewController {
 
     // 曜日の表示形式の設定
     let dayOfWeek = Calendar.current.component(.weekday, from: currentDate)
-    let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    let weekDays = NavigationBarString.title.weekDays
     dayOfWeekText = weekDays[dayOfWeek - 1]
 
     let dayOfWeekTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
