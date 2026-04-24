@@ -32,7 +32,7 @@ class TopPageViewController: UIPageViewController {
     self.dataSource = self
     self.delegate = self
 
-    self.initTopPageViewContoller()
+    self.initTopPageViewController()
     // Do any additional setup after loading the view.
     if let currentVC = self.viewControllers?.first {
       let currentVC = currentVC as! TopViewController
@@ -44,7 +44,7 @@ class TopPageViewController: UIPageViewController {
 
   // MARK: - Methods
 
-  private func initTopPageViewContoller() {
+  private func initTopPageViewController() {
 
     let topVC = storyboard!.instantiateViewController(withIdentifier: "TopVC") as! TopViewController
     self.controllers = [topVC]
@@ -242,12 +242,12 @@ extension TopPageViewController {
     let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
     nextBarButtonItem.tag = 1
     nextBarButtonItem.tintColor = .white
-    let previousBarButtomItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
-    previousBarButtomItem.tag = 2
-    previousBarButtomItem.tintColor = .white
+    let previousBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    previousBarButtonItem.tag = 2
+    previousBarButtonItem.tintColor = .white
 
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
-    self.navigationItem.leftBarButtonItem = previousBarButtomItem
+    self.navigationItem.leftBarButtonItem = previousBarButtonItem
   }
   // BarButton押下時の画面遷移
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
