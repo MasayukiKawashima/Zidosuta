@@ -44,6 +44,7 @@
 		FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */; };
 		FA5DF1C92D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DF1C82D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift */; };
 		FA6674CB2F923D870032FB36 /* AppInfoString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6674CA2F923D870032FB36 /* AppInfoString.swift */; };
+		FA6674D12F9BA1FC0032FB36 /* NavigationBarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6674D02F9BA1FC0032FB36 /* NavigationBarString.swift */; };
 		FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF202A135F6F00B69D4A /* AppDelegate.swift */; };
 		FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */; };
 		FA68AF2A2A135F7100B69D4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA68AF292A135F7100B69D4A /* Assets.xcassets */; };
@@ -191,6 +192,7 @@
 		FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreator.swift; sourceTree = "<group>"; };
 		FA5DF1C82D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+AdjustmentOfappearance.swift"; sourceTree = "<group>"; };
 		FA6674CA2F923D870032FB36 /* AppInfoString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoString.swift; sourceTree = "<group>"; };
+		FA6674D02F9BA1FC0032FB36 /* NavigationBarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarString.swift; sourceTree = "<group>"; };
 		FA68AF1D2A135F6F00B69D4A /* Zidosuta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zidosuta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA68AF202A135F6F00B69D4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA68AF222A135F6F00B69D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -489,6 +491,14 @@
 			path = Constant;
 			sourceTree = "<group>";
 		};
+		FA6674CF2F9BA1850032FB36 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				FA6674D02F9BA1FC0032FB36 /* NavigationBarString.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
 		FA68AF142A135F6F00B69D4A = {
 			isa = PBXGroup;
 			children = (
@@ -729,6 +739,7 @@
 				FAC9EF122D0C0B5C00DE1E64 /* TopNavigationController.swift */,
 				FAC9EF132D0C0B5C00DE1E64 /* TopPageViewController.swift */,
 				FAC9EF142D0C0B5C00DE1E64 /* TopViewController.swift */,
+				FA6674CF2F9BA1850032FB36 /* Constant */,
 			);
 			path = Top;
 			sourceTree = "<group>";
@@ -1193,6 +1204,7 @@
 			files = (
 				FA9E8C3D2D11AD8B00A05E55 /* PrivacyPolicyTableViewCell.swift in Sources */,
 				FA6674CB2F923D870032FB36 /* AppInfoString.swift in Sources */,
+				FA6674D12F9BA1FC0032FB36 /* NavigationBarString.swift in Sources */,
 				FA8069202EE6868B0013CBB3 /* DateEditTableViewCell.swift in Sources */,
 				FA9F9CE42CF449030013886A /* UIColor+AppThemeColor.swift in Sources */,
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,

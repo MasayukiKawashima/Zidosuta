@@ -67,7 +67,7 @@ extension TopPageViewController {
 
 // MARK: - UIPageViewControllerDataSource
 
-// PageViewConrtollerの内容の設定
+// PageViewControllerの内容の設定
 extension TopPageViewController: UIPageViewControllerDataSource {
 
   func presentationCount(for pageViewController: UIPageViewController) -> Int {
