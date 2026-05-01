@@ -314,7 +314,7 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
         center.removeAllDeliveredNotifications()
       }
       // statuLabelの編集
-      cell.statusLabel.text = "オフ"
+      cell.statusLabel.text = SettingsCellString.Notification.offStatus
       cell.statusLabel.textColor = .lightGray
     }
   }
