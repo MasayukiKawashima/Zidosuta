@@ -389,11 +389,11 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTa
     if result == .sent {
       showEmailSendSuccessAlert()
     } else if result == .failed {
-      showEmailSendfailureAlert()
+      showEmailSendFailureAlert()
     }
   }
 
-  private func showEmailSendfailureAlert() {
+  private func showEmailSendFailureAlert() {
 
     let alert = UIAlertController(title: "メール機能が使えません", message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default))

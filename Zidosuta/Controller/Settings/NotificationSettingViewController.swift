@@ -217,7 +217,7 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
         DispatchQueue.main.async {
           switch self.transitionSource {
           case .swiftUI:
-            self.showRegistrationNotificationSucceses()
+            self.showRegistrationNotificationSuccess()
           case .uiKit:
             self.navigationController?.popViewController(animated: true)
           }
@@ -231,7 +231,7 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
   }
 
   // オンボード画面から遷移していたときのみ表示するアラート
-  private func showRegistrationNotificationSucceses() {
+  private func showRegistrationNotificationSuccess() {
 
     let alert = UIAlertController(
       title: "通知を登録しました",
