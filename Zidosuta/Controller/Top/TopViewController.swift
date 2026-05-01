@@ -626,7 +626,7 @@ extension TopViewController: UITextFieldDelegate {
     addTabBarCover()
   }
   // カバービューを削除
-  private func removeCoverviews() {
+  private func removeCoverViews() {
 
     navigationBarCover?.removeFromSuperview()
     navigationBarCover = nil
@@ -700,7 +700,7 @@ extension TopViewController: UITextFieldDelegate {
 
     // カバービューの削除
     // textFieldDidEndEditingでも同様の処理を行う
-    removeCoverviews()
+    removeCoverViews()
   }
 
   func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -742,7 +742,7 @@ extension TopViewController: UITextFieldDelegate {
     }
     // カバービューの削除
     // keyboardWillHide(_ notification: Notification)でも同様の処理を行う
-    removeCoverviews()
+    removeCoverViews()
   }
 
   // テキストフィールドのバリデート
