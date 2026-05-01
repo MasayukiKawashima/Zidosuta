@@ -395,22 +395,22 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTa
 
   private func showEmailSendFailureAlert() {
 
-    let alert = UIAlertController(title: "メール機能が使えません", message: nil, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    let alert = UIAlertController(title: EmailAlertString.SendFailure.alertTitle, message: nil, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: EmailAlertString.okActionButtonTitle, style: .default))
     present(alert, animated: true)
   }
 
   private func showEmailSendSuccessAlert() {
 
-    let alert = UIAlertController(title: "メールを送信しました", message: nil, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    let alert = UIAlertController(title: EmailAlertString.SendSuccess.alertTitle, message: nil, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: EmailAlertString.okActionButtonTitle, style: .default))
     present(alert, animated: true)
   }
 
   private func showEmailUnavailableAlert() {
 
-    let alert = UIAlertController(title: "メールを送信できませんでした", message: nil, preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    let alert = UIAlertController(title: EmailAlertString.Unavailable.alertTitle, message: nil, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: EmailAlertString.okActionButtonTitle, style: .default))
     present(alert, animated: true)
   }
 }
