@@ -9,7 +9,7 @@ import Foundation
 
 enum NotificationAlertString {
 
-  static let okActionButtonTitle = "OK"
+  static let okActionTitle = "OK"
 
   enum RegisterSuccess {
 

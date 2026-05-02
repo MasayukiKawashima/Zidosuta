@@ -10,7 +10,7 @@ import Foundation
 enum SettingsCellString {
 
   enum Notification {
-    
+
     static let offStatus = "オフ"
   }
 }

@@ -238,7 +238,7 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
       message: nil,
       preferredStyle: .alert
     )
-    alert.addAction(UIAlertAction(title: NotificationAlertString.okActionButtonTitle, style: .default) { _ in
+    alert.addAction(UIAlertAction(title: NotificationAlertString.okActionTitle, style: .default) { _ in
       self.dismissCallback?()
     })
     present(alert, animated: true)
@@ -251,7 +251,7 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
       message: NotificationAlertString.Permission.message,
       preferredStyle: .alert
     )
-    alert.addAction(UIAlertAction(title: NotificationAlertString.okActionButtonTitle, style: .default))
+    alert.addAction(UIAlertAction(title: NotificationAlertString.okActionTitle, style: .default))
     present(alert, animated: true)
   }
 }
