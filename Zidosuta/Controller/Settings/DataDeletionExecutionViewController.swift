@@ -106,7 +106,7 @@ extension DataDeletionExecutionViewController: UITableViewDelegate, UITableViewD
     let textView = UITextView()
 
     textView.translatesAutoresizingMaskIntoConstraints = false
-    textView.text = "体重、ひとことメモ、写真、通知設定が全て削除されます"
+    textView.text = DataDeletionExecutionString.DeleteAllData.footerText
     textView.textColor = .darkGray
     textView.backgroundColor = .clear
     textView.isScrollEnabled = false
