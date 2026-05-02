@@ -92,6 +92,7 @@
 		FAA9E7352FA4EB3700CBED1E /* EmailAlertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9E7342FA4EB3700CBED1E /* EmailAlertString.swift */; };
 		FAA9E73A2FA5566300CBED1E /* NotificationAlertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9E7392FA5566300CBED1E /* NotificationAlertString.swift */; };
 		FAA9E73F2FA6285400CBED1E /* DataDeletionExecutionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9E73E2FA6285400CBED1E /* DataDeletionExecutionString.swift */; };
+		FAA9E7412FA6291E00CBED1E /* DeletionAlertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA9E7402FA6291E00CBED1E /* DeletionAlertString.swift */; };
 		FAAB5D292D394D59003EAD71 /* TopScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */; };
 		FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAAB98562D1865410034F243 /* ContactTableViewCell.swift */; };
 		FAAB98592D1865410034F243 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAAB98572D1865410034F243 /* ContactTableViewCell.xib */; };
@@ -251,6 +252,7 @@
 		FAA9E7342FA4EB3700CBED1E /* EmailAlertString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAlertString.swift; sourceTree = "<group>"; };
 		FAA9E7392FA5566300CBED1E /* NotificationAlertString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAlertString.swift; sourceTree = "<group>"; };
 		FAA9E73E2FA6285400CBED1E /* DataDeletionExecutionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDeletionExecutionString.swift; sourceTree = "<group>"; };
+		FAA9E7402FA6291E00CBED1E /* DeletionAlertString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionAlertString.swift; sourceTree = "<group>"; };
 		FAAB5D282D394D59003EAD71 /* TopScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopScreenUITests.swift; sourceTree = "<group>"; };
 		FAAB98562D1865410034F243 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		FAAB98572D1865410034F243 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				FAA9E73E2FA6285400CBED1E /* DataDeletionExecutionString.swift */,
 				FAA9E7322FA4EA2A00CBED1E /* SettingsCellString.swift */,
 				FAA9E7342FA4EB3700CBED1E /* EmailAlertString.swift */,
+				FAA9E7402FA6291E00CBED1E /* DeletionAlertString.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1281,6 +1284,7 @@
 				FA87004A2F7A55F60067EAD5 /* NibLoadable.swift in Sources */,
 				FAC9EF222D0C0B5C00DE1E64 /* TopNavigationController.swift in Sources */,
 				FAA9E72F2FA4E7B100CBED1E /* SettingsNavigationBarString.swift in Sources */,
+				FAA9E7412FA6291E00CBED1E /* DeletionAlertString.swift in Sources */,
 				FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */,
 				FA8069112EE67FEE0013CBB3 /* DateSelectionView.swift in Sources */,
 				FAA926A82DED6AA000608AA6 /* OnboardingModel.swift in Sources */,
