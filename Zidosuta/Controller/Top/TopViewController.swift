@@ -778,13 +778,13 @@ extension TopViewController: UITextFieldDelegate {
 
     let alert = UIAlertController(title: "", message: errorText, preferredStyle: .alert)
 
-    let attributedTitle = NSAttributedString(string: "入力エラー", attributes: [
+    let attributedTitle = NSAttributedString(string: TopAlertString.ValidationError.title, attributes: [
       .foregroundColor: UIColor.red,
       .font: UIFont.boldSystemFont(ofSize: 18) // ボールドフォント
     ])
     alert.setValue(attributedTitle, forKey: "attributedTitle")
 
-    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+    let okAction = UIAlertAction(title: TopAlertString.ValidationError.okActionTitle, style: .default) { _ in
 
       textField.becomeFirstResponder()
       // テキストを空にする
