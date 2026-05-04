@@ -347,11 +347,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   // 削除ボタンが押された時の処理
   func deleteButtonAction(in cell: PhotoTableViewCell) {
 
-    let alert = UIAlertController(title: nil, message: "写真を削除してもよろしいですか？", preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "削除する", style: .destructive) { _ in
+    let alert = UIAlertController(title: nil, message: TopAlertString.photoDelete.message, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: TopAlertString.photoDelete.deleteAction, style: .destructive) { _ in
       self.deleteAlertAction(cell)
     }
-    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+    let cancelAction = UIAlertAction(title: TopAlertString.photoDelete.cancelAction, style: .cancel)
 
     alert.addAction(cancelAction)
     alert.addAction(okAction)
