@@ -416,11 +416,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   // アクションシートの表示
   private func showPhotoSelectionActionSheet() {
 
-    let actionSheet = UIAlertController(title: "写真の選択", message: nil, preferredStyle: .actionSheet)
+    let actionSheet = UIAlertController(title: TopActionSheet.PhotoSelection.title, message: nil, preferredStyle: .actionSheet)
 
     actionSheet.view.accessibilityIdentifier = "photoSelectionSheet"
 
-    let cameraAction = UIAlertAction(title: "カメラ", style: .default) { action in
+    let cameraAction = UIAlertAction(title: TopActionSheet.PhotoSelection.cameraActionTitle, style: .default) { action in
       // カメラ起動前にアクセス権限の状態を確認
       let status = AVCaptureDevice.authorizationStatus(for: .video)
       switch status {
@@ -438,10 +438,10 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       }
     }
 
-    let photoLibraryAction = UIAlertAction(title: "フォトライブラリ", style: .default) { action in
+    let photoLibraryAction = UIAlertAction(title: TopActionSheet.PhotoSelection.photoLibraryActionTitle, style: .default) { action in
       self.showPHPicker(sourceType: .images)
     }
-    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+    let cancelAction = UIAlertAction(title: TopActionSheet.PhotoSelection.cancelActionTitle, style: .cancel)
 
     actionSheet.addAction(cameraAction)
     actionSheet.addAction(photoLibraryAction)
