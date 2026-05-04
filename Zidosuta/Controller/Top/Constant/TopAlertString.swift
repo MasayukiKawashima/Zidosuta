@@ -9,6 +9,13 @@ import Foundation
 
 enum TopAlertString {
 
+  enum photoDelete {
+
+    static let message = "写真を削除してもよろしいですか？"
+    static let deleteAction = "削除する"
+    static let cancelAction = "キャンセル"
+  }
+
   enum ValidationError {
 
     static let title = "入力エラー"
