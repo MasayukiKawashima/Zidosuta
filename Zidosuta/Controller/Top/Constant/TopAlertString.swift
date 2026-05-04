@@ -9,11 +9,19 @@ import Foundation
 
 enum TopAlertString {
 
-  enum photoDelete {
+  static let okActionTitle = "OK"
+
+  enum PhotoDelete {
 
     static let message = "写真を削除してもよろしいですか？"
     static let deleteAction = "削除する"
     static let cancelAction = "キャンセル"
+  }
+
+  enum CameraPermission {
+
+    static let title = "カメラへのアクセスが許可されていません"
+    static let message = "カメラを使用するには設定アプリからカメラへのアクセスを許可してください"
   }
 
   enum ValidationError {

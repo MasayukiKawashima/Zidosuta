@@ -347,11 +347,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   // 削除ボタンが押された時の処理
   func deleteButtonAction(in cell: PhotoTableViewCell) {
 
-    let alert = UIAlertController(title: nil, message: TopAlertString.photoDelete.message, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: TopAlertString.photoDelete.deleteAction, style: .destructive) { _ in
+    let alert = UIAlertController(title: nil, message: TopAlertString.PhotoDelete.message, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: TopAlertString.PhotoDelete.deleteAction, style: .destructive) { _ in
       self.deleteAlertAction(cell)
     }
-    let cancelAction = UIAlertAction(title: TopAlertString.photoDelete.cancelAction, style: .cancel)
+    let cancelAction = UIAlertAction(title: TopAlertString.PhotoDelete.cancelAction, style: .cancel)
 
     alert.addAction(cancelAction)
     alert.addAction(okAction)
@@ -592,12 +592,12 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   private func showCameraPermissionAlert() {
 
     let alert = UIAlertController(
-      title: "カメラへのアクセスが許可されていません",
-      message: "カメラを使用するには設定アプリからカメラへのアクセスを許可してください",
+      title: TopAlertString.CameraPermission.title,
+      message: TopAlertString.CameraPermission.message,
       preferredStyle: .alert
     )
 
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    alert.addAction(UIAlertAction(title: TopAlertString.okActionTitle, style: .default))
     present(alert, animated: true)
   }
 
