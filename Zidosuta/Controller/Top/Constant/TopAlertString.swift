@@ -14,8 +14,8 @@ enum TopAlertString {
   enum PhotoDelete {
 
     static let message = "写真を削除してもよろしいですか？"
-    static let deleteAction = "削除する"
-    static let cancelAction = "キャンセル"
+    static let deleteActionTitle = "削除する"
+    static let cancelActionTitle = "キャンセル"
   }
 
   enum CameraPermission {
@@ -27,6 +27,5 @@ enum TopAlertString {
   enum ValidationError {
 
     static let title = "入力エラー"
-    static let okActionTitle = "OK"
   }
 }

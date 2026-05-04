@@ -348,10 +348,10 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   func deleteButtonAction(in cell: PhotoTableViewCell) {
 
     let alert = UIAlertController(title: nil, message: TopAlertString.PhotoDelete.message, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: TopAlertString.PhotoDelete.deleteAction, style: .destructive) { _ in
+    let okAction = UIAlertAction(title: TopAlertString.PhotoDelete.deleteActionTitle, style: .destructive) { _ in
       self.deleteAlertAction(cell)
     }
-    let cancelAction = UIAlertAction(title: TopAlertString.PhotoDelete.cancelAction, style: .cancel)
+    let cancelAction = UIAlertAction(title: TopAlertString.PhotoDelete.cancelActionTitle, style: .cancel)
 
     alert.addAction(cancelAction)
     alert.addAction(okAction)
@@ -784,7 +784,7 @@ extension TopViewController: UITextFieldDelegate {
     ])
     alert.setValue(attributedTitle, forKey: "attributedTitle")
 
-    let okAction = UIAlertAction(title: TopAlertString.ValidationError.okActionTitle, style: .default) { _ in
+    let okAction = UIAlertAction(title: TopAlertString.okActionTitle, style: .default) { _ in
 
       textField.becomeFirstResponder()
       // テキストを空にする
