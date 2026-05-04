@@ -24,6 +24,11 @@ enum TopAlertString {
     static let message = "カメラを使用するには設定アプリからカメラへのアクセスを許可してください"
   }
 
+  enum CameraUnavailable {
+
+    static let message = "カメラは使用できません"
+  }
+
   enum ValidationError {
 
     static let title = "入力エラー"

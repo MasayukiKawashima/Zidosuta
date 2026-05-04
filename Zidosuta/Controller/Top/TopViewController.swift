@@ -606,11 +606,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
 
     let alert = UIAlertController(
       title: nil,
-      message: "カメラは使用できません",
+      message: TopAlertString.CameraUnavailable.message,
       preferredStyle: .alert
     )
 
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    alert.addAction(UIAlertAction(title: TopAlertString.okActionTitle, style: .default))
     present(alert, animated: true)
   }
 }
