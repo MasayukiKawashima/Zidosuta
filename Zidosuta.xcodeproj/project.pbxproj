@@ -20,6 +20,7 @@
 		FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1187A02A22F652004577F8 /* AdTableViewCell.swift */; };
 		FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1187A12A22F652004577F8 /* AdTableViewCell.xib */; };
 		FA18E3832FA797B30049B612 /* TopAlertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18E3822FA797B30049B612 /* TopAlertString.swift */; };
+		FA18E3892FA889520049B612 /* TopActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA18E3882FA889520049B612 /* TopActionSheet.swift */; };
 		FA22110B2CFF1525005C622D /* ShadowLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22110A2CFF1525005C622D /* ShadowLayerView.swift */; };
 		FA22110D2CFF16D6005C622D /* MainBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22110C2CFF16D6005C622D /* MainBackgroundView.swift */; };
 		FA2211112CFF5AF4005C622D /* NotificationSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2211102CFF5AF4005C622D /* NotificationSettingView.swift */; };
@@ -176,6 +177,7 @@
 		FA1187A02A22F652004577F8 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		FA1187A12A22F652004577F8 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
 		FA18E3822FA797B30049B612 /* TopAlertString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlertString.swift; sourceTree = "<group>"; };
+		FA18E3882FA889520049B612 /* TopActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopActionSheet.swift; sourceTree = "<group>"; };
 		FA22110A2CFF1525005C622D /* ShadowLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowLayerView.swift; sourceTree = "<group>"; };
 		FA22110C2CFF16D6005C622D /* MainBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBackgroundView.swift; sourceTree = "<group>"; };
 		FA2211102CFF5AF4005C622D /* NotificationSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingView.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 			children = (
 				FA6674D02F9BA1FC0032FB36 /* TopNavigationBarString.swift */,
 				FA18E3822FA797B30049B612 /* TopAlertString.swift */,
+				FA18E3882FA889520049B612 /* TopActionSheet.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1282,6 +1285,7 @@
 				FAA9E73A2FA5566300CBED1E /* NotificationAlertString.swift in Sources */,
 				FAC9EF212D0C0B5C00DE1E64 /* GraphPageViewController.swift in Sources */,
 				FAC9EF292D0C11A000DE1E64 /* Notification.swift in Sources */,
+				FA18E3892FA889520049B612 /* TopActionSheet.swift in Sources */,
 				FAC9EF2A2D0C11A000DE1E64 /* DateData.swift in Sources */,
 				FAC9EF2B2D0C11A000DE1E64 /* Settings.swift in Sources */,
 				FA87004A2F7A55F60067EAD5 /* NibLoadable.swift in Sources */,
