@@ -251,8 +251,8 @@ extension GraphViewController {
 
    func createLineChartDate() {
 
-    let graphContetCreator = GraphContentCreator()
-    let dataEntries = graphContetCreator.createDataEntry(index: graphDateManager.index)
+    let graphContentCreator = GraphContentCreator()
+    let dataEntries = graphContentCreator.createDataEntry(index: graphDateManager.index)
     if dataEntries.count != 0 {
       print(dataEntries)
       // 以下の処理はモデルに切り出す

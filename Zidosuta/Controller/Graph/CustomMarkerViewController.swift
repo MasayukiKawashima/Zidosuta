@@ -48,7 +48,7 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
       fatalError("Invalid date components.")
     }
     let weekdayNumber = calendar.component(.weekday, from: date)
-    let weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    let weekDays = GraphMarkerString.weekDays
     let weekDayString = weekDays[weekdayNumber - 1]
 
     // 日付を文字列化
@@ -82,7 +82,7 @@ class CustomMarkerViewController: UIViewController, CustomMarkerViewDataSource {
     // データの値を文字列化
     let valueString = String(entry.y)
     // 単位を指定
-    let kgString = "kg"
+    let kgString = GraphMarkerString.kgString
     // データ部分のテキストスタイルを定義
     let valueAttributes: [NSAttributedString.Key: Any] = [
       .font: UIFont.systemFont(ofSize: 20),

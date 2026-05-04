@@ -106,7 +106,7 @@ extension DataDeletionExecutionViewController: UITableViewDelegate, UITableViewD
     let textView = UITextView()
 
     textView.translatesAutoresizingMaskIntoConstraints = false
-    textView.text = "体重、ひとことメモ、写真、通知設定が全て削除されます"
+    textView.text = DataDeletionExecutionString.DeleteAllData.footerText
     textView.textColor = .darkGray
     textView.backgroundColor = .clear
     textView.isScrollEnabled = false
@@ -136,14 +136,14 @@ extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegat
   // 最終確認アラート
   private func showConfirmationAlert() {
 
-    let alert = UIAlertController(title: nil, message: "全てのデータを削除してもよろしいですか \nこの操作は取り消せません", preferredStyle: .alert)
+    let alert = UIAlertController(title: nil, message: DeletionAlertString.Confirmation.message, preferredStyle: .alert)
 
     let titleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-    let attributedTitle = NSAttributedString(string: "警告", attributes: titleAttributes)
+    let attributedTitle = NSAttributedString(string: DeletionAlertString.Confirmation.title, attributes: titleAttributes)
     alert.setValue(attributedTitle, forKey: "attributedTitle")
 
-    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-    let deleteAction = UIAlertAction(title: "削除する", style: .destructive) { _ in
+    let cancelAction = UIAlertAction(title: DeletionAlertString.Confirmation.cancelActionTitle, style: .cancel)
+    let deleteAction = UIAlertAction(title: DeletionAlertString.Confirmation.deleteActionTitle, style: .destructive) { _ in
       let dataDeleteManager = DataDeleteManager.shared
       let result = dataDeleteManager.deleteAllData()
       if result {
@@ -161,18 +161,18 @@ extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegat
   // 削除成功アラート
   private func showDeletionCompletedAlert() {
 
-    let alert = UIAlertController(title: nil, message: "全てのデータが削除されました", preferredStyle: .alert)
+    let alert = UIAlertController(title: nil, message: DeletionAlertString.DeletionCompleted.message, preferredStyle: .alert)
 
-    let okAction = UIAlertAction(title: "OK", style: .default)
+    let okAction = UIAlertAction(title: DeletionAlertString.okActionTitle, style: .default)
     alert.addAction(okAction)
 
     self.present(alert, animated: true)
   }
   // 削除失敗アラート
   private func showDeletionFailedAlert() {
-    let alert = UIAlertController(title: nil, message: "データの削除に失敗しました", preferredStyle: .alert)
+    let alert = UIAlertController(title: nil, message: DeletionAlertString.DeletionFailed.message, preferredStyle: .alert)
 
-    let okAction = UIAlertAction(title: "OK", style: .default)
+    let okAction = UIAlertAction(title: DeletionAlertString.okActionTitle, style: .default)
     alert.addAction(okAction)
 
     self.present(alert, animated: true)

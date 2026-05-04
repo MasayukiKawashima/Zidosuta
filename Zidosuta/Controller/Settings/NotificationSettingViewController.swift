@@ -217,7 +217,7 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
         DispatchQueue.main.async {
           switch self.transitionSource {
           case .swiftUI:
-            self.showRegistrationNotificationSucceses()
+            self.showRegistrationNotificationSuccess()
           case .uiKit:
             self.navigationController?.popViewController(animated: true)
           }
@@ -231,14 +231,14 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
   }
 
   // オンボード画面から遷移していたときのみ表示するアラート
-  private func showRegistrationNotificationSucceses() {
+  private func showRegistrationNotificationSuccess() {
 
     let alert = UIAlertController(
-      title: "通知を登録しました",
+      title: NotificationAlertString.RegisterSuccess.title,
       message: nil,
       preferredStyle: .alert
     )
-    alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+    alert.addAction(UIAlertAction(title: NotificationAlertString.okActionTitle, style: .default) { _ in
       self.dismissCallback?()
     })
     present(alert, animated: true)
@@ -247,11 +247,11 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
   private func showNotificationPermissionAlert() {
 
     let alert = UIAlertController(
-      title: "通知が許可されていません",
-      message: "設定アプリから通知を許可してください",
+      title: NotificationAlertString.Permission.title,
+      message: NotificationAlertString.Permission.message,
       preferredStyle: .alert
     )
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    alert.addAction(UIAlertAction(title: NotificationAlertString.okActionTitle, style: .default))
     present(alert, animated: true)
   }
 }

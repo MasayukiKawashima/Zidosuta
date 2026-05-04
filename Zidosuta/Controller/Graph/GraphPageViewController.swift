@@ -32,7 +32,7 @@ class GraphPageViewController: UIPageViewController {
     self.delegate = self
 
     // Do any additional setup after loading the view.
-    initGraphPageViewContoller()
+    initGraphPageViewController()
 
     if let currentVC = self.viewControllers?.first {
       let currentVC = currentVC as! GraphViewController
@@ -44,7 +44,7 @@ class GraphPageViewController: UIPageViewController {
 
   // MARK: - Methods
 
-  private func initGraphPageViewContoller() {
+  private func initGraphPageViewController() {
 
     let graphVC = storyboard!.instantiateViewController(withIdentifier: "GraphVC") as! GraphViewController
 
@@ -188,12 +188,12 @@ extension GraphPageViewController {
     let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
     nextBarButtonItem.tag = 1
     nextBarButtonItem.tintColor = .white
-    let previousBarButtomItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
-    previousBarButtomItem.tag = 2
-    previousBarButtomItem.tintColor = .white
+    let previousBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    previousBarButtonItem.tag = 2
+    previousBarButtonItem.tintColor = .white
 
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
-    self.navigationItem.leftBarButtonItem = previousBarButtomItem
+    self.navigationItem.leftBarButtonItem = previousBarButtonItem
   }
 
   @objc private func buttonPaging(_ sender: UIBarButtonItem) {

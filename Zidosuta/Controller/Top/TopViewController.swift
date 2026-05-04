@@ -347,11 +347,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   // 削除ボタンが押された時の処理
   func deleteButtonAction(in cell: PhotoTableViewCell) {
 
-    let alert = UIAlertController(title: nil, message: "写真を削除してもよろしいですか？", preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "削除する", style: .destructive) { _ in
+    let alert = UIAlertController(title: nil, message: TopAlertString.PhotoDelete.message, preferredStyle: .alert)
+    let okAction = UIAlertAction(title: TopAlertString.PhotoDelete.deleteActionTitle, style: .destructive) { _ in
       self.deleteAlertAction(cell)
     }
-    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+    let cancelAction = UIAlertAction(title: TopAlertString.PhotoDelete.cancelActionTitle, style: .cancel)
 
     alert.addAction(cancelAction)
     alert.addAction(okAction)
@@ -416,11 +416,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   // アクションシートの表示
   private func showPhotoSelectionActionSheet() {
 
-    let actionSheet = UIAlertController(title: "写真の選択", message: nil, preferredStyle: .actionSheet)
+    let actionSheet = UIAlertController(title: TopActionSheet.PhotoSelection.title, message: nil, preferredStyle: .actionSheet)
 
     actionSheet.view.accessibilityIdentifier = "photoSelectionSheet"
 
-    let cameraAction = UIAlertAction(title: "カメラ", style: .default) { action in
+    let cameraAction = UIAlertAction(title: TopActionSheet.PhotoSelection.cameraActionTitle, style: .default) { action in
       // カメラ起動前にアクセス権限の状態を確認
       let status = AVCaptureDevice.authorizationStatus(for: .video)
       switch status {
@@ -438,10 +438,10 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
       }
     }
 
-    let photoLibraryAction = UIAlertAction(title: "フォトライブラリ", style: .default) { action in
+    let photoLibraryAction = UIAlertAction(title: TopActionSheet.PhotoSelection.photoLibraryActionTitle, style: .default) { action in
       self.showPHPicker(sourceType: .images)
     }
-    let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+    let cancelAction = UIAlertAction(title: TopActionSheet.PhotoSelection.cancelActionTitle, style: .cancel)
 
     actionSheet.addAction(cameraAction)
     actionSheet.addAction(photoLibraryAction)
@@ -592,12 +592,12 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   private func showCameraPermissionAlert() {
 
     let alert = UIAlertController(
-      title: "カメラへのアクセスが許可されていません",
-      message: "カメラを使用するには設定アプリからカメラへのアクセスを許可してください",
+      title: TopAlertString.CameraPermission.title,
+      message: TopAlertString.CameraPermission.message,
       preferredStyle: .alert
     )
 
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    alert.addAction(UIAlertAction(title: TopAlertString.okActionTitle, style: .default))
     present(alert, animated: true)
   }
 
@@ -606,11 +606,11 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
 
     let alert = UIAlertController(
       title: nil,
-      message: "カメラは使用できません",
+      message: TopAlertString.CameraUnavailable.message,
       preferredStyle: .alert
     )
 
-    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    alert.addAction(UIAlertAction(title: TopAlertString.okActionTitle, style: .default))
     present(alert, animated: true)
   }
 }
@@ -626,7 +626,7 @@ extension TopViewController: UITextFieldDelegate {
     addTabBarCover()
   }
   // カバービューを削除
-  private func removeCoverviews() {
+  private func removeCoverViews() {
 
     navigationBarCover?.removeFromSuperview()
     navigationBarCover = nil
@@ -700,7 +700,7 @@ extension TopViewController: UITextFieldDelegate {
 
     // カバービューの削除
     // textFieldDidEndEditingでも同様の処理を行う
-    removeCoverviews()
+    removeCoverViews()
   }
 
   func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -742,7 +742,7 @@ extension TopViewController: UITextFieldDelegate {
     }
     // カバービューの削除
     // keyboardWillHide(_ notification: Notification)でも同様の処理を行う
-    removeCoverviews()
+    removeCoverViews()
   }
 
   // テキストフィールドのバリデート
@@ -778,13 +778,13 @@ extension TopViewController: UITextFieldDelegate {
 
     let alert = UIAlertController(title: "", message: errorText, preferredStyle: .alert)
 
-    let attributedTitle = NSAttributedString(string: "入力エラー", attributes: [
+    let attributedTitle = NSAttributedString(string: TopAlertString.ValidationError.title, attributes: [
       .foregroundColor: UIColor.red,
       .font: UIFont.boldSystemFont(ofSize: 18) // ボールドフォント
     ])
     alert.setValue(attributedTitle, forKey: "attributedTitle")
 
-    let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+    let okAction = UIAlertAction(title: TopAlertString.okActionTitle, style: .default) { _ in
 
       textField.becomeFirstResponder()
       // テキストを空にする
