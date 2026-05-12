@@ -55,13 +55,13 @@ struct OnboardingView: View {
               .padding(.top, 20)
 
             VStack(alignment: .center, spacing: 20) {
-              Text("Welcome!")
+              Text(OnboardingString.welcomeMessage)
                 .font(.custom("Futura-Bold", size: geometry.size.width * 0.096, relativeTo: .body))
                 .scaledToFit()
                 .minimumScaleFactor(0.5)
 
               VStack {
-                Text("記録忘れ防止に便利なデイリー通知をご活用下さい")
+                Text(OnboardingString.notificationRecommendations)
                   .font(.custom("Thonburi", size: geometry.size.width * 0.035, relativeTo: .body))
                   .foregroundColor(Color(UIColor.black))
                   .padding(.horizontal, 5)
@@ -74,7 +74,7 @@ struct OnboardingView: View {
                     NotificationSettingViewControllerWrapper(isPresented: $showingNotificationSetting)
                   },
                   label: {
-                    Label("通知時間を登録する", systemImage: "timer")
+                    Label(OnboardingString.notificationTimeRegistrationLabel, systemImage: "timer")
                       .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.03733, relativeTo: .body))
                       .foregroundStyle(.white)
                       .padding(.horizontal, 10)
@@ -92,7 +92,7 @@ struct OnboardingView: View {
                   showNextView = true
                 },
                 label: {
-                  Text("はじめる")
+                  Text(OnboardingString.startText)
                     .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.0533, relativeTo: .body))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 100)
