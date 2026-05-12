@@ -133,6 +133,7 @@
 		FACA1A482D255ECD00B2768D /* LocalNotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A472D255ECD00B2768D /* LocalNotificationManagerTests.swift */; };
 		FACA1A522D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */; };
 		FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */; };
+		FADD2CDD2FB371500084D5D0 /* OnboardingString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
 		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
@@ -296,6 +297,7 @@
 		FACA1A472D255ECD00B2768D /* LocalNotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManagerTests.swift; sourceTree = "<group>"; };
 		FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsDisplayViewControllerWrapper.swift; sourceTree = "<group>"; };
 		FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextView.swift; sourceTree = "<group>"; };
+		FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingString.swift; sourceTree = "<group>"; };
 		FAFE599C3B8495FFB72EEEA0 /* Pods-ZidosutaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidosutaTests.release.xcconfig"; path = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests.release.xcconfig"; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 				FA6B660E2D1D3AB1009D6D44 /* OnboardingView.swift */,
 				FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */,
 				FAA926A92DEDBD9300608AA6 /* PhotoTipsView.swift */,
+				FADD2CDB2FB370E10084D5D0 /* Constant */,
 				FACA1A552D2BE88600B2768D /* UIViewControllerRepresentable */,
 			);
 			path = OnboardingView;
@@ -877,6 +880,14 @@
 				FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */,
 			);
 			path = UIViewControllerRepresentable;
+			sourceTree = "<group>";
+		};
+		FADD2CDB2FB370E10084D5D0 /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		FAFF6F562A2071C70092A1A3 /* Top */ = {
@@ -1328,6 +1339,7 @@
 				FA18E3832FA797B30049B612 /* TopAlertString.swift in Sources */,
 				FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */,
 				FA9553662F90F66700A97A2D /* LocalNotificationMessage.swift in Sources */,
+				FADD2CDD2FB371500084D5D0 /* OnboardingString.swift in Sources */,
 				FAA9E7352FA4EB3700CBED1E /* EmailAlertString.swift in Sources */,
 				FAAB98582D1865410034F243 /* ContactTableViewCell.swift in Sources */,
 				FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase+setKGFormatter.swift in Sources */,
