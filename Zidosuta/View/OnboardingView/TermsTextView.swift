@@ -53,12 +53,11 @@ struct TermsTextView: View {
 
   private func makeAttributedString() -> AttributedString {
 
-    var text = AttributedString("利用規約とプライバシーポリシーをご確認頂き、ご同意の上アプリをご利用下さい")
+    var text = AttributedString(TermsTextString.fullText)
     text.foregroundColor = .darkGray
 
     // 利用規約の部分にスタイルを適用
     if let range = text.range(of: "利用規約") {
-
       text[range].foregroundColor = .blue
       text[range].underlineStyle = .single
       text[range].link = URL(string: "terms://tap")
