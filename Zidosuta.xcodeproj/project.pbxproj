@@ -135,6 +135,7 @@
 		FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */; };
 		FADD2CDD2FB371500084D5D0 /* OnboardingString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */; };
 		FADD2CE12FB60DC00084D5D0 /* TermsTextString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD2CE02FB60DC00084D5D0 /* TermsTextString.swift */; };
+		FADD2CE32FB610170084D5D0 /* PhotoTipsString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD2CE22FB610170084D5D0 /* PhotoTipsString.swift */; };
 		FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F522A2055430092A1A3 /* TopView.swift */; };
 		FAFF6F552A2055590092A1A3 /* TopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAFF6F542A2055590092A1A3 /* TopView.xib */; };
 		FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFF6F572A21ACE40092A1A3 /* WeightTableViewCell.swift */; };
@@ -300,6 +301,7 @@
 		FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextView.swift; sourceTree = "<group>"; };
 		FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingString.swift; sourceTree = "<group>"; };
 		FADD2CE02FB60DC00084D5D0 /* TermsTextString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextString.swift; sourceTree = "<group>"; };
+		FADD2CE22FB610170084D5D0 /* PhotoTipsString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTipsString.swift; sourceTree = "<group>"; };
 		FAFE599C3B8495FFB72EEEA0 /* Pods-ZidosutaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZidosutaTests.release.xcconfig"; path = "Target Support Files/Pods-ZidosutaTests/Pods-ZidosutaTests.release.xcconfig"; sourceTree = "<group>"; };
 		FAFF6F522A2055430092A1A3 /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		FAFF6F542A2055590092A1A3 /* TopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopView.xib; sourceTree = "<group>"; };
@@ -889,6 +891,7 @@
 			children = (
 				FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */,
 				FADD2CE02FB60DC00084D5D0 /* TermsTextString.swift */,
+				FADD2CE22FB610170084D5D0 /* PhotoTipsString.swift */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1300,6 +1303,7 @@
 				FAC9EF212D0C0B5C00DE1E64 /* GraphPageViewController.swift in Sources */,
 				FAC9EF292D0C11A000DE1E64 /* Notification.swift in Sources */,
 				FA18E3892FA889520049B612 /* TopActionSheet.swift in Sources */,
+				FADD2CE32FB610170084D5D0 /* PhotoTipsString.swift in Sources */,
 				FAC9EF2A2D0C11A000DE1E64 /* DateData.swift in Sources */,
 				FAC9EF2B2D0C11A000DE1E64 /* Settings.swift in Sources */,
 				FA87004A2F7A55F60067EAD5 /* NibLoadable.swift in Sources */,
