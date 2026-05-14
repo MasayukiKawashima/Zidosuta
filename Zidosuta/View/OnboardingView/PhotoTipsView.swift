@@ -29,7 +29,7 @@ struct PhotoTipsView: View {
             GeometryReader { geometry in
 
               VStack(alignment: .center) {
-                Text("写真撮影のコツ")
+                Text(PhotoTipsString.titleText)
                   .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.08, relativeTo: .body))
                   .foregroundStyle(.black)
                   .minimumScaleFactor(0.5)
@@ -39,7 +39,7 @@ struct PhotoTipsView: View {
                   Text(createAttributedString())
                     .font(.custom("Thonburi", size: geometry.size.width * 0.04, relativeTo: .body))
 
-                  Text("鏡越しの撮影や誰かに撮ってもらうのもオススメです")
+                  Text(PhotoTipsString.secondLineDescriptionText)
                     .font(.custom("Thonburi", size: geometry.size.width * 0.04, relativeTo: .body))
                 }
                 .padding(.top, 5)
@@ -81,7 +81,7 @@ struct PhotoTipsView: View {
                 Spacer()
 
                 HStack {
-                  Button("もどる") {
+                  Button(PhotoTipsString.dismissButton) {
                     dismiss()
                   }
                   .frame(width: 80, height: 40)
@@ -96,7 +96,7 @@ struct PhotoTipsView: View {
                   },
                           label: {
 
-                    Text("OK")
+                    Text(PhotoTipsString.okButton)
                       .font(.custom("Thonburi-Bold", size: geometry.size.width * 0.0533, relativeTo: .body))
                       .foregroundStyle(.white)
                       .padding(.horizontal, 50)
@@ -152,7 +152,7 @@ struct PhotoTipsView: View {
 
 private func createAttributedString() -> AttributedString {
 
-  var attributedString = AttributedString("全身が映るように撮ると変化が分かりやすくなります")
+  var attributedString = AttributedString(PhotoTipsString.firstLineDescriptionText)
 
   if let range = attributedString.range(of: "全身が映るように撮る") {
     attributedString[range].foregroundColor = .red
