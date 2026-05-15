@@ -189,7 +189,7 @@ extension NotificationSettingViewController: UITableViewDelegate, UITableViewDat
 
 
 // MARK: - NotificationRegisterTableViewCellDelegate
-extension NotificationSettingViewController: @MainActor NotificationRegisterTableViewCellDelegate {
+extension NotificationSettingViewController: NotificationRegisterTableViewCellDelegate {
 
   func registerButtonAction() {
 
