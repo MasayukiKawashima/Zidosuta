@@ -10,6 +10,7 @@ import RealmSwift
 import SwiftUI
 @preconcurrency import UserNotifications
 
+@MainActor
 class LocalNotificationManager {
 
 
@@ -36,13 +37,12 @@ class LocalNotificationManager {
   // MARK: - Methods
 
   // ユーザーに通知の許可を確認するメソッド
-  func requestAuthorization(completion: @escaping (Bool) -> Void) {
-
-    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge]) { granted, error in
-      // ユーザーからの通知許可の返答を待つ
-      DispatchQueue.main.async {
-        completion(granted)
-      }
+  func requestAuthorization() async -> Bool {
+    do {
+      return try await UNUserNotificationCenter.current()
+        .requestAuthorization(options: [.alert, .badge])
+    } catch {
+      return false
     }
   }
   // 通知をスケジュールするメソッド

@@ -189,16 +189,17 @@ extension NotificationSettingViewController: UITableViewDelegate, UITableViewDat
 
 
 // MARK: - NotificationRegisterTableViewCellDelegate
-
-extension NotificationSettingViewController: NotificationRegisterTableViewCellDelegate {
+extension NotificationSettingViewController: @MainActor NotificationRegisterTableViewCellDelegate {
 
   func registerButtonAction() {
 
     let settings = Settings.shared
-    LocalNotificationManager.shared.requestAuthorization { [weak self] granted in
-      guard let self = self else { return }
+    Task {
+      let granted = await LocalNotificationManager.shared.requestAuthorization()
 
       if granted {
+        let settings = Settings.shared
+
         settings.update { settings in
           let calendar = Calendar.current
           let hour = calendar.component(.hour, from: self.selectedDate)
@@ -210,26 +211,19 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
           settings.notification?.isNotificationEnabled = true
 
           LocalNotificationManager.shared.setScheduleNotification()
-          print("ローカル通知を設定")
         }
 
-        // 遷移元に応じて適切な戻る処理を実行
-        DispatchQueue.main.async {
-          switch self.transitionSource {
-          case .swiftUI:
-            self.showRegistrationNotificationSuccess()
-          case .uiKit:
-            self.navigationController?.popViewController(animated: true)
-          }
+        switch self.transitionSource {
+        case .swiftUI:
+          self.showRegistrationNotificationSuccess()
+        case .uiKit:
+          self.navigationController?.popViewController(animated: true)
         }
       } else {
-        DispatchQueue.main.async {
-          self.showNotificationPermissionAlert()
-        }
+        self.showNotificationPermissionAlert()
       }
     }
   }
-
   // オンボード画面から遷移していたときのみ表示するアラート
   private func showRegistrationNotificationSuccess() {
 
