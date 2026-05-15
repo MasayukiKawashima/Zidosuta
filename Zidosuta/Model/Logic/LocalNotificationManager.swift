@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 import SwiftUI
-import UserNotifications
+@preconcurrency import UserNotifications
 
 class LocalNotificationManager {
 
