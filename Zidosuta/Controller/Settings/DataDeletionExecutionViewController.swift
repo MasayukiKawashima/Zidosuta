@@ -143,15 +143,18 @@ extension DataDeletionExecutionViewController: DeleteAllDataTableViewCellDelegat
     alert.setValue(attributedTitle, forKey: "attributedTitle")
 
     let cancelAction = UIAlertAction(title: DeletionAlertString.Confirmation.cancelActionTitle, style: .cancel)
-    let deleteAction = UIAlertAction(title: DeletionAlertString.Confirmation.deleteActionTitle, style: .destructive) { _ in
-      let dataDeleteManager = DataDeleteManager.shared
-      let result = dataDeleteManager.deleteAllData()
-      if result {
-        self.showDeletionCompletedAlert()
-      } else if !result {
-        self.showDeletionFailedAlert()
+    let deleteAction = UIAlertAction(
+      title: DeletionAlertString.Confirmation.deleteActionTitle,
+      style: .destructive
+    ) { _ in
+      Task {
+        let result = await DataDeleteManager.shared.deleteAllData()
+        if result {
+          self.showDeletionCompletedAlert()
+        } else {
+          self.showDeletionFailedAlert()
+        }
       }
-
     }
 
     alert.addAction(cancelAction)

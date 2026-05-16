@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - DeleteAllDataTableViewCellDelegate
 
+@MainActor
 protocol DeleteAllDataTableViewCellDelegate {
 
   func deleteButtonAction()
