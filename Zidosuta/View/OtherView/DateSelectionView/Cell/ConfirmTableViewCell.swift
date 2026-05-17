@@ -28,10 +28,12 @@ class ConfirmTableViewCell: UITableViewCell {
   var delegate: ConfirmTableViewCellDelegate?
 
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    contentView.backgroundColor = .systemGray6
+    super.awakeFromNib()
+    // Initialization code
+    MainActor.assumeIsolated {
+      contentView.backgroundColor = .systemGray6
     }
+  }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
