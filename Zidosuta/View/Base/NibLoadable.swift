@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+
+@MainActor
 protocol NibLoadable where Self: UIView {
 
   static var nibName: String { get }
