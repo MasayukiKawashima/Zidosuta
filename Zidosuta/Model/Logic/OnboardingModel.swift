@@ -8,6 +8,8 @@
 import SwiftUI
 import UIKit
 
+
+@MainActor
 class OnboardingModel: ObservableObject {
 
   func transitionToMainContent() {
