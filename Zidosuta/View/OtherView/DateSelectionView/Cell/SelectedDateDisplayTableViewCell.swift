@@ -15,13 +15,15 @@ class SelectedDateDisplayTableViewCell: UITableViewCell {
       mainBackgroundView.backgroundColor = .OysterWhite
     }
   }
-
+  
   @IBOutlet weak var dateLabel: UILabel!
 
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
-    self.contentView.backgroundColor = .systemGray6
+    MainActor.assumeIsolated {
+      self.contentView.backgroundColor = .systemGray6
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
