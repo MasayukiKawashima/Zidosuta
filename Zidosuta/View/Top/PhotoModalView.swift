@@ -61,11 +61,14 @@ class PhotoModalView: UIView, NibLoadable {
 
   override  func awakeFromNib() {
 
-    // シンボルのサイズ設定
-    let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
-    let image = dismissButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
+    super.awakeFromNib()
 
-    dismissButton.setImage(image, for: .normal)
+    MainActor.assumeIsolated {
+      // シンボルのサイズ設定
+      let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 60)
+      let image = dismissButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
+      dismissButton.setImage(image, for: .normal)
+    }
   }
 
 
