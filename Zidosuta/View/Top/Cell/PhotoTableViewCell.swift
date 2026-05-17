@@ -46,48 +46,51 @@ class PhotoTableViewCell: UITableViewCell {
 
     super.awakeFromNib()
 
-    commentLabel.adjustsFontSizeToFitWidth = true
-    commentLabel.minimumScaleFactor = 0.5
+    MainActor.assumeIsolated {
 
-    photoImageView.backgroundColor = UIColor.OysterWhite
-    // photoImageViewのimageを監視する
-    // imageの値が変わるたびにnilが代入されたか否かで分岐して処理を行う
-    photoImageView.addObserver(self, forKeyPath: #keyPath(UIImageView.image), options: [.new, .old], context: nil)
-    // 各種ボタンの初期設定
-    let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
-    let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
-    insertButton.setImage(image, for: .normal)
-    insertButton.imageView?.contentMode = .scaleAspectFit
+      commentLabel.adjustsFontSizeToFitWidth = true
+      commentLabel.minimumScaleFactor = 0.5
 
-    let radius = insertButton.frame.size.width / 2
-    insertButton.layer.cornerRadius = radius
-    insertButton.backgroundColor = UIColor.white
+      photoImageView.backgroundColor = UIColor.OysterWhite
+      // photoImageViewのimageを監視する
+      // imageの値が変わるたびにnilが代入されたか否かで分岐して処理を行う
+      photoImageView.addObserver(self, forKeyPath: #keyPath(UIImageView.image), options: [.new, .old], context: nil)
+      // 各種ボタンの初期設定
+      let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 40)
+      let image = insertButton.image(for: .normal)?.withConfiguration(symbolConfiguration)
+      insertButton.setImage(image, for: .normal)
+      insertButton.imageView?.contentMode = .scaleAspectFit
 
-    insertButton.layer.shadowColor = UIColor.gray.cgColor  // 影の色
-    insertButton.layer.shadowOffset = CGSize(width: 0, height: 1)  // 影のオフセット
-    insertButton.layer.shadowRadius =  1  // 影のぼかし具合
-    insertButton.layer.shadowOpacity = 0.5  // 影の透明度
+      let radius = insertButton.frame.size.width / 2
+      insertButton.layer.cornerRadius = radius
+      insertButton.backgroundColor = UIColor.white
 
-    redoButton.setCornerRadius()
-    redoButton.configureDisabledButtonAppearance()
+      insertButton.layer.shadowColor = UIColor.gray.cgColor  // 影の色
+      insertButton.layer.shadowOffset = CGSize(width: 0, height: 1)  // 影のオフセット
+      insertButton.layer.shadowRadius =  1  // 影のぼかし具合
+      insertButton.layer.shadowOpacity = 0.5  // 影の透明度
 
-    deleteButton.setCornerRadius()
-    deleteButton.configureDisabledButtonAppearance()
+      redoButton.setCornerRadius()
+      redoButton.configureDisabledButtonAppearance()
 
-    expandButton.setCornerRadius()
-    expandButton.configureDisabledButtonAppearance()
+      deleteButton.setCornerRadius()
+      deleteButton.configureDisabledButtonAppearance()
 
-    redoButton.isUserInteractionEnabled = false
-    deleteButton.isUserInteractionEnabled = false
-    expandButton.isUserInteractionEnabled = false
-    // ボタンのサイズ調整
-    if let image = image {
-      let buttonSize = CGSize(width: image.size.width + 20, height: image.size.height + 20)
-      insertButton.frame = CGRect(origin: insertButton.frame.origin, size: buttonSize)
-    }else {
-      return
+      expandButton.setCornerRadius()
+      expandButton.configureDisabledButtonAppearance()
+
+      redoButton.isUserInteractionEnabled = false
+      deleteButton.isUserInteractionEnabled = false
+      expandButton.isUserInteractionEnabled = false
+      // ボタンのサイズ調整
+      if let image = image {
+        let buttonSize = CGSize(width: image.size.width + 20, height: image.size.height + 20)
+        insertButton.frame = CGRect(origin: insertButton.frame.origin, size: buttonSize)
+      }else {
+        return
+      }
+      setupPhotoDoubleTapGesture()
     }
-    setupPhotoDoubleTapGesture()
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
@@ -101,36 +104,41 @@ class PhotoTableViewCell: UITableViewCell {
 
   // photoImageView.imageの値が変わるたびに呼び出される処理
   // nilが代入されたか否かで分岐して処理する
-  override  func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+  override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
 
-    guard keyPath == #keyPath(UIImageView.image) else { return }
+    let hasImage = change?[.newKey] is UIImage
 
-    if let _ = change?[.newKey] as? UIImage {
-      // nilじゃない値がセットされた場合　＝　画像がセットされたら
-      self.insertButton.isHidden = true
-      self.commentLabel.isHidden = true
-      self.redoButton.configureEnabledButtonAppearance()
-      self.redoButton.isUserInteractionEnabled = true
-      self.deleteButton.configureEnabledButtonAppearance()
-      self.deleteButton.isUserInteractionEnabled = true
-      self.expandButton.configureEnabledButtonAppearance()
-      self.expandButton.isUserInteractionEnabled = true
-      print("Aの処理: 画像がセットされました")
-    } else {
-      // nilがセットされた場合　＝　画像を削除した時
-      self.insertButton.isHidden = false
-      self.commentLabel.isHidden = false
-      self.redoButton.configureDisabledButtonAppearance()
-      self.redoButton.isUserInteractionEnabled = false
-      self.deleteButton.configureDisabledButtonAppearance()
-      self.deleteButton.isUserInteractionEnabled = false
-      self.expandButton.configureDisabledButtonAppearance()
-      self.expandButton.isUserInteractionEnabled = false
-      print("Bの処理: 画像がnilになりました")
+    MainActor.assumeIsolated {
+      guard keyPath == #keyPath(UIImageView.image) else { return }
+
+      if hasImage {
+        self.insertButton.isHidden = true
+        self.commentLabel.isHidden = true
+        self.redoButton.configureEnabledButtonAppearance()
+        self.redoButton.isUserInteractionEnabled = true
+        self.deleteButton.configureEnabledButtonAppearance()
+        self.deleteButton.isUserInteractionEnabled = true
+        self.expandButton.configureEnabledButtonAppearance()
+        self.expandButton.isUserInteractionEnabled = true
+        print("Aの処理: 画像がセットされました")
+      } else {
+        self.insertButton.isHidden = false
+        self.commentLabel.isHidden = false
+        self.redoButton.configureDisabledButtonAppearance()
+        self.redoButton.isUserInteractionEnabled = false
+        self.deleteButton.configureDisabledButtonAppearance()
+        self.deleteButton.isUserInteractionEnabled = false
+        self.expandButton.configureDisabledButtonAppearance()
+        self.expandButton.isUserInteractionEnabled = false
+        print("Bの処理: 画像がnilになりました")
+      }
     }
   }
+
   deinit {
-    photoImageView.removeObserver(self, forKeyPath: #keyPath(UIImageView.image))
+    MainActor.assumeIsolated {
+      photoImageView.removeObserver(self, forKeyPath: #keyPath(UIImageView.image))
+    }
   }
 
   // 写真がダブルタップを感知できるようにする処理
