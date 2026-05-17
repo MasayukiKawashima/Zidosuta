@@ -15,7 +15,7 @@ class SelectedDateDisplayTableViewCell: UITableViewCell {
       mainBackgroundView.backgroundColor = .OysterWhite
     }
   }
-  
+
   @IBOutlet weak var dateLabel: UILabel!
 
   override func awakeFromNib() {
