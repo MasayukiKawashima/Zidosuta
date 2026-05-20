@@ -13,7 +13,6 @@ import RealmSwift
 // MARK: - TestRealmObject
 
 class TestRealmObject: Object {
-
   @Persisted var id = UUID().uuidString
 }
 
@@ -26,63 +25,51 @@ final class DataDeleteManagerTests: XCTestCase {
   // MARK: - Properties
 
   var sut: DataDeleteManager!
-
-  var realm: Realm!
-
   var fileManager: FileManager!
-
   var documentURL: URL!
-
   var dummyFiles: [String]!
-
   var fileURLs: [URL]!
 
 
   // MARK: - Methods
 
-  override func setUp() {
+  override func setUp() async throws {
 
-    super.setUp()
+    try await super.setUp()
 
     sut = DataDeleteManager.shared
-    realm = try! Realm()
     fileManager = FileManager.default
     documentURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
     dummyFiles = ["DummyFile1.txt", "DummyFile2.text", "DummyFile3.text"]
-    // テスト用のRealmオブジェクトとファイルを作成
-    setupTestData()
+    fileURLs = dummyFiles.map { documentURL.appendingPathComponent($0) }
+
+    try await setupTestData()
   }
 
-  override func tearDown() {
+  override func tearDown() async throws {
 
     sut = nil
-    realm = nil
     fileManager = nil
     documentURL = nil
     dummyFiles = nil
     fileURLs = nil
 
-    super.tearDown()
+    try await super.tearDown()
   }
 
-  private func setupTestData() {
+  private func setupTestData() async throws {
 
-    // テスト用のRealmオブジェクトを作成
-    try! realm.write {
-      let testObject = TestRealmObject()
-      realm.add(testObject)
+    // RealmオブジェクトをMainActor.runで作成
+    await MainActor.run {
+      let realm = try! Realm()
+      try! realm.write {
+        realm.add(TestRealmObject())
+      }
     }
 
-    // テスト用のファイルを作成
-    for dummyFile in dummyFiles {
-      let fileURL = documentURL.appendingPathComponent(dummyFile)
-      fileURLs = [fileURL]
-
-      do {
-        try dummyFile.write(to: fileURL, atomically: true, encoding: .utf8)
-      } catch {
-        print("ダミーファイルの書き込みに失敗")
-      }
+    // ダミーファイルを作成
+    for (dummyFile, fileURL) in zip(dummyFiles, fileURLs) {
+      try dummyFile.write(to: fileURL, atomically: true, encoding: .utf8)
     }
   }
 
@@ -91,26 +78,28 @@ final class DataDeleteManagerTests: XCTestCase {
 
   // deleteAllDataのテスト
   // 成功の場合のテスト
-  func testDeleteAllData_Success() {
+  func testDeleteAllData_Success() async {
 
-    let result = sut.deleteAllData()
-    // 結果の検証
+    let result = await sut.deleteAllData()
     XCTAssertTrue(result)
 
     // 保存したダミーファイルが削除されているか確認
-    for fileURL in fileURLs! {
-      let result = fileManager.fileExists(atPath: fileURL.path)
-      XCTAssertFalse(result)
+    for fileURL in fileURLs {
+      let exists = fileManager.fileExists(atPath: fileURL.path)
+      XCTAssertFalse(exists)
     }
   }
 
-  // ドキュメントディレクトリが既にRealmファイル以外が空の場合のテスト
-  func testDeleteAllData_EmptyDirectorySuccess() {
+  // ドキュメントディレクトリがRealmファイル以外空の場合のテスト
+  func testDeleteAllData_EmptyDirectorySuccess() async {
 
     // ドキュメントディレクトリを事前にクリア
-    let contents = try? fileManager.contentsOfDirectory(at: documentURL, includingPropertiesForKeys: nil, options: [])
+    let contents = try? fileManager.contentsOfDirectory(
+      at: documentURL,
+      includingPropertiesForKeys: nil,
+      options: []
+    )
     try? contents?.forEach { url in
-      // efault.realmファイルは残す
       guard !url.lastPathComponent.hasPrefix("default.realm") else {
         print("ℹ️ default.realmファイルの削除はスキップします: \(url.lastPathComponent)")
         return
@@ -118,41 +107,37 @@ final class DataDeleteManagerTests: XCTestCase {
       try fileManager.removeItem(at: url)
     }
 
-    // When
-    let result = sut.deleteAllData()
-
-    // Then
+    let result = await sut.deleteAllData()
     XCTAssertTrue(result)
   }
 
   // default.realmファイルの削除をスキップできているかテスト
-  func testDeleteAllData_SkipDeleteRealmData() {
+  func testDeleteAllData_SkipDeleteRealmData() async {
 
-    let deleteAllDataResult = sut.deleteAllData()
-    XCTAssertTrue(deleteAllDataResult)
+    let result = await sut.deleteAllData()
+    XCTAssertTrue(result)
 
     do {
-      // ドキュメントディレクトリ内のファイル一覧を取得
       let fileURLs = try FileManager.default.contentsOfDirectory(
         at: documentURL,
         includingPropertiesForKeys: nil,
         options: .skipsHiddenFiles
       )
-      // default.realmから始まるファイルだけが残っているかどうか
       for file in fileURLs {
-        let result = file.lastPathComponent.hasPrefix("default.realm")
-        XCTAssertTrue(result)
+        let isRealmFile = file.lastPathComponent.hasPrefix("default.realm")
+        XCTAssertTrue(isRealmFile)
       }
-    }catch {
+    } catch {
       print("ドキュメントディレクトリ内のファイル一覧取得に失敗しました: \(error)")
     }
   }
 
   // 通知リクエストが削除できているかのテスト
-  func testDeleteAllData_removeNotificationRequests() {
+  func testDeleteAllData_RemoveNotificationRequests() async {
 
     let center = UNUserNotificationCenter.current()
-    // テスト用リクエストを設定
+
+    // テスト用通知リクエストを設定
     let content = UNMutableNotificationContent()
     content.title = "テスト通知"
     content.body = "これはテスト用の通知です"
@@ -160,30 +145,36 @@ final class DataDeleteManagerTests: XCTestCase {
 
     let component = DateComponents(hour: 12, minute: 0)
     let trigger = UNCalendarNotificationTrigger(dateMatching: component, repeats: false)
-    let request = UNNotificationRequest(identifier: "alerm_id", content: content, trigger: trigger)
-    center.add(request) { error in
-      if let error {
-        print(error.localizedDescription)
+    let request = UNNotificationRequest(identifier: "alarm_id", content: content, trigger: trigger)
+
+    await withCheckedContinuation { continuation in
+      center.add(request) { error in
+        if let error {
+          print(error.localizedDescription)
+        }
+        continuation.resume()
       }
     }
 
-    let deleteAllDataResult = sut.deleteAllData()
-    XCTAssertTrue(deleteAllDataResult)
+    let result = await sut.deleteAllData()
+    XCTAssertTrue(result)
 
-    center.getPendingNotificationRequests { requests in
-      let count = requests.count
-      XCTAssertTrue(count == 0)
-    }
+    let requests = await center.pendingNotificationRequests()
+    XCTAssertTrue(requests.isEmpty)
   }
 
   // RealmObjectが存在しない場合のテスト
-  func testDeleteAllData_EmptyRealmObjectSuccess() {
+  func testDeleteAllData_EmptyRealmObjectSuccess() async {
 
-    // 全てのRealmObjectを事前に削除
-    try! realm.write {
-      realm.deleteAll()
+    // 全てのRealmObjectをMainActor.runで事前削除
+    await MainActor.run {
+      let realm = try! Realm()
+      try! realm.write {
+        realm.deleteAll()
+      }
     }
-    let result = sut.deleteAllData()
+
+    let result = await sut.deleteAllData()
     XCTAssertTrue(result)
   }
 }

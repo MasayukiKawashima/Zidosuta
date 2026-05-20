@@ -57,9 +57,9 @@ actor DataDeleteManager {
     }
   }
 
-  private func deleteRealmObject() -> Bool {
+  private func deleteRealmObject() async -> Bool {
     do {
-      let realm = try Realm() // メソッド実行スレッド上で生成
+      let realm = try await Realm(actor: self)// メソッド実行スレッド上で生成
       if realm.isEmpty {
         print("ℹ️ Realmデータベースは既に空です")
         return true
@@ -85,7 +85,7 @@ actor DataDeleteManager {
 
   func deleteAllData() async -> Bool {
 
-    let DeleteRealmObjectResult = deleteRealmObject()
+    let DeleteRealmObjectResult = await deleteRealmObject()
     await removeNotificationRequests()
     let clearDocumentDirectoryResult = clearDocumentDirectory()
     if DeleteRealmObjectResult && clearDocumentDirectoryResult {
