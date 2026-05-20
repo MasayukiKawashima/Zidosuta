@@ -33,22 +33,25 @@ class MemoTableViewCell: UITableViewCell {
 
     super.awakeFromNib()
     // Initialization code
-    memoTextField.keyboardType = .default
-    memoTextField.returnKeyType = .done
-    memoTextField.delegate = self
-    memoTextField.autocorrectionType = .no
-    // 文字列のながによる１文字あたりのサイズの自動調整
-    memoTextField.adjustsFontSizeToFitWidth = true
-    // 最小サイズは10
-    memoTextField.minimumFontSize = 10
 
-    let placeholderText = PlaceholderString.memoTextField
-    let attributes = [
-      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
-    ]
-    memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+    MainActor.assumeIsolated {
+      memoTextField.keyboardType = .default
+      memoTextField.returnKeyType = .done
+      memoTextField.delegate = self
+      memoTextField.autocorrectionType = .no
+      // 文字列のながによる１文字あたりのサイズの自動調整
+      memoTextField.adjustsFontSizeToFitWidth = true
+      // 最小サイズは10
+      memoTextField.minimumFontSize = 10
 
-    setUpCloseButton()
+      let placeholderText = PlaceholderString.memoTextField
+      let attributes = [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+      ]
+      memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+
+      setUpCloseButton()
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {

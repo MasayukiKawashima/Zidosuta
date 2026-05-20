@@ -27,7 +27,7 @@ struct NotificationSettingViewControllerWrapper: UIViewControllerRepresentable {
     let viewController = NotificationSettingViewController()
     viewController.transitionSource = .swiftUI
     viewController.dismissCallback = {
-      context.coordinator.dismiss()
+       context.coordinator.dismiss()
     }
     return viewController
   }
@@ -36,6 +36,7 @@ struct NotificationSettingViewControllerWrapper: UIViewControllerRepresentable {
 
   }
 
+  @MainActor
   class Coordinator: NSObject {
 
     var parent: NotificationSettingViewControllerWrapper

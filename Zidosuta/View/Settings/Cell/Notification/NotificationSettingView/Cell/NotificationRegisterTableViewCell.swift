@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - NotificationRegisterTableViewCellDelegate
 
+@MainActor
 protocol NotificationRegisterTableViewCellDelegate {
 
   func registerButtonAction()

@@ -12,21 +12,21 @@ class DateEditTableViewCell: UITableViewCell {
   @IBOutlet weak var datePicker: UIDatePicker!
 
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-
-    datePicker.datePickerMode = .date
-    if #available(iOS 13.4, *) {
-      datePicker.preferredDatePickerStyle = .wheels
+    super.awakeFromNib()
+    // Initialization code
+    MainActor.assumeIsolated {
+      datePicker.datePickerMode = .date
+      if #available(iOS 13.4, *) {
+        datePicker.preferredDatePickerStyle = .wheels
+      }
+      datePicker.translatesAutoresizingMaskIntoConstraints = false
+      datePicker.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
-    datePicker.translatesAutoresizingMaskIntoConstraints = false
-    datePicker.transform = CGAffineTransform(scaleX: 1, y: 1)
-    }
+  }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
-    }
-
+    // Configure the view for the selected state
+  }
 }

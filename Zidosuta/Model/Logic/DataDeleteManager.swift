@@ -8,16 +8,13 @@
 import Foundation
 import RealmSwift
 
-class DataDeleteManager {
+actor DataDeleteManager {
 
 
   // MARK: - Properties
 
   static let shared = DataDeleteManager()
-
   private let fileManager = FileManager.default
-
-  private let realm = try! Realm()
 
 
   // MARK: - Init
@@ -60,42 +57,36 @@ class DataDeleteManager {
     }
   }
 
-  private func deleteRealmObject() -> Bool {
-
-    if realm.isEmpty {
-      print("ℹ️ Realmデータベースは既に空です")
-      return true
-    }
-
+  private func deleteRealmObject() async -> Bool {
     do {
+      let realm = try await Realm(actor: self)// メソッド実行スレッド上で生成
+      if realm.isEmpty {
+        print("ℹ️ Realmデータベースは既に空です")
+        return true
+      }
       try realm.write {
         realm.deleteAll()
-        print("✅ 全てRealmObjectの削除成功")
       }
+      return true
     } catch {
       print("❌ RealmObjectの削除ができませんでした: \(error.localizedDescription)")
       return false
     }
-    return true
   }
 
-  private func removeNotificationRequests() {
+  private func removeNotificationRequests() async {
 
-    let center = UNUserNotificationCenter.current()
-
-    center.getPendingNotificationRequests { requests in
+      let center = UNUserNotificationCenter.current()
+      let requests = await center.pendingNotificationRequests()
       if !requests.isEmpty {
-        center.removeAllPendingNotificationRequests()
-      } else {
-        return
+          center.removeAllPendingNotificationRequests()
       }
-    }
   }
 
-  func deleteAllData() -> Bool {
+  func deleteAllData() async -> Bool {
 
-    let DeleteRealmObjectResult = deleteRealmObject()
-    removeNotificationRequests()
+    let DeleteRealmObjectResult = await deleteRealmObject()
+    await removeNotificationRequests()
     let clearDocumentDirectoryResult = clearDocumentDirectory()
     if DeleteRealmObjectResult && clearDocumentDirectoryResult {
       return true

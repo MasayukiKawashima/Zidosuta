@@ -88,7 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
 
-extension AppDelegate: UNUserNotificationCenterDelegate {
+
+extension AppDelegate: @MainActor UNUserNotificationCenterDelegate {
 
   // ユーザーが通知に対してアクションをとった時に呼ばれるデリゲートメソッド
   // center: 通知を管理するUNUserNotificationCenterのインスタンス

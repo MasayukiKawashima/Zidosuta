@@ -17,6 +17,7 @@ import XCTest
 //    そのため常に通知権限のステータスが.authorized（許可）にならず、許可された場合の処理が実行されない
 // 2. LocalNotificationManagerの通知登録処理が非同期処理だが、この処理にcompletion（テストで登録の検証を行う処理など）を渡すことができるような仕様になっていないため
 
+@MainActor
 class LocalNotificationManagerTests: XCTestCase {
 
 

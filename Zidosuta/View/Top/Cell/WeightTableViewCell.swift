@@ -57,26 +57,29 @@ class WeightTableViewCell: UITableViewCell {
 
     super.awakeFromNib()
     // Initialization code
-    // キーボードタイプ設定
-    weightTextField.keyboardType = .decimalPad
 
-    weightTextField.autocorrectionType = .no
-    // 2024.11.15
-    // 文字列の長さによって１文字あたりのサイズを調整するかどうか
-    // falseなので調整をしない
-    // trueにすると、ペーストで値を入力した際にプレスホルダーのフォントサイズが変わってしまう
-    // 原因は不明だが、このプロパティをfalseにしたら上記の現象が発生しなくなり、現状は体重テキストフィールドではサイズの調整は必要ないのでこの設定にしておく
-    // メモテキストフィールドでは上記の現象はいまのところ発生していないのでtrueにする
-    weightTextField.adjustsFontSizeToFitWidth = false
+    MainActor.assumeIsolated {
+      // キーボードタイプ設定
+      weightTextField.keyboardType = .decimalPad
 
-    let placeholderText = PlaceholderString.weightTextField
-    let attributes = [
-      NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
-    ]
-    weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+      weightTextField.autocorrectionType = .no
+      // 2024.11.15
+      // 文字列の長さによって１文字あたりのサイズを調整するかどうか
+      // falseなので調整をしない
+      // trueにすると、ペーストで値を入力した際にプレスホルダーのフォントサイズが変わってしまう
+      // 原因は不明だが、このプロパティをfalseにしたら上記の現象が発生しなくなり、現状は体重テキストフィールドではサイズの調整は必要ないのでこの設定にしておく
+      // メモテキストフィールドでは上記の現象はいまのところ発生していないのでtrueにする
+      weightTextField.adjustsFontSizeToFitWidth = false
 
-    weightTextField.setWeightTextFieldUnderLine()
-    setUpCloseButton()
+      let placeholderText = PlaceholderString.weightTextField
+      let attributes = [
+        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+      ]
+      weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+
+      weightTextField.setWeightTextFieldUnderLine()
+      setUpCloseButton()
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
