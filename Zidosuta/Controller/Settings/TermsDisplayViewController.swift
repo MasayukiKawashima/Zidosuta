@@ -88,7 +88,7 @@ class TermsDisplayViewController: UIViewController {
   private func cleanupWebView() {
 
       let webView = termsDisplayView.webView!
-      // デリゲートの解除をここに移動
+
       webView.navigationDelegate = nil
       webView.uiDelegate = nil
       // 読み込みを停止
