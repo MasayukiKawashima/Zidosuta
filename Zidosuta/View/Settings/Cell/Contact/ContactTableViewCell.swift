@@ -37,8 +37,9 @@ class ContactTableViewCell: UITableViewCell {
 
     super.awakeFromNib()
 
-    contentView.backgroundColor = .systemGray6
-    // Initialization code
+    MainActor.assumeIsolated {
+      contentView.backgroundColor = .systemGray6
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
