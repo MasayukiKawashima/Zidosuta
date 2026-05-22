@@ -40,7 +40,9 @@ class TermsOfUseTableViewCell: UITableViewCell {
 
     super.awakeFromNib()
     // Initialization code
-    contentView.backgroundColor = .systemGray6
+    MainActor.assumeIsolated {
+      contentView.backgroundColor = .systemGray6
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
