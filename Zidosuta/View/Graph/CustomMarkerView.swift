@@ -11,6 +11,7 @@ import Charts
 
 // MARK: - CustomMarkerViewDataSource
 
+@MainActor
 protocol CustomMarkerViewDataSource {
 
   // テキストを作成
