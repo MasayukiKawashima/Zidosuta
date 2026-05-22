@@ -193,7 +193,6 @@ extension NotificationSettingViewController: NotificationRegisterTableViewCellDe
 
   func registerButtonAction() {
 
-    let settings = Settings.shared
     Task {
       let granted = await LocalNotificationManager.shared.requestAuthorization()
 
