@@ -308,15 +308,20 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
         settings.notification?.isNotificationEnabled = false
       }
       // 通知スケジュールの削除
-      let center = UNUserNotificationCenter.current()
-      center.getPendingNotificationRequests { requests in
-        center.removeAllPendingNotificationRequests()
-        center.removeAllDeliveredNotifications()
+      Task { @MainActor in
+        await removeAllNotifications()
       }
+
       // statuLabelの編集
       cell.statusLabel.text = SettingsCellString.Notification.offStatus
       cell.statusLabel.textColor = .lightGray
     }
+  }
+
+  private func removeAllNotifications() async {
+    let center = UNUserNotificationCenter.current()
+    center.removeAllPendingNotificationRequests()
+    center.removeAllDeliveredNotifications()
   }
 }
 
