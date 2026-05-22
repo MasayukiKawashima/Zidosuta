@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - TermsOfUseTableViewCellDelegate
 
+@MainActor
 protocol TermsOfUseTableViewCellDelegate {
 
   func TermsOfUseTransitionButtonAction()

@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 protocol PrivacyPolicyTableViewCellDelegate {
   func privacyPolicyTransitionButtonAction()
 }
