@@ -363,7 +363,7 @@ extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicy
 
 // MARK: - MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate
 
-extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate {
+extension SettingsViewController: @MainActor MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate {
 
   func mailingButtonAction() {
 
