@@ -20,13 +20,16 @@ class NotificationTimeEditTableViewCell: UITableViewCell {
   override func awakeFromNib() {
 
     super.awakeFromNib()
-    // Initialization code
-    datePicker.datePickerMode = .time
-    if #available(iOS 13.4, *) {
-      datePicker.preferredDatePickerStyle = .wheels // ホイールスタイルを使用
+
+    MainActor.assumeIsolated {
+      // Initialization code
+      datePicker.datePickerMode = .time
+      if #available(iOS 13.4, *) {
+        datePicker.preferredDatePickerStyle = .wheels // ホイールスタイルを使用
+      }
+      datePicker.translatesAutoresizingMaskIntoConstraints = false
+      datePicker.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
-    datePicker.translatesAutoresizingMaskIntoConstraints = false
-    datePicker.transform = CGAffineTransform(scaleX: 1, y: 1)
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
