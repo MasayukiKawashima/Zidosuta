@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - WeightTableViewCellDelegate
 
+@MainActor
 protocol WeightTableViewCellDelegate: AnyObject {
 
   func weightTableViewCellDidRequestKeyboardDismiss(_ cell: WeightTableViewCell)
