@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - PhotoModalViewDelegate
 
+@MainActor
 protocol PhotoModalViewDelegate {
 
   func dismiss()
