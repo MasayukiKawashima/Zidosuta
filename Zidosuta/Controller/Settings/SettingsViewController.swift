@@ -302,26 +302,18 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
       }
       // オフにしたら
     } else {
-      // スイッチオフを記録
       let settings = Settings.shared
       settings.update { settings in
         settings.notification?.isNotificationEnabled = false
       }
-      // 通知スケジュールの削除
-      Task { @MainActor in
-        await removeAllNotifications()
-      }
+      // クロージャを使わず直接呼ぶだけでよい
+      let center = UNUserNotificationCenter.current()
+      center.removeAllPendingNotificationRequests()
+      center.removeAllDeliveredNotifications()
 
-      // statuLabelの編集
       cell.statusLabel.text = SettingsCellString.Notification.offStatus
       cell.statusLabel.textColor = .lightGray
     }
-  }
-
-  private func removeAllNotifications() async {
-    let center = UNUserNotificationCenter.current()
-    center.removeAllPendingNotificationRequests()
-    center.removeAllDeliveredNotifications()
   }
 }
 
