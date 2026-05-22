@@ -41,10 +41,12 @@ class NotificationTableViewCell: UITableViewCell {
 
     super.awakeFromNib()
     // Initialization code
-    self.contentView.backgroundColor = .systemGray6
 
-    notificationSwitch.onTintColor = .YellowishRed
-    notificationSwitch.tintColor = .lightGray
+    MainActor.assumeIsolated {
+      self.contentView.backgroundColor = .systemGray6
+      notificationSwitch.onTintColor = .YellowishRed
+      notificationSwitch.tintColor = .lightGray
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {
