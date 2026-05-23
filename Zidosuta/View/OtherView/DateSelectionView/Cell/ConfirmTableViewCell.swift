@@ -5,6 +5,8 @@
 //  Created by 川島真之 on 2025/12/08.
 //
 
+
+@MainActor
 protocol ConfirmTableViewCellDelegate {
 
   func confirmButtonAction()

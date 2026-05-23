@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - ContactTableViewCellDelegate
 
+@MainActor
 protocol ContactTableViewCellDelegate {
 
   func mailingButtonAction()
@@ -37,8 +38,9 @@ class ContactTableViewCell: UITableViewCell {
 
     super.awakeFromNib()
 
-    contentView.backgroundColor = .systemGray6
-    // Initialization code
+    MainActor.assumeIsolated {
+      contentView.backgroundColor = .systemGray6
+    }
   }
 
   override func setSelected(_ selected: Bool, animated: Bool) {

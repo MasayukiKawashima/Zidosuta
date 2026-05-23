@@ -302,18 +302,15 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
       }
       // オフにしたら
     } else {
-      // スイッチオフを記録
       let settings = Settings.shared
       settings.update { settings in
         settings.notification?.isNotificationEnabled = false
       }
-      // 通知スケジュールの削除
+      // クロージャを使わず直接呼ぶだけでよい
       let center = UNUserNotificationCenter.current()
-      center.getPendingNotificationRequests { requests in
-        center.removeAllPendingNotificationRequests()
-        center.removeAllDeliveredNotifications()
-      }
-      // statuLabelの編集
+      center.removeAllPendingNotificationRequests()
+      center.removeAllDeliveredNotifications()
+
       cell.statusLabel.text = SettingsCellString.Notification.offStatus
       cell.statusLabel.textColor = .lightGray
     }
@@ -363,7 +360,7 @@ extension SettingsViewController: TermsOfUseTableViewCellDelegate, PrivacyPolicy
 
 // MARK: - MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate
 
-extension SettingsViewController: MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate {
+extension SettingsViewController: @MainActor MFMailComposeViewControllerDelegate, ContactTableViewCellDelegate {
 
   func mailingButtonAction() {
 

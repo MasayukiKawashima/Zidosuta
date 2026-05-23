@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - MemoTableViewCellDelegate
 
+@MainActor
 protocol MemoTableViewCellDelegate: AnyObject {
 
   func memoTableViewCellDidRequestKeyboardDismiss(_ cell: MemoTableViewCell)

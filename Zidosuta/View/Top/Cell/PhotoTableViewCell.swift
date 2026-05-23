@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - PhotoTableViewCellDelegate
 
+@MainActor
 protocol PhotoTableViewCellDelegate {
 
   func insertButtonAction()

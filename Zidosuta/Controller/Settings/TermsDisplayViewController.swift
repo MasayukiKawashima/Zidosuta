@@ -87,25 +87,22 @@ class TermsDisplayViewController: UIViewController {
   // ログの警告を非表示にするための処理
   private func cleanupWebView() {
 
-    let webView = termsDisplayView.webView!
-    // 読み込みを停止
-    webView.stopLoading()
+      let webView = termsDisplayView.webView!
 
-    // キャッシュをクリア
-    if #available(iOS 9.0, *) {
-      WKWebsiteDataStore.default().removeData(
-        ofTypes: [WKWebsiteDataTypeMemoryCache, WKWebsiteDataTypeDiskCache],
-        modifiedSince: Date(timeIntervalSince1970: 0),
-        completionHandler: { }
-      )
-    }
-    // 空のページを読み込んでリソースを解放
-    webView.loadHTMLString("", baseURL: nil)
-  }
-
-  deinit {
-    termsDisplayView.webView.navigationDelegate = nil
-    termsDisplayView.webView.uiDelegate = nil
+      webView.navigationDelegate = nil
+      webView.uiDelegate = nil
+      // 読み込みを停止
+      webView.stopLoading()
+      // キャッシュをクリア
+      if #available(iOS 9.0, *) {
+          WKWebsiteDataStore.default().removeData(
+              ofTypes: [WKWebsiteDataTypeMemoryCache, WKWebsiteDataTypeDiskCache],
+              modifiedSince: Date(timeIntervalSince1970: 0),
+              completionHandler: { }
+          )
+      }
+      // 空のページを読み込んでリソースを解放
+      webView.loadHTMLString("", baseURL: nil)
   }
 }
 
