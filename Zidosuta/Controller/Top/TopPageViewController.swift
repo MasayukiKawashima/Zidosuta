@@ -239,12 +239,17 @@ extension TopPageViewController {
   // BarButtonの設定
   private func navigationBarButtonSetting() {
 
-    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .plain, target: self, action: #selector(buttonPaging(_:)))
     nextBarButtonItem.tag = 1
     nextBarButtonItem.tintColor = .white
-    let previousBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    let previousBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(buttonPaging(_:)))
     previousBarButtonItem.tag = 2
     previousBarButtonItem.tintColor = .white
+
+    if #available(iOS 26.0, *) {
+      nextBarButtonItem.hidesSharedBackground = true
+      previousBarButtonItem.hidesSharedBackground = true
+    }
 
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
     self.navigationItem.leftBarButtonItem = previousBarButtonItem
