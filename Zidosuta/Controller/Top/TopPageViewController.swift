@@ -239,17 +239,34 @@ extension TopPageViewController {
   // BarButtonの設定
   private func navigationBarButtonSetting() {
 
-    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .plain, target: self, action: #selector(buttonPaging(_:)))
-    nextBarButtonItem.tag = 1
-    nextBarButtonItem.tintColor = .white
-    let previousBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: #selector(buttonPaging(_:)))
-    previousBarButtonItem.tag = 2
-    previousBarButtonItem.tintColor = .white
+    // arrow.right等の色は、そのままLiquid Glassと組み合わせるとUIBarButtonItem(image:で指定したときに肌色っぽくなる。
+    // なのでSFSymbolの初期化時に白色を明示し、renderingMode: .alwaysOriginal
+    let arrowRight = UIImage(systemName: "arrow.right")?
+        .withTintColor(.white, renderingMode: .alwaysOriginal)
+    let arrowLeft = UIImage(systemName: "arrow.left")?
+        .withTintColor(.white, renderingMode: .alwaysOriginal)
 
-    if #available(iOS 26.0, *) {
-      nextBarButtonItem.hidesSharedBackground = true
-      previousBarButtonItem.hidesSharedBackground = true
+    let nextBarButtonItem = UIBarButtonItem(image: arrowRight, style: .plain, target: self, action: #selector(buttonPaging(_:)))
+    nextBarButtonItem.tag = 1
+    let previousBarButtonItem = UIBarButtonItem(image: arrowLeft, style: .plain, target: self, action: #selector(buttonPaging(_:)))
+    previousBarButtonItem.tag = 2
+
+
+    // Liquid Glass対応
+    if #available(iOS 26, *) {
+      nextBarButtonItem.style = .prominent
+      nextBarButtonItem.tintColor = .YellowishRed
+
+      previousBarButtonItem.style = .prominent
+      previousBarButtonItem.tintColor = .YellowishRed
     }
+
+    // Liquid Glassのガラス背景を無効化し、見た目を以前のものと同様にする
+
+//    if #available(iOS 26.0, *) {
+//      nextBarButtonItem.hidesSharedBackground = true
+//      previousBarButtonItem.hidesSharedBackground = true
+//    }
 
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
     self.navigationItem.leftBarButtonItem = previousBarButtonItem
