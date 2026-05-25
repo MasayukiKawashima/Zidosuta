@@ -185,12 +185,18 @@ extension GraphPageViewController {
   // barButtonの設定
   private func navigationBarButtonSetting() {
 
-    let nextBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.right"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    let arrowRight = UIImage(systemName: "arrow.right")?
+        .withTintColor(.white, renderingMode: .alwaysOriginal)
+    let arrowLeft = UIImage(systemName: "arrow.left")?
+        .withTintColor(.white, renderingMode: .alwaysOriginal)
+
+    let nextBarButtonItem = UIBarButtonItem(image: arrowRight, style: .done, target: self, action: #selector(buttonPaging(_:)))
     nextBarButtonItem.tag = 1
-    nextBarButtonItem.tintColor = .white
-    let previousBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .done, target: self, action: #selector(buttonPaging(_:)))
+    let previousBarButtonItem = UIBarButtonItem(image: arrowLeft, style: .done, target: self, action: #selector(buttonPaging(_:)))
     previousBarButtonItem.tag = 2
-    previousBarButtonItem.tintColor = .white
+
+    nextBarButtonItem.applyLiquidGlass()
+    previousBarButtonItem.applyLiquidGlass()
 
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
     self.navigationItem.leftBarButtonItem = previousBarButtonItem
