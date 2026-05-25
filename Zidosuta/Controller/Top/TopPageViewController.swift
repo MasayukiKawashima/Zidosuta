@@ -253,13 +253,8 @@ extension TopPageViewController {
 
 
     // Liquid Glass対応
-    if #available(iOS 26, *) {
-      nextBarButtonItem.style = .prominent
-      nextBarButtonItem.tintColor = .YellowishRed
-
-      previousBarButtonItem.style = .prominent
-      previousBarButtonItem.tintColor = .YellowishRed
-    }
+    nextBarButtonItem.applyLiquidGlass()
+    previousBarButtonItem.applyLiquidGlass()
 
     // Liquid Glassのガラス背景を無効化し、見た目を以前のものと同様にする
 

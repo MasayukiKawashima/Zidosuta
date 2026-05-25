@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 protocol LiquidGlassSupporting {
 
   func applyLiquidGlass()

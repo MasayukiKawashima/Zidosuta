@@ -46,6 +46,7 @@
 		FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */; };
 		FA5DF1C92D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DF1C82D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift */; };
 		FA61F05C2FC3F89300E7D7F1 /* LiquidGlassSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA61F05B2FC3F89300E7D7F1 /* LiquidGlassSupporting.swift */; };
+		FA61F0612FC3FA9400E7D7F1 /* UIBarButtonItem+LiquidGlassSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA61F0602FC3FA9400E7D7F1 /* UIBarButtonItem+LiquidGlassSupporting.swift */; };
 		FA6674CB2F923D870032FB36 /* AppInfoString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6674CA2F923D870032FB36 /* AppInfoString.swift */; };
 		FA6674D12F9BA1FC0032FB36 /* TopNavigationBarString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6674D02F9BA1FC0032FB36 /* TopNavigationBarString.swift */; };
 		FA6674D72FA102080032FB36 /* GraphMarkerString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6674D62FA102080032FB36 /* GraphMarkerString.swift */; };
@@ -207,6 +208,7 @@
 		FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreator.swift; sourceTree = "<group>"; };
 		FA5DF1C82D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+AdjustmentOfappearance.swift"; sourceTree = "<group>"; };
 		FA61F05B2FC3F89300E7D7F1 /* LiquidGlassSupporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassSupporting.swift; sourceTree = "<group>"; };
+		FA61F0602FC3FA9400E7D7F1 /* UIBarButtonItem+LiquidGlassSupporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+LiquidGlassSupporting.swift"; sourceTree = "<group>"; };
 		FA6674CA2F923D870032FB36 /* AppInfoString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoString.swift; sourceTree = "<group>"; };
 		FA6674D02F9BA1FC0032FB36 /* TopNavigationBarString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationBarString.swift; sourceTree = "<group>"; };
 		FA6674D62FA102080032FB36 /* GraphMarkerString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphMarkerString.swift; sourceTree = "<group>"; };
@@ -509,6 +511,14 @@
 			path = TopPageTextFieldValidationTest;
 			sourceTree = "<group>";
 		};
+		FA61F05D2FC3FA1C00E7D7F1 /* LiquidGlassSupporting */ = {
+			isa = PBXGroup;
+			children = (
+				FA61F0602FC3FA9400E7D7F1 /* UIBarButtonItem+LiquidGlassSupporting.swift */,
+			);
+			path = LiquidGlassSupporting;
+			sourceTree = "<group>";
+		};
 		FA6674C92F923D310032FB36 /* Constant */ = {
 			isa = PBXGroup;
 			children = (
@@ -718,6 +728,7 @@
 		FA9F9CE52CF44E690013886A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA61F05D2FC3FA1C00E7D7F1 /* LiquidGlassSupporting */,
 				FA9F9CE32CF449030013886A /* UIColor+AppThemeColor.swift */,
 				FA5DF1C82D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift */,
 				FA9F9CEA2CF5A6CC0013886A /* ChartAxisBase+setKGFormatter.swift */,
@@ -1309,6 +1320,7 @@
 				FADD2CE32FB610170084D5D0 /* PhotoTipsString.swift in Sources */,
 				FAC9EF2A2D0C11A000DE1E64 /* DateData.swift in Sources */,
 				FAC9EF2B2D0C11A000DE1E64 /* Settings.swift in Sources */,
+				FA61F0612FC3FA9400E7D7F1 /* UIBarButtonItem+LiquidGlassSupporting.swift in Sources */,
 				FA87004A2F7A55F60067EAD5 /* NibLoadable.swift in Sources */,
 				FAC9EF222D0C0B5C00DE1E64 /* TopNavigationController.swift in Sources */,
 				FA61F05C2FC3F89300E7D7F1 /* LiquidGlassSupporting.swift in Sources */,
