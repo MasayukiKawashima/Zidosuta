@@ -240,7 +240,7 @@ extension TopPageViewController {
   private func navigationBarButtonSetting() {
 
     // arrow.right等の色は、そのままLiquid Glassと組み合わせるとUIBarButtonItem(image:で指定したときに肌色っぽくなる。
-    // なのでSFSymbolの初期化時に白色を明示し、renderingMode: .alwaysOriginal
+    // なのでSFSymbolの初期化時に白色を明示し、renderingMode: .alwaysOriginalでオリジナルのままのレンダリングを指定する
     let arrowRight = UIImage(systemName: "arrow.right")?
         .withTintColor(.white, renderingMode: .alwaysOriginal)
     let arrowLeft = UIImage(systemName: "arrow.left")?
