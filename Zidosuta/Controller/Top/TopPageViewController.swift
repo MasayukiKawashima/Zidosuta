@@ -152,7 +152,7 @@ extension TopPageViewController {
     let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     yearTextLabel.text = yearText
     yearTextLabel.font = UIFont(name: "Thonburi", size: fontSize)
-    yearTextLabel.textColor = .black
+    yearTextLabel.textColor = .YellowishRed
     yearTextLabel.sizeToFit()
 
     // 日付の表示形式を設定
@@ -163,7 +163,7 @@ extension TopPageViewController {
     let dateTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     dateTextLabel.text = dateText
     dateTextLabel.font = UIFont(name: "Thonburi-Bold", size: dateFontSize)
-    dateTextLabel.textColor = .black
+    dateTextLabel.textColor = .YellowishRed
     dateTextLabel.sizeToFit()
 
     // 曜日の表示形式の設定
@@ -174,7 +174,7 @@ extension TopPageViewController {
     let dayOfWeekTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     dayOfWeekTextLabel.text = dayOfWeekText
     dayOfWeekTextLabel.font = UIFont(name: "Thonburi", size: fontSize)
-    dayOfWeekTextLabel.textColor = .black
+    dayOfWeekTextLabel.textColor = .YellowishRed
     dayOfWeekTextLabel.sizeToFit()
 
     // AutoLayoutを使用するための設定
