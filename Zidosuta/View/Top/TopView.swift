@@ -46,5 +46,6 @@ class TopView: UIView, NibLoadable {
     }
 
     tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    tableView.backgroundColor = .OysterWhite
   }
 }

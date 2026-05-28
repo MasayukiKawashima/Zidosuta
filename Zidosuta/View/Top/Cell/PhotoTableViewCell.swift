@@ -49,6 +49,7 @@ class PhotoTableViewCell: UITableViewCell {
 
     MainActor.assumeIsolated {
 
+      backgroundColor = .OysterWhite
       commentLabel.adjustsFontSizeToFitWidth = true
       commentLabel.minimumScaleFactor = 0.5
 
