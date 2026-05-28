@@ -19,7 +19,7 @@ extension UIButton {
   // アクティブ状態のボタンの外観の設定
   func configureEnabledButtonAppearance() {
 
-    self.tintColor = UIColor.systemBlue
+    self.tintColor = UIColor.customBlue
     self.backgroundColor = nil
     applyFrostedGlassEffect()
   }
@@ -75,6 +75,10 @@ extension UIButton {
   }
   // ボタンを丸くする
   func setCornerRadius(_ cornerRadius: CGFloat? = nil) {
+
+    if #available(iOS 26.0, *) {
+      self.cornerConfiguration = .capsule()
+    }
 
     let radius = cornerRadius ?? self.frame.size.width / 2
     self.layer.cornerRadius = radius

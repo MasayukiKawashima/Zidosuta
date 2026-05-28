@@ -195,8 +195,8 @@ extension GraphPageViewController {
     let previousBarButtonItem = UIBarButtonItem(image: arrowLeft, style: .done, target: self, action: #selector(buttonPaging(_:)))
     previousBarButtonItem.tag = 2
 
-    nextBarButtonItem.applyLiquidGlass()
-    previousBarButtonItem.applyLiquidGlass()
+    nextBarButtonItem.adjustLiquidGlass()
+    previousBarButtonItem.adjustLiquidGlass()
 
     self.navigationItem.rightBarButtonItem = nextBarButtonItem
     self.navigationItem.leftBarButtonItem = previousBarButtonItem

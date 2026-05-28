@@ -22,10 +22,10 @@ struct PhotoTipsView: View {
     NavigationView {
       GeometryReader { outerGeometry in
         ZStack {
-          Color("YellowishRed")
+          Color("yellowishRed")
             .ignoresSafeArea()
           ZStack {
-            Color("OysterWhite")
+            Color("oysterWhite")
             GeometryReader { geometry in
 
               VStack(alignment: .center) {
@@ -102,7 +102,7 @@ struct PhotoTipsView: View {
                       .padding(.horizontal, 50)
                       .padding(.vertical, 15)
                   })
-                  .background(Color("YellowishRed"))
+                  .background(Color("yellowishRed"))
                   .cornerRadius(10)
                   .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
 
@@ -132,7 +132,7 @@ struct PhotoTipsView: View {
 
   // MARK: - Method
 
-  // 外側のYellowishRedの領域の高さの設定
+  // 外側のyellowishRedの領域の高さの設定
   private func calculateVerticalMargin(for screenSize: CGSize) -> CGFloat {
 
     let screenHeight = screenSize.height

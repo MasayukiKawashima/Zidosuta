@@ -29,7 +29,7 @@ class TermsOfUseTableViewCell: UITableViewCell {
   @IBOutlet weak var termsOfUseLabel: UILabel!
   @IBOutlet weak var transitionButton: UIButton! {
     didSet {
-      transitionButton.tintColor = .YellowishRed
+      transitionButton.tintColor = .yellowishRed
     }
   }
   var delegate: TermsOfUseTableViewCellDelegate?

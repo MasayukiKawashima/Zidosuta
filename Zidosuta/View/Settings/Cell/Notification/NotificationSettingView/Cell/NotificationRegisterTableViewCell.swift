@@ -26,7 +26,7 @@ class NotificationRegisterTableViewCell: UITableViewCell {
     didSet {
       registerButton.layer.cornerRadius = 8
       registerButton.layer.masksToBounds = true
-      registerButton.backgroundColor = .YellowishRed
+      registerButton.backgroundColor = .yellowishRed
       registerButton.setTitleColor(.white, for: .normal)
     }
   }

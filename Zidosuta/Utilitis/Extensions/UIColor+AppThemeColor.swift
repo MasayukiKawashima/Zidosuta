@@ -10,13 +10,16 @@ import UIKit
 
 extension UIColor {
 
-  class var YellowishRed: UIColor {
+  class var yellowishRed: UIColor {
     return UIColor(named: "YellowishRed")!
   }
-  class var OysterWhite: UIColor {
+  class var oysterWhite: UIColor {
     return UIColor(named: "OysterWhite")!
   }
-  class var CornflowerBlue: UIColor {
+  class var cornflowerBlue: UIColor {
     return UIColor(named: "CornflowerBlue")!
+  }
+  class var customBlue: UIColor {
+    return UIColor(named: "CustomBlue")!
   }
 }

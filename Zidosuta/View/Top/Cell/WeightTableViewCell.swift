@@ -27,7 +27,7 @@ extension UITextField {
     // heightにはアンダーラインの高さを入れる
     underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
     // 枠線の色
-    underline.backgroundColor = UIColor.YellowishRed
+    underline.backgroundColor = UIColor.yellowishRed
     addSubview(underline)
     // 枠線を最前面に
     bringSubviewToFront(underline)
@@ -60,6 +60,8 @@ class WeightTableViewCell: UITableViewCell {
     // Initialization code
 
     MainActor.assumeIsolated {
+
+      backgroundColor = .oysterWhite
       // キーボードタイプ設定
       weightTextField.keyboardType = .decimalPad
 

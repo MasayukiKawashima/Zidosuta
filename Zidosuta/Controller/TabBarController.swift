@@ -22,7 +22,7 @@ class TabBarController: UITabBarController {
     let appearance = UITabBarAppearance()
     appearance.backgroundColor = .white
 
-    UITabBar.appearance().tintColor = UIColor.YellowishRed
+    UITabBar.appearance().tintColor = UIColor.yellowishRed
     UITabBar.appearance().standardAppearance = appearance
     UITabBar.appearance().scrollEdgeAppearance = appearance
     // Do any additional setup after loading the view.
