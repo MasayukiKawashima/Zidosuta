@@ -143,7 +143,7 @@ extension GraphPageViewController {
     let dateTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     dateTextLabel.text = dateText
     dateTextLabel.font = UIFont(name: "Thonburi-Bold", size: dateFontSize)
-    dateTextLabel.textColor = .black
+    dateTextLabel.textColor = .yellowishRed
     dateTextLabel.sizeToFit()
 
     // 年の表示形式の設定
@@ -154,7 +154,7 @@ extension GraphPageViewController {
     let yearTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     yearTextLabel.text = yearText
     yearTextLabel.font = UIFont(name: "Thonburi", size: fontSize)
-    yearTextLabel.textColor = .black
+    yearTextLabel.textColor = .yellowishRed
     yearTextLabel.sizeToFit()
 
     // AutoLayoutを使用するための設定
