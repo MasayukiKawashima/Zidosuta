@@ -49,12 +49,12 @@ class PhotoTableViewCell: UITableViewCell {
 
     MainActor.assumeIsolated {
 
-      backgroundColor = .OysterWhite
+      backgroundColor = .oysterWhite
       commentLabel.adjustsFontSizeToFitWidth = true
       commentLabel.minimumScaleFactor = 0.5
-      commentLabel.tintColor = .YellowishRed
+      commentLabel.tintColor = .yellowishRed
 
-      photoImageView.backgroundColor = UIColor.OysterWhite
+      photoImageView.backgroundColor = UIColor.oysterWhite
       // photoImageViewのimageを監視する
       // imageの値が変わるたびにnilが代入されたか否かで分岐して処理を行う
       photoImageView.addObserver(self, forKeyPath: #keyPath(UIImageView.image), options: [.new, .old], context: nil)
@@ -67,7 +67,7 @@ class PhotoTableViewCell: UITableViewCell {
       let radius = insertButton.frame.size.width / 2
       insertButton.layer.cornerRadius = radius
       insertButton.backgroundColor = UIColor.white
-      insertButton.tintColor = .YellowishRed
+      insertButton.tintColor = .yellowishRed
 
       insertButton.layer.shadowColor = UIColor.gray.cgColor  // 影の色
       insertButton.layer.shadowOffset = CGSize(width: 0, height: 1)  // 影のオフセット

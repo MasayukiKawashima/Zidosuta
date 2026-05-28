@@ -15,7 +15,7 @@ class GraphView: UIView, NibLoadable {
 
   @IBOutlet weak var mainBackgroundView: UIView! {
     didSet {
-      mainBackgroundView.backgroundColor = .OysterWhite
+      mainBackgroundView.backgroundColor = .oysterWhite
     }
   }
 

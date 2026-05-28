@@ -29,7 +29,7 @@ class NotificationTableViewCell: UITableViewCell {
   @IBOutlet weak var notificationSwitch: UISwitch!
   @IBOutlet weak var statusLabel: UILabel! {
     didSet {
-      statusLabel.textColor = .YellowishRed
+      statusLabel.textColor = .yellowishRed
     }
   }
 
@@ -45,7 +45,7 @@ class NotificationTableViewCell: UITableViewCell {
 
     MainActor.assumeIsolated {
       self.contentView.backgroundColor = .systemGray6
-      notificationSwitch.onTintColor = .YellowishRed
+      notificationSwitch.onTintColor = .yellowishRed
       notificationSwitch.tintColor = .lightGray
     }
   }

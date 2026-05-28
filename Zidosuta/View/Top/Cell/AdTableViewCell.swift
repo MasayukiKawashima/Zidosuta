@@ -15,7 +15,7 @@ class AdTableViewCell: UITableViewCell {
 
   @IBOutlet weak var bannerView: BannerView! {
     didSet {
-      backgroundView?.backgroundColor = .OysterWhite
+      backgroundView?.backgroundColor = .oysterWhite
     }
   }
 

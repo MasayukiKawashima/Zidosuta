@@ -12,7 +12,7 @@ class SelectedDateDisplayTableViewCell: UITableViewCell {
   @IBOutlet weak var shadowLayerView: ShadowLayerView!
   @IBOutlet weak var mainBackgroundView: UIView! {
     didSet {
-      mainBackgroundView.backgroundColor = .OysterWhite
+      mainBackgroundView.backgroundColor = .oysterWhite
     }
   }
 

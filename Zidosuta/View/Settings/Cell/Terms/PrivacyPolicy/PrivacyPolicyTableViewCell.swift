@@ -19,7 +19,7 @@ class PrivacyPolicyTableViewCell: UITableViewCell {
   @IBOutlet weak var privacyPolicyLabel: UILabel!
   @IBOutlet weak var transitionButton: UIButton! {
     didSet {
-      transitionButton.tintColor = .YellowishRed
+      transitionButton.tintColor = .yellowishRed
     }
   }
   var delegate: PrivacyPolicyTableViewCellDelegate?

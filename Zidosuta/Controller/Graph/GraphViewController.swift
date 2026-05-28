@@ -186,9 +186,9 @@ extension GraphViewController {
     let xAxisLabelFont = UIFont(name: "Thonburi-Bold", size: 12)
     xAxis.labelFont = xAxisLabelFont ?? UIFont.systemFont(ofSize: 12)
     // X軸のラベルのカラーを設定
-    xAxis.labelTextColor = UIColor.CornflowerBlue
+    xAxis.labelTextColor = UIColor.cornflowerBlue
     // X軸の軸線のカラーを設定
-    xAxis.axisLineColor = UIColor.CornflowerBlue
+    xAxis.axisLineColor = UIColor.cornflowerBlue
     // X軸の軸線の太さを設定
     xAxis.axisLineWidth = CGFloat(1.0)
 
@@ -278,8 +278,8 @@ extension GraphViewController {
       leftAxis.axisMaximum = calculatedAxisMax // Y軸の最大値
       leftAxis.setLabelCount(6, force: true)
 
-      let entryPointColor = UIColor.CornflowerBlue
-      let graphLineColor = UIColor.CornflowerBlue.withAlphaComponent(0.5)
+      let entryPointColor = UIColor.cornflowerBlue
+      let graphLineColor = UIColor.cornflowerBlue.withAlphaComponent(0.5)
       // エントリーポイントを二重円ではなく、通常の円にする
       dataSet.drawCircleHoleEnabled = false
       // エントリーポイントのサイズの調整

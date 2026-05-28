@@ -175,7 +175,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         let setDate = Settings.shared.notification?.notificationTime
         let combinedString = setDate?.convertDateToNotificationTimeString()
         cell.statusLabel.text = combinedString
-        cell.statusLabel.textColor = .YellowishRed
+        cell.statusLabel.textColor = .yellowishRed
         // スイッチをオンにする
         cell.notificationSwitch.isOn = true
       } else {
@@ -298,7 +298,7 @@ extension SettingsViewController: NotificationTableViewCellDelegate {
       // 一秒間遅延させる
       // 遅延させないと画面遷移アニメーション中にstatusLabelが.yellowishRedになっていることが見えてしまう
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-        cell.statusLabel.textColor = .YellowishRed
+        cell.statusLabel.textColor = .yellowishRed
       }
       // オフにしたら
     } else {

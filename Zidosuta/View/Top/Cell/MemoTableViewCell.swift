@@ -37,7 +37,7 @@ class MemoTableViewCell: UITableViewCell {
 
     MainActor.assumeIsolated {
 
-      backgroundColor = .OysterWhite
+      backgroundColor = .oysterWhite
 
       memoTextField.keyboardType = .default
       memoTextField.returnKeyType = .done

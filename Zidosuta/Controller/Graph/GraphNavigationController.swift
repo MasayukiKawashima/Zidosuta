@@ -28,7 +28,7 @@ class GraphNavigationController: UINavigationController {
     // Do any additional setup after loading the view.
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor.YellowishRed
+    appearance.backgroundColor = UIColor.yellowishRed
 
     self.navigationBar.standardAppearance = appearance
     self.navigationBar.scrollEdgeAppearance = appearance

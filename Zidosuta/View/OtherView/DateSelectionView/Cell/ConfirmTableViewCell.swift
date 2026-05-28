@@ -22,7 +22,7 @@ class ConfirmTableViewCell: UITableViewCell {
     didSet {
       confirmButton.layer.cornerRadius = 8
       confirmButton.layer.masksToBounds = true
-      confirmButton.backgroundColor = .YellowishRed
+      confirmButton.backgroundColor = .yellowishRed
       confirmButton.setTitleColor(.white, for: .normal)
     }
   }
