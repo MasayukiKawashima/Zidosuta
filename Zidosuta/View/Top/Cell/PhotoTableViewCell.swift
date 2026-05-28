@@ -52,6 +52,7 @@ class PhotoTableViewCell: UITableViewCell {
       backgroundColor = .OysterWhite
       commentLabel.adjustsFontSizeToFitWidth = true
       commentLabel.minimumScaleFactor = 0.5
+      commentLabel.tintColor = .YellowishRed
 
       photoImageView.backgroundColor = UIColor.OysterWhite
       // photoImageViewのimageを監視する
@@ -66,6 +67,7 @@ class PhotoTableViewCell: UITableViewCell {
       let radius = insertButton.frame.size.width / 2
       insertButton.layer.cornerRadius = radius
       insertButton.backgroundColor = UIColor.white
+      insertButton.tintColor = .YellowishRed
 
       insertButton.layer.shadowColor = UIColor.gray.cgColor  // 影の色
       insertButton.layer.shadowOffset = CGSize(width: 0, height: 1)  // 影のオフセット
