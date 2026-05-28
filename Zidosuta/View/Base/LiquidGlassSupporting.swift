@@ -10,6 +10,5 @@ import Foundation
 @MainActor
 protocol LiquidGlassSupporting {
 
-  func applyLiquidGlass()
-  func revertLiquidGlass()
+  func adjustLiquidGlass()
 }

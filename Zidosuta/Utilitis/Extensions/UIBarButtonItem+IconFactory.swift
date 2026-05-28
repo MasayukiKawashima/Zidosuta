@@ -54,7 +54,7 @@ extension UIBarButtonItem {
     if let directionTag {
       item.tag = directionTag
     }
-    item.applyLiquidGlass()
+    item.adjustLiquidGlass()
 
     return item
   }

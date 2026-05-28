@@ -281,8 +281,8 @@ extension TopPageViewController {
 //    let previousBarButtonItem = UIBarButtonItem.roundedIcon(systemName: "arrow.left", iconColor: barIconColor, backgroundColor: backgroundColor, directionTag: previousTag, target: self, action: #selector(buttonPaging(_:)))
 //
 //    // Liquid Glass対応
-//    nextBarButtonItem.applyLiquidGlass()
-//    previousBarButtonItem.applyLiquidGlass()
+//    nextBarButtonItem.adjustLiquidGlass()
+//    previousBarButtonItem.adjustLiquidGlass()
 
     // Liquid Glassのガラス背景を無効化し、見た目を以前のものと同様にする
 

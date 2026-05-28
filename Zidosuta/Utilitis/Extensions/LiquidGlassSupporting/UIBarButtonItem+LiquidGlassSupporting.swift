@@ -10,16 +10,10 @@ import UIKit
 
 extension UIBarButtonItem: LiquidGlassSupporting {
 
-  func applyLiquidGlass() {
+  func adjustLiquidGlass() {
     if #available(iOS 26, *) {
       style = .prominent
       tintColor = .YellowishRed
-    }
-  }
-
-  func revertLiquidGlass() {
-    if #available(iOS 26.0, *) {
-      hidesSharedBackground = true
     }
   }
 }
