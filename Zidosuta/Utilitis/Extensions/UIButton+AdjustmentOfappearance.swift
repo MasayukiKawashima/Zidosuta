@@ -76,6 +76,10 @@ extension UIButton {
   // ボタンを丸くする
   func setCornerRadius(_ cornerRadius: CGFloat? = nil) {
 
+    if #available(iOS 26.0, *) {
+      self.cornerConfiguration = .capsule()
+    }
+
     let radius = cornerRadius ?? self.frame.size.width / 2
     self.layer.cornerRadius = radius
     self.clipsToBounds = true
