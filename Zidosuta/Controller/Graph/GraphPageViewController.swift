@@ -185,21 +185,43 @@ extension GraphPageViewController {
   // barButtonの設定
   private func navigationBarButtonSetting() {
 
-    let arrowRight = UIImage(systemName: "arrow.right")?
-        .withTintColor(.white, renderingMode: .alwaysOriginal)
-    let arrowLeft = UIImage(systemName: "arrow.left")?
-        .withTintColor(.white, renderingMode: .alwaysOriginal)
+    let barIconColor = UIColor.white
+    let backgroundColor = UIColor.yellowishRed
+    let nextTag = 1
+    let previousTag = 2
+    let nextSystemName = "chevron.forward"
+    let previousSystemName = "chevron.backward"
 
-    let nextBarButtonItem = UIBarButtonItem(image: arrowRight, style: .done, target: self, action: #selector(buttonPaging(_:)))
-    nextBarButtonItem.tag = 1
-    let previousBarButtonItem = UIBarButtonItem(image: arrowLeft, style: .done, target: self, action: #selector(buttonPaging(_:)))
-    previousBarButtonItem.tag = 2
+    if #available(iOS 26, *) {
 
-    nextBarButtonItem.adjustLiquidGlass()
-    previousBarButtonItem.adjustLiquidGlass()
+      let nextBarButtonItem = UIBarButtonItem.liquidGlassIcon(systemName: nextSystemName, iconColor: barIconColor, directionTag: nextTag, target: self, action: #selector(buttonPaging(_:)))
+      let previousBarButtonItem = UIBarButtonItem.liquidGlassIcon(systemName: previousSystemName, iconColor: barIconColor, directionTag: previousTag, target: self, action: #selector(buttonPaging(_:)))
 
-    self.navigationItem.rightBarButtonItem = nextBarButtonItem
-    self.navigationItem.leftBarButtonItem = previousBarButtonItem
+      self.navigationItem.rightBarButtonItem = nextBarButtonItem
+      self.navigationItem.leftBarButtonItem = previousBarButtonItem
+    } else {
+
+      let nextBarButtonItem = UIBarButtonItem.roundedIcon(systemName: nextSystemName, iconColor: barIconColor, backgroundColor: backgroundColor, directionTag: nextTag, target: self, action: #selector(buttonPaging(_:)))
+      let previousBarButtonItem = UIBarButtonItem.roundedIcon(systemName: previousSystemName, iconColor: barIconColor, backgroundColor: backgroundColor, directionTag: previousTag, target: self, action: #selector(buttonPaging(_:)))
+
+      self.navigationItem.rightBarButtonItem = nextBarButtonItem
+      self.navigationItem.leftBarButtonItem = previousBarButtonItem
+    }
+//    let arrowRight = UIImage(systemName: "arrow.right")?
+//        .withTintColor(.white, renderingMode: .alwaysOriginal)
+//    let arrowLeft = UIImage(systemName: "arrow.left")?
+//        .withTintColor(.white, renderingMode: .alwaysOriginal)
+//
+//    let nextBarButtonItem = UIBarButtonItem(image: arrowRight, style: .done, target: self, action: #selector(buttonPaging(_:)))
+//    nextBarButtonItem.tag = 1
+//    let previousBarButtonItem = UIBarButtonItem(image: arrowLeft, style: .done, target: self, action: #selector(buttonPaging(_:)))
+//    previousBarButtonItem.tag = 2
+//
+//    nextBarButtonItem.adjustLiquidGlass()
+//    previousBarButtonItem.adjustLiquidGlass()
+//
+//    self.navigationItem.rightBarButtonItem = nextBarButtonItem
+//    self.navigationItem.leftBarButtonItem = previousBarButtonItem
   }
 
   @objc private func buttonPaging(_ sender: UIBarButtonItem) {
