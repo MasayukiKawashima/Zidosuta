@@ -265,7 +265,7 @@ extension SettingsViewController {
     let titleTextLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 22))
     titleTextLabel.text = titleText
     titleTextLabel.font = UIFont(name: "Thonburi-Bold", size: 18.0)
-    titleTextLabel.textColor = .black
+    titleTextLabel.textColor = .yellowishRed
     titleTextLabel.sizeToFit()
 
     titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
