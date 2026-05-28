@@ -19,4 +19,7 @@ extension UIColor {
   class var CornflowerBlue: UIColor {
     return UIColor(named: "CornflowerBlue")!
   }
+  class var customBlue: UIColor {
+    return UIColor(named: "CustomBlue")!
+  }
 }

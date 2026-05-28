@@ -19,7 +19,7 @@ extension UIButton {
   // アクティブ状態のボタンの外観の設定
   func configureEnabledButtonAppearance() {
 
-    self.tintColor = UIColor.systemBlue
+    self.tintColor = UIColor.customBlue
     self.backgroundColor = nil
     applyFrostedGlassEffect()
   }
