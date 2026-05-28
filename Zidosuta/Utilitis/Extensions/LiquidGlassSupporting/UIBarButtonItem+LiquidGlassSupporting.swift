@@ -12,6 +12,7 @@ extension UIBarButtonItem: LiquidGlassSupporting {
 
   func applyLiquidGlass() {
     if #available(iOS 26, *) {
+      style = .prominent
       tintColor = .YellowishRed
     }
   }

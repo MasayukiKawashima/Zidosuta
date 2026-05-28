@@ -60,6 +60,8 @@ class WeightTableViewCell: UITableViewCell {
     // Initialization code
 
     MainActor.assumeIsolated {
+
+      backgroundColor = .OysterWhite
       // キーボードタイプ設定
       weightTextField.keyboardType = .decimalPad
 

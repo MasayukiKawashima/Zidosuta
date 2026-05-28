@@ -239,22 +239,50 @@ extension TopPageViewController {
   // BarButtonの設定
   private func navigationBarButtonSetting() {
 
+    let barIconColor = UIColor.white
+    let backgroundColor = UIColor.YellowishRed
+    let nextTag = 1
+    let previousTag = 2
+    let nextSystemName = "chevron.forward"
+    let previousSystemName = "chevron.backward"
+
+    if #available(iOS 26, *) {
+
+      let nextBarButtonItem = UIBarButtonItem.liquidGlassIcon(systemName: nextSystemName, iconColor: barIconColor, directionTag: nextTag, target: self, action: #selector(buttonPaging(_:)))
+      let previousBarButtonItem = UIBarButtonItem.liquidGlassIcon(systemName: previousSystemName, iconColor: barIconColor, directionTag: previousTag, target: self, action: #selector(buttonPaging(_:)))
+
+      self.navigationItem.rightBarButtonItem = nextBarButtonItem
+      self.navigationItem.leftBarButtonItem = previousBarButtonItem
+    } else {
+
+      let nextBarButtonItem = UIBarButtonItem.roundedIcon(systemName: nextSystemName, iconColor: barIconColor, backgroundColor: backgroundColor, directionTag: nextTag, target: self, action: #selector(buttonPaging(_:)))
+      let previousBarButtonItem = UIBarButtonItem.roundedIcon(systemName: previousSystemName, iconColor: barIconColor, backgroundColor: backgroundColor, directionTag: previousTag, target: self, action: #selector(buttonPaging(_:)))
+
+      self.navigationItem.rightBarButtonItem = nextBarButtonItem
+      self.navigationItem.leftBarButtonItem = previousBarButtonItem
+    }
+
+
     // arrow.right等の色は、そのままLiquid Glassと組み合わせるとUIBarButtonItem(image:で指定したときに肌色っぽくなる。
     // なのでSFSymbolの初期化時に白色を明示し、renderingMode: .alwaysOriginalでオリジナルのままのレンダリングを指定する
-    let arrowRight = UIImage(systemName: "arrow.right")?
-        .withTintColor(.YellowishRed, renderingMode: .alwaysOriginal)
-    let arrowLeft = UIImage(systemName: "arrow.left")?
-        .withTintColor(.YellowishRed, renderingMode: .alwaysOriginal)
+//    let arrowRight = UIImage(systemName: "arrow.right")?
+//        .withTintColor(barIconColor, renderingMode: .alwaysOriginal)
+//    let arrowLeft = UIImage(systemName: "arrow.left")?
+//        .withTintColor(barIconColor
+//                       , renderingMode: .alwaysOriginal)
+//
+//    let nextBarButtonItem = UIBarButtonItem(image: arrowRight, style: .plain, target: self, action: #selector(buttonPaging(_:)))
+//    nextBarButtonItem.tag = 1
+//    let previousBarButtonItem = UIBarButtonItem(image: arrowLeft, style: .plain, target: self, action: #selector(buttonPaging(_:)))
+//    previousBarButtonItem.tag = 2
 
-    let nextBarButtonItem = UIBarButtonItem(image: arrowRight, style: .plain, target: self, action: #selector(buttonPaging(_:)))
-    nextBarButtonItem.tag = 1
-    let previousBarButtonItem = UIBarButtonItem(image: arrowLeft, style: .plain, target: self, action: #selector(buttonPaging(_:)))
-    previousBarButtonItem.tag = 2
-
-
-    // Liquid Glass対応
-    nextBarButtonItem.applyLiquidGlass()
-    previousBarButtonItem.applyLiquidGlass()
+//    let nextBarButtonItem = UIBarButtonItem.roundedIcon(systemName: "arrow.right", iconColor: barIconColor, backgroundColor: backgroundColor, directionTag: nextTag, target: self, action: #selector(buttonPaging(_:)))
+//
+//    let previousBarButtonItem = UIBarButtonItem.roundedIcon(systemName: "arrow.left", iconColor: barIconColor, backgroundColor: backgroundColor, directionTag: previousTag, target: self, action: #selector(buttonPaging(_:)))
+//
+//    // Liquid Glass対応
+//    nextBarButtonItem.applyLiquidGlass()
+//    previousBarButtonItem.applyLiquidGlass()
 
     // Liquid Glassのガラス背景を無効化し、見た目を以前のものと同様にする
 
@@ -263,8 +291,8 @@ extension TopPageViewController {
 //      previousBarButtonItem.hidesSharedBackground = true
 //    }
 
-    self.navigationItem.rightBarButtonItem = nextBarButtonItem
-    self.navigationItem.leftBarButtonItem = previousBarButtonItem
+//    self.navigationItem.rightBarButtonItem = nextBarButtonItem
+//    self.navigationItem.leftBarButtonItem = previousBarButtonItem
   }
   // BarButton押下時の画面遷移
   @objc func buttonPaging(_ sender: UIBarButtonItem) {
