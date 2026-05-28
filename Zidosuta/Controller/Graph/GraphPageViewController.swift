@@ -123,8 +123,8 @@ extension GraphPageViewController {
 
     var yearText = ""
     var dateText = ""
-    let dateFontSize: CGFloat = 18.0
-    let fontSize: CGFloat = 14.0
+    let dateFontSize: CGFloat = 20.0
+    let fontSize: CGFloat = 16.0
 
     // カスタムビューをインスタンス化
     let customTitleView = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: self.navigationController!.navigationBar.frame.size.height))
