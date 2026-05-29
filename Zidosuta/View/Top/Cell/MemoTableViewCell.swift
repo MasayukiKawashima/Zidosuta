@@ -54,7 +54,17 @@ class MemoTableViewCell: UITableViewCell {
       ]
       memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
 
+      memoTextField.backgroundColor = .systemGray6
+
+      if #available(iOS 26.0, *) {
+        memoTextField.cornerConfiguration = .corners(radius: 4)
+      } else {
+        memoTextField.layer.cornerRadius = 4
+      }
       setUpCloseButton()
+
+      memoTextField.layer.borderWidth = 0.4
+      memoTextField.layer.borderColor = UIColor.systemGray3.cgColor
     }
   }
 

@@ -25,7 +25,7 @@ extension UITextField {
 
     let underline = UIView()
     // heightにはアンダーラインの高さを入れる
-    underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
+    underline.frame = CGRect(x: 0, y: frame.height + 7, width: frame.width, height: 2.0)
     // 枠線の色
     underline.backgroundColor = UIColor.yellowishRed
     addSubview(underline)
@@ -66,6 +66,14 @@ class WeightTableViewCell: UITableViewCell {
       weightTextField.keyboardType = .decimalPad
 
       weightTextField.autocorrectionType = .no
+
+      weightTextField.backgroundColor = .systemGray6
+
+      if #available(iOS 26.0, *) {
+        weightTextField.cornerConfiguration = .corners(radius: 8)
+      } else {
+        weightTextField.layer.cornerRadius = 8
+      }
       // 2024.11.15
       // 文字列の長さによって１文字あたりのサイズを調整するかどうか
       // falseなので調整をしない
@@ -80,7 +88,9 @@ class WeightTableViewCell: UITableViewCell {
       ]
       weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
 
-      weightTextField.setWeightTextFieldUnderLine()
+      weightTextField.layer.borderWidth = 0.4
+      weightTextField.layer.borderColor = UIColor.systemGray3.cgColor
+
       setUpCloseButton()
     }
   }
