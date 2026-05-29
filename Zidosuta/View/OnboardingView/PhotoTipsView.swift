@@ -22,10 +22,10 @@ struct PhotoTipsView: View {
     NavigationView {
       GeometryReader { outerGeometry in
         ZStack {
-          Color("yellowishRed")
+          Color("YellowishRed")
             .ignoresSafeArea()
           ZStack {
-            Color("oysterWhite")
+            Color("OysterWhite")
             GeometryReader { geometry in
 
               VStack(alignment: .center) {
@@ -102,7 +102,7 @@ struct PhotoTipsView: View {
                       .padding(.horizontal, 50)
                       .padding(.vertical, 15)
                   })
-                  .background(Color("yellowishRed"))
+                  .background(Color("YellowishRed"))
                   .cornerRadius(10)
                   .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
 
