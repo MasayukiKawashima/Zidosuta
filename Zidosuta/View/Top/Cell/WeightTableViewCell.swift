@@ -67,7 +67,7 @@ class WeightTableViewCell: UITableViewCell {
 
       weightTextField.autocorrectionType = .no
 
-      weightTextField.backgroundColor = .systemGray6
+      weightTextField.backgroundColor = .customLightGray
 
       if #available(iOS 26.0, *) {
         weightTextField.cornerConfiguration = .corners(radius: 8)
@@ -83,8 +83,9 @@ class WeightTableViewCell: UITableViewCell {
       weightTextField.adjustsFontSizeToFitWidth = false
 
       let placeholderText = PlaceholderString.weightTextField
-      let attributes = [
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+      let attributes: [NSAttributedString.Key: Any] = [
+          .font: UIFont.systemFont(ofSize: 14),
+          .foregroundColor: UIColor.customLightGray2
       ]
       weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
 

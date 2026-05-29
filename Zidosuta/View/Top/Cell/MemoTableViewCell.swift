@@ -49,12 +49,13 @@ class MemoTableViewCell: UITableViewCell {
       memoTextField.minimumFontSize = 10
 
       let placeholderText = PlaceholderString.memoTextField
-      let attributes = [
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+      let attributes: [NSAttributedString.Key: Any] = [
+          .font: UIFont.systemFont(ofSize: 14),
+          .foregroundColor: UIColor.customLightGray2
       ]
       memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
 
-      memoTextField.backgroundColor = .systemGray6
+      memoTextField.backgroundColor = .customLightGray
 
       if #available(iOS 26.0, *) {
         memoTextField.cornerConfiguration = .corners(radius: 4)
