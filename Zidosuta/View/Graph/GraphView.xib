@@ -21,8 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2F-Y7-UOt">
-                    <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
-                    <color key="backgroundColor" name="OysterWhite"/>
+                    <rect key="frame" x="0.0" y="48" width="896" height="311"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-lh-5cY" customClass="LineChartView" customModule="Charts">
                     <rect key="frame" x="48" y="53" width="800" height="301"/>
@@ -31,14 +30,14 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="j2F-Y7-UOt" secondAttribute="bottom" id="5Rr-L2-JuH"/>
                 <constraint firstItem="iBf-lh-5cY" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="7GS-nv-Tjd"/>
+                <constraint firstItem="j2F-Y7-UOt" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="9Kr-NY-SI2"/>
                 <constraint firstItem="iBf-lh-5cY" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="OmW-v8-VIG"/>
                 <constraint firstItem="j2F-Y7-UOt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Sqo-gj-8Og"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iBf-lh-5cY" secondAttribute="trailing" id="bht-Nd-oLl"/>
+                <constraint firstItem="j2F-Y7-UOt" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="k9s-wj-cvV"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="iBf-lh-5cY" secondAttribute="bottom" constant="5" id="ndR-rj-tQi"/>
                 <constraint firstAttribute="trailing" secondItem="j2F-Y7-UOt" secondAttribute="trailing" id="vet-b5-wBd"/>
-                <constraint firstItem="j2F-Y7-UOt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wh5-Ic-kK2"/>
             </constraints>
             <point key="canvasLocation" x="139.28571428571428" y="327.536231884058"/>
         </view>

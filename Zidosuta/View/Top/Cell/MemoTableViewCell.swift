@@ -64,6 +64,7 @@ class MemoTableViewCell: UITableViewCell {
       }
       setUpCloseButton()
 
+      //　テキストフィールドのボーダーのレイアウト
       memoTextField.layer.borderWidth = 0.4
       memoTextField.layer.borderColor = UIColor.systemGray3.cgColor
     }

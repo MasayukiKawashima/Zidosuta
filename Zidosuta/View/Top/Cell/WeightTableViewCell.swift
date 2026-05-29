@@ -89,6 +89,7 @@ class WeightTableViewCell: UITableViewCell {
       ]
       weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
 
+      //　テキストフィールドのボーダーのレイアウト
       weightTextField.layer.borderWidth = 0.4
       weightTextField.layer.borderColor = UIColor.systemGray3.cgColor
 
