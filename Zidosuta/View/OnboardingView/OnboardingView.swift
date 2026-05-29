@@ -16,7 +16,7 @@ struct OnboardingView: View {
 
     let appearance = UINavigationBarAppearance()
     appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor(named: "yellowishRed")
+    appearance.backgroundColor = UIColor(named: "YellowishRed")
     appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
     appearance.buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
 
@@ -44,7 +44,7 @@ struct OnboardingView: View {
   var body: some View {
     NavigationView {
       ZStack {
-        Color("yellowishRed")
+        Color("YellowishRed")
           .ignoresSafeArea()
         GeometryReader { geometry in
           VStack(alignment: .center, spacing: 20) {
@@ -81,7 +81,7 @@ struct OnboardingView: View {
                       .padding(.vertical, 10)
                   }
                 )
-                .background(Color("yellowishRed"))
+                .background(Color("YellowishRed"))
                 .cornerRadius(10)
                 .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
               }
@@ -99,7 +99,7 @@ struct OnboardingView: View {
                     .padding(.vertical, 12)
                 }
               )
-              .background(Color("yellowishRed"))
+              .background(Color("YellowishRed"))
               .cornerRadius(10)
               .shadow(color: .gray.opacity(0.5), radius: 3, x: 2, y: 2)
 
@@ -113,7 +113,7 @@ struct OnboardingView: View {
             .frame(width: geometry.size.width - 30, height: geometry.size.height / 2)
             .background(
               Rectangle()
-                .fill(Color("oysterWhite"))
+                .fill(Color("OysterWhite"))
                 .frame(width: geometry.size.width - 40, height: geometry.size.height / 2)
                 .cornerRadius(10)
                 .padding(.top, 10)
