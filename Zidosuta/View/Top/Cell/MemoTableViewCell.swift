@@ -118,11 +118,11 @@ extension MemoTableViewCell {
     button.configuration = config
 
     if #available(iOS 26, *) {
-        button.cornerConfiguration = .corners(radius: 20)
-        button.configuration?.background.backgroundColor = .customLightGray3
+      button.cornerConfiguration = .corners(radius: 20)
+      button.configuration?.background.backgroundColor = .customLightGray3
     } else {
-        button.layer.cornerRadius = 20
-        button.configuration?.background.backgroundColor = .clear
+      button.layer.cornerRadius = 20
+      button.configuration?.background.backgroundColor = .clear
     }
     button.addTarget(self, action: #selector(handleCloseButtonTap), for: .touchUpInside)
     button.sizeToFit()
