@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Z2-CE-98M">
-                        <rect key="frame" x="60" y="7" width="200" height="56"/>
+                        <rect key="frame" x="60" y="7" width="200" height="60.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="DMO-2g-wKH"/>
                         </constraints>
@@ -37,7 +37,7 @@
                     <constraint firstItem="6Z2-CE-98M" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="bt8-6K-45F"/>
                     <constraint firstItem="6Z2-CE-98M" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="bwK-Nm-Mcy"/>
                     <constraint firstItem="ThC-fl-apd" firstAttribute="leading" secondItem="6Z2-CE-98M" secondAttribute="trailing" constant="8" symbolic="YES" id="eIp-w9-o77"/>
-                    <constraint firstAttribute="bottom" secondItem="6Z2-CE-98M" secondAttribute="bottom" constant="7" id="qYr-gx-RIA"/>
+                    <constraint firstAttribute="bottom" secondItem="6Z2-CE-98M" secondAttribute="bottom" constant="2.5" id="qYr-gx-RIA"/>
                     <constraint firstAttribute="bottom" secondItem="ThC-fl-apd" secondAttribute="bottom" constant="22" id="ycc-2y-onv"/>
                 </constraints>
             </tableViewCellContentView>
