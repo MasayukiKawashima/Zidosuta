@@ -29,7 +29,7 @@ class DeleteDataTableViewCell: UITableViewCell {
 
   @IBOutlet weak var transitionButton: UIButton! {
     didSet {
-      transitionButton.tintColor = .yellowishRed
+      transitionButton.tintColor = .darkGray
     }
   }
 
