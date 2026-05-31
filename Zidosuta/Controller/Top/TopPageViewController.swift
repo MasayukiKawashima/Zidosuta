@@ -7,7 +7,6 @@
 
 import UIKit
 
-// 確認完了
 class TopPageViewController: UIPageViewController {
 
 

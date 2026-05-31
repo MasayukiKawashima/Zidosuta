@@ -74,6 +74,10 @@ class WeightTableViewCell: UITableViewCell {
       } else {
         weightTextField.layer.cornerRadius = 8
       }
+
+      //　テキストフィールドのボーダーのレイアウト
+      weightTextField.layer.borderWidth = 1.5
+      weightTextField.layer.borderColor = UIColor.customLightGray3.cgColor
       // 2024.11.15
       // 文字列の長さによって１文字あたりのサイズを調整するかどうか
       // falseなので調整をしない
@@ -88,10 +92,6 @@ class WeightTableViewCell: UITableViewCell {
           .foregroundColor: UIColor.customLightGray2
       ]
       weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
-
-      //　テキストフィールドのボーダーのレイアウト
-      weightTextField.layer.borderWidth = 0.4
-      weightTextField.layer.borderColor = UIColor.systemGray3.cgColor
 
       setUpCloseButton()
     }

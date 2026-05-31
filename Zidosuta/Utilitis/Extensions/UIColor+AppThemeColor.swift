@@ -28,4 +28,7 @@ extension UIColor {
   class var customLightGray2: UIColor {
     return UIColor(named: "CustomLightGray2")!
   }
+  class var customLightGray3: UIColor {
+    return UIColor(named: "CustomLightGray3")!
+  }
 }
