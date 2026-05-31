@@ -24,8 +24,12 @@ class NotificationRegisterTableViewCell: UITableViewCell {
   @IBOutlet weak var shadowLayerView: UIView!
   @IBOutlet weak var registerButton: UIButton! {
     didSet {
-      registerButton.layer.cornerRadius = 8
-      registerButton.layer.masksToBounds = true
+      if #available(iOS 26, *) {
+        registerButton.cornerConfiguration = .corners(radius: 8)
+      } else {
+        registerButton.layer.cornerRadius = 8
+        registerButton.layer.masksToBounds = true
+      }
       registerButton.backgroundColor = .yellowishRed
       registerButton.setTitleColor(.white, for: .normal)
     }
