@@ -21,6 +21,8 @@ class GraphView: UIView, NibLoadable {
 
   @IBOutlet weak var noDataMessageView: UIView! {
     didSet {
+      noDataMessageView.isHidden = true
+
       if #available(iOS 26, *) {
         noDataMessageView.cornerConfiguration = .corners(radius: 10)
       } else {
