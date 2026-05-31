@@ -52,7 +52,7 @@ class PhotoTableViewCell: UITableViewCell {
       backgroundColor = .oysterWhite
       commentLabel.adjustsFontSizeToFitWidth = true
       commentLabel.minimumScaleFactor = 0.5
-      commentLabel.tintColor = .yellowishRed
+      commentLabel.tintColor = .customLightGray2
 
       photoImageView.backgroundColor = UIColor.oysterWhite
       // photoImageViewのimageを監視する

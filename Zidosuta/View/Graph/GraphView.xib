@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="graphAreaView" destination="iBf-lh-5cY" id="wrN-n5-L9Q"/>
                 <outlet property="mainBackgroundView" destination="j2F-Y7-UOt" id="DLZ-PB-oAk"/>
+                <outlet property="noDataMessageView" destination="sDP-cW-rMM" id="cSX-ge-v0J"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,7 +26,31 @@
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iBf-lh-5cY" customClass="LineChartView" customModule="Charts">
                     <rect key="frame" x="48" y="53" width="800" height="301"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDP-cW-rMM">
+                            <rect key="frame" x="300" y="125.5" width="200" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="この期間のデータはありません" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJz-K3-mCR">
+                                    <rect key="frame" x="2" y="16" width="196" height="18.5"/>
+                                    <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" name="OysterWhite"/>
+                            <constraints>
+                                <constraint firstItem="eJz-K3-mCR" firstAttribute="centerX" secondItem="sDP-cW-rMM" secondAttribute="centerX" id="0O8-Vs-NVO"/>
+                                <constraint firstAttribute="width" constant="200" id="bcn-IR-EtM" userLabel="width = 200"/>
+                                <constraint firstAttribute="height" constant="50" id="jih-0I-Bcx" userLabel="height = 50"/>
+                                <constraint firstItem="eJz-K3-mCR" firstAttribute="centerY" secondItem="sDP-cW-rMM" secondAttribute="centerY" id="vD9-7e-Kew"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" name="OysterWhite"/>
+                    <constraints>
+                        <constraint firstItem="sDP-cW-rMM" firstAttribute="centerX" secondItem="iBf-lh-5cY" secondAttribute="centerX" id="49r-6V-lEi"/>
+                        <constraint firstItem="sDP-cW-rMM" firstAttribute="centerY" secondItem="iBf-lh-5cY" secondAttribute="centerY" id="lUO-im-2d0"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

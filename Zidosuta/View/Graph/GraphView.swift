@@ -19,6 +19,16 @@ class GraphView: UIView, NibLoadable {
     }
   }
 
+  @IBOutlet weak var noDataMessageView: UIView! {
+    didSet {
+      if #available(iOS 26, *) {
+        noDataMessageView.cornerConfiguration = .corners(radius: 10)
+      } else {
+        noDataMessageView.layer.cornerRadius = 10
+      }
+    }
+  }
+
   @IBOutlet weak var graphAreaView: LineChartView! {
     didSet {
       graphAreaView.backgroundColor = UIColor(red: 255/255, green: 253/255, blue: 242/255, alpha: 1)
