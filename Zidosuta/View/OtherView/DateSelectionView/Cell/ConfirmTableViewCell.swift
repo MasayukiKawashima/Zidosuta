@@ -20,8 +20,13 @@ class ConfirmTableViewCell: UITableViewCell {
 
   @IBOutlet weak var confirmButton: UIButton! {
     didSet {
-      confirmButton.layer.cornerRadius = 8
-      confirmButton.layer.masksToBounds = true
+
+      if #available(iOS 26, *) {
+        confirmButton.cornerConfiguration = .corners(radius: 8)
+      } else {
+        confirmButton.layer.cornerRadius = 8
+        confirmButton.layer.masksToBounds = true
+      }
       confirmButton.backgroundColor = .yellowishRed
       confirmButton.setTitleColor(.white, for: .normal)
     }
