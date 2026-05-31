@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoModalView" customModule="DietApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoModalView" customModule="Zidosuta" customModuleProvider="target">
             <connections>
                 <outlet property="dismissButton" destination="UVP-5S-keN" id="0wt-fj-2cW"/>
                 <outlet property="photoImageView" destination="8Su-Bx-U2C" id="68L-6j-DXh"/>
@@ -22,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlA-6u-66v">
-                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <rect key="frame" x="0.0" y="118" width="393" height="734"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-Bx-U2C">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="771"/>
@@ -32,13 +31,13 @@
                             </constraints>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVP-5S-keN">
-                            <rect key="frame" x="341" y="8" width="44" height="44"/>
+                            <rect key="frame" x="8" y="8" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="5Su-13-nUD"/>
                                 <constraint firstAttribute="width" constant="44" id="ObK-1O-oFz"/>
                             </constraints>
                             <state key="normal" title="Button" backgroundImage="xmark" catalog="system"/>
-                            <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                            <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                             <connections>
                                 <action selector="dismissButtonAction:" destination="-1" eventType="touchUpInside" id="fd6-hM-n6b"/>
                             </connections>
@@ -46,11 +45,11 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="8Su-Bx-U2C" firstAttribute="width" secondItem="vlA-6u-66v" secondAttribute="width" id="52R-pk-nku"/>
-                        <constraint firstItem="UVP-5S-keN" firstAttribute="top" secondItem="GZY-Ur-kBV" secondAttribute="top" constant="8" id="6av-2U-rb4"/>
                         <constraint firstAttribute="bottom" secondItem="8Su-Bx-U2C" secondAttribute="bottom" id="B2U-qm-erP"/>
                         <constraint firstAttribute="trailing" secondItem="8Su-Bx-U2C" secondAttribute="trailing" id="I0F-IQ-0OQ"/>
                         <constraint firstItem="8Su-Bx-U2C" firstAttribute="top" secondItem="vlA-6u-66v" secondAttribute="top" id="KZg-ss-nMG"/>
-                        <constraint firstItem="GZY-Ur-kBV" firstAttribute="trailing" secondItem="UVP-5S-keN" secondAttribute="trailing" constant="8" id="m9m-NL-wnc"/>
+                        <constraint firstItem="UVP-5S-keN" firstAttribute="leading" secondItem="GZY-Ur-kBV" secondAttribute="leading" constant="8" id="V5o-vh-AlB"/>
+                        <constraint firstItem="UVP-5S-keN" firstAttribute="top" secondItem="GZY-Ur-kBV" secondAttribute="top" constant="8" id="eEl-K9-gFS"/>
                         <constraint firstItem="8Su-Bx-U2C" firstAttribute="leading" secondItem="vlA-6u-66v" secondAttribute="leading" id="p7g-q3-uZQ"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="scy-7Q-hgh"/>
@@ -58,7 +57,7 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vlA-6u-66v" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="HPu-gh-HhL"/>
                 <constraint firstItem="vlA-6u-66v" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="XUf-2N-Fl9"/>
@@ -69,9 +68,7 @@
         </view>
     </objects>
     <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

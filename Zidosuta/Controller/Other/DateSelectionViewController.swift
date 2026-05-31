@@ -64,8 +64,7 @@ class DateSelectionViewController: UIViewController {
       dateSelectionView.tableView.rowHeight = UITableView.automaticDimension
 
       // NavigationBarの戻るボタンの色を変更
-      self.navigationController?.navigationBar.tintColor = UIColor.white
-
+//      self.navigationController?.navigationBar.tintColor = UIColor.white
         // Do any additional setup after loading the view.
     }
 

@@ -25,7 +25,7 @@ extension UITextField {
 
     let underline = UIView()
     // heightにはアンダーラインの高さを入れる
-    underline.frame = CGRect(x: 0, y: frame.height, width: frame.width, height: 2.0)
+    underline.frame = CGRect(x: 0, y: frame.height + 7, width: frame.width, height: 2.0)
     // 枠線の色
     underline.backgroundColor = UIColor.yellowishRed
     addSubview(underline)
@@ -66,6 +66,18 @@ class WeightTableViewCell: UITableViewCell {
       weightTextField.keyboardType = .decimalPad
 
       weightTextField.autocorrectionType = .no
+
+      weightTextField.backgroundColor = .customLightGray
+
+      if #available(iOS 26.0, *) {
+        weightTextField.cornerConfiguration = .corners(radius: 8)
+      } else {
+        weightTextField.layer.cornerRadius = 8
+      }
+
+      //　テキストフィールドのボーダーのレイアウト
+      weightTextField.layer.borderWidth = 1.5
+      weightTextField.layer.borderColor = UIColor.customLightGray3.cgColor
       // 2024.11.15
       // 文字列の長さによって１文字あたりのサイズを調整するかどうか
       // falseなので調整をしない
@@ -75,12 +87,12 @@ class WeightTableViewCell: UITableViewCell {
       weightTextField.adjustsFontSizeToFitWidth = false
 
       let placeholderText = PlaceholderString.weightTextField
-      let attributes = [
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+      let attributes: [NSAttributedString.Key: Any] = [
+          .font: UIFont.systemFont(ofSize: 14),
+          .foregroundColor: UIColor.customLightGray2
       ]
       weightTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
 
-      weightTextField.setWeightTextFieldUnderLine()
       setUpCloseButton()
     }
   }
@@ -101,12 +113,40 @@ extension WeightTableViewCell {
 
   private func setUpCloseButton() {
 
-    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    // セル自身をターゲットとして、内部メソッド経由でデリゲートを呼び出す
-    //    let closeButton = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(handleCloseButtonTap))
+    var toolbarHeight: CGFloat {
+      if #available(iOS 26, *) {
+        return 48
+      } else {
+        return 44
+      }
+    }
 
-    let closeButton = UIBarButtonItem(title: ToolBarString.closeButtonTitle, style: .plain, target: self, action: #selector(handleCloseButtonTap))
+    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: toolbarHeight))
+
+    let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+    let button = UIButton(type: .custom)
+    var config = UIButton.Configuration.plain()
+    config.title = ToolBarString.closeButtonTitle
+    config.baseForegroundColor = .black
+    config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
+    button.configuration = config
+
+    if #available(iOS 26, *) {
+        button.cornerConfiguration = .corners(radius: 20)
+        button.configuration?.background.backgroundColor = .customLightGray3
+    } else {
+        button.layer.cornerRadius = 20
+        button.configuration?.background.backgroundColor = .clear
+    }
+    button.addTarget(self, action: #selector(handleCloseButtonTap), for: .touchUpInside)
+    button.sizeToFit()
+
+    let closeButton = UIBarButtonItem(customView: button)
+    // 念の為リキッドグラス効果をオフにする
+    if #available(iOS 26, *) {
+      closeButton.hidesSharedBackground = true
+    }
 
     toolBar.items = [spacer, closeButton]
     weightTextField.inputAccessoryView = toolBar

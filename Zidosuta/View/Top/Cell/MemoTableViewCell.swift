@@ -49,12 +49,24 @@ class MemoTableViewCell: UITableViewCell {
       memoTextField.minimumFontSize = 10
 
       let placeholderText = PlaceholderString.memoTextField
-      let attributes = [
-        NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)
+      let attributes: [NSAttributedString.Key: Any] = [
+          .font: UIFont.systemFont(ofSize: 14),
+          .foregroundColor: UIColor.customLightGray2
       ]
       memoTextField.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
 
+      memoTextField.backgroundColor = .customLightGray
+
+      if #available(iOS 26.0, *) {
+        memoTextField.cornerConfiguration = .corners(radius: 4)
+      } else {
+        memoTextField.layer.cornerRadius = 4
+      }
       setUpCloseButton()
+
+      //　テキストフィールドのボーダーのレイアウト
+      memoTextField.layer.borderWidth = 1.5
+      memoTextField.layer.borderColor = UIColor.customLightGray3.cgColor
     }
   }
 
@@ -86,9 +98,40 @@ extension MemoTableViewCell {
 
   private func setUpCloseButton() {
 
-    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+    var toolbarHeight: CGFloat {
+      if #available(iOS 26, *) {
+        return 48
+      } else {
+        return 44
+      }
+    }
+
+    let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: toolbarHeight))
+
     let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    let closeButton = UIBarButtonItem(title: ToolBarString.closeButtonTitle, style: .plain, target: self, action: #selector(handleCloseButtonTap))
+
+    let button = UIButton(type: .custom)
+    var config = UIButton.Configuration.plain()
+    config.title = ToolBarString.closeButtonTitle
+    config.baseForegroundColor = .black
+    config.contentInsets = NSDirectionalEdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12)
+    button.configuration = config
+
+    if #available(iOS 26, *) {
+      button.cornerConfiguration = .corners(radius: 20)
+      button.configuration?.background.backgroundColor = .customLightGray3
+    } else {
+      button.layer.cornerRadius = 20
+      button.configuration?.background.backgroundColor = .clear
+    }
+    button.addTarget(self, action: #selector(handleCloseButtonTap), for: .touchUpInside)
+    button.sizeToFit()
+
+    let closeButton = UIBarButtonItem(customView: button)
+    // 念の為リキッドグラス効果をオフにする
+    if #available(iOS 26, *) {
+      closeButton.hidesSharedBackground = true
+    }
 
     toolBar.items = [spacer, closeButton]
     memoTextField.inputAccessoryView = toolBar

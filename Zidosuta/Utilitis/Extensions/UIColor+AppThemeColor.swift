@@ -22,4 +22,13 @@ extension UIColor {
   class var customBlue: UIColor {
     return UIColor(named: "CustomBlue")!
   }
+  class var customLightGray: UIColor {
+    return UIColor(named: "CustomLightGray")!
+  }
+  class var customLightGray2: UIColor {
+    return UIColor(named: "CustomLightGray2")!
+  }
+  class var customLightGray3: UIColor {
+    return UIColor(named: "CustomLightGray3")!
+  }
 }

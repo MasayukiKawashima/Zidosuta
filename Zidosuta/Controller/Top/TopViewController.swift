@@ -387,9 +387,9 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
 
   // 写真挿入ボタンとやり直しボタンを押した時の処理
-  func insertButtonAction() {
+  func insertButtonAction(in cell: PhotoTableViewCell) {
 
-    showPhotoSelectionActionSheet()
+    showPhotoSelectionActionSheet(cell: cell)
   }
   // 写真がダブルタップされた時の処理
   func photoDoubleTapAction(photoImage: UIImage) {
@@ -414,7 +414,7 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
   }
 
   // アクションシートの表示
-  private func showPhotoSelectionActionSheet() {
+  private func showPhotoSelectionActionSheet(cell: PhotoTableViewCell) {
 
     let actionSheet = UIAlertController(title: TopActionSheet.PhotoSelection.title, message: nil, preferredStyle: .actionSheet)
 
@@ -446,6 +446,16 @@ extension TopViewController: PhotoTableViewCellDelegate, UIImagePickerController
     actionSheet.addAction(cameraAction)
     actionSheet.addAction(photoLibraryAction)
     actionSheet.addAction(cancelAction)
+
+    // iOS26以降ではアクションシートのUIがふきだし風に変わっているため
+    // ふきだしのポップアップの設定をしないといけない（しないとアラートみたいなUIで表示されてしまう）
+    if #available(iOS 26, *) {
+      if let popover = actionSheet.popoverPresentationController {
+        popover.sourceView = cell.insertButton
+        popover.permittedArrowDirections = [.down]
+      }
+    }
+
 
     self.present(actionSheet, animated: true, completion: nil)
   }

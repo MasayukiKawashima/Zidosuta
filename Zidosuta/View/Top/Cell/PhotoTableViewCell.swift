@@ -13,7 +13,7 @@ import UIKit
 @MainActor
 protocol PhotoTableViewCellDelegate {
 
-  func insertButtonAction()
+  func insertButtonAction(in cell: PhotoTableViewCell)
   func expandButtonAction(photoImage: UIImage)
   func deleteButtonAction(in cell: PhotoTableViewCell)
   func photoDoubleTapAction(photoImage: UIImage)
@@ -52,7 +52,7 @@ class PhotoTableViewCell: UITableViewCell {
       backgroundColor = .oysterWhite
       commentLabel.adjustsFontSizeToFitWidth = true
       commentLabel.minimumScaleFactor = 0.5
-      commentLabel.tintColor = .yellowishRed
+      commentLabel.tintColor = .customLightGray2
 
       photoImageView.backgroundColor = UIColor.oysterWhite
       // photoImageViewのimageを監視する
@@ -161,12 +161,12 @@ class PhotoTableViewCell: UITableViewCell {
 
   @IBAction func insertButtonAction(_ sender: Any) {
 
-    delegate?.insertButtonAction()
+    delegate?.insertButtonAction(in: self)
   }
 
   @IBAction func redoButtonAction(_ sender: Any) {
 
-    delegate?.insertButtonAction()
+    delegate?.insertButtonAction(in: self)
   }
 
   @IBAction func expandButtonAction(_ sender: Any) {

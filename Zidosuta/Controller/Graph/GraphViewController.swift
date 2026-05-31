@@ -251,6 +251,8 @@ extension GraphViewController {
 
    func createLineChartDate() {
 
+     graphView.noDataMessageView.isHidden = true
+
     let graphContentCreator = GraphContentCreator()
     let dataEntries = graphContentCreator.createDataEntry(index: graphDateManager.index)
     if dataEntries.count != 0 {
@@ -300,7 +302,9 @@ extension GraphViewController {
       let data = LineChartData(dataSet: dataSet)
       self.graphView.graphAreaView.data = data
     } else {
-      // createDataEntry()の結果、エントリーが０（該当するRealmObjectが０件だったら）
+
+      graphView.noDataMessageView.isHidden = false
+      // createDataEntry()の結果、エントリーが０（該当するRealmObjectが０件だったら)
       // からのエントリーセットを作成しグラフに反映（何もエントリーポイントが表示されない）
       let blankEntries: [ChartDataEntry] = []
       let dataSet = LineChartDataSet(entries: blankEntries)

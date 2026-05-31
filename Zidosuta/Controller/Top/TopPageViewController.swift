@@ -7,7 +7,6 @@
 
 import UIKit
 
-// 確認完了
 class TopPageViewController: UIPageViewController {
 
 
@@ -243,8 +242,8 @@ extension TopPageViewController {
     let backgroundColor = UIColor.yellowishRed
     let nextTag = 1
     let previousTag = 2
-    let nextSystemName = "chevron.forward"
-    let previousSystemName = "chevron.backward"
+    let nextSystemName = "arrow.forward"
+    let previousSystemName = "arrow.backward"
 
     if #available(iOS 26, *) {
 

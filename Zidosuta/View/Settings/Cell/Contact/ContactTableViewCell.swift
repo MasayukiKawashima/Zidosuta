@@ -27,7 +27,11 @@ class ContactTableViewCell: UITableViewCell {
   @IBOutlet weak var shadowLayerView: UIView!
   @IBOutlet weak var mainBackgroundView: UIView!
   @IBOutlet weak var contactLabel: UILabel!
-  @IBOutlet weak var mailingButton: UIButton!
+  @IBOutlet weak var mailingButton: UIButton! {
+    didSet {
+      mailingButton.tintColor = .darkGray
+    }
+  }
 
   var delegate: ContactTableViewCellDelegate?
 
