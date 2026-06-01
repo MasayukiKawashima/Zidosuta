@@ -21,6 +21,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
     routeToAppropriateScreen(scene)
+
+    if connectionOptions.notificationResponse != nil {
+
+      DispatchQueue.main.async {
+        LocalNotificationManager.shared.navigateToTopScreen()
+      }
+    }
   }
 
   func sceneDidDisconnect(_ scene: UIScene) {
