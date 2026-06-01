@@ -37,7 +37,7 @@
                                 <constraint firstAttribute="width" constant="44" id="ObK-1O-oFz"/>
                             </constraints>
                             <state key="normal" title="Button" backgroundImage="xmark" catalog="system"/>
-                            <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
+                            <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
                             <connections>
                                 <action selector="dismissButtonAction:" destination="-1" eventType="touchUpInside" id="fd6-hM-n6b"/>
                             </connections>
@@ -68,7 +68,6 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
     </resources>
 </document>
