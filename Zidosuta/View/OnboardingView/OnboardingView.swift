@@ -12,24 +12,6 @@ struct OnboardingView: View {
 
   // MARK: - Init
 
-  init() {
-
-    let appearance = UINavigationBarAppearance()
-    appearance.configureWithOpaqueBackground()
-    appearance.backgroundColor = UIColor(named: "YellowishRed")
-    appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-    appearance.buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.white]
-
-    let backIndicatorImage = UIImage(systemName: "chevron.backward")?
-      .withTintColor(.white, renderingMode: .alwaysOriginal)
-    appearance.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
-
-    UINavigationBar.appearance().standardAppearance = appearance
-    UINavigationBar.appearance().scrollEdgeAppearance = appearance
-    UINavigationBar.appearance().compactAppearance = appearance
-    UINavigationBar.appearance().tintColor = .white
-  }
-
 
   // MARK: - Properties
 
@@ -133,7 +115,7 @@ struct OnboardingView: View {
           label: {
             EmptyView()
           }
-                )
+        )
       }
       .navigationBarHidden(true)
       .accentColor(.white)
@@ -143,6 +125,7 @@ struct OnboardingView: View {
 
 
 // MARK: - Preview
+
 
 #Preview {
   OnboardingView()
