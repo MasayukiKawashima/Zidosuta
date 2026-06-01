@@ -55,10 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // AdMobの初期化
     MobileAds.shared.start(completionHandler: nil)
 
-    // スプラッシュ画面を1秒表示する
-    let splashScreenDuration: UInt32 = 1
-    sleep(splashScreenDuration)
-
     let config = Realm.Configuration(
       schemaVersion: 1,
       migrationBlock: { migration, oldSchemaVersion in
