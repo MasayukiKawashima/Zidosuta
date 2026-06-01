@@ -12,6 +12,21 @@ struct OnboardingView: View {
 
   // MARK: - Init
 
+//  init() {
+//    if #available(iOS 26.0, *) {
+//    } else {
+//      let appearance = UINavigationBarAppearance()
+//      appearance.buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
+//
+//      let backIndicatorImage = UIImage(systemName: "chevron.backward")?
+//        .withTintColor(.black, renderingMode: .alwaysOriginal)
+//      appearance.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
+//
+//      UINavigationBar.appearance().standardAppearance = appearance
+//      UINavigationBar.appearance().scrollEdgeAppearance = appearance
+//      UINavigationBar.appearance().compactAppearance = appearance
+//    }
+//  }
 
   // MARK: - Properties
 
