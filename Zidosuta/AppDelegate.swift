@@ -103,6 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 
+// MARK: - UNUserNotificationCenterDelegate
+
 extension AppDelegate: @MainActor UNUserNotificationCenterDelegate {
 
   // ユーザーが通知に対してアクションをとった時に呼ばれるデリゲートメソッド
