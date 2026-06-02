@@ -74,19 +74,21 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 
 | 体重の登録                                                                                                | ひとことメモの登録                                                                                    |
 | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | 
-|<img src="https://github.com/user-attachments/assets/54a52df8-fb25-45d8-bbf7-e86c5b5f0751" width="300px">| <img src="https://github.com/user-attachments/assets/b6b19b61-206f-4277-8c47-3f305652b6d6" width="300px">|
+|<img src="https://github.com/user-attachments/assets/b793290c-d62c-481c-9524-317c41d91861" width="300px">| <img src="https://github.com/user-attachments/assets/b28da84f-10b2-443a-8168-64d3a5a2c460" width="300px">|
 
 
 |写真の登録|
 |--------|
-|<img src="https://github.com/user-attachments/assets/4e6bb3e0-1389-4433-9fa2-a7419e261ccd" width="300px">|
+|<img src="https://github.com/user-attachments/assets/f8f35f76-f8de-4882-9241-518f057e26e2" width="300px">|
 
 
 ### 登録したデータの確認
 
 - 画面を左右にスワイプするか、画面上部の矢印アイコンをタップすると前後の日付のページに移動します。
 
-<img src="https://github.com/user-attachments/assets/57d2e8ba-a01d-4574-99b9-18bb235a4fe2" width="300px">
+| |
+|-|
+| <img src="https://github.com/user-attachments/assets/29a7b48d-86e8-4324-8841-877bbc5f3b49" width="300px"> |
 
 
 ### グラフの表示
