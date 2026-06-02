@@ -42,6 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return .portrait
   }
 
+  // iOS26未満の場合のNavigationBarの戻るボタンの見た目を設定する処理
+  func configureNavigationBarBackButtonAppearanceForPreIOS26() {
+    guard #unavailable(iOS 26.0) else { return }
+
+    let appearance = UINavigationBarAppearance()
+    appearance.buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.black]
+
+    let backIndicatorImage = UIImage(systemName: "chevron.backward")?
+      .withTintColor(.black, renderingMode: .alwaysOriginal)
+    appearance.setBackIndicatorImage(backIndicatorImage, transitionMaskImage: backIndicatorImage)
+
+    UINavigationBar.appearance().standardAppearance = appearance
+    UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    UINavigationBar.appearance().compactAppearance = appearance
+  }
+
 
   // MARK: - LifeCycle
 
@@ -68,6 +84,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // 通知機能がオンなら保存された通知設定を復元
     LocalNotificationManager.shared.restoreNotificationIfNeeded()
 
+    configureNavigationBarBackButtonAppearanceForPreIOS26()
+
     return true
   }
 
@@ -84,6 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 }
 
+
+// MARK: - UNUserNotificationCenterDelegate
 
 extension AppDelegate: @MainActor UNUserNotificationCenterDelegate {
 
