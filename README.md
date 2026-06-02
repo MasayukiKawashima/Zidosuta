@@ -16,8 +16,9 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 
 ## ■ アプリのイメージ
 
-
-<img src="https://github.com/user-attachments/assets/6cf18815-40bd-4cb8-8aca-a6274cbced57" width="300px">
+| |
+|-|
+| <img src="https://github.com/user-attachments/assets/60c4c22d-322f-4c64-a4da-d0ae588500ec" width="300px"> |
 
 
 ## ■ アプリを作ったキッカケ
