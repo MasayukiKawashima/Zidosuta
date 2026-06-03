@@ -79,7 +79,7 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 
 |写真の登録|
 |--------|
-|<img src="https://github.com/user-attachments/assets/f8f35f76-f8de-4882-9241-518f057e26e2" width="300px">|
+|<img src="https://github.com/user-attachments/assets/a0adee18-83ea-4650-9597-677964b0ad4f" width="300px">|
 
 
 ### 登録したデータの確認
@@ -88,7 +88,7 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 
 | |
 |-|
-| <img src="https://github.com/user-attachments/assets/29a7b48d-86e8-4324-8841-877bbc5f3b49" width="300px"> |
+| <img src="https://github.com/user-attachments/assets/81c59741-49e0-40a7-86c2-f6b987398eff" width="300px"> |
 
 
 ### グラフの表示
@@ -96,7 +96,10 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 - トップ画面で体重データを登録すると、グラフ画面にグラフが表示されます。
 
 - グラフ中のデータをタップすると、そのデータの情報がポップアップで表示されます。
-<img src="https://github.com/user-attachments/assets/a3dd946b-dcca-4465-8c7b-9ff17a7a7f1f" width="800px">
+
+| |
+|-|
+| <img src="https://github.com/user-attachments/assets/b42b14ad-e494-45df-b234-d84b2aff79a2" width="800px"> |
 
 ## ■ 工夫した点
 
@@ -136,7 +139,9 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 
 登録された写真をピンチ操作で拡大、縮小できる機能を実装。
 
-<img src="https://github.com/user-attachments/assets/655672a8-09f7-4406-996b-2e9371e1a16d" width="300px">
+| |
+|-|
+| <img src="https://github.com/user-attachments/assets/c9a19d52-f87e-4a71-8460-da5e75199a71" width="300px"> |
 
 ### 2. 実務開発を意識した作業フロー
 ブランチ戦略としてGit-flowを採用しています。また、各タスクをGitHubのissueで管理したり、プルリクを活用するなどチーム開発になるべく近い形になるように意識しています。
@@ -156,7 +161,9 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 <br>
 トップ画面の日付をタップし遷移先の画面で日付を指定することで、その日の記録を確認できます。
 
-<img src="https://github.com/user-attachments/assets/4b88ec8b-17b5-4d22-a603-893aa59ac1ef" width="300px">
+| |
+|-|
+| <img src="https://github.com/user-attachments/assets/c25b8682-5bd6-452d-96c3-1fec0b9a7b5c" width="300px"> |
 
 ### 2. 写真を活用した機能
 抽象的なのですが、写真を活かした機能をもっと盛り込めないか模索中です。例えば、ユーザーが一定数写真をアプリに登録している時に、それらの写真を古い順番から連続して表示させ、体がどんどん痩せていっている様子を見て楽しんでもらうタイムラプス的な機能などは面白そうです。
