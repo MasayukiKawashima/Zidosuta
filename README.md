@@ -3,7 +3,9 @@
   
 ![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
-Qiita : [【iOS App】20kgのダイエットに成功したアプリ開発初心者がダイエットアプリをリリースしました！【個人開発】](https://qiita.com/poppinmasa/items/495fa7433e76f5320751)
+Qiitaのアプリ紹介記事
+
+[【iOS App】20kgのダイエットに成功したアプリ開発初心者がダイエットアプリをリリースしました！【個人開発】](https://qiita.com/poppinmasa/items/495fa7433e76f5320751)
 
 
 
