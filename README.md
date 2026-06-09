@@ -3,7 +3,7 @@
   
 ![Image](https://github.com/user-attachments/assets/3225fcc8-9f29-4598-ac3a-b74b556589cc)
 
-Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e76f5320751
+Qiita : [【iOS App】20kgのダイエットに成功したアプリ開発初心者がダイエットアプリをリリースしました！【個人開発】](https://qiita.com/poppinmasa/items/495fa7433e76f5320751)
 
 
 
@@ -61,7 +61,7 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 | CI/CD     | Github Actions, fastlane        |
 | コード整形 | SwiftLint                       |
 | バージョン管理 | Git, GitHub                  |
-|ブランチ戦略|Git-flow                         |
+|ブランチ戦略| Git-flow                         |
 | デザイン    | Figma, Canva                   |
 | その他     | Notion (Webサイト作成)           |
 
@@ -101,7 +101,7 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 |-|
 | <img src="https://github.com/user-attachments/assets/b42b14ad-e494-45df-b234-d84b2aff79a2" width="800px"> |
 
-## ■ 工夫した点
+## ■ こだわりポイント
 
 ### 1. ユーザーフィードバックを反映した機能開発
 
@@ -143,7 +143,21 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 |-|
 | <img src="https://github.com/user-attachments/assets/c9a19d52-f87e-4a71-8460-da5e75199a71" width="300px"> |
 
-### 2. 実務開発を意識した作業フロー
+### 2. 新しい技術の積極的な導入
+
+**1. i0S26・Liquid Glassに対応済み**
+
+近いうちに適用が必須となるLiquid Glassに先んじて対応しています。対応作業の内容や考えたことを以下の記事にまとめています。
+
+[【Swift】個人開発アプリをiOS26・Liquid Glassに対応させるためにやったこと](https://qiita.com/poppinmasa/items/ed492321cbf19da679ce)
+
+**2. Swift6(Strict Concurrency Checking)に対応済み**
+
+Swift Concurrencyや並行処理の学習も兼ねてStrict Concurrency Checkingへの対応作業を行い、Swift6への移行が完了しています。
+
+[【Swift】iOSアプリ個人開発者が約280個の警告に対応してSwift6に移行したときのメモ](https://qiita.com/poppinmasa/items/b7006edf3f62c6a23a03)
+
+### 3. 実務開発を意識した作業フロー
 ブランチ戦略としてGit-flowを採用しています。また、各タスクをGitHubのissueで管理したり、プルリクを活用するなどチーム開発になるべく近い形になるように意識しています。
 <br>
 さらに、Github Actions + fastlaneの組み合わせでCI/CDパイプラインを構築しており、開発効率の向上も進めています。
@@ -165,8 +179,10 @@ Qiitaのアプリ紹介記事 → https://qiita.com/poppinmasa/items/495fa7433e7
 |-|
 | <img src="https://github.com/user-attachments/assets/c25b8682-5bd6-452d-96c3-1fec0b9a7b5c" width="300px"> |
 
-### 2. 写真を活用した機能
-抽象的なのですが、写真を活かした機能をもっと盛り込めないか模索中です。例えば、ユーザーが一定数写真をアプリに登録している時に、それらの写真を古い順番から連続して表示させ、体がどんどん痩せていっている様子を見て楽しんでもらうタイムラプス的な機能などは面白そうです。
+### 2. 外部サービスと連携したメイン機能
+現段階でこのアプリのメインの機能は全てクライアント側のみで完結しており、サーバーや外部サービスとの連携機能などは実装していません。（バナー広告などアプリにとってメインでない機能では一部実装しています。）
+
+そこで、API連携などの学習も兼ねて外部サービスを利用した機能の実装を現在計画中です。
 <br>
 <br>
 <br>
