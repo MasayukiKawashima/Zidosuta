@@ -427,6 +427,15 @@ extension SettingsViewController: @MainActor MFMailComposeViewControllerDelegate
 extension SettingsViewController: UpdatesTableViewCellDelegate {
 
   func UpdatesTransitionButtonAction() {
-    print("ボタンが押されました")
+
+    let updatesDisplayViewController = initUpdatesDisplayViewController()
+    navigationController?.pushViewController(updatesDisplayViewController, animated: true)
+  }
+
+  func initUpdatesDisplayViewController() -> UpdatesDisplayViewController {
+
+    let storyBoard = UIStoryboard(name: "Settings", bundle: nil)
+    let updatesDisplayViewController = storyBoard.instantiateViewController(withIdentifier: "UpdatesDisplay") as! UpdatesDisplayViewController
+    return updatesDisplayViewController
   }
 }
