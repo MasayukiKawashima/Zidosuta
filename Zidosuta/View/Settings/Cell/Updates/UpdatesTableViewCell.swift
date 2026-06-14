@@ -10,7 +10,7 @@
 @MainActor
 protocol UpdatesTableViewCellDelegate {
 
-  func UpdatesTransitionButtonAction()
+  func updatesTransitionButtonAction()
 }
 
 import UIKit
@@ -50,6 +50,6 @@ class UpdatesTableViewCell: UITableViewCell {
   // MARK: - Methods
 
   @IBAction func transitionButtonAction(_ sender: Any) {
-    delegate?.UpdatesTransitionButtonAction()
+    delegate?.updatesTransitionButtonAction()
   }
 }
