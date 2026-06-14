@@ -139,6 +139,7 @@
 		FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */; };
 		FAD9B7D22FDED82600F49466 /* UpdatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */; };
 		FAD9B7D32FDED82600F49466 /* UpdatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */; };
+		FAD9B7D52FDEE49A00F49466 /* UpdatesDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */; };
 		FADD2CDD2FB371500084D5D0 /* OnboardingString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */; };
 		FADD2CE12FB60DC00084D5D0 /* TermsTextString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD2CE02FB60DC00084D5D0 /* TermsTextString.swift */; };
 		FADD2CE32FB610170084D5D0 /* PhotoTipsString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADD2CE22FB610170084D5D0 /* PhotoTipsString.swift */; };
@@ -311,6 +312,7 @@
 		FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextView.swift; sourceTree = "<group>"; };
 		FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTableViewCell.swift; sourceTree = "<group>"; };
 		FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesTableViewCell.xib; sourceTree = "<group>"; };
+		FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesDisplayViewController.swift; sourceTree = "<group>"; };
 		FADD2CDC2FB371500084D5D0 /* OnboardingString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingString.swift; sourceTree = "<group>"; };
 		FADD2CE02FB60DC00084D5D0 /* TermsTextString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextString.swift; sourceTree = "<group>"; };
 		FADD2CE22FB610170084D5D0 /* PhotoTipsString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTipsString.swift; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 				FAC9EF0D2D0C0B5C00DE1E64 /* NotificationSettingViewController.swift */,
 				FAC9EF462D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift */,
 				FA9E8C432D14649300A05E55 /* TermsDisplayViewController.swift */,
+				FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */,
 				FAA9E72D2FA4E78D00CBED1E /* Constant */,
 			);
 			path = Settings;
@@ -1305,6 +1308,7 @@
 				FA32F4C42A32BFCF0058FD32 /* NotificationTableViewCell.swift in Sources */,
 				FA1187A22A22F652004577F8 /* AdTableViewCell.swift in Sources */,
 				FA8700452F7A2CF90067EAD5 /* ValidationError.swift in Sources */,
+				FAD9B7D52FDEE49A00F49466 /* UpdatesDisplayViewController.swift in Sources */,
 				FAC9EF432D0C562E00DE1E64 /* DataDeletionExecutionView.swift in Sources */,
 				FA2211112CFF5AF4005C622D /* NotificationSettingView.swift in Sources */,
 				FA9E8C442D14649300A05E55 /* TermsDisplayViewController.swift in Sources */,
