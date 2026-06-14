@@ -37,6 +37,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.forward" catalog="system">
                                     <color key="baseForegroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="transitionButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Dpv-pC-lAR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -61,6 +64,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="mainBackgroundView" destination="qw2-gy-6WA" id="GfA-9l-RcP"/>
+                <outlet property="shadowLayerView" destination="SW5-y9-6VL" id="EpS-7L-vBh"/>
+                <outlet property="transitionButton" destination="hcL-qL-1u6" id="515-Nh-1xa"/>
+                <outlet property="updatesLabel" destination="bin-Hu-q38" id="59a-Vd-Lyt"/>
+            </connections>
             <point key="canvasLocation" x="-148.09160305343511" y="96.478873239436624"/>
         </tableViewCell>
     </objects>
