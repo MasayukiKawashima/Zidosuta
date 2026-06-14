@@ -12,7 +12,7 @@ class SettingsView: UIView, NibLoadable {
 
   // MARK: - Properties
 
-  private let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell", "ContactTableViewCell"]
+  private let cellIdentifiers = ["NotificationTableViewCell", "DeleteDataTableViewCell", "TermsOfUseTableViewCell", "PrivacyPolicyTableViewCell", "ContactTableViewCell", "UpdatesTableViewCell"]
 
   @IBOutlet weak var tableView: UITableView! {
     didSet {

@@ -70,6 +70,21 @@
             </objects>
             <point key="canvasLocation" x="4151" y="1392"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="MRb-NQ-EgS">
+            <objects>
+                <viewController storyboardIdentifier="UpDatesDisplay" id="nsL-dj-4Nw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MbX-KX-PVf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="drk-g3-1aQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Iuz-li-Qdt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5068" y="1392"/>
+        </scene>
         <!--設定-->
         <scene sceneID="R54-Zi-dbb">
             <objects>

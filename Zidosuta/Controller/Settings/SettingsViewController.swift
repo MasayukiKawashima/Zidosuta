@@ -54,13 +54,14 @@ class SettingsViewController: UIViewController {
     case deleteDataTableViewCell
     case termsOfUseTableViewCell
     case privacyPolicyTableViewCell
+    case updatesTableViewCell
     case contactTableViewCell
 
     var sectionNumber: Int {
       switch self {
       case .notificationTableViewCell, .deleteDataTableViewCell:
         return 0
-      case .termsOfUseTableViewCell, .privacyPolicyTableViewCell, .contactTableViewCell:
+      case .termsOfUseTableViewCell, .privacyPolicyTableViewCell, .contactTableViewCell, .updatesTableViewCell:
         return 1
       }
     }
@@ -75,6 +76,8 @@ class SettingsViewController: UIViewController {
         return "TermsOfUseTableViewCell"
       case .privacyPolicyTableViewCell:
         return "PrivacyPolicyTableViewCell"
+      case .updatesTableViewCell:
+        return "UpdatesTableViewCell"
       case .contactTableViewCell:
         return "ContactTableViewCell"
       }
@@ -147,7 +150,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     case 0:
       return 2
     case 1:
-      return 3
+      return 4
     default:
       return 0
     }
@@ -206,6 +209,12 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
     case .privacyPolicyTableViewCell:
       let cell = preCastCell as! PrivacyPolicyTableViewCell
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+      cell.delegate = self
+      return cell
+
+    case .updatesTableViewCell:
+      let cell = preCastCell as! UpdatesTableViewCell
       cell.selectionStyle = UITableViewCell.SelectionStyle.none
       cell.delegate = self
       return cell
@@ -409,5 +418,15 @@ extension SettingsViewController: @MainActor MFMailComposeViewControllerDelegate
     let alert = UIAlertController(title: EmailAlertString.Unavailable.alertTitle, message: nil, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: EmailAlertString.okActionButtonTitle, style: .default))
     present(alert, animated: true)
+  }
+}
+
+
+// MARK: - UpdatesTableViewCellDelegate
+
+extension SettingsViewController: UpdatesTableViewCellDelegate {
+
+  func UpdatesTransitionButtonAction() {
+    print("ボタンが押されました")
   }
 }

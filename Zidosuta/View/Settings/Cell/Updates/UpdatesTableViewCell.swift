@@ -45,7 +45,7 @@ class UpdatesTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-  
+
 
   // MARK: - Methods
 
