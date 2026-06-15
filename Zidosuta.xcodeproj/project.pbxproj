@@ -10,6 +10,11 @@
 		21088586F2697E9A55EFF369 /* Pods_Zidosuta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8868CA2076A3B8B3401FC43F /* Pods_Zidosuta.framework */; };
 		97DBE8473BE588C72DF7973F /* Pods_Zidosuta_ZidosutaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D3DF69FB04EBA91E41EB2B /* Pods_Zidosuta_ZidosutaUITests.framework */; };
 		DB52D99CCC4AAB85DACF5FEE /* Pods_ZidosutaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7AA16EA544E3873DEB6A28 /* Pods_ZidosutaTests.framework */; };
+		FA0572E92FDFB4B000486AD7 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572E82FDFB4B000486AD7 /* HTTPMethod.swift */; };
+		FA0572EB2FDFB4B500486AD7 /* APIClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572EA2FDFB4B500486AD7 /* APIClientError.swift */; };
+		FA0572ED2FDFB4BC00486AD7 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572EC2FDFB4BC00486AD7 /* Requestable.swift */; };
+		FA0572EF2FDFB4C100486AD7 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572EE2FDFB4C100486AD7 /* URLSessionProtocol.swift */; };
+		FA0572F12FDFB4CB00486AD7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572F02FDFB4CB00486AD7 /* APIClient.swift */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
 		FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */; };
@@ -43,7 +48,6 @@
 		FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA472A7F2F6500C60F9E /* MonthAdjuster.swift */; };
 		FA42FA4A2A7F3BE600C60F9E /* MonthAdjusterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */; };
 		FA42FA522A81D8CC00C60F9E /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */; };
-		FA474DE82FD91E5100900E5F /* ClaudeCodeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA474DE72FD91E5100900E5F /* ClaudeCodeTest.swift */; };
 		FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */; };
 		FA5DF1C92D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5DF1C82D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift */; };
 		FA61F05C2FC3F89300E7D7F1 /* LiquidGlassSupporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA61F05B2FC3F89300E7D7F1 /* LiquidGlassSupporting.swift */; };
@@ -177,6 +181,11 @@
 		CB24F8A72D8F9F13EF5C9284 /* Pods-Zidosuta-ZidosutaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Zidosuta-ZidosutaUITests/Pods-Zidosuta-ZidosutaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DD7AA16EA544E3873DEB6A28 /* Pods_ZidosutaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZidosutaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BE357559E7AD61C391E8CB /* Pods-Zidosuta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zidosuta.debug.xcconfig"; path = "Target Support Files/Pods-Zidosuta/Pods-Zidosuta.debug.xcconfig"; sourceTree = "<group>"; };
+		FA0572E82FDFB4B000486AD7 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		FA0572EA2FDFB4B500486AD7 /* APIClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientError.swift; sourceTree = "<group>"; };
+		FA0572EC2FDFB4BC00486AD7 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
+		FA0572EE2FDFB4C100486AD7 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		FA0572F02FDFB4CB00486AD7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
 		FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTextFieldValidation.swift; sourceTree = "<group>"; };
@@ -210,7 +219,6 @@
 		FA42FA472A7F2F6500C60F9E /* MonthAdjuster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdjuster.swift; sourceTree = "<group>"; };
 		FA42FA492A7F3BE600C60F9E /* MonthAdjusterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdjusterTests.swift; sourceTree = "<group>"; };
 		FA42FA512A81D8CC00C60F9E /* CustomMarkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
-		FA474DE72FD91E5100900E5F /* ClaudeCodeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeCodeTest.swift; sourceTree = "<group>"; };
 		FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphContentCreator.swift; sourceTree = "<group>"; };
 		FA5DF1C82D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+AdjustmentOfappearance.swift"; sourceTree = "<group>"; };
 		FA61F05B2FC3F89300E7D7F1 /* LiquidGlassSupporting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidGlassSupporting.swift; sourceTree = "<group>"; };
@@ -384,6 +392,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA0572E72FDFB4B000486AD7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FA0572E82FDFB4B000486AD7 /* HTTPMethod.swift */,
+				FA0572EA2FDFB4B500486AD7 /* APIClientError.swift */,
+				FA0572EC2FDFB4BC00486AD7 /* Requestable.swift */,
+				FA0572EE2FDFB4C100486AD7 /* URLSessionProtocol.swift */,
+				FA0572F02FDFB4CB00486AD7 /* APIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +418,7 @@
 		FA1112302A59296B007353EA /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				FA0572E72FDFB4B000486AD7 /* API */,
 				FA11122B2A5923F6007353EA /* IndexSetter.swift */,
 				FA42FA472A7F2F6500C60F9E /* MonthAdjuster.swift */,
 				FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */,
@@ -591,7 +612,6 @@
 				FA41A2FA2A1C88D5008DC83E /* View */,
 				FAC9EF172D0C0B5C00DE1E64 /* Controller */,
 				FA9F9CE22CF436B50013886A /* Utilitis */,
-				FA474DE72FD91E5100900E5F /* ClaudeCodeTest.swift */,
 			);
 			path = Zidosuta;
 			sourceTree = "<group>";
@@ -1317,9 +1337,9 @@
 				FAC9EF2D2D0C11C200DE1E64 /* LocalNotificationManager.swift in Sources */,
 				FAC0A8A82D06D3010074D818 /* Date+ConvertDateToNotificationTimeString.swift in Sources */,
 				FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */,
-				FA474DE82FD91E5100900E5F /* ClaudeCodeTest.swift in Sources */,
 				FA5DF1C92D3CFB6A006F5ECA /* UIButton+AdjustmentOfappearance.swift in Sources */,
 				FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */,
+				FA0572F12FDFB4CB00486AD7 /* APIClient.swift in Sources */,
 				FAC9EF2F2D0C11E000DE1E64 /* TopDateManager.swift in Sources */,
 				FA42FA3A2A70B2DC00C60F9E /* DateRangeCalculator.swift in Sources */,
 				FA11122C2A5923F6007353EA /* IndexSetter.swift in Sources */,
@@ -1368,16 +1388,19 @@
 				FA22110B2CFF1525005C622D /* ShadowLayerView.swift in Sources */,
 				FADD2CE12FB60DC00084D5D0 /* TermsTextString.swift in Sources */,
 				FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */,
+				FA0572E92FDFB4B000486AD7 /* HTTPMethod.swift in Sources */,
 				FAA9E7332FA4EA2A00CBED1E /* SettingsCellString.swift in Sources */,
 				FA9E8C402D14641C00A05E55 /* TermsDisplayView.swift in Sources */,
 				FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */,
 				FA8700472F7A2D190067EAD5 /* ValidationResult.swift in Sources */,
 				FAA9E73F2FA6285400CBED1E /* DataDeletionExecutionString.swift in Sources */,
 				FA80692E2EE7F59A0013CBB3 /* UIViewController+setStatusBarBackgroundColor.swift in Sources */,
+				FA0572ED2FDFB4BC00486AD7 /* Requestable.swift in Sources */,
 				FAC9EF362D0C3A7900DE1E64 /* DeleteDataTableViewCell.swift in Sources */,
 				FA22111B2CFF5E4E005C622D /* NotificationTimeEditTableViewCell.swift in Sources */,
 				FA9553692F912A2800A97A2D /* ToolBarString.swift in Sources */,
 				FA68AF232A135F6F00B69D4A /* SceneDelegate.swift in Sources */,
+				FA0572EF2FDFB4C100486AD7 /* URLSessionProtocol.swift in Sources */,
 				FACA1A412D23CDBA00B2768D /* NotificationSettingViewControllerWrapper.swift in Sources */,
 				FAFF6F532A2055430092A1A3 /* TopView.swift in Sources */,
 				FAC9EF472D0C5A6F00DE1E64 /* DataDeletionExecutionViewController.swift in Sources */,
@@ -1389,6 +1412,7 @@
 				FA9E8C382D11AD5E00A05E55 /* TermsOfUseTableViewCell.swift in Sources */,
 				FA18E3832FA797B30049B612 /* TopAlertString.swift in Sources */,
 				FA6B660F2D1D3AB1009D6D44 /* OnboardingView.swift in Sources */,
+				FA0572EB2FDFB4B500486AD7 /* APIClientError.swift in Sources */,
 				FA9553662F90F66700A97A2D /* LocalNotificationMessage.swift in Sources */,
 				FADD2CDD2FB371500084D5D0 /* OnboardingString.swift in Sources */,
 				FAA9E7352FA4EB3700CBED1E /* EmailAlertString.swift in Sources */,
