@@ -7,7 +7,7 @@
 
 import Foundation
 
-class APIClient {
+actor APIClient {
 
   private let session: URLSessionProtocol
 

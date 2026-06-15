@@ -10,30 +10,16 @@ import XCTest
 
 class APIClientTests: XCTestCase {
 
+  // MARK: - Helpers
 
-  // MARK: - Properties
-
-  private var mockSession: MockURLSession!
-  private var apiClient: APIClient!
-
-
-  // MARK: - Methods
-
-  override func setUp() {
-
-    super.setUp()
-    mockSession = MockURLSession()
-    apiClient = APIClient(session: mockSession)
+  private func makeHTTPResponse(statusCode: Int) -> HTTPURLResponse {
+    HTTPURLResponse(
+      url: URL(string: "https://example.com/")!,
+      statusCode: statusCode,
+      httpVersion: nil,
+      headerFields: nil
+    )!
   }
-
-  override func tearDown() {
-
-    mockSession = nil
-    apiClient = nil
-
-    super.tearDown()
-  }
-
 
   // MARK: - TestCases
 
@@ -41,13 +27,11 @@ class APIClientTests: XCTestCase {
   func testRequestSuccess() async throws {
 
     let json = "{\"value\":\"hello\"}".data(using: .utf8)!
-    mockSession.stubbedData = json
-    mockSession.stubbedResponse = HTTPURLResponse(
-      url: URL(string: "https://example.com/")!,
-      statusCode: 200,
-      httpVersion: nil,
-      headerFields: nil
-    )!
+    let mockSession = MockURLSession(
+      data: json,
+      response: makeHTTPResponse(statusCode: 200)
+    )
+    let apiClient = APIClient(session: mockSession)
 
     let result = try await apiClient.request(MockRequest())
     XCTAssertEqual(result.value, "hello")
@@ -56,13 +40,11 @@ class APIClientTests: XCTestCase {
   // ステータスコードが2xx以外の場合にserverErrorが投げられることをテスト
   func testRequestServerError() async {
 
-    mockSession.stubbedData = Data()
-    mockSession.stubbedResponse = HTTPURLResponse(
-      url: URL(string: "https://example.com/")!,
-      statusCode: 500,
-      httpVersion: nil,
-      headerFields: nil
-    )!
+    let mockSession = MockURLSession(
+      data: Data(),
+      response: makeHTTPResponse(statusCode: 500)
+    )
+    let apiClient = APIClient(session: mockSession)
 
     do {
       _ = try await apiClient.request(MockRequest())
@@ -77,13 +59,11 @@ class APIClientTests: XCTestCase {
   // 不正なJSONを受信したときdecodingErrorが投げられることをテスト
   func testRequestDecodingError() async {
 
-    mockSession.stubbedData = "invalid json".data(using: .utf8)!
-    mockSession.stubbedResponse = HTTPURLResponse(
-      url: URL(string: "https://example.com/")!,
-      statusCode: 200,
-      httpVersion: nil,
-      headerFields: nil
-    )!
+    let mockSession = MockURLSession(
+      data: "invalid json".data(using: .utf8)!,
+      response: makeHTTPResponse(statusCode: 200)
+    )
+    let apiClient = APIClient(session: mockSession)
 
     do {
       _ = try await apiClient.request(MockRequest())
@@ -98,7 +78,10 @@ class APIClientTests: XCTestCase {
   // URLSessionがエラーを投げた時にnetworkErrorが投げられることをテスト
   func testRequestNetworkError() async {
 
-    mockSession.stubbedError = URLError(.notConnectedToInternet)
+    let mockSession = MockURLSession(
+      error: URLError(.notConnectedToInternet)
+    )
+    let apiClient = APIClient(session: mockSession)
 
     do {
       _ = try await apiClient.request(MockRequest())
@@ -113,13 +96,16 @@ class APIClientTests: XCTestCase {
   // HTTPURLResponseでないレスポンスを受信したときinvalidResponseが投げられることをテスト
   func testRequestInvalidResponse() async {
 
-    mockSession.stubbedData = Data()
-    mockSession.stubbedResponse = URLResponse(
-      url: URL(string: "https://example.com/")!,
-      mimeType: nil,
-      expectedContentLength: 0,
-      textEncodingName: nil
+    let mockSession = MockURLSession(
+      data: Data(),
+      response: URLResponse(
+        url: URL(string: "https://example.com/")!,
+        mimeType: nil,
+        expectedContentLength: 0,
+        textEncodingName: nil
+      )
     )
+    let apiClient = APIClient(session: mockSession)
 
     do {
       _ = try await apiClient.request(MockRequest())
@@ -135,17 +121,23 @@ class APIClientTests: XCTestCase {
 
 // MARK: - Mocks
 
-// URLSessionProtocolのモック。任意のdata/response/errorを返せる
-private class MockURLSession: URLSessionProtocol {
+// URLSessionProtocolのモック。init時に指定したdata/response/errorを返す
+private final class MockURLSession: URLSessionProtocol {
 
-  var stubbedData: Data?
-  var stubbedResponse: URLResponse?
-  var stubbedError: Error?
+  let stubbedData: Data?
+  let stubbedResponse: URLResponse?
+  let stubbedError: Error?
+
+  init(data: Data? = nil, response: URLResponse? = nil, error: Error? = nil) {
+    self.stubbedData = data
+    self.stubbedResponse = response
+    self.stubbedError = error
+  }
 
   func data(for request: URLRequest) async throws -> (Data, URLResponse) {
 
-    if let error = stubbedError {
-      throw error
+    if let stubbedError {
+      throw stubbedError
     }
     return (stubbedData ?? Data(), stubbedResponse ?? URLResponse())
   }
