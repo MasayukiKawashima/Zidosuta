@@ -18,9 +18,16 @@ class APIClient {
 
   func request<T: Requestable>(_ request: T) async throws -> T.Response {
 
+    let url: URL
     // URLの組み立て
-    guard let url = URL(string: request.path, relativeTo: request.baseURL) else {
-      throw APIClientError.invalidURL
+    if let path = request.path {
+      if let combinedURL = URL(string: path, relativeTo: request.baseURL) {
+        url = combinedURL
+      } else {
+        throw APIClientError.invalidURL
+      }
+    } else {
+      url = request.baseURL
     }
 
     // URLRequestの構築
