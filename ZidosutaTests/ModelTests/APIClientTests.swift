@@ -160,7 +160,7 @@ private struct MockRequest: Requestable {
   var baseURL: URL { URL(string: "https://example.com/")! }
   var path: String { "test" }
   var method: HTTPMethod { .get }
-  var headers: [String: String] { [:] }
+  var headers: [String: String]? { [:] }
   var body: EmptyBody? { nil }
 }
 

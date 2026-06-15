@@ -26,8 +26,10 @@ class APIClient {
     // URLRequestの構築
     var urlRequest = URLRequest(url: url)
     urlRequest.httpMethod = request.method.rawValue
-    for (key, value) in request.headers {
-      urlRequest.setValue(value, forHTTPHeaderField: key)
+    if let headers = request.headers {
+      for (key, value) in headers {
+        urlRequest.setValue(value, forHTTPHeaderField: key)
+      }
     }
 
     // Bodyのエンコード
