@@ -10,5 +10,5 @@ import Foundation
 enum ZidosutaUpdatesAPIConstants {
 
   static let url = "https://zidosuta-updates-api.kawashima-apps.workers.dev"
-  static let method: HTTPMethod = .post
+  static let method: HTTPMethod = .get
 }
