@@ -10,6 +10,8 @@ import Foundation
 protocol Requestable {
 
   associatedtype Response: Decodable
+
+  // Bodyを使用しない場合はEmptyBodyを指定する
   associatedtype HTTPBody: Encodable
 
   var baseURL: String { get }

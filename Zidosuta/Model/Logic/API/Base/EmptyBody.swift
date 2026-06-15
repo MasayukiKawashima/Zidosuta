@@ -7,4 +7,5 @@
 
 import Foundation
 
+// Bodyを使わないリクエストを使用する際のダミー構造体
 struct EmptyBody: Encodable {}

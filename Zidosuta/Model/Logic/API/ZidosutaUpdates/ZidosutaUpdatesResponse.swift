@@ -8,6 +8,6 @@
 import Foundation
 
 struct ZidosutaUpdatesResponse: Decodable {
-  
+
   let updates: [ZidosutaUpdate]
 }

@@ -15,6 +15,6 @@ struct ZidosutaUpdatesRequest: Requestable {
   var baseURL: String { ZidosutaUpdatesAPIConstants.url }
   var path: String?
   var method: HTTPMethod { ZidosutaUpdatesAPIConstants.method }
-  var headers: [String : String]?
+  var headers: [String: String]?
   var body: HTTPBody?
 }

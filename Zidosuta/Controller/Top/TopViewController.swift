@@ -107,6 +107,14 @@ class TopViewController: UIViewController {
     topView.tableView.separatorStyle = .none
 
     setupRealmObserver()
+
+    let client = APIClient()
+    let request = ZidosutaUpdatesRequest()
+
+    Task {
+      let result = try await client.request(request)
+      print(result)
+    }
   }
 
   // Realm内のDateDataの全データ削除後のTableViewのリロードを行うためのDateDataを監視のセットアップを行うメソッド

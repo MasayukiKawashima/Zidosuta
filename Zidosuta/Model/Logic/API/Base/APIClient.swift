@@ -9,12 +9,21 @@ import Foundation
 
 actor APIClient {
 
+
+  // MARK: - Properties
+
   private let session: URLSessionProtocol
+
+
+    // MARK: - Init
 
   init(session: URLSessionProtocol = URLSession.shared) {
 
     self.session = session
   }
+
+
+  // MARK: - Methods
 
   func request<T: Requestable>(_ request: T) async throws -> T.Response {
 
