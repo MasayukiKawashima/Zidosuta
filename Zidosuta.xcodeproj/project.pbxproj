@@ -17,6 +17,10 @@
 		FA0572F12FDFB4CB00486AD7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572F02FDFB4CB00486AD7 /* APIClient.swift */; };
 		FA0572F32FDFBE9500486AD7 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572F22FDFBE9500486AD7 /* APIClientTests.swift */; };
 		FA0572F72FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572F62FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift */; };
+		FA0572FE2FDFF7D000486AD7 /* ZidosutaUpdatesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572FD2FDFF7D000486AD7 /* ZidosutaUpdatesRequest.swift */; };
+		FA0573022FDFFBD600486AD7 /* ZidosutaUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0573012FDFFBD600486AD7 /* ZidosutaUpdate.swift */; };
+		FA0573042FDFFC4600486AD7 /* ZidosutaUpdatesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0573032FDFFC4600486AD7 /* ZidosutaUpdatesResponse.swift */; };
+		FA0573082FDFFE8400486AD7 /* EmptyBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0573072FDFFE8400486AD7 /* EmptyBody.swift */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
 		FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */; };
@@ -190,6 +194,10 @@
 		FA0572F02FDFB4CB00486AD7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		FA0572F22FDFBE9500486AD7 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		FA0572F62FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZidosutaUpdatesAPIConstants.swift; sourceTree = "<group>"; };
+		FA0572FD2FDFF7D000486AD7 /* ZidosutaUpdatesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZidosutaUpdatesRequest.swift; sourceTree = "<group>"; };
+		FA0573012FDFFBD600486AD7 /* ZidosutaUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZidosutaUpdate.swift; sourceTree = "<group>"; };
+		FA0573032FDFFC4600486AD7 /* ZidosutaUpdatesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZidosutaUpdatesResponse.swift; sourceTree = "<group>"; };
+		FA0573072FDFFE8400486AD7 /* EmptyBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyBody.swift; sourceTree = "<group>"; };
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
 		FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTextFieldValidation.swift; sourceTree = "<group>"; };
@@ -413,6 +421,7 @@
 				FA0572EC2FDFB4BC00486AD7 /* Requestable.swift */,
 				FA0572EE2FDFB4C100486AD7 /* URLSessionProtocol.swift */,
 				FA0572F02FDFB4CB00486AD7 /* APIClient.swift */,
+				FA0573072FDFFE8400486AD7 /* EmptyBody.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -421,6 +430,9 @@
 			isa = PBXGroup;
 			children = (
 				FA0572F62FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift */,
+				FA0572FD2FDFF7D000486AD7 /* ZidosutaUpdatesRequest.swift */,
+				FA0573012FDFFBD600486AD7 /* ZidosutaUpdate.swift */,
+				FA0573032FDFFC4600486AD7 /* ZidosutaUpdatesResponse.swift */,
 			);
 			path = ZidosutaUpdates;
 			sourceTree = "<group>";
@@ -1368,6 +1380,8 @@
 				FAFF6F592A21ACE40092A1A3 /* WeightTableViewCell.swift in Sources */,
 				FA2211172CFF5E1B005C622D /* NotificationTimeDisplayTableViewCell.swift in Sources */,
 				FA42FA482A7F2F6500C60F9E /* MonthAdjuster.swift in Sources */,
+				FA0573022FDFFBD600486AD7 /* ZidosutaUpdate.swift in Sources */,
+				FA0573082FDFFE8400486AD7 /* EmptyBody.swift in Sources */,
 				FAC9EF182D0C0B5C00DE1E64 /* TopViewController.swift in Sources */,
 				FAC9EF192D0C0B5C00DE1E64 /* GraphViewController.swift in Sources */,
 				FA80692C2EE6F84F0013CBB3 /* DateSelectionViewController.swift in Sources */,
@@ -1381,6 +1395,7 @@
 				FABB32632F912EF0009ABD10 /* PlaceholderString.swift in Sources */,
 				FAC9EF1F2D0C0B5C00DE1E64 /* SettingsNavigationController.swift in Sources */,
 				FAC9EF202D0C0B5C00DE1E64 /* SettingsViewController.swift in Sources */,
+				FA0573042FDFFC4600486AD7 /* ZidosutaUpdatesResponse.swift in Sources */,
 				FAA9E73A2FA5566300CBED1E /* NotificationAlertString.swift in Sources */,
 				FAC9EF212D0C0B5C00DE1E64 /* GraphPageViewController.swift in Sources */,
 				FAC9EF292D0C11A000DE1E64 /* Notification.swift in Sources */,
@@ -1443,6 +1458,7 @@
 				FA9F9CEB2CF5A6CC0013886A /* ChartAxisBase+setKGFormatter.swift in Sources */,
 				FA417BC02A5C428E00B53A0F /* DateDataRealmSearcher.swift in Sources */,
 				FAA860922FC7E65200F22CCF /* UIBarButtonItem+IconFactory.swift in Sources */,
+				FA0572FE2FDFF7D000486AD7 /* ZidosutaUpdatesRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
