@@ -16,6 +16,7 @@
 		FA0572EF2FDFB4C100486AD7 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572EE2FDFB4C100486AD7 /* URLSessionProtocol.swift */; };
 		FA0572F12FDFB4CB00486AD7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572F02FDFB4CB00486AD7 /* APIClient.swift */; };
 		FA0572F32FDFBE9500486AD7 /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572F22FDFBE9500486AD7 /* APIClientTests.swift */; };
+		FA0572F72FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0572F62FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift */; };
 		FA10AD132CDDC2F900AF9404 /* WeightTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */; };
 		FA10AD1E2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */; };
 		FA10AD202CDE3B8A00AF9404 /* MemoTextFieldValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */; };
@@ -188,6 +189,7 @@
 		FA0572EE2FDFB4C100486AD7 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		FA0572F02FDFB4CB00486AD7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		FA0572F22FDFBE9500486AD7 /* APIClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		FA0572F62FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZidosutaUpdatesAPIConstants.swift; sourceTree = "<group>"; };
 		FA10AD122CDDC2F900AF9404 /* WeightTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidation.swift; sourceTree = "<group>"; };
 		FA10AD1D2CDDDBDF00AF9404 /* WeightTextFieldValidationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTextFieldValidationTest.swift; sourceTree = "<group>"; };
 		FA10AD1F2CDE3B8A00AF9404 /* MemoTextFieldValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTextFieldValidation.swift; sourceTree = "<group>"; };
@@ -397,13 +399,30 @@
 		FA0572E72FDFB4B000486AD7 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				FA0572F52FDFC45600486AD7 /* ZidosutaUpdates */,
+				FA0572F42FDFC43E00486AD7 /* Base */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		FA0572F42FDFC43E00486AD7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
 				FA0572E82FDFB4B000486AD7 /* HTTPMethod.swift */,
 				FA0572EA2FDFB4B500486AD7 /* APIClientError.swift */,
 				FA0572EC2FDFB4BC00486AD7 /* Requestable.swift */,
 				FA0572EE2FDFB4C100486AD7 /* URLSessionProtocol.swift */,
 				FA0572F02FDFB4CB00486AD7 /* APIClient.swift */,
 			);
-			path = API;
+			path = Base;
+			sourceTree = "<group>";
+		};
+		FA0572F52FDFC45600486AD7 /* ZidosutaUpdates */ = {
+			isa = PBXGroup;
+			children = (
+				FA0572F62FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift */,
+			);
+			path = ZidosutaUpdates;
 			sourceTree = "<group>";
 		};
 		FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */ = {
@@ -1365,6 +1384,7 @@
 				FAA9E73A2FA5566300CBED1E /* NotificationAlertString.swift in Sources */,
 				FAC9EF212D0C0B5C00DE1E64 /* GraphPageViewController.swift in Sources */,
 				FAC9EF292D0C11A000DE1E64 /* Notification.swift in Sources */,
+				FA0572F72FDFC4A200486AD7 /* ZidosutaUpdatesAPIConstants.swift in Sources */,
 				FA18E3892FA889520049B612 /* TopActionSheet.swift in Sources */,
 				FADD2CE32FB610170084D5D0 /* PhotoTipsString.swift in Sources */,
 				FAC9EF2A2D0C11A000DE1E64 /* DateData.swift in Sources */,
