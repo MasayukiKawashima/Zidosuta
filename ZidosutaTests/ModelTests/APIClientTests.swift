@@ -157,7 +157,7 @@ private struct MockRequest: Requestable {
   typealias Response = MockResponse
   typealias HTTPBody = EmptyBody
 
-  var baseURL: URL { URL(string: "https://example.com/")! }
+  var baseURL: String { "https://example.com/" }
   var path: String? { "test" }
   var method: HTTPMethod { .get }
   var headers: [String: String]? { [:] }

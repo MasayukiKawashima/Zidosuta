@@ -12,7 +12,7 @@ protocol Requestable {
   associatedtype Response: Decodable
   associatedtype HTTPBody: Encodable
 
-  var baseURL: URL { get }
+  var baseURL: String { get }
   var path: String? { get }
   var method: HTTPMethod { get }
   var headers: [String: String]? { get }
