@@ -12,8 +12,13 @@ class UpdatesDisplayView: UIView, NibLoadable {
 
   // MARK: - Properties
 
-  @IBOutlet weak var tableView: UITableView!
-  private let cellIdentifier = "UpdatesDisplayTableViewCell"
+  @IBOutlet weak var tableView: UITableView! {
+    didSet {
+      tableViewSetting()
+    }
+  }
+
+  let cellIdentifier = "UpdatesDisplayTableViewCell"
 
 
     // MARK: - Init
