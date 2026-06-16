@@ -8,6 +8,7 @@
 import Foundation
 
 enum APIClientError: Error {
+  
   case invalidURL
   case encodingError(Error)
   case decodingError(Error)

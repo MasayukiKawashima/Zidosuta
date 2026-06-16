@@ -147,6 +147,8 @@
 		FACA1A482D255ECD00B2768D /* LocalNotificationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A472D255ECD00B2768D /* LocalNotificationManagerTests.swift */; };
 		FACA1A522D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */; };
 		FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */; };
+		FAD64E782FE0FA9A0081D564 /* UpdatesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD64E772FE0FA9A0081D564 /* UpdatesDisplayView.swift */; };
+		FAD64E7A2FE0FAB40081D564 /* UpdatesDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD64E792FE0FAB40081D564 /* UpdatesDisplayView.xib */; };
 		FAD9B7D22FDED82600F49466 /* UpdatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */; };
 		FAD9B7D32FDED82600F49466 /* UpdatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */; };
 		FAD9B7D52FDEE49A00F49466 /* UpdatesDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */; };
@@ -330,6 +332,8 @@
 		FACA1A472D255ECD00B2768D /* LocalNotificationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManagerTests.swift; sourceTree = "<group>"; };
 		FACA1A512D2A4E2600B2768D /* TermsDisplayViewControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsDisplayViewControllerWrapper.swift; sourceTree = "<group>"; };
 		FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextView.swift; sourceTree = "<group>"; };
+		FAD64E772FE0FA9A0081D564 /* UpdatesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesDisplayView.swift; sourceTree = "<group>"; };
+		FAD64E792FE0FAB40081D564 /* UpdatesDisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesDisplayView.xib; sourceTree = "<group>"; };
 		FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTableViewCell.swift; sourceTree = "<group>"; };
 		FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesTableViewCell.xib; sourceTree = "<group>"; };
 		FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesDisplayViewController.swift; sourceTree = "<group>"; };
@@ -968,11 +972,21 @@
 			path = UIViewControllerRepresentable;
 			sourceTree = "<group>";
 		};
+		FAD64E762FE0F9C50081D564 /* UpdatesDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				FAD64E772FE0FA9A0081D564 /* UpdatesDisplayView.swift */,
+				FAD64E792FE0FAB40081D564 /* UpdatesDisplayView.xib */,
+			);
+			path = UpdatesDisplayView;
+			sourceTree = "<group>";
+		};
 		FAD9B7CF2FDED78C00F49466 /* Updates */ = {
 			isa = PBXGroup;
 			children = (
 				FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */,
 				FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */,
+				FAD64E762FE0F9C50081D564 /* UpdatesDisplayView */,
 			);
 			path = Updates;
 			sourceTree = "<group>";
@@ -1141,6 +1155,7 @@
 				FA87003C2F7975E00067EAD5 /* Graph.storyboard in Resources */,
 				FA87003D2F7975E00067EAD5 /* LaunchScreen.storyboard in Resources */,
 				FA87003E2F7975E00067EAD5 /* Settings.storyboard in Resources */,
+				FAD64E7A2FE0FAB40081D564 /* UpdatesDisplayView.xib in Resources */,
 				FA87003F2F7975E00067EAD5 /* Tab.storyboard in Resources */,
 				FA8700402F7975E00067EAD5 /* Top.storyboard in Resources */,
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
@@ -1428,6 +1443,7 @@
 				FA9F9CED2CF5A8540013886A /* TransitionDirection.swift in Sources */,
 				FA0572E92FDFB4B000486AD7 /* HTTPMethod.swift in Sources */,
 				FAA9E7332FA4EA2A00CBED1E /* SettingsCellString.swift in Sources */,
+				FAD64E782FE0FA9A0081D564 /* UpdatesDisplayView.swift in Sources */,
 				FA9E8C402D14641C00A05E55 /* TermsDisplayView.swift in Sources */,
 				FA4D29A32A64F93900C2C5E6 /* GraphContentCreator.swift in Sources */,
 				FA8700472F7A2D190067EAD5 /* ValidationResult.swift in Sources */,
