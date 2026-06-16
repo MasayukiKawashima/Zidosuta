@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,32 +19,33 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ny-Ca-RyY">
-                        <rect key="frame" x="8" y="8" width="55" height="21"/>
+                        <rect key="frame" x="8" y="7.9999999999999982" width="59" height="22.333333333333329"/>
+                        <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="17"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-z8-N3Y">
+                        <rect key="frame" x="130.66666666666663" y="20" width="179.33333333333337" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX/XX/XX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bP-Dl-KtM">
-                        <rect key="frame" x="71" y="13" width="78" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-z8-N3Y">
-                        <rect key="frame" x="177" y="20" width="86" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="8" y="37.333333333333336" width="72" height="16"/>
+                        <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" name="OysterWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="b8a-z8-N3Y" secondAttribute="bottom" constant="19" id="1xo-cF-Slq"/>
+                    <constraint firstAttribute="trailing" secondItem="b8a-z8-N3Y" secondAttribute="trailing" constant="10" id="260-BC-cva"/>
                     <constraint firstItem="b8a-z8-N3Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="7Qe-pe-Tp7"/>
+                    <constraint firstItem="6bP-Dl-KtM" firstAttribute="top" secondItem="7Ny-Ca-RyY" secondAttribute="bottom" constant="7" id="DJT-gP-HuP"/>
                     <constraint firstItem="7Ny-Ca-RyY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ddg-uS-0bq"/>
-                    <constraint firstItem="6bP-Dl-KtM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="fi8-4A-CVb"/>
+                    <constraint firstItem="6bP-Dl-KtM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="WyO-ge-h7b"/>
                     <constraint firstItem="7Ny-Ca-RyY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="iaV-nb-0je"/>
-                    <constraint firstItem="6bP-Dl-KtM" firstAttribute="leading" secondItem="7Ny-Ca-RyY" secondAttribute="trailing" constant="8" symbolic="YES" id="mfP-iR-xve"/>
-                    <constraint firstAttribute="trailing" secondItem="b8a-z8-N3Y" secondAttribute="trailing" constant="57" id="tnN-Zp-nhv"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -52,7 +54,12 @@
                 <outlet property="releaseDateLabel" destination="6bP-Dl-KtM" id="f8u-Zh-f9z"/>
                 <outlet property="versionLabel" destination="7Ny-Ca-RyY" id="WCC-58-nMi"/>
             </connections>
-            <point key="canvasLocation" x="133" y="154"/>
+            <point key="canvasLocation" x="132.82442748091603" y="153.52112676056339"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="OysterWhite">
+            <color red="1" green="0.99199998378753662" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

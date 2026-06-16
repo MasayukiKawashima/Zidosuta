@@ -16,12 +16,17 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
   @IBOutlet weak var releaseDateLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
 
+
 // MARK: - LifeCycle
 
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    super.awakeFromNib()
+    // Initialization code
+    MainActor.assumeIsolated {
+
+      backgroundColor = .oysterWhite
     }
+  }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

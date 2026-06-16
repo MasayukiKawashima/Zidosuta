@@ -23,6 +23,8 @@ class UpdatesDisplayViewController: UIViewController {
   let updateDisplayView = UpdatesDisplayView()
   private var dataSource: UITableViewDiffableDataSource<Section, UpdateItem>!
 
+  let cellRowHeight: CGFloat = 60
+
 
   // MARK: - Enums
 
@@ -42,6 +44,7 @@ class UpdatesDisplayViewController: UIViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
+    updateDisplayView.tableView.rowHeight = cellRowHeight
 
     configureDataSource()
     applyData()
