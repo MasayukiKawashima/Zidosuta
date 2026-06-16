@@ -19,7 +19,7 @@ class UpdatesDisplayView: UIView, NibLoadable {
     // MARK: - Init
 
   override init(frame: CGRect) {
-    
+
     super.init(frame: frame)
     nibInit()
   }

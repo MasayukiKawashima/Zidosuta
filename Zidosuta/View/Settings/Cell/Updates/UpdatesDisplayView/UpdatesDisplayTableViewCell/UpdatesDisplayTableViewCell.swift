@@ -9,7 +9,16 @@ import UIKit
 
 class UpdatesDisplayTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
+
+  // MARK: - Properties
+
+  @IBOutlet weak var versionLabel: UILabel!
+  @IBOutlet weak var releaseDateLabel: UILabel!
+  @IBOutlet weak var descriptionLabel: UILabel!
+  
+// MARK: - LifeCycle
+
+  override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
@@ -19,5 +28,5 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }
