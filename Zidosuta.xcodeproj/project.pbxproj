@@ -149,6 +149,8 @@
 		FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */; };
 		FAD64E782FE0FA9A0081D564 /* UpdatesDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD64E772FE0FA9A0081D564 /* UpdatesDisplayView.swift */; };
 		FAD64E7A2FE0FAB40081D564 /* UpdatesDisplayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD64E792FE0FAB40081D564 /* UpdatesDisplayView.xib */; };
+		FAD64E7D2FE100050081D564 /* UpdatesDisplayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD64E7B2FE100050081D564 /* UpdatesDisplayTableViewCell.swift */; };
+		FAD64E7E2FE100050081D564 /* UpdatesDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD64E7C2FE100050081D564 /* UpdatesDisplayTableViewCell.xib */; };
 		FAD9B7D22FDED82600F49466 /* UpdatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */; };
 		FAD9B7D32FDED82600F49466 /* UpdatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */; };
 		FAD9B7D52FDEE49A00F49466 /* UpdatesDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */; };
@@ -334,6 +336,8 @@
 		FACA1A532D2BE5EB00B2768D /* TermsTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsTextView.swift; sourceTree = "<group>"; };
 		FAD64E772FE0FA9A0081D564 /* UpdatesDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesDisplayView.swift; sourceTree = "<group>"; };
 		FAD64E792FE0FAB40081D564 /* UpdatesDisplayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesDisplayView.xib; sourceTree = "<group>"; };
+		FAD64E7B2FE100050081D564 /* UpdatesDisplayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesDisplayTableViewCell.swift; sourceTree = "<group>"; };
+		FAD64E7C2FE100050081D564 /* UpdatesDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesDisplayTableViewCell.xib; sourceTree = "<group>"; };
 		FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTableViewCell.swift; sourceTree = "<group>"; };
 		FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesTableViewCell.xib; sourceTree = "<group>"; };
 		FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesDisplayViewController.swift; sourceTree = "<group>"; };
@@ -977,8 +981,18 @@
 			children = (
 				FAD64E772FE0FA9A0081D564 /* UpdatesDisplayView.swift */,
 				FAD64E792FE0FAB40081D564 /* UpdatesDisplayView.xib */,
+				FAD64E7F2FE100140081D564 /* UpdatesDisplayTableViewCell */,
 			);
 			path = UpdatesDisplayView;
+			sourceTree = "<group>";
+		};
+		FAD64E7F2FE100140081D564 /* UpdatesDisplayTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FAD64E7B2FE100050081D564 /* UpdatesDisplayTableViewCell.swift */,
+				FAD64E7C2FE100050081D564 /* UpdatesDisplayTableViewCell.xib */,
+			);
+			path = UpdatesDisplayTableViewCell;
 			sourceTree = "<group>";
 		};
 		FAD9B7CF2FDED78C00F49466 /* Updates */ = {
@@ -1159,6 +1173,7 @@
 				FA87003F2F7975E00067EAD5 /* Tab.storyboard in Resources */,
 				FA8700402F7975E00067EAD5 /* Top.storyboard in Resources */,
 				FA1187A32A22F652004577F8 /* AdTableViewCell.xib in Resources */,
+				FAD64E7E2FE100050081D564 /* UpdatesDisplayTableViewCell.xib in Resources */,
 				FAD9B7D32FDED82600F49466 /* UpdatesTableViewCell.xib in Resources */,
 				FA32F4C52A32BFCF0058FD32 /* NotificationTableViewCell.xib in Resources */,
 				FA8069182EE6862E0013CBB3 /* SelectedDateDisplayTableViewCell.xib in Resources */,
@@ -1435,6 +1450,7 @@
 				FAC9EF4B2D0E498E00DE1E64 /* DataDeleteManager.swift in Sources */,
 				FA22110D2CFF16D6005C622D /* MainBackgroundView.swift in Sources */,
 				FAC9EF312D0C11E900DE1E64 /* GraphDateManager.swift in Sources */,
+				FAD64E7D2FE100050081D564 /* UpdatesDisplayTableViewCell.swift in Sources */,
 				FA42FA522A81D8CC00C60F9E /* CustomMarkerView.swift in Sources */,
 				FAFF6F602A21C60F0092A1A3 /* MemoTableViewCell.swift in Sources */,
 				FA32F4B82A32BD130058FD32 /* SettingsView.swift in Sources */,
