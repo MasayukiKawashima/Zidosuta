@@ -9,6 +9,20 @@ import UIKit
 
 class UpdatesDisplayViewController: UIViewController {
 
+
+  // MARK: - Properties
+
+  let updateDisplayView = UpdatesDisplayView()
+
+
+  // MARK: - LifeCycle
+
+  override func loadView() {
+
+    super.loadView()
+    view = updateDisplayView
+  }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

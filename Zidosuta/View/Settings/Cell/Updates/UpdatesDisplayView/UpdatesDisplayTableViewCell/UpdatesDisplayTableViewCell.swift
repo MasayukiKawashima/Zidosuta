@@ -15,7 +15,7 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
   @IBOutlet weak var versionLabel: UILabel!
   @IBOutlet weak var releaseDateLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
-  
+
 // MARK: - LifeCycle
 
   override func awakeFromNib() {
