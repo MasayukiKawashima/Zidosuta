@@ -84,13 +84,13 @@ extension UpdatesDisplayViewController {
   private func applyData() {
 
     // テスト表示用データ
-    let testData = UpdateItem(id: UUID(), version: "0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
-    let testData2 = UpdateItem(id: UUID(), version: "0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
-    let testData3 = UpdateItem(id: UUID(), version: "0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
-    let testData4 = UpdateItem(id: UUID(), version: "0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
-    let testData5 = UpdateItem(id: UUID(), version: "0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
-    let testData6 = UpdateItem(id: UUID(), version: "0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
-    let testData7 = UpdateItem(id: UUID(), version: "0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
+    let testData = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
+    let testData2 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
+    let testData3 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
+    let testData4 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
+    let testData5 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
+    let testData6 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
+    let testData7 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025-02-11")
 
     var snapshot = NSDiffableDataSourceSnapshot<Section, UpdateItem>()
     snapshot.appendSections([.main])

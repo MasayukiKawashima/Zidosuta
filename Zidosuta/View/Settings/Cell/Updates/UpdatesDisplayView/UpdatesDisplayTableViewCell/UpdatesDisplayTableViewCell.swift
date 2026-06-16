@@ -14,7 +14,11 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
 
   @IBOutlet weak var versionLabel: UILabel!
   @IBOutlet weak var releaseDateLabel: UILabel!
-  @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var descriptionLabel: UILabel! {
+    didSet {
+      descriptionLabel.textAlignment = .right
+    }
+  }
 
 
 // MARK: - LifeCycle
