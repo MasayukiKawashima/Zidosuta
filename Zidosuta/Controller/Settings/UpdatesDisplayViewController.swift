@@ -74,6 +74,8 @@ extension UpdatesDisplayViewController {
 
       let cell = tableView.dequeueReusableCell(withIdentifier: self.updateDisplayView.cellIdentifier, for: indexPath) as! UpdatesDisplayTableViewCell
 
+      cell.selectionStyle = UITableViewCell.SelectionStyle.none
+
       cell.versionLabel.text = itemIdentifier.version
       cell.releaseDateLabel.text = itemIdentifier.releaseDate
       cell.descriptionLabel.text = itemIdentifier.description
