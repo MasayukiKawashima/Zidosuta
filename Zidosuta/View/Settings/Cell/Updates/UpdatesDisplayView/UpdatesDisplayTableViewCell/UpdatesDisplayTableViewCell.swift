@@ -29,6 +29,8 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
     MainActor.assumeIsolated {
 
       backgroundColor = .oysterWhite
+      // 
+      contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
     }
   }
 

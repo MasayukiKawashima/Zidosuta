@@ -24,15 +24,15 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX/XX/XX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bP-Dl-KtM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX-XX-XX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bP-Dl-KtM">
                         <rect key="frame" x="12" y="38" width="72" height="16"/>
                         <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="description description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-z8-N3Y">
-                        <rect key="frame" x="116" y="20" width="192" height="21"/>
-                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="134" y="0.0" width="174" height="60"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="13"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -40,13 +40,14 @@
                 </subviews>
                 <color key="backgroundColor" name="OysterWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="b8a-z8-N3Y" secondAttribute="bottom" constant="19" id="1xo-cF-Slq"/>
-                    <constraint firstItem="b8a-z8-N3Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="7Qe-pe-Tp7"/>
+                    <constraint firstItem="b8a-z8-N3Y" firstAttribute="leading" secondItem="7Ny-Ca-RyY" secondAttribute="trailing" constant="68" id="ADV-cX-Qtq"/>
                     <constraint firstItem="6bP-Dl-KtM" firstAttribute="top" secondItem="7Ny-Ca-RyY" secondAttribute="bottom" constant="7" id="DJT-gP-HuP"/>
                     <constraint firstItem="7Ny-Ca-RyY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ddg-uS-0bq"/>
                     <constraint firstItem="6bP-Dl-KtM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="WyO-ge-h7b"/>
-                    <constraint firstItem="b8a-z8-N3Y" firstAttribute="leading" secondItem="7Ny-Ca-RyY" secondAttribute="trailing" constant="50" id="bnU-ne-Qbn"/>
+                    <constraint firstItem="b8a-z8-N3Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZVe-ql-mZn"/>
+                    <constraint firstAttribute="bottom" secondItem="b8a-z8-N3Y" secondAttribute="bottom" id="bCn-D3-a2T"/>
                     <constraint firstItem="7Ny-Ca-RyY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="iaV-nb-0je"/>
+                    <constraint firstItem="b8a-z8-N3Y" firstAttribute="leading" secondItem="6bP-Dl-KtM" secondAttribute="trailing" constant="50" id="tyh-1d-vXe"/>
                     <constraint firstAttribute="trailing" secondItem="b8a-z8-N3Y" secondAttribute="trailing" constant="12" id="y9I-Xz-l8S"/>
                 </constraints>
             </tableViewCellContentView>
