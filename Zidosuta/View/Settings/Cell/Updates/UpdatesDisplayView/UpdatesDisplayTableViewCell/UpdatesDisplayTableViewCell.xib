@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="UpdatesDisplayTableViewCell" customModule="Zidosuta" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ny-Ca-RyY">
@@ -31,24 +31,24 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="description description " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8a-z8-N3Y">
-                        <rect key="frame" x="134" y="0.0" width="174" height="60"/>
+                        <rect key="frame" x="134" y="4" width="186" height="60"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="13"/>
+                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="14"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" name="OysterWhite"/>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="b8a-z8-N3Y" secondAttribute="bottom" constant="4" id="32N-be-d2d"/>
+                    <constraint firstAttribute="trailing" secondItem="b8a-z8-N3Y" secondAttribute="trailing" id="4gX-lV-uvW"/>
+                    <constraint firstItem="b8a-z8-N3Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="8dH-Oz-HlQ"/>
                     <constraint firstItem="b8a-z8-N3Y" firstAttribute="leading" secondItem="7Ny-Ca-RyY" secondAttribute="trailing" constant="68" id="ADV-cX-Qtq"/>
                     <constraint firstItem="6bP-Dl-KtM" firstAttribute="top" secondItem="7Ny-Ca-RyY" secondAttribute="bottom" constant="7" id="DJT-gP-HuP"/>
                     <constraint firstItem="7Ny-Ca-RyY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ddg-uS-0bq"/>
                     <constraint firstItem="6bP-Dl-KtM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="WyO-ge-h7b"/>
-                    <constraint firstItem="b8a-z8-N3Y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZVe-ql-mZn"/>
-                    <constraint firstAttribute="bottom" secondItem="b8a-z8-N3Y" secondAttribute="bottom" id="bCn-D3-a2T"/>
                     <constraint firstItem="7Ny-Ca-RyY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="iaV-nb-0je"/>
                     <constraint firstItem="b8a-z8-N3Y" firstAttribute="leading" secondItem="6bP-Dl-KtM" secondAttribute="trailing" constant="50" id="tyh-1d-vXe"/>
-                    <constraint firstAttribute="trailing" secondItem="b8a-z8-N3Y" secondAttribute="trailing" constant="12" id="y9I-Xz-l8S"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

@@ -30,7 +30,7 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
 
       backgroundColor = .oysterWhite
       // cellの高さを最低でも60にするように設定
-      contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
+      contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 68).isActive = true
     }
   }
 
