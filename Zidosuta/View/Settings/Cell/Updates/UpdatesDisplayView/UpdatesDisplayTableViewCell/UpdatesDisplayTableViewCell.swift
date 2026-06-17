@@ -16,7 +16,7 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
   @IBOutlet weak var releaseDateLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel! {
     didSet {
-      descriptionLabel.textAlignment = .right
+      descriptionLabel.textAlignment = .left
     }
   }
 
@@ -29,7 +29,7 @@ class UpdatesDisplayTableViewCell: UITableViewCell {
     MainActor.assumeIsolated {
 
       backgroundColor = .oysterWhite
-      // 
+      // cellの高さを最低でも60にするように設定
       contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
     }
   }

@@ -108,13 +108,15 @@ class TopViewController: UIViewController {
 
     setupRealmObserver()
 
-    let client = APIClient()
-    let request = ZidosutaUpdatesRequest()
+    // ZidosutaUpdatesAPIの仮運用
 
-    Task {
-      let result = try await client.request(request)
-      print(result)
-    }
+//    let client = APIClient()
+//    let request = ZidosutaUpdatesRequest()
+//
+//    Task {
+//      let result = try await client.request(request)
+//      print(result)
+//    }
   }
 
   // Realm内のDateDataの全データ削除後のTableViewのリロードを行うためのDateDataを監視のセットアップを行うメソッド
