@@ -44,5 +44,13 @@ class UpdatesDisplayView: UIView, NibLoadable {
     tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
 
     // 他TableViewのUI調整
+
+    // 各セルの高さを自動調整
+    // UpdatesDisplayTableViewCellのawakeFromNibでもCellのContentViewの最低の高さを60にする制約を設定している
+    tableView.estimatedRowHeight = 60
+    tableView.rowHeight = UITableView.automaticDimension
+
+    // セルの間の枠線の左右の余白をなくす
+    tableView.separatorInset = .zero
   }
 }
