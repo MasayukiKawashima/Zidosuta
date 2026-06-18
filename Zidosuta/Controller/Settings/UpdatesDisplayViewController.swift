@@ -25,6 +25,13 @@ class UpdatesDisplayViewController: UIViewController {
 
   let cellRowHeight: CGFloat = 60
 
+  private let indicator: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView(style: .large)
+    indicator.hidesWhenStopped = true
+    indicator.color = .black
+    return indicator
+  }()
+
 
   // MARK: - Enums
 
@@ -45,14 +52,26 @@ class UpdatesDisplayViewController: UIViewController {
 
     // Do any additional setup after loading the view.
 
+    view.addSubview(indicator)
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+
+    indicator.startAnimating()
+
     Task {
       do {
         let result = try await getUpdates()
         configureDataSource()
         applyData(data: result.updates)
+
+        indicator.stopAnimating()
       } catch {
         // エラーハンドリング
         print("エラー発生")
+        indicator.stopAnimating()
       }
     }
 
