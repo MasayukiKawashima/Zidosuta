@@ -20,7 +20,7 @@ class TermsDisplayViewController: UIViewController {
   private let indicator: UIActivityIndicatorView = {
     let indicator = UIActivityIndicatorView(style: .large) // largeスタイルに変更
     indicator.hidesWhenStopped = true
-    indicator.color = .gray // 必要に応じて色を調整
+    indicator.color = .black // 必要に応じて色を調整
     return indicator
   }()
 

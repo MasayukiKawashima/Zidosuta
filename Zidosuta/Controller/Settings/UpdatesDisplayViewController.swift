@@ -25,6 +25,13 @@ class UpdatesDisplayViewController: UIViewController {
 
   let cellRowHeight: CGFloat = 60
 
+  private let indicator: UIActivityIndicatorView = {
+    let indicator = UIActivityIndicatorView(style: .large)
+    indicator.hidesWhenStopped = true
+    indicator.color = .black
+    return indicator
+  }()
+
 
   // MARK: - Enums
 
@@ -45,8 +52,29 @@ class UpdatesDisplayViewController: UIViewController {
 
     // Do any additional setup after loading the view.
 
-    configureDataSource()
-    applyData()
+    view.addSubview(indicator)
+    indicator.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+
+    indicator.startAnimating()
+
+    Task {
+      do {
+        let result = try await getUpdates()
+        configureDataSource()
+        applyData(data: result.updates)
+
+        indicator.stopAnimating()
+      } catch {
+        // エラーハンドリング
+        print("エラー発生")
+        indicator.stopAnimating()
+      }
+    }
+
   }
 
 
@@ -84,20 +112,34 @@ extension UpdatesDisplayViewController {
     })
   }
 
-  private func applyData() {
+  private func applyData(data: [ZidosutaUpdate]) {
 
     // テスト表示用データ
-    let testData = UpdateItem(id: UUID(), version: "v2.10.10", description: "アプリ内のデザインをリニューアルしました。\niOS26に対応しました。\n内部的な改善を行いました。", releaseDate: "2025.02.11")
-    let testData2 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-    let testData3 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-    let testData4 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-    let testData5 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-    let testData6 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-    let testData7 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
+//    let testData = UpdateItem(id: UUID(), version: "v2.10.10", description: "アプリ内のデザインをリニューアルしました。\niOS26に対応しました。\n内部的な改善を行いました。", releaseDate: "2025.02.11")
+//    let testData2 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
+//    let testData3 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
+//    let testData4 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
+//    let testData5 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
+//    let testData6 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
+//    let testData7 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
 
     var snapshot = NSDiffableDataSourceSnapshot<Section, UpdateItem>()
     snapshot.appendSections([.main])
-    snapshot.appendItems([testData, testData2, testData3, testData4, testData5, testData6, testData7], toSection: .main)
+
+    for data in data {
+      let displayDate = data.releaseDate.replacingOccurrences(of: "-", with: ".")
+      let item = UpdateItem(id: UUID(), version: data.version, description: data.description, releaseDate: displayDate)
+      snapshot.appendItems([item], toSection: .main)
+    }
     dataSource.apply(snapshot, animatingDifferences: false)
   }
+
+  private func getUpdates() async throws -> ZidosutaUpdatesResponse {
+
+    let client = APIClient()
+    let request = ZidosutaUpdatesRequest()
+
+    return try await  client.request(request)
+  }
+
 }
