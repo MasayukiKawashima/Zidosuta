@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ZidosutaUpdatesResponse: Decodable {
+struct ZidosutaUpdatesResponse: Codable {
 
   let updates: [ZidosutaUpdate]
 }
