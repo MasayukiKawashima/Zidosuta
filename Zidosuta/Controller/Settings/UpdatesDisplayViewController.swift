@@ -68,7 +68,7 @@ class UpdatesDisplayViewController: UIViewController {
 
       Task {
         do {
-          let result = try await getUpdates()
+          let result = try await fetchUpdates()
           UpdatesCache.save(result)
           configureDataSource()
           applyData(data: result.updates)
@@ -92,7 +92,7 @@ class UpdatesDisplayViewController: UIViewController {
 
         Task {
           do {
-            let result = try await getUpdates()
+            let result = try await fetchUpdates()
             UpdatesCache.save(result)
             configureDataSource()
             applyData(data: result.updates)
@@ -165,12 +165,14 @@ extension UpdatesDisplayViewController {
     dataSource.apply(snapshot, animatingDifferences: false)
   }
 
-  private func getUpdates() async throws -> ZidosutaUpdatesResponse {
+  private func fetchUpdates() async throws -> ZidosutaUpdatesResponse {
 
     let client = APIClient()
     let request = ZidosutaUpdatesRequest()
 
     return try await  client.request(request)
   }
+
+  private showErrorAlert
 
 }
