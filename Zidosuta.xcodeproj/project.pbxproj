@@ -464,26 +464,6 @@
 			path = TopPageTextFieldValidation;
 			sourceTree = "<group>";
 		};
-		FA1112302A59296B007353EA /* Logic */ = {
-			isa = PBXGroup;
-			children = (
-				FA0572E72FDFB4B000486AD7 /* API */,
-				FA11122B2A5923F6007353EA /* IndexSetter.swift */,
-				FA42FA472A7F2F6500C60F9E /* MonthAdjuster.swift */,
-				FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */,
-				FA42FA392A70B2DC00C60F9E /* DateRangeCalculator.swift */,
-				FAC9EF2E2D0C11E000DE1E64 /* TopDateManager.swift */,
-				FAC9EF302D0C11E900DE1E64 /* GraphDateManager.swift */,
-				FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */,
-				FAC9EF2C2D0C11C200DE1E64 /* LocalNotificationManager.swift */,
-				FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */,
-				FAA926A72DED6AA000608AA6 /* OnboardingModel.swift */,
-				FA9553642F90F56C00A97A2D /* Constant */,
-				FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */,
-			);
-			path = Logic;
-			sourceTree = "<group>";
-		};
 		FA22110E2CFF1A23005C622D /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,8 +528,21 @@
 		FA41A2F52A1C8834008DC83E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FAC9EF282D0C11A000DE1E64 /* Data  */,
-				FA1112302A59296B007353EA /* Logic */,
+				FA0572E72FDFB4B000486AD7 /* API */,
+				FA10AD172CDDC5E800AF9404 /* TopPageTextFieldValidation */,
+				FAC9EF262D0C11A000DE1E64 /* Setting */,
+				FA11122B2A5923F6007353EA /* IndexSetter.swift */,
+				FA42FA472A7F2F6500C60F9E /* MonthAdjuster.swift */,
+				FA4D29A22A64F93900C2C5E6 /* GraphContentCreator.swift */,
+				FA42FA392A70B2DC00C60F9E /* DateRangeCalculator.swift */,
+				FAC9EF2E2D0C11E000DE1E64 /* TopDateManager.swift */,
+				FAC9EF302D0C11E900DE1E64 /* GraphDateManager.swift */,
+				FA417BBF2A5C428E00B53A0F /* DateDataRealmSearcher.swift */,
+				FAC9EF2C2D0C11C200DE1E64 /* LocalNotificationManager.swift */,
+				FAC9EF4A2D0E498E00DE1E64 /* DataDeleteManager.swift */,
+				FAA926A72DED6AA000608AA6 /* OnboardingModel.swift */,
+				FAC9EF272D0C11A000DE1E64 /* DateData.swift */,
+				FA9553642F90F56C00A97A2D /* Constant */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -911,15 +904,6 @@
 				FAC9EF252D0C11A000DE1E64 /* Settings.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		FAC9EF282D0C11A000DE1E64 /* Data  */ = {
-			isa = PBXGroup;
-			children = (
-				FAC9EF262D0C11A000DE1E64 /* Setting */,
-				FAC9EF272D0C11A000DE1E64 /* DateData.swift */,
-			);
-			path = "Data ";
 			sourceTree = "<group>";
 		};
 		FAC9EF322D0C39FF00DE1E64 /* DeleteData */ = {
