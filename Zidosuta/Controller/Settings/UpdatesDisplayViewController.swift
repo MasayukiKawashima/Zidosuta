@@ -82,6 +82,8 @@ class UpdatesDisplayViewController: UIViewController {
         // キャッシュが取得できなかったため再取得
         print("キャッシュの取得エラー")
 
+        indicator.startAnimating()
+
         Task {
           do {
             let result = try await fetchUpdates()
