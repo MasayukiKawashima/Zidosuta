@@ -61,8 +61,6 @@ class UpdatesDisplayViewController: UIViewController {
 
     if UpdatesCache.needsRefresh() {
 
-      // FIXME: - 更新情報の取得処理がDRYに違反しているため、エラーハンドリング実装後に共通化する
-
       // キャッシュが存在しない等で更新情報の取得が必要な場合
       indicator.startAnimating()
 
@@ -77,6 +75,7 @@ class UpdatesDisplayViewController: UIViewController {
         } catch {
           // エラーハンドリング
           print("エラー発生")
+          showUpdatesFetchFailureAlert()
           indicator.stopAnimating()
         }
       }
@@ -101,6 +100,7 @@ class UpdatesDisplayViewController: UIViewController {
           } catch {
             // エラーハンドリング
             print("エラー発生")
+            showUpdatesFetchFailureAlert()
             indicator.stopAnimating()
           }
         }
@@ -173,6 +173,16 @@ extension UpdatesDisplayViewController {
     return try await  client.request(request)
   }
 
-  private showErrorAlert
+  private func showUpdatesFetchFailureAlert() {
+
+    let alert = UIAlertController(title: FetchUpdatesAlertString.FetchFailure.title, message: FetchUpdatesAlertString.FetchFailure.message, preferredStyle: .alert)
+
+    let okAction = UIAlertAction(title: FetchUpdatesAlertString.okActionTitle, style: .default) { action in
+      self.navigationController?.popViewController(animated: true)
+    }
+
+    alert.addAction(okAction)
+    present(alert, animated: true)
+  }
 
 }
