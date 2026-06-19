@@ -153,6 +153,7 @@
 		FAD64E7E2FE100050081D564 /* UpdatesDisplayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD64E7C2FE100050081D564 /* UpdatesDisplayTableViewCell.xib */; };
 		FAD88E722FE4EFF0006B6667 /* UpdatesCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD88E712FE4EFF0006B6667 /* UpdatesCache.swift */; };
 		FAD88E752FE506E4006B6667 /* FetchUpdatesAlertString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD88E742FE506E4006B6667 /* FetchUpdatesAlertString.swift */; };
+		FAD88E782FE52A2D006B6667 /* UpdateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD88E772FE52A2D006B6667 /* UpdateItem.swift */; };
 		FAD9B7D22FDED82600F49466 /* UpdatesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */; };
 		FAD9B7D32FDED82600F49466 /* UpdatesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */; };
 		FAD9B7D52FDEE49A00F49466 /* UpdatesDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */; };
@@ -342,6 +343,7 @@
 		FAD64E7C2FE100050081D564 /* UpdatesDisplayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesDisplayTableViewCell.xib; sourceTree = "<group>"; };
 		FAD88E712FE4EFF0006B6667 /* UpdatesCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesCache.swift; sourceTree = "<group>"; };
 		FAD88E742FE506E4006B6667 /* FetchUpdatesAlertString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUpdatesAlertString.swift; sourceTree = "<group>"; };
+		FAD88E772FE52A2D006B6667 /* UpdateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateItem.swift; sourceTree = "<group>"; };
 		FAD9B7D02FDED82600F49466 /* UpdatesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesTableViewCell.swift; sourceTree = "<group>"; };
 		FAD9B7D12FDED82600F49466 /* UpdatesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdatesTableViewCell.xib; sourceTree = "<group>"; };
 		FAD9B7D42FDEE49A00F49466 /* UpdatesDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesDisplayViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				FA0573012FDFFBD600486AD7 /* ZidosutaUpdate.swift */,
 				FA0573032FDFFC4600486AD7 /* ZidosutaUpdatesResponse.swift */,
 				FAD88E712FE4EFF0006B6667 /* UpdatesCache.swift */,
+				FAD88E772FE52A2D006B6667 /* UpdateItem.swift */,
 			);
 			path = ZidosutaUpdates;
 			sourceTree = "<group>";
@@ -1451,6 +1454,7 @@
 				FACA1A542D2BE5EB00B2768D /* TermsTextView.swift in Sources */,
 				FA8069112EE67FEE0013CBB3 /* DateSelectionView.swift in Sources */,
 				FAD9B7D22FDED82600F49466 /* UpdatesTableViewCell.swift in Sources */,
+				FAD88E782FE52A2D006B6667 /* UpdateItem.swift in Sources */,
 				FAA926A82DED6AA000608AA6 /* OnboardingModel.swift in Sources */,
 				FAC9EF232D0C0B5C00DE1E64 /* TabBarController.swift in Sources */,
 				FA68AF212A135F6F00B69D4A /* AppDelegate.swift in Sources */,
