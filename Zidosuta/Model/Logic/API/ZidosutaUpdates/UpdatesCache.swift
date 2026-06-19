@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum UpdateInfoCache {
+enum UpdatesCache {
     private static let key = "cachedUpdates"
 
     // 現在のアプリバージョン（Info.plist の CFBundleShortVersionString）。
@@ -36,7 +36,19 @@ enum UpdateInfoCache {
 
       // キャッシュが存在しないか、またはキャッシュの中身が0件だった場合はtrue(つまり、更新情報を取得しないといけない)
         guard let cached = load(),
-              let latest = cached.updates.first else { return true }
+              let latest = cached.updates.first else {
+          print("キャッシュがないか、有効な更新情報がないため更新が必要です")
+          return true
+        }
+
+      let test = currentAppVersion.compare(latest.version, options: .numeric) != .orderedSame
+
+      if test {
+        print("更新する必要があります")
+      } else {
+        print("更新する必要がありません")
+      }
+
         return currentAppVersion.compare(latest.version, options: .numeric) != .orderedSame
     }
 }
