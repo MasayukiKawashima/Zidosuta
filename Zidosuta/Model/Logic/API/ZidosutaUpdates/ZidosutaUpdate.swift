@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ZidosutaUpdate: Decodable {
+struct ZidosutaUpdate: Codable {
 
   let version: String
   let description: String

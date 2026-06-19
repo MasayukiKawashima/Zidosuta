@@ -59,22 +59,53 @@ class UpdatesDisplayViewController: UIViewController {
       indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
 
-    indicator.startAnimating()
+    if UpdatesCache.needsRefresh() {
 
-    Task {
-      do {
-        let result = try await getUpdates()
+      // FIXME: - 更新情報の取得処理がDRYに違反しているため、エラーハンドリング実装後に共通化する
+
+      // キャッシュが存在しない等で更新情報の取得が必要な場合
+      indicator.startAnimating()
+
+      Task {
+        do {
+          let result = try await getUpdates()
+          UpdatesCache.save(result)
+          configureDataSource()
+          applyData(data: result.updates)
+
+          indicator.stopAnimating()
+        } catch {
+          // エラーハンドリング
+          print("エラー発生")
+          indicator.stopAnimating()
+        }
+      }
+    } else {
+      // キャッシュがあった場合の処理
+      if let cache = UpdatesCache.load() {
+        print("有効なキャッシュが存在しました")
         configureDataSource()
-        applyData(data: result.updates)
+        applyData(data: cache.updates)
+      } else {
+        // キャッシュが取得できなかったため再取得
+        print("キャッシュの取得エラー")
 
-        indicator.stopAnimating()
-      } catch {
-        // エラーハンドリング
-        print("エラー発生")
-        indicator.stopAnimating()
+        Task {
+          do {
+            let result = try await getUpdates()
+            UpdatesCache.save(result)
+            configureDataSource()
+            applyData(data: result.updates)
+
+            indicator.stopAnimating()
+          } catch {
+            // エラーハンドリング
+            print("エラー発生")
+            indicator.stopAnimating()
+          }
+        }
       }
     }
-
   }
 
 
