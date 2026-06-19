@@ -7,14 +7,6 @@
 
 import UIKit
 
-struct UpdateItem: Hashable {
-
-  let id: UUID
-  let version: String
-  let description: String
-  let releaseDate: String
-}
-
 class UpdatesDisplayViewController: UIViewController {
 
 
@@ -38,6 +30,7 @@ class UpdatesDisplayViewController: UIViewController {
   private enum Section {
     case main
   }
+
 
   // MARK: - LifeCycle
 
@@ -74,7 +67,7 @@ class UpdatesDisplayViewController: UIViewController {
           indicator.stopAnimating()
         } catch {
           // エラーハンドリング
-          print("エラー発生")
+          print("更新情報取得エラー")
           showUpdatesFetchFailureAlert()
           indicator.stopAnimating()
         }
@@ -89,6 +82,8 @@ class UpdatesDisplayViewController: UIViewController {
         // キャッシュが取得できなかったため再取得
         print("キャッシュの取得エラー")
 
+        indicator.startAnimating()
+
         Task {
           do {
             let result = try await fetchUpdates()
@@ -99,7 +94,7 @@ class UpdatesDisplayViewController: UIViewController {
             indicator.stopAnimating()
           } catch {
             // エラーハンドリング
-            print("エラー発生")
+            print("更新情報取得エラー")
             showUpdatesFetchFailureAlert()
             indicator.stopAnimating()
           }
@@ -119,6 +114,8 @@ class UpdatesDisplayViewController: UIViewController {
     }
     */
 
+
+  // MARK: - Methods
 }
 
 
@@ -144,15 +141,6 @@ extension UpdatesDisplayViewController {
   }
 
   private func applyData(data: [ZidosutaUpdate]) {
-
-    // テスト表示用データ
-//    let testData = UpdateItem(id: UUID(), version: "v2.10.10", description: "アプリ内のデザインをリニューアルしました。\niOS26に対応しました。\n内部的な改善を行いました。", releaseDate: "2025.02.11")
-//    let testData2 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-//    let testData3 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-//    let testData4 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-//    let testData5 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-//    let testData6 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
-//    let testData7 = UpdateItem(id: UUID(), version: "v0.0.0", description: "テストテストテストテスト", releaseDate: "2025.02.11")
 
     var snapshot = NSDiffableDataSourceSnapshot<Section, UpdateItem>()
     snapshot.appendSections([.main])
