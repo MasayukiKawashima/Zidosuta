@@ -20,7 +20,7 @@
 
 | |
 |-|
-| <img src="https://github.com/user-attachments/assets/60c4c22d-322f-4c64-a4da-d0ae588500ec" width="300px"> |
+| <img src="https://github.com/user-attachments/assets/bfdf0314-f140-40da-9614-2352f6c78d36" width="300px"> |
 
 
 ## ■ アプリを作ったキッカケ
