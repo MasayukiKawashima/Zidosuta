@@ -103,6 +103,11 @@
 |-|
 | <img src="https://github.com/user-attachments/assets/b42b14ad-e494-45df-b234-d84b2aff79a2" width="800px"> |
 
+
+## APIサーバーについて
+
+<img width="2400" height="1200" alt="Image" src="https://github.com/user-attachments/assets/b0fbd63e-72f4-4b99-8b37-278c9dbe2f54" />
+
 ## ■ こだわりポイント
 
 ### 1. ユーザーフィードバックを反映した機能開発
