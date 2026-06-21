@@ -106,7 +106,7 @@
 | <img src="https://github.com/user-attachments/assets/b42b14ad-e494-45df-b234-d84b2aff79a2" width="800px"> |
 
 
-## バックエンドについて
+## ■ バックエンドについて
 
 <img width="2400" height="1200" alt="Image" src="https://github.com/user-attachments/assets/ba2ba77e-e601-46e9-9913-a290dfdb02c2" />
 <br>
