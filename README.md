@@ -59,9 +59,9 @@
 | UI    | UIKit, Storyboard, Xib, SwiftUI |
 | データベース  | Realm, UserDefaults      |
 | グラフ描画   | Charts                        |
-| バックエンド |TypeScript, Cloudflare Workers, NotionAPI|
 | 広告    | AdMob                          |
 | テスト     | XCTest                          |
+| バックエンド |TypeScript, Cloudflare Workers, NotionAPI|
 | CI/CD     | Github Actions, fastlane        |
 | コード整形 | SwiftLint                       |
 | バージョン管理 | Git, GitHub                  |
