@@ -68,6 +68,7 @@
 |ブランチ戦略| Git-flow                         |
 | デザイン    | Figma, Canva                   |
 | その他     | Notion (Webサイト、クラウドデータベース)  |
+|            |TestFlight　|
 
 ## ■ アプリの使い方
 
