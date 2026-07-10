@@ -91,7 +91,7 @@ struct PhotoTipsView: View {
                   Spacer()
 
                   Button(action: {
-                    model.transitionToMainContent()
+                    transitionToMainContent()
                     model.completeFirstLaunch()
                   },
                           label: {
@@ -148,16 +148,35 @@ struct PhotoTipsView: View {
     // 許容されるサイズと比較
     return max(minMargin, min(maxMargin, calculatedMargin))
   }
-}
 
-private func createAttributedString() -> AttributedString {
+  private func transitionToMainContent() {
 
-  var attributedString = AttributedString(PhotoTipsString.firstLineDescriptionText)
+    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+       let window = windowScene.windows.first {
+      let mainStoryboard = UIStoryboard(name: "Tab", bundle: nil)
+      if let tabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController {
+        window.rootViewController = tabBarController
 
-  if let range = attributedString.range(of: "全身が映るように撮る") {
-    attributedString[range].foregroundColor = .red
+        let snapshot = UIScreen.main.snapshotView(afterScreenUpdates: true)
+        window.addSubview(snapshot)
+        UIView.animate(withDuration: 0.5, animations: {
+          snapshot.alpha = 0
+        }, completion: { _ in
+          snapshot.removeFromSuperview()
+        })
+      }
+    }
   }
-  return attributedString
+
+  private func createAttributedString() -> AttributedString {
+
+    var attributedString = AttributedString(PhotoTipsString.firstLineDescriptionText)
+
+    if let range = attributedString.range(of: "全身が映るように撮る") {
+      attributedString[range].foregroundColor = .red
+    }
+    return attributedString
+  }
 }
 
 
