@@ -165,9 +165,9 @@
 
 ### 2. 新しい技術の積極的な導入
 
-**1. i0S26・Liquid Glassに対応済み**
+**1. Liquid Glassに対応済み**
 
-近いうちに適用が必須となるLiquid Glassに先んじて対応しています。対応作業の内容や考えたことを以下の記事にまとめています。
+対応作業の内容や方針を以下の記事にまとめています。
 
 [【Swift】個人開発アプリをiOS26・Liquid Glassに対応させるためにやったこと](https://qiita.com/poppinmasa/items/ed492321cbf19da679ce)
 
